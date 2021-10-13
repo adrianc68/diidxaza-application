@@ -44,14 +44,19 @@ export const TRANSLATIONS_ES = {
 
     SidebarMiPerfil: "Mi perfil",
     SidebarSignOutButton:"Cerrar sesión",
-    SidebarLearning: "Learning",
-    SidebarNews: "News",
-    SidebarForum: "Forum",
-    SidebarDictionary: "Dictionary",
+    SidebarLearning: "Aprendizaje",
+    SidebarNews: "Noticias",
+    SidebarForum: "Foro",
+    SidebarDictionary: "Diccionario",
     SidebarSongs: "Canciones",
-    SidebarHistory: "History",
+    SidebarHistory: "Historia",
     SidebarReservado: "Reservado",
-    SidebarHelp: "Help",
+    SidebarHelp: "Ayuda",
     SidebarCorreo: "Correo",
+    SidebarMenu: "Menú",
+
+    PageNotFound404: "Error 404.",
+    PageNotFound: "¡Esta no es la página que estás buscando!",
+
 
 };
