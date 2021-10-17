@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import "../../components/variables.module.scss";
+
+* {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.home-main-container {
+    display: grid;
+    /* Error al usar variable para 240px --> $sidebar-width calc(100vw - 240px)*/
+    grid-template-columns: $sidebar-width auto;
+    grid-template-rows: $topbar-height auto;
+    grid-template-areas:
+        "topbar topbar"
+        "sidebar d";
+
+    .sidebar {
+        height: calc(100vh - $topbar-height);
+        grid-area: sidebar;
+    }
+
+    .topbar {
+        grid-area: topbar;
+    }
+
+    .d {
+        grid-area: d;
+        width: 100%;
+        height: calc(100vh - 65px);
+        background-image: url('../../assets/images/ide-01.svg');
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}

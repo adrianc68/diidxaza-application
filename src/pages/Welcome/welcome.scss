@@ -1,0 +1,35 @@
+@import '../../components/variables.module.scss';
+
+.welcome-main-container {
+    background-color: blue;
+    display:flex;
+    flex-direction: column;
+
+    .welcome-topbar {
+        height: auto;
+        background-color:#8a8a8a;
+    }
+
+    // .welcome-topbar .topbar-center .topbarIcon {
+    //     font-size: 50px;
+    //     color: #000;
+    // }
+
+    .welcome-main-information-container {
+        background-color:#b63333;
+    }
+
+    .welcome-problems-information-container {
+        background-color:orange;
+    }
+
+    .welcome-benefits-information-container {
+        background-color:green;
+    }
+
+    .welcome-choose-account-type-container {
+        background-color:pink;
+    }
+
+
+}

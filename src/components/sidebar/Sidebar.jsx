@@ -1,13 +1,9 @@
 import React from 'react'
-import './sidebar.css'
-
-import {Group, Bookmark, HelpOutline, LibraryMusic, MenuBook, Forum, Email, LiveTv, Home, EcoOutlined, Landscape, KeyboardArrowLeft } from "@material-ui/icons"
-
+import './sidebar.scss'
+import { Bookmark, HelpOutline, LibraryMusic, MenuBook, Forum, Email, LiveTv, Home, EcoOutlined, Landscape, Menu } from "@material-ui/icons"
 import { Link } from 'react-router-dom';
-
 import { useTranslation } from "react-i18next";
 import "../../translations/i18n";
-
 
 export default function Sidebar() {
     const { t } = useTranslation();
@@ -15,35 +11,27 @@ export default function Sidebar() {
     return (
         <>
             <div className="sidebar">
-                <div className="logo-details">
-                    <div className="center">
-                        <Group className="sidebarIcon" />
-                        <span className="logo_name">Diidxaza App</span>
-                    </div>
-                </div>
-
-                <div className="toggle-button-container">
-                    <button className="toggle-button">
-                        <KeyboardArrowLeft className="sidebarIconToggle"/>
+                <div className="sidebar-toggle-button-container">
+                    <button className="sidebar-toggle-button">
+                        <Menu className="sidebarIconToggle"/>
                     </button>
                 </div>
 
-
-                <ul className="nav-links">
+                <ul className="sidebar-nav-links">
                     <li className="sidebarListItem">
-                        <Link className="linkto" to="/Home">
+                        <Link className="sidebar-linkto" to="/home">
                             <Home className="sidebarIcon" />
-                            <span className="sidebarListItemText">{t("SidebarMiPerfil")}</span>
+                            <span className="sidebarListItemText">{t("SidebarHome")}</span>
                         </Link>
                     </li>
                     <li className="sidebarListItem">
-                        <Link className="linkto" to="Not-Found">
+                        <Link className="sidebar-linkto" to="not-found">
                             <Email className="sidebarIcon" />
                             <span className="sidebarListItemText">{t("SidebarCorreo")}</span>
                         </Link>
                     </li>
                     
-                    <div className="button-section">
+                    <div className="sidebar-button-section">
                       
                         <button className="sidebarButton">
                             <EcoOutlined className="sidebarIcon"/>
@@ -55,47 +43,47 @@ export default function Sidebar() {
 
 
                     <li className="sidebarListItem">
-                        <Link className="linkto" to="/Learning">
+                        <Link className="sidebar-linkto" to="/learning">
                             <Bookmark className="sidebarIcon" />
                             <span className="sidebarListItemText">{t("SidebarLearning")}</span>
                         </Link>
                     </li>
                     <li className="sidebarListItem">
-                        <Link className="linkto" to="/News">
+                        <Link className="sidebar-linkto" to="/news">
                             <LiveTv className="sidebarIcon" />
                             <span className="sidebarListItemText">{t("SidebarNews")}</span>
                         </Link>
                     </li>
                     <li className="sidebarListItem">
-                        <Link className="linkto" to="/Forum">
+                        <Link className="sidebar-linkto" to="/forum">
                             <Forum className="sidebarIcon" />
                             <span className="sidebarListItemText">{t("SidebarForum")}</span>
                         </Link>
                     </li>
                     <li className="sidebarListItem">
-                        <Link className="linkto" to="/Dictionary">
+                        <Link className="sidebar-linkto" to="/dictionary">
                             <MenuBook className="sidebarIcon" />
                             <span className="sidebarListItemText">{t("SidebarDictionary")}</span>
                         </Link>
                     </li>
                     <li className="sidebarListItem">
-                        <Link className="linkto" to="/Songs">
+                        <Link className="sidebar-linkto" to="/songs">
                             <LibraryMusic className="sidebarIcon" />
                             <span className="sidebarListItemText">{t("SidebarSongs")}</span>
                         </Link>
                     </li>
                     <li className="sidebarListItem">
-                        <Link className="linkto" to="/History">
+                        <Link className="sidebar-linkto" to="/history">
                             <Landscape className="sidebarIcon" />
                             <span className="sidebarListItemText">{t("SidebarHistory")}</span>
                         </Link>
                     </li>
                 </ul>
 
-                <div className="help-details">
-                    <ul className="nav-help">
+                <div className="sidebar-help-details">
+                    <ul className="sidebar-nav-help">
                         <li className="sidebarListItem">
-                            <Link className="linkto" to="/Help">
+                            <Link className="sidebar-linkto" to="/help">
                                 <HelpOutline className="sidebarIcon" />
                                 <span className="sidebarListItemText">{t("SidebarHelp")}</span>
                             </Link>

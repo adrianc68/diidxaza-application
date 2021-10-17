@@ -1,0 +1,56 @@
+@import "../../components/variables.module.scss";
+
+
+.pagenotfound-main-container {
+    height: 100vh;
+    width: 100%;
+    display:grid;
+    grid-template-rows: $topbar-height calc(70% - 62px) calc(30% - 62px);
+
+    .pagenotfound-img-container .pagenotfound-image {
+        height: 100%;
+        width: 100%;
+        display: block;
+        padding-top: 15px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .pagenotfound-text-container {
+        padding-top: 10px;
+        margin:auto;
+        padding-left: 15px;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pagenotfound-text-container h1 {
+        font-size:55px;
+    }
+
+    .pagenotfound-text-container .pagenotfound-home-button {
+        padding: 5px;
+        margin-top: 15px;
+        background-color: rgb(80, 112, 219);
+        border-radius: 5px;
+        border-color: transparent;
+        color:#fff;
+    }
+
+    .pagenotfound-text-container .pagenotfound-home-button .pagenotfound-text-button {
+        font-size: 13px;
+        font-weight: 700;
+        vertical-align: middle;
+        margin-right: 5px;
+    }
+
+    .pagenotfound-text-container .pagenotfound-home-button .pagenotfound-icon-button {
+        margin-right: 15px;
+        margin-left: 5px;
+        font-size: 20px;
+        vertical-align: middle;
+    }
+
+}

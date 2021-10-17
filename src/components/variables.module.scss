@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+$sidebar-width: 240px;
+$sidebar-height: 100% ;
+$sidebar-background-color: #363F64;
+
+$topbar-height: 65px;
+$topbar-width: 100%;
+$topbar-logo-background-color: #000;
+$topbar-background-color: $topbar-logo-background-color;
+
+:export {
+    sidebar-width: $sidebar-width;
+    sidebar-height: $sidebar-height;
+    sidebar-background-color: $sidebar-background-color;
+
+    topbar-logo-background-color: $topbar-logo-background-color;
+    topbar-height: $topbar-height;
+    topbar-width: $topbar-width;
+    topbar-background-color: $topbar-background-color;
+}

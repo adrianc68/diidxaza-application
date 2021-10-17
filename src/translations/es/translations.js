@@ -1,4 +1,6 @@
 export const TRANSLATIONS_ES = {
+    LogoName:"Diidxaza App",
+
     WelcomeHeader: "¡Bienvenido a Diidxaza",
     WelcomeIntroduction: "Diidxaza te ayudará a aprender el idioma zapoteco con diferentes objetivos...",
     WelcomeHistory: "Puedes visitar la historia de la cultura zapoteca...",
@@ -41,7 +43,7 @@ export const TRANSLATIONS_ES = {
     SignUpVerificationError: "¡No se pudo conectar con el servidor!",
     SignUpVerificationConnectionError: "¡Error de conexión, ¡intentalo más tarde!",
 
-
+    SidebarHome: "Inicio",
     SidebarMiPerfil: "Mi perfil",
     SidebarSignOutButton:"Cerrar sesión",
     SidebarLearning: "Aprendizaje",
@@ -55,8 +57,15 @@ export const TRANSLATIONS_ES = {
     SidebarCorreo: "Correo",
     SidebarMenu: "Menú",
 
-    PageNotFound404: "Error 404.",
+    TopbarSettings: "Configuración",
+
+
+    PageNotFound404: "Error 404",
     PageNotFound: "¡Esta no es la página que estás buscando!",
+    PageNotFoundReturnHomeButton: "Regresar al inicio",
+
+
+    altPageNotFoundImage: "Imágen decorativa",
 
 
 };

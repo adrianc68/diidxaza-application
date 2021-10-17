@@ -1,0 +1,77 @@
+@import "../variables.module.scss";
+
+.topbar {
+    height: $topbar-height;
+    width: $topbar-width;
+    background-color: $topbar-logo-background-color;
+    grid-template-columns: 240px auto;
+    display: grid;
+    grid-template-areas: "logo-details buttons-area";
+
+    .topbar-logo-details {
+        width: $sidebar-width;
+        grid-area: logo-details;
+        
+        .topbar-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .topbar-center .topbarIcon {
+            font-size: 40px;
+            color: #fff;
+            margin-right: 10px;
+        }
+
+        .topbar-center .topbar-logo-name {
+            font-size: 18px;
+            color: #fff;
+            font-weight: bold;
+            line-height: $topbar-height;
+        }
+    }
+
+    .nav-links-container {
+        grid-area: buttons-area;
+
+        .topbar-nav-links {
+            line-height: $topbar-height;
+            display: flex;
+            justify-content: right;
+            gap: 5px;
+
+            .topbar-listItem {
+                list-style: none;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-left: 5px;
+                padding-right: 15px;
+                gap: 6px;
+
+            }
+
+            .topbar-listItem .topbarIcon {
+                color: #fff;
+                font-size: 25px;
+            }
+
+            li .topbar-linkto {
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+            }
+
+            li:hover {
+                background-color: yellow;
+            }
+
+            .topbar-listItem .topbar-username-text {
+                color: #fff;
+                font-size: 13px;
+            }
+        }
+    }
+}
