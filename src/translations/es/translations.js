@@ -1,8 +1,10 @@
 export const TRANSLATIONS_ES = {
     LogoName:"Diidxaza App",
 
-    WelcomeHeader: "¡Bienvenido a Diidxaza",
-    WelcomeIntroduction: "Diidxaza te ayudará a aprender el idioma zapoteco con diferentes objetivos...",
+    WelcomeHeader: "¡Bienvenido a Diidxaza!",
+    WelcomeSubtitle: "La plataforma para aprender zapoteco",
+    WelcomeIntroduction: "Diidxaza te ayudará a aprender el idioma zapoteco con diferentes objetivos... Este es un texto de relleno que sirve para rellenar el contenedor div en el que se explica un poco a detalle lo que es la lengua zapoteca",
+    WelcomeInformationAlt: "Imagen que contiene un personaje",
     WelcomeHistory: "Puedes visitar la historia de la cultura zapoteca...",
     
     LoginUsernameInput: "Usuario o correo electrónicoç: ",
@@ -68,4 +70,5 @@ export const TRANSLATIONS_ES = {
     altPageNotFoundImage: "Imágen decorativa",
 
 
+    ButtonLogin: "Iniciar sesión",
 };

@@ -1,35 +1,130 @@
-@import '../../components/variables.module.scss';
+@import "../../components/variables.module.scss";
 
 .welcome-main-container {
-    background-color: blue;
-    display:flex;
+    display: flex;
     flex-direction: column;
-
     .welcome-topbar {
-        height: auto;
-        background-color:#8a8a8a;
+        height: 72px;
+        width: 100%;
+        background-color: #8a8a8a;
+        display:flex;
+
+        .welcome-topbar-icon-container {
+            display:flex;
+            background-color: blue;
+            width: 30%;
+        }
+
+        .welcome-buttons-register-container {
+            display:flex;
+            background-color: red;
+            width: 70%;
+        }
+
     }
 
-    // .welcome-topbar .topbar-center .topbarIcon {
-    //     font-size: 50px;
-    //     color: #000;
-    // }
-
     .welcome-main-information-container {
-        background-color:#b63333;
+        height: calc(95vh - 50px - 20px - 20px);
+        display: flex;
+        margin: auto;
+        padding: 20px;
+        gap: 2vw;
+
+        .welcome-main-information-image {
+            width: 40vw;
+            height: 55vh;
+            margin: auto;
+            .welcome-information-image {
+                height: 100%;
+                width: 100%;
+                display: block;
+                padding-top: 15px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        .welcome-main-information-text {
+            width: 54vw;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+
+            h1 {
+                font-family: "Poppins";
+                font-size: 6vmin;
+                font-weight: 800;
+                padding-bottom: 0.5vh;
+            }
+
+            h2 {
+                font-family: "Poppins";
+                font-size: 3.8vmin;
+            }
+
+            p {
+                font-size: 3vmin;
+                text-align: justify;
+            }
+        }
     }
 
     .welcome-problems-information-container {
-        background-color:orange;
+        background-color: orange;
+        height: 100vh;
     }
 
     .welcome-benefits-information-container {
-        background-color:green;
+        background-color: green;
+        height: 100vh;
     }
 
     .welcome-choose-account-type-container {
-        background-color:pink;
+        background-color: pink;
+        height: 100vh;
     }
 
+    /* Welcome Main Information Container */
+    @media screen and (max-width: 550px) {
+        .welcome-main-information-container {
+            flex-direction: column;
+            height: auto;
+            .welcome-main-information-text {
+                width: 80%;
+                text-align: center;
+                width: calc(100vw - 15px -15px);
+                padding: 15px;
+                h1 {
+                    font-family: "Poppins";
+                    font-size: 6vmin;
+                    font-weight: 800;
+                    padding-bottom: 0.5vh;
+                }
+                h2 {
+                    font-family: "Poppins";
+                    font-size: 5vmin;
+                }
+                p {
+                    font-size: 4vmin;
+                }
+            }
 
+            .welcome-main-information-image {
+                height: 25vh;
+                width: 50vw;
+                margin: auto;
+                padding-bottom: 3vh;
+                .welcome-information-image {
+                    height: 100%;
+                    width: 100%;
+                    display: block;
+                    padding-top: 0px;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
+        }
+    }
+    /* END OF Welcome Main Information Container */
 }

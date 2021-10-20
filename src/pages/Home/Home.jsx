@@ -6,9 +6,11 @@ import Login from '../InitialInteraction/Login/Login'
 
 export default function Home() {
 
-    const [token, setToken] = useState();
+    // const [token, setToken] = useState();
 
-
+    // if(!token) {
+    //     return <Login setToken={setToken} />
+    //   }
 
     return (
         <div className="home-main-container">
