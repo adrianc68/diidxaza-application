@@ -4,7 +4,7 @@ export const TRANSLATIONS_ES = {
     WelcomeHeader: "¡Bienvenido a Diidxaza!",
     WelcomeSubtitle: "La plataforma para aprender zapoteco",
     WelcomeIntroduction: "Diidxaza App te permite aprender una de las lenguas zapotecas originarias del estado de Oaxaca de una forma más sencilla y divertida.",
-    WelcomeBenefitsTitle: "Beneficios de aprender con Diidxaza app",
+    WelcomeBenefitsTitle: "Beneficios de aprender con Diidxaza App",
     WelcomeBenefitsDescription: "Nuestra aplicación web ofrece muchas ventajas para aprender zapoteco con el objetivo de combatir la disminución del número de hablantes alrededor del mundo. Por ello se decidió crear una aplicación web que permita a los usuarios aprender zapoteco sin importar su dispositivo electrónico.",
     WelcomeBenefitsFirstOneTitle: "Preservar la lengua indígena zapoteca",
     WelcomeBenefitsFirstOne: "Las lenguas indígenas aportan conocimientos únicos y formas de comprender el mundo de manera distinta.",
@@ -18,7 +18,14 @@ export const TRANSLATIONS_ES = {
 
 
     WelcomeAccountTypeFree: "Cuenta gratuita",
-    WelcomeAccountTypeFreeDescription: "No existe una descripcion disponible",
+    WelcomeAccountTypeFreeDescription: "Sin costo alguno.",
+    WelcomeAccountTypeFreeBenefit01: "Contenido de aprendizaje ilimitado.",
+    WelcomeAccountTypeFreeBenefit02: "Sin anuncios",
+    WelcomeAccountTypeFreeBenefit03: "Acceso al foro.",
+    WelcomeAccountTypeFreeBenefit04: "Acceso a noticias.",
+    WelcomeAccountTypeFreeBenefit05: "Acceso a música zapoteca",
+
+
     WelcomeAccountTypePremium: "Cuenta premium",
     WelcomeAccountTypePremiumDescription: "No disponible por el momento",
 
@@ -148,9 +155,9 @@ export const TRANSLATIONS_ES = {
     UserProfileDiscussionsCommented: "Discusiones comentadas",
 
     CheckProgressTotalDiscussionsCommented: "Total de discusiones comentadas: ",
-    CheckProgressTotalDiscussionsCommentedDescription: "Muestra el total de comentarios que has realizado desde tu registro en Diidxaza app.",
+    CheckProgressTotalDiscussionsCommentedDescription: "Muestra el total de comentarios que has realizado desde tu registro en Diidxaza App.",
     CheckProgressTotalDiscussionsCreated: "Total de discusiones creadas: ",
-    CheckProgressTotalDiscussionsCreatedDescription: "Muestra el total de discusiones que has creado desde tu registro en Diidxaza app.",
+    CheckProgressTotalDiscussionsCreatedDescription: "Muestra el total de discusiones que has creado desde tu registro en Diidxaza App.",
     CheckProgressTotalWordsLearned: "Total de palabras aprendidas: ",
     CheckProgressTotalWordsLearnedDescription: "Muestra el total de palabras que la plataforma Diidxaza App te ha mostrado en las lecciones.",
     CheckProgressTotalLessonsRemaining: "Total de lecciones restantes: ",

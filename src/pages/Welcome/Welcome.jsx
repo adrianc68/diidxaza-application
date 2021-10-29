@@ -6,7 +6,15 @@ import { Link } from 'react-router-dom'
 import Topbar from '../../components/topbar/Topbar'
 import Button from '../../components/Button/Button'
 
-import ImageInformationAlt from '../../assets/images/ide-02.svg'
+import ImageInformationAlt from '../../assets/images/ide-23.svg'
+
+import WelcomeImage from '../../assets/images/ide-22.svg'
+import ImageBenefit01 from '../../assets/images/ide-11.svg'
+import ImageBenefit02 from '../../assets/images/ide-15.svg'
+import ImageBenefit03 from '../../assets/images/ide-12.svg'
+import ImageBenefit04 from '../../assets/images/ide-14.svg'
+import VideoBenefit01 from '../../assets/images/vid-01.mp4'
+
 import { MdLogin, MdLogout } from 'react-icons/md'
 
 export default function Welcome() {
@@ -45,47 +53,48 @@ export default function Welcome() {
                     </div>
                 </div>
                 <div className="welcome-main-information-image">
-                    <img src={ImageInformationAlt} className="welcome-information-image" alt={t("WelcomeInformationAlt")}></img>
+                    <img src={WelcomeImage} className="welcome-information-image" alt={t("WelcomeInformationAlt")}></img>
                 </div>
             </div>
 
 
             <div className="welcome-problems-information-container">
                 <h1>Language Problems Container</h1>
+                <video src={VideoBenefit01} autoPlay loop></video>
+
             </div>
 
             <div className="welcome-benefits-information-container">
                 <div className="welcome-benefits-description-container">
                     <h1>{t("WelcomeBenefitsTitle")}</h1>
                     <span>{t("WelcomeBenefitsDescription")}</span>
-                    <img src={ImageInformationAlt} alt={t("WelcomeInformationAlt")}></img>
                 </div>
                 <div className="welcome-benefits-list-container">
                     <ul>
                         <li>
                             <div className="welcome-benefits-listItem-container">
-                                <img src={ImageInformationAlt} alt={t("WelcomeInformationAlt")}></img>
+                                <img src={ImageBenefit01} alt={t("WelcomeInformationAlt")}></img>
                                 <h3>{t("WelcomeBenefitsFirstOneTitle")}</h3>
                                 <span>{t("WelcomeBenefitsFirstOne")}</span>
                             </div>
                         </li>
                         <li>
                             <div className="welcome-benefits-listItem-container">
-                                <img src={ImageInformationAlt} alt={t("WelcomeInformationAlt")}></img>
+                                <img src={ImageBenefit02} alt={t("WelcomeInformationAlt")}></img>
                                 <h3>{t("WelcomeBenefitsSecondOneTitle")}</h3>
                                 <span> {t("WelcomeBenefitsSecondOne")}</span>
                             </div>
                         </li>
                         <li>
                             <div className="welcome-benefits-listItem-container">
-                                <img src={ImageInformationAlt} alt={t("WelcomeInformationAlt")}></img>
+                                <img src={ImageBenefit03} alt={t("WelcomeInformationAlt")}></img>
                                 <h3>{t("WelcomeBenefitsThirdOneTitle")}</h3>
                                 <span>{t("WelcomeBenefitsThirdOne")}</span>
                             </div>
                         </li>
                         <li>
                             <div className="welcome-benefits-listItem-container">
-                                <img src={ImageInformationAlt} alt={t("WelcomeInformationAlt")}></img>
+                                <img src={ImageBenefit04} alt={t("WelcomeInformationAlt")}></img>
                                 <h3>{t("WelcomeBenefitsFourOneTitle")}</h3>
                                 <span>{t("WelcomeBenefitsFourOne")}</span>
                             </div>
@@ -95,9 +104,11 @@ export default function Welcome() {
             </div>
 
             <div ref={chooseContainerRef} className="welcome-choose-account-type-container">
+                <h1>{t("WelcomeBenefitsTitle")}</h1>
+
                 <div className="welcome-choose-list-container">
-                    <ul>
-                        <li>
+                    <ul className="welcome-choose-account-type-ul">
+                        <li className="welcome-choose-account-type-li">
                             <div className="welcome-choose-listItem-container">
                                 <div className="welcome-choose-image-container">
                                     <img src={ImageInformationAlt} alt={t("WelcomeInformationAlt")}></img>
@@ -116,11 +127,36 @@ export default function Welcome() {
                             </div>
                         </li>
 
+                        <li className="welcome-choose-account-type-li">
+                            <div className="welcome-choose-listItem-container">
+                                <div className="welcome-choose-image-container">
+                                    <img src={ImageInformationAlt} alt={t("WelcomeInformationAlt")}></img>
+                                </div>
+                                <div className="welcome-choose-description-container">
+                                    <div className="welcome-choose-description-text-container">
+                                        <h1>{t("WelcomeAccountTypeFree")}</h1>
+                                        <span>{t("WelcomeAccountTypeFreeDescription")}</span>
+                                        <ul>
+                                            <li>{t("WelcomeAccountTypeFreeBenefit01")}</li>
+                                            <li>{t("WelcomeAccountTypeFreeBenefit02")}</li>
+                                            <li>{t("WelcomeAccountTypeFreeBenefit03")}</li>
+                                            <li>{t("WelcomeAccountTypeFreeBenefit04")}</li>
+                                            <li>{t("WelcomeAccountTypeFreeBenefit05")}</li>
+                                        </ul>
+
+                                    </div>
+                                    <div className="welcome-choose-description-button-container">
+                                        <Link className="link" to="/signUp">
+                                            <Button text={t("ButtonSignUp")} styleName="primary-button" />
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
                     </ul>
                 </div>
             </div>
-            <h1> Footer </h1>
-
             <Footer></Footer>
 
 
