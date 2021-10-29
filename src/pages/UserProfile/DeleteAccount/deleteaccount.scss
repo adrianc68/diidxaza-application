@@ -1,0 +1,44 @@
+@import "../../../components/variables.module.scss";
+
+.deleteaccount-main-container {
+    background-color: blue;
+    display: inline-flex;
+    padding: 15px;
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    justify-content: center;
+    align-items: center;
+    .deleteaccount-message-container {
+        width: 60%;
+        background-color:red;
+        .deletaccount-text {
+            background-color: pink;
+            display: inline-flex;
+            width: calc(100% - 30px);
+            padding: 15px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            h1 {
+                text-align: center;
+            }
+            p {
+                text-align: justify;
+            }
+            img {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        .deleteaccount-button-panel {
+            background-color: yellow;
+            width: calc(100% - 30px);
+            display: inline-flex;
+            justify-content: flex-end;
+            padding: 15px;
+            gap: 15px;
+            
+        }
+    }
+}

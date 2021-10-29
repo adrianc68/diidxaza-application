@@ -1,27 +1,23 @@
 import React from 'react'
 import './topbar.scss'
-import { Settings, School } from "@material-ui/icons"
-import { useTranslation } from "react-i18next";
-import "../../translations/i18n";
+import DiidxazaLogo from '../logo/DiidxazaLogo'
 
-export default function Topbar() {
-    const { t } = useTranslation();
 
+export default function Topbar({ children }) {
     return (
         <>
             <div className="topbar">
                 <div className="topbar-logo-details">
                     <div className="topbar-center">
-                        <School className="topbarIcon" />
-                        <span className="topbar-logo-name">{t("LogoName")}</span>
+                        <DiidxazaLogo styleClass="logo-white-link"></DiidxazaLogo>
                     </div>
                 </div>
                 <div className="nav-links-container">
-                    <ul className="topbar-nav-links">
-                        <li className="topbar-listItem">
-                            <Settings className="topbarIcon" />
-                            <span className="topbar-username-text">Roberto Quiros Montesano 1</span>
+                    <ul>
+                        <li>
+                            {children}
                         </li>
+
                     </ul>
                 </div>
 

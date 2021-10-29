@@ -4,16 +4,23 @@ import { Bookmark, HelpOutline, LibraryMusic, MenuBook, Forum, Email, LiveTv, Ho
 import { Link } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import "../../translations/i18n";
+import Button from '../../components/Button/Button'
+import { MdLogout } from 'react-icons/md'
+
 
 export default function Sidebar() {
     const { t } = useTranslation();
+
+
+
+
 
     return (
         <>
             <div className="sidebar">
                 <div className="sidebar-toggle-button-container">
                     <button className="sidebar-toggle-button">
-                        <Menu className="sidebarIconToggle"/>
+                        <Menu className="sidebarIconToggle" />
                     </button>
                 </div>
 
@@ -30,13 +37,14 @@ export default function Sidebar() {
                             <span className="sidebarListItemText">{t("SidebarCorreo")}</span>
                         </Link>
                     </li>
-                    
+
                     <div className="sidebar-button-section">
-                      
-                        <button className="sidebarButton">
-                            <EcoOutlined className="sidebarIcon"/>
-                            {t("SidebarSignOutButton")}
-                            </button>
+                        <div className="sidebarButton">
+                            <Button styleName="primary-button" text={t("SidebarSignOutButton")}>
+                                <MdLogout className="sidebarIcon"></MdLogout>
+                            </Button>
+                        </div>
+
                     </div>
 
                     <hr className="sidebarHr"></hr>

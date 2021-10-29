@@ -1,17 +1,16 @@
 import React from 'react'
 import "./primaryButton.scss"
-import { useTranslation } from "react-i18next";
-import "../../translations/i18n";
+import "./secondaryButton.scss"
 
 export default function Button(props) {
-    const { t } = useTranslation();
 
     return (
-        <div>
-            <Button className={props.styleName}>
-                <span>{t(props.text)}</span>
-            </Button>
-        </div>
+            <button className={props.styleName} onClick={props.onClick}>
+                <div className="button-container">
+                    {props.children}
+                    <span>{props.text}</span>
+                </div>
+            </button>
     )
 }
 

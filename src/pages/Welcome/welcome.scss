@@ -3,33 +3,12 @@
 .welcome-main-container {
     display: flex;
     flex-direction: column;
-    .welcome-topbar {
-        height: 72px;
-        width: 100%;
-        background-color: #8a8a8a;
-        display:flex;
-
-        .welcome-topbar-icon-container {
-            display:flex;
-            background-color: blue;
-            width: 30%;
-        }
-
-        .welcome-buttons-register-container {
-            display:flex;
-            background-color: red;
-            width: 70%;
-        }
-
-    }
-
     .welcome-main-information-container {
-        height: calc(95vh - 50px - 20px - 20px);
+        height: calc(95vh - #{$topbar-height} - 40px);
         display: flex;
         margin: auto;
         padding: 20px;
         gap: 2vw;
-
         .welcome-main-information-image {
             width: 40vw;
             height: 55vh;
@@ -43,26 +22,27 @@
                 margin-right: auto;
             }
         }
-
         .welcome-main-information-text {
             width: 54vw;
             margin: auto;
             display: flex;
             flex-direction: column;
             justify-content: left;
-
+            gap: 15px;
+            div {
+                width: 250px;
+                height: 35px;
+            }
             h1 {
                 font-family: "Poppins";
                 font-size: 6vmin;
                 font-weight: 800;
                 padding-bottom: 0.5vh;
             }
-
             h2 {
                 font-family: "Poppins";
                 font-size: 3.8vmin;
             }
-
             p {
                 font-size: 3vmin;
                 text-align: justify;
@@ -77,16 +57,139 @@
 
     .welcome-benefits-information-container {
         background-color: green;
-        height: 100vh;
+        display: flex;
+        width: calc(100vw - 40px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+
+        .welcome-benefits-description-container {
+            background-color: #8a8a8a;
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            padding: 15px;
+            align-items: center;
+            gap: 5vh;
+
+            span {
+                text-align: justify;
+            }
+
+            img {
+                width: 50%;
+                height: 50%;
+            }
+        }
+
+        .welcome-benefits-list-container {
+            background-color: blue;
+            width: calc(80% + 30px);
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+                list-style: none;
+
+                li {
+                    width: calc(100% / 2);
+                    height: auto;
+                }
+
+                .welcome-benefits-listItem-container {
+                    display: flex;
+                    flex-direction: column;
+                    background-color: red;
+                    padding: 25px;
+                    img {
+                        width: 155px;
+                        height: 155px;
+                        margin: auto;
+                    }
+
+                    span {
+                        text-align: center;
+                    }
+                }
+            }
+        }
     }
 
     .welcome-choose-account-type-container {
-        background-color: pink;
-        height: 100vh;
+        background-color: #3a3a3a;
+        height: auto;
+        width: 100vw;
+
+        .welcome-choose-list-container {
+            ul {
+                background-color: yellow;
+                display: flex;
+                flex-wrap: wrap;
+                padding: 35px;
+                gap: 15px;
+
+                li {
+                    display: flex;
+                    flex-wrap: wrap;
+                    width: calc(50% - 35px);
+                    margin: auto;
+                    background-color: green;
+                    height: 90vh;
+                    justify-content: center;
+                    align-items: center;
+                    .welcome-choose-listItem-container {
+                        display: flex;
+                        flex-direction: column;
+                        background-color: blue;
+                        padding: 15px;
+                        width: 60%;
+                        height: 90%;
+
+                        .welcome-choose-image-container {
+                            height: 35%;
+                            img {
+                                width: 100%;
+                                height: 100%;
+                                margin: auto;
+                            }
+                        }
+
+                        .welcome-choose-description-container {
+                            background-color: #8a8a8a;
+                            display: flex;
+                            flex-direction: column;
+                            height: 65%;
+                            .welcome-choose-description-text-container {
+                                background-color: green;
+                                display: flex;
+                                flex-direction: column;
+                                height: 85%;
+                                h1 {
+                                    text-align: center;
+                                }
+
+                                span {
+                                    text-align: justify;
+                                }
+                            }
+
+                            .welcome-choose-description-button-container {
+                                margin: auto;
+                                display: flex;
+                                align-items: center;
+                                background-color: gold;
+                                height: 15%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     /* Welcome Main Information Container */
-    @media screen and (max-width: 550px) {
+    @media all and (max-width: $max-width-device) {
         .welcome-main-information-container {
             flex-direction: column;
             height: auto;
@@ -95,12 +198,9 @@
                 text-align: center;
                 width: calc(100vw - 15px -15px);
                 padding: 15px;
-                h1 {
-                    font-family: "Poppins";
-                    font-size: 6vmin;
-                    font-weight: 800;
-                    padding-bottom: 0.5vh;
-                }
+                gap: 25px;
+                align-items: center;
+
                 h2 {
                     font-family: "Poppins";
                     font-size: 5vmin;
@@ -125,6 +225,53 @@
                 }
             }
         }
+
+        .welcome-benefits-information-container {
+            width: calc(100vw - 40px);
+            .welcome-benefits-description-container {
+                flex-direction: column;
+                width: 90%;
+                padding: 10px;
+                img {
+                    width: 70%;
+                    height: 70%;
+                }
+            }
+
+            .welcome-benefits-list-container {
+                background-color: blue;
+                width:calc(90% + 20px);
+            }
+        }
+
+        .welcome-choose-account-type-container {
+            background-color: #3a3a3a;
+            height: auto;
+            width: 100vw;
+
+            .welcome-choose-list-container {
+                ul {
+                    background-color: yellow;
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: wrap;
+                    gap: 35px;
+
+                    li {
+                        display: flex;
+                        flex-wrap: wrap;
+                        width: 100%;
+                        background-color: green;
+                        .welcome-choose-listItem-container {
+                            display: flex;
+                            flex-direction: column;
+                            background-color: blue;
+                            padding: 15px;
+                            width: 80%;
+                        }
+                    }
+                }
+            }
+        }
     }
-    /* END OF Welcome Main Information Container */
 }

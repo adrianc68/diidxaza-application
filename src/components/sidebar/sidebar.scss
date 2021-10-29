@@ -6,7 +6,6 @@
     width: $sidebar-width;
     display:flex;
     flex-direction: column;
-
     .sidebar-toggle-button-container {
         display: flex;
         align-items: center;
@@ -16,7 +15,6 @@
             background-color: transparent;
             border: 0;
         }
-
         .sidebar-toggle-button .sidebarIconToggle {
             font-size: 30px;
             color: #fff;
@@ -26,16 +24,13 @@
     .sidebar-nav-links {
         padding-top: 10px;
         height: inherit;
-        
         .sidebar-button-section {
             display: flex;
             justify-content: center;
             padding-bottom: 20px;
             padding-top: 10px;
         }
-
         .sidebarButton {
-            padding: 10px;
             background-color: rgb(80, 112, 219);
             border-radius: 5px;
             border-color: transparent;
@@ -43,13 +38,11 @@
             display: flex;
             align-items: center;
         }
-
         .sidebarButton .sidebarIcon {
             color: #fff;
             font-size: 20px;
             margin-right: 5px;
         }
-
         .sidebarHr {
             width: 90%;
             height: 1px;
@@ -91,6 +84,10 @@
         }
     }
 }
+
+
+
+
 
 .sidebar-help-details {
     bottom: 0;

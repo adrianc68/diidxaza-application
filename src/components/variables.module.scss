@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
+$max-width-device:920px;
+
 $sidebar-width: 240px;
 $sidebar-height: 100% ;
 $sidebar-background-color: #363F64;
@@ -8,6 +10,12 @@ $topbar-height: 65px;
 $topbar-width: 100%;
 $topbar-logo-background-color: #000;
 $topbar-background-color: $topbar-logo-background-color;
+
+$footer-height: 60vh;
+$footer-width: 100vw;
+
+$border-radius:3px;
+
 
 :export {
     sidebar-width: $sidebar-width;
@@ -18,4 +26,6 @@ $topbar-background-color: $topbar-logo-background-color;
     topbar-height: $topbar-height;
     topbar-width: $topbar-width;
     topbar-background-color: $topbar-background-color;
+
+    border-radius:$border-radius;
 }
