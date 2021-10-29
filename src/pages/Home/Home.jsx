@@ -25,8 +25,8 @@ export default function Home() {
                 <Sidebar />
             </div>
             <div className="userprofile-home-container">
-                {/* <UserProfile /> */}
-                {/* <DeleteAccount/> */}
+                <UserProfile />
+                <DeleteAccount/>
                 <Forum></Forum>
             </div>
         </div>

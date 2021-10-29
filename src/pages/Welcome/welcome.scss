@@ -40,9 +40,9 @@
     }
 
     .welcome-problems-information-container {
-        background-color: orange;
+        background-color: #f0f0f0;
         height: 100vh;
-        width:100vw;
+        width: 100vw;
         video {
             width: 100%;
             height: 80%;
@@ -57,7 +57,6 @@
         align-items: center;
         text-align: center;
         padding: 20px;
-
         .welcome-benefits-description-container {
             display: flex;
             flex-direction: column;
@@ -73,10 +72,8 @@
             img {
                 width: 50%;
                 height: 50%;
-            }  
+            }
         }
-
-  
 
         .welcome-benefits-list-container {
             width: calc(80% + 30px);
@@ -109,53 +106,73 @@
     }
 
     .welcome-choose-account-type-container {
-        background-color: #3a3a3a;
         width: 100vw;
+        background-color:#f0f0f0;
+        padding-bottom: 65px;
+        padding-top:65px;
+        .welcome-choose-title {
+            padding: 15px;
+            display: inline-flex;
+            flex-direction: column;
+            gap: 25px;
+            width: calc(100% - 30px);
+            align-items: flex-start;
+            justify-content: flex-start;
+            h1 {
+                padding-left:55px;
+            }
+            p {
+                padding-left:55px;
+            }
+            .welcome-choose-description {
+                width: 85%;
+                text-align: justify;
+            }
+        }
+
         .welcome-choose-list-container {
             .welcome-choose-account-type-ul {
-                background-color: yellow;
                 display: flex;
                 flex-wrap: wrap;
                 padding: 35px;
-                gap: 15px;
-
+                gap: 35px;
+                justify-content: center;
                 .welcome-choose-account-type-li {
                     display: flex;
                     flex-wrap: wrap;
                     width: calc(50% - 35px);
-                    margin: auto;
-                    background-color: green;
                     height: 90vh;
                     justify-content: center;
                     align-items: center;
                     .welcome-choose-listItem-container {
                         display: flex;
                         flex-direction: column;
-                        background-color: blue;
+                        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+                        background-color: #fff;
                         padding: 15px;
-                        width: 60%;
+                        width: 80%;
                         height: 90%;
-
+                        gap: 15px;
                         .welcome-choose-image-container {
                             height: 35%;
                             img {
                                 width: 100%;
                                 height: 100%;
-                                margin: auto;
                             }
                         }
 
                         .welcome-choose-description-container {
-                            background-color: #8a8a8a;
                             display: flex;
                             flex-direction: column;
-                            height: 65%;
+                            height: 60%;
                             .welcome-choose-description-text-container {
-                                background-color: green;
                                 display: flex;
                                 flex-direction: column;
-                                height: 85%;
-                                h1 {
+                                height: 75%;
+                                padding: 15px;
+                                gap: 5px;
+                                overflow-y: scroll;
+                                h2 {
                                     text-align: center;
                                 }
 
@@ -164,17 +181,21 @@
                                 }
 
                                 ul {
-                                    list-style: url('../../assets/images/valid.svg');
+                                    padding-left: 2em;
+                                    .valid-li {
+                                        list-style: url("../../assets/images/valid.svg");
+                                    }
+                                    .invalid-li {
+                                        list-style: url("../../assets/images/invalid.svg");
+                                    }
                                 }
-
                             }
 
                             .welcome-choose-description-button-container {
-                                margin: auto;
                                 display: flex;
                                 align-items: center;
-                                background-color: gold;
-                                height: 15%;
+                                justify-content: center;
+                                height: 42px;
                             }
                         }
                     }
@@ -227,29 +248,44 @@
             }
 
             .welcome-benefits-list-container {
-                width:calc(90% + 20px);
+                width: calc(90% + 20px);
             }
         }
 
         .welcome-choose-account-type-container {
-            height: auto;
             width: 100vw;
-
+            padding-bottom: 65px;
+            padding-top:65px;
+            .welcome-choose-title {
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                h1 {
+                    padding-left:0px;
+                }
+                p {
+                    padding-left:0px;
+                }
+                .welcome-choose-description {
+                    width: 80%;
+                }
+            }
             .welcome-choose-list-container {
-                ul {
-                    display: flex;
-                    flex-direction: column;
-                    flex-wrap: wrap;
-                    gap: 35px;
-                    li {
-                        display: flex;
-                        flex-wrap: wrap;
-                        width: 100%;
+                .welcome-choose-account-type-ul {
+                    padding: 15px;
+                    .welcome-choose-account-type-li {
+                        width: calc(100% - 30px);
                         .welcome-choose-listItem-container {
-                            display: flex;
-                            flex-direction: column;
                             padding: 15px;
-                            width: 80%;
+                            height: 90%;
+                            gap: 15px;
+
+                            .welcome-choose-description-container {
+                                overflow-y: scroll;
+                                .welcome-choose-description-text-container {
+                                    overflow-y: scroll;
+                                }
+                            }
                         }
                     }
                 }

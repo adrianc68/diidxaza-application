@@ -13,8 +13,7 @@ $topbar-background-color: $topbar-logo-background-color;
 
 $footer-height: 60vh;
 $footer-width: 100vw;
-
-$border-radius:3px;
+$footer-background-color:#fff;
 
 
 :export {
@@ -26,6 +25,5 @@ $border-radius:3px;
     topbar-height: $topbar-height;
     topbar-width: $topbar-width;
     topbar-background-color: $topbar-background-color;
-
-    border-radius:$border-radius;
+    footer-background-color:$footer-background-color;
 }

@@ -13,7 +13,11 @@ import ImageBenefit01 from '../../assets/images/ide-11.svg'
 import ImageBenefit02 from '../../assets/images/ide-15.svg'
 import ImageBenefit03 from '../../assets/images/ide-12.svg'
 import ImageBenefit04 from '../../assets/images/ide-14.svg'
-import VideoBenefit01 from '../../assets/images/vid-01.mp4'
+import VideoBenefit01 from '../../assets/images/vid-02.mp4'
+
+import AccountTypeImage from '../../assets/images/ide-23.svg'
+import AccountTypePremiumImage from '../../assets/images/ide-18.svg'
+
 
 import { MdLogin, MdLogout } from 'react-icons/md'
 
@@ -61,7 +65,6 @@ export default function Welcome() {
             <div className="welcome-problems-information-container">
                 <h1>Language Problems Container</h1>
                 <video src={VideoBenefit01} autoPlay loop></video>
-
             </div>
 
             <div className="welcome-benefits-information-container">
@@ -104,44 +107,30 @@ export default function Welcome() {
             </div>
 
             <div ref={chooseContainerRef} className="welcome-choose-account-type-container">
-                <h1>{t("WelcomeBenefitsTitle")}</h1>
-
+                <div className="welcome-choose-title">
+                    <h1>{t("WelcomeChooseAccountTitle")}</h1>
+                    <div className="welcome-choose-description">
+                        <p>{t("WelcomeChooseAccountTitleDescription")}</p>
+                    </div>
+                </div>
                 <div className="welcome-choose-list-container">
                     <ul className="welcome-choose-account-type-ul">
-                        <li className="welcome-choose-account-type-li">
-                            <div className="welcome-choose-listItem-container">
-                                <div className="welcome-choose-image-container">
-                                    <img src={ImageInformationAlt} alt={t("WelcomeInformationAlt")}></img>
-                                </div>
-                                <div className="welcome-choose-description-container">
-                                    <div className="welcome-choose-description-text-container">
-                                        <h1>{t("WelcomeAccountTypeFree")}</h1>
-                                        <span>{t("WelcomeAccountTypeFreeDescription")}</span>
-                                    </div>
-                                    <div className="welcome-choose-description-button-container">
-                                        <Link className="link" to="/signUp">
-                                            <Button text={t("ButtonSignUp")} styleName="primary-button" />
-                                        </Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
 
                         <li className="welcome-choose-account-type-li">
                             <div className="welcome-choose-listItem-container">
                                 <div className="welcome-choose-image-container">
-                                    <img src={ImageInformationAlt} alt={t("WelcomeInformationAlt")}></img>
+                                    <img src={AccountTypeImage} alt={t("WelcomeInformationAlt")}></img>
                                 </div>
                                 <div className="welcome-choose-description-container">
                                     <div className="welcome-choose-description-text-container">
-                                        <h1>{t("WelcomeAccountTypeFree")}</h1>
+                                        <h2>{t("WelcomeAccountTypeFree")}</h2>
                                         <span>{t("WelcomeAccountTypeFreeDescription")}</span>
                                         <ul>
-                                            <li>{t("WelcomeAccountTypeFreeBenefit01")}</li>
-                                            <li>{t("WelcomeAccountTypeFreeBenefit02")}</li>
-                                            <li>{t("WelcomeAccountTypeFreeBenefit03")}</li>
-                                            <li>{t("WelcomeAccountTypeFreeBenefit04")}</li>
-                                            <li>{t("WelcomeAccountTypeFreeBenefit05")}</li>
+                                            <li className="valid-li">{t("WelcomeAccountTypeFreeBenefit01")}</li>
+                                            <li className="valid-li">{t("WelcomeAccountTypeFreeBenefit02")}</li>
+                                            <li className="valid-li">{t("WelcomeAccountTypeFreeBenefit03")}</li>
+                                            <li className="valid-li">{t("WelcomeAccountTypeFreeBenefit04")}</li>
+                                            <li className="valid-li">{t("WelcomeAccountTypeFreeBenefit05")}</li>
                                         </ul>
 
                                     </div>
@@ -153,6 +142,30 @@ export default function Welcome() {
                                 </div>
                             </div>
                         </li>
+
+                        <li className="welcome-choose-account-type-li">
+                            <div className="welcome-choose-listItem-container">
+                                <div className="welcome-choose-image-container">
+                                    <img src={AccountTypePremiumImage} alt={t("WelcomeInformationAlt")}></img>
+                                </div>
+                                <div className="welcome-choose-description-container">
+                                    <div className="welcome-choose-description-text-container">
+                                        <h2>{t("WelcomeAccountTypePremium")}</h2>
+                                        <span>{t("WelcomeAccountTypePremiumDescription")}</span>
+                                        <ul>
+                                            <li className="invalid-li">{t("WelcomeAccountTypePremiumBenefit01")}</li>
+                                        </ul>
+
+                                    </div>
+                                    <div className="welcome-choose-description-button-container">
+                                        <span>{t("WelcomeAccountTypeNoAvailable")}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+
+                  
 
                     </ul>
                 </div>

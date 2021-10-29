@@ -39,7 +39,7 @@ export default function Login({ setToken }) {
         <div className="login-container">
           <div className="login-title-container">
             <DiidxazaLogo styleClass="logo-black-link" />
-            <h1>{t("LoginLoginTitle")}</h1>
+            <h2>{t("LoginLoginTitle")}</h2>
           </div>
 
           <div className="login-form-container">
@@ -54,7 +54,7 @@ export default function Login({ setToken }) {
               </label>
               <div className="login-form-button-container">
                 <div className="login-form-button">
-                  <Button type="submit" styleName="primary-button" text={t("LoginLoginButton")}></Button>
+                  <Button type="submit" styleName="secondary-button" text={t("LoginLoginButton")}></Button>
                 </div>
               </div>
             </form>

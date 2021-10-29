@@ -59,8 +59,9 @@ export default function InputInformation() {
                         <p>{t("SignUpFormPasswordDescription")}</p>
                         <input className="input" type="password" />
                     </label>
+                    <Link className="link" to="/home">
                     <Button styleName="primary-button" text={t("SignUpFormSignUpButton")}></Button>
-
+                    </Link>
                     <Link className="link" to="/">
                         <Button styleName="secondary-button" text={t("SignUpFormCancelButton")}></Button>
                     </Link>

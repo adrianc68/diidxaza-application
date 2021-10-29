@@ -15,20 +15,22 @@ export const TRANSLATIONS_ES = {
     WelcomeBenefitsFourOneTitle: "Aportación de conocimientos",
     WelcomeBenefitsFourOne: "Puedes compartir tus conocimientos con personas de diferentes partes del mundo y pedir ayuda si lo deseas.",
     WelcomeHistory: "Puedes visitar la historia de la cultura zapoteca...",
-
-
-    WelcomeAccountTypeFree: "Cuenta gratuita",
+    WelcomeAccountTypeFree: "Aprendizaje Básico",
     WelcomeAccountTypeFreeDescription: "Sin costo alguno.",
     WelcomeAccountTypeFreeBenefit01: "Contenido de aprendizaje ilimitado.",
     WelcomeAccountTypeFreeBenefit02: "Sin anuncios",
     WelcomeAccountTypeFreeBenefit03: "Acceso al foro.",
     WelcomeAccountTypeFreeBenefit04: "Acceso a noticias.",
-    WelcomeAccountTypeFreeBenefit05: "Acceso a música zapoteca",
+    WelcomeAccountTypeFreeBenefit05: "Acceso a música zapoteca.",
+    WelcomeAccountTypePremium: "Aprendizaje Premium",
+    WelcomeAccountTypePremiumDescription: "Por el momento no se considera una cuenta de pago con mejores beneficios que la cuenta gratuita. ¡Tu mejor opción es una cuenta gratuita!",
+    WelcomeAccountTypePremiumBenefit01: "Sin beneficios adicionales.",
+    
+    
+    WelcomeAccountTypeNoAvailable: "No disponible",
 
-
-    WelcomeAccountTypePremium: "Cuenta premium",
-    WelcomeAccountTypePremiumDescription: "No disponible por el momento",
-
+    WelcomeChooseAccountTitle:"Selecciona tu plan de aprendizaje",
+    WelcomeChooseAccountTitleDescription: "Debes seleccionar tu plan de aprendizaje para poder registrarte y tener acceso a Diixaza App. Para ello selecciona un plan de aprendizaje de los mostrados a continuación y presione el botón seleccionar.",
 
 
 

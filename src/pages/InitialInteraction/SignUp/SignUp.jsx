@@ -23,7 +23,9 @@ export default function SignUp() {
                 </div>
             </Topbar>
             <div className="signup-form-container">
+                <InputInformation></InputInformation>
                 <VerificationCode></VerificationCode>
+
             </div>
 
         </div>

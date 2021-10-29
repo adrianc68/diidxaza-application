@@ -1,7 +1,7 @@
 @import "../../components/variables.module.scss";
 
 .footer-main-container {
-    background-color: coral;
+    background-color:$footer-background-color;
     height: $footer-height;
     width: $footer-width;
     display: grid;
@@ -22,7 +22,6 @@
     }
 
     .footer-links-container {
-        background-color: blue;
         grid-area: b;
     }
 
@@ -33,6 +32,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        background-color:#030d2d;
         .footer-bottom-container-documents {
             width: 57vw;
             padding-left: 3vw;
@@ -45,8 +45,9 @@
                     height: auto;
                     .link {
                         text-decoration: none;
-                        font-size:13px;
-                        color: #000;
+                        text-align: center;
+                        font-size:11px;
+                        color: #fff;
                     }
 
                    
@@ -75,12 +76,12 @@
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            color: #000;
+                            color:#fff;
                         }
 
                         .link:first-child {
-                            color:#000;
-                            font-size:20px;
+                            color:#fff;
+                            font-size:16px;
                         }
                     }
                 }
@@ -102,7 +103,7 @@
                         display:flex;
                         align-items: center;
                         .link {
-                            font-size:2.1vw;
+                            font-size:1.5vw;
                         }
                     }
                 }
