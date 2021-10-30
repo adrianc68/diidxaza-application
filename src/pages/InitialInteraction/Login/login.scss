@@ -1,12 +1,11 @@
 @import "../../../components/variables.module.scss";
 
+
 .login-main-container {
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-y: scroll;
-
     .login-container {
         padding: 15px;
         height: auto;
@@ -28,15 +27,15 @@
             }
         }
 
-        .login-form-container {            
-            box-shadow:rgba(0,0,0,0.05) 0px 0px 0px 1px, rgb(209,213,219) 0px 0px 0px 1px inset;
+        .login-form-container {
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
             background-color: #fff;
             border-radius: 3px;
             width: calc(100% - 30px);
             padding: 15px;
 
             p {
-                font-size:13px;
+                font-size: 13px;
             }
 
             form {
@@ -55,7 +54,6 @@
                     width: 100%;
                     .login-form-button {
                         width: 95%;
-                    
                     }
                 }
             }
@@ -63,7 +61,7 @@
 
         .login-create-account-container {
             background-color: #fff;
-            box-shadow:rgba(9,30,66,0.25) 0px 1px 1px, rgba(9,30,66,0.13) 0px 0px 1px 1px;
+            box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
             display: flex;
             padding: 15px;
             border-radius: 3px;

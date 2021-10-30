@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from 'react-router-dom'
 import DiidxazaLogo from '../../../components/logo/DiidxazaLogo'
 import Button from '../../../components/Button/Button'
-
+import BackgroundStars from '../../../components/animation/backgroundstars/BackgroundStars'
 
 async function loginUser(credentials) {
   return fetch('http://localhost:8080/login', {
@@ -36,6 +36,8 @@ export default function Login({ setToken }) {
   return (
     <>
       <div className="login-main-container">
+
+        
         <div className="login-container">
           <div className="login-title-container">
             <DiidxazaLogo styleClass="logo-black-link" />
@@ -87,6 +89,8 @@ export default function Login({ setToken }) {
 
 
         </div>
+
+    
       </div>
     </>
 

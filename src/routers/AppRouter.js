@@ -7,6 +7,7 @@ import Settings from '../pages/Settings/Settings'
 import SignUp from '../pages/InitialInteraction/SignUp/SignUp'
 import CheckProgress from '../pages/UserProfile/CheckProgress/CheckProgress'
 import DeleteAccount from '../pages/UserProfile/DeleteAccount/DeleteAccount'
+import BackgroundStars from '../components/animation/backgroundstars/BackgroundStars';
 
 export default function AppRouter() {
 
@@ -20,6 +21,7 @@ export default function AppRouter() {
                 <Route exact path="/settings" component={Settings} />
                 <Route exact path="/checkprogress" component={CheckProgress}/> 
                 <Route exact path="/deleteaccount" component={DeleteAccount}/> 
+                <Route exact path="/animation" component={BackgroundStars}/> 
 
                 <Route component={PageNotFound} />
             </Switch>

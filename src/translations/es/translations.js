@@ -25,14 +25,12 @@ export const TRANSLATIONS_ES = {
     WelcomeAccountTypePremium: "Aprendizaje Premium",
     WelcomeAccountTypePremiumDescription: "Por el momento no se considera una cuenta de pago con mejores beneficios que la cuenta gratuita. ¡Tu mejor opción es una cuenta gratuita!",
     WelcomeAccountTypePremiumBenefit01: "Sin beneficios adicionales.",
-    
-    
     WelcomeAccountTypeNoAvailable: "No disponible",
-
     WelcomeChooseAccountTitle:"Selecciona tu plan de aprendizaje",
     WelcomeChooseAccountTitleDescription: "Debes seleccionar tu plan de aprendizaje para poder registrarte y tener acceso a Diixaza App. Para ello selecciona un plan de aprendizaje de los mostrados a continuación y presione el botón seleccionar.",
 
-
+    WelcomeProblemsInformationTitle: "Evitar la extinción de la lengua zapoteca",
+    WelcomeProblemasInformationDescription: "La extinción de las lenguas representa una situación crítica por la rápidez con la que las lenguas originarias están siendo desplazadas por las lenguas dominantes del país. Las actitudes pueden influenciar en que un cambio lingüístico se cumpla más rápidamente o que una lengua pueda llevarse al desplazamiento y el olvido de la misma. una actitud favorable hacia una lengua puede mantenerla viva.",
 
 
 

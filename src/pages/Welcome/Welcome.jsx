@@ -63,8 +63,12 @@ export default function Welcome() {
 
 
             <div className="welcome-problems-information-container">
-                <h1>Language Problems Container</h1>
                 <video src={VideoBenefit01} autoPlay loop></video>
+                <div className="welcome-problems-information">
+                    <h1>{t("WelcomeProblemsInformationTitle")}</h1>
+                    <p>{t("WelcomeProblemasInformationDescription")}</p>
+
+                </div>
             </div>
 
             <div className="welcome-benefits-information-container">
@@ -165,7 +169,7 @@ export default function Welcome() {
                         </li>
 
 
-                  
+
 
                     </ul>
                 </div>
