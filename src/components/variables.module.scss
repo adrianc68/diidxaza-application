@@ -8,15 +8,13 @@ $sidebar-background-color: #363F64;
 
 $topbar-height: 65px;
 $topbar-width: 100%;
-$topbar-logo-background-color:rgb(25, 25, 26);
+$topbar-logo-background-color: #00493f;
 $topbar-background-color: $topbar-logo-background-color;
 
 $footer-height: 60vh;
 $footer-width: 100vw;
 $footer-background-color:#fff;
-$footer-bottom-background-color:#030d2d;
 
-$top-title-container-background-color:rgb(25, 25, 26);
 
 :export {
     sidebar-width: $sidebar-width;
@@ -28,6 +26,4 @@ $top-title-container-background-color:rgb(25, 25, 26);
     topbar-width: $topbar-width;
     topbar-background-color: $topbar-background-color;
     footer-background-color:$footer-background-color;
-    footer-bottom-background-color:$footer-bottom-background-color;
-    top-title-container-background-color:$top-title-container-background-color;
 }

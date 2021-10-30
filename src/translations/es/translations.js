@@ -28,8 +28,11 @@ export const TRANSLATIONS_ES = {
     WelcomeAccountTypeNoAvailable: "No disponible",
     WelcomeChooseAccountTitle:"Selecciona tu plan de aprendizaje",
     WelcomeChooseAccountTitleDescription: "Debes seleccionar tu plan de aprendizaje para poder registrarte y tener acceso a Diixaza App. Para ello selecciona un plan de aprendizaje de los mostrados a continuación y presione el botón seleccionar.",
+
     WelcomeProblemsInformationTitle: "Evitar la extinción de la lengua zapoteca",
     WelcomeProblemasInformationDescription: "La extinción de las lenguas representa una situación crítica por la rápidez con la que las lenguas originarias están siendo desplazadas por las lenguas dominantes del país. Las actitudes pueden influenciar en que un cambio lingüístico se cumpla más rápidamente o que una lengua pueda llevarse al desplazamiento y el olvido de la misma. una actitud favorable hacia una lengua puede mantenerla viva.",
+
+
 
     LoginUsernameInput: "Usuario o correo electrónico: ",
     LoginPasswordInput: "Contraseña: ",
@@ -46,26 +49,21 @@ export const TRANSLATIONS_ES = {
     LoginNewAccountSpan: "¿No estás registrado?",
     LoginNewAccountThenRegisterSpan: "Crea una nueva cuenta",
 
-
-
-
     SignUpIntroductionTitle: "Registrar una cuenta",
-    SignUpIntroductionDescription: "Para registrarte debes llenar los siguientes campos, te recomendamos no utilizar carácteres extraños.",
+    SignUpIntroductionDescription: "Para registrarte debes llenar los siguientes campos, te recomendamos no utilizar carácteres extraños",
     SignUpPersonalInformation: "Información personal",
     SignUpAccountInformation: "Información de la cuenta",
     SignUpAlreadyHaveAccount: "¿Ya tienes una cuenta?",
     SignUpAlreadyHaveAccountButton: "Inicia sesión",
-    SignUpFormInputFile: "Seleccionar imagen",
     SignUpFormNameLabelInput: "Nombre:",
     SignUpFormLastnameInput: "Apellidos:",
     SignUpFormBirthdateInput: "Fecha de nacimiento",
     SignUpFormBirthDateDescription: "Por favor, introduce tu fecha de nacimiento real. Usaremos esta información para devolverte la cuenta si alguna vez pierdes acceso.",
     SignUpFormPhotoInput: "Foto de perfil",
-    SignUpFormPhotoDescription: "Selecciona una foto de perfil. Está será visible para los demás usuarios.",
     SignUpFormUsernameInput: "Usuario:",
-    SignUpFormUsernameDescription: "Tu nombre puede contener minúsculas, mayúsculas y números.",
+    SignUpFormUsernameDescription: "Tu nombre puede contener minúsculas, mayúsculas y números",
     SignUpFormEmailInput: " Correo electrónico: ",
-    SignUpFormEmailDescription: "Necesitarás usar este email para conectarte a Diidxaza App en el futuro. Por favor, utiliza un email que sea válido.",
+    SignUpFormEmailDescription: "Necesitarás usar este email para conectarte a Diidxaza App en el futuro. Por favor, utiliza un email que sea válido",
     SignUpFormPassword: "Contraseña:",
     SignUpFormPasswordDescription: "Usa al menos 6 carácteres. Incluye al menos una letra y un número o un caracter especial.",
     SignUpFormCancelButton: "Cancelar",
@@ -78,7 +76,7 @@ export const TRANSLATIONS_ES = {
 
     SignUpVerificationTitle: "Verificar código",
     SignUpVerificationDescription: "Hemos enviado un código de verificación a tu correo electrónico. Debes ingresar el código para verificar que te pertenece el correo electrónico",
-    SignUpVerificationCodeInput: "Introduce el código: ",
+    SignUpVerificationCodeInput: "Inserta el código: ",
     SignUpVerificationCodeError: "¡El código no es válido!",
     SignUpVerificationCancelButton: "Cancelar",
     SignUpVerificationVerifyButton: "Verificar",
