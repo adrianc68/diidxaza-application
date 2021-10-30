@@ -4,16 +4,17 @@
 .signup-main-container {
     width: 100vw;
     height: calc(auto - #{$topbar-height});
-    background-color: blue;
     display:flex;
     flex-direction: column;
+    background-image: url("../../../assets/images/bk-4.svg");
+    background-repeat: repeat;
     .signup-then-login-container{
         color: #fff;
         display: flex;
         align-items: center;
         width:auto;
-        background-color:green;
         gap:15px;
+        font-size:12px;
 
     }
     
@@ -21,7 +22,6 @@
         width:100%;
         padding-top: 15px;
         padding-bottom: 15px;
-        background-color:cyan;
         display:flex;
         align-items: center;
         flex-direction: column ;

@@ -1,59 +1,75 @@
 @import "../../../components/variables.module.scss";
 
 .signup-input-personal-information-form {
-    background-color: yellow;
-    display: grid;
-    grid-template-areas:
-        "a a"
-        "b c";
-    grid-template-columns: 40% 60%;
-    grid-template-rows: auto 1fr;
+    background-color: #f9f9f9;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     width: 80%;
-    height: auto;
-    padding: 5px;
+    .signup-input-container {
+        display: grid;
+        grid-template-areas:
+            "a a"
+            "b c";
+        grid-template-columns: 40% 60%;
+        grid-template-rows: auto 1fr;
+        width: calc(100% - 30px);
+        padding: 15px;
+        height: auto;
+    }
 
     .signup-input-description-container {
-        background-color: lightpink;
         grid-area: a;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        text-align: center;
+        padding-bottom: 15px;
+        background-color:$top-title-container-background-color;
+        color: #fff;
+        padding: 25px;
     }
 
     .signup-personal-information-container {
-        background-color: green;
         grid-area: b;
         height: 100%;
         .signup-personal-information-inputs {
             display: flex;
             flex-direction: column;
             gap: 30px;
-            background-color: magenta;
             padding: 20px;
             .signup-photo-input-container {
                 display: flex;
-                background-color: red;
+                gap: 5px;
+                .signup-photo-left-side {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    gap: 15px;
+                    width: 40%;
+                }
 
-                .signup-photo-input {
-                    background-color: chartreuse;
+                .signup-photo-input-description {
+                    width: 60%;
                     display: flex;
                     flex-grow: 1;
                     flex-direction: column;
+                    padding: 15px;
                     gap: 10px;
+                    text-align: justify;
                 }
 
                 .signup-user-photo {
-                    width: 100px;
-                    height: 100px;
-                    border-radius: 100px;
-                    background-color: blue;
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 50%;
+                    background-color: #009b67;
+                    background-position: center;
                 }
             }
         }
 
         .signup-account-information-inputs {
-            background-color: chartreuse;
             display: flex;
             flex-direction: column;
             gap: 30px;
@@ -62,77 +78,93 @@
     }
 
     .signup-image-container {
-        background-color: gray;
         grid-area: c;
         height: 100%;
-        background-image: url("../../../assets/images/ide-04.svg");
+        background-image: url("../../../assets/images/ide-19.svg");
+        background-position: center;
+        background-repeat: no-repeat;
     }
 }
 
 @media all and (max-width: $max-width-device) {
-    .signup-input-personal-information-form {
-        background-color: blue;
+   
+.signup-input-personal-information-form {
+    background-color: #f9f9f9;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    width: 80%;
+    .signup-input-container {
         display: grid;
         grid-template-areas:
             "a a"
             "b b";
         grid-template-columns: 40% 60%;
         grid-template-rows: auto 1fr;
-        width: 80%;
+        width: calc(100% - 30px);
+        padding: 15px;
         height: auto;
-        padding: 5px;
-    
-        .signup-input-description-container {
-            background-color: lightpink;
-            grid-area: a;
+    }
+
+    .signup-input-description-container {
+        grid-area: a;
+        display: flex;
+        text-align: center;
+        gap:15px;
+    }
+
+    .signup-personal-information-container {
+        grid-area: b;
+        height: 100%;
+        .signup-personal-information-inputs {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-    
-        .signup-personal-information-container {
-            background-color: green;
-            grid-area: b;
-            height: 100%;
-            .signup-personal-information-inputs {
+            gap: 30px;
+            padding: 20px;
+            .signup-photo-input-container {
                 display: flex;
-                flex-direction: column;
-                gap: 30px;
-                background-color: magenta;
-                padding: 20px;
-                .signup-photo-input-container {
+                gap: 5px;
+                .signup-photo-left-side {
                     display: flex;
-                    background-color: red;
-    
-                    .signup-photo-input {
-                        background-color: chartreuse;
-                        display: flex;
-                        flex-grow: 1;
-                        flex-direction: column;
-                        gap: 10px;
-                    }
-    
-                    .signup-user-photo {
-                        width: 100px;
-                        height: 100px;
-                        border-radius: 100px;
-                        background-color: blue;
-                    }
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    gap: 15px;
+                    width: 40%;
+                }
+
+                .signup-photo-input-description {
+                    width: 60%;
+                    display: flex;
+                    flex-grow: 1;
+                    flex-direction: column;
+                    padding: 15px;
+                    gap: 10px;
+                    text-align: justify;
+                }
+
+                .signup-user-photo {
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 50%;
+                    background-color: #009b67;
+                    background-position: center;
                 }
             }
-    
-            .signup-account-information-inputs {
-                background-color: chartreuse;
-                display: flex;
-                flex-direction: column;
-                gap: 30px;
-                padding: 20px;
-            }
         }
-    
-        .signup-image-container {
-            display:none;
+
+        .signup-account-information-inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            padding: 20px;
         }
     }
+
+    .signup-image-container {
+        display:none;
+        height: 100%;
+        background-image: url("../../../assets/images/ide-19.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
 }

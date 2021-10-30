@@ -1,23 +1,42 @@
 @import "../../../components/variables.module.scss";
 
 .signup-input-verification-container {
-    background-color: #8a8a8a;
-    padding: 15px;
+    background-color: #f9f9f9;
     display: flex;
     flex-direction: column;
-    gap: 25px;
     width: 50%;
-    height:calc( 100vh - 125px ) ;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 
-    .signup-verification-input-description-container {
-        background-color: gold;
-        display: flex;
-        flex-direction: column;
+    .signup-input-title-container {
+        background-color:$top-title-container-background-color;
+        color:#fff;
+        padding:25px;
         text-align: center;
     }
 
+    .signup-container-information {
+        padding:15px;
+        width:calc(100% - 30px);
+    }
+
+    .signup-verification-input-description-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding:15px;
+        gap:15px;
+        img {
+            height: 50%;
+            width: 50%;
+        }
+    }
+
     .signup-verification-code-container {
-        background-color: silver;
+        background-color: #fff;
+        box-shadow: rgba(60,64,67,0.3) 0px 1px 2px 0px, rgba(60,64,67,0.15) 0px 1px 3px 1px;
+        border-radius:3px;
         display: flex;
         flex-direction: column;
         padding: 15px;
@@ -28,56 +47,19 @@
             gap:15px;
         }
 
-        .signup-verification-code-input {
-            background-color:red;
-        }
 
         .signup-verification-code-buttons {
-            background-color: green;
             display: flex;
             gap: 35px;
         }
     }
+
 }
+
 
 @media all and (max-width: $max-width-device) {
     .signup-input-verification-container {
-        background-color: #8a8a8a;
-        padding: 15px;
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
         width: 80%;
-        height:calc( 100vh - 125px ) ;
-    
-        .signup-verification-input-description-container {
-            background-color: gold;
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-        }
-    
-        .signup-verification-code-container {
-            background-color: silver;
-            display: flex;
-            flex-direction: column;
-            padding: 15px;
-    
-            label {
-                display: flex;
-                flex-direction: column;
-                gap:15px;
-            }
-    
-            .signup-verification-code-input {
-                background-color:red;
-            }
-    
-            .signup-verification-code-buttons {
-                background-color: green;
-                display: flex;
-                gap: 35px;
-            }
-        }
     }
+       
 }
