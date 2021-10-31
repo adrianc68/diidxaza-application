@@ -7,18 +7,19 @@
     display: flex;
     flex-direction: column;
     transition: all 0.3s ease-in;
-
+    overflow-x:hidden;
     .sidebar-toggle-button-container {
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 10px;
+        padding-bottom: 25px;
         .sidebar-toggle-button {
             display: flex;
             align-items: center;
             justify-content: center;
             border: 0;
-            background-color:transparent;
+            background-color: transparent;
             .sidebarIconToggle {
                 font-size: 30px;
                 color: #fff;
@@ -26,11 +27,15 @@
         }
     }
 
+    .sidebar-toggle-button:hover {
+        background-color:#24223d;
+    }
+
     ul {
         height: inherit;
 
         .sidebar-button-section {
-            display: flex;
+            display: none;
             justify-content: center;
             padding-bottom: 10px;
             padding-top: 10px;
@@ -52,6 +57,7 @@
                 color: #fff;
                 text-decoration: none;
                 font-size: 20px;
+                padding-left: 10%;
             }
 
             .sidebar-link {
@@ -59,14 +65,15 @@
                 align-items: center;
                 justify-content: flex-start;
                 gap: 15px;
-                padding: 15px;
+                height: 52px;
                 text-decoration: none;
-            }
+                transition: transform 5s ease;
+                span {
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: #fff;
 
-            .sidebar-link span {
-                font-size: 15px;
-                font-weight: 400;
-                color: #fff;
+                }
             }
         }
 
@@ -84,17 +91,15 @@
             color: #fff;
             text-decoration: none;
             font-size: 20px;
+            padding-left: 0px;
         }
 
         .sidebar-nav-help {
             display: flex;
             justify-content: center;
-            padding: 5px;
-
             li {
                 list-style: none;
                 position: relative;
-
                 .sidebar-link {
                     display: flex;
                     align-items: center;
@@ -123,30 +128,32 @@
 }
 
 .sidebar.active {
-    width: 60px;
-
+    width:60px;
+    transition: all 0.3s ease-in;
     ul {
         height: inherit;
         .sidebar-button-section {
-            display: flex;
+            display: none;
             justify-content: center;
             padding-bottom: 10px;
-            padding-top: 10px;
         }
 
         li {
+            .sidebarIcon {
+                padding-left: 0px;
+            }
+
             .sidebar-link {
                 display: flex;
                 align-items: center;
-                justify-content: flex-start;
-                gap: 15px;
-                padding: 15px;
-            }
-
-            .sidebar-link span {
-                display: none;
+                justify-content: center;
+                span {
+                    display:none;
+                }
             }
         }
-    }
 
+    }
 }
+
+
