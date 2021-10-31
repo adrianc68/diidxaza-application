@@ -25,7 +25,7 @@ export default function Home() {
                 <Sidebar />
             </div>
             <div className="userprofile-home-container">
-               
+               <UserProfile></UserProfile>
             </div>
         </div>
     )

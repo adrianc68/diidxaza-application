@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: column;
     transition: all 0.3s ease-in;
-    overflow-x:hidden;
+    overflow-x: scroll;
     .sidebar-toggle-button-container {
         display: flex;
         align-items: center;
@@ -28,7 +28,7 @@
     }
 
     .sidebar-toggle-button:hover {
-        background-color:#24223d;
+        background-color: #24223d;
     }
 
     ul {
@@ -72,7 +72,6 @@
                     font-size: 14px;
                     font-weight: 400;
                     color: #fff;
-
                 }
             }
         }
@@ -80,26 +79,13 @@
         li:hover {
             background: #24223d;
         }
-    }
 
-    .sidebar-help-details {
-        bottom: 0;
-        .sidebarIcon {
-            height: 30px;
-            text-align: center;
-            line-height: 50px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 20px;
-            padding-left: 0px;
-        }
-
-        .sidebar-nav-help {
+        .sidebar-help-details {
             display: flex;
+            width: 100%;
             justify-content: center;
             li {
                 list-style: none;
-                position: relative;
                 .sidebar-link {
                     display: flex;
                     align-items: center;
@@ -108,19 +94,13 @@
                 }
 
                 .sidebarIcon {
-                    height: 20px;
-                    min-width: 28px;
+                    height: 30px;
                     text-align: center;
-                    color: rgb(163, 170, 228);
+                    display: flex;
+                    color: #fff;
                     text-decoration: none;
                     font-size: 20px;
-                    margin-right: 5px;
-                }
-
-                .sidebar-link li {
-                    font-size: 15px;
-                    font-weight: 400;
-                    color: rgb(163, 170, 228);
+                    padding-left: 0px;
                 }
             }
         }
@@ -128,7 +108,7 @@
 }
 
 .sidebar.active {
-    width:60px;
+    width: 60px;
     transition: all 0.3s ease-in;
     ul {
         height: inherit;
@@ -148,12 +128,19 @@
                 align-items: center;
                 justify-content: center;
                 span {
-                    display:none;
+                    display: none;
                 }
             }
         }
-
     }
 }
 
+@media all and (max-width: $max-width-device) {
+    .sidebar {
+        width: 160px;
+    }
 
+    .sidebar.active {
+        width: 50px;
+    }
+}
