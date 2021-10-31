@@ -6,12 +6,13 @@
     flex-direction: column;
     width: 50%;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-
+    border-radius:3px;
     .signup-input-title-container {
         background-color:$top-title-container-background-color;
         color:#fff;
         padding:25px;
         text-align: center;
+        border-radius:3px 3px 0px 0px;
     }
 
     .signup-container-information {

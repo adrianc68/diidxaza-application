@@ -21,7 +21,7 @@ export default function VerificationCode() {
                     <label>
                         <div className="signup-verification-code-input">
                             <p className="p-semibold">{t("SignUpVerificationCodeInput")}</p>
-                            <input className="input" type="text" />
+                            <input type="text" />
                         </div>
                         <div className="signup-verification-code-buttons">
                             <Button styleName="secondary-button" text={t("SignUpVerificationCancelButton")}></Button>

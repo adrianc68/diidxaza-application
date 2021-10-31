@@ -4,7 +4,7 @@
     display: grid;
     background-color:gold;
     /* Error al usar variable para 240px --> $sidebar-width calc(100vw - 240px)*/
-    grid-template-columns: $sidebar-width calc(100vw - #{$sidebar-width});
+    grid-template-columns: auto 1fr;
     grid-template-rows: $topbar-height calc(100vh - #{$topbar-height});
     grid-template-areas:
         "topbar topbar"
@@ -22,6 +22,6 @@
 
     .userprofile-home-container {
         grid-area: main;
-        background-color:red;
+        background-color:green;
     }
 }

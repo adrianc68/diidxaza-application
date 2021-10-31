@@ -24,9 +24,9 @@ body {
 input {
     height: 35px;
     width: calc(100% - 2px);
-    border: 1px solid #8a8a8a;
+    border: 1px solid #b9b9b9;
     border-radius: 3px;
-    border-color: #000;
+    background-color:#f7f7f7;
 }
 
 .input-file-label {
@@ -40,9 +40,7 @@ input {
     color: #fff;
     cursor: pointer;
     input {
-        overflow: hidden;
-        width: 0px;
-        height:0px;
+        display:none;
     }
 }
 
@@ -67,7 +65,7 @@ input {
 }
 
 p {
-    font-size:14px;
+    font-size:15px;
 }
 
 .p-semibold {

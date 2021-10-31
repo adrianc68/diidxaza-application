@@ -37,16 +37,16 @@ export default function InputInformation() {
                     </label>
                     <label>
                         <p className="p-semibold">{t("SignUpFormNameLabelInput")}</p>
-                        <input className="input" type="text" />
+                        <input type="text" />
                     </label>
                     <label>
                         <p className="p-semibold">{t("SignUpFormLastnameInput")}</p>
-                        <input className="input" type="text" />
+                        <input type="text" />
                     </label>
                     <label>
                         <p className="p-semibold">{t("SignUpFormBirthdateInput")}</p>
                         <p>{t("SignUpFormBirthDateDescription")}</p>
-                        <input className="input" type="date" />
+                        <input type="date" />
                     </label>
 
                 </div>
@@ -55,17 +55,17 @@ export default function InputInformation() {
                     <label>
                         <p className="p-semibold">{t("SignUpFormUsernameInput")}</p>
                         <p>{t("SignUpFormUsernameDescription")}</p>
-                        <input className="input" type="text" />
+                        <input type="text" />
                     </label>
                     <label>
                         <p className="p-semibold">{t("SignUpFormEmailInput")}</p>
                         <p>{t("SignUpFormEmailDescription")}</p>
-                        <input className="input" type="text" />
+                        <input type="text" />
                     </label>
                     <label>
                         <p className="p-semibold">{t("SignUpFormPassword")}</p>
                         <p>{t("SignUpFormPasswordDescription")}</p>
-                        <input className="input" type="password" />
+                        <input type="password" />
                     </label>
                     <Link className="link" to="/home">
                         <Button styleName="primary-button" text={t("SignUpFormSignUpButton")}></Button>

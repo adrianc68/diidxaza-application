@@ -12,36 +12,40 @@ export default function Sidebar() {
     const { t } = useTranslation();
 
 
-
+    function sayHello(e) {
+        e.preventDefault();
+        var sidebar = document.querySelector(".sidebar");
+        console.log(sidebar);
+        sidebar.classList.toggle("active");
+    }
 
 
     return (
-        <>
             <div className="sidebar">
                 <div className="sidebar-toggle-button-container">
-                    <button className="sidebar-toggle-button">
+                    <button className="sidebar-toggle-button" onClick={sayHello}>
                         <Menu className="sidebarIconToggle" />
                     </button>
                 </div>
 
-                <ul className="sidebar-nav-links">
-                    <li className="sidebarListItem">
-                        <Link className="sidebar-linkto" to="/home">
+                <ul>
+                    <li>
+                        <Link className="sidebar-link" to="/home">
                             <Home className="sidebarIcon" />
-                            <span className="sidebarListItemText">{t("SidebarHome")}</span>
+                            <span>{t("SidebarHome")}</span>
                         </Link>
                     </li>
-                    <li className="sidebarListItem">
-                        <Link className="sidebar-linkto" to="not-found">
+                    <li>
+                        <Link className="sidebar-link" to="not-found">
                             <Email className="sidebarIcon" />
-                            <span className="sidebarListItemText">{t("SidebarCorreo")}</span>
+                            <span>{t("SidebarCorreo")}</span>
                         </Link>
                     </li>
 
                     <div className="sidebar-button-section">
-                        <div className="sidebarButton">
+                        <div>
                             <Button styleName="primary-button" text={t("SidebarSignOutButton")}>
-                                <MdLogout className="sidebarIcon"></MdLogout>
+                                <MdLogout></MdLogout>
                             </Button>
                         </div>
 
@@ -50,48 +54,48 @@ export default function Sidebar() {
                     <hr className="sidebarHr"></hr>
 
 
-                    <li className="sidebarListItem">
-                        <Link className="sidebar-linkto" to="/learning">
+                    <li>
+                        <Link className="sidebar-link" to="/learning">
                             <Bookmark className="sidebarIcon" />
-                            <span className="sidebarListItemText">{t("SidebarLearning")}</span>
+                            <span>{t("SidebarLearning")}</span>
                         </Link>
                     </li>
-                    <li className="sidebarListItem">
-                        <Link className="sidebar-linkto" to="/news">
+                    <li>
+                        <Link className="sidebar-link" to="/news">
                             <LiveTv className="sidebarIcon" />
-                            <span className="sidebarListItemText">{t("SidebarNews")}</span>
+                            <span>{t("SidebarNews")}</span>
                         </Link>
                     </li>
-                    <li className="sidebarListItem">
-                        <Link className="sidebar-linkto" to="/forum">
+                    <li>
+                        <Link className="sidebar-link" to="/forum">
                             <Forum className="sidebarIcon" />
-                            <span className="sidebarListItemText">{t("SidebarForum")}</span>
+                            <span>{t("SidebarForum")}</span>
                         </Link>
                     </li>
-                    <li className="sidebarListItem">
-                        <Link className="sidebar-linkto" to="/dictionary">
+                    <li>
+                        <Link className="sidebar-link" to="/dictionary">
                             <MenuBook className="sidebarIcon" />
-                            <span className="sidebarListItemText">{t("SidebarDictionary")}</span>
+                            <span>{t("SidebarDictionary")}</span>
                         </Link>
                     </li>
-                    <li className="sidebarListItem">
-                        <Link className="sidebar-linkto" to="/songs">
+                    <li>
+                        <Link className="sidebar-link" to="/songs">
                             <LibraryMusic className="sidebarIcon" />
-                            <span className="sidebarListItemText">{t("SidebarSongs")}</span>
+                            <span>{t("SidebarSongs")}</span>
                         </Link>
                     </li>
-                    <li className="sidebarListItem">
-                        <Link className="sidebar-linkto" to="/history">
+                    <li>
+                        <Link className="sidebar-link" to="/history">
                             <Landscape className="sidebarIcon" />
-                            <span className="sidebarListItemText">{t("SidebarHistory")}</span>
+                            <span>{t("SidebarHistory")}</span>
                         </Link>
                     </li>
                 </ul>
 
                 <div className="sidebar-help-details">
                     <ul className="sidebar-nav-help">
-                        <li className="sidebarListItem">
-                            <Link className="sidebar-linkto" to="/help">
+                        <li>
+                            <Link className="sidebar-link" to="/help">
                                 <HelpOutline className="sidebarIcon" />
                                 <span className="sidebarListItemText">{t("SidebarHelp")}</span>
                             </Link>
@@ -99,6 +103,5 @@ export default function Sidebar() {
                     </ul>
                 </div>
             </div>
-        </>
     )
 }
