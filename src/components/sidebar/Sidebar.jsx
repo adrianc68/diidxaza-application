@@ -1,7 +1,7 @@
 import React from 'react'
 import './sidebar.scss'
 import { Bookmark, HelpOutline, LibraryMusic, MenuBook, Forum, Email, LiveTv, Home, EcoOutlined, Landscape, Menu } from "@material-ui/icons"
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import "../../translations/i18n";
 import Button from '../../components/Button/Button'
@@ -20,7 +20,7 @@ export default function Sidebar() {
 
 
     return (
-        <div className="sidebar">
+        <nav className="sidebar">
             <div className="sidebar-toggle-button-container">
                 <button className="sidebar-toggle-button" onClick={toggleSidebar}>
                     <Menu className="sidebarIconToggle" />
@@ -29,17 +29,24 @@ export default function Sidebar() {
 
             <ul>
                 <li>
-                    <Link className="sidebar-link" to="/home">
+                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/home">
                         <Home className="sidebarIcon" />
                         <span>{t("SidebarHome")}</span>
-                    </Link>
+                    </NavLink>
                 </li>
+
+
+
+
                 <li>
-                    <Link className="sidebar-link" to="not-found">
+                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/checkprogress">
                         <Email className="sidebarIcon" />
                         <span>{t("SidebarCorreo")}</span>
-                    </Link>
+                    </NavLink>
                 </li>
+
+
+
 
                 <div className="sidebar-button-section">
                     <div>
@@ -54,54 +61,52 @@ export default function Sidebar() {
 
 
                 <li>
-                    <Link className="sidebar-link" to="/learning">
+                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/learning">
                         <Bookmark className="sidebarIcon" />
                         <span>{t("SidebarLearning")}</span>
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link className="sidebar-link" to="/news">
+                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/news">
                         <LiveTv className="sidebarIcon" />
                         <span>{t("SidebarNews")}</span>
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link className="sidebar-link" to="/forum">
+                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/forum">
                         <Forum className="sidebarIcon" />
                         <span>{t("SidebarForum")}</span>
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link className="sidebar-link" to="/dictionary">
+                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/dictionary">
                         <MenuBook className="sidebarIcon" />
                         <span>{t("SidebarDictionary")}</span>
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link className="sidebar-link" to="/songs">
+                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/songs">
                         <LibraryMusic className="sidebarIcon" />
                         <span>{t("SidebarSongs")}</span>
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link className="sidebar-link" to="/history">
+                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/history">
                         <Landscape className="sidebarIcon" />
                         <span>{t("SidebarHistory")}</span>
-                    </Link>
+                    </NavLink>
                 </li>
 
                 <div className="sidebar-help-details">
                     <li>
-                        <Link className="sidebar-link" to="/help">
+                        <NavLink className="sidebar-link" activeClassName="activeItem" to="/help">
                             <HelpOutline className="sidebarIcon" />
                             <span className="sidebarListItemText">{t("SidebarHelp")}</span>
-                        </Link>
+                        </NavLink>
                     </li>
                 </div>
 
             </ul>
-
-          
-        </div>
+        </nav>
     )
 }

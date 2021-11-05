@@ -27,7 +27,6 @@ export default function InputInformation() {
                                     <input className="input-file" type="file" accept="image/png, image/jpeg" />
                                     {t("SignUpFormInputFile")}
                                 </label>
-
                             </div>
                             <div className="signup-photo-input-description">
                                 <p className="p-semibold">{t("SignUpFormPhotoInput")}</p>

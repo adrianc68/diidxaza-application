@@ -1,0 +1,96 @@
+@import "../../variables.module.scss";
+
+.userreports-main-container {
+    height: 100%;
+    width: 100%;
+
+    .userreports-data-container {
+        padding: 25px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        overflow-y: scroll;
+
+        .userreports-image-background {
+            border:1px solid #8a8a8a;
+            background:radial-gradient(circle, rgba(255,255,255,1) 31%, rgb(202, 202, 202) 89%);
+            display:flex;
+            justify-content: center;
+            img {
+                height: 50%;
+                width: 25%;
+            }
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        .userreports-list-container {
+            box-shadow: rgba(0, 0, 0, 0.178) 0px 4px 4px 4px inset;
+            background-color: #fff;
+            border-radius: 3px;
+            flex: 1;
+            padding: 15px;
+
+            ul {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+
+                li {
+                    .report-container {
+                        background-color: rgb(146, 146, 146);
+                        display: flex;
+                        padding: 10px;
+                        border-radius: 3px;
+                        .report-numeration-container {
+                            color: #fff;
+                            padding: 15px;
+                            display: flex;
+                            flex-direction: column;
+                            text-align: center;
+                            :nth-child(1) {
+                                font-size: 10px;
+                                color: #000;
+                                font-weight: 600;
+                            }
+                        }
+
+                        .report-data-container {
+                            border-radius: 3px 3px 0px 0px;
+                            flex: 1;
+                            display: flex;
+                            flex-direction: column;
+                            text-align: justify;
+
+                            .report-reported-by-container {
+                                border-radius: 3px 3px 0px 0px;
+                                background-color: #cccccc;
+                                padding: 5px;
+                                :nth-child(1) {
+                                    color: #000;
+                                    font-weight: 600;
+                                }
+                            }
+
+                            .report-descripction-container {
+                                border-radius: 0px 0px 3px 3px;
+                                background-color: #fff;
+                                padding: 15px;
+                                :nth-child(1) {
+                                    color: #000;
+                                    font-weight: 600;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+       
+    }
+}

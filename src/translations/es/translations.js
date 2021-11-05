@@ -70,6 +70,8 @@ export const TRANSLATIONS_ES = {
     SignUpFormPasswordDescription: "Usa al menos 6 carácteres. Incluye al menos una letra y un número o un caracter especial.",
     SignUpFormCancelButton: "Cancelar",
     SignUpFormSignUpButton: "Registrarse",
+    
+    
     SignUpErrorMessage: "¡No se pudo conectar con el servidor!",
     SignUpErrorConnectionError: "¡Error de conexión, ¡intentalo más tarde!",
     SignUpExistingAccount: "El nombre de usuario ya está siendo utilizado",
@@ -120,41 +122,69 @@ export const TRANSLATIONS_ES = {
     ButtonCancel: "Cancelar",
     ButtonLogout: "Cerrar sesión",
     ButtonDeleteAccount: "Eliminar cuenta",
-    ButtonBuscar: "Buscar",
+    ButtonSearch: "Buscar",
     ButtonCreateDiscussion: "Crear discusión",
     ButtonAddComment: "Responder",
     ButtonReportUser: "Reportar usuario",
     ButtonStartNow: "¡Comienza ahora!",
 
-
-
     TypeUserAdmin: "Administrador",
     TypeUserFree: "Gratuito",
 
     DeleteAccountTitle: "Eliminar cuenta",
-    DeleteAccountDescription: "¿Estás seguro que deseas eliminar tu cuenta? Perderás permanentemente todos tus datos. Los comentarios o discusiones que hayas creado permaneceran visibles.",
+    DeleteAccountDescriptionTitle: "¿Estás seguro que deseas eliminar tu cuenta?",
+    DeleteAccountDescription: "Perderás permanentemente todos tus datos. Los comentarios o discusiones que hayas creado permaneceran visibles. Tus datos no estarán más en nuestros registros, puedees volver a registrarte cuando lo necesites.",
+
+    BlockUserTitle: "Bloquear cuenta",
+    BlockUserDescriptionTitle: "¿Estás seguro que deseas bloquear la cuenta?",
+    BlockUserDescription: "Al bloquear esta cuenta el usuario no podrá tener acceso a Diixaza App hasta que se desbloquee su cuenta.",
+
+    UnblockUserTitle: "Desbloquear cuenta",
+    UnblockUserDescriptionTitle: "¿Estás seguro que deseas desbloquear la cuenta?",
+    UnblockUserDescription: "Al desbloquear esta cuenta el usuario podrá tener acceso a Diixaza App y realizar sus actividades de forma normal.",
 
 
+    ForumSearchCriteriaTitle: "Criterio de búsqueda",
     ForumSearchCriteriaInput: "Criterio de búsqueda: ",
     ForumSearchMostPopular: "Mas populares",
     ForumSearchOutstanding: "Mas relevantes",
     ForumSearchNewest: "Mas nuevos",
-
+    ForumListDiscussion: "Lista de discusiones",
+    ForumWantToCreateNewDiscussion: "¿Deseas crear una nueva discusión?",
 
     UserProfileAge: "años",
     UserProfileButtonPanelDeleteAccount: "Eliminar cuenta",
     UserProfileButtonPanelCheckProgress: "Revisar progreso",
     UserProfileButtonPanelEditProfile: "Editar perfil",
+    UserProfileButtonPanelSendMessage: "Enviar mensaje",
+    UserProfileButtonPanelBlockUser: "Bloquear usuario",
+    UserProfileButtonPanelUnblockUser: "Desbloquear usuario",
+    UserProfileButtonPanelLookReports: "Ver reportes",
+    UserProfileButonPanelReportUser: "Reportar usuario",
     UserProfileTopRanking: "Posicion en el ranking: ",
     UserProfilePointsWon: "Puntos obtenidos: ",
     UserProfileUnitPoints: " pts",
-    UserProfilePosition: "Posición",
+    UserProfilePosition: "posición ",
     UserProfileTotalDiscussionsCreated: "Total discusiones creadas: ",
     UserProfileCreated: " creadas",
     UserProfileTotalDiscussionesCommented: "Total discusiones comentadas: ",
     UserProfileCommented: " comentadas",
     UserProfileDiscussionsCreated: "Discusiones creadas",
     UserProfileDiscussionsCommented: "Discusiones comentadas",
+    UserProfileUserBanned: "Bloqueado",
+    UserProfileUserFree: "En línea",
+    
+    UserProfileAdminBlockUser: "Bloquear usuario",
+
+
+    UserReportAdminPanelTitle: "Reportes",
+    UserReportAdminPanelDescription:"A continuación se mostrarán todos los reportes realizados a este usuario por otros usuarios. Los reportes están ordenados del mas actual al menos actual.",
+    UserReportReason: "Razón: ",
+    UserReportNumberReport: "Reporte num: ",
+    UserReportReportedBy: "Reportado por: ",
+
+
+
 
     CheckProgressTotalDiscussionsCommented: "Total de discusiones comentadas: ",
     CheckProgressTotalDiscussionsCommentedDescription: "Muestra el total de comentarios que has realizado desde tu registro en Diidxaza App.",
@@ -169,5 +199,5 @@ export const TRANSLATIONS_ES = {
     CheckProgressGraphic: "Gráfica de progresos",
     CheckProgressGraphicDescription: "Gráfica que muestra los progresos en función de...",
 
-
+    NoAvalaible: "No disponible",
 };
