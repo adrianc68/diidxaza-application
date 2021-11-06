@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import AddComment from '../addcomment/AddComment';
 
 
-export default function Comment() {
+export default function Comment( {children}) {
     const { t } = useTranslation();
 
     return (
@@ -28,6 +28,7 @@ export default function Comment() {
                 </div>
                 <div className="forum-comment-child">
                 <AddComment/>
+                {children}
                 </div>
 
             </div>

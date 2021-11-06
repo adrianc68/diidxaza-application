@@ -35,14 +35,21 @@ export default function Discussion() {
                 </div>
             </div>
             <div className="forum-child-comme">
-            <AddComment/>
+                <AddComment />
 
             </div>
             <div className="forum-discussion-forum-comments-container">
                 <div className="forum-discussion-comment-list">
                     <ul>
                         <li>
-                            <Comment></Comment>
+                            <Comment>
+                                <Comment>
+                                    <Comment/>
+                                    <Comment/>
+                                    <Comment/>
+                                    <Comment/>
+                                </Comment>
+                            </Comment>
                         </li>
                     </ul>
                 </div>
