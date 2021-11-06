@@ -21,13 +21,15 @@ body {
     font-size: 25px;
 }
 
-input {
+input, .input {
     height: 35px;
     width: calc(100% - 2px);
     border: 1px solid #b9b9b9;
     border-radius: 3px;
     background-color:#f7f7f7;
 }
+
+
 
 .input-file-label {
     text-align: center;

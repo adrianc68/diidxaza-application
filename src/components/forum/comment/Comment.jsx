@@ -3,6 +3,7 @@ import './comment.scss'
 import Button from '../../../components/Button/Button'
 import ImageInformationAlt from '../../../assets/images/ide-02.svg'
 import { useTranslation } from "react-i18next";
+import AddComment from '../addcomment/AddComment';
 
 
 export default function Comment() {
@@ -25,6 +26,10 @@ export default function Comment() {
                         <Button styleName="primary-button">{t("ButtonAddComment")}</Button>
                     </div>
                 </div>
+                <div className="forum-comment-child">
+                <AddComment/>
+                </div>
+
             </div>
         </div>
     )

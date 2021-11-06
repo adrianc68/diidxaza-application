@@ -17,6 +17,7 @@ import Forum from '../pages/Forum/Forum';
 
 import Sidebar from '../components/sidebar/Sidebar'
 import UserProfile from '../pages/UserProfile/UserProfile';
+import AddDiscussion from '../components/forum/adddiscussion/AddDiscussion';
 
 
 export default function AppRouter() {
@@ -34,6 +35,8 @@ export default function AppRouter() {
                 <Route exact path="/animation2" component={LoadingScreen}/> 
             
                 <Route exact path="/userprofile" component={UserProfile} />
+
+                <Route exact path="/adddiscusion" component={AddDiscussion} />
 
                 <Route exact path="/settings" component={Settings} />
                 <Route exact path="/checkprogress" component={CheckProgress}/> 

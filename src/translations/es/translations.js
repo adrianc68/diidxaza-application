@@ -127,6 +127,7 @@ export const TRANSLATIONS_ES = {
     ButtonAddComment: "Responder",
     ButtonReportUser: "Reportar usuario",
     ButtonStartNow: "¡Comienza ahora!",
+    ButtonSend: "Enviar",
 
     TypeUserAdmin: "Administrador",
     TypeUserFree: "Gratuito",
@@ -151,6 +152,8 @@ export const TRANSLATIONS_ES = {
     ForumSearchNewest: "Mas nuevos",
     ForumListDiscussion: "Lista de discusiones",
     ForumWantToCreateNewDiscussion: "¿Deseas crear una nueva discusión?",
+
+    
 
     UserProfileAge: "años",
     UserProfileButtonPanelDeleteAccount: "Eliminar cuenta",
