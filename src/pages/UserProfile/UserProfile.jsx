@@ -1,13 +1,45 @@
-import React from 'react'
+import { React, useEffect } from 'react'
 import './userprofile.scss'
-import ImageInformationAlt from '../../assets/images/ide-02.svg'
 import { useTranslation } from "react-i18next";
-import Button from '../../components/Button/Button'
 import { Link } from 'react-router-dom'
+import UserImageDefault from '../../assets/images/ide-29.svg'
+import UserprofileButtonPanelAU from '../../components/anotheruser/userprofileButtonPanel/UserprofileButtonPanelAU';
+import UserprofileButtonPanelADM from '../../components/admin/userprofileButtonPanel/UserprofileButtonPanelADM';
+import UserprofileButtonPanelOWU from '../../components/ownuser/userprofileButtonPanel/UserprofileButtonPanelOWU';
+import Modal from '../../components/modal/Modal'
+import UserReports from '../../components/admin/userreports/UserReports';
+import DeleteAccount from '../../components/ownuser/DeleteAccount/DeleteAccount';
+import BlockUser from '../../components/admin/blockuser/BlockUser';
+import UnblockUser from '../../components/admin/unblockuser/UnblockUser';
+import CheckProgress from '../../components/ownuser/CheckProgress/CheckProgress';
+
 
 
 export default function UserProfile() {
     const { t } = useTranslation();
+
+
+    useEffect(() => {
+
+        const tabs = document.querySelectorAll(".userprofile-forum-data-tab");
+        const contents = document.querySelectorAll(".content");
+
+        for (let i = 0; i < tabs.length; i++) {
+            tabs[i].addEventListener("click", (e) => {
+                e.preventDefault();
+                for (let j = 0; j < contents.length; j++) {
+                    contents[j].classList.remove("content--active");
+                }
+                for (let jj = 0; jj < tabs.length; jj++) {
+                    tabs[jj].classList.remove("tabs--active");
+                }
+                contents[i].classList.add("content--active");
+                tabs[i].classList.add("tabs--active");
+            });
+        }
+
+
+    }, []);
 
     return (
         <div className="userprofile-main-container">
@@ -15,7 +47,7 @@ export default function UserProfile() {
 
                 <div className="userprofile-user-details-container">
                     <div className="userprofile-user-photo-container">
-                        <img src={ImageInformationAlt} alt={t("WelcomeInformationAlt")}></img>
+                        <img src={UserImageDefault} alt={t("WelcomeInformationAlt")}></img>
 
                     </div>
                     <div className="userprofile-type-user-container">
@@ -27,9 +59,18 @@ export default function UserProfile() {
                     <div className="userprofile-separator-container">
                         <hr />
                         <div className="userprofile-basic-details">
-                            <span>NOMBE DE USUARIO MAS LARGO DE LO NORMAL JAJASFASJDFOASDKFSOAFSADFKODSFSKOADFASKOAFDS</span>
-                            <span>16 <span>{t("UserProfileAge")}</span></span>
-                            <span>FECHA DE NACIMIENTO</span>
+                            <div>
+                                <span>nombre</span>
+                                <span>Angel Adrian Camal Garcia</span>
+                            </div>
+                            <div>
+                                <span>edad</span>
+                                <span>21 <span /><span>{t("UserProfileAge")}</span></span>
+                            </div>
+                            <div>
+                                <span>fecha de nacimiento</span>
+                                <span>13 de septiembre de 2000</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -37,26 +78,39 @@ export default function UserProfile() {
                 <div className="userprofile-user-data-container">
                     <div className="userprofile-account-container">
                         <div className="userprofile-account-information">
-                            <span>NOMBRE DE USUARIO MAS LARGO DE LO NORMAL </span>
-                            <span>EMAIL DE USUARIO</span>
+                            <h2>Angel Adrian Camal Garcia</h2>
+                            <p>estaesunaprueba@hotmail.com</p>
                         </div>
                         <div className="userprofile-account-status-information">
-                            <span className="status-user-free">STATUS</span>
+                            <span className="status-user-free">{t("UserProfileUserFree")}</span>
+
                         </div>
                     </div>
 
                     <div className="userprofile-button-panel">
-                        <Link className="link" to="/deleteaccount">
-                            <Button styleName="primary-button" text={t("UserProfileButtonPanelDeleteAccount")} ></Button>
-                        </Link>
-                        <Link className="link" to="/checkprogress">
-                            <Button styleName="primary-button" text={t("UserProfileButtonPanelCheckProgress")} ></Button>
-                        </Link>
-                        <Link className="link" to="/editprofile">
-                            <Button styleName="primary-button" text={t("UserProfileButtonPanelEditProfile")} ></Button>
-                        </Link>
-
+                        <UserprofileButtonPanelADM />
+                        <UserprofileButtonPanelAU />
+                        <UserprofileButtonPanelOWU />
                     </div>
+
+                    {/* <Modal title="Reportes">
+                        <UserReports/>
+                    </Modal> */}
+
+
+                    {/* <Modal title="Eliminar cuenta">
+                        <DeleteAccount></DeleteAccount>
+                    </Modal> */}
+
+                    {/* <Modal title="Bloquear Usuario">
+                        <BlockUser></BlockUser>
+                    </Modal> */}
+
+
+                    {/* <Modal title="Desbloquear Usuario">
+                        <UnblockUser></UnblockUser>
+                    </Modal> */}
+
                     <div className="userprofile-ranking-information-container">
                         <div>
                             <span>{t("UserProfileTopRanking")}</span>
@@ -68,9 +122,6 @@ export default function UserProfile() {
                             <span>1500</span>
                             <span>{t("UserProfileUnitPoints")}</span>
                         </div>
-                    </div>
-
-                    <div className="userprofile-forum-information">
                         <div>
                             <span>{t("UserProfileTotalDiscussionsCreated")}</span>
                             <span>13</span>
@@ -83,57 +134,37 @@ export default function UserProfile() {
                         </div>
                     </div>
 
-                    <div className="userprofile-discussion-for-user-container">
-                        <div className="userprofile-discussion-created">
-                            <div className="user-profile-discussion-created-title">
-                                <h1>{t("UserProfileDiscussionsCreated")}</h1>
+
+                    <div className="userprofile-forum-data-container">
+                        <ul className="userprofile-forum-data-container--tabs">
+                            <li className="userprofile-forum-data-tab tabs--active">{t("UserProfileDiscussionsCreated")}</li>
+                            <li className="userprofile-forum-data-tab">{t("UserProfileDiscussionsCommented")}</li>
+                        </ul>
+
+                        <div className="userprofile-data-container--content">
+                            <div className="content content--active">
+                                {/*  CONTENT FOR CREATED FORUMS */}
                             </div>
-                            <ul>
-                                <li><span>¿ COMO SE HACEN USO DE LOS VERBOS...? </span></li>
-                                <li><span>¿ COMO SE HACEN USO DE LOS VERBOS...? </span></li>
-                                <li><span>¿ COMO SE HACEN USO DE LOS VERBOS...? </span></li>
-                                <li><span>¿ COMO SE HACEN USO DE LOS VERBOS...? </span></li>
-                                <li><span>¿ COMO SE HACEN USO DE LOS VERBOS...? </span></li>
-                                <li><span>¿ COMO SE HACEN USO DE LOS VERBOS...? </span></li>
-                                <li><span>¿ COMO SE HACEN USO DE LOS VERBOS...? </span></li>
-                                <li><span>¿ COMO SE HACEN USO DE LOS VERBOS...? </span></li>
-                                <li><span>¿ COMO SE HACEN USO DE LOS VERBOS...? </span></li>
-                                <li><span>¿ COMO SE HACEN USO DE LOS VERBOS...? </span></li>
-                                <li><span>¿ COMO SE HACEN USO DE LOS VERBOS...? </span></li>
-                                <li><span>¿ COMO SE HACEN USO DE LOS VERBOS...? </span></li>
-                                <li><span>¿ COMO SE HACEN USO DE LOS VERBOS...? </span></li>
-
-                            </ul>
-                        </div>
-                        <div className="userprofile-discussion-commented">
-                            <div className="userprofile-discussion-commented-title">
-                                <h1>{t("UserProfileDiscussionsCommented")}</h1>
+                            <div className="content">
+                                {/* CONTENT FOR COMMENTED FORUMS */}
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
                             </div>
-                            <ul>
-                                <li><span> Uso de los verbos auxiliares zapotecos </span></li>
-                                <li><span> Uso de los verbos auxiliares zapotecos </span></li>
-                                <li><span> Uso de los verbos auxiliares zapotecos </span></li>
-                                <li><span> Uso de los verbos auxiliares zapotecos </span></li>
-                                <li><span> Uso de los verbos auxiliares zapotecos </span></li>
-                                <li><span> Uso de los verbos auxiliares zapotecos </span></li>
-                                <li><span> Uso de los verbos auxiliares zapotecos </span></li>
-                                <li><span> Uso de los verbos auxiliares zapotecos </span></li>
-                                <li><span> Uso de los verbos auxiliares zapotecos </span></li>
-                                <li><span> Uso de los verbos auxiliares zapotecos </span></li>
-                                <li><span> Uso de los verbos auxiliares zapotecos </span></li>
-                                <li><span> Uso de los verbos auxiliares zapotecos </span></li>
-                                <li><span> Uso de los verbos auxiliares zapotecos </span></li>
-                                <li><span> Uso de los verbos auxiliares zapotecos </span></li>
-                                <li><span> Uso de los verbos auxiliares zapotecos </span></li>
-                                <li><span> Uso de los verbos auxiliares zapotecos </span></li>
-
-                            </ul>
-
                         </div>
                     </div>
 
+
                 </div>
             </div>
+
+            <BlockUser></BlockUser>
+            <DeleteAccount></DeleteAccount>
+            <UserReports />
+            <UnblockUser></UnblockUser>
+            <CheckProgress></CheckProgress>
         </div>
     )
 }

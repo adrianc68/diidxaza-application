@@ -1,0 +1,46 @@
+
+
+.forum-discussion-search-listItem {
+    display:flex;
+    border-radius:3px;
+    align-items: center;
+    gap:15px;
+    border-top:1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    padding:5px;
+    cursor:pointer;
+    .forum-discussion-listItem-description {
+        display:flex;
+        flex-direction: column;
+        gap:5px;
+        text-align:center;
+        .forum-listItem-open-status {
+            background-color:#15b607;
+            color:#fff;
+            padding:5px;
+            border-radius:3px;
+        }
+
+        .forum-listItem-closed-status {
+            background-color:#b63907;
+            color:#fff;
+            padding:5px;
+            border-radius:3px;
+        }
+
+        .forum-listItem-theme {
+            padding:5px;
+            background-color:#00bff6;
+            color:#fff;
+            border-radius:3px;
+        }
+
+    }
+
+    .forum-listItem-data-content {
+        flex:1;
+        font-size:0.9em;
+    }
+
+    
+}

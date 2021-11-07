@@ -5,7 +5,7 @@ import DiidxazaLogo from '../logo/DiidxazaLogo'
 
 export default function Topbar({ children }) {
     return (
-        <div className="topbar">
+        <header className="topbar">
             <div className="topbar-logo-details">
                 <div className="topbar-center">
                     <DiidxazaLogo styleClass="logo-white-link"></DiidxazaLogo>
@@ -19,6 +19,6 @@ export default function Topbar({ children }) {
 
                 </ul>
             </div>
-        </div>
+        </header>
     )
 }

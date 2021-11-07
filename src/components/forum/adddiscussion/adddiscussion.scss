@@ -1,0 +1,95 @@
+@import "../../../components/variables.module.scss";
+
+.adddiscussion-main-container {
+    width: 100vw;
+    height: 100vh;
+    h1 {
+        background-color: $title-background-black;
+        color: #fff;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .adddiscussion-main-content {
+        width: calc(100% - 50px);
+        height: calc(100% - 50px);
+        padding: 25px;
+        display: flex;
+        gap: 15px;
+        .adddiscussion-img-content {
+            height: calc(100% - 4px);
+            width: 45%;
+            border: 2px solid #000;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: center;
+            background-color: #3e3d51;
+            background-image: url("../../../assets/images/ide-39.svg");
+        }
+
+        .adddiscussion-information-input-content {
+            flex: 1;
+            overflow-y:scroll;
+            padding: 25px;
+            display:flex;
+            flex-direction: column;
+            gap:5px;
+            box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+            .adddiscussion-input-theme {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+
+                ul {
+                    list-style: none;
+                    display: flex;
+                    gap: 25px;
+                    li {
+                        .adddiscussion-theme {
+                            box-shadow:rgba(0,0,0,0.24) 0px 3px 8px;
+                            border-radius:3px;
+                            width: 150px;
+                            display: flex;
+                            align-items: center;
+                            flex-direction: column;
+                            padding: 10px;
+                            img {
+                                width: 55px;
+                                height: 55px;
+                            }
+                            span {
+                                font-size: 0.7em;
+                            }
+                            
+                        }
+                    }
+                }
+            }
+            .adddiscussion-input-title {
+                display:flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .adddiscussion-input-description {
+                flex:1;
+                gap: 15px;
+                display:flex;
+                flex-direction:column;
+                padding-bottom:15px;
+                textarea{
+                    box-sizing: border-box;
+                    resize:vertical;
+                    width:100%;
+                    height:100%;
+                }
+            }
+
+            .adddiscussion-button-panel {
+                display:flex;
+                gap:15px;
+            }
+
+        }
+    }
+}

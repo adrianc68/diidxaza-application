@@ -1,0 +1,106 @@
+@import "../../../components/variables.module.scss";
+
+.checkprogress-main-container {
+    height: calc(100% - 30px);
+    width: calc(100% - 30px);
+    padding: 15px;
+    background-color: #f3f1f1;
+    .checkprogress-content-container {
+        display: flex;
+        padding: 15px;
+        width: calc(100% - 30px);
+        height: calc(100% - 30px);
+        box-shadow:rgba(0,0,0,0.25) 0px 0.0625em 0.0625em, rgba(0,0,0,0.25) 0px 0.125em 0.5em, rgba(255,255,255,0.1) 0px 0px 0px 1px inset;
+        border-radius:3px;
+        .checkprogress-description-container {
+            width: 45%;
+            overflow-y: scroll;
+            ul {
+                list-style: none;
+                padding: 25px;
+                display: inline-flex;
+                flex-direction: column;
+                gap: 25px;
+                box-shadow: rgba(0, 0, 0, 0.178) 0px 4px 4px 4px inset;
+                border-radius: 3px;
+                li {
+                    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(09, 213, 219) 0px 0px 0px 1px inset;
+                    background-color: #f0f0f0;
+                    padding: 15px;
+                    border-radius: 15px;
+                    .checkprogress-progress-container {
+                    }
+
+                    .checkprogress-presentation-up-side-container {
+                        display: flex;
+
+                        .checkprogress-side-text {
+                            padding: 10px;
+                            h1 {
+                                font-size: 15px;
+                            }
+                            span {
+                                text-align: justify;
+                            }
+                        }
+
+                        .checkprogress-side-img {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            img {
+                                width: 85px;
+                                height: 85px;
+                            }
+                        }
+
+                        .checkprogress-user-value {
+                            width: auto;
+                            height: 1fr;
+                            padding: 5px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            span {
+                                padding: 15px;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+
+                    .checkprogress-presentaiton-down-side-container {
+                        padding: 10px;
+                    }
+                }
+            }
+        }
+
+        .checkprogress-display-graphic-container {
+            width: calc(55% - 30px);
+            border-radius: 0px 3px 3px 0px;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            padding: 15px;
+            gap: 15px;
+            text-align: center;
+            .checkprogress-graphic-container {
+                border-radius: 3px;
+                box-shadow: rgba(0, 0, 0, 0.378) 0px 4px 4px 4px inset;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.16'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+                height: 70%;
+                width: 100%;
+                img {
+                    padding: 15px;
+                    width: calc(100% - 30px);
+                    height: calc(100% - 30px);
+                }
+            }
+
+            .checkprogress-button-panel {
+                background-color: green;
+                height: 42px;
+            }
+        }
+    }
+}

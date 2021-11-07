@@ -1,6 +1,8 @@
 import React from 'react'
 import "./primaryButton.scss"
 import "./secondaryButton.scss"
+import "./iconButton.scss"
+import './textButton.scss'
 
 export default function Button(props) {
 

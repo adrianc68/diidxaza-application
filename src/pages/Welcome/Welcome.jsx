@@ -142,6 +142,9 @@ export default function Welcome() {
                                         <Link className="link" to="/signUp">
                                             <Button text={t("ButtonSignUp")} styleName="primary-button" />
                                         </Link>
+                                            {/* <Button text={t("ButtonSignUp")} styleName="primary-button" onClick={() => this.props.history.push("/signup")} /> */}
+
+
                                     </div>
                                 </div>
                             </div>
