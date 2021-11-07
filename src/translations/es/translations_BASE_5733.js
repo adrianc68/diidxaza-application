@@ -31,7 +31,7 @@ export const TRANSLATIONS_ES = {
     WelcomeProblemsInformationTitle: "Evitar la extinción de la lengua zapoteca",
     WelcomeProblemasInformationDescription: "La extinción de las lenguas representa una situación crítica por la rápidez con la que las lenguas originarias están siendo desplazadas por las lenguas dominantes del país. Las actitudes pueden influenciar en que un cambio lingüístico se cumpla más rápidamente o que una lengua pueda llevarse al desplazamiento y el olvido de la misma. una actitud favorable hacia una lengua puede mantenerla viva.",
 
-    LoginUsernameInput: "Usuario: ",
+    LoginUsernameInput: "Usuario o correo electrónico: ",
     LoginPasswordInput: "Contraseña: ",
     LoginRecover: "¿Has olvidado tu contraseña? Recuperala ahora",
     LoginSignUp: "¿Aún no te has registrado? Hazlo ahora",
@@ -46,14 +46,8 @@ export const TRANSLATIONS_ES = {
     LoginNewAccountSpan: "¿No estás registrado?",
     LoginNewAccountThenRegisterSpan: "Crea una nueva cuenta",
 
-    ErrorName: "Ingrese solo de 2 a 150 carácteres y solo letras",
-    ErrorDateBirth: "Ingrese una fecha de nacimiento válida. Un rango de 11 a 100 años",
-    ErrorEmail: "El correo debe ser válido",
-    ErrorUsername: "Ingrese solo de 3 a 20 carácteres. Solo letras y números",
-    ErrorPassword: "Ingrese solo de 8 a 16 carácteres. Debe contener letras mayúsculas, minúsculas, números y un caracter especial @!%?#",
-    ErrorRequired: "El campo es requerido",
-    ErrorCode: "Ingrese solo número de 6 dígitos",
-    SignUpNotOption: "Elige una opción",
+
+
 
     SignUpIntroductionTitle: "Registrar una cuenta",
     SignUpIntroductionDescription: "Para registrarte debes llenar los siguientes campos, te recomendamos no utilizar carácteres extraños.",
@@ -64,8 +58,6 @@ export const TRANSLATIONS_ES = {
     SignUpFormInputFile: "Seleccionar imagen",
     SignUpFormNameLabelInput: "Nombre:",
     SignUpFormLastnameInput: "Apellidos:",
-    SignUpFormStateInput: "Estado:",
-    SignUpFormCityInput: "Ciudad:",
     SignUpFormBirthdateInput: "Fecha de nacimiento",
     SignUpFormBirthDateDescription: "Por favor, introduce tu fecha de nacimiento real. Usaremos esta información para devolverte la cuenta si alguna vez pierdes acceso.",
     SignUpFormPhotoInput: "Foto de perfil",
@@ -73,9 +65,9 @@ export const TRANSLATIONS_ES = {
     SignUpFormUsernameInput: "Usuario:",
     SignUpFormUsernameDescription: "Tu nombre puede contener minúsculas, mayúsculas y números.",
     SignUpFormEmailInput: " Correo electrónico: ",
-    SignUpFormEmailDescription: "Necesitarás usar este email para confirmar su cuenta. Por favor, utiliza un email que sea válido.",
+    SignUpFormEmailDescription: "Necesitarás usar este email para conectarte a Diidxaza App en el futuro. Por favor, utiliza un email que sea válido.",
     SignUpFormPassword: "Contraseña:",
-    SignUpFormPasswordDescription: "Usa al menos 8 carácteres. Incluye al menos una letra y un número o un caracter especial.",
+    SignUpFormPasswordDescription: "Usa al menos 6 carácteres. Incluye al menos una letra y un número o un caracter especial.",
     SignUpFormCancelButton: "Cancelar",
     SignUpFormSignUpButton: "Registrarse",
     
@@ -94,12 +86,6 @@ export const TRANSLATIONS_ES = {
     SignUpVerificationVerifyButton: "Verificar",
     SignUpVerificationError: "¡No se pudo conectar con el servidor!",
     SignUpVerificationConnectionError: "¡Error de conexión, ¡intentalo más tarde!",
-    SignUpVerificationInvalidCode: "El código de confimación es inválido",
-    SignUpVerificationNotFound: "No se encontro la cuenta o esta bloqueda",
-    SignUpVerificationSuccessful: "La confirmación es exitosa",
-    SignUpVerificationSendNot: "No se encontro la cuenta",
-    SignUpVerificationSendSuccessful: "El código de confirmación se reenvio exitosamente",
-    SignUpVerificationInvalidEmail: "No se encontro ningun correo",
 
     SidebarHome: "Inicio",
     SidebarMiPerfil: "Mi perfil",
@@ -142,8 +128,6 @@ export const TRANSLATIONS_ES = {
     ButtonReportUser: "Reportar usuario",
     ButtonStartNow: "¡Comienza ahora!",
     ButtonSend: "Enviar",
-    ButtonStartLesson: "Comenzar lección",
-    ButtonShowResults: "Ver resultados",
 
     TypeUserAdmin: "Administrador",
     TypeUserFree: "Gratuito",
@@ -218,23 +202,5 @@ export const TRANSLATIONS_ES = {
     CheckProgressGraphic: "Gráfica de progresos",
     CheckProgressGraphicDescription: "Gráfica que muestra los progresos en función de...",
 
-    LearningTitle: "¡Comienza a aprender zapoteco!",
-    LearningDescription: "Para empezar a realizar las lecciones debes dar clic en alguna de ellas",
-    LearningPointsWon: "Puntos totales obtenidos: ",
-    LearningLessonCompleted: "Lecciones completadas: ",
-    LearningLessonStartDescription: "Debes seleccionar la respuesta correcta y obtendras puntos, en cambio, si seleccionas la respuesta incorrecta entonces no ganarás puntos. Presiona el botón comenzar lección para empezar.",
-    LearningLessonPointsWon: "Puntos obtenidos",
-    LearningLessonPointsToWin:"Puntos a ganar",
-    LearningLessonStatus: "Estado",
-    LearningLessonResultsDescription: "¡Felicidades! has terminado esta lección. Si quieres ver los resultados puedes presionar el botón Ver resultados.",
-
-    BadRequestAccount: "Error en los datos de entrada",
-    ErrorExistAccount: "Existe una cuenta con el mismo nombre de usuario o correo",
-    ErrorMessage: "Error en el servidor. Intenta más tarde",
-    NotFoundLogin: "No se encontro la cuenta",
-    ForbiddentLogin: "La cuenta esta bloqueada o inactiva comuniquese con el administrador",
-    BadRequestLogin: "La contraseña es inválida",
-    MessageCreateAccount: "La cuenta se creo exitosamente",
-    SignUpVerificationSendCodeButton: "Reenviar código",
     NoAvalaible: "No disponible",
 };

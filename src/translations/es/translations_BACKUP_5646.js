@@ -218,6 +218,8 @@ export const TRANSLATIONS_ES = {
     CheckProgressGraphic: "Gráfica de progresos",
     CheckProgressGraphicDescription: "Gráfica que muestra los progresos en función de...",
 
+<<<<<<< HEAD
+
     LearningTitle: "¡Comienza a aprender zapoteco!",
     LearningDescription: "Para empezar a realizar las lecciones debes dar clic en alguna de ellas",
     LearningPointsWon: "Puntos totales obtenidos: ",
@@ -228,6 +230,10 @@ export const TRANSLATIONS_ES = {
     LearningLessonStatus: "Estado",
     LearningLessonResultsDescription: "¡Felicidades! has terminado esta lección. Si quieres ver los resultados puedes presionar el botón Ver resultados.",
 
+
+
+
+=======
     BadRequestAccount: "Error en los datos de entrada",
     ErrorExistAccount: "Existe una cuenta con el mismo nombre de usuario o correo",
     ErrorMessage: "Error en el servidor. Intenta más tarde",
@@ -236,5 +242,6 @@ export const TRANSLATIONS_ES = {
     BadRequestLogin: "La contraseña es inválida",
     MessageCreateAccount: "La cuenta se creo exitosamente",
     SignUpVerificationSendCodeButton: "Reenviar código",
+>>>>>>> e27af9a550c30936fb5b5c439f52952beb3a60c3
     NoAvalaible: "No disponible",
 };

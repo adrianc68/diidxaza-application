@@ -11,6 +11,12 @@ body {
     background-color: #fcfcfc;
 }
 
+.errorInput{
+    max-width: 350px;
+    color: red;
+    margin-bottom: 0;
+}
+
 .link {
     text-decoration: none;
     color: #5eb3ff;
@@ -74,6 +80,33 @@ p {
     font-weight:700;
 }
 
+.errorMessage {
+    padding: 5px 10px;
+    width: calc(100% - 2px);
+    text-align: center;
+    background-color: rgb(255, 155, 155);
+    margin-bottom: 0;
+}
+
+.successfulMessage {
+    padding: 5px 10px;
+    width: calc(100% - 2px);
+    text-align: center;
+    background-color: rgb(163, 255, 205);
+    margin-bottom: 0;
+}
+
+.errorDelete {
+    display: none;
+}
+
+select{
+    height: 35px;
+    width: calc(100% - 2px);
+    border: 1px solid #b9b9b9;
+    border-radius: 3px;
+    background-color:#f7f7f7;
+}
 .semibold {
     font-weight:700;
 }

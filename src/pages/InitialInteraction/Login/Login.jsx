@@ -6,32 +6,39 @@ import { Link } from 'react-router-dom'
 import DiidxazaLogo from '../../../components/logo/DiidxazaLogo'
 import Button from '../../../components/Button/Button'
 import BackgroundStars from '../../../components/animation/backgroundstars/BackgroundStars'
+import { useLoginForm } from "../../../hooks/useAccountForm";
+import {BiError} from 'react-icons/bi';
 
-async function loginUser(credentials) {
-  return fetch('http://localhost:8080/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(credentials)
-  })
-    .then(data => data.json())
-}
+const initialForm = {
+  username: "",
+  password: ""
+};
+
+const validationsForm = (form) => {
+  let errors = {};
+  let regexUsername =  /^[A-Za-z0-9]{3,20}$/;
+  let regexPassword =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@!%?#])[A-Za-z\d@!%?#]{8,16}$/;
+  if(!regexUsername.test(form.username)){
+    errors.username = "Error";
+  }
+  if(!regexPassword.test(form.password)){
+    errors.password = "Error";
+  }
+  return errors;
+};
 
 export default function Login({ setToken }) {
   const { t } = useTranslation();
-  const [username, setUserName] = useState();
-  const [password, setPassword] = useState();
-
-
-  const handleSubmit = async e => {
-    e.preventDefault();
-    const token = await loginUser({
-      username,
-      password
-    });
-    setToken(token);
-  }
+  const {
+    form,
+    errors,
+    loading,
+    response,
+    className,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+  } = useLoginForm(initialForm, validationsForm);
 
   return (
     <>
@@ -48,12 +55,15 @@ export default function Login({ setToken }) {
             <form onSubmit={handleSubmit}>
               <label>
                 <p>{t("LoginUsernameInput")}</p>
-                <input className="input" type="text" onChange={e => setUserName(e.target.value)} />
+                <input className="input" name="username" type="text" onBlur={handleBlur} onChange={handleChange} value={form.username} required/>
+                {errors.username && <p className="errorInput">{t("ErrorUsername")}</p>}
               </label>
               <label>
                 <p>{t("LoginPasswordInput")}</p>
-                <input className="input" type="password" onChange={e => setPassword(e.target.value)} />
+                <input className="input" name="password" type="password" onBlur={handleBlur}onChange={handleChange} value={form.password} required/>
+                {errors.password && <p className="errorInput">{t("ErrorPassword")}</p>}
               </label>
+              {loading && <p className={className}><BiError/>  {response}</p>}
               <div className="login-form-button-container">
                 <div className="login-form-button">
                   <Button type="submit" styleName="secondary-button" text={t("LoginLoginButton")}></Button>
@@ -97,6 +107,6 @@ export default function Login({ setToken }) {
   )
 }
 
-Login.propTypes = {
+/*Login.propTypes = {
   setToken: PropTypes.func.isRequired
-}
+}*/
