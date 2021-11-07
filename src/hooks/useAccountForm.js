@@ -39,6 +39,9 @@ export const useLoginForm = (initialForm, validateForm) => {
                 if(response.token){
                     setLoading(false);
                     setTimeout(() => setResponse(null), 5000);
+                    sessionStorage.setItem("name", response.account.name);
+                    sessionStorage.setItem("lastname", response.account.lastname);
+                    sessionStorage.setItem("token", response.token);
                     window.location.href = 'home';
                 }else{
                     setClaseName("errorMessage");
