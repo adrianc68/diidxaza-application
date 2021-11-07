@@ -16,7 +16,7 @@ export default function Comment( {children}) {
                 <span> Angel Adrian Camal Garcia </span>
                 <span>Creado el 19 de septiembre del 2021</span>
                 <div className="forum-comment-content">
-                    <span>Lorem ipsum dolo quae repellendus repellat pariatur perspiciatis? Aliquam voluptatum odit id. Nihil commodi non facere numquam excepturi nisi harum tempora magnam labore? Quisquam at qui nam hic, excepturi neque molestias minima nulla illo ab iste placeat esse repellendus ullam tenetur praesentium nostrum, incidunt expedita molestiae eaque dolorem quis corporis reiciendis beatae. Atque ab vero, tenetur quisquam magni reprehenderit optio doloremque sapiente fugiat sequi iure ipsa vel. Nisi minus maxime, animi atque placeat beatae nobis modi necessitatibus recusandae autem molestiae blanditiis at.</span>
+                    <span>Lorem ipsum dolo q id. Nihil at.</span>
                 </div>
                 <div className="forum-comment-button-panel">
                     <div>

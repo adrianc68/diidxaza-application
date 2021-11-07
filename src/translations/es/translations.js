@@ -128,6 +128,8 @@ export const TRANSLATIONS_ES = {
     ButtonReportUser: "Reportar usuario",
     ButtonStartNow: "¡Comienza ahora!",
     ButtonSend: "Enviar",
+    ButtonStartLesson: "Comenzar lección",
+    ButtonShowResults: "Ver resultados",
 
     TypeUserAdmin: "Administrador",
     TypeUserFree: "Gratuito",
@@ -201,6 +203,20 @@ export const TRANSLATIONS_ES = {
     CheckProgressTotalLessonsRealizedDescription: "Muestra el total de lecciones que has realizado desde tu registro en Diidxaza App.",
     CheckProgressGraphic: "Gráfica de progresos",
     CheckProgressGraphicDescription: "Gráfica que muestra los progresos en función de...",
+
+
+    LearningTitle: "¡Comienza a aprender zapoteco!",
+    LearningDescription: "Para empezar a realizar las lecciones debes dar clic en alguna de ellas",
+    LearningPointsWon: "Puntos totales obtenidos: ",
+    LearningLessonCompleted: "Lecciones completadas: ",
+    LearningLessonStartDescription: "Debes seleccionar la respuesta correcta y obtendras puntos, en cambio, si seleccionas la respuesta incorrecta entonces no ganarás puntos. Presiona el botón comenzar lección para empezar.",
+    LearningLessonPointsWon: "Puntos obtenidos",
+    LearningLessonPointsToWin:"Puntos a ganar",
+    LearningLessonStatus: "Estado",
+    LearningLessonResultsDescription: "¡Felicidades! has terminado esta lección. Si quieres ver los resultados puedes presionar el botón Ver resultados.",
+
+
+
 
     NoAvalaible: "No disponible",
 };

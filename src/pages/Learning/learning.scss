@@ -1,0 +1,59 @@
+@import "../../components/variables.module.scss";
+
+.learning-main-container {
+    width: 100vw;
+    height: 100vh;
+
+    .learning-content-contain {
+        display:flex;
+        flex-direction: column;
+        height:100vh;
+        .learning-description-content {
+            padding: 15px;
+            color: #fff;
+            text-align: center;
+            background: $title-background-black;
+        }
+
+        .learning-lesson-information {
+            display: flex;
+            overflow-y: scroll;
+            height:100%;            
+            .learning-lessons-content {
+                display: flex;
+                flex: 1;
+                height:100%;
+                overflow-y: scroll;
+                align-items: flex-start;
+                justify-content: center;
+                ul {
+                    list-style: none;
+                    padding:15px;
+                    li {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height:auto;
+                        width:auto;
+                        flex-wrap: wrap;
+                    }
+                }
+            }
+
+            .learning-lesson-user-information {
+                display: flex;
+                flex-direction: column;
+                padding: 15px;
+                border-left:1px solid #8a8a8a;
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    :nth-child(1) {
+                        font-size: 0.5em;
+                        color: #868686;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -52,7 +52,7 @@ export default class Home extends Component {
                 <div className="userprofile-home-container">
 
 
-                    <Forum></Forum>
+                    {/* <Forum></Forum> */}
                     
                     {/* { ReactDOM.createPortal(<CheckProgress/>, this.contentContainer )} */}
                     {this.state.isVisible ? <UserProfile /> : null}

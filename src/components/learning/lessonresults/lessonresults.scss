@@ -1,0 +1,56 @@
+@import "../../../components/variables.module.scss";
+
+.lesson-main-container {
+    width: 350px;
+    height: auto;
+    background-color: #fff;
+    border-radius: 3px;
+    .lesson-indicator-container {
+        overflow:hidden;
+        .lesson-indicator {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 30px 30px 30px;
+            border-color: transparent transparent $title-background-black transparent;
+            margin-left: 5%;
+            transform: translateY(15px);
+            z-index:-1;
+        }
+    
+
+    }
+
+    .lesson-information-content {
+        display: flex;
+        justify-content:center;
+        gap: 25px;
+        background: $title-background-black;
+        div {
+            display: flex;
+            flex-direction: column;
+            color: #fff;
+            padding: 5px;
+            :nth-child(1) {
+                font-size: 0.5em;
+                color: #868686;
+            }
+        }
+    }
+
+    .lesson-description-content {
+        padding: 15px;
+        font-size: 0.8em;
+        border-left: 1px solid #323232;
+        border-right: 1px solid #323232;
+    }
+
+    .lesson-button-panel {
+        padding: 10px;
+        display: flex;
+        gap: 55px;
+        border-left: 1px solid #323232;
+        border-right: 1px solid #323232;
+        border-bottom: 1px solid #323232;
+    }
+}

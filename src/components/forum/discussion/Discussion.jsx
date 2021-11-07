@@ -49,6 +49,9 @@ export default function Discussion() {
                                     <Comment/>
                                     <Comment/>
                                 </Comment>
+                                <Comment/>
+                                <Comment/>
+                                <Comment/>
                             </Comment>
                         </li>
                     </ul>

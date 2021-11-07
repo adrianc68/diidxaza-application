@@ -18,6 +18,10 @@ import Forum from '../pages/Forum/Forum';
 import Sidebar from '../components/sidebar/Sidebar'
 import UserProfile from '../pages/UserProfile/UserProfile';
 import AddDiscussion from '../components/forum/adddiscussion/AddDiscussion';
+import Learning from '../pages/Learning/Learning';
+import LessonListItem from '../components/learning/lessonlistitem/LessonListItem';
+import Lesson from '../components/learning/lesson/Lesson';
+import LessonResults from '../components/learning/lessonresults/LessonResults';
 
 
 export default function AppRouter() {
@@ -37,6 +41,11 @@ export default function AppRouter() {
                 <Route exact path="/userprofile" component={UserProfile} />
 
                 <Route exact path="/adddiscusion" component={AddDiscussion} />
+                <Route exact path="/learning" component={Learning} />
+                <Route exact path="/lessonListItem" component={LessonListItem} />
+                <Route exact path="/lesson" component={Lesson} />
+                <Route exact path="/lessonresults" component={LessonResults} />
+
 
                 <Route exact path="/settings" component={Settings} />
                 <Route exact path="/checkprogress" component={CheckProgress}/> 
