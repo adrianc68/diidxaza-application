@@ -1,0 +1,70 @@
+@import "../../../components/variables.module.scss";
+
+.reportsmenu-main-container {
+    .reportsmenu-content {
+        .reportsmenu-search-criteria {
+            border-radius: 3px 3px 0px 0px;
+            border: 1px solid rgb(133, 133, 133);
+
+            h1 {
+                color: #fff;
+                padding: 15px;
+                border-radius: 3px 3px 0px 0px;
+                background-color: $title-background-black;
+                text-align: center;
+            }
+
+            .form-search-input {
+                display: flex;
+                align-items: center;
+                padding: 15px;
+                gap: 15px;
+                .form-search-container-input {
+                    display: flex;
+                    align-items: center;
+                    flex: 1;
+                }
+
+                div:nth-child(2) {
+                    height: 37px;
+                }
+            }
+            .form-search-buttons {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 25px;
+                padding: 15px;
+            }
+        }
+
+        .reportsmenu-reports-list-container {
+            border-left: 1px solid rgb(133, 133, 133);
+            border-right: 1px solid rgb(133, 133, 133);
+            border-bottom: 1px solid rgb(133, 133, 133);
+            height:50vh;
+            overflow-y:scroll;
+            .reportsmenu-discussion-list {
+                display: flex;
+                flex-direction: column;
+                ul {
+                    list-style: none;
+                    box-shadow: rgba(0, 0, 0, 0.178) 0px 4px 4px 4px inset;
+                    li {
+                        padding: 20px;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 15px;
+                    }
+                }
+            }
+        }
+
+        .reportsmenu-button-panel {
+            display:flex;
+            justify-content: flex-end;
+            padding-top:15px;
+            padding-bottom:15px;
+        }
+    }
+}

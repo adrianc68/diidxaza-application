@@ -22,7 +22,13 @@ import Learning from '../pages/Learning/Learning';
 import LessonListItem from '../components/learning/lessonlistitem/LessonListItem';
 import Lesson from '../components/learning/lesson/Lesson';
 import LessonResults from '../components/learning/lessonresults/LessonResults';
-
+import AnswerSection from '../pages/Learning/AnswerSection/AnswerSection';
+import History from '../pages/History/History'
+import UnderConstruction from '../pages/UnderConstruction/UnderConstruction'
+import AdminMenu from '../components/admin/menu/AdminMenu';
+import EditProfile from '../components/ownuser/EditProfile/EditProfile';
+import ReportsMenu from '../components/admin/reportsmenu/ReportsMenu';
+import Report from '../components/admin/reportsmenu/report/Report';
 
 export default function AppRouter() {
 
@@ -35,9 +41,6 @@ export default function AppRouter() {
                 <Route exact path="/login" component={Login} />
 
 
-                <Route exact path="/animation" component={BackgroundStars}/> 
-                <Route exact path="/animation2" component={LoadingScreen}/> 
-            
                 <Route exact path="/userprofile" component={UserProfile} />
 
                 <Route exact path="/adddiscusion" component={AddDiscussion} />
@@ -45,16 +48,33 @@ export default function AppRouter() {
                 <Route exact path="/lessonListItem" component={LessonListItem} />
                 <Route exact path="/lesson" component={Lesson} />
                 <Route exact path="/lessonresults" component={LessonResults} />
+                <Route exact path="/answersection" component={AnswerSection} />
+
+                <Route exact path="/history" component={History} />
+                <Route exact path="/underconstruction" component={UnderConstruction} />
 
 
                 <Route exact path="/settings" component={Settings} />
-                <Route exact path="/checkprogress" component={CheckProgress}/> 
-                <Route exact path="/deleteaccount" component={DeleteAccount}/> 
-                <Route exact path="/userReports" component={UserReports}/> 
-                <Route exact path="/Modal" component={Modal}/> 
-                <Route exact path="/Blockuser" component={BlockUser}/> 
-                <Route exact path="/unblockuser" component={UnblockUser}/> 
-                <Route exact path="/forum" component={Forum}/> 
+                <Route exact path="/checkprogress" component={CheckProgress} />
+                <Route exact path="/deleteaccount" component={DeleteAccount} />
+                <Route exact path="/userReports" component={UserReports} />
+                <Route exact path="/Modal" component={Modal} />
+                <Route exact path="/Blockuser" component={BlockUser} />
+                <Route exact path="/unblockuser" component={UnblockUser} />
+                <Route exact path="/forum" component={Forum} />
+
+
+                <Route exact path="/adminmenu" component={AdminMenu} />
+                <Route exact path="/editprofile" component={EditProfile} />
+                <Route exact path="/adminmenureports" component={ReportsMenu} />
+
+
+                <Route exact path="/report" component={Report} />
+
+                <Route exact path="/animation" component={BackgroundStars} />
+                <Route exact path="/animation2" component={LoadingScreen} />
+
+
                 <Route component={PageNotFound} />
             </Switch>
         </Router>

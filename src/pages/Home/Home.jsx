@@ -5,6 +5,7 @@ import Sidebar from '../../components/sidebar/Sidebar'
 import Topbar from '../../components/topbar/Topbar'
 import './home.scss'
 import Button from '../../components/Button/Button'
+import { withTranslation } from "react-i18next";
 
 import DeleteAccount from '../../components/ownuser/DeleteAccount/DeleteAccount';
 import UserReports from '../../components/admin/userreports/UserReports';
@@ -15,18 +16,22 @@ import Forum from '../Forum/Forum'
 import CheckProgress from '../../components/ownuser/CheckProgress/CheckProgress';
 import UserProfile from '../UserProfile/UserProfile'
 import Login from '../InitialInteraction/Login/Login'
-
+import Footer from '../../components/footer/Footer'
 import { BrowserRouter as Router, Switch, Route, NavLink } from 'react-router-dom';
+import History from '../History/History'
+import HomeDirectory from '../../components/home/HomeDirectory';
+import UnderConstruction from '../UnderConstruction/UnderConstruction'
+import ReportsMenu from '../../components/admin/reportsmenu/ReportsMenu'
+import AdminMenu from '../../components/admin/menu/AdminMenu'
 
-
-export default class Home extends Component {
+class Home extends Component {
     state = {
         isVisible: false,
     }
     // contentContainer = document.querySelector('userprofile-home-container');
 
-
     render() {
+        const { t } = this.props;
         return (
             <div className="home-main-container">
                 <div className="topbar-home-container">
@@ -50,10 +55,18 @@ export default class Home extends Component {
                     <Sidebar />
                 </div>
                 <div className="userprofile-home-container">
+                    {/* <History/> */}
+                    {/* <HomeDirectory/> */}
+                    {/* <UnderConstruction/> */}
+
+                    {/* <ReportsMenu/> */}
 
 
+                            <AdminMenu/>
+
+                    {/* <Footer></Footer> */}
                     {/* <Forum></Forum> */}
-                    
+
                     {/* { ReactDOM.createPortal(<CheckProgress/>, this.contentContainer )} */}
                     {this.state.isVisible ? <UserProfile /> : null}
                     {/* <UserProfile></UserProfile> */}
@@ -63,3 +76,5 @@ export default class Home extends Component {
         )
     }
 }
+
+export default withTranslation()(Home)

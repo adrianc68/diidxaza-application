@@ -3,7 +3,6 @@ import './sidebar.scss'
 import { Bookmark, HelpOutline, LibraryMusic, MenuBook, Forum, Email, LiveTv, Home, EcoOutlined, Landscape, Menu } from "@material-ui/icons"
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
-import "../../translations/i18n";
 import Button from '../../components/Button/Button'
 import { MdLogout } from 'react-icons/md'
 
@@ -34,20 +33,12 @@ export default function Sidebar() {
                         <span>{t("SidebarHome")}</span>
                     </NavLink>
                 </li>
-
-
-
-
                 <li>
-                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/checkprogress">
+                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/underconstruction">
                         <Email className="sidebarIcon" />
                         <span>{t("SidebarCorreo")}</span>
                     </NavLink>
                 </li>
-
-
-
-
                 <div className="sidebar-button-section">
                     <div>
                         <Button styleName="primary-button" text={t("SidebarSignOutButton")}>
@@ -56,10 +47,7 @@ export default function Sidebar() {
                     </div>
 
                 </div>
-
                 <hr className="sidebarHr"></hr>
-
-
                 <li>
                     <NavLink className="sidebar-link" activeClassName="activeItem" to="/learning">
                         <Bookmark className="sidebarIcon" />
@@ -67,7 +55,7 @@ export default function Sidebar() {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/news">
+                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/underconstruction">
                         <LiveTv className="sidebarIcon" />
                         <span>{t("SidebarNews")}</span>
                     </NavLink>
@@ -79,13 +67,13 @@ export default function Sidebar() {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/dictionary">
+                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/underconstruction">
                         <MenuBook className="sidebarIcon" />
                         <span>{t("SidebarDictionary")}</span>
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/songs">
+                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/underconstruction">
                         <LibraryMusic className="sidebarIcon" />
                         <span>{t("SidebarSongs")}</span>
                     </NavLink>
@@ -99,7 +87,7 @@ export default function Sidebar() {
 
                 <div className="sidebar-help-details">
                     <li>
-                        <NavLink className="sidebar-link" activeClassName="activeItem" to="/help">
+                        <NavLink className="sidebar-link" activeClassName="activeItem" to="/underconstruction">
                             <HelpOutline className="sidebarIcon" />
                             <span className="sidebarListItemText">{t("SidebarHelp")}</span>
                         </NavLink>

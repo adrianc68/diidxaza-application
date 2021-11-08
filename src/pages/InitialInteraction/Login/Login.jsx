@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import './login.scss'
-import PropTypes from 'prop-types';
 import { useTranslation } from "react-i18next";
 import { Link } from 'react-router-dom'
 import DiidxazaLogo from '../../../components/logo/DiidxazaLogo'
 import Button from '../../../components/Button/Button'
-import BackgroundStars from '../../../components/animation/backgroundstars/BackgroundStars'
 import { useLoginForm } from "../../../hooks/useAccountForm";
-import {BiError} from 'react-icons/bi';
+import { BiError } from 'react-icons/bi';
 
 const initialForm = {
   username: "",
@@ -16,12 +14,12 @@ const initialForm = {
 
 const validationsForm = (form) => {
   let errors = {};
-  let regexUsername =  /^[A-Za-z0-9]{3,20}$/;
-  let regexPassword =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@!%?#])[A-Za-z\d@!%?#]{8,16}$/;
-  if(!regexUsername.test(form.username)){
+  let regexUsername = /^[A-Za-z0-9]{3,20}$/;
+  let regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@!%?#])[A-Za-z\d@!%?#]{8,16}$/;
+  if (!regexUsername.test(form.username)) {
     errors.username = "Error";
   }
-  if(!regexPassword.test(form.password)){
+  if (!regexPassword.test(form.password)) {
     errors.password = "Error";
   }
   return errors;
@@ -44,7 +42,7 @@ export default function Login({ setToken }) {
     <>
       <div className="login-main-container">
 
-        
+
         <div className="login-container">
           <div className="login-title-container">
             <DiidxazaLogo styleClass="logo-black-link" />
@@ -55,15 +53,15 @@ export default function Login({ setToken }) {
             <form onSubmit={handleSubmit}>
               <label>
                 <p>{t("LoginUsernameInput")}</p>
-                <input className="input" name="username" type="text" onBlur={handleBlur} onChange={handleChange} value={form.username} required/>
+                <input className="input" name="username" type="text" onBlur={handleBlur} onChange={handleChange} value={form.username} required />
                 {errors.username && <p className="errorInput">{t("ErrorUsername")}</p>}
               </label>
               <label>
                 <p>{t("LoginPasswordInput")}</p>
-                <input className="input" name="password" type="password" onBlur={handleBlur}onChange={handleChange} value={form.password} required/>
+                <input className="input" name="password" type="password" onBlur={handleBlur} onChange={handleChange} value={form.password} required />
                 {errors.password && <p className="errorInput">{t("ErrorPassword")}</p>}
               </label>
-              {loading && <p className={className}><BiError/>  {response}</p>}
+              {loading && <p className={className}><BiError />  {response}</p>}
               <div className="login-form-button-container">
                 <div className="login-form-button">
                   <Button type="submit" styleName="secondary-button" text={t("LoginLoginButton")}></Button>
@@ -100,7 +98,7 @@ export default function Login({ setToken }) {
 
         </div>
 
-    
+
       </div>
     </>
 

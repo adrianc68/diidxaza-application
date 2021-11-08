@@ -1,13 +1,13 @@
 @import "../../../components/variables.module.scss";
 
-.lesson-main-container {
+.lessonresults-main-container {
     width: 350px;
     height: auto;
     background-color: #fff;
     border-radius: 3px;
-    .lesson-indicator-container {
+    .lessonresults-indicator-container {
         overflow:hidden;
-        .lesson-indicator {
+        .lessonresults-indicator {
             width: 0;
             height: 0;
             border-style: solid;
@@ -21,7 +21,7 @@
 
     }
 
-    .lesson-information-content {
+    .lessonresults-information-content {
         display: flex;
         justify-content:center;
         gap: 25px;
@@ -38,14 +38,14 @@
         }
     }
 
-    .lesson-description-content {
+    .lessonresults-description-content {
         padding: 15px;
         font-size: 0.8em;
         border-left: 1px solid #323232;
         border-right: 1px solid #323232;
     }
 
-    .lesson-button-panel {
+    .lessonresults-button-panel {
         padding: 10px;
         display: flex;
         gap: 55px;

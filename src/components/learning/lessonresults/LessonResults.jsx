@@ -7,11 +7,11 @@ export default function LessonResults() {
     const { t } = useTranslation();
 
     return (
-        <div className="lesson-main-container">
-            <div className="lesson-indicator-container">
-                <div className="lesson-indicator"></div>
+        <div className="lessonresults-main-container">
+            <div className="lessonresults-indicator-container">
+                <div className="lessonresults-indicator"></div>
             </div>
-            <div className="lesson-information-content">
+            <div className="lessonresults-information-content">
                 <div>
                     <span>{t("LearningLessonStatus")}</span>
                     <span>Completado</span>
@@ -21,12 +21,12 @@ export default function LessonResults() {
                     <span>3000</span>
                 </div>
             </div>
-            <div className="lesson-description-content">
+            <div className="lessonresults-description-content">
                 <span>
                     {t("LearningLessonResultsDescription")}
                 </span>
             </div>
-            <div className="lesson-button-panel">
+            <div className="lessonresults-button-panel">
                 <Button styleName="primary-button" text={t("ButtonClose")} />
                 <Button styleName="primary-button" text={t("ButtonShowResults")} />
 
