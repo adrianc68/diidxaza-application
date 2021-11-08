@@ -226,7 +226,8 @@ export const TRANSLATIONS_ES = {
 
     AdminMenuReports: "Reportes",
     AdminMenuAccounts: "Cuentas",
-    
+
+    AdminAccountMenu: "Menú de usuarios",
 
     UserProfileAge: "años",
     UserProfileButtonPanelDeleteAccount: "Eliminar cuenta",

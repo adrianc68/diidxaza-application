@@ -23,6 +23,7 @@ import HomeDirectory from '../../components/home/HomeDirectory';
 import UnderConstruction from '../UnderConstruction/UnderConstruction'
 import ReportsMenu from '../../components/admin/reportsmenu/ReportsMenu'
 import AdminMenu from '../../components/admin/menu/AdminMenu'
+import AccountsMenu from '../../components/admin/accountsmenu/AccountsMenu'
 
 class Home extends Component {
     state = {
@@ -34,6 +35,8 @@ class Home extends Component {
         const { t } = this.props;
         return (
             <div className="home-main-container">
+                <AdminMenu />
+
                 <div className="topbar-home-container">
                     <Topbar>
                         <div className="home-userprofile">
@@ -61,8 +64,7 @@ class Home extends Component {
 
                     {/* <ReportsMenu/> */}
 
-
-                            <AdminMenu/>
+                    {/* <AccountsMenu/> */}
 
                     {/* <Footer></Footer> */}
                     {/* <Forum></Forum> */}

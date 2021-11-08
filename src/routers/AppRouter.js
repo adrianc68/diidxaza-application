@@ -29,6 +29,7 @@ import AdminMenu from '../components/admin/menu/AdminMenu';
 import EditProfile from '../components/ownuser/EditProfile/EditProfile';
 import ReportsMenu from '../components/admin/reportsmenu/ReportsMenu';
 import Report from '../components/admin/reportsmenu/report/Report';
+import AccountsMenu from '../components/admin/accountsmenu/AccountsMenu';
 
 export default function AppRouter() {
 
@@ -67,6 +68,7 @@ export default function AppRouter() {
                 <Route exact path="/adminmenu" component={AdminMenu} />
                 <Route exact path="/editprofile" component={EditProfile} />
                 <Route exact path="/adminmenureports" component={ReportsMenu} />
+                <Route exact path="/accountsmenu" component={AccountsMenu} />
 
 
                 <Route exact path="/report" component={Report} />
