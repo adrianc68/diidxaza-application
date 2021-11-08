@@ -16,7 +16,7 @@ export default function AdminMenu() {
 
 
     return (
-        <nav className="adminmenubar active">
+        <nav className="adminmenubar">
             <div className="adminmenubar-toggle-button-container">
                 <button className="adminmenubar-toggle-button" onClick={toggleAdminMenubar}>
                     <FaGripLinesVertical className="adminmenubarIconToggle" />
@@ -24,13 +24,13 @@ export default function AdminMenu() {
             </div>
             <ul>
                 <li>
-                    <NavLink className="adminmenubar-link" activeClassName="activeItem" to="/home">
+                    <NavLink className="adminmenubar-link" to="/home">
                         <MdOutlineBugReport className="adminmenubarIcon" />
                         <span>{t("AdminMenuReports")}</span>
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink className="adminmenubar-link" activeClassName="activeItem" to="/underconstruction">
+                    <NavLink className="adminmenubar-link" to="/underconstruction">
                         <MdSupervisorAccount className="adminmenubarIcon" />
                         <span>{t("AdminMenuAccounts")}</span>
                     </NavLink>

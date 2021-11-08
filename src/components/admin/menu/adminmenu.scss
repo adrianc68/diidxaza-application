@@ -5,10 +5,11 @@
     width: $sidebar-width;
     display: flex;
     transition: all 0.3s ease-in;
-    position:absolute;
-    right:0;
-    top:30%;
-    border-radius:3px 0px 0px 3px;
+    position: absolute;
+    right: 0;
+    top: 30%;
+    border-radius: 3px 0px 0px 3px;
+    overflow-x: hidden;
     .adminmenubar-toggle-button-container {
         display: flex;
         align-items: left;
@@ -24,25 +25,24 @@
                 color: #fff;
             }
         }
+
+        .adminmenubar-toggle-button:hover {
+            background-color: #24223d;
+        }
     }
     ul {
         height: inherit;
         width: 100%;
-        .adminmenubar-toggle-button:hover {
-            background-color: #24223d;
-        }
-
         li {
             list-style: none;
             width: 100%;
-            padding-left: 10%;
+            padding-left: 10px;
             .adminmenubarIcon {
                 text-align: center;
                 color: #fff;
                 text-decoration: none;
                 font-size: 20px;
             }
-
             .adminmenubar-link {
                 display: flex;
                 align-items: center;
@@ -64,7 +64,6 @@
         }
     }
 }
-
 
 .adminmenubar.active {
     width: 30px;

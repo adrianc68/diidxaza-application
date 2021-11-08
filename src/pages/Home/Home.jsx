@@ -35,8 +35,6 @@ class Home extends Component {
         const { t } = this.props;
         return (
             <div className="home-main-container">
-                <AdminMenu />
-
                 <div className="topbar-home-container">
                     <Topbar>
                         <div className="home-userprofile">
@@ -61,6 +59,7 @@ class Home extends Component {
                     {/* <History/> */}
                     {/* <HomeDirectory/> */}
                     {/* <UnderConstruction/> */}
+                    <AdminMenu />
 
                     {/* <ReportsMenu/> */}
 
