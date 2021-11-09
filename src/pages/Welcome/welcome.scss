@@ -3,6 +3,7 @@
 .welcome-main-container {
     display: flex;
     flex-direction: column;
+    overflow-x:hidden;
     .welcome-main-information-container {
         height: calc(95vh - #{$topbar-height} - 40px);
         display: flex;

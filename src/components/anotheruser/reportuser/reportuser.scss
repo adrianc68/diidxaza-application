@@ -1,0 +1,35 @@
+@import "../../../components/variables.module.scss";
+
+.reportuser-main-container {
+    .reportuser-content-container {
+
+        .reportuser-text-description {
+            padding:35px;
+            display:flex;
+            flex-direction: column;
+            gap:15px;
+            div {
+                display:flex;
+                flex-direction: column;
+                gap:5px;
+            }
+
+            textarea{
+                box-sizing: border-box;
+                resize:vertical;
+                width:100%;
+                height:150px;
+            }
+
+        }
+
+        .reportuser-button-panel {
+            display: flex;
+            padding: 15px;
+            gap: 35px;
+            div {
+                flex: 1;
+            }
+        }
+    }
+}

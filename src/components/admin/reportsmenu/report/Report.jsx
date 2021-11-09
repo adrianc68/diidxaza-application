@@ -25,8 +25,18 @@ export default function Report() {
                     </div>
                 </div>
                 <div className="report-descripction-container">
-                    <span>{t("UserReportReason")}</span>
-                    <span>La razón del reporte es que este usuario ha estado haciendo spam</span>
+                    <div>
+                        <span className="semibold">{t("UserReportReason")}</span>
+                        <span>SPAM</span>
+                    </div>
+
+                    <div>
+                        <span className="semibold">{t("UserReportContext")}</span>
+                        <span>La razón del reporte es que este usuario ha estado haciendo spam</span>
+
+                    </div>
+
+
                 </div>
             </div>
         </div>

@@ -196,6 +196,7 @@ export const TRANSLATIONS_ES = {
     ButtonReportSeeUsersDetails: "Ver detalles de usuario",
     ButtonBlockUser: "Bloquear usuario",
     ButtonEditProfile: "Editar perfil",
+    ButtonReport: "Reportar",
 
     TypeUserAdmin: "Administrador",
     TypeUserFree: "Gratuito",
@@ -261,8 +262,13 @@ export const TRANSLATIONS_ES = {
     UserReportNumberReport: "Reporte num: ",
     UserReportReportedBy: "Reportado por: ",
     UserReportUserReported: "Usuario reportado: ",
+    UserReportContext: "Situación: ",
 
 
+    ReportUserTitle: "Reportar usuario",
+    ReportUserDescription: "Para reportar a este usuario debes ingresar la razón del reporte y debes describir la situación",
+    ReportUserInputContext: "Situación: ",
+    ReportUserInputReason: "Razón: ",
 
     CheckProgressTotalDiscussionsCommented: "Total de discusiones comentadas: ",
     CheckProgressTotalDiscussionsCommentedDescription: "Muestra el total de comentarios que has realizado desde tu registro en Diidxaza App.",
