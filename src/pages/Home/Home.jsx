@@ -57,9 +57,9 @@ class Home extends Component {
                 </div>
                 <div className="userprofile-home-container">
                     {/* <History/> */}
-                    {/* <HomeDirectory/> */}
+                    <HomeDirectory/>
                     {/* <UnderConstruction/> */}
-                    <AdminMenu />
+                    {/* <AdminMenu /> */}
 
                     {/* <ReportsMenu/> */}
 

@@ -195,6 +195,7 @@ export const TRANSLATIONS_ES = {
     ButtonTerminar: "Terminar",
     ButtonReportSeeUsersDetails: "Ver detalles de usuario",
     ButtonBlockUser: "Bloquear usuario",
+    ButtonEditProfile: "Editar perfil",
 
     TypeUserAdmin: "Administrador",
     TypeUserFree: "Gratuito",

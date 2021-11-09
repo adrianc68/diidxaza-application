@@ -55,7 +55,7 @@
         }
 
         .home-img-banner {
-            background-image: url("../../assets/images/ide-43.svg");
+            background-image: url("../../assets/images/ide-42.svg");
             background-repeat: repeat;
             background-size: cover;
             background-position-x: center;
@@ -71,6 +71,8 @@
         border-radius: 3px;
         background-color: #fff;
         color: #000;
+        border-left: 5px solid rgb(19, 131, 53);
+        border-right: 5px solid rgb(19, 131, 53);
         .home-features-content {
             display: flex;
             gap: 25px;
