@@ -311,4 +311,7 @@ export const TRANSLATIONS_ES = {
     MessageCreateAccount: "La cuenta se creo exitosamente",
     SignUpVerificationSendCodeButton: "Reenviar código",
     NoAvalaible: "No disponible",
+
+
+    AlternativeMessageImageDecorative: "Imagen decorativa",
 };

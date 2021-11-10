@@ -2,9 +2,9 @@ import React from 'react'
 import './answersection.scss'
 import Button from '../../../components/Button/Button'
 import { useTranslation } from "react-i18next";
-import MultipleAnswer from '../../../components/learning/options/multiple/MultipleAnswer';
-import UniqueAnswer from '../../../components/learning/options/unique/UniqueAnswer';
-import OpenAnswer from '../../../components/learning/options/open/OpenAnswer';
+// import MultipleAnswer from '../../../components/learning/options/multiple/MultipleAnswer';
+// import UniqueAnswer from '../../../components/learning/options/unique/UniqueAnswer';
+// import OpenAnswer from '../../../components/learning/options/open/OpenAnswer';
 
 
 export default function AnswerSection() {

@@ -1,4 +1,3 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from '../pages/Home/Home'
 import Login from '../pages/InitialInteraction/Login/Login'
 import Welcome from '../pages/Welcome/Welcome'
@@ -32,38 +31,52 @@ import Report from '../components/admin/reportsmenu/report/Report';
 import AccountsMenu from '../components/admin/accountsmenu/AccountsMenu';
 import ReportUser from '../components/anotheruser/reportuser/ReportUser';
 
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { createBrowserHistory} from "history"
+export const history = createBrowserHistory();
+
 export default function AppRouter() {
 
     return (
-        <Router>
+        <Router history={history}>
             <Switch>
+
+                {/* IF USER IS LOGGED THEN RENDER WELCOME COMPONENT ELSE
+                    RENDER HOME
+                */}
+                {/* <Redirect exact={true} from={"/"} to={"/dashboard"}/> */}
+
                 <Route exact path="/" component={Welcome} />
+
                 <Route exact path="/home" component={Home} />
+                {/* <Route exact path="/home" component={History} /> */}
+
+
+
                 <Route exact path="/signUp" component={SignUp} />
                 <Route exact path="/login" component={Login} />
 
 
-                <Route exact path="/userprofile" component={UserProfile} />
 
+
+
+                <Route exact path="/checkprogress" component={CheckProgress} />
                 <Route exact path="/adddiscusion" component={AddDiscussion} />
-                <Route exact path="/learning" component={Learning} />
                 <Route exact path="/lessonListItem" component={LessonListItem} />
                 <Route exact path="/lesson" component={Lesson} />
                 <Route exact path="/lessonresults" component={LessonResults} />
                 <Route exact path="/answersection" component={AnswerSection} />
 
-                <Route exact path="/history" component={History} />
-                <Route exact path="/underconstruction" component={UnderConstruction} />
+                <Route exact path="/userprofile" component={UserProfile} />
+
 
 
                 <Route exact path="/settings" component={Settings} />
-                <Route exact path="/checkprogress" component={CheckProgress} />
                 <Route exact path="/deleteaccount" component={DeleteAccount} />
                 <Route exact path="/userReports" component={UserReports} />
                 <Route exact path="/Modal" component={Modal} />
                 <Route exact path="/Blockuser" component={BlockUser} />
                 <Route exact path="/unblockuser" component={UnblockUser} />
-                <Route exact path="/forum" component={Forum} />
 
 
                 <Route exact path="/adminmenu" component={AdminMenu} />

@@ -35,21 +35,21 @@ export default function HomeDirectory() {
                     <div className="home-features-forum">
                         <h2>{t("SidebarForum")}</h2>
                         <div>
-                            <img src={ImageAlt}></img>
+                            <img src={ImageAlt} alt={"AlternativeMessageImageDecorative"}></img>
                             <span>{t("HomeWelcomeFeaturesForum")}</span>
                         </div>
                     </div>
                     <div className="home-features-songs">
                         <h2>{t("SidebarSongs")}</h2>
                         <div>
-                            <img src={ImageAlt2}></img>
+                            <img src={ImageAlt2} alt={"AlternativeMessageImageDecorative"}></img>
                             <span>{t("HomeWelcomeFeaturesSongs")}</span>
                         </div>
                     </div>
                     <div className="home-features-dictionary">
                         <h2>{t("SidebarDictionary")}</h2>
                         <div>
-                            <img src={ImageAlt3}></img>
+                            <img src={ImageAlt3} alt={"AlternativeMessageImageDecorative"}></img>
                             <span>{t("HomWelcomeFeaturesDictionary")}</span>
                         </div>
                     </div>

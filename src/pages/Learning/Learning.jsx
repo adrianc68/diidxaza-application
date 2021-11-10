@@ -1,8 +1,6 @@
 import React from 'react'
 import './learning.scss'
-import Button from '../../components/Button/Button'
 import { useTranslation } from "react-i18next";
-import ImageInformationAlt from '../../assets/images/ide-37.svg'
 import LessonListItem from '../../components/learning/lessonlistitem/LessonListItem';
 
 export default function Learning() {

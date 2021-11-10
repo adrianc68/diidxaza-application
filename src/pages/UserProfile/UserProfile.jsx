@@ -1,12 +1,10 @@
 import { React, useEffect } from 'react'
 import './userprofile.scss'
 import { useTranslation } from "react-i18next";
-import { Link } from 'react-router-dom'
 import UserImageDefault from '../../assets/images/ide-29.svg'
 import UserprofileButtonPanelAU from '../../components/anotheruser/userprofileButtonPanel/UserprofileButtonPanelAU';
 import UserprofileButtonPanelADM from '../../components/admin/userprofileButtonPanel/UserprofileButtonPanelADM';
 import UserprofileButtonPanelOWU from '../../components/ownuser/userprofileButtonPanel/UserprofileButtonPanelOWU';
-import Modal from '../../components/modal/Modal'
 import UserReports from '../../components/admin/userreports/UserReports';
 import DeleteAccount from '../../components/ownuser/DeleteAccount/DeleteAccount';
 import BlockUser from '../../components/admin/blockuser/BlockUser';

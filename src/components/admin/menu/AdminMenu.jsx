@@ -3,7 +3,6 @@ import './adminmenu.scss'
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import { MdOutlineBugReport, MdSupervisorAccount } from 'react-icons/md'
-import { FiMenu } from 'react-icons/fi'
 import { FaGripLinesVertical } from 'react-icons/fa'
 export default function AdminMenu() {
     const { t } = useTranslation();

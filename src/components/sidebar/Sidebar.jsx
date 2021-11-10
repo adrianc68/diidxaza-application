@@ -1,10 +1,9 @@
 import React from 'react'
 import './sidebar.scss'
-import { Bookmark, HelpOutline, LibraryMusic, MenuBook, Forum, Email, LiveTv, Home, EcoOutlined, Landscape, Menu } from "@material-ui/icons"
-import { NavLink } from 'react-router-dom';
-import { useTranslation } from "react-i18next";
+import { MdLogout, MdEmail, MdHome, MdMenu, MdBookmark, MdLiveTv, MdForum, MdMenuBook, MdLibraryMusic, MdLandscape, MdOutlineHelpOutline} from 'react-icons/md'
+import { NavLink } from 'react-router-dom'
+import { useTranslation } from "react-i18next"
 import Button from '../../components/Button/Button'
-import { MdLogout } from 'react-icons/md'
 
 
 export default function Sidebar() {
@@ -22,20 +21,20 @@ export default function Sidebar() {
         <nav className="sidebar">
             <div className="sidebar-toggle-button-container">
                 <button className="sidebar-toggle-button" onClick={toggleSidebar}>
-                    <Menu className="sidebarIconToggle" />
+                    <MdMenu className="sidebarIconToggle" />
                 </button>
             </div>
 
             <ul>
                 <li>
                     <NavLink className="sidebar-link" activeClassName="activeItem" to="/home">
-                        <Home className="sidebarIcon" />
+                        <MdHome className="sidebarIcon" />
                         <span>{t("SidebarHome")}</span>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink className="sidebar-link" activeClassName="activeItem" to="/underconstruction">
-                        <Email className="sidebarIcon" />
+                        <MdEmail className="sidebarIcon" />
                         <span>{t("SidebarCorreo")}</span>
                     </NavLink>
                 </li>
@@ -50,37 +49,37 @@ export default function Sidebar() {
                 <hr className="sidebarHr"></hr>
                 <li>
                     <NavLink className="sidebar-link" activeClassName="activeItem" to="/learning">
-                        <Bookmark className="sidebarIcon" />
+                        <MdBookmark className="sidebarIcon" />
                         <span>{t("SidebarLearning")}</span>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink className="sidebar-link" activeClassName="activeItem" to="/underconstruction">
-                        <LiveTv className="sidebarIcon" />
+                        <MdLiveTv className="sidebarIcon" />
                         <span>{t("SidebarNews")}</span>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink className="sidebar-link" activeClassName="activeItem" to="/forum">
-                        <Forum className="sidebarIcon" />
+                        <MdForum className="sidebarIcon" />
                         <span>{t("SidebarForum")}</span>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink className="sidebar-link" activeClassName="activeItem" to="/underconstruction">
-                        <MenuBook className="sidebarIcon" />
+                        <MdMenuBook className="sidebarIcon" />
                         <span>{t("SidebarDictionary")}</span>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink className="sidebar-link" activeClassName="activeItem" to="/underconstruction">
-                        <LibraryMusic className="sidebarIcon" />
+                        <MdLibraryMusic className="sidebarIcon" />
                         <span>{t("SidebarSongs")}</span>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink className="sidebar-link" activeClassName="activeItem" to="/history">
-                        <Landscape className="sidebarIcon" />
+                        <MdLandscape className="sidebarIcon" />
                         <span>{t("SidebarHistory")}</span>
                     </NavLink>
                 </li>
@@ -88,7 +87,7 @@ export default function Sidebar() {
                 <div className="sidebar-help-details">
                     <li>
                         <NavLink className="sidebar-link" activeClassName="activeItem" to="/underconstruction">
-                            <HelpOutline className="sidebarIcon" />
+                            <MdOutlineHelpOutline className="sidebarIcon" />
                             <span className="sidebarListItemText">{t("SidebarHelp")}</span>
                         </NavLink>
                     </li>

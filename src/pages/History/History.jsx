@@ -14,7 +14,7 @@ export default function History() {
                     <h2>{t("HistoryBackgroundTitle")}</h2>
                     <span className="history-span-bleeding">{t("HistoryBackgroundDescription")}</span>
                 </div>
-                <img src={ImageAlt1}></img>
+                <img src={ImageAlt1} alt={t("AlternativeMessageImageDecorative")}></img>
             </div>
 
             <div className="history-ubication-content">
@@ -25,7 +25,7 @@ export default function History() {
             </div>
 
             <div className="history-features-content">
-                <img src={ImageAlt2}></img>
+                <img src={ImageAlt2} alt={t("AlternativeMessageImageDecorative")}></img>
                 <div>
                     <h2>{t("HistoryFeaturesTitle")}</h2>
                     <span className="history-span-bleeding">{t("HistoryFeaturesDescription")}</span>

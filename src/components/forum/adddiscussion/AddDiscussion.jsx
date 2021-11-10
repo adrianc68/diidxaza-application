@@ -19,21 +19,21 @@ export default function AddDiscussion() {
                         <ul>
                             <li>
                                 <div className="adddiscussion-theme">
-                                    <img src={ImageInformationAlt}></img>
+                                    <img src={ImageInformationAlt} alt={"AlternativeMessageImageDecorative"}></img>
                                     <h3>Informativo</h3>
                                     <span>Para dar a conocer nueva información</span>
                                 </div>
                             </li>
                             <li>
                                 <div className="adddiscussion-theme">
-                                    <img src={ImageInformationAlt}></img>
+                                    <img src={ImageInformationAlt} alt={"AlternativeMessageImageDecorative"}></img>
                                     <h3>Duda</h3>
                                     <span>Para dar a conocer tus dudas</span>
                                 </div>
                             </li>
                             <li>
                                 <div className="adddiscussion-theme">
-                                    <img src={ImageInformationAlt}></img>
+                                    <img src={ImageInformationAlt} alt={"AlternativeMessageImageDecorative"}></img>
                                     <h3>Regla</h3>
                                     <span>Para dar a conocer las reglas del foro</span>
                                 </div>

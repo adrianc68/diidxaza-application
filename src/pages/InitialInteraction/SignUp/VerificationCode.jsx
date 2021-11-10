@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import Button from '../../../components/Button/Button'
 import ImageDelivery from '../../../assets/images/ide-34.svg'
 import './signup.scss'
-import { Link } from 'react-router-dom'
 import { useVerificationForm } from "../../../hooks/useAccountForm";
 
 const validationCode = (code) => {
@@ -39,7 +38,7 @@ export default function VerificationCode() {
             </div>
             <div className="signup-container-information">
                 <div className="signup-verification-input-description-container">
-                    <img src={ImageDelivery}></img>
+                    <img src={ImageDelivery} alt={t("AlternativeMessageImageDecorative")}></img>
                     <span>{t("SignUpVerificationDescription")}</span>
                 </div>
                 <div className="signup-verification-code-container">

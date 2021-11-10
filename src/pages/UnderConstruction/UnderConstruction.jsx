@@ -8,7 +8,7 @@ export default function UnderConstruction() {
     return (
         <div className="underconstruction-main-container">
             <div className="underconstruction-content">
-                <img src={ImageAlt}></img>
+                <img src={ImageAlt} alt={t("AlternativeMessageImageDecorative")}></img>
                 <h1>{t("UnderConstruction")}</h1>
             </div>
         </div>
