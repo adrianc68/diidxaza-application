@@ -1,0 +1,21 @@
+.uniqueanswer-form {
+    ul {
+        list-style: none;
+        li {
+            .checkbox-container,
+            .radiobutton-container {
+                display: inline-flex;
+                align-items: center;
+                padding: 15px;
+                gap: 5px;
+                margin-bottom: 15px;
+                text-align: left;
+                label {
+                    display: block;
+                    cursor: pointer;
+                    color: #359156;
+                }
+            }
+        }
+    }
+}

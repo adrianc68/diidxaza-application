@@ -1,0 +1,70 @@
+@import "../../variables.module.scss";
+
+.adminmenubar {
+    background-color: $sidebar-background-color;
+    width: $sidebar-width;
+    display: flex;
+    transition: all 0.3s ease-in;
+    position: absolute;
+    right: 0;
+    top: 30%;
+    border-radius: 3px 0px 0px 3px;
+    overflow-x: hidden;
+    .adminmenubar-toggle-button-container {
+        display: flex;
+        align-items: left;
+        justify-content: left;
+        .adminmenubar-toggle-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            background-color: transparent;
+            .adminmenubarIconToggle {
+                font-size: 30px;
+                color: #fff;
+            }
+        }
+
+        .adminmenubar-toggle-button:hover {
+            background-color: #24223d;
+        }
+    }
+    ul {
+        height: inherit;
+        width: 100%;
+        li {
+            list-style: none;
+            width: 100%;
+            padding-left: 10px;
+            .adminmenubarIcon {
+                text-align: center;
+                color: #fff;
+                text-decoration: none;
+                font-size: 20px;
+            }
+            .adminmenubar-link {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 15px;
+                height: 52px;
+                text-decoration: none;
+                transition: transform 5s ease;
+                span {
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: #fff;
+                }
+            }
+        }
+
+        li:hover {
+            background: #24223d;
+        }
+    }
+}
+
+.adminmenubar.active {
+    width: 30px;
+}

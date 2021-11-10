@@ -1,6 +1,5 @@
 import React from 'react'
 import './discussion.scss'
-import { Link } from 'react-router-dom'
 import ImageInformationAlt from '../../../assets/images/ide-02.svg'
 import Comment from '../comment/Comment';
 import { useTranslation } from 'react-i18next';
@@ -14,7 +13,7 @@ export default function Discussion() {
         <div className="forum-discussion-container">
             <h1>¿Como crear los procedimientos de acuerdo a lo estudiado en la primera sección de lo que acontece?</h1>
             <div className="forum-discussion-user-data-container">
-                <img src={ImageInformationAlt} className="welcome-information-image" alt={t("WelcomeInformationAlt")}></img>
+                <img src={ImageInformationAlt} className="welcome-information-image" alt={"AlternativeMessageImageDecorative"}></img>
                 <div className="forum-discussion-data">
                     <span> Angel Adrian Camal Garcia </span>
                     <span>Creado el 19 de septiembre del 2021</span>
@@ -49,6 +48,9 @@ export default function Discussion() {
                                     <Comment/>
                                     <Comment/>
                                 </Comment>
+                                <Comment/>
+                                <Comment/>
+                                <Comment/>
                             </Comment>
                         </li>
                     </ul>

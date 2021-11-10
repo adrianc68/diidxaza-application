@@ -28,6 +28,14 @@
     }
 }
 
+.text-button.blue-text {
+    span{
+        font-weight: 600;
+        color:rgb(24, 52, 175);
+        text-decoration: underline;
+    }
+}
+
 .text-button.active {
     border-bottom: 3px solid rgb(4, 134, 255);
     pointer-events: none;

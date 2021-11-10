@@ -30,17 +30,17 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link className="link" to="/not-found">
+                                <Link className="link" to="/terms">
                                     <span>{t("FooterTerms")}</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link className="link" to="/not-found">
+                                <Link className="link" to="/privacy">
                                     <span>{t("FooterPrivacy")}</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link className="link" to="/not-found">
+                                <Link className="link" to="/sitemap">
                                     <span>{t("FooterSiteMap")}</span>
                                 </Link>
                             </li>
@@ -50,23 +50,23 @@ export default function Footer() {
                         <div className="footer-bottom-social-networks">
                             <ul>
                                 <li>
-                                    <Link className="link" to="/not-found">
+                                    <Link className="link" to="/facebook">
                                     <BsFacebook/>
 
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link className="link" to="/not-found">
+                                    <Link className="link" to="/twitter">
                                         <BsTwitter/>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link className="link" to="/not-found">
+                                    <Link className="link" to="/youtube">
                                         <BsYoutube/>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link className="link" to="/not-found">
+                                    <Link className="link" to="/github.com">
                                         <BsGithub />
                                     </Link>
                                 </li>

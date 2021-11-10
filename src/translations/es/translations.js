@@ -31,6 +31,51 @@ export const TRANSLATIONS_ES = {
     WelcomeProblemsInformationTitle: "Evitar la extinción de la lengua zapoteca",
     WelcomeProblemasInformationDescription: "La extinción de las lenguas representa una situación crítica por la rápidez con la que las lenguas originarias están siendo desplazadas por las lenguas dominantes del país. Las actitudes pueden influenciar en que un cambio lingüístico se cumpla más rápidamente o que una lengua pueda llevarse al desplazamiento y el olvido de la misma. una actitud favorable hacia una lengua puede mantenerla viva.",
 
+
+    HomeWelcomeTitle: "¡Bienvenido de nuevo, $!",
+    HomeWelcomeDescription: "Es un placer tenerte en nuestra plataforma. Cada día que ingresas ayudas a la plataforma a crecer y motivas a nuestros desarrolladores a traer nuevas formas de aprendizaje para  tí. ¡Estamos muy agradecidos contigo, $!",
+    HomeWelcomeHistoryTitle: "Conoce la historia zapoteca",
+    HomeWelcomeHistoryDescription: "Dirigete a la sección Historia ubicada en el menú de navegación",
+    HomeWelcomeCovidTitle: "¡Emergencia sanitaria!",
+    HomeWelcomeCovidDescription: "Debido a la emergencia sanitaria de SARS-CoV-2 hemos planeado 10 nuevas lecciones de aprendizaje que te permitirán explorar más allá el idioma zapoteco. Para ello puedes ir a la sección de Aprendizaje en donde observarás las nuevas lecciones que hemos traido para tí.",
+
+    HomeWelcomeFeaturesTitle: "¡Nuevas características para tí!",
+    HomeWelcomeFeaturesForum: "¡Ahora puedes discutir tus ideas gracias a la implementación de un foro!",
+    HomeWelcomeFeaturesSongs: "¡Ahora puedes escuchar las canciones grabadas en zapoteco!",
+    HomWelcomeFeaturesDictionary: "¡Ahora puedes consultar las palabras en zapoteca en nuestro diccionario!",
+
+    HistoryTitle: "La historia zapoteca",
+
+    HistoryBackgroundTitle: "La cultura zapoteca",
+    HistoryBackgroundDescription: "La cultura zapoteca es una de las civilizaciones precolombinas más antiguas e importantes. Se asentó en las tierras más altas del sur de Mesoamérica, en la zona de loos actuales estados mexicanos deel Valle de Oaxaca, Guerrero y Puebla. Los zapotecas creían en su procedencia directa desde el cielo, por lo que se llamaban a sí mismos la gente de las nubes. El nombre zapoteco deriva de la lengua náhuatl tzapotecatl que significa gente del árbol zapote",
+
+    HistoryUbicationTitle: "Ubicación de la cultura zapoteca",
+    HistoryUbicationDescription: "Los zapotecas se establecieron en el valle de Oaxaca. Los zapotecas desarrollaron varios asentamientos importantes que se dividieron en tres grupos: del valle, de la sierra y del sur. Alrededor del 900 d.C. la ciudad zapoteca de Mitla (valle de Oaxaca) se convirtió en la más importante, debido a su arquitectura con edificios ornamentados y dispuestos alrededor de plazas.",
+
+
+    HistoryFeaturesTitle: "Características generales",
+    HistoryFeaturesDescription: "Entra las caracteristicas se destaca la influencia que recibieron por parte de los olmecas, la primera civilización mesoamericana. La organización social de los zapotecas fue de tipo jerárquica y más compleja en comparación a los olmecas. Sin embargo, en ambas civilizaciones, la religión ocupaba un lugar central en el gobierno. Estaba determinada por la siguiente estructura piramidal:",
+    HistoryFeatures01: "Gobernantes: ",
+    HistoryFeatures01Description: "Era el sector más poderoso, integrado por los sacerdotes con poderes divinos que gobernaban en las diferentes ciudades",
+    HistoryFeatures02: "Elite: ",
+    HistoryFeatures02Description: "Era el sector integrado por los altos guerreros, caciques y funcionarios del gobierno",
+    HistoryFeatures03: "Comerciantes: ",
+    HistoryFeatures03Description: "Era el sector que contaba con cierto prestigio que los diferenciaba de la mayoría de la población",
+    HistoryFeatures04: "Artesanos: ",
+    HistoryFeatures04Description: "Era el sector mayoritario, integrado por agricultores, tejedores y alfareros, entre otros",
+    HistoryFeatures05: "Esclavos: ",
+    HistoryFeatures05Description:  "Era el sector más castigado, integrado por prisioneros de guerra o arretados por delitos. Usados como oberos o para ser sacrificados como ofrenda a los dioses",
+    HistoryCostumeTitle: "Costumbres zapotecas",
+    HistoryCostumeDescription: "Entre las costumbres y tradiciones de la cultura zapoteca se destacan: ",
+    HistoryCostumbe01: "Dia de muertos: ",
+    HistoryCostumbe01Description: "Era una de las celebraciones que formaba parte del calendario religioso de los zapotecas y consistía en realizar ofrendas a los dioses, como acto necesario para trasladarse al más allá. También se realizaban danzas al ritmo de la música.",
+    HistoryCostumbe02: "Guelaguetza: ",
+    HistoryCostumbe02Description: "Se realizaban cultos a distintas deidades, como a la Virgen del Carmen, en el centro de Oaxaca. En la actualidad es llamaba como fiesta de los lunes del cerro",
+    HistoryCostumbe03: "Danza de la pluma: ",
+    HistoryCostumbe03Description: "Era un baile tradicional que formaba parte de la Guelaguetza. Surgión con el fin de representar la conquista de los centrales por parte los españoles y se usaba como medio de evangelización.",
+    HistoryContributionTitle: "",
+    HistoryContributionDescription: "",
+
     LoginUsernameInput: "Usuario: ",
     LoginPasswordInput: "Contraseña: ",
     LoginRecover: "¿Has olvidado tu contraseña? Recuperala ahora",
@@ -126,6 +171,7 @@ export const TRANSLATIONS_ES = {
     PageNotFound: "¡Esta no es la página que estás buscando!",
     PageNotFoundReturnHomeButton: "Regresar al inicio",
 
+    UnderConstruction: "Sitio bajo construcción",
 
     altPageNotFoundImage: "Imágen decorativa",
 
@@ -142,6 +188,15 @@ export const TRANSLATIONS_ES = {
     ButtonReportUser: "Reportar usuario",
     ButtonStartNow: "¡Comienza ahora!",
     ButtonSend: "Enviar",
+    ButtonStartLesson: "Comenzar lección",
+    ButtonShowResults: "Ver resultados",
+    ButtonExit: "Salir",
+    ButtonNext: "Siguiente",
+    ButtonTerminar: "Terminar",
+    ButtonReportSeeUsersDetails: "Ver detalles de usuario",
+    ButtonBlockUser: "Bloquear usuario",
+    ButtonEditProfile: "Editar perfil",
+    ButtonReport: "Reportar",
 
     TypeUserAdmin: "Administrador",
     TypeUserFree: "Gratuito",
@@ -167,7 +222,14 @@ export const TRANSLATIONS_ES = {
     ForumListDiscussion: "Lista de discusiones",
     ForumWantToCreateNewDiscussion: "¿Deseas crear una nueva discusión?",
 
-    
+    AdminReportMenu: "Menú de reportes",
+    AdminReportInputSearchCriteria: "Criterio de búsqueda: ",
+
+
+    AdminMenuReports: "Reportes",
+    AdminMenuAccounts: "Cuentas",
+
+    AdminAccountMenu: "Menú de usuarios",
 
     UserProfileAge: "años",
     UserProfileButtonPanelDeleteAccount: "Eliminar cuenta",
@@ -199,9 +261,14 @@ export const TRANSLATIONS_ES = {
     UserReportReason: "Razón: ",
     UserReportNumberReport: "Reporte num: ",
     UserReportReportedBy: "Reportado por: ",
+    UserReportUserReported: "Usuario reportado: ",
+    UserReportContext: "Situación: ",
 
 
-
+    ReportUserTitle: "Reportar usuario",
+    ReportUserDescription: "Para reportar a este usuario debes ingresar la razón del reporte y debes describir la situación",
+    ReportUserInputContext: "Situación: ",
+    ReportUserInputReason: "Razón: ",
 
     CheckProgressTotalDiscussionsCommented: "Total de discusiones comentadas: ",
     CheckProgressTotalDiscussionsCommentedDescription: "Muestra el total de comentarios que has realizado desde tu registro en Diidxaza App.",
@@ -216,6 +283,25 @@ export const TRANSLATIONS_ES = {
     CheckProgressGraphic: "Gráfica de progresos",
     CheckProgressGraphicDescription: "Gráfica que muestra los progresos en función de...",
 
+    LearningTitle: "¡Comienza a aprender zapoteco!",
+    LearningDescription: "Para empezar a realizar las lecciones debes dar clic en alguna de ellas",
+    LearningPointsWon: "Puntos totales obtenidos: ",
+    LearningLessonCompleted: "Lecciones completadas: ",
+    LearningLessonStartDescription: "Debes seleccionar la respuesta correcta y obtendras puntos, en cambio, si seleccionas la respuesta incorrecta entonces no ganarás puntos. Presiona el botón comenzar lección para empezar.",
+    LearningLessonPointsWon: "Puntos obtenidos",
+    LearningLessonPointsToWin:"Puntos a ganar",
+    LearningLessonStatus: "Estado",
+    LearningLessonResultsDescription: "¡Felicidades! has terminado esta lección. Si quieres ver los resultados puedes presionar el botón Ver resultados.",
+
+
+    AnswerSectionQuesion: "Pregunta: ",
+    AnswerSectionLevel: "Dificultad: ",
+    AnswerSectionQuestionType: "Tipo de pregunta: ",
+    AnswerSectionPointsWon: "Puntos obtenidos: ",
+    AnswerSectionQuestionsRemaining: "Preguntas restantes", 
+    AnswerSectionSelectCorrectAnswer: "Selecciona la respuesta correcta",
+    AnswerSectionInputAnswer: "Ingresa la respuesta correcta:",
+
     BadRequestAccount: "Error en los datos de entrada",
     ErrorExistAccount: "Existe una cuenta con el mismo nombre de usuario o correo",
     ErrorMessage: "Error en el servidor. Intenta más tarde",
@@ -225,4 +311,7 @@ export const TRANSLATIONS_ES = {
     MessageCreateAccount: "La cuenta se creo exitosamente",
     SignUpVerificationSendCodeButton: "Reenviar código",
     NoAvalaible: "No disponible",
+
+
+    AlternativeMessageImageDecorative: "Imagen decorativa",
 };

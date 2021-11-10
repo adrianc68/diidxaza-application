@@ -41,52 +41,7 @@
                 gap: 15px;
 
                 li {
-                    .report-container {
-                        background-color: rgb(146, 146, 146);
-                        display: flex;
-                        padding: 10px;
-                        border-radius: 3px;
-                        .report-numeration-container {
-                            color: #fff;
-                            padding: 15px;
-                            display: flex;
-                            flex-direction: column;
-                            text-align: center;
-                            :nth-child(1) {
-                                font-size: 10px;
-                                color: #000;
-                                font-weight: 600;
-                            }
-                        }
-
-                        .report-data-container {
-                            border-radius: 3px 3px 0px 0px;
-                            flex: 1;
-                            display: flex;
-                            flex-direction: column;
-                            text-align: justify;
-
-                            .report-reported-by-container {
-                                border-radius: 3px 3px 0px 0px;
-                                background-color: #cccccc;
-                                padding: 5px;
-                                :nth-child(1) {
-                                    color: #000;
-                                    font-weight: 600;
-                                }
-                            }
-
-                            .report-descripction-container {
-                                border-radius: 0px 0px 3px 3px;
-                                background-color: #fff;
-                                padding: 15px;
-                                :nth-child(1) {
-                                    color: #000;
-                                    font-weight: 600;
-                                }
-                            }
-                        }
-                    }
+                   
                 }
             }
         }

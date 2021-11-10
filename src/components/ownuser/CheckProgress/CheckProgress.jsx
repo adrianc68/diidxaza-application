@@ -2,10 +2,7 @@ import React from 'react'
 import './checkprogress.scss'
 import { useTranslation } from "react-i18next";
 import ImageInformationAlt from '../../../assets/images/ide-38.svg'
-import ImageProgressAlt from '../../../assets/images/ide-14.svg'
-
 import Button from '../../Button/Button'
-import { Link } from 'react-router-dom'
 
 
 export default function CheckProgress() {
@@ -21,7 +18,7 @@ export default function CheckProgress() {
                             <div className="checkprogress-presentation-left-side-container">
                                 <div className="checkprogress-presentation-up-side-container">
                                     <div className="checkprogress-side-img">
-                                        <img src={ImageInformationAlt} alt={t("WelcomeInformationAlt")}></img>
+                                        <img src={ImageInformationAlt} alt={"AlternativeMessageImageDecorative"}></img>
                                     </div>
                                     <div className="checkprogress-side-text">
                                         <h1>{t("CheckProgressTotalDiscussionsCommented")}</h1>
@@ -42,7 +39,7 @@ export default function CheckProgress() {
                             <div className="checkprogress-presentation-left-side-container">
                                 <div className="checkprogress-presentation-up-side-container">
                                     <div className="checkprogress-side-img">
-                                        <img src={ImageInformationAlt} alt={t("WelcomeInformationAlt")}></img>
+                                        <img src={ImageInformationAlt} alt={"AlternativeMessageImageDecorative"}></img>
                                     </div>
                                     <div className="checkprogress-side-text">
                                         <h1>{t("CheckProgressTotalDiscussionsCreated")}</h1>
@@ -63,7 +60,7 @@ export default function CheckProgress() {
                             <div className="checkprogress-presentation-left-side-container">
                                 <div className="checkprogress-presentation-up-side-container">
                                     <div className="checkprogress-side-img">
-                                        <img src={ImageInformationAlt} alt={t("WelcomeInformationAlt")}></img>
+                                        <img src={ImageInformationAlt} alt={"AlternativeMessageImageDecorative"}></img>
                                     </div>
                                     <div className="checkprogress-side-text">
                                         <h1>{t("CheckProgressTotalWordsLearned")}</h1>
@@ -84,7 +81,7 @@ export default function CheckProgress() {
                             <div className="checkprogress-presentation-left-side-container">
                                 <div className="checkprogress-presentation-up-side-container">
                                     <div className="checkprogress-side-img">
-                                        <img src={ImageInformationAlt} alt={t("WelcomeInformationAlt")}></img>
+                                        <img src={ImageInformationAlt} alt={"AlternativeMessageImageDecorative"}></img>
                                     </div>
                                     <div className="checkprogress-side-text">
                                         <h1>{t("CheckProgressTotalLessonsRemaining")}</h1>
@@ -106,7 +103,7 @@ export default function CheckProgress() {
                             <div className="checkprogress-presentation-left-side-container">
                                 <div className="checkprogress-presentation-up-side-container">
                                     <div className="checkprogress-side-img">
-                                        <img src={ImageInformationAlt} alt={t("WelcomeInformationAlt")}></img>
+                                        <img src={ImageInformationAlt} alt={"AlternativeMessageImageDecorative"}></img>
                                     </div>
                                     <div className="checkprogress-side-text">
                                         <h1>{t("CheckProgressTotalLessonsRealized")}</h1>
@@ -130,7 +127,7 @@ export default function CheckProgress() {
                 <h1>{t("CheckProgressGraphic")}</h1>
                 <span>{t("CheckProgressGraphicDescription")}</span>
                 <div className="checkprogress-graphic-container">
-                    {/* <img src={ImageProgressAlt} alt={t("WelcomeInformationAlt")}></img> */}
+                    <div className="checkprogress-graphic-image"></div>
                 </div>
                 <div className="checkprogress-button-panel">
                     <Button styleName="primary-button" text={t("ButtonClose")}></Button>

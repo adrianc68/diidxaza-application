@@ -3,8 +3,6 @@ import './forum.scss'
 import Button from '../../components/Button/Button'
 import { useTranslation } from "react-i18next";
 import { Link } from 'react-router-dom'
-import ImageInformationAlt from '../../assets/images/ide-02.svg'
-import Comment from '../../components/forum/comment/Comment';
 import Discussion from '../../components/forum/discussion/Discussion';
 import DiscussionListItem from '../../components/forum/discussionlistitem/DiscussionListItem';
 
