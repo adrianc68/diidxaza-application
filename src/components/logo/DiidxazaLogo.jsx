@@ -11,7 +11,7 @@ export default function DiidxazaLogo(props) {
 
     return (
         <div>
-            <Link className={props.styleClass} to="/home">
+            <Link className={props.styleClass} to="/dashboard">
                 <IoSchool className="logo-icon"/>
                 <span className="logo-name">{t("LogoName")}</span>
             </Link>

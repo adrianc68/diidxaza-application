@@ -48,9 +48,6 @@ class Home extends Component {
                             <Button styleName="text-button" text="Angel Adrian Camal Garcia"
                                 onClick={() => this.setState({ isVisible: true })}
                             ></Button>
-
-
-
                         </div>
                     </Topbar>
                 </div>
