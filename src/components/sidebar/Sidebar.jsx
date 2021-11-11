@@ -33,7 +33,7 @@ export default function Sidebar() {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/underconstruction">
+                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/email">
                         <MdEmail className="sidebarIcon" />
                         <span>{t("SidebarCorreo")}</span>
                     </NavLink>
@@ -54,7 +54,7 @@ export default function Sidebar() {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/underconstruction">
+                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/news">
                         <MdLiveTv className="sidebarIcon" />
                         <span>{t("SidebarNews")}</span>
                     </NavLink>
@@ -66,13 +66,13 @@ export default function Sidebar() {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/underconstruction">
+                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/dictionary">
                         <MdMenuBook className="sidebarIcon" />
                         <span>{t("SidebarDictionary")}</span>
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/underconstruction">
+                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/songs">
                         <MdLibraryMusic className="sidebarIcon" />
                         <span>{t("SidebarSongs")}</span>
                     </NavLink>
@@ -86,7 +86,7 @@ export default function Sidebar() {
 
                 <div className="sidebar-help-details">
                     <li>
-                        <NavLink className="sidebar-link" activeClassName="activeItem" to="/underconstruction">
+                        <NavLink className="sidebar-link" activeClassName="activeItem" to="/help">
                             <MdOutlineHelpOutline className="sidebarIcon" />
                             <span className="sidebarListItemText">{t("SidebarHelp")}</span>
                         </NavLink>

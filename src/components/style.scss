@@ -8,10 +8,10 @@
 }
 
 body {
-    background-color:#f0f0f0;
+    background-color: #f0f0f0;
 }
 
-.errorInput{
+.errorInput {
     max-width: 350px;
     color: red;
     margin-bottom: 0;
@@ -107,12 +107,12 @@ select {
     display: none;
 }
 
-select{
+select {
     height: 35px;
     width: calc(100% - 2px);
     border: 1px solid #b9b9b9;
     border-radius: 3px;
-    background-color:#f7f7f7;
+    background-color: #f7f7f7;
 }
 .semibold {
     font-weight: 600;
@@ -123,14 +123,23 @@ select{
     height: 42px;
 }
 
-.checkbox, .radiobutton {
-    width:25px;
-    height:25px;
-    user-select: none;
-    cursor:pointer;
+.h1-title-black {
+    padding: 15px;
+    color: #fff;
+    text-align: center;
+    background: $title-background-black;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    border-radius: 3px 3px 0px 0px;
+}
 
+.checkbox,
+.radiobutton {
+    width: 25px;
+    height: 25px;
+    user-select: none;
+    cursor: pointer;
 }
 
 .radiobutton {
-    border-radius:50%;
+    border-radius: 50%;
 }

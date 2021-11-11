@@ -9,7 +9,7 @@ export default function Learning() {
     return (
         <div className="learning-main-container">
             <div className="learning-content-contain">
-                <div className="learning-description-content">
+                <div className="h1-title-black">
                     <h1>{t("LearningTitle")}</h1>
                     <span>{t("LearningDescription")}</span>
                 </div>
@@ -62,9 +62,7 @@ export default function Learning() {
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
     )
 }

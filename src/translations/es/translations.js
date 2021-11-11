@@ -49,6 +49,9 @@ export const TRANSLATIONS_ES = {
     HistoryBackgroundTitle: "La cultura zapoteca",
     HistoryBackgroundDescription: "La cultura zapoteca es una de las civilizaciones precolombinas más antiguas e importantes. Se asentó en las tierras más altas del sur de Mesoamérica, en la zona de loos actuales estados mexicanos deel Valle de Oaxaca, Guerrero y Puebla. Los zapotecas creían en su procedencia directa desde el cielo, por lo que se llamaban a sí mismos la gente de las nubes. El nombre zapoteco deriva de la lengua náhuatl tzapotecatl que significa gente del árbol zapote",
 
+    HistoryBackgroundDescription2: "Los zapotecos alcanzaron un elevado nivel cultural y fueron, junto con los mayas, el único pueblo de la época que desarrolló un sistema completo de escritura. Por medio de jeroglíficos y otros simbolos grabados en piedra o pintados en loos edificios y tumbas, combinan la representación de ideas y sonidos. Las graneds ciudades que construyeron loos pueblos agrícolas de Mesoamérica, crecieron y estuvieron habitadas durante varios siglos. Sin embargo, entre los años 700 y 800 d.C., casi todas ellas fueron abandonadas.",
+
+
     HistoryUbicationTitle: "Ubicación de la cultura zapoteca",
     HistoryUbicationDescription: "Los zapotecas se establecieron en el valle de Oaxaca. Los zapotecas desarrollaron varios asentamientos importantes que se dividieron en tres grupos: del valle, de la sierra y del sur. Alrededor del 900 d.C. la ciudad zapoteca de Mitla (valle de Oaxaca) se convirtió en la más importante, debido a su arquitectura con edificios ornamentados y dispuestos alrededor de plazas.",
 

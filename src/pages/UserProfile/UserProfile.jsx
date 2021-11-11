@@ -46,7 +46,6 @@ export default function UserProfile() {
                 <div className="userprofile-user-details-container">
                     <div className="userprofile-user-photo-container">
                         <img src={UserImageDefault} alt={t("WelcomeInformationAlt")}></img>
-
                     </div>
                     <div className="userprofile-type-user-container">
                         <div className="type-user-admin">
@@ -86,8 +85,11 @@ export default function UserProfile() {
                     </div>
 
                     <div className="userprofile-button-panel">
+                        Botones Vista Administrador
                         <UserprofileButtonPanelADM />
+                        Botones Vista Otro usuario
                         <UserprofileButtonPanelAU />
+                        Botones vista Dueño del usuario
                         <UserprofileButtonPanelOWU />
                     </div>
 
@@ -157,12 +159,6 @@ export default function UserProfile() {
 
                 </div>
             </div>
-
-            <BlockUser></BlockUser>
-            <DeleteAccount></DeleteAccount>
-            <UserReports />
-            <UnblockUser></UnblockUser>
-            <CheckProgress></CheckProgress>
         </div>
     )
 }

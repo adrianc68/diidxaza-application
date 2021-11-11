@@ -5,7 +5,7 @@ import './components/style.scss'
 function App(props) {
   return (
     <div>
-      <AppRouter/>
+      <AppRouter />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 @import "../../components/variables.module.scss";
 
-.home-main-container {
+.dashboard-main-container {
     display: grid;
     /* Error al usar variable para 240px --> $sidebar-width calc(100vw - 240px)*/
     grid-template-columns: auto 1fr;
@@ -9,18 +9,18 @@
         "topbar topbar"
         "sidebar main";
 
-    .sidebar-home-container {
+    .sidebar-dashboard-container {
         grid-area: sidebar;
     }
 
-    .topbar-home-container {
+    .topbar-dashboard-container {
         grid-area: topbar;
     }
 
-    .userprofile-home-container {
+    .userprofile-dashboard-container {
         grid-area: main;
         overflow: scroll;
-        padding: 15px;
+        padding: 25px;
         
     }
 }
