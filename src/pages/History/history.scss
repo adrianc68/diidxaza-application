@@ -8,40 +8,33 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-
+    overflow-x: scroll;
     .history-content-container {
-        padding:15px;
+        padding: 15px;
     }
-
 
     .history-background-content {
-        padding:15px;
-        
+        padding: 15px;
+
         span {
-            display:block;
-            
+            display: block;
         }
 
-    
         img {
-            margin-right:15px;
-            width:220px;
-            box-shadow:rgba(9,30,66,0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
-            padding:15px;
-            float:left;
+            margin-right: 15px;
+            width: 220px;
+            box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+            padding: 15px;
+            float: left;
         }
     }
 
-    
     .history-ubication-content {
         display: flex;
-        padding:15px;
+        flex-direction: column;
+        justify-content: center;
+        padding: 15px;
         gap: 15px;
-        div {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
         img {
             width: 20%;
             box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
@@ -50,19 +43,15 @@
     }
 
     .history-features-content {
-        display: flex;
         gap: 15px;
-        padding:25px;
-        div {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            ul {
-                padding-left: 60px;
-            }
+        padding: 15px;
+        ul {
+            padding-left: 60px;
         }
+
         img {
-            width: 30%;
+            float: right;
+            width: 380px;
             box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
             padding: 15px;
         }
@@ -72,13 +61,85 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding:25px;
+        padding: 15px;
         ul {
             padding-left: 60px;
         }
     }
 
     .history-span-bleeding {
+        display: block;
         padding-left: 15px;
+    }
+}
+
+@media all and (max-width: $max-width-device) {
+    .history-main-container {
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        word-wrap: break-word;
+        .history-content-container {
+            padding: 15px;
+        }
+
+        .history-ubication-content {
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .history-background-content {
+            padding: 15px;
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            gap:10px;
+            span {
+                display: block;
+            }
+
+            img {
+                margin-right: 0px;
+                width: 80%;
+            }
+        }
+
+
+        .history-features-content {
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            ul {
+                padding-left: 45px;
+            }
+
+            img {
+                float: right;
+                width: 80%;
+                box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+                padding: 15px;
+            }
+        }
+
+        .history-costumes-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            gap: 15px;
+            ul {
+                padding-left: 45px;
+            }
+        }
+
+        .history-span-bleeding {
+            display: block;
+            padding-left: 15px;
+        }
     }
 }
