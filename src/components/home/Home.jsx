@@ -15,7 +15,9 @@ export default function Home() {
                     <h2>{t("HomeWelcomeCovidTitle")}</h2>
                     <span>{t("HomeWelcomeCovidDescription")}</span>
                 </div>
-                <div className="home-img-banner"></div>
+                <div className="home-img-banner">
+                    <span></span>            
+                </div>
             </div>
 
             <div className="home-welcome-title-container">
