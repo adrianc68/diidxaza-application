@@ -5,13 +5,13 @@ import { useTranslation } from "react-i18next";
 import { Link } from 'react-router-dom'
 import Discussion from '../../components/forum/discussion/Discussion';
 import DiscussionListItem from '../../components/forum/discussionlistitem/DiscussionListItem';
-import {useForum} from "../../hooks/useDiscussionForm";
+import { useForum } from "../../hooks/useDiscussionForm";
 import AddComment from '../../components/forum/addcomment/AddComment';
 import Modal from '../../components/modal/Modal';
 
 
 const initialForm = {
-    comment: "", 
+    comment: "",
     idAccount: sessionStorage.getItem("id"),
     idDiscussion: ""
 };
@@ -20,7 +20,7 @@ const validationsForm = (title) => {
     let errors = {};
     title = title.trim();
     if (title.length === 0) {
-      errors.title = "Error";
+        errors.title = "Error";
     }
     return errors;
 };
@@ -32,7 +32,7 @@ const validationsFormComment = (comment) => {
     if (comment.length === 0) {
         errors.comment = "Error";
     }
-    else{
+    else {
         if (!regexComment.test(comment)) {
             errors.comment = "Error";
         }
@@ -73,7 +73,7 @@ export default function Forum() {
         responseComment,
         commentLenght,
         numberComments
-    } = useForum(validationsForm, validationsFormComment,initialForm);
+    } = useForum(validationsForm, validationsFormComment, initialForm);
 
     return (
         <div className="forum-main-container">
@@ -104,7 +104,7 @@ export default function Forum() {
                             </div>
                         </div>
                     </div>
-                    <br/>
+                    <br />
                     <div className="forum-discussion-list-container">
                         <div className="forum-discussion-list">
                             <h1>{t("ForumListDiscussion")}</h1>
@@ -119,7 +119,7 @@ export default function Forum() {
                             </div>
                             <ul>
                                 {discussions.length > 0 && discussions.map(element => (
-                                    <li onClick={(e) =>{handleClickDiscussion(e,element._id)}}>
+                                    <li onClick={(e) => { handleClickDiscussion(e, element._id) }}>
                                         <DiscussionListItem discussion={element}></DiscussionListItem>
                                     </li>
                                 ))}
@@ -133,9 +133,15 @@ export default function Forum() {
                     {foundDiscussion && <Discussion discussion={discussion} numberComments={numberComments} comments={comments} imageAccount={imageAccount}>
                         <AddComment handleChangeComment={handleChangeComment} handleSubmitComment={handleSubmitComment} loadingComment={loadingComment}
                             handleBlurComment={handleBlurComment} formComment={formComment} errorsComment={errorsComment} handleClickComment={handleClickComment}
-                            icon={icon} className={className} responseComment={responseComment} commentLenght={commentLenght}/>
+                            icon={icon} className={className} responseComment={responseComment} commentLenght={commentLenght} />
                     </Discussion>}
                 </div>
+
+                {/* <Modal title={t("ReportUserTitle")} statusModal={true}>
+                    <BlockUser></BlockUser>
+                     <DeleteAccount></DeleteAccount>
+
+                </Modal> */}
             </div>
         </div>
     )

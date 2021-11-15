@@ -48,12 +48,13 @@ export default function Comment(props) {
                     </div>
                 </div>}
             </div>
-            <Modal title={t("ReportUserTitle")} statusModal={statusModal} setStatusModal={setStatusModal}>
+            <Modal title={t("ReportUserTitle")} statusModal={statusModal} setStatusModal={setStatusModal} sizeHeight="70" sizeWidth="80">
                <ReportUser account={comment.idAccount[0]} statusModal={statusModal} setStatusModal={setStatusModal}></ReportUser>
             </Modal> 
-            <Modal title={t("DeleteComment")} statusModal={statusModalDelete} setStatusModal={setStatusModalDelete}>
+            <Modal title={t("DeleteComment")} statusModal={statusModalDelete} setStatusModal={setStatusModalDelete} sizeHeight="50" sizeWidth="50">
                 <BlockUser></BlockUser>
             </Modal> 
+
         </div>
     )
 }

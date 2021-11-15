@@ -3,13 +3,13 @@
 .blockuser-main-container {
     width: 100%;
     height: 100%;
+    background-color:#fff;
     .blockuser-content-container {
         padding: 25px;
         display: flex;
-        height:calc(100% - 50px);
+        height:calc(100% - 60px);
         flex-direction: column;
         gap: 15px;
-        overflow-y: scroll;
         .blockuser-text {
             display: inline-flex;
             flex: 1;
@@ -26,10 +26,7 @@
                 padding-right:50px;
             }
          
-            img {
-                height: 45%;
-                width: 50%;
-            }
+
         }
 
         .blockuser-button-panel {
