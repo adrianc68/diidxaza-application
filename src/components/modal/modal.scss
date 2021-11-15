@@ -1,42 +1,57 @@
 @import "../variables.module.scss";
 
-.modal-container {
-    background-color: #f8f8f8;
-    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-    border-radius: 5px;
-    position: absolute;
-    width: 60vw;
-    height: 80vh;
-    margin: auto;
-    bottom: 0;
-    top: 0;
+.container-main{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top:0;
     left: 0;
-    right: 0;
-
-    .modal-content-container {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: 100%;
-        .modal-title-container {
-            background-color: $title-background-black;
-            border-radius: 3px 3px 0px 0px;
-            color: #fff;
+    background: rgba(8,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .modal-container {
+        background-color: #f8f8f8;
+        background: white;
+        box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+        border-radius: 5px;
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        margin: auto;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+    
+        .modal-content-container {
             display: flex;
-            width:100%;
-            h1 {
-                flex: 1;
-                text-align: center;
-                padding:10px;
-            }
-            .modal-control-buttons {
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            .modal-title-container {
+                background-color: $title-background-black;
+                background: white;
+                border-radius: 3px 3px 0px 0px;
+                color: #fff;
                 display: flex;
-                align-items: flex-start;
+                width:100%;
+                border-bottom: 2px solid #E8E8E8;
+                justify-content: space-between;
+                align-items: center;
+                h2{
+                    background: white;
+                    color: black;
+                    flex: 1;
+                    text-align: center;
+                    padding:10px;
+                }
             }
-        }
-        .modal-content {
-            flex:1;
-            overflow-y:scroll;
+            .modal-content {
+                flex:1;
+                overflow-y:scroll;
+            }
         }
     }
 }
+

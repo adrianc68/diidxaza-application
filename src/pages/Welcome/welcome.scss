@@ -303,11 +303,12 @@
                             padding: 15px;
                             height: 90%;
                             gap: 15px;
-
+                            
                             .welcome-choose-description-container {
-                                overflow-y: scroll;
+                                overflow: hidden;
                                 .welcome-choose-description-text-container {
-                                    overflow-y: scroll;
+                                    overflow: hidden;
+                                
                                 }
                             }
                         }

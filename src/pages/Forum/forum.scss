@@ -37,14 +37,16 @@
             .form-search-input {
                 display: flex;
                 align-items: center;
-                padding: 15px;
+                padding: 15px 15px 0px 15px;
                 gap: 15px;
                 .form-search-container-input {
                     display: flex;
                     align-items: center;
                     flex: 1;
                 }
-
+                input{
+                    margin: 0px 0px 0px 10px;
+                }
                 div:nth-child(2) {
                     height: 37px;
                 }
@@ -88,10 +90,13 @@
                     box-shadow: rgba(0, 0, 0, 0.178) 0px 4px 4px 4px inset;
 
                     li {
-                        padding: 20px;
+                        padding: 10px 15px 10px 15px;
                         display:flex;
                         flex-direction: column;
                         gap:15px;
+                    }
+                    .p-semibold{
+                        padding: 20px;
                     }
                 }
             }

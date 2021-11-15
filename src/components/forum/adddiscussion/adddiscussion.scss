@@ -1,9 +1,9 @@
 @import "../../../components/variables.module.scss";
 
 .adddiscussion-main-container {
-    width: 100vw;
-    height: 100vh;
-    h1 {
+    width: 100%;
+    height: 110vh;
+    h2 {
         background-color: $title-background-black;
         color: #fff;
         padding: 15px;
@@ -16,9 +16,10 @@
         padding: 25px;
         display: flex;
         gap: 15px;
+        
         .adddiscussion-img-content {
             height: calc(100% - 4px);
-            width: 45%;
+            width: 40%;
             border: 2px solid #000;
             background-repeat: no-repeat;
             background-size: cover;
@@ -29,7 +30,6 @@
 
         .adddiscussion-information-input-content {
             flex: 1;
-            overflow-y:scroll;
             padding: 25px;
             display:flex;
             flex-direction: column;
@@ -60,11 +60,19 @@
                             span {
                                 font-size: 0.7em;
                             }
-                            
                         }
+                    }
+                    .li-select {
+                        background: rgb(255, 189, 255);
+                        cursor: pointer;
+                    }
+                    .li-not-select{
+                        background: rgb(89, 193, 219);
+                        cursor: pointer;
                     }
                 }
             }
+
             .adddiscussion-input-title {
                 display:flex;
                 flex-direction: column;
@@ -90,6 +98,15 @@
                 gap:15px;
             }
 
+        }
+
+        .successfulMessage{
+            width: calc(100% - 20px);
+            margin: 0px 0px 15px 0px;
+        }
+        .errorMessage{
+            width: calc(100% - 20px);
+            margin: 0px 0px 15px 0px;
         }
     }
 }

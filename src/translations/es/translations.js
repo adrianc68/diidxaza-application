@@ -102,6 +102,28 @@ export const TRANSLATIONS_ES = {
     ErrorRequired: "El campo es requerido",
     ErrorCode: "Ingrese solo número de 6 dígitos",
     SignUpNotOption: "Elige una opción",
+    DiscussionlistitemDate: "Fecha de Creación: ",
+    DiscussionComment: "Comentario: ",
+    DiscussionTheme: "Tema: ",
+    DiscussionNumberComment: "Comentarios (",
+    ButtonFollow: "Seguir",
+    ErrorComment: "Ingrese solo letras y caracteres !?¡¿.,#. Solo de 5 a 600 caracteres",
+    ErrorContext: "Ingrese solo letras y caracteres !?¡¿.,#. Solo de 5 a 500 caracteres",
+    ErrorTitle: "Ingrese solo letras y caracteres !?¡¿.,#. Solo de 4 a 200 caracteres",
+    ErrorTheme: "Seleccione un tema por favor",
+    ErrorReason: "Seleccione un motivo por favor",
+
+    AddDicussionTitle: "Crear una nueva discusión",
+    AddDiscussionTheme: "Selecciona un tema ",
+    AddDiscussionInfo: "Informativo",
+    AddDiscussionInfoDescription: "Para dar a conocer nueva información",
+    AddDiscussionDoubt: "Duda",
+    AddDiscussionDoubtDescription: "Para dar a conocer tus dudas",
+    AddDiscussionRule: "Regla",
+    AddDiscussionRuleDescription: "Para dar a conocer las reglas del foro",
+    AddDiscussionNewTitle: "Título de la discusión: ",
+    AddDiscussionComment: "Comentario: ",
+    AddDiscussionSuccessful: "La discusión se registro exitosamente",
 
     SignUpIntroductionTitle: "Registrar una cuenta",
     SignUpIntroductionDescription: "Para registrarte debes llenar los siguientes campos, te recomendamos no utilizar carácteres extraños.",
@@ -148,6 +170,10 @@ export const TRANSLATIONS_ES = {
     SignUpVerificationSendNot: "No se encontro la cuenta",
     SignUpVerificationSendSuccessful: "El código de confirmación se reenvio exitosamente",
     SignUpVerificationInvalidEmail: "No se encontro ningun correo",
+
+    ReportUserSuccessful: "El reporte se registro exitosamente",
+    AddComentNotFound: "No se encontro la cuenta o la discusión",
+    AddCommentSuccessful: "El comentario se registro exitosamente",
 
     SidebarHome: "Inicio",
     SidebarMiPerfil: "Mi perfil",
@@ -204,6 +230,8 @@ export const TRANSLATIONS_ES = {
     TypeUserAdmin: "Administrador",
     TypeUserFree: "Gratuito",
 
+    DeleteComment: "Eliminar Comentario",
+    DeleteButton: "Eliminar",
     DeleteAccountTitle: "Eliminar cuenta",
     DeleteAccountDescriptionTitle: "¿Estás seguro que deseas eliminar tu cuenta?",
     DeleteAccountDescription: "Perderás permanentemente todos tus datos. Los comentarios o discusiones que hayas creado permaneceran visibles. Tus datos no estarán más en nuestros registros, puedees volver a registrarte cuando lo necesites.",
@@ -218,9 +246,9 @@ export const TRANSLATIONS_ES = {
 
 
     ForumSearchCriteriaTitle: "Criterio de búsqueda",
-    ForumSearchCriteriaInput: "Criterio de búsqueda: ",
+    ForumSearchCriteriaInput: "Buscar por título: ",
     ForumSearchMostPopular: "Mas populares",
-    ForumSearchOutstanding: "Mas relevantes",
+    ForumSearchOutstanding: "Siguendo",
     ForumSearchNewest: "Mas nuevos",
     ForumListDiscussion: "Lista de discusiones",
     ForumWantToCreateNewDiscussion: "¿Deseas crear una nueva discusión?",
@@ -269,9 +297,12 @@ export const TRANSLATIONS_ES = {
 
 
     ReportUserTitle: "Reportar usuario",
-    ReportUserDescription: "Para reportar a este usuario debes ingresar la razón del reporte y debes describir la situación",
-    ReportUserInputContext: "Situación: ",
-    ReportUserInputReason: "Razón: ",
+    ReportUserReported: "Nombre de usuario a reportar:  ",
+    ReportUserDescription: "Por favor, indicanos los motivos por los cuales quieres reportar a este usuario: ",
+    ReportUserInputContext: "Ofrecenos contexto adicional sobre el reporte: ",
+    ReportUserReasonOne: "   ABUSO VERBAL Lenguaje ofensivo, Acoso, etc.",
+    ReportUserReasonTwo: "   EXPRESIONES DE ODIO Racismo, sexismo, homofobia, etc.",
+    ReportUserReasonThree: "   NOMBRE OFENSIVO O INAPROPIADO",
 
     CheckProgressTotalDiscussionsCommented: "Total de discusiones comentadas: ",
     CheckProgressTotalDiscussionsCommentedDescription: "Muestra el total de comentarios que has realizado desde tu registro en Diidxaza App.",
@@ -305,6 +336,8 @@ export const TRANSLATIONS_ES = {
     AnswerSectionSelectCorrectAnswer: "Selecciona la respuesta correcta",
     AnswerSectionInputAnswer: "Ingresa la respuesta correcta:",
 
+    AddCommentCharacters: "Caracteres",
+
     BadRequestAccount: "Error en los datos de entrada",
     ErrorExistAccount: "Existe una cuenta con el mismo nombre de usuario o correo",
     ErrorMessage: "Error en el servidor. Intenta más tarde",
@@ -314,7 +347,8 @@ export const TRANSLATIONS_ES = {
     MessageCreateAccount: "La cuenta se creo exitosamente",
     SignUpVerificationSendCodeButton: "Reenviar código",
     NoAvalaible: "No disponible",
-
+    NotFoundDiscussion: "No se encontro la discusión",
+    NotFoundRecords: "No se encontraron registros",
 
     AlternativeMessageImageDecorative: "Imagen decorativa",
 };

@@ -140,9 +140,6 @@ export default function Welcome() {
                                         <Link className="link" to="/signUp">
                                             <Button text={t("ButtonSignUp")} styleName="primary-button" />
                                         </Link>
-                                            {/* <Button text={t("ButtonSignUp")} styleName="primary-button" onClick={() => this.props.history.push("/signup")} /> */}
-
-
                                     </div>
                                 </div>
                             </div>
@@ -160,7 +157,6 @@ export default function Welcome() {
                                         <ul>
                                             <li className="invalid-li">{t("WelcomeAccountTypePremiumBenefit01")}</li>
                                         </ul>
-
                                     </div>
                                     <div className="welcome-choose-description-button-container">
                                         <span>{t("WelcomeAccountTypeNoAvailable")}</span>
@@ -168,16 +164,10 @@ export default function Welcome() {
                                 </div>
                             </div>
                         </li>
-
-
-
-
                     </ul>
                 </div>
             </div>
             <Footer></Footer>
-
-
         </div >
     )
 }

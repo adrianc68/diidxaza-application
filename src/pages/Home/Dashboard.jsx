@@ -42,7 +42,7 @@ class Dashboard extends Component {
                     <div className="dashboard-userprofile">
                 {/* ON CLICK DISPLAY USER PROFILE */}
                     <NavLink className="link" to="/userprofile">
-                            <Button styleName="text-button" text="Angel Adrian Camal Garcia">
+                            <Button styleName="text-button" text={sessionStorage.getItem("name")}>
                     </Button>
                     </NavLink>
                 </div>

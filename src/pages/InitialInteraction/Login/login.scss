@@ -50,6 +50,9 @@
                     display: flex;
                     flex-direction: column;
                     gap: 2px;
+                    .errorInput {
+                        max-width: 350px;
+                    }
                 }
                 .login-form-button-container {
                     display: inline-flex;

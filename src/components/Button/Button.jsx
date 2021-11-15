@@ -3,6 +3,10 @@ import "./primaryButton.scss"
 import "./secondaryButton.scss"
 import "./iconButton.scss"
 import './textButton.scss'
+import './modalButton.scss' 
+import './greenButton.scss'
+import './darkBlueButton.scss'
+import './orangeButton.scss'
 
 export default function Button(props) {
 

@@ -52,6 +52,8 @@ export default function AppRouter() {
                 <Route exact path="/login" component={Login} />
 
                 {/* IS THIS A GOOD APROXIMATION? OR SHOULD USE INNER SWITCH ? */}
+
+                <Route exact path="/discussion" render = {() => <Dashboard><AddDiscussion></AddDiscussion></Dashboard>} />
                 <Route exact path="/home" render = {() => <Dashboard><Home></Home></Dashboard>} />
                 <Route exact path="/email" render={() => <Dashboard><UnderConstruction></UnderConstruction></Dashboard>} />
                 <Route exact path="/forum" render={() => <Dashboard><Forum></Forum></Dashboard>} />

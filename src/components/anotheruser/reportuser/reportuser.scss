@@ -1,8 +1,9 @@
 @import "../../../components/variables.module.scss";
 
 .reportuser-main-container {
+    width: 100%;
+    height: 100%;
     .reportuser-content-container {
-
         .reportuser-text-description {
             padding:35px;
             display:flex;
@@ -12,17 +13,33 @@
                 display:flex;
                 flex-direction: column;
                 gap:5px;
+                label {
+                    font-size: 15px;
+                    margin: 10px 10px 0px 0px;
+                    width: auto;
+                    input {
+                        height: 16px;
+                        width: 16px;
+                    }
+                }
             }
 
             textarea{
                 box-sizing: border-box;
                 resize:vertical;
                 width:100%;
-                height:150px;
+                height:100px;
             }
 
         }
-
+        .errorMessage {
+            margin-left: 20px;
+            width: calc(100% - 50px);
+        }
+        .successfulMessage {
+            margin-left: 20px;
+            width: calc(100% - 50px);
+        }
         .reportuser-button-panel {
             display: flex;
             padding: 15px;

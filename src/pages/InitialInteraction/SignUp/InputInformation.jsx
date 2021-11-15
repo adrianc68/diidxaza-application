@@ -172,9 +172,9 @@ export default function InputInformation() {
                             {errors.password && <p className="errorInput">{t("ErrorPassword")}</p>}
                         </label>
                         {loading && <p className={className}>{icon}  {response}</p>}
-                        <Button type="submit" styleName="primary-button" text={t("SignUpFormSignUpButton")}></Button>
+                        <Button type="submit" styleName="green-button" text={t("SignUpFormSignUpButton")}></Button>
                         <Link className="link" to="/">
-                            <Button styleName="secondary-button" text={t("SignUpFormCancelButton")}></Button>
+                            <Button styleName="orange-button" text={t("SignUpFormCancelButton")}></Button>
                         </Link>
                     </div>
                 </div>

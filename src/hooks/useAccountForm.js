@@ -5,7 +5,6 @@ import {BiError, BiBadgeCheck} from 'react-icons/bi';
 import UserImageDefault from '../assets/images/ide-29.svg';
 
 
-
 export const useLoginForm = (initialForm, validateForm) => {
     const { t } = useTranslation();
     const [form, setForm] = useState(initialForm);
@@ -38,9 +37,11 @@ export const useLoginForm = (initialForm, validateForm) => {
             }).then((response) => {
                 if(response.token){
                     setLoading(false);
-                    setTimeout(() => setResponse(null), 5000);
-                    sessionStorage.setItem("name", response.account.name);
-                    sessionStorage.setItem("lastname", response.account.lastname);
+                    setResponse(null);
+                    sessionStorage.setItem("name", response.account.name+" "+response.account.lastname);
+                    sessionStorage.setItem("id", response.account._id);
+                    sessionStorage.setItem("role", response.account.role);
+                    sessionStorage.setItem("URL", response.account.URL);
                     sessionStorage.setItem("token", response.token);
                     window.location.href = 'home';
                 }else{
@@ -164,7 +165,7 @@ export const useAccountForm = (initialForm, validateForm) => {
                         setIcon(<BiBadgeCheck/>);
                         setClaseName("successfulMessage");
                         setResponse(t("MessageCreateAccount"));
-                        setTimeout(() => setLoading(true), 5000);
+                        setLoading(true);
                         if(urlFile!=null){
                             var formData = new FormData();
                             formData.append('idAccount', idAccount);
@@ -172,9 +173,7 @@ export const useAccountForm = (initialForm, validateForm) => {
                             fetch(UrlAPI+"resources/account",{
                                 method: 'POST',
                                 body: formData
-                            }).then((response) => {
-
-                            })
+                            }).then((response) => {})
                         }
                     });
                 }else{
@@ -241,7 +240,7 @@ export const useVerificationForm = (validateCode) => {
                         setIcon(<BiBadgeCheck/>);
                         setClaseName("successfulMessage");
                         setResponse(t("SignUpVerificationSuccessful"));
-                        setTimeout(() => setLoading(true), 5000);
+                        setLoading(true);
                         sessionStorage.clear();
                         window.location.href = 'login'; 
                     }
@@ -257,7 +256,7 @@ export const useVerificationForm = (validateCode) => {
                         }
                         setIcon(<BiError/>);
                         setClaseName("errorMessage");
-                        setTimeout(() => setLoading(true), 5000);
+                        setLoading(true);
                     }
                 })
             }
@@ -265,7 +264,7 @@ export const useVerificationForm = (validateCode) => {
                 setResponse(t("SignUpVerificationSendNot"));
                 setIcon(<BiError/>);
                 setClaseName("errorMessage");
-                setTimeout(() => setLoading(true), 5000);
+                setLoading(true);
             }
         }
         else {
@@ -289,7 +288,7 @@ export const useVerificationForm = (validateCode) => {
                 setIcon(<BiBadgeCheck/>);
                 setClaseName("successfulMessage");
                 setResponse(t("SignUpVerificationSendSuccessful"));
-                setTimeout(() => setLoading(true), 5000);
+                setLoading(true);
             }
             else{
                 if(response.status === 404){
@@ -303,7 +302,7 @@ export const useVerificationForm = (validateCode) => {
                 }
                 setIcon(<BiError/>);
                 setClaseName("errorMessage");
-                setTimeout(() => setLoading(true), 5000);
+                setLoading(true);
             }
         })
     }

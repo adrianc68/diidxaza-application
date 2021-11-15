@@ -2,7 +2,7 @@
 
 
 .signup-main-container {
-    width: 100vw;
+    width: 100%;
     height: calc(auto - #{$topbar-height});
     display:flex;
     flex-direction: column;
