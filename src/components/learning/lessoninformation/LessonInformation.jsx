@@ -1,10 +1,11 @@
 import React from 'react'
-import './lesson.scss'
-import Button from '../../../components/Button/Button'
+import './lessoninformation.scss'
+import Button from '../../Button/Button'
 import { useTranslation } from "react-i18next";
+import { NavLink } from 'react-router-dom'
 
 
-export default function Lesson() {
+export default function LessonInformation() {
     const { t } = useTranslation();
 
     return (
@@ -32,8 +33,15 @@ export default function Lesson() {
                 </span>
             </div>
             <div className="lesson-button-panel">
-                <Button styleName="primary-button" text={t("ButtonCancel")} />
-                <Button styleName="primary-button" text={t("ButtonStartLesson")} />
+                <div>
+                    <Button styleName="primary-button" text={t("ButtonCancel")} />
+                </div>
+                <div>
+                    <NavLink className="link" to="/lesson">
+                        <Button styleName="primary-button" text={t("ButtonStartLesson")} />
+                    </NavLink>
+                </div>
+
 
             </div>
         </div>
