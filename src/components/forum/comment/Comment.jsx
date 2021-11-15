@@ -54,6 +54,7 @@ export default function Comment(props) {
             <Modal title={t("DeleteComment")} statusModal={statusModalDelete} setStatusModal={setStatusModalDelete}>
                 <BlockUser></BlockUser>
             </Modal> 
+
         </div>
     )
 }

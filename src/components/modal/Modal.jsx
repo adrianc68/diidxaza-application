@@ -8,7 +8,7 @@ import {AiFillCloseSquare} from 'react-icons/ai';
 export default function Modal({ title, children, statusModal, setStatusModal}) {
     return (
         statusModal && 
-        <div className = "container-main">
+        <div className = "modal-container-main">
             <div className="modal-container">
                 <div className="modal-content-container">
                     <div className="modal-title-container">

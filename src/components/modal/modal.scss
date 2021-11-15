@@ -1,6 +1,6 @@
 @import "../variables.module.scss";
 
-.container-main{
+.modal-container-main{
     width: 100%;
     height: 100%;
     position: fixed;
@@ -10,14 +10,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size:0.5em;
     .modal-container {
         background-color: #f8f8f8;
         background: white;
         box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
         border-radius: 5px;
         position: absolute;
-        width: 80%;
-        height: 80%;
+        width: 50%;
+        height: 50%;
         margin: auto;
         bottom: 0;
         top: 0;
@@ -36,6 +37,7 @@
                 color: #fff;
                 display: flex;
                 width:100%;
+                font-size:2em;
                 border-bottom: 2px solid #E8E8E8;
                 justify-content: space-between;
                 align-items: center;
@@ -49,7 +51,6 @@
             }
             .modal-content {
                 flex:1;
-                overflow-y:scroll;
             }
         }
     }
