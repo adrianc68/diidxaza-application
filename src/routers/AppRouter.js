@@ -9,7 +9,7 @@ import Sidebar from '../components/sidebar/Sidebar'
 import UserProfile from '../pages/UserProfile/UserProfile';
 import AddDiscussion from '../components/forum/adddiscussion/AddDiscussion';
 import LessonListItem from '../components/learning/lessonlistitem/LessonListItem';
-import Lesson from '../components/learning/lesson/Lesson';
+import LessonInformation from '../components/learning/lessoninformation/LessonInformation';
 import LessonResults from '../components/learning/lessonresults/LessonResults';
 import AnswerSection from '../pages/Learning/AnswerSection/AnswerSection';
 import AdminMenu from '../components/admin/menu/AdminMenu';
@@ -65,7 +65,9 @@ export default function AppRouter() {
 
                 <Route exact path="/help" render={() => <Dashboard><UnderConstruction></UnderConstruction></Dashboard>} />
                 <Route exact path="/userprofile" render={() => <Dashboard><UserProfile></UserProfile></Dashboard>} />
-
+              
+              
+              
 |
 
 

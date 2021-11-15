@@ -1,10 +1,42 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import './learning.scss'
 import { useTranslation } from "react-i18next";
 import LessonListItem from '../../components/learning/lessonlistitem/LessonListItem';
+import LessonInformation from '../../components/learning/lessoninformation/LessonInformation'
 
 export default function Learning() {
     const { t } = useTranslation();
+
+    const [isVisible, setVisible] = useState(false);
+
+    const itemRef = useRef();
+
+    function handleDisplayLessonInformation(e) {
+        e.preventDefault();
+        console.log(itemRef);
+        console.log(itemRef.current.offsetTop);
+        console.log(itemRef.current.offsetLeft);
+        console.log(itemRef.current.offsetWidth);
+        console.log(itemRef.current.offsetHeight);
+
+        if (isVisible) {
+            setVisible(false);
+            return;
+        }
+        setVisible(true);
+    }
+
+    function placeLessonInformation() {
+        const s = {top:'0px', left:'0px'};
+        var d = <LessonInformation style={s}></LessonInformation>;
+        console.log(d);
+        // d.style.position = "absolute";
+        // d.style.left = x_pos + "px";
+        // d.style.top = y_pos + "px";
+        return d;
+    }
+
+
 
     return (
         <div className="learning-main-container">
@@ -16,40 +48,19 @@ export default function Learning() {
                 <div className="learning-lesson-information">
                     <div className="learning-lessons-content">
                         <ul>
-                            <li>
-                                <LessonListItem percentage="35" text="Colores"></LessonListItem>
-                                <LessonListItem percentage="56" text="Adverbios"></LessonListItem>
-                                <LessonListItem percentage="75" text="Animales"></LessonListItem>
-                                <LessonListItem percentage="99" text="Objetos"></LessonListItem>
-                                <LessonListItem percentage="100" text="Sinonimos"></LessonListItem>
-                                <LessonListItem percentage="3" text="Conjugaciones"></LessonListItem>
-                                <LessonListItem percentage="3" text="Conjugaciones"></LessonListItem>
-                                <LessonListItem percentage="3" text="Conjugaciones"></LessonListItem>
-                                <LessonListItem percentage="3" text="Conjugaciones"></LessonListItem>
-                                <LessonListItem percentage="3" text="Conjugaciones"></LessonListItem>
-                                <LessonListItem percentage="35" text="Colores"></LessonListItem>
-                                <LessonListItem percentage="56" text="Adverbios"></LessonListItem>
-                                <LessonListItem percentage="75" text="Animales"></LessonListItem>
-                                <LessonListItem percentage="99" text="Objetos"></LessonListItem>
-                                <LessonListItem percentage="100" text="Sinonimos"></LessonListItem>
-                                <LessonListItem percentage="3" text="Conjugaciones"></LessonListItem>
-                                <LessonListItem percentage="3" text="Conjugaciones"></LessonListItem>
-                                <LessonListItem percentage="3" text="Conjugaciones"></LessonListItem>
-                                <LessonListItem percentage="3" text="Conjugaciones"></LessonListItem>
-                                <LessonListItem percentage="3" text="Conjugaciones"></LessonListItem>
-                                <LessonListItem percentage="35" text="Colores"></LessonListItem>
-                                <LessonListItem percentage="56" text="Adverbios"></LessonListItem>
-                                <LessonListItem percentage="75" text="Animales"></LessonListItem>
-                                <LessonListItem percentage="99" text="Objetos"></LessonListItem>
-                                <LessonListItem percentage="100" text="Sinonimos"></LessonListItem>
-                                <LessonListItem percentage="3" text="Conjugaciones"></LessonListItem>
-                                <LessonListItem percentage="3" text="Conjugaciones"></LessonListItem>
-                                <LessonListItem percentage="3" text="Conjugaciones"></LessonListItem>
-                                <LessonListItem percentage="3" text="Conjugaciones"></LessonListItem>
-                                <LessonListItem percentage="3" text="Conjugaciones"></LessonListItem>
+                            <li onClick={handleDisplayLessonInformation} ref={itemRef}>
+                                <LessonListItem percentage="35" text="Colores" onClick={handleDisplayLessonInformation}></LessonListItem>
 
                             </li>
+
+                            <li onClick={handleDisplayLessonInformation} ref={itemRef}>
+                                <LessonListItem percentage="35" text="Colores" onClick={handleDisplayLessonInformation}></LessonListItem>
+                            </li>
+              
+
                         </ul>
+                        {isVisible ? placeLessonInformation() : null}
+
                     </div>
                     <div className="learning-lesson-user-information">
                         <div>

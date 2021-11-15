@@ -1,24 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './sidebar.scss'
 import { MdLogout, MdEmail, MdHome, MdMenu, MdBookmark, MdLiveTv, MdForum, MdMenuBook, MdLibraryMusic, MdLandscape, MdOutlineHelpOutline} from 'react-icons/md'
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from "react-i18next"
 import Button from '../../components/Button/Button'
 
-
 export default function Sidebar() {
     const { t } = useTranslation();
-
+    const sidebarCollapsed = localStorage.getItem('sidebar-collapsed');
+    const [isExpanded, setIsExpanded] = useState(sidebarCollapsed ? false : true);
 
     function toggleSidebar(e) {
         e.preventDefault();
-        var sidebar = document.querySelector(".sidebar");
-        sidebar.classList.toggle("active");
+        if(isExpanded ) {
+            setIsExpanded(false);
+            localStorage.setItem('sidebar-collapsed', true);
+            return;
+        }
+        setIsExpanded(true);
+        localStorage.removeItem('sidebar-collapsed');
     }
 
 
     return (
-        <nav className="sidebar">
+        <nav className = { isExpanded ? "sidebar" : "sidebar active"}>
             <div className="sidebar-toggle-button-container">
                 <button className="sidebar-toggle-button" onClick={toggleSidebar}>
                     <MdMenu className="sidebarIconToggle" />

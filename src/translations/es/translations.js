@@ -317,8 +317,8 @@ export const TRANSLATIONS_ES = {
     CheckProgressGraphic: "Gráfica de progresos",
     CheckProgressGraphicDescription: "Gráfica que muestra los progresos en función de...",
 
-    LearningTitle: "¡Comienza a aprender zapoteco!",
-    LearningDescription: "Para empezar a realizar las lecciones debes dar clic en alguna de ellas",
+    LearningTitle: "Aprendizaje",
+    LearningDescription: "Da clic en una lección para comenzar.",
     LearningPointsWon: "Puntos totales obtenidos: ",
     LearningLessonCompleted: "Lecciones completadas: ",
     LearningLessonStartDescription: "Debes seleccionar la respuesta correcta y obtendras puntos, en cambio, si seleccionas la respuesta incorrecta entonces no ganarás puntos. Presiona el botón comenzar lección para empezar.",
