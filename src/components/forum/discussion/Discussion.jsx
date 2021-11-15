@@ -1,22 +1,14 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import './discussion.scss'
 import Comment from '../comment/Comment';
 import {useTranslation} from 'react-i18next';
 import Button from '../../../components/Button/Button';
 import ReportUser from '../../anotheruser/reportuser/ReportUser';
 import Modal from '../../modal/Modal';
-import {GetImage} from "../../../hooks/useDiscussionForm";
 
 export default function Discussion({discussion, numberComments, comments, imageAccount, children}) {
     const { t } = useTranslation();
     const [statusModal, setStatusModal] = useState(false);
-    /*const {
-        imageComment, 
-        getImage
-    } = useGetImageComment()*/
-    /*useEffect(() => {
-        getImage()
-    }, []);*/
     return (
         <div className="forum-discussion-container">
             <h1>{discussion.title}</h1>

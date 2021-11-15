@@ -30,6 +30,8 @@ export const useForum = (validateForm,validateFormComment,initialForm) => {
     const [commentLenght,setCommentLenght] = useState(0);
     const [numberComments,setNumberComments] = useState(0);
 
+    //const [responseModalForum, ]
+
     const handleChange = (e) =>{
         const {value} = e.target;
         setTitle(value);
@@ -273,6 +275,37 @@ export const useForum = (validateForm,validateFormComment,initialForm) => {
         setErrorsComment({});
     }
 
+    const handleClickDeleteComment = (e, id) =>{
+        e.preventDefault();
+        helpHttp().delete(UrlAPI+"comments",{
+            headers: {
+                Accept: "application/json",
+                'Content-Type': 'application/json',
+                'Authorization': sessionStorage.getItem("token")
+            },
+            body: {
+                _id:id
+            }
+        }).then((response) => {
+            if(!response.status){
+                setNumberComments(numberComments-1);
+                helpHttp().get(UrlAPI+"comments/"+discussion._id,{
+                    headers: {
+                        Accept: "application/json",
+                        'Authorization': sessionStorage.getItem("token")
+                    }
+                }).then((response) => {
+                    if(!response.status){
+                        setComments(response);
+                    }
+                });
+            }
+            else{
+                setResponseComment(t("ErrorMessage"));
+            }
+        });
+    }
+
     const handleChangeComment = (e) =>{
         const {value} = e.target;
         setCommentLenght(value.trim().length);
@@ -296,7 +329,7 @@ export const useForum = (validateForm,validateFormComment,initialForm) => {
     }
 };
 
-export const useGetImageComment = () => {
+/*export const useGetImageComment = () => {
     const [imageComment, setImageComment] = useState(ImageInformationAlt);
     //const [urlComment, setURLComment] = useState(undefined);
     
@@ -332,7 +365,7 @@ export const useGetImageComment = () => {
     }
 }
 
-export const GetImage = (urlComment) =>{
+/*export const GetImage = (urlComment) =>{
     if(urlComment!= undefined){
         const url =  {
             URL: urlComment
@@ -357,7 +390,7 @@ export const GetImage = (urlComment) =>{
     } else{
         return ImageInformationAlt
     }
-}
+}*/
 
 export const useDiscussionForm = (initialForm,validateForm) => {
     const { t } = useTranslation();

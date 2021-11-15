@@ -7,6 +7,7 @@ import Discussion from '../../components/forum/discussion/Discussion';
 import DiscussionListItem from '../../components/forum/discussionlistitem/DiscussionListItem';
 import {useForum} from "../../hooks/useDiscussionForm";
 import AddComment from '../../components/forum/addcomment/AddComment';
+import Modal from '../../components/modal/Modal';
 
 
 const initialForm = {
