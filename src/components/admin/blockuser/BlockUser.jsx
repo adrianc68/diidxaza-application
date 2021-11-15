@@ -10,7 +10,6 @@ export default function BlockUser() {
         <div className="blockuser-main-container">
             <div className="blockuser-content-container">
                 <div className="blockuser-text">
-                    <h1>{t("BlockUserDescriptionTitle")}</h1>
                     <p>{t("BlockUserDescription")}</p>
                 </div>
                 <div className="blockuser-button-panel">

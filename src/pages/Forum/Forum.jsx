@@ -139,11 +139,11 @@ export default function Forum() {
                     </Discussion>}
                 </div>
 
-                <Modal title={t("ReportUserTitle")} statusModal={true}>
-                    {/* <BlockUser></BlockUser> */}
-                    {/* <DeleteAccount></DeleteAccount> */}
+                {/* <Modal title={t("ReportUserTitle")} statusModal={true}>
+                    <BlockUser></BlockUser>
+                     <DeleteAccount></DeleteAccount>
 
-                </Modal>
+                </Modal> */}
             </div>
         </div>
     )
