@@ -1,21 +1,21 @@
 @import "../../components/variables.module.scss";
 
 .userprofile-main-container {
-    width: calc(100% - 30px);
-    height: calc(100% - 30px);
-    padding: 15px;
-    background-color: #f3f1f1;
+    width: calc(100%);
+    height: calc(100%);
+    display: flex;
+    border-radius:3px;
+    gap:15px;
 
-    .userprofile-details-main-container {
-        width: calc(100% - 30px);
-        height: calc(100% - 30px);
-        display: flex;
-        box-shadow:rgba(0,0,0,0.25) 0px 0.0625em 0.0625em, rgba(0,0,0,0.25) 0px 0.125em 0.5em, rgba(255,255,255,0.1) 0px 0px 0px 1px inset;
-        border-radius:3px;
-        padding:15px;
+
         .userprofile-user-details-container {
-            box-shadow:rgba(0,0,0,0.16) 0px 3px 6px, rgba(0,0,0,0.23) 0px 3px 6px;
-            border-radius:3px;
+            border-left: 5px solid rgb(14, 3, 116);
+
+            box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+            padding: 15px;
+            border-radius: 3px;
+            background-color: #fff;
+
             display: flex;
             width: 235px;
             flex-direction: column;
@@ -67,9 +67,15 @@
         }
 
         .userprofile-user-data-container {
-            padding-left: 25px;
-            width: calc(100% - 200px);
+            width: calc(100% - 235px);
             overflow-y: scroll;
+
+
+            box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+            padding: 15px;
+            border-radius: 3px;
+            background-color: #fff;
+
 
             .userprofile-account-container {
                 display: flex;
@@ -99,9 +105,7 @@
                 flex-direction: column;
                 gap:25px;
                 div {
-                    display: flex;
-                    justify-content: center;
-                    gap: 25px;
+                   
                 }
             }
 
@@ -164,15 +168,16 @@
                 display: block;
             }
         }
-    }
+    
 }
 
 .type-user-admin {
     box-shadow:#00000040 0px 0.06525em 0.0625em, rgba(0,0,0,0.25) 0px 0.125em 0.5em, rgba(255,255,255,0.1) 0px 0px 0px 1px inset;
-    background-color: #130358;
+    background: rgb(93,0,0);
+    background: linear-gradient(28deg, rgba(93,0,0,1) 8%, rgba(255,0,0,1) 100%);
     color:#fff;
     display: inline-block;
-    padding: 15px;
+    padding: 10px;
     border-radius:3px;
 }
 

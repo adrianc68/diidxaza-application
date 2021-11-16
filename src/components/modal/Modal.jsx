@@ -5,13 +5,12 @@ import PropTypes from 'prop-types';
 import {AiFillCloseSquare} from 'react-icons/ai'; 
 
 
-export default function Modal({ title, children, statusModal, setStatusModal, sizeWidth, sizeHeight}) {
+export default function Modal({ title, children, setStatusModal, sizeWidth, sizeHeight}) {
     const style = {
         width: sizeWidth + '%',
         height:sizeHeight + '%',
     };
     return (
-        statusModal && 
         <div className = "modal-container-main" >
             <div className="modal-container-content" style={style}>
                 <div className="modal-content-container">
