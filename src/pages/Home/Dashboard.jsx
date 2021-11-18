@@ -40,7 +40,6 @@ class Dashboard extends Component {
                 <div className="topbar-dashboard-container">
                     <Topbar>
                     <div className="dashboard-userprofile">
-                {/* ON CLICK DISPLAY USER PROFILE */}
                     <NavLink className="link" to="/userprofile">
                             <Button styleName="text-button" text={sessionStorage.getItem("name")}>
                     </Button>
@@ -54,6 +53,7 @@ class Dashboard extends Component {
                 <div className="userprofile-dashboard-container">
                     {this.props.children}
                 </div>
+                { sessionStorage.getItem("role") === "manager" ? <AdminMenu/> : null}
             </div >
         )
     }

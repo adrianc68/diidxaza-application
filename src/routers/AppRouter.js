@@ -67,7 +67,9 @@ export default function AppRouter() {
                 <Route exact path="/userprofile" render={() => <Dashboard><UserProfile></UserProfile></Dashboard>} />
               
               
-              
+                <Route exact path="/checkprogress" render={() => <Dashboard><CheckProgress></CheckProgress></Dashboard>} />
+                <Route exact path="/editprofile" render={() => <Dashboard><EditProfile></EditProfile></Dashboard>} />
+
 |
 
 

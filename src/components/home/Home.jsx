@@ -22,7 +22,7 @@ export default function Home() {
 
             <div className="home-welcome-title-container">
                 <div className="home-welcome-container">
-                    <h2>{t("HomeWelcomeTitle")}</h2>
+                    <h2>{t("HomeWelcomeTitle").replace('$', sessionStorage.getItem("name"))}</h2>
                     <span>{t("HomeWelcomeDescription")}</span>
                 </div>
                 <div className="home-welcome-history-container">
@@ -32,7 +32,7 @@ export default function Home() {
             </div>
 
             <div className="home-features-container">
-                <h2>{t("HomeWelcomeFeaturesTitle")}</h2>
+                <h2>{ t("HomeWelcomeFeaturesTitle")}</h2>
                 <div className="home-features-content">
                     <div className="home-features-forum">
                         <h2>{t("SidebarForum")}</h2>

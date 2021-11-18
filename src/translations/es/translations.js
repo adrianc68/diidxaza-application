@@ -230,7 +230,7 @@ export const TRANSLATIONS_ES = {
     ButtonReport: "Reportar",
 
     TypeUserAdmin: "Administrador",
-    TypeUserFree: "Gratuito",
+    TypeUserFree: "Usuario normal",
 
     ButtonAccept: "Aceptar",
     ButtonYes: "Si",
@@ -269,7 +269,8 @@ export const TRANSLATIONS_ES = {
 
     AdminAccountMenu: "Menú de usuarios",
 
-    UserProfileAge: "años",
+    UserProfileControlPanel: "Panel de control",
+    UserProfileYears: "años",
     UserProfileButtonPanelDeleteAccount: "Eliminar cuenta",
     UserProfileButtonPanelCheckProgress: "Revisar progreso",
     UserProfileButtonPanelEditProfile: "Editar perfil",
@@ -289,8 +290,12 @@ export const TRANSLATIONS_ES = {
     UserProfileDiscussionsCreated: "Discusiones creadas",
     UserProfileDiscussionsCommented: "Discusiones comentadas",
     UserProfileUserBanned: "Bloqueado",
-    UserProfileUserFree: "En línea",
+    UserProfileUserFree: "En vista",
     
+    UserProfileName: "nombre",
+    UserProfileAge: "edad",
+    UserProfileBirthdate: "fecha de nacimiento",
+
     UserProfileAdminBlockUser: "Bloquear usuario",
 
 

@@ -11,7 +11,6 @@ export default function Modal({ title, children, statusModal, handleModal, sizeW
         height:sizeHeight + '%',
     };
     return (
-        statusModal && 
         <div className = "modal-container-main" >
             <div className="modal-container-content" style={style}>
                 <div className="modal-content-container">

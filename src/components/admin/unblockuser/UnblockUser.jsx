@@ -2,7 +2,6 @@ import React from 'react'
 import './unblockuser.scss'
 import Button from '../../Button/Button'
 import { useTranslation } from "react-i18next";
-import ImageInformationAlt from '../../../assets/images/ide-35.svg'
 
 export default function UnblockUser() {
     const { t } = useTranslation();
@@ -11,7 +10,6 @@ export default function UnblockUser() {
         <div className="unblockuser-main-container">
             <div className="unblockuser-content-container">
                 <div className="unblockuser-text">
-                    <img src={ImageInformationAlt} alt="Texto alternativo TTT"></img>
                     <h1>{t("UnblockUserDescriptionTitle")}</h1>
                     <p>{t("UnblockUserDescription")}</p>
                 </div>
