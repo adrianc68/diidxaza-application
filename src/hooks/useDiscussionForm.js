@@ -194,8 +194,11 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
         });
     }
 
-    const handleClickDiscussion = (e, id) =>{
+    const handleClickDiscussion = async(e, id) =>{
         e.preventDefault();
+        await setImagesComments([]);
+        await setLoadingDiscussion(false);
+        await setFoundDiscussion(false);
         helpHttp().get(UrlAPI+"discussions/"+id,{
             headers: {
                 Accept: "application/json",
@@ -238,18 +241,17 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                 } else{
                     setImageAccount(ImageInformationAlt)
                 }
+
                 helpHttp().get(UrlAPI+"comments/"+id,{
                     headers: {
                         Accept: "application/json",
                         'Authorization': sessionStorage.getItem("token")
                     }
-                }).then((responseComments) => {
-                    if(!response.status){
+                }).then(async (responseComments) => {
+                    if(!responseComments.status){
                         setComments(responseComments);
-                        var photoComments = []
-                        responseComments.map(imageComment => {
+                        await responseComments.map(imageComment => {
                             if(imageComment.idAccount[0].URL!= undefined){
-                                console.log(imageComment.idAccount[0].URL)
                                 fetch(UrlAPI+"resources",{
                                     method: 'PATCH',
                                     headers: {
@@ -261,22 +263,20 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                                     if (response.ok) {
                                         response.blob().then((responseBlob) => {
                                             var objectURL = URL.createObjectURL(responseBlob);
-                                            photoComments.push(objectURL);
+                                            setImagesComments(imagesComments => [...imagesComments, objectURL]);
                                         });
                                     }
                                     else{
-                                        photoComments.push(ImageInformationAlt);
+                                        setImagesComments(imagesComments => [...imagesComments, ImageInformationAlt]);
                                     }
                                 });
                             }else{
-                                photoComments.push(ImageInformationAlt);
+                                setImagesComments(imagesComments => [...imagesComments, ImageInformationAlt]);
                             }
                         })
-                        setImagesComments(photoComments)
-                        console.log(photoComments)
                     }
                     else{
-                        if(response.status === 419){
+                        if(responseComments.status === 419){
                             setLoadingDiscussion(false);
                             setFoundDiscussion(false);
                             setModalForum(false);
@@ -289,20 +289,20 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                 });
             }else {
                 setNumberComments(0);
-                if(response.status === 401){
+                if(responseDiscussion.status === 401){
                     setLoadingDiscussion(false);
                     setFoundDiscussion(false);
                     setResponseModalForum(t("ErrorToken"));
                     setModalForum(true);
                 }
                 else{
-                    if(response.status === 419){
+                    if(responseDiscussion.status === 419){
                         setLoadingDiscussion(false);
                         setFoundDiscussion(false);
                         setModalForum(false);
                         setModalToken(true);
                     }else{
-                        if(response.status === 404){
+                        if(responseDiscussion.status === 404){
                             setResponse(t("NotFoundDiscussion"));
                         }else{
                             setResponse(t("ErrorMessage"));
