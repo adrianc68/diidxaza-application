@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './forum.scss'
 import Button from '../../components/Button/Button'
 import { useTranslation } from "react-i18next";
@@ -8,7 +8,8 @@ import DiscussionListItem from '../../components/forum/discussionlistitem/Discus
 import { useForum } from "../../hooks/useDiscussionForm";
 import AddComment from '../../components/forum/addcomment/AddComment';
 import Modal from '../../components/modal/Modal';
-
+import AlertMessage from "../../components/admin/blockuser/AlertMessage";
+import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
 
 const initialForm = {
     comment: "",
@@ -43,6 +44,22 @@ const validationsFormComment = (comment) => {
 
 export default function Forum() {
     const { t } = useTranslation();
+    const [discussions, setDiscussions] = useState([]);
+    
+    useEffect(() => {
+        helpHttp().get(UrlAPI + "discussions",{
+            headers: {
+                Accept: "application/json",
+                'Authorization': sessionStorage.getItem("token")
+            },
+        }).then((response) => {
+            if (!response.status) {
+                setDiscussions(response)
+            } else{
+                setDiscussions([]);
+            }
+        })
+    }, []);
 
     const {
         title,
@@ -50,7 +67,6 @@ export default function Forum() {
         handleChange,
         handleSubmit,
         handleBlur,
-        discussions,
         handleClickNews,
         handleClickPopulars,
         handleClickFollowing,
@@ -72,8 +88,16 @@ export default function Forum() {
         className,
         responseComment,
         commentLenght,
-        numberComments
-    } = useForum(validationsForm, validationsFormComment, initialForm);
+        numberComments,
+        responseModalForum, 
+        modalForum,
+        setModalForum,
+        handleClickDeleteComment,
+        modalToken,
+        setModalToken,
+        handleClickFollow,
+        imagesComments
+    } = useForum(validationsForm, validationsFormComment, initialForm, setDiscussions);
 
     return (
         <div className="forum-main-container">
@@ -130,19 +154,19 @@ export default function Forum() {
 
                 </div>
                 <div className="forum-discussion-content">
-                    {foundDiscussion && <Discussion discussion={discussion} numberComments={numberComments} comments={comments} imageAccount={imageAccount}>
+                    {foundDiscussion && <Discussion imagesComments={imagesComments} discussion={discussion} numberComments={numberComments} comments={comments} imageAccount={imageAccount} setModalToken={setModalToken} handleClickDeleteComment={handleClickDeleteComment} handleClickFollow={handleClickFollow}>
                         <AddComment handleChangeComment={handleChangeComment} handleSubmitComment={handleSubmitComment} loadingComment={loadingComment}
                             handleBlurComment={handleBlurComment} formComment={formComment} errorsComment={errorsComment} handleClickComment={handleClickComment}
                             icon={icon} className={className} responseComment={responseComment} commentLenght={commentLenght} />
                     </Discussion>}
                 </div>
-
-                {/* <Modal title={t("ReportUserTitle")} statusModal={true}>
-                    <BlockUser></BlockUser>
-                     <DeleteAccount></DeleteAccount>
-
-                </Modal> */}
             </div>
+            <Modal statusModal={modalForum} handleModal={()=>{setModalForum(false)}} sizeHeight="20" sizeWidth="35">
+                <AlertMessage content={responseModalForum} handleModal={()=>{setModalForum(false)}}></AlertMessage>
+            </Modal>
+            <Modal statusModal={modalToken} handleModal={()=>{window.location.href = 'login';}} sizeHeight="20" sizeWidth="35">
+                <AlertMessage content={t("RefreshToken")} handleModal={()=>{window.location.href = 'login';}}></AlertMessage>
+            </Modal>
         </div>
     )
 }

@@ -174,6 +174,8 @@ export const TRANSLATIONS_ES = {
     ReportUserSuccessful: "El reporte se registro exitosamente",
     AddComentNotFound: "No se encontro la cuenta o la discusión",
     AddCommentSuccessful: "El comentario se registro exitosamente",
+    FollowSuccessful: "La discusión se sigue exitosamente",
+    FollowNotSuccessful:"Esta discusión ya la sigues, búscala en discusiones seguidas.",
 
     SidebarHome: "Inicio",
     SidebarMiPerfil: "Mi perfil",
@@ -230,6 +232,11 @@ export const TRANSLATIONS_ES = {
     TypeUserAdmin: "Administrador",
     TypeUserFree: "Gratuito",
 
+    ButtonAccept: "Aceptar",
+    ButtonYes: "Si",
+    ButtonNo: "No",
+    DeleteCommentSuccessful:"El comentario se eliminó exitosamente",
+    MessageComment:"¿Seguro desea eliminar el comentario?",
     DeleteComment: "Eliminar Comentario",
     DeleteButton: "Eliminar",
     DeleteAccountTitle: "Eliminar cuenta",
@@ -350,5 +357,7 @@ export const TRANSLATIONS_ES = {
     NotFoundDiscussion: "No se encontro la discusión",
     NotFoundRecords: "No se encontraron registros",
 
+    ErrorToken: "Requiere token o No tiene permiso para realizar esta funcionalidad",
+    RefreshToken: "Se agotado su tiempo en el sistema, por favor vuelva a iniciar sesión",
     AlternativeMessageImageDecorative: "Imagen decorativa",
 };

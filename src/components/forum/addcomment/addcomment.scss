@@ -26,13 +26,6 @@
             align-items: flex-start;
             flex:1;
             gap:0.3em;
-
-            .errorMessage {
-                width: calc(100% - 50px);
-            }
-            .successfulMessage {
-                width: calc(100% - 50px);
-            }
         }
     }
 }

@@ -1,20 +1,18 @@
 import React from 'react'
 import './blockuser.scss'
 import Button from '../../Button/Button'
-import { useTranslation } from "react-i18next";
 
-export default function BlockUser() {
-    const { t } = useTranslation();
+export default function BlockUser({primaryButton, secondaryButton, content, handlePrimary, setStatusModal}) {
 
     return (
         <div className="blockuser-main-container">
             <div className="blockuser-content-container">
                 <div className="blockuser-text">
-                    <p>{t("BlockUserDescription")}</p>
+                    <p>{content}</p>
                 </div>
                 <div className="blockuser-button-panel">
-                    <Button styleName="primary-button" text={t("ButtonCancel")} ></Button>
-                    <Button styleName="primary-button" text={t("ButtonDeleteAccount")} ></Button>
+                    <Button styleName="dark-blue-button" text={primaryButton} onClick={handlePrimary}></Button>
+                    <Button styleName="primary-button" text={secondaryButton} onClick= {()=>setStatusModal(false)}></Button>
                 </div>
             </div>
         </div>

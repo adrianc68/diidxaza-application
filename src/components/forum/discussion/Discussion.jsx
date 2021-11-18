@@ -6,7 +6,7 @@ import Button from '../../../components/Button/Button';
 import ReportUser from '../../anotheruser/reportuser/ReportUser';
 import Modal from '../../modal/Modal';
 
-export default function Discussion({discussion, numberComments, comments, imageAccount, children}) {
+export default function Discussion({discussion, numberComments, comments, imageAccount, children, handleClickDeleteComment, setModalToken, handleClickFollow, imagesComments}) {
     const { t } = useTranslation();
     const [statusModal, setStatusModal] = useState(false);
     return (
@@ -20,7 +20,7 @@ export default function Discussion({discussion, numberComments, comments, imageA
                     <span>{t("DiscussionTheme")}{discussion.theme}</span>
                 </div>
                 <div>
-                    <Button styleName="dark-blue-button">{t("ButtonFollow")}</Button>
+                    <Button styleName="dark-blue-button" onClick={handleClickFollow}>{t("ButtonFollow")}</Button>
                 </div>
             </div>
             <div className="forum-discussion-description-container">
@@ -39,14 +39,14 @@ export default function Discussion({discussion, numberComments, comments, imageA
             <div className="forum-discussion-forum-comments-container">
                 <div className="forum-discussion-comment-list">
                     <ul id="list-comments">
-                        {comments.length > 0 && comments.map(element => (
-                            <li><Comment comment={element}/></li>
+                        {comments.length > 0 && comments.map((element, index) => (
+                            <li><Comment imagesComments={imagesComments[index]} comment={element} handleClickDeleteComment={handleClickDeleteComment} idDiscussion={discussion._id} setModalToken={setModalToken}/></li>
                         ))}
                     </ul>
                 </div>
             </div>
-            <Modal title={t("ReportUserTitle")} statusModal={statusModal} setStatusModal={setStatusModal}>
-               <ReportUser account={discussion.idAccount[0]} statusModal={statusModal} setStatusModal={setStatusModal}></ReportUser>
+            <Modal title={t("ReportUserTitle")} statusModal={statusModal} handleModal={()=>{setStatusModal(false)}} sizeHeight="70" sizeWidth="80">
+               <ReportUser account={discussion.idAccount[0]} statusModal={statusModal} setStatusModal={setStatusModal} setModalToken={setModalToken}></ReportUser>
             </Modal> 
         </div>
     )

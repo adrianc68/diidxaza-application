@@ -89,7 +89,8 @@ select {
 .system-message-container {
 
     .successfulMessage {
-        width: calc(100%);
+        padding:5px;
+        width: calc(100% - 10px);
         text-align: center;
         background-color: rgb(163, 255, 205);
         margin-bottom: 0;
@@ -145,13 +146,15 @@ select {
 .radiobutton-container {
     display: inline-flex;
     align-items: center;
-    padding-left: 15px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
     gap: 5px;
-    text-align: left;
     label {
         display: block;
         cursor: pointer;
-        color: #636965;
+        color: #545856;
+        font-size: 14px;
     }
 }
 

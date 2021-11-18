@@ -6,12 +6,10 @@ import { useTranslation } from "react-i18next";
 import ReportUser from '../../anotheruser/reportuser/ReportUser';
 import Modal from '../../modal/Modal';
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
-//import {GetImage} from "../../../hooks/useDiscussionForm";
+import {GetImage} from "../../../hooks/useDiscussionForm";
 import BlockUser from "../../admin/blockuser/BlockUser"
 
-export default function Comment(props) {
-    const comment = props.comment;
-    //const imageComment = props.imageComment;
+export default function Comment({comment,handleClickDeleteComment,idDiscussion,setModalToken,imagesComments}) {
     const { t } = useTranslation();
     const [statusModal, setStatusModal] = useState(false);
     const [statusModalDelete, setStatusModalDelete] = useState(false);
@@ -30,7 +28,7 @@ export default function Comment(props) {
     }, []);*/
     return (
         <div className="forum-comment">
-            <img src={ImageInformationAlt} className="welcome-information-image" alt={t("WelcomeInformationAlt")}></img>
+            <img src={imagesComments} className="welcome-information-image" alt={t("WelcomeInformationAlt")}></img>
             <div className="forum-comment-user-data">
                 <span>{comment.idAccount[0].name} {comment.idAccount[0].lastname}</span>
                 <span>{t("DiscussionlistitemDate")}{comment.dateCreation}</span>
@@ -48,13 +46,13 @@ export default function Comment(props) {
                     </div>
                 </div>}
             </div>
-            <Modal title={t("ReportUserTitle")} statusModal={statusModal} setStatusModal={setStatusModal} sizeHeight="70" sizeWidth="80">
-               <ReportUser account={comment.idAccount[0]} statusModal={statusModal} setStatusModal={setStatusModal}></ReportUser>
+            <Modal title={t("ReportUserTitle")} statusModal={statusModal} handleModal={()=>setStatusModal(false)} sizeHeight="70" sizeWidth="80">
+               <ReportUser account={comment.idAccount[0]} statusModal={statusModal} setStatusModal={setStatusModal} setModalToken={setModalToken}></ReportUser>
             </Modal> 
-            <Modal title={t("DeleteComment")} statusModal={statusModalDelete} setStatusModal={setStatusModalDelete} sizeHeight="50" sizeWidth="50">
-                <BlockUser></BlockUser>
+            <Modal title={t("DeleteComment")} statusModal={statusModalDelete} handleModal={()=>{setStatusModalDelete(false)}} sizeHeight="20" sizeWidth="35">
+                <BlockUser primaryButton={t("ButtonYes")} secondaryButton={t("ButtonNo")} content={t("MessageComment")} setStatusModal ={setStatusModalDelete}
+                handlePrimary={(e)=>{handleClickDeleteComment(e,comment._id,idDiscussion, setStatusModalDelete)}}/>
             </Modal> 
-
         </div>
     )
 }

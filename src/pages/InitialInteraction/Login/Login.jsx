@@ -53,14 +53,20 @@ export default function Login({ setToken }) {
               <label>
                 <p>{t("LoginUsernameInput")}</p>
                 <input className="input" name="username" type="text" onBlur={handleBlur} onChange={handleChange} value={form.username} required />
-                {errors.username && <p className="errorInput">{t("ErrorUsername")}</p>}
+                <div className="system-message-container">
+                  {errors.username && <p className="errorInput">{t("ErrorUsername")}</p>}
+                </div>
               </label>
               <label>
                 <p>{t("LoginPasswordInput")}</p>
                 <input className="input" name="password" type="password" onBlur={handleBlur} onChange={handleChange} value={form.password} required />
-                {errors.password && <p className="errorInput">{t("ErrorPassword")}</p>}
+                <div className="system-message-container">
+                  {errors.password && <p className="errorInput">{t("ErrorPassword")}</p>}
+                </div>
               </label>
-              {loading && <p className={className}><BiError />  {response}</p>}
+              <div className="system-message-container">
+                {loading && <p className={className}><BiError />  {response}</p>}
+              </div>
               <div className="login-form-button-container">
                 <div className="login-form-button">
                   <Button type="submit" styleName="secondary-button" text={t("LoginLoginButton")}></Button>
@@ -93,11 +99,7 @@ export default function Login({ setToken }) {
               </li>
             </ul>
           </div>
-
-
         </div>
-
-
       </div>
     </>
 
