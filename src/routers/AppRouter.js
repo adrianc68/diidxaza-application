@@ -15,7 +15,7 @@ import AnswerSection from '../pages/Learning/AnswerSection/AnswerSection';
 import AdminMenu from '../components/admin/menu/AdminMenu';
 import EditProfile from '../components/ownuser/EditProfile/EditProfile';
 import ReportsMenu from '../components/admin/reportsmenu/ReportsMenu';
-import Report from '../components/admin/reportsmenu/report/Report';
+import Report from '../components/report/Report';
 import AccountsMenu from '../components/admin/accountsmenu/AccountsMenu';
 import ReportUser from '../components/anotheruser/reportuser/ReportUser';
 import CheckProgress from '../components/ownuser/CheckProgress/CheckProgress'

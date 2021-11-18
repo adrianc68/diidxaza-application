@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {AiFillCloseSquare} from 'react-icons/ai'; 
 
 
-export default function Modal({ title, children, statusModal, handleModal, sizeWidth, sizeHeight}) {
+export default function Modal({ title, children, handleModal, sizeWidth, sizeHeight}) {
     const style = {
         width: sizeWidth + '%',
         height:sizeHeight + '%',
