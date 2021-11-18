@@ -118,12 +118,12 @@ export default function AddDiscussion() {
                     </div>
                 </div>
             </div>
-            <Modal statusModal={modalNotToken} handleModal={()=>{setModalNotToken(false)}} sizeHeight="20" sizeWidth="35">
+            {modalNotToken && <Modal handleModal={()=>{setModalNotToken(false)}} sizeHeight="20" sizeWidth="35">
                 <AlertMessage content={t("ErrorToken")} handleModal={()=>{setModalNotToken(false)}}></AlertMessage>
-            </Modal>
-            <Modal statusModal={modalToken} handleModal={()=>{window.location.href = 'login';}} sizeHeight="20" sizeWidth="35">
+            </Modal>}
+            {modalToken && <Modal handleModal={()=>{window.location.href = 'login';}} sizeHeight="20" sizeWidth="35">
                 <AlertMessage content={t("RefreshToken")} handleModal={()=>{window.location.href = 'login';}}></AlertMessage>
-            </Modal>
+            </Modal>}
         </form>
     )
 }

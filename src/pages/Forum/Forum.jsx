@@ -161,12 +161,12 @@ export default function Forum() {
                     </Discussion>}
                 </div>
             </div>
-            <Modal statusModal={modalForum} handleModal={()=>{setModalForum(false)}} sizeHeight="20" sizeWidth="35">
+            {modalForum && <Modal handleModal={()=>{setModalForum(false)}} sizeHeight="20" sizeWidth="35">
                 <AlertMessage content={responseModalForum} handleModal={()=>{setModalForum(false)}}></AlertMessage>
-            </Modal>
-            <Modal statusModal={modalToken} handleModal={()=>{window.location.href = 'login'}} sizeHeight="20" sizeWidth="35">
+            </Modal>}
+            {modalToken && <Modal handleModal={()=>{window.location.href = 'login'}} sizeHeight="20" sizeWidth="35">
                 <AlertMessage content={t("RefreshToken")} handleModal={()=>{window.location.href = 'login'}}></AlertMessage>
-            </Modal>
+            </Modal>}
         </div>
     )
 }
