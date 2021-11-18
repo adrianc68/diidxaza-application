@@ -8,7 +8,7 @@ import DiscussionListItem from '../../components/forum/discussionlistitem/Discus
 import { useForum } from "../../hooks/useDiscussionForm";
 import AddComment from '../../components/forum/addcomment/AddComment';
 import Modal from '../../components/modal/Modal';
-import AlertMessage from "../../components/admin/blockuser/AlertMessage";
+import AlertMessage from "../../components/alert/AlertMessage";
 import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
 
 const initialForm = {

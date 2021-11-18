@@ -7,7 +7,7 @@ import ReportUser from '../../anotheruser/reportuser/ReportUser';
 import Modal from '../../modal/Modal';
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 import {GetImage} from "../../../hooks/useDiscussionForm";
-import BlockUser from "../../admin/blockuser/BlockUser"
+import AlertConfirmation from "../../alert/AlertConfirmation"
 
 export default function Comment({comment,handleClickDeleteComment,idDiscussion,setModalToken,imagesComments}) {
     const { t } = useTranslation();
@@ -50,7 +50,7 @@ export default function Comment({comment,handleClickDeleteComment,idDiscussion,s
                <ReportUser account={comment.idAccount[0]} statusModal={statusModal} setStatusModal={setStatusModal} setModalToken={setModalToken}></ReportUser>
             </Modal> 
             <Modal title={t("DeleteComment")} statusModal={statusModalDelete} handleModal={()=>{setStatusModalDelete(false)}} sizeHeight="20" sizeWidth="35">
-                <BlockUser primaryButton={t("ButtonYes")} secondaryButton={t("ButtonNo")} content={t("MessageComment")} setStatusModal ={setStatusModalDelete}
+                <AlertConfirmation primaryButton={t("ButtonYes")} secondaryButton={t("ButtonNo")} content={t("MessageComment")} setStatusModal ={setStatusModalDelete}
                 handlePrimary={(e)=>{handleClickDeleteComment(e,comment._id,idDiscussion, setStatusModalDelete)}}/>
             </Modal> 
         </div>

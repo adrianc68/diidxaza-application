@@ -1,16 +1,16 @@
 @import "../../../components/variables.module.scss";
 
-.blockuser-main-container {
+.alert-confirmation-main-container {
     width: 100%;
     height: 100%;
     background-color:#fff;
-    .blockuser-content-container {
+    .alert-confirmation-content-container {
         padding: 25px;
         display: flex;
         height:calc(100% - 60px);
         flex-direction: column;
         gap: 15px;
-        .blockuser-text {
+        .alert-confirmation-text {
             display: inline-flex;
             flex: 1;
             gap: 15px;
@@ -29,7 +29,7 @@
 
         }
 
-        .blockuser-button-panel {
+        .alert-confirmation-button-panel {
             display: inline-flex;
             padding-left:50px;
             padding-right:50px;
