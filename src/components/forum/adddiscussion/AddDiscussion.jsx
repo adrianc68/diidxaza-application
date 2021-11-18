@@ -5,7 +5,7 @@ import Button from '../../../components/Button/Button'
 import { useTranslation } from 'react-i18next'
 import { useDiscussionForm } from "../../../hooks/useDiscussionForm";
 import Modal from '../../modal/Modal';
-import AlertMessage from "../../admin/blockuser/AlertMessage";
+import AlertMessage from "../../alert/AlertMessage";
 
 const initialForm = {
     title: "",
