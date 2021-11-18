@@ -171,6 +171,9 @@ export const TRANSLATIONS_ES = {
     SignUpVerificationSendSuccessful: "El código de confirmación se reenvio exitosamente",
     SignUpVerificationInvalidEmail: "No se encontro ningun correo",
 
+    EditProfileTitle:"Editar perfil",
+    EditProfileDescription:"Para editar el perfil debes llenar los campos correspondientes. te recomendamos no utilizar carácteres extraños.",
+
     ReportUserSuccessful: "El reporte se registro exitosamente",
     AddComentNotFound: "No se encontro la cuenta o la discusión",
     AddCommentSuccessful: "El comentario se registro exitosamente",
@@ -361,6 +364,8 @@ export const TRANSLATIONS_ES = {
     NoAvalaible: "No disponible",
     NotFoundDiscussion: "No se encontro la discusión",
     NotFoundRecords: "No se encontraron registros",
+
+    MessageUpdateAccount: "La cuenta se actualizo exitosamente",
 
     ErrorToken: "Requiere token o No tiene permiso para realizar esta funcionalidad",
     RefreshToken: "Se agotado su tiempo en el sistema, por favor vuelva a iniciar sesión",

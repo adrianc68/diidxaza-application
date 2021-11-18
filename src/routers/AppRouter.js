@@ -32,7 +32,7 @@ import Learning from '../pages/Learning/Learning';
 import History from '../pages/History/History'
 import UnderConstruction from '../pages/UnderConstruction/UnderConstruction'
 
-
+import React, {useState} from 'react'
 
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Dashboard from '../pages/Home/Dashboard'
@@ -40,6 +40,8 @@ import Home from '../components/home/Home'
 
 
 export default function AppRouter() {
+    const [nameUser, setNameUser] = useState(sessionStorage.getItem("name"));
+
     return (
         <Router>
             <Switch>
@@ -53,22 +55,22 @@ export default function AppRouter() {
 
                 {/* IS THIS A GOOD APROXIMATION? OR SHOULD USE INNER SWITCH ? */}
 
-                <Route exact path="/discussion" render = {() => <Dashboard><AddDiscussion></AddDiscussion></Dashboard>} />
-                <Route exact path="/home" render = {() => <Dashboard><Home></Home></Dashboard>} />
-                <Route exact path="/email" render={() => <Dashboard><UnderConstruction></UnderConstruction></Dashboard>} />
-                <Route exact path="/forum" render={() => <Dashboard><Forum></Forum></Dashboard>} />
-                <Route exact path="/learning" render={() => <Dashboard><Learning></Learning></Dashboard>} />
-                <Route exact path="/news" render={() => <Dashboard><UnderConstruction></UnderConstruction></Dashboard>} />
-                <Route exact path="/dictionary" render={() => <Dashboard><UnderConstruction></UnderConstruction></Dashboard>} />
-                <Route exact path="/songs" render={() => <Dashboard><UnderConstruction></UnderConstruction></Dashboard>} />
-                <Route exact path="/history" render={() => <Dashboard><History></History></Dashboard>} />
+                <Route exact path="/discussion" render = {() => <Dashboard nameUser={nameUser}><AddDiscussion></AddDiscussion></Dashboard>} />
+                <Route exact path="/home" render = {() => <Dashboard nameUser={nameUser}><Home></Home></Dashboard>} />
+                <Route exact path="/email" render={() => <Dashboard nameUser={nameUser}><UnderConstruction></UnderConstruction></Dashboard>} />
+                <Route exact path="/forum" render={() => <Dashboard nameUser={nameUser}><Forum></Forum></Dashboard>} />
+                <Route exact path="/learning" render={() => <Dashboard nameUser={nameUser}><Learning></Learning></Dashboard>} />
+                <Route exact path="/news" render={() => <Dashboard nameUser={nameUser}><UnderConstruction></UnderConstruction></Dashboard>} />
+                <Route exact path="/dictionary" render={() => <Dashboard nameUser={nameUser}><UnderConstruction></UnderConstruction></Dashboard>} />
+                <Route exact path="/songs" render={() => <Dashboard nameUser={nameUser}><UnderConstruction></UnderConstruction></Dashboard>} />
+                <Route exact path="/history" render={() => <Dashboard nameUser={nameUser}><History></History></Dashboard>} />
 
-                <Route exact path="/help" render={() => <Dashboard><UnderConstruction></UnderConstruction></Dashboard>} />
-                <Route exact path="/userprofile" render={() => <Dashboard><UserProfile></UserProfile></Dashboard>} />
+                <Route exact path="/help" render={() => <Dashboard nameUser={nameUser}><UnderConstruction></UnderConstruction></Dashboard>} />
+                <Route exact path="/userprofile" render={() => <Dashboard nameUser={nameUser}><UserProfile></UserProfile></Dashboard>} />
               
               
-                <Route exact path="/checkprogress" render={() => <Dashboard><CheckProgress></CheckProgress></Dashboard>} />
-                <Route exact path="/editprofile" render={() => <Dashboard><EditProfile></EditProfile></Dashboard>} />
+                <Route exact path="/checkprogress" render={() => <Dashboard nameUser={nameUser}><CheckProgress></CheckProgress></Dashboard>} />
+                <Route exact path="/editprofile" render={() => <Dashboard nameUser={nameUser}><EditProfile setNameUser={setNameUser}></EditProfile></Dashboard>} />
 
 |
 

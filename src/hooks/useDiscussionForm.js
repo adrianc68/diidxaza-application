@@ -56,7 +56,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                     'Authorization': sessionStorage.getItem("token")
                 }
             }).then((response) => {
-                if(response[0]._id){
+                if(!response.status){
                     setLoading(false);
                     setDiscussions(response);
                 }else {
@@ -96,7 +96,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                 'Authorization': sessionStorage.getItem("token")
             }
         }).then((response) => {
-            if(response[0]._id){
+            if(!response.status){
                 setLoading(false);
                 setDiscussions(response);
             }else {
@@ -132,7 +132,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                 'Authorization': sessionStorage.getItem("token")
             }
         }).then((response) => {
-            if(response[0]._id){
+            if(!response.status){
                 setLoading(false);
                 setDiscussions(response);
             }else {
@@ -168,7 +168,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                 'Authorization': sessionStorage.getItem("token")
             }
         }).then((response) => {
-            if(response[0]._id){
+            if(!response.status){
                 setLoading(false);
                 setDiscussions(response);
             }else {
@@ -244,7 +244,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                         'Authorization': sessionStorage.getItem("token")
                     }
                 }).then((responseComments) => {
-                    if(responseComments[0]._id){
+                    if(!response.status){
                         setComments(responseComments);
                         var photoComments = []
                         responseComments.map(imageComment => {
@@ -345,7 +345,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                             'Authorization': sessionStorage.getItem("token")
                         }
                     }).then((response) => {
-                        if(response[0]._id){
+                        if(!response.status){
                             setComments(response);
                         }else{
                             if(response.status === 419){
@@ -419,7 +419,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                         setModalForum(false);
                         setModalToken(true);
                     }else {
-                        if(response[0]._id){
+                        if(!response.status){
                             setComments(response);
                         }
                         setResponseModalForum(t("DeleteCommentSuccessful"));
@@ -588,7 +588,7 @@ export const useDiscussionForm = (initialForm,validateForm) => {
                             if(response.status === 401){
                                 setLoading(false);
                                 setModalToken(false);
-                                setModalNotToken(true)
+                                setModalNotToken(true);
                             }else{
                                 setIcon(<BiError/>);
                                 setClaseName("errorMessage");

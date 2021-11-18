@@ -41,7 +41,7 @@ class Dashboard extends Component {
                     <Topbar>
                     <div className="dashboard-userprofile">
                     <NavLink className="link" to="/userprofile">
-                            <Button styleName="text-button" text={sessionStorage.getItem("name")}>
+                            <Button styleName="text-button" text={this.props.nameUser}>
                     </Button>
                     </NavLink>
                 </div>
