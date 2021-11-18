@@ -164,8 +164,8 @@ export default function Forum() {
             <Modal statusModal={modalForum} handleModal={()=>{setModalForum(false)}} sizeHeight="20" sizeWidth="35">
                 <AlertMessage content={responseModalForum} handleModal={()=>{setModalForum(false)}}></AlertMessage>
             </Modal>
-            <Modal statusModal={modalToken} handleModal={()=>{window.location.href = 'login';}} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={t("RefreshToken")} handleModal={()=>{window.location.href = 'login';}}></AlertMessage>
+            <Modal statusModal={modalToken} handleModal={()=>{window.location.href = 'login'}} sizeHeight="20" sizeWidth="35">
+                <AlertMessage content={t("RefreshToken")} handleModal={()=>{window.location.href = 'login'}}></AlertMessage>
             </Modal>
         </div>
     )
