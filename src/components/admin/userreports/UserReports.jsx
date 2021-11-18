@@ -2,7 +2,7 @@ import React from 'react'
 import { useTranslation } from "react-i18next";
 import './userreports.scss'
 import UserImageDefault from '../../../assets/images/ide-29.svg'
-import Report from '../reportsmenu/report/Report';
+import Report from '../../report/Report';
 
 export default function UserReports() {
     const { t } = useTranslation();
@@ -17,10 +17,9 @@ export default function UserReports() {
                 <div className="userreports-list-container">
                     <ul>
                         <li>
-                        </li>
-                        <li>
                             <Report></Report>
                         </li>
+                       
                     </ul>
                 </div>
 

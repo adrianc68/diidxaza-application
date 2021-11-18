@@ -3,7 +3,7 @@
 .userreports-main-container {
     height: 100%;
     width: 100%;
-
+    background-color: #fff;
     .userreports-data-container {
         padding: 25px;
         flex: 1;
@@ -13,13 +13,13 @@
         overflow-y: scroll;
 
         .userreports-image-background {
-            border:1px solid #8a8a8a;
-            background:radial-gradient(circle, rgba(255,255,255,1) 31%, rgb(202, 202, 202) 89%);
-            display:flex;
+            border: 1px solid #8a8a8a;
+            background: radial-gradient(circle, rgba(255, 255, 255, 1) 31%, rgb(202, 202, 202) 89%);
+            display: flex;
             justify-content: center;
             img {
-                height: 50%;
-                width: 25%;
+                height: 40%;
+                width: 15%;
             }
         }
 
@@ -41,11 +41,8 @@
                 gap: 15px;
 
                 li {
-                   
                 }
             }
         }
-
-       
     }
 }

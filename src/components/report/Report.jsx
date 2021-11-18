@@ -1,17 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './report.scss'
 import { useTranslation } from "react-i18next";
-import Button from '../../../Button/Button';
+import Button from '../Button/Button';
 
-export default function Report() {
+export default function Report({user}) {
     const { t } = useTranslation();
+    const [userID, setUser] = useState(null);
+
+    useEffect( () => {
+        if(user) {
+            setUser(user);
+        }
+    });
+
     return (
         <div className="report-container">
             <div className="report-numeration-container">
                 <span className="black-text">{t("UserReportNumberReport")}</span>
                 <span>1</span>
-                <Button styleName="text-button blue-text" text={t("ButtonReportSeeUsersDetails")}></Button>
-                <Button styleName="text-button blue-text" text={t("ButtonBlockUser")}></Button>
+                {
+                    userID === null ? null :
+                        <div>
+                            <Button styleName="text-button blue-text" text={t("ButtonReportSeeUsersDetails")}></Button>
+                            <Button styleName="text-button blue-text" text={t("ButtonBlockUser")}></Button>
+                        </div>
+                }
+
             </div>
             <div className="report-data-container">
                 <div className="report-reported-by-container">
