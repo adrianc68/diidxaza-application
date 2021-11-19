@@ -309,7 +309,6 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                         }
                         setLoadingDiscussion(true);
                         setFoundDiscussion(false);
-                        ///FALTA PONER EL CONTENERDOR CON LA RESPUESTA
                     }
                 }
             }
@@ -339,21 +338,42 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                     });
                     setTimeout(() => setLoadingComment(false), 1600);
                     setNumberComments(numberComments+1);
-                    helpHttp().get(UrlAPI+"comments/"+response.idDiscussion,{
-                        headers: {
-                            Accept: "application/json",
-                            'Authorization': sessionStorage.getItem("token")
-                        }
-                    }).then((response) => {
-                        if(!response.status){
-                            setComments(response);
-                        }else{
-                            if(response.status === 419){
-                                setModalForum(false);
-                                setModalToken(true);
+                    const newComment = {
+                        _id:response._id,
+                        comment:response.comment,
+                        dateCreation:response.dateCreation,
+                        idAccount: [
+                            {
+                                _id: sessionStorage.getItem("id"),
+                                lastname: sessionStorage.getItem("lastname"),
+                                name: sessionStorage.getItem("name"),
+                                URL: sessionStorage.getItem("URL")
                             }
-                        }
-                    });
+                        ]
+                    }
+                    setComments(comments => [...comments, newComment]);
+                    if(sessionStorage.getItem("URL")!=undefined){
+                        fetch(UrlAPI+"resources",{
+                            method: 'PATCH',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': sessionStorage.getItem("token")
+                            },
+                            body: JSON.stringify({URL:sessionStorage.getItem("URL")})
+                        }).then((response) => {
+                            if (response.ok) {
+                                response.blob().then((responseBlob) => {
+                                    var objectURL = URL.createObjectURL(responseBlob);
+                                    setImagesComments(imagesComments => [...imagesComments, objectURL]);
+                                });
+                            }
+                            else{
+                                setImagesComments(imagesComments => [...imagesComments, ImageInformationAlt]);
+                            }
+                        });
+                    } else{
+                        setImagesComments(imagesComments => [...imagesComments, ImageInformationAlt]);
+                    }
                 }
                 else{
                     if(response.status === 401){
@@ -406,26 +426,12 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                 _id:id,
                 idDiscussion:idDiscussion
             }
-        }).then((response) => {
+        }).then(async(response) => {
             if(response.message){
                 setNumberComments(numberComments-1);
-                helpHttp().get(UrlAPI+"comments/"+discussion._id,{
-                    headers: {
-                        Accept: "application/json",
-                        'Authorization': sessionStorage.getItem("token")
-                    }
-                }).then((response) => {
-                    if(response.status === 419){
-                        setModalForum(false);
-                        setModalToken(true);
-                    }else {
-                        if(!response.status){
-                            setComments(response);
-                        }
-                        setResponseModalForum(t("DeleteCommentSuccessful"));
-                        setModalForum(true);
-                    }
-                });
+                const indexComment = await comments.findIndex(element => element._id ===id);
+                setComments(comments.filter(item => item._id !== id));
+                imagesComments.splice(indexComment,1);
             }
             else{
                 if(response.status === 419){

@@ -103,7 +103,7 @@ export default function UserProfile() {
                     <div className="userprofile-basic-details">
                         <div>
                             <span>{t("UserProfileName")}</span>
-                            <span>{sessionStorage.getItem("name")}</span>
+                            <span>{sessionStorage.getItem("name")} {sessionStorage.getItem("lastname")}</span>
                         </div>
                         <div>
                             <span>{t("UserProfileAge")}</span>

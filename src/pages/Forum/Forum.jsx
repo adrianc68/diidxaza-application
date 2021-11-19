@@ -10,6 +10,7 @@ import AddComment from '../../components/forum/addcomment/AddComment';
 import Modal from '../../components/modal/Modal';
 import AlertMessage from "../../components/alert/AlertMessage";
 import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
+import ImageInformationAlt from '../../assets/images/ide-22.svg';
 
 const initialForm = {
     comment: "",
@@ -159,6 +160,11 @@ export default function Forum() {
                             handleBlurComment={handleBlurComment} formComment={formComment} errorsComment={errorsComment} handleClickComment={handleClickComment}
                             icon={icon} className={className} responseComment={responseComment} commentLenght={commentLenght} />
                     </Discussion>}
+                    {loadingDiscussion && 
+                        <div className="not-found-discussion">
+                            <h3>{response}</h3>
+                            <img src={ImageInformationAlt} alt=""></img>
+                        </div>}
                 </div>
             </div>
             {modalForum && <Modal handleModal={()=>{setModalForum(false)}} sizeHeight="20" sizeWidth="35">

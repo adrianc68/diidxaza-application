@@ -38,11 +38,14 @@ export const useLoginForm = (initialForm, validateForm) => {
                 if (response.token) {
                     setLoading(false);
                     setResponse(null);
-                    sessionStorage.setItem("name", response.account.name + " " + response.account.lastname);
+                    sessionStorage.setItem("name", response.account.name);
+                    sessionStorage.setItem("lastname", response.account.lastname);
                     sessionStorage.setItem("id", response.account._id);
                     sessionStorage.setItem("role", response.account.role);
                     sessionStorage.setItem("token", response.token);
                     sessionStorage.setItem("status", response.account.status);
+                    sessionStorage.setItem("URL", response.account.URL);
+                    sessionStorage.setItem("dateBirth", response.account.dateBirth);
                     window.location.href = 'home';
                 } else {
                     setClaseName("errorMessage");
@@ -158,7 +161,8 @@ export const useUpdateAccountForm = (validateForm,setForm,form,setCities,setModa
             }).then((response) => {
                 if (response.ok) {
                     response.json().then(responseJson => {
-                        sessionStorage.setItem("name", form.name + " " + form.lastname);
+                        sessionStorage.setItem("name", form.name);
+                        sessionStorage.setItem("lastname", form.lastname);
                         setNameUser(form.name + " " + form.lastname)
                         setIcon(<BiBadgeCheck />);
                         setClaseName("successfulMessage");
@@ -181,7 +185,13 @@ export const useUpdateAccountForm = (validateForm,setForm,form,setCities,setModa
                                         fetch(UrlAPI + "resources/account", {
                                             method: 'POST',
                                             body: formData
-                                        }).then((response) => { })
+                                        }).then((response) => { 
+                                            if(response.ok){
+                                                response.json().then(responseJson => {
+                                                    sessionStorage.setItem("URL", responseJson.URL);
+                                                });
+                                            }
+                                        })
                                     }
                                 })
                             } else{
@@ -191,7 +201,13 @@ export const useUpdateAccountForm = (validateForm,setForm,form,setCities,setModa
                                 fetch(UrlAPI + "resources/account", {
                                     method: 'POST',
                                     body: formData
-                                }).then((response) => { })
+                                }).then((response) => {
+                                    if(response.ok){
+                                        response.json().then(responseJson => {
+                                            sessionStorage.setItem("URL", responseJson.URL);
+                                        });
+                                    }
+                                })
                             }
                         }
                     });

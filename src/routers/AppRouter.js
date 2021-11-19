@@ -40,7 +40,7 @@ import Home from '../components/home/Home'
 
 
 export default function AppRouter() {
-    const [nameUser, setNameUser] = useState(sessionStorage.getItem("name"));
+    const [nameUser, setNameUser] = useState(sessionStorage.getItem("name")+" "+sessionStorage.getItem("lastname"));
 
     return (
         <Router>
