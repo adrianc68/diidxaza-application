@@ -37,7 +37,7 @@ const validationsForm = (form) => {
     return errors;
 }
 
-export default function ReportUser({ setStatusModal, account }) {
+export default function ReportUser({ setStatusModal, account, setModalToken}) {
     const { t } = useTranslation();
     const {
         form,
@@ -52,10 +52,10 @@ export default function ReportUser({ setStatusModal, account }) {
     } = useReportForm(initialForm, validationsForm, account._id);
 
     return (
-        <form onSubmit={(e) => { handleSubmit(e, setStatusModal) }} className="reportuser-main-container">
+        <form onSubmit={(e) => { handleSubmit(e, setStatusModal, setModalToken) }} className="reportuser-main-container">
             <div className="reportuser-content-container">
                 <div className="reportuser-text-description">
-                    <h2>{t("ReportUserReported")} <b>{account.name} {account.lastname}</b></h2>
+                    <span>{t("ReportUserReported")} <b>{account.name} {account.lastname}</b></span>
                     <div className="reportuser-options-container">
                         <span>{t("ReportUserDescription")}</span>
                         <div className="radiobutton-container">
@@ -81,7 +81,7 @@ export default function ReportUser({ setStatusModal, account }) {
                         {errors.context && <p className="errorInput">{t("ErrorContext")}</p>}
                     </div>
                 </div>
-                <div className="system-message-container" >
+                <div className="system-message-container">
                     {loading && <p className={className}>{icon}  {response}</p>}
                 </div>
                 <div className="reportuser-button-panel">

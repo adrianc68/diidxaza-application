@@ -38,13 +38,15 @@ export const useLoginForm = (initialForm, validateForm) => {
                 if (response.token) {
                     setLoading(false);
                     setResponse(null);
-                    sessionStorage.setItem("name", response.account.name + " " + response.account.lastname);
+                    sessionStorage.setItem("name", response.account.name);
+                    sessionStorage.setItem("lastname", response.account.lastname);
                     sessionStorage.setItem("id", response.account._id);
                     sessionStorage.setItem("role", response.account.role);
-                    sessionStorage.setItem("URL", response.account.URL);
                     sessionStorage.setItem("token", response.token);
                     sessionStorage.setItem("status", response.account.status);
                     sessionStorage.setItem("username", response.account.username);
+                    sessionStorage.setItem("URL", response.account.URL);
+                    sessionStorage.setItem("dateBirth", response.account.dateBirth);
                     window.location.href = 'home';
                 } else {
                     setClaseName("errorMessage");
@@ -73,6 +75,292 @@ export const useLoginForm = (initialForm, validateForm) => {
         form, errors, loading, response, className, handleChange, handleBlur, handleSubmit
     }
 };
+
+export const useUpdateAccountForm = (validateForm,setForm,form,setCities,setModalNotToken,setModalToken,setNameFile,URLPhoto,initialfile,setNameUser) => {
+    const { t } = useTranslation();
+    const [errors, setErrors] = useState({});
+    const [loading, setLoading] = useState(false);
+    const [response, setResponse] = useState(null);
+    const [className, setClaseName] = useState("errorDelete");
+    const [icon, setIcon] = useState(<BiError />);
+    const [urlFile, setUrlFile] = useState(null);
+
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+        if (name === "dateBirth") {
+            const dateBirth = new Date(value).getFullYear();
+            const dateNow = new Date().getFullYear();
+            const age = dateNow - dateBirth;
+            setForm({
+                ...form,
+                age: age,
+                [name]: value,
+            });
+        }
+        else {
+            setForm({
+                ...form,
+                [name]: value,
+            });
+        }
+    }
+
+    const handleChangeImage = (e) => {
+        let file = e.target.files[0];
+        if (file) {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+            fileReader.addEventListener("load", (e) => {
+                setNameFile(e.target.result);
+                setUrlFile(file);
+            })
+        }
+        else {
+            setUrlFile(null);
+            setNameFile(initialfile);
+        }
+    }
+
+    const handleChangeState = (e) => {
+        const {name, value} = e.target;
+        setForm({
+            ...form,
+            [name]: value,
+        });
+        if (value) {
+            helpHttp().get(UrlAPI + "cities/" + value).then((response) => {
+                if (!response.status) {
+                    setCities(response)
+                }
+                else {
+                    setCities([])
+                }
+            })
+        }
+        else {
+            setCities([])
+        }
+    }
+
+    const handleBlur = (e) => {
+        handleChange(e);
+        setErrors(validateForm(form));
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setErrors(validateForm(form));
+        if (Object.keys(errors).length === 0) {
+            fetch(UrlAPI + "accounts", {
+                method: 'PUT',
+                headers: {
+                    Accept: "application/json",
+                    'Content-Type': 'application/json',
+                    'Authorization': sessionStorage.getItem("token")
+                },
+                body: JSON.stringify(form)
+            }).then((response) => {
+                if (response.ok) {
+                    response.json().then(responseJson => {
+                        sessionStorage.setItem("name", form.name);
+                        sessionStorage.setItem("lastname", form.lastname);
+                        setNameUser(form.name + " " + form.lastname)
+                        setIcon(<BiBadgeCheck />);
+                        setClaseName("successfulMessage");
+                        setResponse(t("MessageUpdateAccount"));
+                        setLoading(true);
+                        if (urlFile != null) {
+                            if(URLPhoto!=null){
+                                helpHttp().del(UrlAPI + "resources", {
+                                    headers: {
+                                        Accept: "application/json",
+                                        'Content-Type': 'application/json',
+                                        'Authorization': sessionStorage.getItem("token")
+                                    },
+                                    body: {URL:URLPhoto}
+                                }).then((response) => {
+                                    if(response.message){
+                                        var formData = new FormData();
+                                        formData.append('idAccount', sessionStorage.getItem("id"));
+                                        formData.append('file', urlFile);
+                                        fetch(UrlAPI + "resources/account", {
+                                            method: 'POST',
+                                            body: formData
+                                        }).then((response) => { 
+                                            if(response.ok){
+                                                response.json().then(responseJson => {
+                                                    sessionStorage.setItem("URL", responseJson.URL);
+                                                });
+                                            }
+                                        })
+                                    }
+                                })
+                            } else{
+                                var formData = new FormData();
+                                formData.append('idAccount', sessionStorage.getItem("id"));
+                                formData.append('file', urlFile);
+                                fetch(UrlAPI + "resources/account", {
+                                    method: 'POST',
+                                    body: formData
+                                }).then((response) => {
+                                    if(response.ok){
+                                        response.json().then(responseJson => {
+                                            sessionStorage.setItem("URL", responseJson.URL);
+                                        });
+                                    }
+                                })
+                            }
+                        }
+                    });
+                } else {
+                    if(response.status === 419){
+                        setLoading(false);
+                        setModalNotToken(false);
+                        setModalToken(true);
+                    }else{
+                        if(response.status === 401){
+                            setLoading(false);
+                            setModalToken(false);
+                            setModalNotToken(true);
+                        }else{
+                            setIcon(<BiError />);
+                            setClaseName("errorMessage");
+                            if (response.status === 409) {
+                                setResponse(t("ErrorExistAccount"));
+                            } else {
+                                if (response.status === 400) {
+                                    setResponse(t("BadRequestAccount"));
+                                } else {
+                                    setResponse(t("ErrorMessage"));
+                                }
+                            }
+                            setLoading(true);
+                        }
+                    }
+                }
+            });
+        }
+        else {
+            return;
+        }
+    }
+    return {
+        handleChangeState, errors, loading, response, className, handleChange, handleBlur, handleSubmit, icon, handleChangeImage, urlFile,
+    }
+};
+
+export const useVerificationForm = (validateCode) => {
+    const { t } = useTranslation();
+    const [code, setCode] = useState("");
+    const [errors, setErrors] = useState({});
+    const [loading, setLoading] = useState(false);
+    const [response, setResponse] = useState(null);
+    const [className, setClaseName] = useState("errorDelete");
+    const [icon, setIcon] = useState(<BiError />);
+
+    const handleChange = (e) => {
+        const { value } = e.target;
+        setCode(value);
+    }
+
+    const handleBlur = (e) => {
+        handleChange(e);
+        setErrors(validateCode(code));
+    }
+
+    const handleSubmitVerification = (e) => {
+        e.preventDefault();
+        setErrors(validateCode(code));
+        if (Object.keys(errors).length === 0) {
+            if (sessionStorage.getItem("username")) {
+                const confirmation = {
+                    username: sessionStorage.getItem("username"),
+                    codeConfirmation: parseInt(code)
+                }
+                helpHttp().patch(UrlAPI + "login", {
+                    headers: {
+                        Accept: "application/json",
+                        'Content-Type': 'application/json'
+                    },
+                    body: confirmation
+                }).then((response) => {
+                    if (response.message) {
+                        setIcon(<BiBadgeCheck />);
+                        setClaseName("successfulMessage");
+                        setResponse(t("SignUpVerificationSuccessful"));
+                        setLoading(true);
+                        sessionStorage.clear();
+                        window.location.href = 'login';
+                    }
+                    else {
+                        if (response.status === 404) {
+                            setResponse(t("SignUpVerificationNotFound"));
+                        } else {
+                            if (response.status === 400) {
+                                setResponse(t("SignUpVerificationInvalidCode"));
+                            } else {
+                                setResponse(t("ErrorMessage"));
+                            }
+                        }
+                        setIcon(<BiError />);
+                        setClaseName("errorMessage");
+                        setLoading(true);
+                    }
+                })
+            }
+            else {
+                setResponse(t("SignUpVerificationSendNot"));
+                setIcon(<BiError />);
+                setClaseName("errorMessage");
+                setLoading(true);
+            }
+        }
+        else {
+            return;
+        }
+    }
+
+    const handleClickSendCode = (e) => {
+        e.preventDefault();
+        const formEmail = {
+            email: sessionStorage.getItem("email")
+        }
+        helpHttp().post(UrlAPI + "emails", {
+            headers: {
+                Accept: "application/json",
+                'Content-Type': 'application/json'
+            },
+            body: formEmail
+        }).then((response) => {
+            if (response.message) {
+                setIcon(<BiBadgeCheck />);
+                setClaseName("successfulMessage");
+                setResponse(t("SignUpVerificationSendSuccessful"));
+                setLoading(true);
+            }
+            else {
+                if (response.status === 404) {
+                    setResponse(t("SignUpVerificationSendNot"));
+                } else {
+                    if (response.status === 400) {
+                        setResponse(t("SignUpVerificationInvalidEmail"));
+                    } else {
+                        setResponse(t("ErrorMessage"));
+                    }
+                }
+                setIcon(<BiError />);
+                setClaseName("errorMessage");
+                setLoading(true);
+            }
+        })
+    }
+
+    return {
+        code, errors, loading, response, className, handleChange, handleBlur, icon, handleClickSendCode, handleSubmitVerification
+    }
+};
+
+
 
 export const useAccountForm = (initialForm, validateForm) => {
     const { t } = useTranslation();
@@ -200,116 +488,5 @@ export const useAccountForm = (initialForm, validateForm) => {
     }
     return {
         handleChangeState, cities, form, errors, loading, response, className, handleChange, handleBlur, handleSubmit, icon, namefile, handleChangeImage, urlFile
-    }
-};
-
-export const useVerificationForm = (validateCode) => {
-    const { t } = useTranslation();
-    const [code, setCode] = useState("");
-    const [errors, setErrors] = useState({});
-    const [loading, setLoading] = useState(false);
-    const [response, setResponse] = useState(null);
-    const [className, setClaseName] = useState("errorDelete");
-    const [icon, setIcon] = useState(<BiError />);
-
-    const handleChange = (e) => {
-        const { value } = e.target;
-        setCode(value);
-    }
-
-    const handleBlur = (e) => {
-        handleChange(e);
-        setErrors(validateCode(code));
-    }
-
-    const handleSubmitVerification = (e) => {
-        e.preventDefault();
-        setErrors(validateCode(code));
-        if (Object.keys(errors).length === 0) {
-            if (sessionStorage.getItem("username")) {
-                const confirmation = {
-                    username: sessionStorage.getItem("username"),
-                    codeConfirmation: parseInt(code)
-                }
-                helpHttp().patch(UrlAPI + "login", {
-                    headers: {
-                        Accept: "application/json",
-                        'Content-Type': 'application/json'
-                    },
-                    body: confirmation
-                }).then((response) => {
-                    if (response.message) {
-                        setIcon(<BiBadgeCheck />);
-                        setClaseName("successfulMessage");
-                        setResponse(t("SignUpVerificationSuccessful"));
-                        setLoading(true);
-                        sessionStorage.clear();
-                        window.location.href = 'login';
-                    }
-                    else {
-                        if (response.status === 404) {
-                            setResponse(t("SignUpVerificationNotFound"));
-                        } else {
-                            if (response.status === 400) {
-                                setResponse(t("SignUpVerificationInvalidCode"));
-                            } else {
-                                setResponse(t("ErrorMessage"));
-                            }
-                        }
-                        setIcon(<BiError />);
-                        setClaseName("errorMessage");
-                        setLoading(true);
-                    }
-                })
-            }
-            else {
-                setResponse(t("SignUpVerificationSendNot"));
-                setIcon(<BiError />);
-                setClaseName("errorMessage");
-                setLoading(true);
-            }
-        }
-        else {
-            return;
-        }
-    }
-
-    const handleClickSendCode = (e) => {
-        e.preventDefault();
-        const formEmail = {
-            email: sessionStorage.getItem("email")
-        }
-        helpHttp().post(UrlAPI + "emails", {
-            headers: {
-                Accept: "application/json",
-                'Content-Type': 'application/json'
-            },
-            body: formEmail
-        }).then((response) => {
-            if (response.message) {
-                setIcon(<BiBadgeCheck />);
-                setClaseName("successfulMessage");
-                setResponse(t("SignUpVerificationSendSuccessful"));
-                setLoading(true);
-            }
-            else {
-                if (response.status === 404) {
-                    setResponse(t("SignUpVerificationSendNot"));
-                } else {
-                    if (response.status === 400) {
-                        setResponse(t("SignUpVerificationInvalidEmail"));
-                    } else {
-                        setResponse(t("ErrorMessage"));
-                    }
-                }
-                setIcon(<BiError />);
-                setClaseName("errorMessage");
-                setLoading(true);
-            }
-        })
-    }
-
-    return {
-        code, errors, loading, response, className, handleChange, handleBlur, icon, handleClickSendCode, handleSubmitVerification
     }
 };

@@ -4,6 +4,8 @@ import ImageInformationAlt from '../../../assets/images/ide-02.svg'
 import Button from '../../../components/Button/Button'
 import { useTranslation } from 'react-i18next'
 import { useDiscussionForm } from "../../../hooks/useDiscussionForm";
+import Modal from '../../modal/Modal';
+import AlertMessage from "../../alert/AlertMessage";
 
 const initialForm = {
     title: "",
@@ -54,7 +56,10 @@ export default function AddDiscussion() {
         classInfo,
         classDoubt,
         classRule,
-        icon
+        icon,
+        modalNotToken,
+        modalToken,
+        setModalNotToken
       } = useDiscussionForm(initialForm, validationsForm);
 
     return (
@@ -94,19 +99,31 @@ export default function AddDiscussion() {
                     <label className="adddiscussion-input-title">
                         <h3>{t("AddDiscussionNewTitle")}</h3>
                         <input name="title" type="text" onBlur={handleBlur} onChange={handleChange} value={form.title} required></input>
-                        {errors.title && <p className="errorInput">{t("ErrorTitle")}</p>}
+                        <div className="system-message-container">
+                            {errors.title && <p className="errorInput">{t("ErrorTitle")}</p>}
+                        </div>
                     </label>
                     <label className="adddiscussion-input-description">
                         <h3>{t("AddDiscussionComment")}</h3>
                         <textarea className="input" name="comment" type="text>" onBlur={handleBlur} onChange={handleChange} value={form.comment} required></textarea>
-                        {errors.comment && <p className="errorInput">{t("ErrorComment")}</p>}
+                        <div className="system-message-container">
+                            {errors.comment && <p className="errorInput">{t("ErrorComment")}</p>}
+                        </div>
                     </label>
-                    {loading && <p className={className}>{icon}  {response}</p>}
+                    <div className="system-message-container">
+                        {loading && <p className={className}>{icon}  {response}</p>}
+                    </div>
                     <div className="adddiscussion-button-panel">
                         <Button type="submit" styleName="primary-button" text={t("ButtonCreateDiscussion")}></Button>
                     </div>
                 </div>
             </div>
+            {modalNotToken && <Modal handleModal={()=>{setModalNotToken(false)}} sizeHeight="20" sizeWidth="35">
+                <AlertMessage content={t("ErrorToken")} handleModal={()=>{setModalNotToken(false)}}></AlertMessage>
+            </Modal>}
+            {modalToken && <Modal handleModal={()=>{window.location.href = 'login';}} sizeHeight="20" sizeWidth="35">
+                <AlertMessage content={t("RefreshToken")} handleModal={()=>{window.location.href = 'login';}}></AlertMessage>
+            </Modal>}
         </form>
     )
 }

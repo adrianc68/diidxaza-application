@@ -46,8 +46,10 @@ export default function VerificationCode() {
                         <div className="signup-verification-code-input">
                             <p className="p-semibold">{t("SignUpVerificationCodeInput")}</p>
                             <input name="code" type="text" onBlur={handleBlur} onChange={handleChange} value={code} required/>
-                            {errors.code && <p className="errorInput">{t("ErrorCode")}</p>}
-                            {loading && <p className={className}>{icon}  {response}</p>}
+                            <div className="system-message-container">
+                                {errors.code && <p className="errorInput">{t("ErrorCode")}</p>}
+                                {loading && <p className={className}>{icon}  {response}</p>}
+                            </div>
                         </div>
                         <div className="signup-verification-code-buttons">
                             <Button type="button" styleName="primary-button" text={t("SignUpVerificationSendCodeButton")} onClick={handleClickSendCode}></Button>

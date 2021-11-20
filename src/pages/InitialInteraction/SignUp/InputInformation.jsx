@@ -117,18 +117,24 @@ export default function InputInformation() {
                         <label>
                             <p className="p-semibold">{t("SignUpFormNameLabelInput")}</p>
                             <input name="name" type="text" onBlur={handleBlur} onChange={handleChange} value={form.name} required />
-                            {errors.name && <p className="errorInput">{t("ErrorName")}</p>}
+                            <div className="system-message-container">
+                                {errors.name && <p className="errorInput">{t("ErrorName")}</p>}
+                            </div>
                         </label>
                         <label>
                             <p className="p-semibold">{t("SignUpFormLastnameInput")}</p>
                             <input name="lastname" type="text" onBlur={handleBlur} onChange={handleChange} value={form.lastname} required />
-                            {errors.lastname && <p className="errorInput">{t("ErrorName")}</p>}
+                            <div className="system-message-container">
+                                {errors.lastname && <p className="errorInput">{t("ErrorName")}</p>}
+                            </div>
                         </label>
                         <label>
                             <p className="p-semibold">{t("SignUpFormBirthdateInput")}</p>
                             <p>{t("SignUpFormBirthDateDescription")}</p>
                             <input name="dateBirth" type="date" onBlur={handleBlur} onChange={handleChange} value={form.dateBirth} required />
-                            {errors.dateBirth && <p className="errorInput">{t("ErrorDateBirth")}</p>}
+                            <div className="system-message-container">
+                                {errors.dateBirth && <p className="errorInput">{t("ErrorDateBirth")}</p>}
+                            </div>
                         </label>
                         <label>
                             <p className="p-semibold">{t("SignUpFormStateInput")}</p>
@@ -138,7 +144,9 @@ export default function InputInformation() {
                                     <option key={element._id} value={element._id}>{element.nameState}</option>
                                 ))}
                             </select>
-                            {errors.idState && <p className="errorInput">{t("ErrorRequired")}</p>}
+                            <div className="system-message-container">
+                                {errors.idState && <p className="errorInput">{t("ErrorRequired")}</p>}
+                            </div>
                         </label>
                         <label>
                             <p className="p-semibold">{t("SignUpFormCityInput")}</p>
@@ -148,7 +156,9 @@ export default function InputInformation() {
                                     <option key={element._id} value={element._id}>{element.nameCity}</option>
                                 ))}
                             </select>
-                            {errors.idCity && <p className="errorInput">{t("ErrorRequired")}</p>}
+                            <div className="system-message-container">
+                                {errors.idCity && <p className="errorInput">{t("ErrorRequired")}</p>}
+                            </div>
                         </label>
                     </div>
                     <h2>{t("SignUpAccountInformation")}</h2>
@@ -157,21 +167,29 @@ export default function InputInformation() {
                             <p className="p-semibold">{t("SignUpFormUsernameInput")}</p>
                             <p>{t("SignUpFormUsernameDescription")}</p>
                             <input name="username" type="text" onBlur={handleBlur} onChange={handleChange} value={form.username} required />
-                            {errors.username && <p className="errorInput">{t("ErrorUsername")}</p>}
+                            <div className="system-message-container">
+                                {errors.username && <p className="errorInput">{t("ErrorUsername")}</p>}
+                            </div>
                         </label>
                         <label>
                             <p className="p-semibold">{t("SignUpFormEmailInput")}</p>
                             <p>{t("SignUpFormEmailDescription")}</p>
                             <input name="email" type="text" onBlur={handleBlur} onChange={handleChange} value={form.email} required />
-                            {errors.email && <p className="errorInput">{t("ErrorEmail")}</p>}
+                            <div className="system-message-container">
+                                {errors.email && <p className="errorInput">{t("ErrorEmail")}</p>}
+                            </div>
                         </label>
                         <label>
                             <p className="p-semibold">{t("SignUpFormPassword")}</p>
                             <p>{t("SignUpFormPasswordDescription")}</p>
                             <input name="password" type="password" onBlur={handleBlur} onChange={handleChange} value={form.password} required />
-                            {errors.password && <p className="errorInput">{t("ErrorPassword")}</p>}
+                            <div className="system-message-container">
+                                {errors.password && <p className="errorInput">{t("ErrorPassword")}</p>}
+                            </div>
                         </label>
-                        {loading && <p className={className}>{icon}  {response}</p>}
+                        <div className="system-message-container">
+                            {loading && <p className={className}>{icon}  {response}</p>}
+                        </div>
                         <Button type="submit" styleName="green-button" text={t("SignUpFormSignUpButton")}></Button>
                         <Button styleName="secondary-button no-background gray-text border" text={t("SignUpFormCancelButton")} onClick={() => history.push('/')}></Button>
                     </div>

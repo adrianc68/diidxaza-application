@@ -26,7 +26,7 @@ export const useReportForm = (initialForm,validateForm, id) => {
         setErrors(validateForm(form));
     }
 
-    const handleSubmit = (e,setStatusModal) =>{
+    const handleSubmit = (e,setStatusModal,setModalToken) =>{
         e.preventDefault();
         setErrors(validateForm(form));
         if(Object.keys(errors).length === 0){
@@ -39,6 +39,7 @@ export const useReportForm = (initialForm,validateForm, id) => {
                 body: form
             }).then((response) => {
                 if(response._id){
+                    setModalToken(false);
                     setIcon(<BiBadgeCheck/>);
                     setClaseName("successfulMessage");
                     setResponse(t("ReportUserSuccessful"));
@@ -46,14 +47,20 @@ export const useReportForm = (initialForm,validateForm, id) => {
                     setTimeout(() => setStatusModal(false), 1600);
                 }
                 else{
-                    if(response.status === 400){
-                        setResponse(t("SignUpVerificationSendNot"));
-                    }else{   
-                        setResponse(t("ErrorMessage"));   
-                    } 
-                    setIcon(<BiError/>);
-                    setClaseName("errorMessage");
-                    setLoading(true);
+                    if(response.status === 419){
+                        setStatusModal(false);
+                        setModalToken(true);
+                    }else{
+                        setModalToken(false);
+                        if(response.status === 400){
+                            setResponse(t("SignUpVerificationSendNot"));
+                        }else{   
+                            setResponse(t("ErrorMessage"));   
+                        } 
+                        setIcon(<BiError/>);
+                        setClaseName("errorMessage");
+                        setLoading(true);
+                    }
                 }
             })
         }
