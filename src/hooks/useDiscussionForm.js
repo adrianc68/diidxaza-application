@@ -199,7 +199,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
         await setImagesComments([]);
         await setLoadingDiscussion(false);
         await setFoundDiscussion(false);
-        helpHttp().get(UrlAPI+"discussions/"+id,{
+        await helpHttp().get(UrlAPI+"discussions/"+id,{
             headers: {
                 Accept: "application/json",
                 'Authorization': sessionStorage.getItem("token")
@@ -249,29 +249,29 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                     }
                 }).then(async (responseComments) => {
                     if(!responseComments.status){
-                        setComments(responseComments);
-                        await responseComments.map(imageComment => {
+                        await responseComments.map(async imageComment => {
+                            setComments(responseComments);
                             if(imageComment.idAccount[0].URL!= undefined){
-                                fetch(UrlAPI+"resources",{
+                                await  fetch(UrlAPI+"resources",{
                                     method: 'PATCH',
                                     headers: {
                                         'Content-Type': 'application/json',
                                         'Authorization': sessionStorage.getItem("token")
                                     },
                                     body: JSON.stringify({URL:imageComment.idAccount[0].URL})
-                                }).then((response) => {
+                                }).then(async(response) => {
                                     if (response.ok) {
-                                        response.blob().then((responseBlob) => {
+                                        response.blob().then(async(responseBlob) => {
                                             var objectURL = URL.createObjectURL(responseBlob);
-                                            setImagesComments(imagesComments => [...imagesComments, objectURL]);
+                                            await setImagesComments(imagesComments => [...imagesComments, objectURL]);
                                         });
                                     }
                                     else{
-                                        setImagesComments(imagesComments => [...imagesComments, ImageInformationAlt]);
+                                        await setImagesComments(imagesComments => [...imagesComments, ImageInformationAlt]);
                                     }
                                 });
                             }else{
-                                setImagesComments(imagesComments => [...imagesComments, ImageInformationAlt]);
+                                await setImagesComments(imagesComments => [...imagesComments, ImageInformationAlt]);
                             }
                         })
                     }
