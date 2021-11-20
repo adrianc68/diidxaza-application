@@ -5,12 +5,13 @@ import Button from '../Button/Button';
 
 export default function Report({user}) {
     const { t } = useTranslation();
-    const [userID, setUser] = useState(null);
+    const [userID, setUser] = useState(null)
 
     useEffect( () => {
-        if(user) {
-            setUser(user);
-        }
+        const userA = {test: "hello"};
+        // if(user) {
+            // setUser(userA);
+        // }
     });
 
     return (
@@ -20,12 +21,11 @@ export default function Report({user}) {
                 <span>1</span>
                 {
                     userID === null ? null :
-                        <div>
+                        <div className="report-numeration-container-panel-button">
                             <Button styleName="text-button blue-text" text={t("ButtonReportSeeUsersDetails")}></Button>
                             <Button styleName="text-button blue-text" text={t("ButtonBlockUser")}></Button>
                         </div>
                 }
-
             </div>
             <div className="report-data-container">
                 <div className="report-reported-by-container">
@@ -43,14 +43,10 @@ export default function Report({user}) {
                         <span className="semibold">{t("UserReportReason")}</span>
                         <span>SPAM</span>
                     </div>
-
                     <div>
                         <span className="semibold">{t("UserReportContext")}</span>
                         <span>La razón del reporte es que este usuario ha estado haciendo spam</span>
-
                     </div>
-
-
                 </div>
             </div>
         </div>

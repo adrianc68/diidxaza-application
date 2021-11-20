@@ -44,8 +44,7 @@ export const useLoginForm = (initialForm, validateForm) => {
                     sessionStorage.setItem("URL", response.account.URL);
                     sessionStorage.setItem("token", response.token);
                     sessionStorage.setItem("status", response.account.status);
-                    sessionStorage.setItem("email", response.account.email);
-                    sessionStorage.setItem("dateBirth", response.account.dateBirth);
+                    sessionStorage.setItem("username", response.account.username);
                     window.location.href = 'home';
                 } else {
                     setClaseName("errorMessage");

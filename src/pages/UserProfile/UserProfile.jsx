@@ -6,37 +6,68 @@ import UserprofileButtonPanelAU from '../../components/anotheruser/userprofileBu
 import UserprofileButtonPanelADM from '../../components/admin/userprofileButtonPanel/UserprofileButtonPanelADM';
 import UserprofileButtonPanelOWU from '../../components/ownuser/userprofileButtonPanel/UserprofileButtonPanelOWU';
 import Modal from '../../components/modal/Modal';
+import { helpHttp, UrlAPI } from '../../helpers/helpHttp';
+import { useRouteMatch,useHistory, useParams } from 'react-router-dom'
 
-export default function UserProfile() {
+export default function UserProfile({accountID, username}) {
     const { t } = useTranslation();
+    let { url } = useRouteMatch();
+    let { path } = useHistory();
+    let slug = useParams();
 
-
-    const convertDate = (date) => {
-        var dateString = date.split(['-']);
-        var year = dateString[0];
-        var month = dateString[1];
-        var day = dateString[2];
-        var formatDate = new Date(year, month - 1, day);
-        var options = { year: 'numeric', month: 'long', day: 'numeric' }
-        return (formatDate.toLocaleDateString("es-ES", options));
-    }
-
-    const getAge = (date) => {
-        var dateString = date.split(['-']);
-        var year = dateString[0];
-        var month = dateString[1];
-        var day = dateString[2];
-        var formatDate = new Date(year, month - 1, day);
-        var todayDate = new Date();
-        var age = todayDate.getFullYear() - year;
-        var month = todayDate.getMonth() - month;
-        if (month < 0 || (month === 0 && todayDate.getDate() < formatDate.getDate())) {
-            age--;
-        }
-        return age;
-    }
+    const [account, setAccount] = useState({
+        age: null,
+        birthdate: null,
+        email: null,
+        username:null,
+        status: null,
+        role: null,
+        name: null,
+    });
 
     useEffect(() => {
+        handleDiscussionsTab();
+        fetchData();
+
+        console.log("URL" , url);
+        console.log("path", path);
+        console.log("PARAMS" , slug);
+
+    }, []);
+
+    const fetchData = () => {
+        helpHttp().get(UrlAPI + "accounts/" + accountID, {
+            headers: {
+                Accept: "application/json",
+                'Authorization': sessionStorage.getItem("token")
+            }
+        }).then((response) => {
+            const account = {
+                age: response.age,
+                birthdate: response.dateBirth,
+                email: response.email,
+                username: response.username,
+                status: response.status,
+                role: response.role,
+                name: response.name,
+            }
+            setAccount(account)
+        });
+    }
+
+    const convertDate = (date) => {
+        if (date) {
+            var dateString = date.split(['-']);
+            var year = dateString[0];
+            var month = dateString[1];
+            var day = dateString[2];
+            var formatDate = new Date(year, month - 1, day);
+            var options = { year: 'numeric', month: 'long', day: 'numeric' }
+            return (formatDate.toLocaleDateString("es-ES", options));
+        }
+    }
+
+    const handleDiscussionsTab = () => {
         const tabs = document.querySelectorAll(".userprofile-forum-data-tab");
         const contents = document.querySelectorAll(".content");
 
@@ -53,9 +84,7 @@ export default function UserProfile() {
                 tabs[i].classList.add("tabs--active");
             });
         }
-
-
-    }, []);
+    }
 
 
     const [statusModal, setStatusModal] = useState(false);
@@ -79,14 +108,13 @@ export default function UserProfile() {
 
     return (
         <div className="userprofile-main-container">
-
             <div className="userprofile-user-details-container">
                 <div className="userprofile-user-photo-container">
                     <img src={UserImageDefault} alt={t("WelcomeInformationAlt")}></img>
                 </div>
                 <div className="userprofile-type-user-container">
                     {
-                        sessionStorage.getItem("role") === "manager" ?
+                        account.role === "manager" ?
                             <div className="type-user-admin">
                                 <span>{t("TypeUserAdmin")}</span>
                             </div>
@@ -103,16 +131,16 @@ export default function UserProfile() {
                     <div className="userprofile-basic-details">
                         <div>
                             <span>{t("UserProfileName")}</span>
-                            <span>{sessionStorage.getItem("name")}</span>
+                            <span>{account.name}</span>
                         </div>
                         <div>
                             <span>{t("UserProfileAge")}</span>
-                            <span>{getAge(sessionStorage.getItem("dateBirth"))}<span /><span>{" " + t("UserProfileYears")}</span></span>
+                            <span>{account.age}<span /><span>{" " + t("UserProfileYears")}</span></span>
                         </div>
                         <div>
                             <span>{t("UserProfileBirthdate")}</span>
                             <span>
-                                {convertDate(sessionStorage.getItem("dateBirth"))}
+                                {convertDate(account.birthdate)}
                             </span>
                         </div>
                     </div>
@@ -122,12 +150,12 @@ export default function UserProfile() {
             <div className="userprofile-user-data-container">
                 <div className="userprofile-account-container">
                     <div className="userprofile-account-information">
-                        <h2>{sessionStorage.getItem("name")}</h2>
-                        <p>{sessionStorage.getItem("email")}</p>
+                        <h2>{account.username}</h2>
+                        <p>{account.email}</p>
                     </div>
                     <div className="userprofile-account-status-information">
                         {
-                            sessionStorage.getItem("status") === "1" ?
+                            account.status === 1 ?
                                 <span className="status-user-free">{t("UserProfileUserFree")}</span>
                                 :
                                 <span className="status-user-banned">{t("UserProfileUserBanned")}</span>
@@ -136,29 +164,18 @@ export default function UserProfile() {
                 </div>
                 <div className="userprofile-button-panel-container">
                     <p>{t("UserProfileControlPanel")}</p>
-                    {/* Botones Vista Administrador */}
                     <div className="userprofile-button-panel">
-                        <UserprofileButtonPanelADM handleModalClick={handleModal} />
+                        <UserprofileButtonPanelADM handleModal={handleModal} />
                     </div>
                     <div className="userprofile-button-panel">
-                        <UserprofileButtonPanelOWU />
+                        <UserprofileButtonPanelOWU handleModal={handleModal} />
                     </div>
                     <div className="userprofile-button-panel">
                         <UserprofileButtonPanelAU />
                     </div>
-
-                    {/* {
-                        sessionStorage.getItem("role") === "manager " ?
-                        <UserprofileButtonPanelADM />
-                        :
-                        <UserprofileButtonPanelOWU />
-                    } */}
-                    {/* Botones Vista Otro usuario */}
-                    {/* <UserprofileButtonPanelAU /> */}
-                    {/* Botones vista Dueño del usuario */}
                 </div>
                 <div className="userprofile-ranking-information-container">
-                    <div>
+                    {/* <div>
                         <span>{t("UserProfileTopRanking")}</span>
                         <span>{t("UserProfilePosition")}</span>
                         <span>1</span>
@@ -177,7 +194,7 @@ export default function UserProfile() {
                         <span>{t("UserProfileTotalDiscussionesCommented")}</span>
                         <span>135</span>
                         <span>{t("UserProfileCommented")}</span>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="userprofile-forum-data-container">
                     <ul className="userprofile-forum-data-container--tabs">
@@ -202,7 +219,7 @@ export default function UserProfile() {
                 </div>
 
                 {
-                    statusModal && <Modal statusModal={statusModal} setStatusModal={setStatusModal} sizeHeight={component.sizeHeight} sizeWidth={component.sizeWidth} title={component.title}>
+                    statusModal && <Modal handleModal={() => setStatusModal(false)} sizeHeight={component.sizeHeight} sizeWidth={component.sizeWidth} title={component.title}>
                         {component.object}
                     </Modal>
                 }

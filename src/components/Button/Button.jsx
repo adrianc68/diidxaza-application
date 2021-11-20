@@ -7,6 +7,7 @@ import './modalButton.scss'
 import './greenButton.scss'
 import './darkBlueButton.scss'
 import './orangeButton.scss'
+import './resizableButton.scss'
 
 export default function Button(props) {
 

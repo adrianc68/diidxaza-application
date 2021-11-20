@@ -283,7 +283,7 @@ export const TRANSLATIONS_ES = {
     UserProfileDiscussionsCreated: "Discusiones creadas",
     UserProfileDiscussionsCommented: "Discusiones comentadas",
     UserProfileUserBanned: "Bloqueado",
-    UserProfileUserFree: "En vista",
+    UserProfileUserFree: "Libre",
     
     UserProfileName: "nombre",
     UserProfileAge: "edad",

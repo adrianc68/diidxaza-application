@@ -29,13 +29,13 @@ export default function AdminMenu() {
             </div>
             <ul>
                 <li>
-                    <NavLink className="adminmenubar-link" to="/home">
+                    <NavLink className="adminmenubar-link" to="/user-reports">
                         <MdOutlineBugReport className="adminmenubarIcon" />
                         <span>{t("AdminMenuReports")}</span>
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink className="adminmenubar-link" to="/underconstruction">
+                    <NavLink className="adminmenubar-link" to="/user-accounts">
                         <MdSupervisorAccount className="adminmenubarIcon" />
                         <span>{t("AdminMenuAccounts")}</span>
                     </NavLink>

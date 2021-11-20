@@ -1,20 +1,38 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import Forum from '../pages/Forum/Forum';
-import Learning from '../pages/Learning/Learning';
-import History from '../pages/History/History'
+import { Switch, Route, } from 'react-router-dom';
+import Home from '../components/home/Home'
 import UnderConstruction from '../pages/UnderConstruction/UnderConstruction'
-// import HomeDirectory from '../components/home/Home';
+import Forum from '../pages/Forum/Forum'
+import Learning from '../pages/Learning/Learning'
+import History from '../pages/History/History'
+import UserProfile from '../pages/UserProfile/UserProfile'
+import CheckProgress from '../components/ownuser/CheckProgress/CheckProgress'
+import EditProfile from '../components/ownuser/EditProfile/EditProfile'
+import ReportsMenu from '../components/admin/reportsmenu/ReportsMenu'
+import AccountsMenu from '../components/admin/accountsmenu/AccountsMenu'
 
-export default function DashboardRouter() {
+export default function DashboardRouter({}) {
     return (
-            <Switch>
-                {/* <Redirect exact={true} from={"/"} to={"/dashboard"}/> */}
-                {/* <Route exact path="/home" element={HomeDirectory} /> */}
-                <Route exact path="/history" element={History} />
-                <Route exact path="/learning" element={Learning} />
-                <Route exact path="/forum" element={Forum} />
-                <Route exact path="/underconstruction" element={UnderConstruction} />
-            </Switch>
+        <Switch>
+            <Route exact path="/home" render={() => <Home></Home>} />
+            <Route exact path="/email" render={() => <UnderConstruction></UnderConstruction>} />
+            <Route exact path="/forum" render={() => <Forum></Forum>} />
+            <Route exact path="/learning" render={() => <Learning></Learning>} />
+            <Route exact path="/news" render={() => <UnderConstruction></UnderConstruction>} />
+            <Route exact path="/dictionary" render={() => <UnderConstruction></UnderConstruction>} />
+            <Route exact path="/songs" render={() => <UnderConstruction></UnderConstruction>} />
+            <Route exact path="/history" render={() => <History></History>} />
+            <Route exact path="/help" render={() => <UnderConstruction></UnderConstruction>} />
+
+            <Route exact path="/profile/:id" render={() => <UserProfile accountID={sessionStorage.getItem("id")} username={sessionStorage.getItem("username")}></UserProfile>} />
+            <Route exact path="/profile/:id/progress" render={() => <CheckProgress></CheckProgress>} />
+            <Route exact path="/profile/:id/edit" render={() => <EditProfile></EditProfile>} />
+
+
+            <Route exact path="/user-reports" render={() => <ReportsMenu></ReportsMenu>} />
+            <Route exact path="/user-accounts" render={() => <AccountsMenu></AccountsMenu>} />
+
+
+        </Switch>
     )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import './reportsmenu.scss'
 import Button from '../../../components/Button/Button'
 import { useTranslation } from "react-i18next";
-import Report from './report/Report';
+import Report from '../../report/Report';
 
 export default function ReportsMenu() {
     const { t } = useTranslation();

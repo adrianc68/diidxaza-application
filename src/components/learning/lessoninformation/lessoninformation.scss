@@ -6,9 +6,8 @@
     width: 350px;
     height: auto;
     border-radius: 3px;
-    position:absolute;
+    position:relative;
     transform: translateX(-35%);
-    background-color: red;
     .lesson-indicator-container {
         overflow:hidden;
         .lesson-indicator {
@@ -18,7 +17,7 @@
             border-width: 0 30px 30px 30px;
             border-color: transparent transparent $title-background-black transparent;
             transform: translateY(15px) translateX(150px);
-           
+    
             z-index:-1;
         }
     

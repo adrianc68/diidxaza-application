@@ -1,7 +1,7 @@
 @import "../../variables.module.scss";
 
 .adminmenubar {
-    background-color: $sidebar-background-color;
+    background-color: rgb(184, 4, 4);
     width: $sidebar-width;
     display: flex;
     transition: all 0.3s ease-in;
@@ -27,7 +27,7 @@
         }
 
         .adminmenubar-toggle-button:hover {
-            background-color: #24223d;
+            background-color: #910505;
         }
     }
     ul {
@@ -60,7 +60,7 @@
         }
 
         li:hover {
-            background: #24223d;
+            background-color: #910505;
         }
     }
 }

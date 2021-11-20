@@ -2,7 +2,6 @@ import React, { useRef } from 'react'
 import './welcome.scss'
 import Footer from '../../components/footer/Footer'
 import { useTranslation } from "react-i18next";
-import { Link } from 'react-router-dom'
 import Topbar from '../../components/topbar/Topbar'
 import Button from '../../components/Button/Button'
 import SubtitlesVideo from '../../assets/vtt/Subtitles.vtt'
@@ -15,10 +14,12 @@ import VideoBenefit01 from '../../assets/images/vid-02.mp4'
 import AccountTypeImage from '../../assets/images/ide-23.svg'
 import AccountTypePremiumImage from '../../assets/images/ide-18.svg'
 import { MdLogin, MdLogout } from 'react-icons/md'
+import { useHistory } from 'react-router-dom'
 
 export default function Welcome() {
     const { t } = useTranslation();
     const chooseContainerRef = useRef()
+    const history = useHistory()
 
     function scrollToChooseContainer() {
         chooseContainerRef.current.scrollIntoView({ behavior: 'smooth' })
@@ -28,11 +29,14 @@ export default function Welcome() {
     return (
         <div className="welcome-main-container">
             <Topbar>
-                <Link className="link" to="/login">
-                    <Button text={t("ButtonLogin")} styleName="primary-button">
+                {/* <Link className="link" to="/login"> */}
+                <div>
+                    <Button text={t("ButtonLogin")} styleName="primary-button" onClick={() => history.push('/login')}>
                         <MdLogin className="icon-button" />
                     </Button>
-                </Link>
+                </div>
+
+                {/* </Link> */}
                 <div>
                     <Button text={t("ButtonSignUp")} styleName="secondary-button" onClick={scrollToChooseContainer}>
                         <MdLogout className="icon-button" />
@@ -137,9 +141,9 @@ export default function Welcome() {
 
                                     </div>
                                     <div className="welcome-choose-description-button-container">
-                                        <Link className="link" to="/signUp">
-                                            <Button text={t("ButtonSignUp")} styleName="primary-button" />
-                                        </Link>
+                                        {/* <Link className="link" to="/signUp"> */}
+                                            <Button text={t("ButtonSignUp")} styleName="primary-button" onClick={() => history.push('/signUP')} />
+                                        {/* </Link> */}
                                     </div>
                                 </div>
                             </div>

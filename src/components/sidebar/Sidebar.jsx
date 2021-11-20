@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './sidebar.scss'
-import { MdLogout, MdEmail, MdHome, MdMenu, MdBookmark, MdLiveTv, MdForum, MdMenuBook, MdLibraryMusic, MdLandscape, MdOutlineHelpOutline} from 'react-icons/md'
+import { MdLogout, MdEmail, MdHome, MdMenu, MdBookmark, MdLiveTv, MdForum, MdMenuBook, MdLibraryMusic, MdLandscape, MdOutlineHelpOutline } from 'react-icons/md'
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from "react-i18next"
 import Button from '../../components/Button/Button'
@@ -12,7 +12,7 @@ export default function Sidebar() {
 
     function toggleSidebar(e) {
         e.preventDefault();
-        if(isExpanded ) {
+        if (isExpanded) {
             setIsExpanded(false);
             localStorage.setItem('sidebar-collapsed', true);
             return;
@@ -23,7 +23,7 @@ export default function Sidebar() {
 
 
     return (
-        <nav className = { isExpanded ? "sidebar" : "sidebar active"}>
+        <nav className={isExpanded ? "sidebar" : "sidebar active"}>
             <div className="sidebar-toggle-button-container">
                 <button className="sidebar-toggle-button" onClick={toggleSidebar}>
                     <MdMenu className="sidebarIconToggle" />
@@ -43,10 +43,10 @@ export default function Sidebar() {
                         <span>{t("SidebarCorreo")}</span>
                     </NavLink>
                 </li>
-                <div className="sidebar-button-section">
+                <div className="sidebar-logout-button-section">
                     <div>
-                        <Button styleName="primary-button" text={t("SidebarSignOutButton")}>
-                            <MdLogout></MdLogout>
+                        <Button styleName={!isExpanded ? "primary-button red collapse-text" : "primary-button red"} text={t("SidebarSignOutButton")}>
+                            <MdLogout className="sidebarIcon"></MdLogout>
                         </Button>
                     </div>
 
