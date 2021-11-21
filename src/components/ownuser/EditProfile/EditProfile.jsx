@@ -156,7 +156,8 @@ export default function EditProfile({setNameUser}) {
         handleBlur,
         handleSubmit,
         handleChangeImage,
-        icon
+        icon,
+        errorImage
     } = useUpdateAccountForm(validationsForm,setForm,form,setCities,setModalNotToken,setModalToken,setNameFile,URLPhoto,initialfile,setNameUser);
 
     return (
@@ -182,6 +183,10 @@ export default function EditProfile({setNameUser}) {
                                     <p className="p-semibold">{t("SignUpFormPhotoInput")}</p>
                                     <p>{t("SignUpFormPhotoDescription")}</p>
                                 </div>
+                            </div>
+                            <div className="system-message-container">
+                                <br/>
+                                {errorImage && <p className="errorInput">{t("ErrorImage")}</p>}
                             </div>
                         </label>
                         <label>
