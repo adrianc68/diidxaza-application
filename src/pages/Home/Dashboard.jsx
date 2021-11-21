@@ -1,3 +1,4 @@
+import React, {useState} from 'react'
 import Sidebar from '../../components/sidebar/Sidebar'
 import Topbar from '../../components/topbar/Topbar'
 import './dashboard.scss'
@@ -8,7 +9,7 @@ import DashboardRouter from '../../routers/DashboardRouter'
 import history from '../History/History';
 
 export default function Dashboard() {
-
+    const [nameUser, setNameUser] = useState(sessionStorage.getItem("name")+" "+sessionStorage.getItem("lastname"));
     
         return (
             <div className="dashboard-main-container">
@@ -17,7 +18,7 @@ export default function Dashboard() {
                         <Topbar>
                             <div className="dashboard-userprofile">
                                 <NavLink className="link" to={"/profile/" + sessionStorage.getItem("username")}>
-                                    <Button styleName="text-button" text={sessionStorage.getItem("name")}>
+                                    <Button styleName="text-button" text={nameUser}>
                                     </Button>
                                 </NavLink>
                             </div>
@@ -27,7 +28,7 @@ export default function Dashboard() {
                         <Sidebar />
                     </div>
                     <div className="userprofile-dashboard-container">
-                        <DashboardRouter/>
+                        <DashboardRouter setNameUser={setNameUser}/>
                     </div>
                     {sessionStorage.getItem("role") === "manager" ? <AdminMenu /> : null}
                 </Router>
