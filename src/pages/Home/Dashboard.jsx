@@ -45,7 +45,7 @@ export default function Dashboard() {
                                     }
                                 }
                             }>
-                                <Button styleName="text-button" text={sessionStorage.getItem("name") }>
+                                <Button styleName="text-button" text={nameUser}>
                                 </Button>
                             </NavLink>
                         </div>

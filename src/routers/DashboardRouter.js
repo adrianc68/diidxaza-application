@@ -27,7 +27,6 @@ export default function DashboardRouter({setNameUser}) {
 
             <Route exact path="/profile/:id" render={(props) => <UserProfile accountID={props.location.state.id}></UserProfile>} />
             <Route exact path="/profile/:id/progress" render={() => <CheckProgress></CheckProgress>} />
-            <Route exact path="/profile/:id/edit" render={() => <EditProfile></EditProfile>} />
             <Route exact path="/profile/:id/edit" render={() => <EditProfile setNameUser={setNameUser}></EditProfile>} />
 
             <Route exact path="/discussion" render={() => <AddDiscussion></AddDiscussion>} />

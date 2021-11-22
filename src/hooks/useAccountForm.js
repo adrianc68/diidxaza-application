@@ -76,7 +76,7 @@ export const useLoginForm = (initialForm, validateForm) => {
     }
 };
 
-export const useUpdateAccountForm = (validateForm,setForm,form,setCities,setModalNotToken,setModalToken,setNameFile,URLPhoto,initialfile,setNameUser) => {
+export const useUpdateAccountForm = (validateForm,setForm,form,setCities,setModalNotToken,setModalToken,setNameFile,URLPhoto,initialfile,setNameUser,setInitialFile,namefile) => {
     const { t } = useTranslation();
     const [errors, setErrors] = useState({});
     const [errorImage, setErrorImage] = useState(false);
@@ -196,6 +196,7 @@ export const useUpdateAccountForm = (validateForm,setForm,form,setCities,setModa
                                             if(response.ok){
                                                 response.json().then(responseJson => {
                                                     sessionStorage.setItem("URL", responseJson.URL);
+                                                    setInitialFile(namefile);
                                                 });
                                             }
                                         })
@@ -212,6 +213,7 @@ export const useUpdateAccountForm = (validateForm,setForm,form,setCities,setModa
                                     if(response.ok){
                                         response.json().then(responseJson => {
                                             sessionStorage.setItem("URL", responseJson.URL);
+                                            setInitialFile(namefile);
                                         });
                                     }
                                 })
