@@ -235,6 +235,7 @@ export const TRANSLATIONS_ES = {
     TypeUserAdmin: "Administrador",
     TypeUserFree: "Usuario normal",
 
+    ErrorImage: "Selecciona una imagen de un tamaño menor a 10MB",
     ButtonAccept: "Aceptar",
     ButtonYes: "Si",
     ButtonNo: "No",

@@ -17,7 +17,7 @@ export default function UserprofileButtonPanelOWU({ handleModal, accountID }) {
             {
                 accountID === sessionStorage.getItem("id") ?
                     <>
-                        <Button styleName="primary-button" text={t("UserProfileButtonPanelDeleteAccount")} onClick={() => handleModal(<DeleteAccount />, 70, 70, t("UserReportAdminPanelTitle"))} ></Button>
+                        {/* <Button styleName="primary-button" text={t("UserProfileButtonPanelDeleteAccount")} onClick={() => handleModal(<DeleteAccount />, 70, 70, t("UserReportAdminPanelTitle"))} ></Button> */}
                         <NavLink className="link" to={`${url}/edit`}>
                             <Button styleName="primary-button" text={t("UserProfileButtonPanelEditProfile")} ></Button>
                         </NavLink>

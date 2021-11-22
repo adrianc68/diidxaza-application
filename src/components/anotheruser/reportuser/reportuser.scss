@@ -2,41 +2,86 @@
 
 .reportuser-main-container {
     width: 100%;
-    height:100%;
+    height: 100%;
+    background-color: $modal-content-background;
+    border-radius: 0 0 3px 3px;
     .reportuser-content-container {
-        height:calc(100% - 30px);
-        width:calc(100% - 30px);
-        display:flex;
+        height: calc(100% - 30px);
+        width: calc(100% - 30px);
+        display: flex;
         flex-direction: column;
-        padding:15px;
-        font-size: 15px;
-        background-color:#f9f9f9;
+        padding: 15px;
+        font-size: 1em;
         .reportuser-text-description {
-            display:flex;
+            display: flex;
             flex-direction: column;
-            height:100%;
-            gap:15px;
+            height: 100%;
+            gap: 15px;
             .reportuser-options-container {
-                display:flex;
+                display: flex;
                 flex-direction: column;
+                padding-left: 15px;
                 input {
                     height: 20px;
                 }
             }
 
-            textarea{
+            textarea {
                 box-sizing: border-box;
-                resize:vertical;
-                width:100%;
-                height:100%;
+                resize: vertical;
+                width: 100%;
+                height: 100%;
             }
-
         }
 
         .reportuser-button-panel {
             display: flex;
             padding: 15px;
             gap: 85px;
+        }
+    }
+}
+
+@media all and (max-width: $max-width-device) {
+    .reportuser-main-container {
+        width: 100%;
+        height: 100%;
+        background-color: $modal-content-background;
+        border-radius: 0 0 3px 3px;
+        .reportuser-content-container {
+            height: calc(100% - 30px);
+            width: calc(100% - 30px);
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            font-size: 1em;
+            .reportuser-text-description {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                gap: 15px;
+                .reportuser-options-container {
+                    display: flex;
+                    flex-direction: column;
+                    padding-left: 15px;
+                    input {
+                        height: 20px;
+                    }
+                }
+
+                textarea {
+                    box-sizing: border-box;
+                    resize: vertical;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .reportuser-button-panel {
+                display: flex;
+                padding: 15px;
+                gap: 85px;
+            }
         }
     }
 }

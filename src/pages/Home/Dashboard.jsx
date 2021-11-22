@@ -1,3 +1,4 @@
+import React, {useState} from 'react'
 import Sidebar from '../../components/sidebar/Sidebar'
 import Topbar from '../../components/topbar/Topbar'
 import './dashboard.scss'
@@ -6,12 +7,12 @@ import { BrowserRouter as Router, NavLink } from 'react-router-dom';
 import AdminMenu from '../../components/admin/menu/AdminMenu'
 import DashboardRouter from '../../routers/DashboardRouter'
 import history from '../History/History';
-import { useState } from 'react'
 import Modal from '../../components/modal/Modal';
 
 
 export default function Dashboard() {
     const [statusModal, setStatusModal] = useState(false);
+    const [nameUser, setNameUser] = useState(sessionStorage.getItem("name")+" "+sessionStorage.getItem("lastname"));
     const [component, setComponent] = useState({
         sizeHeight: "",
         sizeWidth: "",
@@ -54,7 +55,7 @@ export default function Dashboard() {
                     <Sidebar />
                 </div>
                 <div className="userprofile-dashboard-container">
-                    <DashboardRouter />
+                <DashboardRouter setNameUser={setNameUser}/>
                 </div>
                 {sessionStorage.getItem("role") === "manager" ? <AdminMenu handleModal={handleModal}/> : null}
                 {
@@ -65,5 +66,4 @@ export default function Dashboard() {
             </Router>
         </div >
     )
-
 }

@@ -10,7 +10,7 @@
         height:calc(100% - 50px);
         flex-direction: column;
         gap: 15px;
-        overflow-y: scroll;
+        overflow-y: auto;
         .deleteaccount-text {
             display: inline-flex;
             flex: 1;

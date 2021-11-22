@@ -156,7 +156,8 @@ export default function EditProfile({setNameUser}) {
         handleBlur,
         handleSubmit,
         handleChangeImage,
-        icon
+        icon,
+        errorImage
     } = useUpdateAccountForm(validationsForm,setForm,form,setCities,setModalNotToken,setModalToken,setNameFile,URLPhoto,initialfile,setNameUser);
 
     return (
@@ -182,6 +183,10 @@ export default function EditProfile({setNameUser}) {
                                     <p className="p-semibold">{t("SignUpFormPhotoInput")}</p>
                                     <p>{t("SignUpFormPhotoDescription")}</p>
                                 </div>
+                            </div>
+                            <div className="system-message-container">
+                                <br/>
+                                {errorImage && <p className="errorInput">{t("ErrorImage")}</p>}
                             </div>
                         </label>
                         <label>
@@ -257,8 +262,8 @@ export default function EditProfile({setNameUser}) {
                         </div>
                         <div className="editprofile-button-panel">
                             <div>
-                                <Link className="link" to="/userprofile">
-                                    <Button styleName="green-button" text={t("ButtonCancel")}></Button>
+                                <Link className="link" to={"/profile/"+sessionStorage.getItem("id")}>
+                                    <Button styleName="orange-button" text={t("ButtonCancel")}></Button>
                                 </Link>
                             </div>
                             <div>

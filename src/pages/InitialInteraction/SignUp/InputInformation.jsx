@@ -87,7 +87,8 @@ export default function InputInformation() {
         handleSubmit,
         namefile,
         handleChangeImage,
-        icon
+        icon,
+        errorImage
     } = useAccountForm(initialForm, validationsForm);
     return (
         <form onSubmit={handleSubmit} className="signup-input-personal-information-form">
@@ -112,6 +113,10 @@ export default function InputInformation() {
                                     <p className="p-semibold">{t("SignUpFormPhotoInput")}</p>
                                     <p>{t("SignUpFormPhotoDescription")}</p>
                                 </div>
+                            </div>
+                            <div className="system-message-container">
+                                <br/>
+                                {errorImage && <p className="errorInput">{t("ErrorImage")}</p>}
                             </div>
                         </label>
                         <label>

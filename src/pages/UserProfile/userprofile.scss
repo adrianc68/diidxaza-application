@@ -18,7 +18,7 @@
         flex-direction: column;
         align-items: center;
         gap: 15px;
-        overflow-y: scroll;
+        overflow-y: auto;
         .userprofile-user-photo-container {
             display: flex;
             justify-content: center;
@@ -67,7 +67,7 @@
 
     .userprofile-user-data-container {
         width: calc(100% - 285px);
-        overflow-y: scroll;
+        overflow-y: auto;
         box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
         padding: 25px;
         border-radius: 3px;

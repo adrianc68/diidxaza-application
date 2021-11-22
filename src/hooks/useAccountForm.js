@@ -79,6 +79,7 @@ export const useLoginForm = (initialForm, validateForm) => {
 export const useUpdateAccountForm = (validateForm,setForm,form,setCities,setModalNotToken,setModalToken,setNameFile,URLPhoto,initialfile,setNameUser) => {
     const { t } = useTranslation();
     const [errors, setErrors] = useState({});
+    const [errorImage, setErrorImage] = useState(false);
     const [loading, setLoading] = useState(false);
     const [response, setResponse] = useState(null);
     const [className, setClaseName] = useState("errorDelete");
@@ -108,14 +109,19 @@ export const useUpdateAccountForm = (validateForm,setForm,form,setCities,setModa
     const handleChangeImage = (e) => {
         let file = e.target.files[0];
         if (file) {
-            const fileReader = new FileReader();
-            fileReader.readAsDataURL(file);
-            fileReader.addEventListener("load", (e) => {
-                setNameFile(e.target.result);
-                setUrlFile(file);
-            })
-        }
-        else {
+            if(file.size<10000000){
+                setErrorImage(false);
+                const fileReader = new FileReader();
+                fileReader.readAsDataURL(file);
+                fileReader.addEventListener("load", (e) => {
+                    setNameFile(e.target.result);
+                    setUrlFile(file);
+                })
+            } else {
+                setErrorImage(true);
+            }
+        }else {
+            setErrorImage(false);
             setUrlFile(null);
             setNameFile(initialfile);
         }
@@ -150,7 +156,7 @@ export const useUpdateAccountForm = (validateForm,setForm,form,setCities,setModa
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors(validateForm(form));
-        if (Object.keys(errors).length === 0) {
+        if (Object.keys(errors).length === 0 && !errorImage) {
             fetch(UrlAPI + "accounts", {
                 method: 'PUT',
                 headers: {
@@ -245,7 +251,7 @@ export const useUpdateAccountForm = (validateForm,setForm,form,setCities,setModa
         }
     }
     return {
-        handleChangeState, errors, loading, response, className, handleChange, handleBlur, handleSubmit, icon, handleChangeImage, urlFile,
+        handleChangeState, errors, loading, response, className, handleChange, handleBlur, handleSubmit, icon, handleChangeImage, urlFile, errorImage
     }
 };
 
@@ -367,6 +373,7 @@ export const useAccountForm = (initialForm, validateForm) => {
     const [form, setForm] = useState(initialForm);
     const [cities, setCities] = useState([]);
     const [errors, setErrors] = useState({});
+    const [errorImage, setErrorImage] = useState(false);
     const [loading, setLoading] = useState(false);
     const [response, setResponse] = useState(null);
     const [className, setClaseName] = useState("errorDelete");
@@ -397,14 +404,19 @@ export const useAccountForm = (initialForm, validateForm) => {
     const handleChangeImage = (e) => {
         let file = e.target.files[0];
         if (file) {
-            const fileReader = new FileReader();
-            fileReader.readAsDataURL(file);
-            fileReader.addEventListener("load", (e) => {
-                setNameFile(e.target.result);
-                setUrlFile(file);
-            })
-        }
-        else {
+            if(file.size<10000000){
+                setErrorImage(false);
+                const fileReader = new FileReader();
+                fileReader.readAsDataURL(file);
+                fileReader.addEventListener("load", (e) => {
+                    setNameFile(e.target.result);
+                    setUrlFile(file);
+                })
+            }else {
+                setErrorImage(true);
+            }
+        }else {
+            setErrorImage(false);
             setUrlFile(null);
             setNameFile(UserImageDefault);
         }
@@ -437,7 +449,7 @@ export const useAccountForm = (initialForm, validateForm) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors(validateForm(form));
-        if (Object.keys(errors).length === 0) {
+        if (Object.keys(errors).length === 0 && !errorImage) {
             fetch(UrlAPI + "accounts", {
                 method: 'POST',
                 headers: {
@@ -487,6 +499,6 @@ export const useAccountForm = (initialForm, validateForm) => {
         }
     }
     return {
-        handleChangeState, cities, form, errors, loading, response, className, handleChange, handleBlur, handleSubmit, icon, namefile, handleChangeImage, urlFile
+        handleChangeState, cities, form, errors, loading, response, className, handleChange, handleBlur, handleSubmit, icon, namefile, handleChangeImage, urlFile, errorImage
     }
 };

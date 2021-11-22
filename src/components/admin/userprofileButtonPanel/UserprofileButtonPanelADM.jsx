@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import Button from '../../Button/Button'
 import { useTranslation } from "react-i18next";
-import BlockUser from '../blockuser/BlockUser';
-import UnblockUser from '../unblockuser/UnblockUser';
 import UserReports from '../userreports/UserReports';
 import ChangeStatusUser from '../changestatus/ChangeStatusUser';
 

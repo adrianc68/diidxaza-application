@@ -19,10 +19,6 @@ export default function UserListItem({ account }) {
                         <span>{t("UserListItemUsername")}</span>
                         <span>{account.username}</span>
                     </div>
-                    <div>
-                        <span>{t("UserID")}</span>
-                        <span>{account._id}</span>
-                    </div>
                 </div>
                 <div className="userlistitem-button-panel">
 

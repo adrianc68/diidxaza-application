@@ -13,14 +13,14 @@
         height: 100%;
         .learning-lesson-information {
             display: flex;
-            overflow-y: scroll;
+            overflow-y: auto;
             height: 100%;
             padding: 15px;
             .learning-lessons-content {
                 display: flex;
                 flex: 1;
                 height: 100%;
-                overflow-y: scroll;
+                overflow-y: auto;
                 align-items: flex-start;
                 justify-content: center;
                 ul {

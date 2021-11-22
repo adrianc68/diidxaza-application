@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: column;
     transition: all 0.3s ease-in;
-    overflow-x: scroll;
+    overflow-x: auto;
     .sidebar-toggle-button-container {
         display: flex;
         align-items: center;

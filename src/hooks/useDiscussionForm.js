@@ -199,7 +199,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
         await setImagesComments([]);
         await setLoadingDiscussion(false);
         await setFoundDiscussion(false);
-        helpHttp().get(UrlAPI+"discussions/"+id,{
+        await helpHttp().get(UrlAPI+"discussions/"+id,{
             headers: {
                 Accept: "application/json",
                 'Authorization': sessionStorage.getItem("token")
@@ -215,8 +215,6 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                 setCommentLenght(0);
                 setErrorsComment({});
                 setLoadingComment(false);
-                setLoadingDiscussion(false);
-                setFoundDiscussion(true);
                 if(responseDiscussion.idAccount[0].URL!= undefined){
                     const url =  {
                         URL: responseDiscussion.idAccount[0].URL
@@ -249,31 +247,33 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                     }
                 }).then(async (responseComments) => {
                     if(!responseComments.status){
-                        setComments(responseComments);
-                        await responseComments.map(imageComment => {
+                        await responseComments.map(async imageComment => {
                             if(imageComment.idAccount[0].URL!= undefined){
-                                fetch(UrlAPI+"resources",{
+                                await  fetch(UrlAPI+"resources",{
                                     method: 'PATCH',
                                     headers: {
                                         'Content-Type': 'application/json',
                                         'Authorization': sessionStorage.getItem("token")
                                     },
                                     body: JSON.stringify({URL:imageComment.idAccount[0].URL})
-                                }).then((response) => {
+                                }).then(async(response) => {
                                     if (response.ok) {
-                                        response.blob().then((responseBlob) => {
-                                            var objectURL = URL.createObjectURL(responseBlob);
-                                            setImagesComments(imagesComments => [...imagesComments, objectURL]);
+                                        await response.blob().then(async(responseBlob) => {
+                                            var objectURL = await URL.createObjectURL(responseBlob);
+                                            setImagesComments(imagesComments => [...imagesComments, {id:imageComment._id,imageComment:objectURL}]);
                                         });
                                     }
                                     else{
-                                        setImagesComments(imagesComments => [...imagesComments, ImageInformationAlt]);
+                                        setImagesComments(imagesComments => [...imagesComments, {id:imageComment._id,imageComment:ImageInformationAlt}]);
                                     }
                                 });
                             }else{
-                                setImagesComments(imagesComments => [...imagesComments, ImageInformationAlt]);
+                                setImagesComments(imagesComments => [...imagesComments, {id:imageComment._id,imageComment:ImageInformationAlt}]);
                             }
                         })
+                        setComments(responseComments);
+                        setLoadingDiscussion(false);
+                        setFoundDiscussion(true);
                     }
                     else{
                         if(responseComments.status === 419){
@@ -283,6 +283,8 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                             setModalToken(true);
                         }else{
                             setComments([]);
+                            setLoadingDiscussion(false);
+                            setFoundDiscussion(true);
                         }
                         setImagesComments([])
                     }
@@ -351,7 +353,6 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                             }
                         ]
                     }
-                    setComments(comments => [...comments, newComment]);
                     if(sessionStorage.getItem("URL")!=undefined){
                         fetch(UrlAPI+"resources",{
                             method: 'PATCH',
@@ -364,16 +365,17 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                             if (response.ok) {
                                 response.blob().then((responseBlob) => {
                                     var objectURL = URL.createObjectURL(responseBlob);
-                                    setImagesComments(imagesComments => [...imagesComments, objectURL]);
+                                    setImagesComments(imagesComments => [...imagesComments, {id:newComment._id,imageComment:objectURL}]);
                                 });
                             }
                             else{
-                                setImagesComments(imagesComments => [...imagesComments, ImageInformationAlt]);
+                                setImagesComments(imagesComments => [...imagesComments, {id:newComment._id,imageComment:ImageInformationAlt}]);
                             }
                         });
                     } else{
-                        setImagesComments(imagesComments => [...imagesComments, ImageInformationAlt]);
+                        setImagesComments(imagesComments => [...imagesComments, {id:newComment._id,imageComment:ImageInformationAlt}]);
                     }
+                    setComments(comments => [...comments, newComment]);
                 }
                 else{
                     if(response.status === 401){
@@ -429,9 +431,8 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
         }).then(async(response) => {
             if(response.message){
                 setNumberComments(numberComments-1);
-                const indexComment = await comments.findIndex(element => element._id ===id);
                 setComments(comments.filter(item => item._id !== id));
-                imagesComments.splice(indexComment,1);
+                setImagesComments(imagesComments.filter(item => item.id !== id));
             }
             else{
                 if(response.status === 419){
