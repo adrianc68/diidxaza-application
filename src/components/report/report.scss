@@ -1,5 +1,5 @@
 .report-container {
-    background-color: rgb(233, 232, 232);
+    background-color: rgb(255, 255, 255);
     border: 1px solid #ccc;
     display: flex;
     padding: 10px;
@@ -26,19 +26,18 @@
         border-radius: 3px 3px 0px 0px;
         flex: 1;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         flex-direction: column;
         text-align: justify;
+        border: 1px solid #ccc;
+        border-radius:3px;
         .report-reported-by-container {
             border-radius: 3px 3px 0px 0px;
-            background-color: #a8a7a7;
+            background-color: #e0e0e0;
             padding: 5px;
-            div {
-                :nth-child(1) {
-                    color: #000;
-                    font-weight: 600;
-                }
-            }
+            display:flex;
+            gap:25px;
+            align-items: center;
         }
 
         .report-descripction-container {

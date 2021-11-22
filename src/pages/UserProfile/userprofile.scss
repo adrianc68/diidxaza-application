@@ -102,7 +102,7 @@
             border-radius: 3px;
             flex-direction: column;
             text-align: center;
-            gap: 55px;
+            gap: 15px;
             width: 150px;
             float: right;
             .userprofile-button-panel-content {
@@ -193,13 +193,13 @@
     background: linear-gradient(28deg, rgb(218, 3, 3) 8%, rgb(63, 0, 0) 100%);
     border-radius: 3px;
     color: #fff;
-    display: inline-block;
+    display: block;
     padding: 6px;
 }
 
 .status-user-free {
     color: rgb(143, 143, 143);
-    display: inline-block;
+    display: block;
     border-radius: 3px;
     padding: 6px;
 }

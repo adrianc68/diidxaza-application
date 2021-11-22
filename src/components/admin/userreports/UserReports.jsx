@@ -9,33 +9,23 @@ export default function UserReports() {
 
     return (
         <div className="userreports-main-container">
-            <div className="userreports-data-container">
-                <div className="userreports-image-background">
-                    <img src={UserImageDefault} alt="AlternativeMessageImageDecorative"></img>
-                </div>
-                <p>{t("UserReportAdminPanelDescription")}</p>
-                <div className="userreports-list-container">
-                    <ul>
-                        <li>
-                            <Report></Report>
-                        </li>
-                        <li>
-                            <Report></Report>
-                        </li>
-                        <li>
-                            <Report></Report>
-                        </li>
-                        <li>
-                            <Report></Report>
-                        </li>
-                        <li>
-                            <Report></Report>
-                        </li>
-                       
-                    </ul>
-                </div>
+            <div className="userreports-content-container">
+                <div className="userreports-data-container">
+                    <div className="userreports-image-background">
+                        <img src={UserImageDefault} alt="AlternativeMessageImageDecorative"></img>
+                    </div>
+                    <p>{t("UserReportAdminPanelDescription")}</p>
+                    <div className="userreports-list-container">
+                        <ul>
+                            <li>
+                                {/* <Report></Report> */}
+                            </li>
 
+                        </ul>
+                    </div>
+                </div>
             </div>
+
         </div>
     )
 }

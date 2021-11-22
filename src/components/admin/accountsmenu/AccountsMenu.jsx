@@ -1,52 +1,62 @@
-import React from 'react'
+import React, { useEffect, useReducer, useState } from 'react'
 import './accountsmenu.scss'
 import Button from '../../../components/Button/Button'
 import { useTranslation } from "react-i18next";
 import UserListItem from './userlistitem/UserListItem';
+import { helpHttp, UrlAPI } from '../../../helpers/helpHttp';
 
 export default function AccountsMenu() {
     const { t } = useTranslation();
+    const [accountsItems, setAccountsItems] = useState([]);
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const fetchData = () => {
+        helpHttp().get(UrlAPI + "accounts", {
+            headers: {
+                Accept: "application/json",
+                'Authorization': sessionStorage.getItem("token")
+            }
+        }).then((response) => {
+            if (response != null) {
+                setAccountsItems(response);
+            }
+        }, []);
+    }
+
     return (
         <div className="accountsmenu-main-container">
-        <div className="accountsmenu-content">
-            <div className="accountsmenu-search-criteria">
-                <h1> {t("AdminAccountMenu")} </h1>
-                <div className="form-search-input">
-                    <div className="form-search-container-input">
-                        <span>{t("AdminReportInputSearchCriteria")}</span>
-                        <input type="text"></input>
+            <div className="accountsmenu-content">
+                <div className="accountsmenu-search-criteria">
+                    <div className="form-search-input">
+                        <div className="form-search-container-input">
+                            <span>{t("AdminReportInputSearchCriteria")}</span>
+                            <input type="text"></input>
+                        </div>
+                        <div className="form-search-input-button">
+                            <Button styleName="primary-button">{t("ButtonSearch")}</Button>
+                        </div>
                     </div>
-                    <div>
-                        <Button styleName="primary-button">{t("ButtonSearch")}</Button>
+                </div>
+                <div className="accountsmenu-reports-list-container">
+                    <div className="accountsmenu-discussion-list">
+                        <ul>
+                            {
+                                accountsItems.length > 0 ?
+                                    accountsItems.map((element) =>
+                                        <li><UserListItem account={element} /></li>
+                                    )
+                                    :
+                                    <div className="no-found-records">
+                                        <span>{t("NotFoundRecords")}</span>
+                                    </div>
+                            }
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div className="accountsmenu-reports-list-container">
-                <div className="accountsmenu-discussion-list">
-                    <ul>
-                        <li>
-                            <UserListItem></UserListItem>
-                        </li>
-                        <li>
-                            <UserListItem></UserListItem>
-                        </li>
-                        <li>
-                            <UserListItem></UserListItem>
-                        </li>
-                        <li>
-                            <UserListItem></UserListItem>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div className="accountsmenu-button-panel">
-                <div>
-                    <Button styleName="primary-button">{t("ButtonClose")}</Button>
-                </div>
-            </div>
-
         </div>
-    </div>
     )
 }

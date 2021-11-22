@@ -1,32 +1,35 @@
 @import "../../../components/variables.module.scss";
 
 .reportsmenu-main-container {
+    width: 100%;
+    height: 100%;
+    background-color: $modal-content-background;
+    border-radius: 0 0 3px 3px;
     .reportsmenu-content {
+        width: calc(100% - 50px);
+        height: calc(100% - 50px);
+        padding: 25px;
+        display:flex;
+        flex-direction: column;
         .reportsmenu-search-criteria {
-            border-radius: 3px 3px 0px 0px;
-            border: 1px solid rgb(133, 133, 133);
-
-            h1 {
-                color: #fff;
-                padding: 15px;
-                border-radius: 3px 3px 0px 0px;
-                background-color: $title-background-black;
-                text-align: center;
-            }
-
+     
             .form-search-input {
                 display: flex;
                 align-items: center;
-                padding: 15px;
-                gap: 15px;
+                padding: 15px 0px 15px 0px;
+                gap: 10px;
                 .form-search-container-input {
                     display: flex;
                     align-items: center;
                     flex: 1;
                 }
-
-                div:nth-child(2) {
+                
+                :nth-child(1) {
                     height: 37px;
+                }
+
+                .form-search-input-button {
+                    width: 100px;
                 }
             }
             .form-search-buttons {
@@ -39,32 +42,23 @@
         }
 
         .reportsmenu-reports-list-container {
-            border-left: 1px solid rgb(133, 133, 133);
-            border-right: 1px solid rgb(133, 133, 133);
-            border-bottom: 1px solid rgb(133, 133, 133);
-            height:50vh;
-            overflow-y:scroll;
+            border: 1px solid rgb(173, 172, 172);
+            box-shadow: rgba(134, 133, 133, 0.178) 0px 4px 4px 4px inset;
+            border-radius: 3px;
+            overflow-y: scroll;
+            flex-grow: 1;
             .reportsmenu-discussion-list {
                 display: flex;
                 flex-direction: column;
+                border-radius: 3px;
                 ul {
                     list-style: none;
-                    box-shadow: rgba(0, 0, 0, 0.178) 0px 4px 4px 4px inset;
-                    li {
-                        padding: 20px;
-                        display: flex;
-                        flex-direction: column;
-                        gap: 15px;
-                    }
+                    padding: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
                 }
             }
-        }
-
-        .reportsmenu-button-panel {
-            display:flex;
-            justify-content: flex-end;
-            padding-top:15px;
-            padding-bottom:15px;
         }
     }
 }

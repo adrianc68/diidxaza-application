@@ -7,6 +7,8 @@ import ImageInformationAlt from '../../../assets/images/ide-36.svg'
 export default function DeleteAccount() {
     const { t } = useTranslation();
 
+    
+
     return (
         <div className="deleteaccount-main-container">
             <div className="deleteaccount-content-container">

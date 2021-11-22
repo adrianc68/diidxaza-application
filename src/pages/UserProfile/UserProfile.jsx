@@ -7,13 +7,13 @@ import UserprofileButtonPanelADM from '../../components/admin/userprofileButtonP
 import UserprofileButtonPanelOWU from '../../components/ownuser/userprofileButtonPanel/UserprofileButtonPanelOWU';
 import Modal from '../../components/modal/Modal';
 import { helpHttp, UrlAPI } from '../../helpers/helpHttp';
-import { useRouteMatch,useHistory, useParams } from 'react-router-dom'
+// import { useRouteMatch,useHistory, useParams } from 'react-router-dom'
 
-export default function UserProfile({accountID, username}) {
+export default function UserProfile({accountID}) {
     const { t } = useTranslation();
-    let { url } = useRouteMatch();
-    let { path } = useHistory();
-    let slug = useParams();
+    // let { url } = useRouteMatch();
+    // let { path } = useHistory();
+    // let slug = useParams();
 
     const [account, setAccount] = useState({
         age: null,
@@ -25,14 +25,16 @@ export default function UserProfile({accountID, username}) {
         name: null,
     });
 
+
     useEffect(() => {
         handleDiscussionsTab();
         fetchData();
-
-        console.log("URL" , url);
-        console.log("path", path);
-        console.log("PARAMS" , slug);
-
+        
+        /* DEBUG LOG <- FOR HISTORY ROUTER*/
+        // console.log("URL" , url);
+        // console.log("path", path);
+        // console.log("PARAMS" , slug);
+        // forceUpdate();
     }, []);
 
     const fetchData = () => {
@@ -51,6 +53,7 @@ export default function UserProfile({accountID, username}) {
                 role: response.role,
                 name: response.name,
             }
+            console.log(response);
             setAccount(account)
         });
     }
@@ -165,13 +168,13 @@ export default function UserProfile({accountID, username}) {
                 <div className="userprofile-button-panel-container">
                     <p>{t("UserProfileControlPanel")}</p>
                     <div className="userprofile-button-panel">
-                        <UserprofileButtonPanelADM handleModal={handleModal} />
+                        <UserprofileButtonPanelADM handleModal={handleModal} accountStatus={account.status} accountID={accountID} />
                     </div>
                     <div className="userprofile-button-panel">
-                        <UserprofileButtonPanelOWU handleModal={handleModal} />
+                        <UserprofileButtonPanelOWU handleModal={handleModal}  accountID={accountID} />
                     </div>
                     <div className="userprofile-button-panel">
-                        <UserprofileButtonPanelAU />
+                        {/* <UserprofileButtonPanelAU /> */}
                     </div>
                 </div>
                 <div className="userprofile-ranking-information-container">

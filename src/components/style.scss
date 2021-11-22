@@ -32,7 +32,7 @@ input,
     width: calc(100% - 2px);
     border: 1px solid #b9b9b9;
     border-radius: 3px;
-    background-color: #f7f7f7;
+    background-color: #ffffff;
 }
 
 .input-file-label {
@@ -160,4 +160,12 @@ select {
 
 .radiobutton {
     border-radius: 50%;
+}
+
+.no-found-records {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none;
+    height: 50vh;
 }

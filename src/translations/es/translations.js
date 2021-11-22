@@ -293,19 +293,22 @@ export const TRANSLATIONS_ES = {
     UserProfileDiscussionsCreated: "Discusiones creadas",
     UserProfileDiscussionsCommented: "Discusiones comentadas",
     UserProfileUserBanned: "Bloqueado",
-    UserProfileUserFree: "Libre",
+    UserProfileUserFree: "",
     
     UserProfileName: "nombre",
     UserProfileAge: "edad",
     UserProfileBirthdate: "fecha de nacimiento",
 
+    UserListItemName: "Nombre completo",
+    UserListItemUsername: "Nombre de usuario",
+
     UserProfileAdminBlockUser: "Bloquear usuario",
 
-
+    UserID: "Identificación",
     UserReportAdminPanelTitle: "Reportes",
     UserReportAdminPanelDescription:"A continuación se mostrarán todos los reportes realizados a este usuario por otros usuarios. Los reportes están ordenados del mas actual al menos actual.",
     UserReportReason: "Razón: ",
-    UserReportNumberReport: "Reporte num: ",
+    UserReportDate: "Fecha de creación: ",
     UserReportReportedBy: "Reportado por: ",
     UserReportUserReported: "Usuario reportado: ",
     UserReportContext: "Situación: ",

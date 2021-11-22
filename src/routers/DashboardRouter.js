@@ -8,8 +8,6 @@ import History from '../pages/History/History'
 import UserProfile from '../pages/UserProfile/UserProfile'
 import CheckProgress from '../components/ownuser/CheckProgress/CheckProgress'
 import EditProfile from '../components/ownuser/EditProfile/EditProfile'
-import ReportsMenu from '../components/admin/reportsmenu/ReportsMenu'
-import AccountsMenu from '../components/admin/accountsmenu/AccountsMenu'
 
 export default function DashboardRouter({}) {
     return (
@@ -24,14 +22,9 @@ export default function DashboardRouter({}) {
             <Route exact path="/history" render={() => <History></History>} />
             <Route exact path="/help" render={() => <UnderConstruction></UnderConstruction>} />
 
-            <Route exact path="/profile/:id" render={() => <UserProfile accountID={sessionStorage.getItem("id")} username={sessionStorage.getItem("username")}></UserProfile>} />
+            <Route exact path="/profile/:id" render={(props) => <UserProfile accountID={props.location.state.id}></UserProfile>} />
             <Route exact path="/profile/:id/progress" render={() => <CheckProgress></CheckProgress>} />
             <Route exact path="/profile/:id/edit" render={() => <EditProfile></EditProfile>} />
-
-
-            <Route exact path="/user-reports" render={() => <ReportsMenu></ReportsMenu>} />
-            <Route exact path="/user-accounts" render={() => <AccountsMenu></AccountsMenu>} />
-
 
         </Switch>
     )

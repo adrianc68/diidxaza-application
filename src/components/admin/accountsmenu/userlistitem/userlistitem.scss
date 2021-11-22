@@ -1,13 +1,14 @@
 .userlistitem-main-container {
-    background-color: rgb(233, 232, 232);
+    background-color: rgb(255, 255, 255);
     border: 1px solid #ccc;
-
+    border-radius:3px;
     .userlistitem-content {
         display: flex;
         .userlistitem-data-content {
             padding: 15px;
             display: flex;
             gap: 25px;
+            width:80%;
             div {
                 display: flex;
                 flex-direction: column;
