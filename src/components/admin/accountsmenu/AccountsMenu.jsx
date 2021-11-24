@@ -8,6 +8,7 @@ import { helpHttp, UrlAPI } from '../../../helpers/helpHttp';
 export default function AccountsMenu() {
     const { t } = useTranslation();
     const [accountsItems, setAccountsItems] = useState([]);
+    const [errorFetchData, setErrorFetchData] = useState(false);
 
     useEffect(() => {
         fetchData();
@@ -21,6 +22,12 @@ export default function AccountsMenu() {
             }
         }).then((response) => {
             if (response != null) {
+                switch (response.status) {
+                    case 404:
+                    case 400:
+                        setErrorFetchData(true);
+                        return;
+                }
                 setAccountsItems(response);
             }
         }, []);

@@ -7,11 +7,10 @@ import { helpHttp, UrlAPI } from '../../../helpers/helpHttp';
 
 export default function ReportsMenu() {
     const { t } = useTranslation();
-    const [reports, setReports] = useState(null);
+    const [reports, setReports] = useState([]);
     const [reportInput, setReportInput] = useState(null);
     const [errors, setErrors] = useState({});
-    const [loading, setLoading] = useState(false);
-
+    const [errorFetchData, setErrorFetchData] = useState(false);
 
     useEffect(() => {
         fetchData();
@@ -25,6 +24,13 @@ export default function ReportsMenu() {
             }
         }).then((response) => {
             if (response != null) {
+                console.log(response);
+                switch (response.status) {
+                    case 404:
+                    case 400:
+                        setErrorFetchData(true);
+                        return;
+                }
                 setReports(response);
             }
         }, []);
@@ -110,7 +116,7 @@ export default function ReportsMenu() {
                     <div className="reportsmenu-discussion-list">
                         <ul>
                             {
-                                reports !== null ?
+                                reports.length > 0 ?
                                     reports.map((element) =>
                                         <li><Report report={element} /></li>
                                     )

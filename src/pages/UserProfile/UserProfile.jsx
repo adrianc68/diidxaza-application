@@ -159,7 +159,7 @@ export default function UserProfile({accountID}) {
                 <div className="userprofile-button-panel-container">
                     <p>{t("UserProfileControlPanel")}</p>
                     <div className="userprofile-button-panel">
-                        <UserprofileButtonPanelADM handleModal={handleModal} accountStatus={account.status} accountID={accountID} />
+                        <UserprofileButtonPanelADM handleModal={handleModal} accountStatus={account.status} accountID={accountID} username={account.username} />
                     </div>
                     <div className="userprofile-button-panel">
                         <UserprofileButtonPanelOWU handleModal={handleModal}  accountID={accountID} />
