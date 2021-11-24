@@ -6,26 +6,51 @@
     display: flex;
     gap: 15px;
     align-items: flex-start;
-    border-bottom: 1px solid #7a7878;
-    .forum-comment-user-data {
+    border-bottom: 1px solid rgb(212, 212, 212);
+    .forum-comment-user-container {
         display: inline-flex;
         flex-direction: column;
         flex: 1;
         word-wrap: break-word;
+
+        .forum-comment-user-data {
+            :nth-child(2) {
+                font-size: 0.7em;
+                color: #7a7878;
+            }
+        }
+
         span {
             text-overflow: ellipsis;
             display: block;
+
         }
 
         .forum-comment-content {
-            padding-top: 15px;
+            display:flex;
+            align-items: center;
+            border-left: 1px solid rgb(218, 218, 218);
+            margin-left: 5px;
+            padding-left:15px;
+
         }
 
-        .forum-comment-button-panel {
+        .forum-bottom-content {
             display: flex;
-            justify-content: flex-end;
-            gap: 25px;
+            align-items: center;
             padding-top: 15px;
+            .forum-bottom-date-comment {
+                display: flex;
+                gap: 2px;
+                font-size: 0.7em;
+                color: #7a7878;
+            }
+
+            .forum-comment-button-panel {
+                display: flex;
+                justify-content: flex-end;
+                flex: 1;
+            }
         }
     }
 

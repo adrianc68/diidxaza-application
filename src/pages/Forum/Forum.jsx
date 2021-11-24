@@ -46,9 +46,10 @@ const validationsFormComment = (comment) => {
 export default function Forum() {
     const { t } = useTranslation();
     const [discussions, setDiscussions] = useState([]);
-    
+
     useEffect(() => {
-        helpHttp().get(UrlAPI + "discussions",{
+        setActiveClassFilterButtons();
+        helpHttp().get(UrlAPI + "discussions", {
             headers: {
                 Accept: "application/json",
                 'Authorization': sessionStorage.getItem("token")
@@ -56,7 +57,7 @@ export default function Forum() {
         }).then((response) => {
             if (response.length>0) {
                 setDiscussions(response)
-            } else{
+            } else {
                 setDiscussions([]);
             }
         })
@@ -90,49 +91,63 @@ export default function Forum() {
         responseComment,
         commentLenght,
         numberComments,
-        responseModalForum, 
+        responseModalForum,
         modalForum,
         setModalForum,
         handleClickDeleteComment,
         modalToken,
         setModalToken,
         handleClickFollow,
-        imagesComments
+        imagesComments,
+        setActiveClassFilterButtons,
+        removeActiveClassFilterButton,
     } = useForum(validationsForm, validationsFormComment, initialForm, setDiscussions);
+
 
     return (
         <div className="forum-main-container">
             <div className="forum-content-container">
                 <div className="forum-search-container">
-                    <div className="form-search-criteria">
-                        <h1> {t("ForumSearchCriteriaTitle")} </h1>
-                        <form onSubmit={handleSubmit}>
-                            <div className="form-search-input">
-                                <div className="form-search-container-input">
-                                    <span>{t("ForumSearchCriteriaInput")}</span>
-                                    <input name="title" type="text" onChange={handleChange} onBlur={handleBlur} value={title} required></input>
+                    <h1>{t("ForumListDiscussion")}</h1>
+                    <div className="forum-discussion-list-container">
+                        <div className="form-search-criteria">
+                            <form onSubmit={handleSubmit}>
+                                <div className="form-search-input">
+                                    <div className="form-search-container-input">
+                                        <span>{t("ForumSearchCriteriaInput")}</span>
+                                        <input name="title" type="text" onChange={handleChange} onBlur={handleBlur} value={title} required></input>
+                                    </div>
+                                    <div>
+                                        <Button styleName="primary-button" onClick={removeActiveClassFilterButton} type="submit">{t("ButtonSearch")}</Button>
+                                    </div>
                                 </div>
-                                <div>
-                                    <Button styleName="primary-button" type="submit">{t("ButtonSearch")}</Button>
+                            </form>
+                            <div className="form-search-buttons">
+                                <div className="forum-button-filter-button">
+                                    <Button styleName="text-button black-text" onClick={handleClickPopulars} text={t("ForumSearchMostPopular")}></Button>
                                 </div>
-                            </div>
-                        </form>
-                        <div className="form-search-buttons">
-                            <div>
-                                <Button styleName="text-button black-text" onClick={handleClickPopulars} text={t("ForumSearchMostPopular")}></Button>
-                            </div>
-                            <div>
-                                <Button styleName="text-button black-text" onClick={handleClickNews} text={t("ForumSearchNewest")}></Button>
-                            </div>
-                            <div>
-                                <Button styleName="text-button black-text" onClick={handleClickFollowing} text={t("ForumSearchOutstanding")}></Button>
+                                <div className="forum-button-filter-button" >
+                                    <Button styleName="text-button black-text" onClick={handleClickNews} text={t("ForumSearchNewest")}></Button>
+                                </div>
+                                <div className="forum-button-filter-button">
+                                    <Button styleName="text-button black-text" onClick={handleClickFollowing} text={t("ForumSearchOutstanding")}></Button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <br />
-                    <div className="forum-discussion-list-container">
                         <div className="forum-discussion-list">
-                            <h1>{t("ForumListDiscussion")}</h1>
+
+                            <ul>
+                                {discussions.length > 0 && discussions.map(element => (
+                                    <li onClick={(e) => { handleClickDiscussion(e, element._id) }}>
+                                        <DiscussionListItem discussion={element}></DiscussionListItem>
+                                    </li>
+                                ))}
+                                {loading &&
+                                    <div className="no-found-records p-semibold">
+                                        <span>{t("NotFoundRecords")}</span>
+                                    </div>
+                                }
+                            </ul>
                             <div className="forum-create-button-panel">
                                 <span>{t("ForumWantToCreateNewDiscussion")}</span>
                                 <div>
@@ -142,36 +157,37 @@ export default function Forum() {
                                 </div>
 
                             </div>
-                            <ul>
-                                {discussions.length > 0 && discussions.map(element => (
-                                    <li onClick={(e) => { handleClickDiscussion(e, element._id) }}>
-                                        <DiscussionListItem discussion={element}></DiscussionListItem>
-                                    </li>
-                                ))}
-                                {loading && <p className="p-semibold">{t("NotFoundRecords")}</p>}
-                            </ul>
                         </div>
                     </div>
 
                 </div>
                 <div className="forum-discussion-content">
-                    {foundDiscussion && <Discussion imagesComments={imagesComments} discussion={discussion} numberComments={numberComments} comments={comments} imageAccount={imageAccount} setModalToken={setModalToken} handleClickDeleteComment={handleClickDeleteComment} handleClickFollow={handleClickFollow}>
+                    {
+                        foundDiscussion === false ? 
+                        <div className="no-found-records">
+                        <span>Selecciona una discusión</span>
+                    </div>
+                        :
+                        foundDiscussion && <Discussion imagesComments={imagesComments} discussion={discussion} numberComments={numberComments} comments={comments} imageAccount={imageAccount} setModalToken={setModalToken} handleClickDeleteComment={handleClickDeleteComment} handleClickFollow={handleClickFollow}>
                         <AddComment handleChangeComment={handleChangeComment} handleSubmitComment={handleSubmitComment} loadingComment={loadingComment}
                             handleBlurComment={handleBlurComment} formComment={formComment} errorsComment={errorsComment} handleClickComment={handleClickComment}
                             icon={icon} className={className} responseComment={responseComment} commentLenght={commentLenght} />
-                    </Discussion>}
-                    {loadingDiscussion && 
+                    </Discussion>
+                    }
+                   
+                    
+                    {loadingDiscussion &&
                         <div className="not-found-discussion">
                             <h3>{response}</h3>
                             <img src={ImageInformationAlt} alt=""></img>
                         </div>}
                 </div>
             </div>
-            {modalForum && <Modal handleModal={()=>{setModalForum(false)}} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={responseModalForum} handleModal={()=>{setModalForum(false)}}></AlertMessage>
+            {modalForum && <Modal handleModal={() => { setModalForum(false) }} sizeHeight="20" sizeWidth="35">
+                <AlertMessage content={responseModalForum} handleModal={() => { setModalForum(false) }}></AlertMessage>
             </Modal>}
-            {modalToken && <Modal handleModal={()=>{window.location.href = 'login'}} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={t("RefreshToken")} handleModal={()=>{window.location.href = 'login'}}></AlertMessage>
+            {modalToken && <Modal handleModal={() => { window.location.href = 'login' }} sizeHeight="20" sizeWidth="35">
+                <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = 'login' }}></AlertMessage>
             </Modal>}
         </div>
     )

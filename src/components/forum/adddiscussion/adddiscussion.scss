@@ -2,102 +2,125 @@
 
 .adddiscussion-main-container {
     width: 100%;
-    height: 110vh;
-    h2 {
+    height: 100%;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    border-radius: 3px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow-y:auto;
+    h1 {
         background-color: $title-background-black;
         color: #fff;
         padding: 15px;
         text-align: center;
     }
 
-    .adddiscussion-main-content {
-        width: calc(100% - 50px);
-        height: calc(100% - 50px);
+    .adddiscussion-content-container {
         padding: 25px;
+        flex: 1;
         display: flex;
-        gap: 15px;
-        
-        .adddiscussion-img-content {
-            height: calc(100% - 4px);
-            width: 40%;
-            border: 2px solid #000;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position-x: center;
-            background-color: #3e3d51;
-            background-image: url("../../../assets/images/ide-39.svg");
-        }
-
-        .adddiscussion-information-input-content {
+        .adddiscussion-main-content {
             flex: 1;
-            padding: 25px;
-            display:flex;
-            flex-direction: column;
-            gap:5px;
-            box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
-            .adddiscussion-input-theme {
+            display: flex;
+            gap:25px;
+            .adddiscussion-img-content{
+                height:100%;
+                width:250px;
+                background-image: url('../../../assets/images/ide-17.svg');
+                background-position-x:75%;
+                background-repeat: no-repeat;
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.815) 0px 3px 6px;
+                border-radius:3px;
+            }
+
+            .adddiscussion-information-input-content {
                 display: flex;
                 flex-direction: column;
-                gap: 15px;
-
-                ul {
-                    list-style: none;
+                flex: 1;
+                gap:5px;
+                .adddiscussion-input-theme {
                     display: flex;
-                    gap: 25px;
-                    li {
-                        .adddiscussion-theme {
-                            box-shadow:rgba(0,0,0,0.24) 0px 3px 8px;
-                            border-radius:3px;
-                            width: 150px;
-                            display: flex;
-                            align-items: center;
-                            flex-direction: column;
-                            padding: 10px;
-                            img {
-                                width: 55px;
-                                height: 55px;
-                            }
-                            span {
-                                font-size: 0.7em;
+                    flex-direction: column;
+                    gap: 15px;
+                    ul {
+                        list-style: none;
+                        display: flex;
+                        justify-content: center;
+                        gap: 25px;
+                        overflow-wrap: break-word;
+                        flex-wrap: wrap;
+                        li {
+                            .adddiscussion-theme {
+                                display: inline-block;
+                                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                                border-radius: 3px;
+                                width: calc(150px - 20px);
+                                display: flex;
+                                align-items: center;
+                                flex-direction: column;
+                                padding: 10px;
+                                box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+                                img {
+                                    width: 55px;
+                                    height: 55px;
+                                }
+                                span {
+                                    font-size: 0.7em;
+                                }
                             }
                         }
-                    }
-                    .li-select {
-                        background: rgb(255, 189, 255);
-                        cursor: pointer;
-                    }
-                    .li-not-select{
-                        background: rgb(89, 193, 219);
-                        cursor: pointer;
+                        .li-select {
+                            background: rgb(242, 240, 253);
+                            cursor: pointer;
+                            border-radius: 3px;
+                            box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+                                rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+                        }
+                        .li-not-select {
+                            background: rgb(255, 255, 255);
+                            cursor: pointer;
+                            border-radius: 3px;
+                        }
                     }
                 }
-            }
 
-            .adddiscussion-input-title {
-                display:flex;
-                flex-direction: column;
-                gap: 15px;
-            }
+                .adddiscussion-input-title {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    gap: 15px;
+                }
 
-            .adddiscussion-input-description {
-                flex:1;
-                gap: 15px;
-                display:flex;
-                flex-direction:column;
-                padding-bottom:15px;
-                textarea{
-                    box-sizing: border-box;
-                    resize:vertical;
-                    width:100%;
-                    height:100%;
+                .adddiscussion-input-description {
+                    gap: 15px;
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1;
+                    textarea {
+                        box-sizing: border-box;
+                        resize: vertical;
+                        flex-grow: 1;
+                        width: 100%;
+                    }
+                }
+
+                .adddiscussion-button-panel {
+                    display: flex;
+                    gap: 15px;
                 }
             }
-
-            .adddiscussion-button-panel {
-                display:flex;
-                gap:15px;
-            }
-
         }
+    }
+}
+
+@media all and (max-width: $max-width-device) {
+    .adddiscussion-main-container {
+        width: 100%;
+        height: 100%;
+        overflow-y:auto;
+    }
+    .adddiscussion-img-content{
+        display:none;
     }
 }

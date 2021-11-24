@@ -23,6 +23,9 @@
         fill: rgb(86, 0, 199);
         stroke: rgb(86, 0, 199);
     }
+    .black {
+        color:#000;
+    }
 }
 
 @media all and (max-width: $max-width-device) {
