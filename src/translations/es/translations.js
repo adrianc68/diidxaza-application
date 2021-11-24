@@ -33,7 +33,7 @@ export const TRANSLATIONS_ES = {
 
 
     HomeWelcomeTitle: "¡Bienvenido de nuevo, $!",
-    HomeWelcomeDescription: "Es un placer tenerte en nuestra plataforma. Cada día que ingresas ayudas a la plataforma a crecer y motivas a nuestros desarrolladores a traer nuevas formas de aprendizaje para  tí. ¡Estamos muy agradecidos contigo, $!",
+    HomeWelcomeDescription: "Es un placer tenerte en nuestra plataforma. Cada día que ingresas ayudas a la plataforma a crecer y motivas a nuestros desarrolladores a traer nuevas formas de aprendizaje para  tí. ¡Estamos muy agradecidos contigo!",
     HomeWelcomeHistoryTitle: "Conoce la historia zapoteca",
     HomeWelcomeHistoryDescription: "Dirigete a la sección Historia ubicada en el menú de navegación",
     HomeWelcomeCovidTitle: "¡Emergencia sanitaria!",

@@ -43,14 +43,6 @@ export default function Sidebar() {
                         <span>{t("SidebarCorreo")}</span>
                     </NavLink>
                 </li>
-                <div className="sidebar-logout-button-section">
-                    <div>
-                        <Button styleName={!isExpanded ? "primary-button red collapse-text" : "primary-button red"} text={t("SidebarSignOutButton")}>
-                            <MdLogout className="sidebarIcon"></MdLogout>
-                        </Button>
-                    </div>
-
-                </div>
                 <hr className="sidebarHr"></hr>
                 <li>
                     <NavLink className="sidebar-link" activeClassName="activeItem" to="/learning">

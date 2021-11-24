@@ -31,23 +31,8 @@
         background-color: #24223d;
     }
 
-
     ul {
         height: inherit;
-
-        .sidebar-logout-button-section {
-            width:85%;
-            margin:auto;
-            padding-bottom: 25px;
-            padding-top: 25px;
-            .sidebarIcon {
-                text-align: center;
-                color: #fff;
-                text-decoration: none;
-                font-size: 20px;
-                padding-left: 10%;
-            }
-        }
 
         .sidebarHr {
             width: 90%;
@@ -144,7 +129,7 @@
 }
 
 .activeItem {
-    background-color:rgb(46, 46, 82);
+    background-color: rgb(46, 46, 82);
 }
 
 @media all and (max-width: $max-width-device) {
