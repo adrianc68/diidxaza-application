@@ -69,7 +69,7 @@ export default function InputInformation() {
     const history = useHistory();
     useEffect(() => {
         helpHttp().get(UrlAPI + "states").then((response) => {
-            if (!response.status) {
+            if (response.length>0) {
                 setStates(response)
             }
         })

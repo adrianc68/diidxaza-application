@@ -1,39 +1,66 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect} from 'react'
 import './learning.scss'
 import { useTranslation } from "react-i18next";
 import LessonListItem from '../../components/learning/lessonlistitem/LessonListItem';
-import LessonInformation from '../../components/learning/lessoninformation/LessonInformation'
+import LessonInformation from '../../components/learning/lessoninformation/LessonInformation';
+import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
+
+const totalPoints = (lessonRecords) => {
+    let totalPointsRecord = 0;
+    if(lessonRecords.length > 0){
+        lessonRecords.map(element => (
+            totalPointsRecord = totalPointsRecord+element.pointsObtained
+        ))
+    }
+    return totalPointsRecord;
+};
 
 export default function Learning() {
     const { t } = useTranslation();
-
     const [isVisible, setVisible] = useState(false);
-
     const itemRef = useRef();
+    const [lessons, setLessons] = useState([]);
+    const [lesson, setLesson] = useState({});
+    const [lessonRecords, setLessonRecords] = useState([]);
+    useEffect(() => {
+        helpHttp().get(UrlAPI + "lessons",{
+            headers: {
+                Accept: "application/json",
+                'Content-Type': 'application/json',
+                'Authorization': sessionStorage.getItem("token")
+            }
+        }).then((response) => {
+            if (response.length>0) {
+                setLessons(response)
+                helpHttp().get(UrlAPI + "lessonRecords/"+sessionStorage.getItem("id"),{
+                    headers: {
+                        Accept: "application/json",
+                        'Content-Type': 'application/json',
+                        'Authorization': sessionStorage.getItem("token")
+                    }
+                }).then((response) => {
+                    if (!response.status) {
+                        setLessonRecords(response)
+                    }
+                })
+            }
+        })
+    }, []);
 
-    function handleDisplayLessonInformation(e) {
+    function handleDisplayLessonInformation(e,lessonCurrent) {
         e.preventDefault();
-        console.log(itemRef);
-        console.log(itemRef.current.offsetTop);
-        console.log(itemRef.current.offsetLeft);
-        console.log(itemRef.current.offsetWidth);
-        console.log(itemRef.current.offsetHeight);
-
         if (isVisible) {
             setVisible(false);
             return;
         }
+        setLesson(lessonCurrent);
         setVisible(true);
     }
 
     function placeLessonInformation() {
-        const s = {top:'0px', left:'0px'};
-        var d = <LessonInformation style={s}></LessonInformation>;
-        console.log(d);
-        // d.style.position = "absolute";
-        // d.style.left = x_pos + "px";
-        // d.style.top = y_pos + "px";
-        return d;
+        const sytleLesson = {top:'0px', left:'0px'};
+        var lessonInformation = <LessonInformation style={sytleLesson} lesson={lesson} setVisible={setVisible}></LessonInformation>;
+        return lessonInformation;
     }
 
 
@@ -48,28 +75,22 @@ export default function Learning() {
                 <div className="learning-lesson-information">
                     <div className="learning-lessons-content">
                         <ul>
-                            <li onClick={handleDisplayLessonInformation} ref={itemRef}>
-                                <LessonListItem percentage="35" text="Colores" onClick={handleDisplayLessonInformation}></LessonListItem>
-
-                            </li>
-
-                            <li onClick={handleDisplayLessonInformation} ref={itemRef}>
-                                <LessonListItem percentage="35" text="Colores" onClick={handleDisplayLessonInformation}></LessonListItem>
-                            </li>
-              
-
+                            {lessons.length > 0 && lessons.map(element => (
+                                <li onClick={(e)=>{handleDisplayLessonInformation(e,element)}} ref={itemRef}>
+                                    <LessonListItem isRecordHistory={lessonRecords.find(history => history.idLesson===element._id)} lesson={element}></LessonListItem>
+                                </li>
+                            ))}
                         </ul>
                         {isVisible ? placeLessonInformation() : null}
-
                     </div>
                     <div className="learning-lesson-user-information">
                         <div>
                             <span>{t("LearningPointsWon")}</span>
-                            <span>32423</span>
+                            <span>{totalPoints(lessonRecords)}</span>
                         </div>
                         <div>
                             <span>{t("LearningLessonCompleted")}</span>
-                            <span>3</span>
+                            <span>{lessonRecords.length}</span>
                         </div>
                     </div>
                 </div>

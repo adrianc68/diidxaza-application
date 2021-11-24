@@ -135,7 +135,7 @@ export const useUpdateAccountForm = (validateForm,setForm,form,setCities,setModa
         });
         if (value) {
             helpHttp().get(UrlAPI + "cities/" + value).then((response) => {
-                if (!response.status) {
+                if (response.length>0) {
                     setCities(response)
                 }
                 else {
@@ -432,7 +432,7 @@ export const useAccountForm = (initialForm, validateForm) => {
         });
         if (value) {
             helpHttp().get(UrlAPI + "cities/" + value).then((response) => {
-                if (!response.status) {
+                if (response.length>0) {
                     setCities(response)
                 }
                 else {

@@ -56,7 +56,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                     'Authorization': sessionStorage.getItem("token")
                 }
             }).then((response) => {
-                if(!response.status){
+                if(response.length>0){
                     setLoading(false);
                     setDiscussions(response);
                 }else {
@@ -96,7 +96,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                 'Authorization': sessionStorage.getItem("token")
             }
         }).then((response) => {
-            if(!response.status){
+            if(response.length>0){
                 setLoading(false);
                 setDiscussions(response);
             }else {
@@ -132,7 +132,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                 'Authorization': sessionStorage.getItem("token")
             }
         }).then((response) => {
-            if(!response.status){
+            if(response.length>0){
                 setLoading(false);
                 setDiscussions(response);
             }else {
@@ -168,7 +168,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                 'Authorization': sessionStorage.getItem("token")
             }
         }).then((response) => {
-            if(!response.status){
+            if(response.length>0){
                 setLoading(false);
                 setDiscussions(response);
             }else {
@@ -246,7 +246,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                         'Authorization': sessionStorage.getItem("token")
                     }
                 }).then(async (responseComments) => {
-                    if(!responseComments.status){
+                    if(responseComments.length>0){
                         await responseComments.map(async imageComment => {
                             if(imageComment.idAccount[0].URL!= undefined){
                                 await  fetch(UrlAPI+"resources",{
