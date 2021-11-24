@@ -19,15 +19,23 @@ export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, 
 
     const handleChangeAnswerMultiple = (e) => {
         e.preventDefault();
-        const {value} = e.target;
-        setValueMultiple({
-            ...valueMultiple,
-            value,
-        });
+        const {value,checked} = e.target;
+        if(checked){
+            setValueMultiple(valueMultiple => [...valueMultiple, {value:value}]);
+        }else{
+            setValueMultiple(valueMultiple.filter(elementValue =>elementValue!==value));
+        }
+    }
+
+    const setActiveClassFilterRadioButtons = () => {
+        var radioButtons = document.querySelectorAll(".radiobutton");
+        for ( let i = 0; i < radioButtons.length; i++ ) {
+            radioButtons[i].checked = false;
+        }
     }
 
     const validateQuestions = () =>{
-        const isValid = false;
+        let isValid = false;
         if(question.typeQuestion === "only"){
             const answerValid = answers.find(element => element.isValid===true);
             if(valueOnly != null){
@@ -44,7 +52,7 @@ export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, 
                 isValid = true;
                 answers.forEach(elementAnswer => {
                     valueMultiple.forEach(elementValue => {
-                        if(elementAnswer.answers === elementValue){
+                        if(elementAnswer.answers === elementValue.value){
                             setCountAnswer(countAnswer+1);
                         }
                     });
@@ -59,6 +67,7 @@ export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, 
         return isValid;
     }
 
+
     const handleClickNext = (e) => {
         e.preventDefault();
         if(validateQuestions()){
@@ -70,6 +79,7 @@ export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, 
                 }
             }).then((responseAnswers) => {
                 if (responseAnswers.length>0) {
+                    setActiveClassFilterRadioButtons();
                     setAnswers(responseAnswers);
                     setQuestion(questionsChange[1]);
                     setQuestionsChange(questionsChange.filter(element => element._id!==question._id));
@@ -116,7 +126,7 @@ export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, 
     }
 
     return {
-        handleClick,handleClickNext,handleChangeAnswerOnly,handleChangeAnswerMultiple,loading,loadingError
+        handleClick,handleClickNext,handleChangeAnswerOnly,handleChangeAnswerMultiple,loading,loadingError,pointsObtained
     }
 };
 

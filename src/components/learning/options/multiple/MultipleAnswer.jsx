@@ -8,8 +8,8 @@ export default function MultipleAnswer({answers, handleChange}) {
                 {answers.length > 0 && answers.map(element => (
                     <li>
                         <div className="radiobutton-container">
-                            <input className="radiobutton" id="1a" type="radio" value={element.answers} name="answers" onChange={handleChange}/>
-                            <label htmlFor="1a">{element.answers}</label>
+                            <input className="radiobutton" id={element._id} type="checkbox" value={element.answers} name="answers" onChange={handleChange}/>
+                            <label htmlFor={element._id}>{element.answers}</label>
                         </div>
                     </li>
                 ))}

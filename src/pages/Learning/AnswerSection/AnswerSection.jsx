@@ -55,7 +55,8 @@ export default function AnswerSection({lessonID}) {
         handleChangeAnswerOnly,
         handleChangeAnswerMultiple,
         loading,
-        loadingError
+        loadingError,
+        pointsObtained
     } = useLessonForm(setQuestion, questionsChange, setQuestionsChange, setAnswers, question, answers);
 
     return (
@@ -81,6 +82,10 @@ export default function AnswerSection({lessonID}) {
                     <span>{t("AnswerSectionQuestionsRemaining")}</span>
                     <span>{questionsChange.length-1}</span>
                 </div>
+                <div>
+                    <span>{t("PointsObtained")}</span>
+                    <span>{pointsObtained}</span>
+                </div>
             </div>
             <div className="answersection-answers-container">
                 <h3>{t("AnswerSectionSelectCorrectAnswer")}</h3>
@@ -89,12 +94,14 @@ export default function AnswerSection({lessonID}) {
                 </div>
                 <div className="answersection-answers-multiple">
                         <div className="answersection-form-check-container">
-                            {question.typeQuestion === "multiple" && <MultipleAnswer answers={answers} handleChange={handleChangeAnswerOnly}/>}
-                            {question.typeQuestion === "only" && <UniqueAnswer answers={answers} handleChange={handleChangeAnswerMultiple}></UniqueAnswer>}
+                            {question.typeQuestion === "multiple" && <MultipleAnswer answers={answers} handleChange={handleChangeAnswerMultiple}/>}
+                            {question.typeQuestion === "only" && <UniqueAnswer answers={answers} handleChange={handleChangeAnswerOnly}></UniqueAnswer>}
                         </div>
                 </div>
-                {loading && <p className="p-semibold">{t("NotFoundRecords")}</p>}
-                {loadingError && <p className="errorMessage"><BiError/>  {t("ErrorMessage")}</p>}
+                <div className="system-message-container">
+                    {loading && <p className="errorMessage"><BiError/> {t("NotFoundAnswer")}</p>}
+                    {loadingError && <p className="errorMessage"><BiError/>  {t("ErrorMessage")}</p>}
+                </div>
             </div>
             <div className="answersection-button-panel">
                 <div>
@@ -106,7 +113,7 @@ export default function AnswerSection({lessonID}) {
                     <Button styleName="primary-button" text={t("ButtonNext")} onClick={handleClickNext} />
                 </div>}
                 {questionsChange.length === 1 &&<div>
-                    <Button styleName="primary-button" text={t("ButtonFinish")} onClick={handleClick} />
+                    <Button styleName="primary-button" text={t("ButtonFinish")} onClick={(e)=>{handleClick(e,lessonID)}} />
                 </div>}
             </div>
         </form> || <div className={className}>

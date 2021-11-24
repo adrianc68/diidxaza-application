@@ -135,7 +135,6 @@ export default function Forum() {
                             </div>
                         </div>
                         <div className="forum-discussion-list">
-
                             <ul>
                                 {discussions.length > 0 && discussions.map(element => (
                                     <li onClick={(e) => { handleClickDiscussion(e, element._id) }}>
@@ -144,7 +143,7 @@ export default function Forum() {
                                 ))}
                                 {loading &&
                                     <div className="no-found-records p-semibold">
-                                        <span>{t("NotFoundRecords")}</span>
+                                        <span>{t("NotFoundDiscussions")}</span>
                                     </div>
                                 }
                             </ul>
@@ -163,9 +162,9 @@ export default function Forum() {
                 </div>
                 <div className="forum-discussion-content">
                     {
-                        foundDiscussion === false ? 
+                        foundDiscussion === false && loadingDiscussion === false ? 
                         <div className="no-found-records">
-                        <span>Selecciona una discusión</span>
+                        <span>{t("SelectDiscussion")}</span>
                     </div>
                         :
                         foundDiscussion && <Discussion imagesComments={imagesComments} discussion={discussion} numberComments={numberComments} comments={comments} imageAccount={imageAccount} setModalToken={setModalToken} handleClickDeleteComment={handleClickDeleteComment} handleClickFollow={handleClickFollow}>

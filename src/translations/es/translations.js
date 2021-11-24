@@ -233,6 +233,9 @@ export const TRANSLATIONS_ES = {
     ButtonReport: "Reportar",
     ButtonFinish:"Terminar",
 
+    SelectDiscussion: "Selecciona una discusión",
+    PointsObtained: "Puntos Obtenidos",
+
     TypeUserAdmin: "Administrador",
     TypeUserFree: "Usuario normal",
 
@@ -376,7 +379,9 @@ export const TRANSLATIONS_ES = {
     SignUpVerificationSendCodeButton: "Reenviar código",
     NoAvalaible: "No disponible",
     NotFoundDiscussion: "No se encontro la discusión",
-    NotFoundRecords: "No se encontraron registros",
+    NotFoundRecords: "No se encontraron registro(s)",
+    NotFoundAnswer: "No se encontraron respuestas de la siguiente pregunta",
+    NotFoundDiscussions: "No se encontraron discusiones",
 
     MessageUpdateAccount: "La cuenta se actualizo exitosamente",
 
