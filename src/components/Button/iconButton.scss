@@ -6,11 +6,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
     .button-container {
         .icon-button {
-            font-size: 35px;
+            font-size:1em;
             color: #fff;
-            cursor: pointer;
         }
 
         span {
@@ -19,6 +19,25 @@
     }
 }
 
-@media all and (max-width: $max-width-device) {
-    
+.icon-button.border{
+    padding:5px;
+    border:1px solid #8a8a8a;
+    .button-container {
+        display:flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
+
+.icon-button.background-red{
+    padding:5px;
+    border:1px solid #8a8a8a;
+    background-color: rgb(148, 1, 1);
+    .button-container {
+        display:flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+
