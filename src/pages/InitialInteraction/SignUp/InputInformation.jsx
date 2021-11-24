@@ -4,7 +4,8 @@ import { useTranslation } from "react-i18next";
 import Button from '../../../components/Button/Button'
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 import { useAccountForm } from "../../../hooks/useAccountForm";
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const initialForm = {
     lastname: "",
@@ -69,7 +70,7 @@ export default function InputInformation() {
     const history = useHistory();
     useEffect(() => {
         helpHttp().get(UrlAPI + "states").then((response) => {
-            if (!response.status) {
+            if (response.length>0) {
                 setStates(response)
             }
         })
@@ -196,7 +197,9 @@ export default function InputInformation() {
                             {loading && <p className={className}>{icon}  {response}</p>}
                         </div>
                         <Button type="submit" styleName="green-button" text={t("SignUpFormSignUpButton")}></Button>
-                        <Button styleName="secondary-button no-background gray-text border" text={t("SignUpFormCancelButton")} onClick={() => history.push('/')}></Button>
+                        <Link className="link" to="/">
+                            <Button styleName="orange-button" text={t("SignUpFormCancelButton")} onClick={() => history.push('/')}></Button>
+                        </Link>
                     </div>
                 </div>
                 <div className="signup-image-container"></div>

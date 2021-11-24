@@ -55,7 +55,7 @@ export default function Forum() {
                 'Authorization': sessionStorage.getItem("token")
             },
         }).then((response) => {
-            if (!response.status) {
+            if (response.length>0) {
                 setDiscussions(response)
             } else {
                 setDiscussions([]);

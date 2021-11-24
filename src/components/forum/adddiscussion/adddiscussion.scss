@@ -108,6 +108,9 @@
                 .adddiscussion-button-panel {
                     display: flex;
                     gap: 15px;
+                    div{
+                        width: 50%;
+                    }
                 }
             }
         }

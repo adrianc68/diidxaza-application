@@ -26,7 +26,6 @@ export default function Comment({ comment, handleClickDeleteComment, idDiscussio
                                 <span>{comment.idAccount[0].name} {comment.idAccount[0].lastname}</span>
 
                         }
-                        <span>{comment.idAccount[0].username}</span>
                     </div>
                 </div>
                 <div className="forum-comment-content">

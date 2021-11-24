@@ -2,10 +2,10 @@ import React from 'react'
 import './lessoninformation.scss'
 import Button from '../../Button/Button'
 import { useTranslation } from "react-i18next";
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
-export default function LessonInformation() {
+export default function LessonInformation({lesson, setVisible}) {
     const { t } = useTranslation();
 
     return (
@@ -16,33 +16,34 @@ export default function LessonInformation() {
             <div className="lesson-information-content">
                 <div>
                     <span>{t("LearningLessonStatus")}</span>
-                    <span>Disponible</span>
+                    <span>{t("LearningAvailable")}</span>
                 </div>
                 <div>
                     <span>{t("LearningLessonPointsWon")}</span>
-                    <span>3000</span>
-                </div>
-                <div>
-                    <span>{t("LearningLessonPointsToWin")}</span>
-                    <span>5000</span>
+                    <span>{lesson.pointsTotal}</span>
                 </div>
             </div>
             <div className="lesson-description-content">
                 <span>
-                    {t("LearningLessonStartDescription")}
+                {lesson.description}
                 </span>
             </div>
             <div className="lesson-button-panel">
                 <div>
-                    <Button styleName="primary-button" text={t("ButtonCancel")} />
+                    <Button styleName="orange-button" text={t("ButtonCancel")} onClick={(e)=>{setVisible(false)}} />
                 </div>
                 <div>
-                    <NavLink className="link" to="/lesson">
-                        <Button styleName="primary-button" text={t("ButtonStartLesson")} />
-                    </NavLink>
+                    <Link className="link" to={
+                        {
+                            pathname: "/answers/"+lesson._id,
+                            state: {
+                                idLesson: lesson._id,
+                            }
+                        }
+                    }>
+                        <Button styleName="primary-button" text={t("ButtonStartLesson")}/>
+                    </Link>
                 </div>
-
-
             </div>
         </div>
     )

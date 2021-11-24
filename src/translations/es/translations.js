@@ -33,7 +33,7 @@ export const TRANSLATIONS_ES = {
 
 
     HomeWelcomeTitle: "¡Bienvenido de nuevo, $!",
-    HomeWelcomeDescription: "Es un placer tenerte en nuestra plataforma. Cada día que ingresas ayudas a la plataforma a crecer y motivas a nuestros desarrolladores a traer nuevas formas de aprendizaje para  tí. ¡Estamos muy agradecidos contigo, $!",
+    HomeWelcomeDescription: "Es un placer tenerte en nuestra plataforma. Cada día que ingresas ayudas a la plataforma a crecer y motivas a nuestros desarrolladores a traer nuevas formas de aprendizaje para  tí. ¡Estamos muy agradecidos contigo!",
     HomeWelcomeHistoryTitle: "Conoce la historia zapoteca",
     HomeWelcomeHistoryDescription: "Dirigete a la sección Historia ubicada en el menú de navegación",
     HomeWelcomeCovidTitle: "¡Emergencia sanitaria!",
@@ -231,6 +231,7 @@ export const TRANSLATIONS_ES = {
     ButtonBlockUser: "Bloquear usuario",
     ButtonEditProfile: "Editar perfil",
     ButtonReport: "Reportar",
+    ButtonFinish:"Terminar",
 
     TypeUserAdmin: "Administrador",
     TypeUserFree: "Usuario normal",
@@ -337,10 +338,17 @@ export const TRANSLATIONS_ES = {
     CheckProgressGraphic: "Gráfica de progresos",
     CheckProgressGraphicDescription: "Gráfica que muestra los progresos en función de...",
 
+    easy: "fácil",
+    half: "medio",
+    difficult: "difícil",
+    only: "único",
+    multiple:"múltiple",
+    LearningNotQuestion: "No se encontraron preguntas. Intente más tarde",
     LearningTitle: "Aprendizaje",
     LearningDescription: "Da clic en una lección para comenzar.",
+    LearningAvailable: "Disponible",
     LearningPointsWon: "Puntos totales obtenidos: ",
-    LearningLessonCompleted: "Lecciones completadas: ",
+    LearningLessonCompleted: "Número de lecciones realizadas: ",
     LearningLessonStartDescription: "Debes seleccionar la respuesta correcta y obtendras puntos, en cambio, si seleccionas la respuesta incorrecta entonces no ganarás puntos. Presiona el botón comenzar lección para empezar.",
     LearningLessonPointsWon: "Puntos obtenidos",
     LearningLessonPointsToWin:"Puntos a ganar",

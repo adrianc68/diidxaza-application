@@ -10,7 +10,8 @@ import CheckProgress from '../components/ownuser/CheckProgress/CheckProgress'
 import EditProfile from '../components/ownuser/EditProfile/EditProfile'
 import ReportsMenu from '../components/admin/reportsmenu/ReportsMenu'
 import AccountsMenu from '../components/admin/accountsmenu/AccountsMenu'
-import AddDiscussion from '../components/forum/adddiscussion/AddDiscussion'
+import AddDiscussion from '../components/forum/adddiscussion/AddDiscussion';
+import AnswerSection from "../pages/Learning/AnswerSection/AnswerSection";
 
 export default function DashboardRouter({setNameUser}) {
     return (
@@ -27,14 +28,12 @@ export default function DashboardRouter({setNameUser}) {
 
             <Route exact path="/profile/:id" render={(props) => <UserProfile accountID={props.location.state.id}></UserProfile>} />
             <Route exact path="/profile/:id/progress" render={() => <CheckProgress></CheckProgress>} />
-            <Route exact path="/profile/:id/edit" render={() => <EditProfile></EditProfile>} />
             <Route exact path="/profile/:id/edit" render={() => <EditProfile setNameUser={setNameUser}></EditProfile>} />
 
             <Route exact path="/discussion" render={() => <AddDiscussion></AddDiscussion>} />
             <Route exact path="/user-reports" render={() => <ReportsMenu></ReportsMenu>} />
             <Route exact path="/user-accounts" render={() => <AccountsMenu></AccountsMenu>} />
-
-
+            <Route exact path="/answers/:idLesson" render={(props) => <AnswerSection lessonID={props.location.state.idLesson}></AnswerSection>} />
         </Switch>
     )
 }

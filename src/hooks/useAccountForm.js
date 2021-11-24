@@ -76,7 +76,7 @@ export const useLoginForm = (initialForm, validateForm) => {
     }
 };
 
-export const useUpdateAccountForm = (validateForm,setForm,form,setCities,setModalNotToken,setModalToken,setNameFile,URLPhoto,initialfile,setNameUser) => {
+export const useUpdateAccountForm = (validateForm,setForm,form,setCities,setModalNotToken,setModalToken,setNameFile,URLPhoto,initialfile,setNameUser,setInitialFile,namefile) => {
     const { t } = useTranslation();
     const [errors, setErrors] = useState({});
     const [errorImage, setErrorImage] = useState(false);
@@ -135,7 +135,7 @@ export const useUpdateAccountForm = (validateForm,setForm,form,setCities,setModa
         });
         if (value) {
             helpHttp().get(UrlAPI + "cities/" + value).then((response) => {
-                if (!response.status) {
+                if (response.length>0) {
                     setCities(response)
                 }
                 else {
@@ -185,7 +185,7 @@ export const useUpdateAccountForm = (validateForm,setForm,form,setCities,setModa
                                     },
                                     body: {URL:URLPhoto}
                                 }).then((response) => {
-                                    if(response.message){
+                                    if(response.messageHappened){
                                         var formData = new FormData();
                                         formData.append('idAccount', sessionStorage.getItem("id"));
                                         formData.append('file', urlFile);
@@ -196,6 +196,7 @@ export const useUpdateAccountForm = (validateForm,setForm,form,setCities,setModa
                                             if(response.ok){
                                                 response.json().then(responseJson => {
                                                     sessionStorage.setItem("URL", responseJson.URL);
+                                                    setInitialFile(namefile);
                                                 });
                                             }
                                         })
@@ -212,6 +213,7 @@ export const useUpdateAccountForm = (validateForm,setForm,form,setCities,setModa
                                     if(response.ok){
                                         response.json().then(responseJson => {
                                             sessionStorage.setItem("URL", responseJson.URL);
+                                            setInitialFile(namefile);
                                         });
                                     }
                                 })
@@ -290,7 +292,7 @@ export const useVerificationForm = (validateCode) => {
                     },
                     body: confirmation
                 }).then((response) => {
-                    if (response.message) {
+                    if (response.messageHappened) {
                         setIcon(<BiBadgeCheck />);
                         setClaseName("successfulMessage");
                         setResponse(t("SignUpVerificationSuccessful"));
@@ -338,7 +340,7 @@ export const useVerificationForm = (validateCode) => {
             },
             body: formEmail
         }).then((response) => {
-            if (response.message) {
+            if (response.messageHappened) {
                 setIcon(<BiBadgeCheck />);
                 setClaseName("successfulMessage");
                 setResponse(t("SignUpVerificationSendSuccessful"));
@@ -430,7 +432,7 @@ export const useAccountForm = (initialForm, validateForm) => {
         });
         if (value) {
             helpHttp().get(UrlAPI + "cities/" + value).then((response) => {
-                if (!response.status) {
+                if (response.length>0) {
                     setCities(response)
                 }
                 else {
