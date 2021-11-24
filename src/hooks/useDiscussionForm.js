@@ -447,7 +447,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                 idDiscussion:idDiscussion
             }
         }).then(async(response) => {
-            if(response.messageSuccessful){
+            if(response.messageHappened){
                 setNumberComments(numberComments-1);
                 setComments(comments.filter(item => item._id !== id));
                 setImagesComments(imagesComments.filter(item => item.id !== id));
@@ -497,7 +497,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                 idAccount:sessionStorage.getItem("id")
             }
         }).then((response) => {
-            if(response.messageSuccessful){
+            if(response.messageHappened){
                 setResponseModalForum(t("FollowSuccessful"));
                 setModalToken(false);
                 setModalForum(true);

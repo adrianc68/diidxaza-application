@@ -185,7 +185,7 @@ export const useUpdateAccountForm = (validateForm,setForm,form,setCities,setModa
                                     },
                                     body: {URL:URLPhoto}
                                 }).then((response) => {
-                                    if(response.messageSuccessful){
+                                    if(response.messageHappened){
                                         var formData = new FormData();
                                         formData.append('idAccount', sessionStorage.getItem("id"));
                                         formData.append('file', urlFile);
@@ -292,7 +292,7 @@ export const useVerificationForm = (validateCode) => {
                     },
                     body: confirmation
                 }).then((response) => {
-                    if (response.messageSuccessful) {
+                    if (response.messageHappened) {
                         setIcon(<BiBadgeCheck />);
                         setClaseName("successfulMessage");
                         setResponse(t("SignUpVerificationSuccessful"));
@@ -340,7 +340,7 @@ export const useVerificationForm = (validateCode) => {
             },
             body: formEmail
         }).then((response) => {
-            if (response.messageSuccessful) {
+            if (response.messageHappened) {
                 setIcon(<BiBadgeCheck />);
                 setClaseName("successfulMessage");
                 setResponse(t("SignUpVerificationSendSuccessful"));
