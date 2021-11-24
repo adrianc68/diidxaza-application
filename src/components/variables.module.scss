@@ -17,7 +17,7 @@ $top-title-container-background-color:$title-background-black;
 $userprofile-background-gradient: radial-gradient(circle, rgba(255,255,255,1) 41%, rgba(210,210,210,19) 89%);
 $userprofile-border-style: 1px solid rgb(116, 114, 114);
 
-$modal-content-background:rgb(248, 248, 248);
+$ul-content-background:rgb(248, 248, 248);
 
 :export {
     sidebar-width: $sidebar-width;
@@ -34,5 +34,5 @@ $modal-content-background:rgb(248, 248, 248);
     userprofile-background-gradient:$userprofile-background-gradient;
     userprofile-border-style:$userprofile-border-style;
     title-background-black:$title-background-black;
-    modal-content-background:$modal-content-background;
+    ul-content-background:$ul-content-background;
 }

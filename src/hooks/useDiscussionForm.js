@@ -122,6 +122,26 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
         });
     }
 
+    const setActiveClassFilterButtons = () => {
+        var buttons = document.querySelectorAll(".forum-button-filter-button");
+        for ( let i = 0; i < buttons.length; i++ ) {
+            buttons[i].children[0].addEventListener("click", (e) => {
+                e.preventDefault();
+                for(let j = 0; j < buttons.length; j++ ) {
+                    buttons[j].children[0].classList.remove("active");
+                }
+                buttons[i].children[0].classList.add("active");
+            })
+        }
+    }
+
+    const removeActiveClassFilterButton = () => {
+        var buttons = document.querySelectorAll(".forum-button-filter-button");
+        for ( let i = 0; i < buttons.length; i++ ) {
+            buttons[i].children[0].classList.remove("active");
+        }
+    }
+
     const handleClickPopulars = (e) =>{
         e.preventDefault();
         setLoadingDiscussion(false);
@@ -199,7 +219,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
         await setImagesComments([]);
         await setLoadingDiscussion(false);
         await setFoundDiscussion(false);
-        await helpHttp().get(UrlAPI+"discussions/"+id,{
+        helpHttp().get(UrlAPI+"discussions/"+id,{
             headers: {
                 Accept: "application/json",
                 'Authorization': sessionStorage.getItem("token")
@@ -215,6 +235,8 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                 setCommentLenght(0);
                 setErrorsComment({});
                 setLoadingComment(false);
+                setLoadingDiscussion(false);
+                setFoundDiscussion(true);
                 if(responseDiscussion.idAccount[0].URL!= undefined){
                     const url =  {
                         URL: responseDiscussion.idAccount[0].URL
@@ -247,33 +269,31 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                     }
                 }).then(async (responseComments) => {
                     if(!responseComments.status){
-                        await responseComments.map(async imageComment => {
+                        setComments(responseComments);
+                        await responseComments.map(imageComment => {
                             if(imageComment.idAccount[0].URL!= undefined){
-                                await  fetch(UrlAPI+"resources",{
+                                fetch(UrlAPI+"resources",{
                                     method: 'PATCH',
                                     headers: {
                                         'Content-Type': 'application/json',
                                         'Authorization': sessionStorage.getItem("token")
                                     },
                                     body: JSON.stringify({URL:imageComment.idAccount[0].URL})
-                                }).then(async(response) => {
+                                }).then((response) => {
                                     if (response.ok) {
-                                        await response.blob().then(async(responseBlob) => {
-                                            var objectURL = await URL.createObjectURL(responseBlob);
-                                            setImagesComments(imagesComments => [...imagesComments, {id:imageComment._id,imageComment:objectURL}]);
+                                        response.blob().then((responseBlob) => {
+                                            var objectURL = URL.createObjectURL(responseBlob);
+                                            setImagesComments(imagesComments => [...imagesComments, objectURL]);
                                         });
                                     }
                                     else{
-                                        setImagesComments(imagesComments => [...imagesComments, {id:imageComment._id,imageComment:ImageInformationAlt}]);
+                                        setImagesComments(imagesComments => [...imagesComments, ImageInformationAlt]);
                                     }
                                 });
                             }else{
-                                setImagesComments(imagesComments => [...imagesComments, {id:imageComment._id,imageComment:ImageInformationAlt}]);
+                                setImagesComments(imagesComments => [...imagesComments, ImageInformationAlt]);
                             }
                         })
-                        setComments(responseComments);
-                        setLoadingDiscussion(false);
-                        setFoundDiscussion(true);
                     }
                     else{
                         if(responseComments.status === 419){
@@ -283,8 +303,6 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                             setModalToken(true);
                         }else{
                             setComments([]);
-                            setLoadingDiscussion(false);
-                            setFoundDiscussion(true);
                         }
                         setImagesComments([])
                     }
@@ -353,6 +371,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                             }
                         ]
                     }
+                    setComments(comments => [...comments, newComment]);
                     if(sessionStorage.getItem("URL")!=undefined){
                         fetch(UrlAPI+"resources",{
                             method: 'PATCH',
@@ -365,17 +384,16 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                             if (response.ok) {
                                 response.blob().then((responseBlob) => {
                                     var objectURL = URL.createObjectURL(responseBlob);
-                                    setImagesComments(imagesComments => [...imagesComments, {id:newComment._id,imageComment:objectURL}]);
+                                    setImagesComments(imagesComments => [...imagesComments, objectURL]);
                                 });
                             }
                             else{
-                                setImagesComments(imagesComments => [...imagesComments, {id:newComment._id,imageComment:ImageInformationAlt}]);
+                                setImagesComments(imagesComments => [...imagesComments, ImageInformationAlt]);
                             }
                         });
                     } else{
-                        setImagesComments(imagesComments => [...imagesComments, {id:newComment._id,imageComment:ImageInformationAlt}]);
+                        setImagesComments(imagesComments => [...imagesComments, ImageInformationAlt]);
                     }
-                    setComments(comments => [...comments, newComment]);
                 }
                 else{
                     if(response.status === 401){
@@ -431,8 +449,9 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
         }).then(async(response) => {
             if(response.message){
                 setNumberComments(numberComments-1);
+                const indexComment = await comments.findIndex(element => element._id ===id);
                 setComments(comments.filter(item => item._id !== id));
-                setImagesComments(imagesComments.filter(item => item.id !== id));
+                imagesComments.splice(indexComment,1);
             }
             else{
                 if(response.status === 419){
@@ -511,7 +530,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
         discussion,handleClickDiscussion,response,loadingDiscussion,foundDiscussion,comments,
         imageAccount,handleChangeComment,handleSubmitComment,handleBlurComment,formComment,errorsComment,handleClickComment,
         loadingComment,icon,className,responseComment,commentLenght,numberComments,handleClickFollow,
-        responseModalForum, modalForum,setModalForum,handleClickDeleteComment,modalToken,setModalToken,imagesComments
+        responseModalForum, modalForum,setModalForum,handleClickDeleteComment,modalToken,setModalToken,imagesComments, setActiveClassFilterButtons, removeActiveClassFilterButton
     }
 };
 

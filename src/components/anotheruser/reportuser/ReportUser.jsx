@@ -37,7 +37,7 @@ const validationsForm = (form) => {
     return errors;
 }
 
-export default function ReportUser({ setStatusModal, account, setModalToken}) {
+export default function ReportUser({ setStatusModal, account, setModalToken }) {
     const { t } = useTranslation();
     const {
         form,

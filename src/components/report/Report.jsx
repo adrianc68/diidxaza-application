@@ -4,23 +4,13 @@ import { useTranslation } from "react-i18next";
 import Button from '../Button/Button';
 import { helpHttp, UrlAPI } from '../../helpers/helpHttp';
 import { useHistory } from 'react-router';
+import { useConvertionData } from '../../hooks/useConvertionData';
 
 export default function Report({ report }) {
     const { t } = useTranslation();
     const [context, setContext] = useState(null);
     const history = useHistory();
-
-    const convertDate = (date) => {
-        if (date) {
-            var dateString = date.split(['-']);
-            var year = dateString[0];
-            var month = dateString[1];
-            var day = dateString[2];
-            var formatDate = new Date(year, month - 1, day);
-            var options = { year: 'numeric', month: 'long', day: 'numeric' }
-            return (formatDate.toLocaleDateString("es-ES", options));
-        }
-    }
+    const { convertDate } = useConvertionData();
 
     const fetchData = (idReported) => {
         helpHttp().get(UrlAPI + "reports/" + idReported, {

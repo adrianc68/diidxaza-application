@@ -11,11 +11,6 @@ body {
     background-color: #f0f0f0;
 }
 
-.errorInput {
-    color: red;
-    margin-bottom: 0;
-}
-
 .link {
     text-decoration: none;
     color: #5eb3ff;
@@ -58,8 +53,14 @@ p {
     font-weight: 700;
 }
 
+.errorInput {
+    color: red;
+    font-size:1em;
+}
+
 .errorMessage {
     padding: 5px 10px;
+    font-size:0.9em;
     width: calc(100% - 2px);
     text-align: center;
     background-color: rgb(255, 155, 155);
@@ -87,7 +88,6 @@ select {
 }
 
 .system-message-container {
-
     .successfulMessage {
         padding:5px;
         width: calc(100% - 10px);
@@ -163,9 +163,10 @@ select {
 }
 
 .no-found-records {
-    display:flex;
+    height:100%;
+    width:100%;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: none;
-    height: 50vh;
 }

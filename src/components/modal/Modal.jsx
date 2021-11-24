@@ -7,8 +7,8 @@ import {AiFillCloseSquare} from 'react-icons/ai';
 
 export default function Modal({ title, children, handleModal, sizeWidth, sizeHeight}) {
     const style = {
-        width: sizeWidth + 'vw',
-        height:sizeHeight + 'vh',
+        width: sizeWidth,
+        height:sizeHeight,
     };
     return (
         <div className = "modal-container-main" >

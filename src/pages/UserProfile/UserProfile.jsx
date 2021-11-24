@@ -2,11 +2,11 @@ import { React, useEffect, useState } from 'react'
 import './userprofile.scss'
 import { useTranslation } from "react-i18next";
 import UserImageDefault from '../../assets/images/ide-29.svg'
-import UserprofileButtonPanelAU from '../../components/anotheruser/userprofileButtonPanel/UserprofileButtonPanelAU';
 import UserprofileButtonPanelADM from '../../components/admin/userprofileButtonPanel/UserprofileButtonPanelADM';
 import UserprofileButtonPanelOWU from '../../components/ownuser/userprofileButtonPanel/UserprofileButtonPanelOWU';
 import Modal from '../../components/modal/Modal';
 import { helpHttp, UrlAPI } from '../../helpers/helpHttp';
+import { useConvertionData } from '../../hooks/useConvertionData';
 // import { useRouteMatch,useHistory, useParams } from 'react-router-dom'
 
 export default function UserProfile({accountID}) {
@@ -24,6 +24,9 @@ export default function UserProfile({accountID}) {
         role: null,
         name: null,
     });
+
+    const { convertDate } = useConvertionData();
+
 
 
     useEffect(() => {
@@ -56,18 +59,6 @@ export default function UserProfile({accountID}) {
             console.log(response);
             setAccount(account)
         });
-    }
-
-    const convertDate = (date) => {
-        if (date) {
-            var dateString = date.split(['-']);
-            var year = dateString[0];
-            var month = dateString[1];
-            var day = dateString[2];
-            var formatDate = new Date(year, month - 1, day);
-            var options = { year: 'numeric', month: 'long', day: 'numeric' }
-            return (formatDate.toLocaleDateString("es-ES", options));
-        }
     }
 
     const handleDiscussionsTab = () => {

@@ -1,67 +1,94 @@
 @import "../../../components/variables.module.scss";
 
 .forum-discussion-container {
-   height:100%;
-   width:100%;
+    height: 100%;
+    width: 100%;
     h1 {
         color: #fff;
         padding: 15px;
         background-color: $title-background-black;
-        border-radius:3px;
+        border-radius: 3px;
         text-align: center;
     }
+    .forum-discussion-content-container {
+        padding:15px;
+        .forum-discussion-user-data-container {
+            padding: 20px;
+            width: calc(100% - 40px);
+            display: flex;
+            gap: 15px;
+            align-items: center;
 
-    .forum-discussion-user-data-container {
-        padding: 20px;
-        width: calc(100% - 40px);
-        display: flex;
-        gap: 15px;
-        align-items: center;
+            .forum-discussion-data {
+                display:flex;
+                flex-grow: 1;
+                word-wrap: break-word;
+                align-items: center;
+                span {
+                    text-overflow: ellipsis;
+                    display: block;
+                }
 
-        .forum-discussion-data {
-            display: inline-flex;
-            flex-direction: column;
-            flex: 1;
-            word-wrap: break-word;
-            span {
-                text-overflow: ellipsis;
-                display: block;
+                .forum-discussion-data-user {
+                    padding-right:15px;
+                    :nth-child(2) {
+                        font-size:0.7em;
+                        color:#7a7878;
+                    }
+                }
+
+                .forum-discussion-data-discussion {
+                    width:50%;
+                    display: flex;
+                    gap:25px;
+                    font-size:0.62em;
+                    padding: 5px;
+                    div {
+                        :nth-child(1) {
+                            font-size: 1em;
+                            color:#7a7878;
+                        }
+                    }
+                    
+                }
+               
+            }
+
+            img {
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+                background: $userprofile-background-gradient;
+                border: $userprofile-border-style;
             }
         }
 
-        img {
-            height: 50px;
-            width: 50px;
-            border-radius: 50%;
-            background: $userprofile-background-gradient;
-            border: $userprofile-border-style;
+        .forum-discussion-description-container {
+            padding: 0px 15px 15px 15px;
+            gap: 10px;
+            width: calc(100% - 30px);
+            text-align: justify;
+            display: flex;
+            flex-direction: column;
         }
-    }
 
-    .forum-discussion-description-container {
-        padding: 0px 15px 15px 15px;
-        gap: 10px;
-        width: calc(100% - 30px);
-        text-align: justify;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .forum-discussion-forum-button-panel-container {
-        display: flex;
-        justify-content: flex-end;
-        gap: 25px;
-        padding-top: 15px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid #7a7878;
-        h2 {
-            flex:1;
+        .forum-discussion-forum-button-panel-container {
+            display: flex;
+            justify-content: flex-end;
+            gap: 25px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #7a7878;
+            h2 {
+                flex: 1;
+            }
         }
-    }
 
-    .forum-discussion-forum-comments-container {
-        ul {
-            list-style: none;
+        .forum-discussion-forum-comments-container {
+            padding-left:15px;
+            ul {
+                list-style: none;
+            }
         }
     }
 }
