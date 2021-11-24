@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next'
 import { useDiscussionForm } from "../../../hooks/useDiscussionForm";
 import Modal from '../../modal/Modal';
 import AlertMessage from "../../alert/AlertMessage";
+import { Link } from 'react-router-dom';
 
 const initialForm = {
     title: "",
@@ -118,8 +119,14 @@ export default function AddDiscussion() {
                             {loading && <p className={className}>{icon}  {response}</p>}
                         </div>
                         <div className="adddiscussion-button-panel">
-                            <Button styleName="secondary-button no-background gray-text" text={t("ButtonCancel")}></Button>
-                            <Button type="submit" styleName="primary-button" text={t("ButtonCreateDiscussion")}></Button>
+                            <div>
+                                <Link className="link" to="/forum">
+                                    <Button styleName="orange-button" text={t("ButtonCancel")}></Button>
+                                </Link>
+                            </div>
+                            <div>
+                                <Button type="submit" styleName="primary-button" text={t("ButtonCreateDiscussion")}></Button>
+                            </div>
                         </div>
                     </div>
                 </div>

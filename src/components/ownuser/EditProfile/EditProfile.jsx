@@ -262,7 +262,14 @@ export default function EditProfile({setNameUser}) {
                         </div>
                         <div className="editprofile-button-panel">
                             <div>
-                                <Link className="link" to={"/profile/"+sessionStorage.getItem("id")}>
+                                <Link className="link" to={
+                                {
+                                    pathname: "/profile/"+sessionStorage.getItem("username"),
+                                    state: {
+                                        id: sessionStorage.getItem("id"),
+                                    }
+                                }
+                            }>
                                     <Button styleName="orange-button" text={t("ButtonCancel")}></Button>
                                 </Link>
                             </div>

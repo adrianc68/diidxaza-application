@@ -21,7 +21,6 @@ export default function Discussion({ discussion, numberComments, comments, image
                     <div className="forum-discussion-data">
                         <div className="forum-discussion-data-user">
                         <span>{discussion.idAccount[0].name} {discussion.idAccount[0].lastname}</span>
-                        <span>{discussion.idAccount[0].username}</span>
                         </div>
                         <div className="forum-discussion-data-discussion">
                             <div>
@@ -55,7 +54,7 @@ export default function Discussion({ discussion, numberComments, comments, image
                 <div className="forum-discussion-forum-comments-container">
                     <div className="forum-discussion-comment-list">
                         <ul id="list-comments">
-                            {comments.length > 0 && comments.map((element, index) => (
+                            {comments.length > 0 && comments.map((element) => (
                                 <li><Comment imagesComments={imagesComments.find(imageElement => imageElement.id === element._id)} comment={element} handleClickDeleteComment={handleClickDeleteComment} idDiscussion={discussion._id} setModalToken={setModalToken} /></li>
                             ))}
                         </ul>
