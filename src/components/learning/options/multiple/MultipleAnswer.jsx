@@ -1,7 +1,7 @@
 import React from 'react'
 import './multipleanswer.scss'
 
-export default function MultipleAnswer({answers, handleChange}) {
+export default function MultipleAnswer({ answers, handleChange }) {
     return (
         <form className="multipleanswer-form">
             <ul>

@@ -18,6 +18,8 @@ export default function AppRouter() {
                 <Route exact path="/home" component={Dashboard}/>
                 <Route path="*" component={PageNotFound} />
 
+
+
             </Switch>
         </Router>
     );
