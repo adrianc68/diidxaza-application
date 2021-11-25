@@ -37,7 +37,11 @@
             padding-bottom:15px;
         }
     }
-
+    .result-container{
+        display:flex;
+        flex-direction: row;
+        justify-content: center;
+    }
     .answersection-button-panel {
         padding: 25px;
         height:42px;

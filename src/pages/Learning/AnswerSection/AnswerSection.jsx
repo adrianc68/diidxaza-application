@@ -9,6 +9,9 @@ import ImageInformationAlt from '../../../assets/images/ide-22.svg';
 import { useLessonForm } from '../../../hooks/useLessonForm';
 import { Link } from 'react-router-dom';
 import { BiError } from 'react-icons/bi';
+import LessonResults from '../../../components/learning/lessonresults/LessonResults';
+import Modal from '../../../components/modal/Modal';
+import AlertMessage from '../../../components/alert/AlertMessage';
 
 export default function AnswerSection({ lessonID }) {
     const { t } = useTranslation();
@@ -17,6 +20,9 @@ export default function AnswerSection({ lessonID }) {
     const [questionsChange, setQuestionsChange] = useState({});
     const [answers, setAnswers] = useState([]);
     const [className, setClassName] = useState("errorDelete");
+    const [isVisible, setVisible] = useState(false);
+    const [modalNotToken, setModalNotToken] = useState(false);
+    const [modalToken, setModalToken] = useState(false);
 
     useEffect(() => {
         helpHttp().get(UrlAPI + "questions/" + lessonID, {
@@ -41,10 +47,28 @@ export default function AnswerSection({ lessonID }) {
                         setAnswers(responseAnswers)
                     } else {
                         setClassName("not-found-questions")
+                        if(responseAnswers.status === 419){
+                            setModalNotToken(false);
+                            setModalToken(true);
+                        }else{
+                            if(responseAnswers.status === 401){
+                                setModalToken(false);
+                                setModalNotToken(true);
+                            }
+                        }
                     }
                 })
             } else {
                 setClassName("not-found-questions")
+                if(response.status === 419){
+                    setModalNotToken(false);
+                    setModalToken(true);
+                }else{
+                    if(response.status === 401){
+                        setModalToken(false);
+                        setModalNotToken(true);
+                    }
+                }
             }
         })
     }, []);
@@ -56,8 +80,15 @@ export default function AnswerSection({ lessonID }) {
         handleChangeAnswerMultiple,
         loading,
         loadingError,
-        pointsObtained
-    } = useLessonForm(setQuestion, questionsChange, setQuestionsChange, setAnswers, question, answers);
+        pointsObtained,
+        resultsQuestions
+    } = useLessonForm(setQuestion, questionsChange, setQuestionsChange, setAnswers, question, answers, setVisible, setModalNotToken, setModalToken);
+
+    function placeLessonResults() {
+        const sytleLesson = {top:'0px', left:'0px'};
+        var lessonResults = <LessonResults style={sytleLesson} pointsObtained={pointsObtained}></LessonResults>;
+        return lessonResults;
+    }
 
     return (
         questions.length > 0 && <form className="answersection-main-container">
@@ -87,23 +118,26 @@ export default function AnswerSection({ lessonID }) {
                     <span>{pointsObtained}</span>
                 </div>
             </div>
-            <div className="answersection-answers-container">
-                <h3>{t("AnswerSectionSelectCorrectAnswer")}</h3>
-                <h2> {question.question} </h2>
-                <div className="answersection-answers-unique">
-                </div>
-                <div className="answersection-answers-multiple">
-                    <div className="answersection-form-check-container">
-                        {question.typeQuestion === "multiple" && <MultipleAnswer answers={answers} handleChange={handleChangeAnswerMultiple} />}
-                        {question.typeQuestion === "only" && <UniqueAnswer answers={answers} handleChange={handleChangeAnswerOnly}></UniqueAnswer>}
+            <div className="result-container">
+                <div className="answersection-answers-container">
+                    <h3>{t("AnswerSectionSelectCorrectAnswer")}</h3>
+                    <h2> {question.question} </h2>
+                    <div className="answersection-answers-unique">
+                    </div>
+                    <div className="answersection-answers-multiple">
+                        <div className="answersection-form-check-container">
+                            {question.typeQuestion === "multiple" && <MultipleAnswer answers={answers} handleChange={handleChangeAnswerMultiple} />}
+                            {question.typeQuestion === "only" && <UniqueAnswer answers={answers} handleChange={handleChangeAnswerOnly}></UniqueAnswer>}
+                        </div>
+                    </div>
+                    <div className="system-message-container">
+                        {loading && <p className="errorInput">{t("NotFoundAnswer")}</p>}
+                        {loadingError && <p className="errorMessage"><BiError />  {t("ErrorMessage")}</p>}
                     </div>
                 </div>
-                <div className="system-message-container">
-                    {loading && <p className="errorMessage"><BiError /> {t("NotFoundAnswer")}</p>}
-                    {loadingError && <p className="errorMessage"><BiError />  {t("ErrorMessage")}</p>}
-                </div>
+                {isVisible ? placeLessonResults() : null}
             </div>
-            <div className="answersection-button-panel">
+            {!isVisible && <div className="answersection-button-panel">
                 <div>
                     <Link className="link" to="/learning">
                         <Button styleName="orange-button" text={t("ButtonExit")} />
@@ -113,9 +147,15 @@ export default function AnswerSection({ lessonID }) {
                     <Button styleName="primary-button" text={t("ButtonNext")} onClick={handleClickNext} />
                 </div>}
                 {questionsChange.length === 1 && <div>
-                    <Button styleName="primary-button" text={t("ButtonFinish")} onClick={(e) => { handleClick(e, lessonID) }} />
+                    <Button styleName="primary-button" text={t("ButtonFinish")} onClick={(e) => { handleClick(e, lessonID) }}/>
                 </div>}
-            </div>
+            </div>}
+            {modalNotToken && <Modal handleModal={() => { setModalNotToken(false) }} sizeHeight="20" sizeWidth="35">
+                <AlertMessage content={t("ErrorToken")} handleModal={() => { setModalNotToken(false) }}></AlertMessage>
+            </Modal>}
+            {modalToken && <Modal handleModal={() => { window.location.href = 'login' }} sizeHeight="20" sizeWidth="35">
+                <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = 'login' }}></AlertMessage>
+            </Modal>}
         </form> || <div className={className}>
             <h3>{t("LearningNotQuestion")}</h3>
             <img src={ImageInformationAlt} alt=""></img>
