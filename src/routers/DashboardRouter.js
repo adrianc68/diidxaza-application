@@ -12,6 +12,7 @@ import ReportsMenu from '../components/admin/reportsmenu/ReportsMenu'
 import AccountsMenu from '../components/admin/accountsmenu/AccountsMenu'
 import AddDiscussion from '../components/forum/adddiscussion/AddDiscussion';
 import AnswerSection from "../pages/Learning/AnswerSection/AnswerSection";
+import ResultLesson from '../pages/Learning/Result/ResultLesson'
 
 export default function DashboardRouter({setNameUser}) {
     return (
@@ -20,7 +21,7 @@ export default function DashboardRouter({setNameUser}) {
             <Route exact path="/email" render={() => <UnderConstruction></UnderConstruction>} />
             <Route exact path="/forum" render={() => <Forum></Forum>} />
             <Route exact path="/learning" render={() => <Learning></Learning>} />
-            <Route exact path="/news" render={() => <UnderConstruction></UnderConstruction>} />
+            <Route exact path="/news" render={() => <ResultLesson></ResultLesson>} />
             <Route exact path="/dictionary" render={() => <UnderConstruction></UnderConstruction>} />
             <Route exact path="/songs" render={() => <UnderConstruction></UnderConstruction>} />
             <Route exact path="/history" render={() => <History></History>} />

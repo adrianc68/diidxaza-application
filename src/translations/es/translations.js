@@ -357,8 +357,6 @@ export const TRANSLATIONS_ES = {
     LearningLessonPointsToWin:"Puntos a ganar",
     LearningLessonStatus: "Estado",
     LearningLessonResultsDescription: "¡Felicidades! has terminado esta lección. Si quieres ver los resultados puedes presionar el botón Ver resultados.",
-
-
     AnswerSectionQuesion: "Pregunta: ",
     AnswerSectionLevel: "Dificultad: ",
     AnswerSectionQuestionType: "Tipo de pregunta: ",
@@ -366,8 +364,24 @@ export const TRANSLATIONS_ES = {
     AnswerSectionQuestionsRemaining: "Preguntas restantes", 
     AnswerSectionSelectCorrectAnswer: "Selecciona la respuesta correcta",
     AnswerSectionInputAnswer: "Ingresa la respuesta correcta:",
-
     AddCommentCharacters: "Caracteres",
+
+
+
+
+    ResultLessonCongratulationsMessage: "¡Felicidades, $!",
+    ResultLessonWeCanImproveMessage: "¡Aún podemos mejorar, $!",
+
+    ResultLessonCompletedLesson: "Has completado con éxito la lección",
+    ResultLessonCompletedLessonPoints: "Con un puntaje de",
+    ResultLessonTitleShowQuestions: "Visualización de lección",
+    ResultLessonEasyQuestions: "Preguntas fáciles",
+    ResultLessonHardQuestions: "Preguntas dificiles",
+    ResultLessonIncorrectQuestions: "Preguntas incorrectas",
+    ResultLessonCorrectQuestions: "Preguntas correctas",
+    ResultLessonTotalQuestions: "Preguntas totales",
+
+    UnitPoints: "pts",
 
     BadRequestAccount: "Error en los datos de entrada",
     ErrorExistAccount: "Existe una cuenta con el mismo nombre de usuario o correo",

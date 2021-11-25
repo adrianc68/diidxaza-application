@@ -11,7 +11,7 @@ export default function UniqueAnswer({answers, handleChange}) {
                             <label htmlFor={element._id}>{element.answers}</label>
                         </div>
                     </li>
-                ))}
+                ))} 
             </ul>
         </form>
     )

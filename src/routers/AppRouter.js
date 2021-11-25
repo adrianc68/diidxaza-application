@@ -16,6 +16,7 @@ export default function AppRouter() {
                 <Route exact path="/signUp" component={SignUp} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/home" component={Dashboard}/>
+
                 <Route path="*" component={PageNotFound} />
 
 

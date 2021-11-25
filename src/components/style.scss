@@ -55,12 +55,12 @@ p {
 
 .errorInput {
     color: red;
-    font-size:1em;
+    font-size: 1em;
 }
 
 .errorMessage {
     padding: 5px 10px;
-    font-size:0.9em;
+    font-size: 0.9em;
     width: calc(100% - 2px);
     text-align: center;
     background-color: rgb(255, 155, 155);
@@ -89,7 +89,7 @@ select {
 
 .system-message-container {
     .successfulMessage {
-        padding:5px;
+        padding: 5px;
         width: calc(100% - 10px);
         text-align: center;
         background-color: rgb(163, 255, 205);
@@ -101,7 +101,7 @@ select {
     }
 
     .errorMessage {
-        padding:5px;
+        padding: 5px;
         width: calc(100% - 10px);
         text-align: center;
         background-color: rgb(255, 155, 155);
@@ -154,7 +154,7 @@ select {
         display: block;
         cursor: pointer;
         color: #545856;
-        font-size: 14px;
+        font-size: 0.9em;
     }
 }
 
@@ -163,10 +163,44 @@ select {
 }
 
 .no-found-records {
-    height:100%;
-    width:100%;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
+.openanswer-input-disabled {
+    opacity: 0.6;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    div {
+        align-items: center;
+        display: flex;
+        justify-content: flex-start;
+        gap: 1em;
+    }
+}
+
+.color-red {
+    color:rgb(255, 0, 0);
+}
+
+.color-green {
+    color:rgb(0, 212, 0);
+}
+
+.color-black {
+    color:rgb(0, 0, 0);
+}
+
+.color-blue {
+    color:rgb(27, 15, 185);
+}
+
+
+
+
+

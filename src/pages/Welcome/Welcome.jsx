@@ -29,14 +29,11 @@ export default function Welcome() {
     return (
         <div className="welcome-main-container">
             <Topbar>
-                {/* <Link className="link" to="/login"> */}
                 <div>
                     <Button text={t("ButtonLogin")} styleName="primary-button" onClick={() => history.push('/login')}>
                         <MdLogin className="icon-button" />
                     </Button>
                 </div>
-
-                {/* </Link> */}
                 <div>
                     <Button text={t("ButtonSignUp")} styleName="secondary-button" onClick={scrollToChooseContainer}>
                         <MdLogout className="icon-button" />

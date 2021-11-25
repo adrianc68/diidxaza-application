@@ -36,6 +36,12 @@
     } 
 }
 
+.logo-black-link.just-icon, .logo-white-link.just-icon {
+    .logo-name {
+        display:none;
+    }
+}
+
 
 @media all and (max-width: $max-width-device) {
     .logo-white-link {

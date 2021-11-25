@@ -12,7 +12,6 @@ export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, 
     const [loadingError, setLoadingError] = useState(false);
 
     const handleChangeAnswerOnly = (e) => {
-        // e.preventDefault();
         e.stopPropagation();
         const {value} = e.target;
         setValueOnly(value);
