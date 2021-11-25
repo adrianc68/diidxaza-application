@@ -1,0 +1,32 @@
+.spinner {
+    margin:auto;
+    height:250px;
+    width:250px;
+    border-radius:50%;
+    background-color:transparent;
+    border: 2px solid purple;
+    border-bottom:none;
+    border-left:none;
+    animation: spin 4.5s infinite linear reverse;
+
+    .spinner2 {
+        margin: 25px auto;
+        height: 200px;
+        width: 200px;
+        animation: spin 2s infinite linear;
+    }
+
+    .spinner3 {
+        margin:25px auto;
+        height:150px;
+        width:150px;
+        animation: spin 1s infinite linear reverse;
+    }
+
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,64 @@
+@import "../../components/variables.module.scss";
+
+.logo-white-link {
+    text-decoration:none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .logo-icon {
+        font-size: 40px;
+        color: #fff;
+        margin-right: 10px;
+    }
+
+    .logo-name {
+        font-size: 18px;
+        color: #fff;
+        font-weight: bold;
+    } 
+}
+
+.logo-black-link {
+    text-decoration:none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .logo-icon {
+        font-size: 40px;
+        color: #000;
+        margin-right: 10px;
+    }
+
+    .logo-name {
+        font-size: 18px;
+        color: #000;
+        font-weight: bold;
+    } 
+}
+
+
+@media all and (max-width: $max-width-device) {
+    .logo-white-link {
+        flex-direction:column;
+        .logo-icon {
+            font-size: 55px;
+            margin-right: 0px;
+        }
+    
+        .logo-name {
+            display:none;
+        } 
+    }
+    
+    .logo-black-link {
+        flex-direction:column;
+        .logo-icon {
+            font-size: 55px;
+            margin-right: 0px;
+        }
+    
+        .logo-name {
+            display:none;
+        } 
+    }
+}

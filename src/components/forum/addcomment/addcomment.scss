@@ -1,0 +1,31 @@
+.addcomment-main-container {
+    padding-top:15px;
+    padding-bottom:15px;
+    .addcomment-input-container {
+        textarea {
+            box-sizing: border-box;
+            resize: vertical;
+            width: 100%;
+            height: 150px;
+        }
+    }
+
+    .addcommen-button-control {
+        display: flex;
+        justify-content: flex-end;
+        gap: 15px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        div {
+            height:35px;
+        }
+
+        .addcomment-count-characters {
+            display:flex;
+            flex-direction:column;
+            align-items: flex-start;
+            flex:1;
+            gap:0.3em;
+        }
+    }
+}

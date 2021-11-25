@@ -1,0 +1,79 @@
+@import "../../../components/variables.module.scss";
+
+.editprofile-main-container {
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    background-color: #fff;
+    border-radius:3px;
+    .editprofile-content {
+        .editprofile-description-container {
+            border-radius: 3px 3px 0px 0px;
+            grid-area: a;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-bottom: 15px;
+            background-color: $top-title-container-background-color;
+            color: #fff;
+            padding: 25px;
+        }
+
+        .editprofile-personal-information-container {
+            padding:15px;
+            height: 100%;
+            .editprofile-personal-information-inputs {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+                padding: 20px;
+                .editprofile-photo-input-container {
+                    display: flex;
+                    gap: 5px;
+                    .editprofile-photo-left-side {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                        gap: 15px;
+                        width: 40%;
+                    }
+
+                    .editprofile-photo-input-description {
+                        width: 60%;
+                        display: flex;
+                        flex-grow: 1;
+                        flex-direction: column;
+                        padding: 15px;
+                        gap: 10px;
+                        text-align: justify;
+                    }
+
+                    .editprofile-user-photo {
+                        width: 150px;
+                        height: 150px;
+                        border-radius: 50%;
+                        background-color: #009b67;
+                        background-position: center;
+                    }
+                }
+            }
+
+            .editprofile-account-information-inputs {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+                padding: 20px;
+            }
+
+            .editprofile-button-panel {
+                display: flex;
+                padding: 15px;
+                gap: 35px;
+                div {
+                    flex: 1;
+                }
+            }
+        }
+    }
+}

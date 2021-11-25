@@ -1,54 +1,26 @@
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-// import Welcome from '../pages/Welcome/Welcome';
-// import PageNotFound from '../pages/PageNotFound/PageNotFound';
-import Home from '../pages/Home/Home'
-import SignUp from '../pages/SignUp/SignUp'
+import Login from '../pages/InitialInteraction/Login/Login'
 import Welcome from '../pages/Welcome/Welcome'
 import PageNotFound from '../pages/PageNotFound/PageNotFound'
-
-import { Provider } from 'react-redux';
-
-
-import Sidebar from '../components/sidebar/Sidebar'
+import SignUp from '../pages/InitialInteraction/SignUp/SignUp'
+import React, {useState} from 'react'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import Dashboard from '../pages/Home/Dashboard'
+import history from './History'
 
 export default function AppRouter() {
     return (
-        <Router>
+        <Router history={history}>
             <Switch>
-                <Route exact path="/Home" component={Home} />
-                <Route exact path="/SignUp" component={SignUp} />
-                <Route exact path="/(:filter)" component={Welcome} />
-                <Route component={PageNotFound} />
+                {/* <Redirect exact={true} from={"/"} to={"/home"}/> */}
+                <Route exact path="/" component={Welcome} />
+                <Route exact path="/signUp" component={SignUp} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/home" component={Dashboard}/>
+                <Route path="*" component={PageNotFound} />
+
+
+
             </Switch>
-
-            <Sidebar/>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="/Home">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/SignUp">Sign up</Link>
-                    </li>
-                    <li>
-                        <Link to="/Welcome">Welcome</Link>
-                    </li>
-                
-
-                </ul>
-            </nav>
         </Router>
-
-
-        // <Router>
-        //         <Switch>
-        //             <Route exact path="/Home" component={Home} />
-        //             <Route exact path="/SignUp" component={SignUp} />
-        //             <Route exact path="/(:filter)" component={Welcome} />
-        //             <Route component={PageNotFound} />
-        //         </Switch>
-
-
-        // </Router>
     );
 }

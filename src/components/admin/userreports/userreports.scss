@@ -1,0 +1,51 @@
+@import "../../variables.module.scss";
+
+.userreports-main-container {
+    height: 100%;
+    width: 100%;
+    background-color: $ul-content-background;
+    border-radius: 0 0 3px 3px;
+    .userreports-content-container {
+        width: calc(100% - 50px);
+        height: calc(100% - 50px);
+        padding: 25px;
+        display:flex;
+        flex-direction: column;
+        .userreports-data-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            .userreports-image-background {
+                border: 1px solid #c5a7a7;
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+                img {
+                    height: 100%;
+                    width: 15%;
+                }
+            }
+
+            p {
+                text-align: justify;
+            }
+
+            .userreports-list-container {
+                border: 1px solid rgb(173, 172, 172);
+                box-shadow: rgba(134, 133, 133, 0.178) 0px 4px 4px 4px inset;
+                border-radius: 3px;
+                height:25px;
+                flex-grow:1;
+                overflow-y: auto;
+                ul {
+                    list-style: none;
+                    padding: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                }
+            }
+        }
+    }
+}
