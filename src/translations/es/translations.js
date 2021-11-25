@@ -380,8 +380,9 @@ export const TRANSLATIONS_ES = {
     NoAvalaible: "No disponible",
     NotFoundDiscussion: "No se encontro la discusión",
     NotFoundRecords: "No se encontraron registro(s)",
-    NotFoundAnswer: "No se encontraron respuestas de la siguiente pregunta",
+    NotFoundAnswer: "Seleccione una respuesta",
     NotFoundDiscussions: "No se encontraron discusiones",
+    Completed: "Completado",
 
     MessageUpdateAccount: "La cuenta se actualizo exitosamente",
 

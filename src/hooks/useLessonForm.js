@@ -1,18 +1,16 @@
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import { helpHttp, UrlAPI } from "../helpers/helpHttp";
 
-export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, setAnswers, question, answers) => {
-    const { t } = useTranslation();
+export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, setAnswers, question, answers, setVisible, setModalNotToken, setModalToken) => {
     const [pointsObtained, setPointsObtained] = useState(0);
     const [valueOnly, setValueOnly] = useState(null);
     const [valueMultiple, setValueMultiple] = useState([]);
     const [loading, setLoading] = useState(false);
     const [countAnswer, setCountAnswer] = useState(0);
     const [loadingError, setLoadingError] = useState(false);
+    const[resultsQuestions, setResultsQuestions] = useState([]);
 
     const handleChangeAnswerOnly = (e) => {
-        // e.preventDefault();
         e.stopPropagation();
         const {value} = e.target;
         setValueOnly(value);
@@ -24,7 +22,7 @@ export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, 
         if(checked){
             setValueMultiple(valueMultiple => [...valueMultiple, {value:value}]);
         }else{
-            setValueMultiple(valueMultiple.filter(elementValue =>elementValue!==value));
+            setValueMultiple(valueMultiple.filter(elementValue =>elementValue.value!==value));
         }
     }
 
@@ -41,9 +39,12 @@ export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, 
             const answerValid = answers.find(element => element.isValid===true);
             if(valueOnly != null){
                 isValid = true;
+                let isCorrectAnswer= false;
                 if(valueOnly === answerValid.answers){
-                    setPointsObtained(pointsObtained+question.score)
+                    setPointsObtained(pointsObtained+question.score);
+                    isCorrectAnswer=true;
                 }
+                setResultsQuestions(resultsQuestions => [...resultsQuestions, {question:question,answerValid:answerValid,answerAccount:valueOnly,isCorrect:isCorrectAnswer}]);
             }else{
                 isValid = false;
             }
@@ -51,16 +52,21 @@ export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, 
             const answersValid = answers.filter(element => element.isValid===true);
             if(valueMultiple.length>0){
                 isValid = true;
-                answers.forEach(elementAnswer => {
-                    valueMultiple.forEach(elementValue => {
-                        if(elementAnswer.answers === elementValue.value){
-                            setCountAnswer(countAnswer+1);
-                        }
+                let isCorrectAnswer= false;
+                if(answersValid.length === valueMultiple.length){
+                    answersValid.forEach(elementAnswer => {
+                        valueMultiple.forEach(elementValue => {
+                            if(elementAnswer.answers === elementValue.value){
+                                setCountAnswer(countAnswer+1);
+                            }
+                        });
                     });
-                });
-                if(countAnswer === answersValid.length){
-                    setPointsObtained(pointsObtained+question.score)
+                    if(countAnswer === answersValid.length){
+                        setPointsObtained(pointsObtained+question.score);
+                        isCorrectAnswer=true;
+                    }
                 }
+                setResultsQuestions(resultsQuestions => [...resultsQuestions, {question:question,answerValid:answersValid,answerAccount:valueMultiple,isCorrect:isCorrectAnswer}]);
             }else{
                 isValid = false;
             }
@@ -91,7 +97,17 @@ export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, 
                     setCountAnswer(0);
                     setLoadingError(false);
                 }else{
-                    setLoadingError(true);
+                    if(responseAnswers.status === 419){
+                        setModalNotToken(false);
+                        setModalToken(true);
+                    }else{
+                        if(responseAnswers.status === 401){
+                            setModalToken(false);
+                            setModalNotToken(true);
+                        }else{
+                            setLoadingError(true);
+                        }
+                    }
                 }
             })
         }else{
@@ -116,9 +132,19 @@ export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, 
                 body: lessonRecord
             }).then((response) => {
                 if (response._id) {
-                    
+                    setVisible(true);
                 }else{
-                    setLoadingError(true);
+                    if(response.status === 419){
+                        setModalNotToken(false);
+                        setModalToken(true);
+                    }else{
+                        if(response.status === 401){
+                            setModalToken(false);
+                            setModalNotToken(true);
+                        }else{
+                            setLoadingError(true);
+                        }
+                    }
                 }
             })
         }else{
@@ -127,7 +153,7 @@ export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, 
     }
 
     return {
-        handleClick,handleClickNext,handleChangeAnswerOnly,handleChangeAnswerMultiple,loading,loadingError,pointsObtained
+        handleClick,handleClickNext,handleChangeAnswerOnly,handleChangeAnswerMultiple,loading,loadingError,pointsObtained,resultsQuestions
     }
 };
 

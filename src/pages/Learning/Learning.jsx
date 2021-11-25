@@ -4,6 +4,8 @@ import { useTranslation } from "react-i18next";
 import LessonListItem from '../../components/learning/lessonlistitem/LessonListItem';
 import LessonInformation from '../../components/learning/lessoninformation/LessonInformation';
 import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
+import Modal from '../../components/modal/Modal';
+import AlertMessage from '../../components/alert/AlertMessage';
 
 const totalPoints = (lessonRecords) => {
     let totalPointsRecord = 0;
@@ -12,6 +14,7 @@ const totalPoints = (lessonRecords) => {
             totalPointsRecord = totalPointsRecord+element.pointsObtained
         ))
     }
+    console.log(lessonRecords);
     return totalPointsRecord;
 };
 
@@ -22,6 +25,9 @@ export default function Learning() {
     const [lessons, setLessons] = useState([]);
     const [lesson, setLesson] = useState({});
     const [lessonRecords, setLessonRecords] = useState([]);
+    const [modalNotToken, setModalNotToken] = useState(false);
+    const [modalToken, setModalToken] = useState(false);
+
     useEffect(() => {
         helpHttp().get(UrlAPI + "lessons",{
             headers: {
@@ -38,11 +44,31 @@ export default function Learning() {
                         'Content-Type': 'application/json',
                         'Authorization': sessionStorage.getItem("token")
                     }
-                }).then((response) => {
-                    if (!response.status) {
-                        setLessonRecords(response)
+                }).then((responseRecords) => {
+                    if (responseRecords.length>0) {
+                        setLessonRecords(responseRecords)
+                    }else{
+                        if(responseRecords.status === 419){
+                            setModalNotToken(false);
+                            setModalToken(true);
+                        }else{
+                            if(responseRecords.status === 401){
+                                setModalToken(false);
+                                setModalNotToken(true);
+                            }
+                        }
                     }
                 })
+            }else {
+                if(response.status === 419){
+                    setModalNotToken(false);
+                    setModalToken(true);
+                }else{
+                    if(response.status === 401){
+                        setModalToken(false);
+                        setModalNotToken(true);
+                    }
+                }
             }
         })
     }, []);
@@ -95,6 +121,12 @@ export default function Learning() {
                     </div>
                 </div>
             </div>
+            {modalNotToken && <Modal handleModal={() => { setModalNotToken(false) }} sizeHeight="20" sizeWidth="35">
+                <AlertMessage content={t("ErrorToken")} handleModal={() => { setModalNotToken(false) }}></AlertMessage>
+            </Modal>}
+            {modalToken && <Modal handleModal={() => { window.location.href = 'login' }} sizeHeight="20" sizeWidth="35">
+                <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = 'login' }}></AlertMessage>
+            </Modal>}
         </div>
     )
 }
