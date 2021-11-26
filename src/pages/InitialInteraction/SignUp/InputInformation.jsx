@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import './InputInformation.scss'
+import React, { useState, useEffect } from "react";
+import "./InputInformation.scss";
 import { useTranslation } from "react-i18next";
-import Button from '../../../components/Button/Button'
+import Button from "../../../components/Button/Button";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 import { useAccountForm } from "../../../hooks/useAccountForm";
-import { useHistory } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const initialForm = {
     lastname: "",
@@ -198,7 +198,7 @@ export default function InputInformation() {
                         </div>
                         <Button type="submit" styleName="green-button" text={t("SignUpFormSignUpButton")}></Button>
                         <Link className="link" to="/">
-                            <Button styleName="orange-button" text={t("SignUpFormCancelButton")} onClick={() => history.push('/')}></Button>
+                            <Button styleName="orange-button" text={t("SignUpFormCancelButton")} onClick={() => history.push("/")}></Button>
                         </Link>
                     </div>
                 </div>

@@ -6,7 +6,6 @@ export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, 
     const [valueOnly, setValueOnly] = useState(null);
     const [valueMultiple, setValueMultiple] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [countAnswer, setCountAnswer] = useState(0);
     const [loadingError, setLoadingError] = useState(false);
     const[resultsQuestions, setResultsQuestions] = useState([]);
 
@@ -33,23 +32,27 @@ export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, 
         }
     }
 
-    const validateQuestions = () =>{
+    const validateQuestions = async () =>{
         let isValid = false;
         if(question.typeQuestion === "only"){
             const answerValid = answers.find(element => element.isValid===true);
+            let pointsAnswer = 0;
             if(valueOnly != null){
                 isValid = true;
                 let isCorrectAnswer= false;
                 if(valueOnly === answerValid.answers){
-                    setPointsObtained(pointsObtained+question.score);
+                    setPointsObtained(pointsObtained=> pointsObtained+question.score);
                     isCorrectAnswer=true;
+                    pointsAnswer= question.score;
                 }
-                setResultsQuestions(resultsQuestions => [...resultsQuestions, {question:question,answerValid:answerValid,answerAccount:valueOnly,isCorrect:isCorrectAnswer}]);
+                setResultsQuestions(resultsQuestions => [...resultsQuestions, {question:question,answerAccount:valueOnly,answers:answers,isCorrect:isCorrectAnswer, pointsAnswer:pointsAnswer}]);
             }else{
                 isValid = false;
             }
         }else {
             const answersValid = answers.filter(element => element.isValid===true);
+            let pointsAnswer = 0;
+            let countAnswer = 0;
             if(valueMultiple.length>0){
                 isValid = true;
                 let isCorrectAnswer= false;
@@ -57,16 +60,17 @@ export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, 
                     answersValid.forEach(elementAnswer => {
                         valueMultiple.forEach(elementValue => {
                             if(elementAnswer.answers === elementValue.value){
-                                setCountAnswer(countAnswer+1);
+                                countAnswer = countAnswer+1;
                             }
                         });
                     });
                     if(countAnswer === answersValid.length){
-                        setPointsObtained(pointsObtained+question.score);
+                        setPointsObtained(pointsObtained=> pointsObtained+question.score);
                         isCorrectAnswer=true;
+                        pointsAnswer= question.score;
                     }
                 }
-                setResultsQuestions(resultsQuestions => [...resultsQuestions, {question:question,answerValid:answersValid,answerAccount:valueMultiple,isCorrect:isCorrectAnswer}]);
+                setResultsQuestions(resultsQuestions => [...resultsQuestions, {question:question,answerAccount:valueMultiple,answers:answers,isCorrect:isCorrectAnswer,pointsAnswer:pointsAnswer}]);
             }else{
                 isValid = false;
             }
@@ -81,8 +85,8 @@ export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, 
             helpHttp().get(UrlAPI + "answers/"+questionsChange[1]._id,{
                 headers: {
                     Accept: "application/json",
-                    'Content-Type': 'application/json',
-                    'Authorization': sessionStorage.getItem("token")
+                    "Content-Type": "application/json",
+                    "Authorization": sessionStorage.getItem("token")
                 }
             }).then((responseAnswers) => {
                 if (responseAnswers.length>0) {
@@ -94,7 +98,6 @@ export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, 
                     setValueOnly(null);
                     setValueMultiple([]);
                     setLoading(false);
-                    setCountAnswer(0);
                     setLoadingError(false);
                 }else{
                     if(responseAnswers.status === 419){
@@ -115,21 +118,21 @@ export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, 
         }
     }
 
-    const handleClick = (e, idLesson) => {
+    const handleClick = async (e, idLesson) => {
         e.preventDefault();
-        if(validateQuestions()){
-            const lessonRecord = {
-                pointsObtained: pointsObtained, 
-                idAccount:sessionStorage.getItem("id"), 
-                idLesson:idLesson
-            }
-            helpHttp().post(UrlAPI + "lessonRecords",{
+        const isValid = validateQuestions();
+        if(isValid){
+           helpHttp().post(UrlAPI + "lessonRecords",{
                 headers: {
                     Accept: "application/json",
-                    'Content-Type': 'application/json',
-                    'Authorization': sessionStorage.getItem("token")
+                    "Content-Type": "application/json",
+                    "Authorization": sessionStorage.getItem("token")
                 },
-                body: lessonRecord
+                body: {
+                    pointsObtained: pointsObtained, 
+                    idAccount:sessionStorage.getItem("id"), 
+                    idLesson:idLesson
+                }
             }).then((response) => {
                 if (response._id) {
                     setVisible(true);

@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import Button from '../../Button/Button'
-import { NavLink } from 'react-router-dom'
+import React from "react";
+import Button from "../../Button/Button";
+import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import DeleteAccount from '../DeleteAccount/DeleteAccount';
-import { useRouteMatch } from 'react-router-dom'
-import { helpHttp, UrlAPI } from '../../../helpers/helpHttp';
+import { useRouteMatch } from "react-router-dom";
 
 export default function UserprofileButtonPanelOWU({ handleModal, accountID }) {
     const { t } = useTranslation();
     const { url } = useRouteMatch();
-
-
 
     return (
         <div className="userprofile-button-panel-content">

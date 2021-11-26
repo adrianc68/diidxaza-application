@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import './answersection.scss'
-import Button from '../../../components/Button/Button'
+import React, { useEffect, useState } from "react";
+import "./answersection.scss";
+import Button from "../../../components/Button/Button";
 import { useTranslation } from "react-i18next";
-import MultipleAnswer from '../../../components/learning/options/multiple/MultipleAnswer';
-import UniqueAnswer from '../../../components/learning/options/unique/UniqueAnswer';
+import MultipleAnswer from "../../../components/learning/options/multiple/MultipleAnswer";
+import UniqueAnswer from "../../../components/learning/options/unique/UniqueAnswer";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
-import ImageInformationAlt from '../../../assets/images/ide-22.svg';
-import { useLessonForm } from '../../../hooks/useLessonForm';
-import { Link } from 'react-router-dom';
-import { BiError } from 'react-icons/bi';
-import LessonResults from '../../../components/learning/lessonresults/LessonResults';
-import Modal from '../../../components/modal/Modal';
-import AlertMessage from '../../../components/alert/AlertMessage';
+import ImageInformationAlt from "../../../assets/images/ide-22.svg";
+import { useLessonForm } from "../../../hooks/useLessonForm";
+import { Link } from "react-router-dom";
+import { BiError } from "react-icons/bi";
+import LessonResults from "../../../components/learning/lessonresults/LessonResults";
+import Modal from "../../../components/modal/Modal";
+import AlertMessage from "../../../components/alert/AlertMessage";
 
-export default function AnswerSection({ lessonID }) {
+export default function AnswerSection({ lesson }) {
     const { t } = useTranslation();
     const [questions, setQuestions] = useState([]);
     const [question, setQuestion] = useState({});
@@ -25,19 +25,19 @@ export default function AnswerSection({ lessonID }) {
     const [modalToken, setModalToken] = useState(false);
 
     useEffect(() => {
-        helpHttp().get(UrlAPI + "questions/" + lessonID, {
+        helpHttp().get(UrlAPI + "questions/" + lesson._id, {
             headers: {
                 Accept: "application/json",
-                'Content-Type': 'application/json',
-                'Authorization': sessionStorage.getItem("token")
+                "Content-Type": "application/json",
+                "Authorization": sessionStorage.getItem("token")
             }
         }).then((response) => {
             if (response.length > 0) {
                 helpHttp().get(UrlAPI + "answers/" + response[0]._id, {
                     headers: {
                         Accept: "application/json",
-                        'Content-Type': 'application/json',
-                        'Authorization': sessionStorage.getItem("token")
+                        "Content-Type": "application/json",
+                        "Authorization": sessionStorage.getItem("token")
                     }
                 }).then((responseAnswers) => {
                     if (responseAnswers.length > 0) {
@@ -85,8 +85,8 @@ export default function AnswerSection({ lessonID }) {
     } = useLessonForm(setQuestion, questionsChange, setQuestionsChange, setAnswers, question, answers, setVisible, setModalNotToken, setModalToken);
 
     function placeLessonResults() {
-        const sytleLesson = {top:'0px', left:'0px'};
-        var lessonResults = <LessonResults style={sytleLesson} pointsObtained={pointsObtained}></LessonResults>;
+        const sytleLesson = {top:"0px", left:"0px"};
+        var lessonResults = <LessonResults style={sytleLesson} pointsObtained={pointsObtained} resultsQuestions={resultsQuestions} lesson={lesson}></LessonResults>;
         return lessonResults;
     }
 
@@ -147,14 +147,14 @@ export default function AnswerSection({ lessonID }) {
                     <Button styleName="primary-button" text={t("ButtonNext")} onClick={handleClickNext} />
                 </div>}
                 {questionsChange.length === 1 && <div>
-                    <Button styleName="primary-button" text={t("ButtonFinish")} onClick={(e) => { handleClick(e, lessonID) }}/>
+                    <Button styleName="primary-button" text={t("ButtonFinish")} onClick={(e) => { handleClick(e, lesson._id) }}/>
                 </div>}
             </div>}
             {modalNotToken && <Modal handleModal={() => { setModalNotToken(false) }} sizeHeight="20" sizeWidth="35">
                 <AlertMessage content={t("ErrorToken")} handleModal={() => { setModalNotToken(false) }}></AlertMessage>
             </Modal>}
-            {modalToken && <Modal handleModal={() => { window.location.href = 'login' }} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = 'login' }}></AlertMessage>
+            {modalToken && <Modal handleModal={() => { window.location.href = "login" }} sizeHeight="20" sizeWidth="35">
+                <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = "login" }}></AlertMessage>
             </Modal>}
         </form> || <div className={className}>
             <h3>{t("LearningNotQuestion")}</h3>

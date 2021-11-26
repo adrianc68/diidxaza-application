@@ -1,9 +1,8 @@
-import React from 'react'
-import './verificationCode.scss'
+import "./verificationCode.scss";
 import { useTranslation } from "react-i18next";
-import Button from '../../../components/Button/Button'
-import ImageDelivery from '../../../assets/images/ide-34.svg'
-import './signup.scss'
+import Button from "../../../components/Button/Button";
+import ImageDelivery from "../../../assets/images/ide-34.svg";
+import "./signup.scss";
 import { useVerificationForm } from "../../../hooks/useAccountForm";
 
 const validationCode = (code) => {

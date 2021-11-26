@@ -1,9 +1,8 @@
-import React from 'react';
-import './footer.scss';
+import "./footer.scss";
 import { useTranslation } from "react-i18next";
-import DiidxazaLogo from '../logo/DiidxazaLogo'
-import { Link } from 'react-router-dom';
-import {BsFacebook, BsTwitter, BsYoutube, BsGithub} from 'react-icons/bs'
+import DiidxazaLogo from "../logo/DiidxazaLogo";
+import { Link } from "react-router-dom";
+import {BsFacebook, BsTwitter, BsYoutube, BsGithub} from "react-icons/bs";
 
 export default function Footer() {
     const { t } = useTranslation();

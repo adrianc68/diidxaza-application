@@ -1,5 +1,5 @@
-import React from 'react'
-import './uniqueanswer.scss'
+import "./uniqueanswer.scss";
+
 export default function UniqueAnswer({answers, handleChange}) {
     return (
         <form className="uniqueanswer-form">
@@ -11,7 +11,7 @@ export default function UniqueAnswer({answers, handleChange}) {
                             <label htmlFor={element._id}>{element.answers}</label>
                         </div>
                     </li>
-                ))}
+                ))} 
             </ul>
         </form>
     )

@@ -1,13 +1,13 @@
-import { React, useEffect, useState } from 'react'
-import './userprofile.scss'
+import { React, useEffect, useState } from "react";
+import "./userprofile.scss";
 import { useTranslation } from "react-i18next";
-import UserImageDefault from '../../assets/images/ide-29.svg'
-import UserprofileButtonPanelADM from '../../components/admin/userprofileButtonPanel/UserprofileButtonPanelADM';
-import UserprofileButtonPanelOWU from '../../components/ownuser/userprofileButtonPanel/UserprofileButtonPanelOWU';
-import Modal from '../../components/modal/Modal';
-import { helpHttp, UrlAPI } from '../../helpers/helpHttp';
-import { useConvertionData } from '../../hooks/useConvertionData';
-// import { useRouteMatch,useHistory, useParams } from 'react-router-dom'
+import UserImageDefault from "../../assets/images/ide-29.svg";
+import UserprofileButtonPanelADM from "../../components/admin/userprofileButtonPanel/UserprofileButtonPanelADM";
+import UserprofileButtonPanelOWU from "../../components/ownuser/userprofileButtonPanel/UserprofileButtonPanelOWU";
+import Modal from "../../components/modal/Modal";
+import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
+import { useConvertionData } from "../../hooks/useConvertionData";
+// import { useRouteMatch,useHistory, useParams } from "react-router-dom";
 
 export default function UserProfile({accountID}) {
     const { t } = useTranslation();
@@ -44,7 +44,7 @@ export default function UserProfile({accountID}) {
         helpHttp().get(UrlAPI + "accounts/" + accountID, {
             headers: {
                 Accept: "application/json",
-                'Authorization': sessionStorage.getItem("token")
+                "Authorization": sessionStorage.getItem("token")
             }
         }).then((response) => {
             const account = {

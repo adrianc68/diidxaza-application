@@ -1,7 +1,5 @@
-import React from 'react'
-import './topbar.scss'
-import DiidxazaLogo from '../logo/DiidxazaLogo'
-
+import "./topbar.scss";
+import DiidxazaLogo from "../logo/DiidxazaLogo";
 
 export default function Topbar({ children }) {
     return (

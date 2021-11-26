@@ -1,13 +1,13 @@
-import React, {useState,useEffect} from 'react'
-import './editprofile.scss'
+import React, {useState,useEffect} from "react";
+import "./editprofile.scss";
 import { useTranslation } from "react-i18next";
-import Button from '../../../components/Button/Button'
-import Modal from '../../modal/Modal';
+import Button from "../../../components/Button/Button";
+import Modal from "../../modal/Modal";
 import AlertMessage from "../../alert/AlertMessage";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 import { useUpdateAccountForm } from "../../../hooks/useAccountForm";
-import UserImageDefault from '../../../assets/images/ide-29.svg';
-import { Link } from 'react-router-dom'
+import UserImageDefault from "../../../assets/images/ide-29.svg";
+import { Link } from "react-router-dom";
 
 const validationsForm = (form) => {
     let errors = {};
@@ -80,8 +80,8 @@ export default function EditProfile({setNameUser}) {
         helpHttp().get(UrlAPI + "accounts/"+sessionStorage.getItem("id"),{
             headers: {
                 Accept: "application/json",
-                'Content-Type': 'application/json',
-                'Authorization': sessionStorage.getItem("token")
+                "Content-Type": "application/json",
+                "Authorization": sessionStorage.getItem("token")
             }
         }).then((response) => {
             if (response._id) {
@@ -110,10 +110,10 @@ export default function EditProfile({setNameUser}) {
                 if(response.URL != undefined){
                     setURLPhoto(response.URL);
                     fetch(UrlAPI+"resources",{
-                        method: 'PATCH',
+                        method: "PATCH",
                         headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': sessionStorage.getItem("token")
+                            "Content-Type": "application/json",
+                            "Authorization": sessionStorage.getItem("token")
                         },
                         body: JSON.stringify({URL:response.URL})
                     }).then((responseResource) => {
@@ -283,8 +283,8 @@ export default function EditProfile({setNameUser}) {
             {modalNotToken && <Modal handleModal={()=>{setModalNotToken(false)}} sizeHeight="20" sizeWidth="35">
                 <AlertMessage content={t("ErrorToken")} handleModal={()=>{setModalNotToken(false)}}></AlertMessage>
             </Modal>}
-            {modalToken && <Modal handleModal={()=>{window.location.href = 'login';}} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={t("RefreshToken")} handleModal={()=>{window.location.href = 'login';}}></AlertMessage>
+            {modalToken && <Modal handleModal={()=>{window.location.href = "login";}} sizeHeight="20" sizeWidth="35">
+                <AlertMessage content={t("RefreshToken")} handleModal={()=>{window.location.href = "login";}}></AlertMessage>
             </Modal>}
         </form>
     )

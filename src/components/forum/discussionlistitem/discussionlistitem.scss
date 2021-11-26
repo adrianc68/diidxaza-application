@@ -1,62 +1,66 @@
 @import "../../../components/variables.module.scss";
 
 .forum-discussion-search-listItem {
+  display: flex;
+  border-radius: 3px;
+  gap: 15px;
+  padding: 5px;
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #ccc;
+  border-radius: 3px;
+
+  .forum-discussion-listItem-description {
     display: flex;
-    border-radius: 3px;
-    gap: 15px;
-    padding: 5px;
-    cursor: pointer;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    .forum-discussion-listItem-description {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        text-align: center;
-        .forum-listItem-open-status {
-            background-color: #15b607;
-            color: #fff;
-            padding: 5px;
-            border-radius: 3px;
-        }
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
 
-        .forum-listItem-closed-status {
-            background-color: #b63907;
-            color: #fff;
-            padding: 5px;
-            border-radius: 3px;
-        }
-
-        .forum-listItem-theme {
-            padding: 5px;
-            background-color: #00bff6;
-            color: #fff;
-            border-radius: 3px;
-        }
+    .forum-listItem-open-status {
+      background-color: #15b607;
+      color: #fff;
+      padding: 5px;
+      border-radius: 3px;
     }
 
-    .forum-listItem-data-content {
-        flex: 1;
+    .forum-listItem-closed-status {
+      background-color: #b63907;
+      color: #fff;
+      padding: 5px;
+      border-radius: 3px;
+    }
+
+    .forum-listItem-theme {
+      padding: 5px;
+      background-color: #00bff6;
+      color: #fff;
+      border-radius: 3px;
+    }
+  }
+
+  .forum-listItem-data-content {
+    flex: 1;
+    font-size: 1em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .forum-listItem-data-content-title {
+      flex: 1;
+    }
+
+    .forum-listItem-data-content-date {
+      display: flex;
+
+      flex-direction: column;
+      color: #000;
+      font-size: 0.62em;
+      padding: 5px;
+
+      :nth-child(1) {
         font-size: 1em;
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-        .forum-listItem-data-content-title {
-            flex:1;
-        }
-
-        .forum-listItem-data-content-date {
-            display: flex;
-        
-            flex-direction: column;
-            color: #000;
-            font-size:0.62em;
-            padding: 5px;
-            :nth-child(1) {
-                font-size: 1em;
-                color: #868686;
-            }
-        }
+        color: #868686;
+      }
     }
+  }
 }

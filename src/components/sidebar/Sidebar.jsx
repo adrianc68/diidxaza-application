@@ -1,24 +1,23 @@
-import React, { useState } from 'react'
-import './sidebar.scss'
-import { MdLogout, MdEmail, MdHome, MdMenu, MdBookmark, MdLiveTv, MdForum, MdMenuBook, MdLibraryMusic, MdLandscape, MdOutlineHelpOutline } from 'react-icons/md'
-import { NavLink } from 'react-router-dom'
-import { useTranslation } from "react-i18next"
-import Button from '../../components/Button/Button'
+import React, { useState } from "react";
+import "./sidebar.scss";
+import { MdLogout, MdEmail, MdHome, MdMenu, MdBookmark, MdLiveTv, MdForum, MdMenuBook, MdLibraryMusic, MdLandscape, MdOutlineHelpOutline } from "react-icons/md";
+import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function Sidebar() {
     const { t } = useTranslation();
-    const sidebarCollapsed = localStorage.getItem('sidebar-collapsed');
+    const sidebarCollapsed = localStorage.getItem("sidebar-collapsed");
     const [isExpanded, setIsExpanded] = useState(sidebarCollapsed ? false : true);
 
     function toggleSidebar(e) {
         e.preventDefault();
         if (isExpanded) {
             setIsExpanded(false);
-            localStorage.setItem('sidebar-collapsed', true);
+            localStorage.setItem("sidebar-collapsed", true);
             return;
         }
         setIsExpanded(true);
-        localStorage.removeItem('sidebar-collapsed');
+        localStorage.removeItem("sidebar-collapsed");
     }
 
 

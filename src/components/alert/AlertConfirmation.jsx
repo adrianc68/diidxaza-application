@@ -1,6 +1,5 @@
-import React from 'react'
-import './AlertConfirmation.scss'
-import Button from '../Button/Button'
+import "./AlertConfirmation.scss";
+import Button from "../Button/Button";
 
 export default function AlertConfirmation({primaryButton, secondaryButton, content, handlePrimary, setStatusModal}) {
 

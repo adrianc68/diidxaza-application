@@ -1,8 +1,7 @@
-import React from 'react'
-import './changestatususer.scss'
-import Button from '../../Button/Button'
+import "./changestatususer.scss";
+import Button from "../../Button/Button";
 import { useTranslation } from "react-i18next";
-import { helpHttp, UrlAPI } from '../../../helpers/helpHttp';
+import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 
 export default function ChangeStatusUser({ accountStatus, accountID }) {
     const { t } = useTranslation();
@@ -18,8 +17,8 @@ export default function ChangeStatusUser({ accountStatus, accountID }) {
         helpHttp().patch(UrlAPI + "accounts", {
             headers: {
                 Accept: "application/json",
-                'Content-Type': 'application/json',
-                'Authorization': sessionStorage.getItem("token")
+                "Content-Type": "application/json",
+                "Authorization": sessionStorage.getItem("token")
             },
             body: userinformation
         }).then((response) => {

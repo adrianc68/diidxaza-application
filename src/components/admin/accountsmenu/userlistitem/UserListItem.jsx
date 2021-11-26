@@ -1,7 +1,6 @@
-import React from 'react'
-import './userlistitem.scss'
-import Button from '../../../Button/Button'
-import { useTranslation } from 'react-i18next'
+import "./userlistitem.scss";
+import Button from "../../../Button/Button";
+import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
 
 export default function UserListItem({ account }) {

@@ -1,8 +1,7 @@
-import React from 'react'
-import './modal.scss'
-import Button from '../../components/Button/Button'
-import PropTypes from 'prop-types';
-import {AiFillCloseSquare} from 'react-icons/ai'; 
+import "./modal.scss";
+import Button from "../../components/Button/Button";
+import PropTypes from "prop-types";
+import {AiFillCloseSquare} from "react-icons/ai";
 
 
 export default function Modal({ title, children, handleModal, sizeWidth, sizeHeight}) {
