@@ -1,11 +1,9 @@
-import React from 'react'
-import './lessoninformation.scss'
-import Button from '../../Button/Button'
+import "./lessoninformation.scss"
+import Button from "../../Button/Button"
 import { useTranslation } from "react-i18next";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom"
 
-
-export default function LessonInformation({lesson, setVisible}) {
+export default function LessonInformation({ lesson, setVisible }) {
     const { t } = useTranslation();
 
     return (
@@ -25,23 +23,23 @@ export default function LessonInformation({lesson, setVisible}) {
             </div>
             <div className="lesson-description-content">
                 <span>
-                {lesson.description}
+                    {lesson.description}
                 </span>
             </div>
             <div className="lesson-button-panel">
                 <div>
-                    <Button styleName="orange-button" text={t("ButtonCancel")} onClick={(e)=>{setVisible(false)}} />
+                    <Button styleName="orange-button" text={t("ButtonCancel")} onClick={(e) => { setVisible(false) }} />
                 </div>
                 <div>
                     <Link className="link" to={
                         {
-                            pathname: "/answers/"+lesson._id,
+                            pathname: "/answers/" + lesson._id,
                             state: {
                                 idLesson: lesson._id,
                             }
                         }
                     }>
-                        <Button styleName="primary-button" text={t("ButtonStartLesson")}/>
+                        <Button styleName="primary-button" text={t("ButtonStartLesson")} />
                     </Link>
                 </div>
             </div>

@@ -81,8 +81,8 @@ export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, 
             helpHttp().get(UrlAPI + "answers/"+questionsChange[1]._id,{
                 headers: {
                     Accept: "application/json",
-                    'Content-Type': 'application/json',
-                    'Authorization': sessionStorage.getItem("token")
+                    "Content-Type": "application/json",
+                    "Authorization": sessionStorage.getItem("token")
                 }
             }).then((responseAnswers) => {
                 if (responseAnswers.length>0) {
@@ -126,8 +126,8 @@ export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, 
             helpHttp().post(UrlAPI + "lessonRecords",{
                 headers: {
                     Accept: "application/json",
-                    'Content-Type': 'application/json',
-                    'Authorization': sessionStorage.getItem("token")
+                    "Content-Type": "application/json",
+                    "Authorization": sessionStorage.getItem("token")
                 },
                 body: lessonRecord
             }).then((response) => {

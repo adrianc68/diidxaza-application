@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { helpHttp, UrlAPI } from "../helpers/helpHttp";
-import { BiError, BiBadgeCheck } from 'react-icons/bi';
-import UserImageDefault from '../assets/images/ide-29.svg';
+import { BiError, BiBadgeCheck } from "react-icons/bi";
+import UserImageDefault from "../assets/images/ide-29.svg";
 
 
 export const useLoginForm = (initialForm, validateForm) => {
@@ -31,7 +31,7 @@ export const useLoginForm = (initialForm, validateForm) => {
             helpHttp().post(UrlAPI + "login", {
                 headers: {
                     Accept: "application/json",
-                    'Content-Type': 'application/json'
+                    "Content-Type": "application/json"
                 },
                 body: form
             }).then((response) => {
@@ -47,7 +47,7 @@ export const useLoginForm = (initialForm, validateForm) => {
                     sessionStorage.setItem("username", response.account.username);
                     sessionStorage.setItem("URL", response.account.URL);
                     sessionStorage.setItem("dateBirth", response.account.dateBirth);
-                    window.location.href = 'home';
+                    window.location.href = "home";
                 } else {
                     setClaseName("errorMessage");
                     if (response.status === 404) {
@@ -158,11 +158,11 @@ export const useUpdateAccountForm = (validateForm,setForm,form,setCities,setModa
         setErrors(validateForm(form));
         if (Object.keys(errors).length === 0 && !errorImage) {
             fetch(UrlAPI + "accounts", {
-                method: 'PUT',
+                method: "PUT",
                 headers: {
                     Accept: "application/json",
-                    'Content-Type': 'application/json',
-                    'Authorization': sessionStorage.getItem("token")
+                    "Content-Type": "application/json",
+                    "Authorization": sessionStorage.getItem("token")
                 },
                 body: JSON.stringify(form)
             }).then((response) => {
@@ -180,17 +180,17 @@ export const useUpdateAccountForm = (validateForm,setForm,form,setCities,setModa
                                 helpHttp().del(UrlAPI + "resources", {
                                     headers: {
                                         Accept: "application/json",
-                                        'Content-Type': 'application/json',
-                                        'Authorization': sessionStorage.getItem("token")
+                                        "Content-Type": "application/json",
+                                        "Authorization": sessionStorage.getItem("token")
                                     },
                                     body: {URL:URLPhoto}
                                 }).then((response) => {
                                     if(response.messageHappened){
                                         var formData = new FormData();
-                                        formData.append('idAccount', sessionStorage.getItem("id"));
-                                        formData.append('file', urlFile);
+                                        formData.append("idAccount", sessionStorage.getItem("id"));
+                                        formData.append("file", urlFile);
                                         fetch(UrlAPI + "resources/account", {
-                                            method: 'POST',
+                                            method: "POST",
                                             body: formData
                                         }).then((response) => { 
                                             if(response.ok){
@@ -204,10 +204,10 @@ export const useUpdateAccountForm = (validateForm,setForm,form,setCities,setModa
                                 })
                             } else{
                                 var formData = new FormData();
-                                formData.append('idAccount', sessionStorage.getItem("id"));
-                                formData.append('file', urlFile);
+                                formData.append("idAccount", sessionStorage.getItem("id"));
+                                formData.append("file", urlFile);
                                 fetch(UrlAPI + "resources/account", {
-                                    method: 'POST',
+                                    method: "POST",
                                     body: formData
                                 }).then((response) => {
                                     if(response.ok){
@@ -288,7 +288,7 @@ export const useVerificationForm = (validateCode) => {
                 helpHttp().patch(UrlAPI + "login", {
                     headers: {
                         Accept: "application/json",
-                        'Content-Type': 'application/json'
+                        "Content-Type": "application/json"
                     },
                     body: confirmation
                 }).then((response) => {
@@ -298,7 +298,7 @@ export const useVerificationForm = (validateCode) => {
                         setResponse(t("SignUpVerificationSuccessful"));
                         setLoading(true);
                         sessionStorage.clear();
-                        window.location.href = 'login';
+                        window.location.href = "login";
                     }
                     else {
                         if (response.status === 404) {
@@ -336,7 +336,7 @@ export const useVerificationForm = (validateCode) => {
         helpHttp().post(UrlAPI + "emails", {
             headers: {
                 Accept: "application/json",
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json"
             },
             body: formEmail
         }).then((response) => {
@@ -453,10 +453,10 @@ export const useAccountForm = (initialForm, validateForm) => {
         setErrors(validateForm(form));
         if (Object.keys(errors).length === 0 && !errorImage) {
             fetch(UrlAPI + "accounts", {
-                method: 'POST',
+                method: "POST",
                 headers: {
                     Accept: "application/json",
-                    'Content-Type': 'application/json'
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify(form)
             }).then((response) => {
@@ -472,10 +472,10 @@ export const useAccountForm = (initialForm, validateForm) => {
                         setLoading(true);
                         if (urlFile != null) {
                             var formData = new FormData();
-                            formData.append('idAccount', idAccount);
-                            formData.append('file', urlFile);
+                            formData.append("idAccount", idAccount);
+                            formData.append("file", urlFile);
                             fetch(UrlAPI + "resources/account", {
-                                method: 'POST',
+                                method: "POST",
                                 body: formData
                             }).then((response) => { })
                         }

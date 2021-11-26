@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import './report.scss'
+import React, { useEffect, useState } from "react"
+import "./report.scss"
 import { useTranslation } from "react-i18next";
-import Button from '../Button/Button';
-import { helpHttp, UrlAPI } from '../../helpers/helpHttp';
-import { useHistory } from 'react-router';
-import { useConvertionData } from '../../hooks/useConvertionData';
-import { BsFillCaretRightFill, BsFillCaretDownFill } from 'react-icons/bs'
+import Button from "../Button/Button";
+import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
+import { useHistory } from "react-router";
+import { useConvertionData } from "../../hooks/useConvertionData";
+import { BsFillCaretRightFill, BsFillCaretDownFill } from "react-icons/bs"
 
 export default function Report({ report }) {
     const { t } = useTranslation();
@@ -20,7 +20,7 @@ export default function Report({ report }) {
             helpHttp().get(UrlAPI + "reports/" + idReported, {
                 headers: {
                     Accept: "application/json",
-                    'Authorization': sessionStorage.getItem("token")
+                    "Authorization": sessionStorage.getItem("token")
                 }
             }).then((response) => {
                 if (response != null) {
@@ -49,7 +49,7 @@ export default function Report({ report }) {
                     report.accountReported[0]._id === sessionStorage.getItem("id") ? null :
                         <div className="report-numeration-container-panel-button">
                             <Button styleName="text-button blue-text" text={t("ButtonReportSeeUsersDetails")} onClick={() => history.push({
-                                pathname: '/profile/' + report.accountReported[0].username,
+                                pathname: "/profile/" + report.accountReported[0].username,
                                 state: {
                                     id: report.accountReported[0]._id
                                 }

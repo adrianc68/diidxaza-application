@@ -1,5 +1,4 @@
-import React from 'react'
-import './loadingscreen.scss'
+import "./loadingscreen.scss"
 
 export default function LoadingScreen() {
     return (

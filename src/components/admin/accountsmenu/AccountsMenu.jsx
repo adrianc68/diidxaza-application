@@ -1,9 +1,9 @@
-import React, { useEffect, useReducer, useState } from 'react'
-import './accountsmenu.scss'
-import Button from '../../../components/Button/Button'
+import React, { useEffect, useState } from "react"
+import "./accountsmenu.scss"
+import Button from "../../../components/Button/Button"
 import { useTranslation } from "react-i18next";
-import UserListItem from './userlistitem/UserListItem';
-import { helpHttp, UrlAPI } from '../../../helpers/helpHttp';
+import UserListItem from "./userlistitem/UserListItem";
+import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 
 export default function AccountsMenu() {
     const { t } = useTranslation();
@@ -18,7 +18,7 @@ export default function AccountsMenu() {
         helpHttp().get(UrlAPI + "accounts", {
             headers: {
                 Accept: "application/json",
-                'Authorization': sessionStorage.getItem("token")
+                "Authorization": sessionStorage.getItem("token")
             }
         }).then((response) => {
             if (response != null) {

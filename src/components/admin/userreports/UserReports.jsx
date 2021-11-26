@@ -1,10 +1,9 @@
-import React from 'react'
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next";
-import './userreports.scss'
-import UserImageDefault from '../../../assets/images/ide-29.svg'
-import Report from '../../report/Report';
-import { helpHttp, UrlAPI } from '../../../helpers/helpHttp';
+import "./userreports.scss"
+import UserImageDefault from "../../../assets/images/ide-29.svg"
+import Report from "../../report/Report";
+import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 
 export default function UserReports({ username }) {
     const { t } = useTranslation();
@@ -20,7 +19,7 @@ export default function UserReports({ username }) {
         helpHttp().get(UrlAPI + "reports/usernameReported/" + username, {
             headers: {
                 Accept: "application/json",
-                'Authorization': sessionStorage.getItem("token")
+                "Authorization": sessionStorage.getItem("token")
             }
         }).then((response) => {
             if (response != null) {

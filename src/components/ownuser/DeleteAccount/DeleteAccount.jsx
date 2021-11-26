@@ -1,8 +1,7 @@
-import React from 'react'
-import './deleteaccount.scss'
-import Button from '../../Button/Button'
+import "./deleteaccount.scss"
+import Button from "../../Button/Button"
 import { useTranslation } from "react-i18next";
-import ImageInformationAlt from '../../../assets/images/ide-36.svg'
+import ImageInformationAlt from "../../../assets/images/ide-36.svg"
 
 export default function DeleteAccount() {
     const { t } = useTranslation();

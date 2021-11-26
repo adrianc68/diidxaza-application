@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import './discussion.scss'
-import Comment from '../comment/Comment';
-import { useTranslation } from 'react-i18next';
-import Button from '../../../components/Button/Button';
-import ReportUser from '../../anotheruser/reportuser/ReportUser';
-import Modal from '../../modal/Modal';
-import { useConvertionData } from '../../../hooks/useConvertionData';
+import React, { useState } from "react"
+import "./discussion.scss"
+import Comment from "../comment/Comment";
+import { useTranslation } from "react-i18next";
+import Button from "../../../components/Button/Button";
+import ReportUser from "../../anotheruser/reportuser/ReportUser";
+import Modal from "../../modal/Modal";
+import { useConvertionData } from "../../../hooks/useConvertionData";
 
 export default function Discussion({ discussion, numberComments, comments, imageAccount, children, handleClickDeleteComment, setModalToken, handleClickFollow, imagesComments }) {
     const { t } = useTranslation();

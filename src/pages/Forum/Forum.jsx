@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import './forum.scss'
-import Button from '../../components/Button/Button'
+import React, { useState, useEffect } from "react"
+import "./forum.scss"
+import Button from "../../components/Button/Button"
 import { useTranslation } from "react-i18next";
-import { Link } from 'react-router-dom'
-import Discussion from '../../components/forum/discussion/Discussion';
-import DiscussionListItem from '../../components/forum/discussionlistitem/DiscussionListItem';
+import { Link } from "react-router-dom"
+import Discussion from "../../components/forum/discussion/Discussion";
+import DiscussionListItem from "../../components/forum/discussionlistitem/DiscussionListItem";
 import { useForum } from "../../hooks/useDiscussionForm";
-import AddComment from '../../components/forum/addcomment/AddComment';
-import Modal from '../../components/modal/Modal';
+import AddComment from "../../components/forum/addcomment/AddComment";
+import Modal from "../../components/modal/Modal";
 import AlertMessage from "../../components/alert/AlertMessage";
 import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
-import ImageInformationAlt from '../../assets/images/ide-22.svg';
+import ImageInformationAlt from "../../assets/images/ide-22.svg";
 
 const initialForm = {
     comment: "",
@@ -52,7 +52,7 @@ export default function Forum() {
         helpHttp().get(UrlAPI + "discussions", {
             headers: {
                 Accept: "application/json",
-                'Authorization': sessionStorage.getItem("token")
+                "Authorization": sessionStorage.getItem("token")
             },
         }).then((response) => {
             if (response.length>0) {
@@ -185,8 +185,8 @@ export default function Forum() {
             {modalForum && <Modal handleModal={() => { setModalForum(false) }} sizeHeight="20" sizeWidth="35">
                 <AlertMessage content={responseModalForum} handleModal={() => { setModalForum(false) }}></AlertMessage>
             </Modal>}
-            {modalToken && <Modal handleModal={() => { window.location.href = 'login' }} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = 'login' }}></AlertMessage>
+            {modalToken && <Modal handleModal={() => { window.location.href = "login" }} sizeHeight="20" sizeWidth="35">
+                <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = "login" }}></AlertMessage>
             </Modal>}
         </div>
     )

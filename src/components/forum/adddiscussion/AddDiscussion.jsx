@@ -1,15 +1,14 @@
-import React from 'react'
-import './adddiscussion.scss'
-import ImageInformationAlt1 from '../../../assets/images/ide-13.svg'
-import ImageInformationAlt2 from '../../../assets/images/ide-23.svg'
-import ImageInformationAlt3 from '../../../assets/images/ide-25.svg'
+import "./adddiscussion.scss"
+import ImageInformationAlt1 from "../../../assets/images/ide-13.svg"
+import ImageInformationAlt2 from "../../../assets/images/ide-23.svg"
+import ImageInformationAlt3 from "../../../assets/images/ide-25.svg"
 
-import Button from '../../../components/Button/Button'
-import { useTranslation } from 'react-i18next'
+import Button from "../../../components/Button/Button"
+import { useTranslation } from "react-i18next"
 import { useDiscussionForm } from "../../../hooks/useDiscussionForm";
-import Modal from '../../modal/Modal';
+import Modal from "../../modal/Modal";
 import AlertMessage from "../../alert/AlertMessage";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const initialForm = {
     title: "",
@@ -133,8 +132,8 @@ export default function AddDiscussion() {
                 {modalNotToken && <Modal handleModal={() => { setModalNotToken(false) }} sizeHeight="100vh" sizeWidth="50vw">
                     <AlertMessage content={t("ErrorToken")} handleModal={() => { setModalNotToken(false) }}></AlertMessage>
                 </Modal>}
-                {modalToken && <Modal handleModal={() => { window.location.href = 'login'; }} sizeHeight="200" sizeWidth="350">
-                    <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = 'login'; }}></AlertMessage>
+                {modalToken && <Modal handleModal={() => { window.location.href = "login"; }} sizeHeight="200" sizeWidth="350">
+                    <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = "login"; }}></AlertMessage>
                 </Modal>}
             </div>
         </form>

@@ -1,10 +1,9 @@
-import React from 'react'
-import './home.scss'
-import ImageAlt from '../../assets/images/ide-17.svg'
-import ImageAlt2 from '../../assets/images/ide-15.svg'
-import ImageAlt3 from '../../assets/images/ide-16.svg'
+import React from "react"
+import "./home.scss"
+import ImageAlt from "../../assets/images/ide-17.svg"
+import ImageAlt2 from "../../assets/images/ide-15.svg"
+import ImageAlt3 from "../../assets/images/ide-16.svg"
 import { useTranslation } from "react-i18next";
-
 
 export default function Home() {
     const { t } = useTranslation();
@@ -22,7 +21,7 @@ export default function Home() {
 
             <div className="home-welcome-title-container">
                 <div className="home-welcome-container">
-                    <h2>{t("HomeWelcomeTitle").replace('$', sessionStorage.getItem("name"))}</h2>
+                    <h2>{t("HomeWelcomeTitle").replace("$", sessionStorage.getItem("name"))}</h2>
                     <span>{t("HomeWelcomeDescription")}</span>
                 </div>
                 <div className="home-welcome-history-container">

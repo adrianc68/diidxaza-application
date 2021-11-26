@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
-import './reportsmenu.scss'
-import Button from '../../../components/Button/Button'
+import { useEffect, useState } from "react"
+import "./reportsmenu.scss"
+import Button from "../../../components/Button/Button"
 import { useTranslation } from "react-i18next";
-import Report from '../../report/Report';
-import { helpHttp, UrlAPI } from '../../../helpers/helpHttp';
+import Report from "../../report/Report";
+import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 
 export default function ReportsMenu() {
     const { t } = useTranslation();
@@ -20,7 +20,7 @@ export default function ReportsMenu() {
         helpHttp().get(UrlAPI + "reports", {
             headers: {
                 Accept: "application/json",
-                'Authorization': sessionStorage.getItem("token")
+                "Authorization": sessionStorage.getItem("token")
             }
         }).then((response) => {
             if (response != null) {
@@ -64,7 +64,7 @@ export default function ReportsMenu() {
             helpHttp().get(UrlAPI + "reports/nameAccount/" + reportInput, {
                 headers: {
                     Accept: "application/json",
-                    'Authorization': sessionStorage.getItem("token")
+                    "Authorization": sessionStorage.getItem("token")
                 }
             }).then((response) => {
                 if (!response.status) {

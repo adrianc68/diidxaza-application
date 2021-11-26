@@ -1,11 +1,11 @@
-import React, { useState, useRef, useEffect} from 'react'
-import './learning.scss'
+import React, { useState, useRef, useEffect} from "react"
+import "./learning.scss"
 import { useTranslation } from "react-i18next";
-import LessonListItem from '../../components/learning/lessonlistitem/LessonListItem';
-import LessonInformation from '../../components/learning/lessoninformation/LessonInformation';
+import LessonListItem from "../../components/learning/lessonlistitem/LessonListItem";
+import LessonInformation from "../../components/learning/lessoninformation/LessonInformation";
 import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
-import Modal from '../../components/modal/Modal';
-import AlertMessage from '../../components/alert/AlertMessage';
+import Modal from "../../components/modal/Modal";
+import AlertMessage from "../../components/alert/AlertMessage";
 
 const totalPoints = (lessonRecords) => {
     let totalPointsRecord = 0;
@@ -32,8 +32,8 @@ export default function Learning() {
         helpHttp().get(UrlAPI + "lessons",{
             headers: {
                 Accept: "application/json",
-                'Content-Type': 'application/json',
-                'Authorization': sessionStorage.getItem("token")
+                "Content-Type": "application/json",
+                "Authorization": sessionStorage.getItem("token")
             }
         }).then((response) => {
             if (response.length>0) {
@@ -41,8 +41,8 @@ export default function Learning() {
                 helpHttp().get(UrlAPI + "lessonRecords/"+sessionStorage.getItem("id"),{
                     headers: {
                         Accept: "application/json",
-                        'Content-Type': 'application/json',
-                        'Authorization': sessionStorage.getItem("token")
+                        "Content-Type": "application/json",
+                        "Authorization": sessionStorage.getItem("token")
                     }
                 }).then((responseRecords) => {
                     if (responseRecords.length>0) {
@@ -84,7 +84,7 @@ export default function Learning() {
     }
 
     function placeLessonInformation() {
-        const sytleLesson = {top:'0px', left:'0px'};
+        const sytleLesson = {top:"0px", left:"0px"};
         var lessonInformation = <LessonInformation style={sytleLesson} lesson={lesson} setVisible={setVisible}></LessonInformation>;
         return lessonInformation;
     }
@@ -124,8 +124,8 @@ export default function Learning() {
             {modalNotToken && <Modal handleModal={() => { setModalNotToken(false) }} sizeHeight="20" sizeWidth="35">
                 <AlertMessage content={t("ErrorToken")} handleModal={() => { setModalNotToken(false) }}></AlertMessage>
             </Modal>}
-            {modalToken && <Modal handleModal={() => { window.location.href = 'login' }} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = 'login' }}></AlertMessage>
+            {modalToken && <Modal handleModal={() => { window.location.href = "login" }} sizeHeight="20" sizeWidth="35">
+                <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = "login" }}></AlertMessage>
             </Modal>}
         </div>
     )

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { helpHttp, UrlAPI} from "../helpers/helpHttp";
-import {BiError, BiBadgeCheck} from 'react-icons/bi';
+import {BiError, BiBadgeCheck} from "react-icons/bi";
 
 export const useReportForm = (initialForm,validateForm, id) => {
     const { t } = useTranslation();
@@ -33,8 +33,8 @@ export const useReportForm = (initialForm,validateForm, id) => {
             helpHttp().post(UrlAPI+"reports",{
                 headers: {
                     Accept: "application/json",
-                    'Content-Type': 'application/json',
-                    'Authorization': sessionStorage.getItem("token")
+                    "Content-Type": "application/json",
+                    "Authorization": sessionStorage.getItem("token")
                 },
                 body: form
             }).then((response) => {

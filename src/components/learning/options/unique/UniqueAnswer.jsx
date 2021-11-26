@@ -1,5 +1,4 @@
-import React from 'react'
-import './uniqueanswer.scss'
+import "./uniqueanswer.scss"
 export default function UniqueAnswer({answers, handleChange}) {
     return (
         <form className="uniqueanswer-form">

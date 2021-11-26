@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { helpHttp, UrlAPI} from "../helpers/helpHttp";
-import {BiError, BiBadgeCheck} from 'react-icons/bi';
-import ImageInformationAlt from '../assets/images/ide-02.svg';
+import {BiError, BiBadgeCheck} from "react-icons/bi";
+import ImageInformationAlt from "../assets/images/ide-02.svg";
 
 export const useForum = (validateForm,validateFormComment,initialForm,setDiscussions) => {
     const [title, setTitle] = useState("");
@@ -53,7 +53,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
             helpHttp().get(UrlAPI+"discussions/title/"+title,{
                 headers: {
                     Accept: "application/json",
-                    'Authorization': sessionStorage.getItem("token")
+                    "Authorization": sessionStorage.getItem("token")
                 }
             }).then((response) => {
                 if(response.length>0){
@@ -93,7 +93,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
         helpHttp().get(UrlAPI+"discussions/filters/news",{
             headers: {
                 Accept: "application/json",
-                'Authorization': sessionStorage.getItem("token")
+                "Authorization": sessionStorage.getItem("token")
             }
         }).then((response) => {
             if(response.length>0){
@@ -149,7 +149,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
         helpHttp().get(UrlAPI+"discussions/filters/populars",{
             headers: {
                 Accept: "application/json",
-                'Authorization': sessionStorage.getItem("token")
+                "Authorization": sessionStorage.getItem("token")
             }
         }).then((response) => {
             if(response.length>0){
@@ -185,7 +185,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
         helpHttp().get(UrlAPI+"discussions/tracing/"+sessionStorage.getItem("id"),{
             headers: {
                 Accept: "application/json",
-                'Authorization': sessionStorage.getItem("token")
+                "Authorization": sessionStorage.getItem("token")
             }
         }).then((response) => {
             if(response.length>0){
@@ -222,7 +222,7 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
         helpHttp().get(UrlAPI+"discussions/"+id,{
             headers: {
                 Accept: "application/json",
-                'Authorization': sessionStorage.getItem("token")
+                "Authorization": sessionStorage.getItem("token")
             }
         }).then((responseDiscussion) => {
             if(responseDiscussion._id){
@@ -242,10 +242,10 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                         URL: responseDiscussion.idAccount[0].URL
                     }
                     fetch(UrlAPI+"resources",{
-                        method: 'PATCH',
+                        method: "PATCH",
                         headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': sessionStorage.getItem("token")
+                            "Content-Type": "application/json",
+                            "Authorization": sessionStorage.getItem("token")
                         },
                         body: JSON.stringify(url)
                     }).then((responseResource) => {
@@ -265,17 +265,17 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                 helpHttp().get(UrlAPI+"comments/"+id,{
                     headers: {
                         Accept: "application/json",
-                        'Authorization': sessionStorage.getItem("token")
+                        "Authorization": sessionStorage.getItem("token")
                     }
                 }).then(async (responseComments) => {
                     if(responseComments.length>0){
                         await responseComments.map(async imageComment => {
                             if(imageComment.idAccount[0].URL!= undefined){
                                 fetch(UrlAPI+"resources",{
-                                    method: 'PATCH',
+                                    method: "PATCH",
                                     headers: {
-                                        'Content-Type': 'application/json',
-                                        'Authorization': sessionStorage.getItem("token")
+                                        "Content-Type": "application/json",
+                                        "Authorization": sessionStorage.getItem("token")
                                     },
                                     body: JSON.stringify({URL:imageComment.idAccount[0].URL})
                                 }).then((response) => {
@@ -342,8 +342,8 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
             helpHttp().post(UrlAPI+"comments",{
                 headers: {
                     Accept: "application/json",
-                    'Content-Type': 'application/json',
-                    'Authorization': sessionStorage.getItem("token")
+                    "Content-Type": "application/json",
+                    "Authorization": sessionStorage.getItem("token")
                 },
                 body: formComment
             }).then((response) => {
@@ -373,10 +373,10 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
                     }
                     if(sessionStorage.getItem("URL")!=undefined){
                         fetch(UrlAPI+"resources",{
-                            method: 'PATCH',
+                            method: "PATCH",
                             headers: {
-                                'Content-Type': 'application/json',
-                                'Authorization': sessionStorage.getItem("token")
+                                "Content-Type": "application/json",
+                                "Authorization": sessionStorage.getItem("token")
                             },
                             body: JSON.stringify({URL:sessionStorage.getItem("URL")})
                         }).then((response) => {
@@ -439,8 +439,8 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
         helpHttp().del(UrlAPI+"comments",{
             headers: {
                 Accept: "application/json",
-                'Content-Type': 'application/json',
-                'Authorization': sessionStorage.getItem("token")
+                "Content-Type": "application/json",
+                "Authorization": sessionStorage.getItem("token")
             },
             body: {
                 _id:id,
@@ -489,8 +489,8 @@ export const useForum = (validateForm,validateFormComment,initialForm,setDiscuss
         helpHttp().patch(UrlAPI+"discussions",{
             headers: {
                 Accept: "application/json",
-                'Content-Type': 'application/json',
-                'Authorization': sessionStorage.getItem("token")
+                "Content-Type": "application/json",
+                "Authorization": sessionStorage.getItem("token")
             },
             body: {
                 _id:discussion._id,
@@ -594,8 +594,8 @@ export const useDiscussionForm = (initialForm,validateForm) => {
                 helpHttp().post(UrlAPI+"discussions",{
                     headers: {
                         Accept: "application/json",
-                        'Content-Type': 'application/json',
-                        'Authorization': sessionStorage.getItem("token")
+                        "Content-Type": "application/json",
+                        "Authorization": sessionStorage.getItem("token")
                     },
                     body: form
                 }).then((response) => {
