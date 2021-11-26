@@ -1,321 +1,321 @@
 @import "../../components/variables.module.scss";
 
 .welcome-main-container {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  background-color: #fff;
+  .welcome-main-information-container {
+    height: calc(95vh - #{$topbar-height} - 40px);
     display: flex;
+    margin: auto;
+    padding: 20px;
+    .welcome-main-information-image {
+      width: 40vw;
+      height: 55vh;
+      margin: auto;
+      .welcome-information-image {
+        height: 100%;
+        width: 100%;
+        display: block;
+        padding-top: 15px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    .welcome-main-information-text {
+      width: 54vw;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: left;
+      gap: 15px;
+      div {
+        width: 250px;
+        height: 35px;
+      }
+
+      p {
+        text-align: justify;
+      }
+    }
+  }
+
+  .welcome-problems-information-container {
+    background-color: #f0f0f0;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    video {
+      width: 50%;
+      height: 100%;
+    }
+
+    .welcome-problems-information {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 25px;
+      p {
+        text-align: justify;
+      }
+    }
+  }
+
+  .welcome-benefits-information-container {
+    display: flex;
+    width: calc(100vw - 40px);
     flex-direction: column;
-    overflow-x:hidden;
-    background-color: #fff;
-    .welcome-main-information-container {
-        height: calc(95vh - #{$topbar-height} - 40px);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    .welcome-benefits-description-container {
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+      padding: 15px;
+      align-items: center;
+      gap: 5vh;
+
+      span {
+        text-align: justify;
+      }
+
+      img {
+        width: 50%;
+        height: 50%;
+      }
+    }
+
+    .welcome-benefits-list-container {
+      width: calc(80% + 30px);
+      ul {
         display: flex;
-        margin: auto;
-        padding: 20px;
-        .welcome-main-information-image {
-            width: 40vw;
-            height: 55vh;
-            margin: auto;
-            .welcome-information-image {
-                height: 100%;
-                width: 100%;
-                display: block;
-                padding-top: 15px;
-                margin-left: auto;
-                margin-right: auto;
-            }
+        flex-wrap: wrap;
+        list-style: none;
+
+        li {
+          width: calc(100% / 2);
+          height: auto;
         }
-        .welcome-main-information-text {
-            width: 54vw;
+
+        .welcome-benefits-listItem-container {
+          display: flex;
+          flex-direction: column;
+          padding: 25px;
+          img {
+            width: 155px;
+            height: 155px;
             margin: auto;
+          }
+
+          span {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+
+  .welcome-choose-account-type-container {
+    width: 100vw;
+    background-color: #f0f0f0;
+    padding-bottom: 35px;
+    padding-top: 35px;
+    .welcome-choose-title {
+      padding: 15px;
+      display: inline-flex;
+      flex-direction: column;
+      gap: 25px;
+      width: calc(100% - 30px);
+      align-items: flex-start;
+      justify-content: flex-start;
+      h1 {
+        padding-left: 55px;
+      }
+      p {
+        padding-left: 55px;
+      }
+      .welcome-choose-description {
+        width: 85%;
+        text-align: justify;
+      }
+    }
+
+    .welcome-choose-list-container {
+      .welcome-choose-account-type-ul {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 35px;
+        gap: 35px;
+        justify-content: center;
+        .welcome-choose-account-type-li {
+          display: flex;
+          flex-wrap: wrap;
+          width: calc(50% - 35px);
+          height: 90vh;
+          justify-content: center;
+          align-items: center;
+          .welcome-choose-listItem-container {
             display: flex;
             flex-direction: column;
-            justify-content: left;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+              rgba(0, 0, 0, 0.23) 0px 3px 6px;
+            background-color: #fff;
+            padding: 15px;
+            width: 80%;
+            height: 90%;
             gap: 15px;
-            div {
-                width: 250px;
-                height: 35px;
+            .welcome-choose-image-container {
+              height: 35%;
+              img {
+                width: 100%;
+                height: 100%;
+              }
             }
 
-            p {
-                text-align: justify;
+            .welcome-choose-description-container {
+              display: flex;
+              flex-direction: column;
+              height: 60%;
+              .welcome-choose-description-text-container {
+                display: flex;
+                flex-direction: column;
+                height: 75%;
+                padding: 15px;
+                gap: 5px;
+                overflow-y: auto;
+                h2 {
+                  text-align: center;
+                }
+
+                span {
+                  text-align: justify;
+                }
+
+                ul {
+                  padding-left: 2em;
+                  .valid-li {
+                    list-style: url("../../assets/images/valid.svg");
+                  }
+                  .invalid-li {
+                    list-style: url("../../assets/images/invalid.svg");
+                  }
+                }
+              }
+
+              .welcome-choose-description-button-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 42px;
+              }
             }
+          }
         }
+      }
+    }
+  }
+
+  /* Welcome Main Information Container */
+  @media all and (max-width: $max-width-device) {
+    .welcome-main-information-container {
+      flex-direction: column;
+      height: auto;
+      gap: 2vw;
+      .welcome-main-information-text {
+        width: 80%;
+        text-align: center;
+        width: calc(100vw - 15px -15px);
+        padding: 15px;
+        gap: 25px;
+        align-items: center;
+      }
+
+      .welcome-main-information-image {
+        height: 25vh;
+        width: 50vw;
+        margin: auto;
+        padding-bottom: 3vh;
+        .welcome-information-image {
+          height: 100%;
+          width: 100%;
+          display: block;
+          padding-top: 0px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
     }
 
     .welcome-problems-information-container {
-        background-color: #f0f0f0;
-        width: 100vw;
-        display:flex;
-        justify-content: center;
-        align-items: center;
-        video {
-            width: 50%;
-            height:100%;
-        }
-
-        .welcome-problems-information {
-            padding:40px;
-            display:flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap:25px;
-            p {
-                text-align: justify;
-            }
-        }
+      flex-direction: column;
+      padding-top: 35px;
+      video {
+        width: 50%;
+        height: 100%;
+      }
     }
 
     .welcome-benefits-information-container {
-        display: flex;
-        width: calc(100vw - 40px);
+      width: calc(100vw - 40px);
+      .welcome-benefits-description-container {
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 20px;
-        .welcome-benefits-description-container {
-            display: flex;
-            flex-direction: column;
-            width: 80%;
-            padding: 15px;
-            align-items: center;
-            gap: 5vh;
-
-            span {
-                text-align: justify;
-            }
-
-            img {
-                width: 50%;
-                height: 50%;
-            }
+        width: 90%;
+        padding: 10px;
+        img {
+          width: 70%;
+          height: 70%;
         }
+      }
 
-        .welcome-benefits-list-container {
-            width: calc(80% + 30px);
-            ul {
-                display: flex;
-                flex-wrap: wrap;
-                list-style: none;
-
-                li {
-                    width: calc(100% / 2);
-                    height: auto;
-                }
-
-                .welcome-benefits-listItem-container {
-                    display: flex;
-                    flex-direction: column;
-                    padding: 25px;
-                    img {
-                        width: 155px;
-                        height: 155px;
-                        margin: auto;
-                    }
-
-                    span {
-                        text-align: center;
-                    }
-                }
-            }
-        }
+      .welcome-benefits-list-container {
+        width: calc(90% + 20px);
+      }
     }
 
     .welcome-choose-account-type-container {
-        width: 100vw;
-        background-color:#f0f0f0;
-        padding-bottom: 35px;
-        padding-top:35px;
-        .welcome-choose-title {
-            padding: 15px;
-            display: inline-flex;
-            flex-direction: column;
-            gap: 25px;
+      width: 100vw;
+      padding-bottom: 65px;
+      padding-top: 65px;
+      .welcome-choose-title {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        h1 {
+          padding-left: 0px;
+        }
+        p {
+          padding-left: 0px;
+        }
+        .welcome-choose-description {
+          width: 80%;
+        }
+      }
+      .welcome-choose-list-container {
+        .welcome-choose-account-type-ul {
+          padding: 15px;
+          .welcome-choose-account-type-li {
             width: calc(100% - 30px);
-            align-items: flex-start;
-            justify-content: flex-start;
-            h1 {
-                padding-left:55px;
-            }
-            p {
-                padding-left:55px;
-            }
-            .welcome-choose-description {
-                width: 85%;
-                text-align: justify;
-            }
-        }
+            .welcome-choose-listItem-container {
+              padding: 15px;
+              height: 90%;
+              gap: 15px;
 
-        .welcome-choose-list-container {
-            .welcome-choose-account-type-ul {
-                display: flex;
-                flex-wrap: wrap;
-                padding: 35px;
-                gap: 35px;
-                justify-content: center;
-                .welcome-choose-account-type-li {
-                    display: flex;
-                    flex-wrap: wrap;
-                    width: calc(50% - 35px);
-                    height: 90vh;
-                    justify-content: center;
-                    align-items: center;
-                    .welcome-choose-listItem-container {
-                        display: flex;
-                        flex-direction: column;
-                        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-                        background-color: #fff;
-                        padding: 15px;
-                        width: 80%;
-                        height: 90%;
-                        gap: 15px;
-                        .welcome-choose-image-container {
-                            height: 35%;
-                            img {
-                                width: 100%;
-                                height: 100%;
-                            }
-                        }
-
-                        .welcome-choose-description-container {
-                            display: flex;
-                            flex-direction: column;
-                            height: 60%;
-                            .welcome-choose-description-text-container {
-                                display: flex;
-                                flex-direction: column;
-                                height: 75%;
-                                padding: 15px;
-                                gap: 5px;
-                                overflow-y: auto;
-                                h2 {
-                                    text-align: center;
-                                }
-
-                                span {
-                                    text-align: justify;
-                                }
-
-                                ul {
-                                    padding-left: 2em;
-                                    .valid-li {
-                                        list-style: url("../../assets/images/valid.svg");
-                                    }
-                                    .invalid-li {
-                                        list-style: url("../../assets/images/invalid.svg");
-                                    }
-                                }
-                            }
-
-                            .welcome-choose-description-button-container {
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                height: 42px;
-                            }
-                        }
-                    }
+              .welcome-choose-description-container {
+                overflow: hidden;
+                .welcome-choose-description-text-container {
+                  overflow: hidden;
                 }
+              }
             }
+          }
         }
+      }
     }
-
-    /* Welcome Main Information Container */
-    @media all and (max-width: $max-width-device) {
-        .welcome-main-information-container {
-            flex-direction: column;
-            height: auto;
-            gap: 2vw;
-            .welcome-main-information-text {
-                width: 80%;
-                text-align: center;
-                width: calc(100vw - 15px -15px);
-                padding: 15px;
-                gap: 25px;
-                align-items: center;
-            }
-
-            .welcome-main-information-image {
-                height: 25vh;
-                width: 50vw;
-                margin: auto;
-                padding-bottom: 3vh;
-                .welcome-information-image {
-                    height: 100%;
-                    width: 100%;
-                    display: block;
-                    padding-top: 0px;
-                    margin-left: auto;
-                    margin-right: auto;
-                }
-            }
-        }
-
-        .welcome-problems-information-container {
-            flex-direction: column;
-            padding-top:35px;
-            video {
-                width: 50%;
-                height:100%;
-            } 
-        }
-
-        .welcome-benefits-information-container {
-            width: calc(100vw - 40px);
-            .welcome-benefits-description-container {
-                flex-direction: column;
-                width: 90%;
-                padding: 10px;
-                img {
-                    width: 70%;
-                    height: 70%;
-                }
-            }
-
-            .welcome-benefits-list-container {
-                width: calc(90% + 20px);
-            }
-        }
-
-        .welcome-choose-account-type-container {
-            width: 100vw;
-            padding-bottom: 65px;
-            padding-top:65px;
-            .welcome-choose-title {
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                h1 {
-                    padding-left:0px;
-                }
-                p {
-                    padding-left:0px;
-                }
-                .welcome-choose-description {
-                    width: 80%;
-                }
-            }
-            .welcome-choose-list-container {
-                .welcome-choose-account-type-ul {
-                    padding: 15px;
-                    .welcome-choose-account-type-li {
-                        width: calc(100% - 30px);
-                        .welcome-choose-listItem-container {
-                            padding: 15px;
-                            height: 90%;
-                            gap: 15px;
-                            
-                            .welcome-choose-description-container {
-                                overflow: hidden;
-                                .welcome-choose-description-text-container {
-                                    overflow: hidden;
-                                
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+  }
 }

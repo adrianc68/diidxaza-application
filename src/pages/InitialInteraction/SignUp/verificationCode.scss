@@ -1,66 +1,63 @@
 @import "../../../components/variables.module.scss";
 
 .signup-input-verification-container {
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  border-radius: 3px;
+  .signup-input-title-container {
+    background-color: $top-title-container-background-color;
+    color: #fff;
+    padding: 25px;
+    text-align: center;
+    border-radius: 3px 3px 0px 0px;
+  }
+
+  .signup-container-information {
+    padding: 15px;
+    width: calc(100% - 30px);
+  }
+
+  .signup-verification-input-description-container {
     display: flex;
     flex-direction: column;
-    width: 50%;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-    border-radius:3px;
-    .signup-input-title-container {
-        background-color:$top-title-container-background-color;
-        color:#fff;
-        padding:25px;
-        text-align: center;
-        border-radius:3px 3px 0px 0px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    gap: 15px;
+    img {
+      height: 50%;
+      width: 50%;
+    }
+  }
+
+  .signup-verification-code-container {
+    background-color: #fff;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
     }
 
-    .signup-container-information {
-        padding:15px;
-        width:calc(100% - 30px);
+    .signup-verification-code-buttons {
+      display: flex;
+      gap: 35px;
     }
-
-    .signup-verification-input-description-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding:15px;
-        gap:15px;
-        img {
-            height: 50%;
-            width: 50%;
-        }
-    }
-
-    .signup-verification-code-container {
-        background-color: #fff;
-        box-shadow: rgba(60,64,67,0.3) 0px 1px 2px 0px, rgba(60,64,67,0.15) 0px 1px 3px 1px;
-        border-radius:3px;
-        display: flex;
-        flex-direction: column;
-        padding: 15px;
-
-        label {
-            display: flex;
-            flex-direction: column;
-            gap:15px;
-        }
-
-
-        .signup-verification-code-buttons {
-            display: flex;
-            gap: 35px;
-        }
-    }
-
+  }
 }
 
-
 @media all and (max-width: $max-width-device) {
-    .signup-input-verification-container {
-        width: 80%;
-    }
-       
+  .signup-input-verification-container {
+    width: 80%;
+  }
 }
