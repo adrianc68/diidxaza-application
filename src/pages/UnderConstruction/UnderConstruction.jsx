@@ -1,6 +1,6 @@
-import React from "react"
-import "./underconstruction.scss"
-import ImageAlt from "../../assets/images/ide-43.svg"
+import React from "react";
+import "./underconstruction.scss";
+import ImageAlt from "../../assets/images/ide-43.svg";
 import { useTranslation } from "react-i18next";
 
 export default function UnderConstruction() {

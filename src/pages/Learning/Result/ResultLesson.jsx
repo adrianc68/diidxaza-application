@@ -1,4 +1,4 @@
-import "./resultlesson.scss"
+import "./resultlesson.scss";
 import { useTranslation } from "react-i18next";
 import QuestionUniqueAnswerSolved from "../../../components/learning/resultlesson/unique/QuestionUniqueAnswerSolved";
 import QuestionMultipleAnswerSolved from "../../../components/learning/resultlesson/multiple/QuestionMultipleAnswerSolved";

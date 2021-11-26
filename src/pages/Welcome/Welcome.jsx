@@ -1,20 +1,20 @@
-import React, { useRef } from "react"
-import "./welcome.scss"
-import Footer from "../../components/footer/Footer"
+import React, { useRef } from "react";
+import "./welcome.scss";
+import Footer from "../../components/footer/Footer";
 import { useTranslation } from "react-i18next";
-import Topbar from "../../components/topbar/Topbar"
-import Button from "../../components/Button/Button"
-import SubtitlesVideo from "../../assets/vtt/Subtitles.vtt"
-import WelcomeImage from "../../assets/images/ide-22.svg"
-import ImageBenefit01 from "../../assets/images/ide-11.svg"
-import ImageBenefit02 from "../../assets/images/ide-15.svg"
-import ImageBenefit03 from "../../assets/images/ide-12.svg"
-import ImageBenefit04 from "../../assets/images/ide-14.svg"
-import VideoBenefit01 from "../../assets/images/vid-02.mp4"
-import AccountTypeImage from "../../assets/images/ide-23.svg"
-import AccountTypePremiumImage from "../../assets/images/ide-18.svg"
-import { MdLogin, MdLogout } from "react-icons/md"
-import { useHistory } from "react-router-dom"
+import Topbar from "../../components/topbar/Topbar";
+import Button from "../../components/Button/Button";
+import SubtitlesVideo from "../../assets/vtt/Subtitles.vtt";
+import WelcomeImage from "../../assets/images/ide-22.svg";
+import ImageBenefit01 from "../../assets/images/ide-11.svg";
+import ImageBenefit02 from "../../assets/images/ide-15.svg";
+import ImageBenefit03 from "../../assets/images/ide-12.svg";
+import ImageBenefit04 from "../../assets/images/ide-14.svg";
+import VideoBenefit01 from "../../assets/images/vid-02.mp4";
+import AccountTypeImage from "../../assets/images/ide-23.svg";
+import AccountTypePremiumImage from "../../assets/images/ide-18.svg";
+import { MdLogin, MdLogout } from "react-icons/md";
+import { useHistory } from "react-router-dom";
 
 export default function Welcome() {
     const { t } = useTranslation();

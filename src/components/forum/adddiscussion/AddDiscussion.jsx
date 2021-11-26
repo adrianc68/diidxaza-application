@@ -1,10 +1,9 @@
-import "./adddiscussion.scss"
-import ImageInformationAlt1 from "../../../assets/images/ide-13.svg"
-import ImageInformationAlt2 from "../../../assets/images/ide-23.svg"
-import ImageInformationAlt3 from "../../../assets/images/ide-25.svg"
-
-import Button from "../../../components/Button/Button"
-import { useTranslation } from "react-i18next"
+import "./adddiscussion.scss";
+import ImageInformationAlt1 from "../../../assets/images/ide-13.svg";
+import ImageInformationAlt2 from "../../../assets/images/ide-23.svg";
+import ImageInformationAlt3 from "../../../assets/images/ide-25.svg";
+import Button from "../../../components/Button/Button";
+import { useTranslation } from "react-i18next";
 import { useDiscussionForm } from "../../../hooks/useDiscussionForm";
 import Modal from "../../modal/Modal";
 import AlertMessage from "../../alert/AlertMessage";

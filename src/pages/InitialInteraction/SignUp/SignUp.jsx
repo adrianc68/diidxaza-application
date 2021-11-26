@@ -1,10 +1,10 @@
-import "./signup.scss"
-import Topbar from "../../../components/topbar/Topbar"
+import "./signup.scss";
+import Topbar from "../../../components/topbar/Topbar";
 import { useTranslation } from "react-i18next";
-import Button from "../../../components/Button/Button"
-import { Link } from "react-router-dom"
-import InputInformation from "./InputInformation"
-import VerificationCode from "./VerificationCode"
+import Button from "../../../components/Button/Button";
+import { Link } from "react-router-dom";
+import InputInformation from "./InputInformation";
+import VerificationCode from "./VerificationCode";
 
 export default function SignUp() {
     const { t } = useTranslation();

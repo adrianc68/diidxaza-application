@@ -1,26 +1,24 @@
 @import "../../components/variables.module.scss";
 
 .dashboard-main-container {
-    display: grid;
-    /* Error al usar variable para 240px --> $sidebar-width calc(100vw - 240px)*/
-    grid-template-columns: auto 1fr;
-    grid-template-rows: $topbar-height calc(100vh - #{$topbar-height});
-    grid-template-areas:
-        "topbar topbar"
-        "sidebar main";
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: $topbar-height calc(100vh - #{$topbar-height});
+  grid-template-areas:
+    "topbar topbar"
+    "sidebar main";
 
-    .sidebar-dashboard-container {
-        grid-area: sidebar;
-    }
+  .sidebar-dashboard-container {
+    grid-area: sidebar;
+  }
 
-    .topbar-dashboard-container {
-        grid-area: topbar;
-    }
+  .topbar-dashboard-container {
+    grid-area: topbar;
+  }
 
-    .userprofile-dashboard-container {
-        grid-area: main;
-        overflow: auto;
-        padding: 25px;
-        
-    }
+  .userprofile-dashboard-container {
+    grid-area: main;
+    overflow: auto;
+    padding: 25px;
+  }
 }

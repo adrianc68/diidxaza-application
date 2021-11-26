@@ -1,6 +1,5 @@
-import "./topbar.scss"
-import DiidxazaLogo from "../logo/DiidxazaLogo"
-
+import "./topbar.scss";
+import DiidxazaLogo from "../logo/DiidxazaLogo";
 
 export default function Topbar({ children }) {
     return (

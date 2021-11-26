@@ -1,25 +1,24 @@
-
 .underconstruction-main-container {
-    width:100%;
-    height:100%;
-    display:flex;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .underconstruction-content {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    .underconstruction-content {
-        display:flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap:15px;
-        h1 {
-            text-align: center;
-        }
+    gap: 15px;
 
-        img {
-            width:50%;
-            height:50%;
-        }
+    h1 {
+      text-align: center;
     }
 
-    
+    img {
+      width: 50%;
+      height: 50%;
+    }
+  }
 }

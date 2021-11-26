@@ -1,7 +1,7 @@
-import "./lessoninformation.scss"
-import Button from "../../Button/Button"
+import "./lessoninformation.scss";
+import Button from "../../Button/Button";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 export default function LessonInformation({ lesson, setVisible }) {
     const { t } = useTranslation();
@@ -44,5 +44,5 @@ export default function LessonInformation({ lesson, setVisible }) {
                 </div>
             </div>
         </div>
-    )
+    );
 }

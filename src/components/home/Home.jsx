@@ -1,8 +1,8 @@
-import React from "react"
-import "./home.scss"
-import ImageAlt from "../../assets/images/ide-17.svg"
-import ImageAlt2 from "../../assets/images/ide-15.svg"
-import ImageAlt3 from "../../assets/images/ide-16.svg"
+import React from "react";
+import "./home.scss";
+import ImageAlt from "../../assets/images/ide-17.svg";
+import ImageAlt2 from "../../assets/images/ide-15.svg";
+import ImageAlt3 from "../../assets/images/ide-16.svg";
 import { useTranslation } from "react-i18next";
 
 export default function Home() {

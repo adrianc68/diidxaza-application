@@ -1,5 +1,5 @@
-import "./changestatususer.scss"
-import Button from "../../Button/Button"
+import "./changestatususer.scss";
+import Button from "../../Button/Button";
 import { useTranslation } from "react-i18next";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 

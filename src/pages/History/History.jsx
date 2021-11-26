@@ -1,7 +1,7 @@
-import "./history.scss"
+import "./history.scss";
 import { useTranslation } from "react-i18next";
-import ImageAlt1 from "../../assets/images/history-01.jpeg"
-import ImageAlt2 from "../../assets/images/history-02.jpeg"
+import ImageAlt1 from "../../assets/images/history-01.jpeg";
+import ImageAlt2 from "../../assets/images/history-02.jpeg";
 
 export default function History() {
     const { t } = useTranslation();

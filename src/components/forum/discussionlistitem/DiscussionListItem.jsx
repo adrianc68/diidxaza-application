@@ -1,7 +1,8 @@
-import "./discussionlistitem.scss"
+import "./discussionlistitem.scss";
 import { useTranslation } from "react-i18next";
 import { AiOutlineComment } from "react-icons/ai";
-import { useConvertionData } from "../../../hooks/useConvertionData"
+import { useConvertionData } from "../../../hooks/useConvertionData";
+
 export default function DiscussionListItem(props) {
     const discussion = props.discussion;
     const { t } = useTranslation();

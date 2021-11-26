@@ -1,8 +1,8 @@
-import React, { useState } from "react"
-import "./adminmenu.scss"
+import React, { useState } from "react";
+import "./adminmenu.scss";
 import { useTranslation } from "react-i18next";
-import { MdOutlineBugReport, MdSupervisorAccount } from "react-icons/md"
-import { FaGripLinesVertical } from "react-icons/fa"
+import { MdOutlineBugReport, MdSupervisorAccount } from "react-icons/md";
+import { FaGripLinesVertical } from "react-icons/fa";
 import ReportsMenu from "../reportsmenu/ReportsMenu";
 import AccountsMenu from "../accountsmenu/AccountsMenu";
 
