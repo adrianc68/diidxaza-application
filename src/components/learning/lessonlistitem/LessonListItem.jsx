@@ -1,7 +1,7 @@
-import { CircularProgressbarWithChildren } from "react-circular-progressbar"
+import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 import { FcReading } from "react-icons/fc";
-import "react-circular-progressbar/dist/styles.css"
-import "./lessonlistitem.scss"
+import "react-circular-progressbar/dist/styles.css";
+import "./lessonlistitem.scss";
 
 export default function LessonListItem(props) {
    

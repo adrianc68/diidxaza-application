@@ -1,13 +1,13 @@
-import React, {useState,useEffect} from "react"
-import "./editprofile.scss"
+import React, {useState,useEffect} from "react";
+import "./editprofile.scss";
 import { useTranslation } from "react-i18next";
-import Button from "../../../components/Button/Button"
+import Button from "../../../components/Button/Button";
 import Modal from "../../modal/Modal";
 import AlertMessage from "../../alert/AlertMessage";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 import { useUpdateAccountForm } from "../../../hooks/useAccountForm";
 import UserImageDefault from "../../../assets/images/ide-29.svg";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const validationsForm = (form) => {
     let errors = {};

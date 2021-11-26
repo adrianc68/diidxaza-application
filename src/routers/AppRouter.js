@@ -1,11 +1,11 @@
-import Login from "../pages/InitialInteraction/Login/Login"
-import Welcome from "../pages/Welcome/Welcome"
-import PageNotFound from "../pages/PageNotFound/PageNotFound"
-import SignUp from "../pages/InitialInteraction/SignUp/SignUp"
-import React, {useState} from "react"
+import Login from "../pages/InitialInteraction/Login/Login";
+import Welcome from "../pages/Welcome/Welcome";
+import PageNotFound from "../pages/PageNotFound/PageNotFound";
+import SignUp from "../pages/InitialInteraction/SignUp/SignUp";
+import React, {useState} from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
-import Dashboard from "../pages/Home/Dashboard"
-import history from "./History"
+import Dashboard from "../pages/Home/Dashboard";
+import history from "./History";
 
 export default function AppRouter() {
     return (

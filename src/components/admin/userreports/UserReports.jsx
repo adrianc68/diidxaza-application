@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import "./userreports.scss"
-import UserImageDefault from "../../../assets/images/ide-29.svg"
+import "./userreports.scss";
+import UserImageDefault from "../../../assets/images/ide-29.svg";
 import Report from "../../report/Report";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 

@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect} from "react"
-import "./learning.scss"
+import React, { useState, useRef, useEffect} from "react";
+import "./learning.scss";
 import { useTranslation } from "react-i18next";
 import LessonListItem from "../../components/learning/lessonlistitem/LessonListItem";
 import LessonInformation from "../../components/learning/lessoninformation/LessonInformation";

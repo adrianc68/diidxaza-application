@@ -1,12 +1,11 @@
-import "./resultlesson.scss"
+import "./resultlesson.scss";
 import { useTranslation } from "react-i18next";
 import QuestionUniqueAnswerSolved from "../../../components/learning/resultlesson/unique/QuestionUniqueAnswerSolved";
 import QuestionMultipleAnswerSolved from "../../../components/learning/resultlesson/multiple/QuestionMultipleAnswerSolved";
 import QuestionOpenAnswerSolved from "../../../components/learning/resultlesson/open/QuestionOpenAnswerSolved";
-import CongratulationsImage from "../../../assets/images/ide-44.svg"
+import CongratulationsImage from "../../../assets/images/ide-44.svg";
 import DiidxazaLogo from "../../../components/logo/DiidxazaLogo";
 import { FiCheck, FiX, FiPlusSquare, FiDivide, FiPlus } from "react-icons/fi";
-
 
 export default function ResultLesson() {
     const { t } = useTranslation();

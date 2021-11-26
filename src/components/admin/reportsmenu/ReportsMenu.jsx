@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react"
-import "./reportsmenu.scss"
-import Button from "../../../components/Button/Button"
+import { useEffect, useState } from "react";
+import "./reportsmenu.scss";
+import Button from "../../../components/Button/Button";
 import { useTranslation } from "react-i18next";
 import Report from "../../report/Report";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";

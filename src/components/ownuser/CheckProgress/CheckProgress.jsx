@@ -1,8 +1,8 @@
-import "./checkprogress.scss"
+import "./checkprogress.scss";
 import { useTranslation } from "react-i18next";
-import ImageInformationAlt from "../../../assets/images/ide-38.svg"
-import Button from "../../Button/Button"
-import { useHistory } from "react-router-dom"
+import ImageInformationAlt from "../../../assets/images/ide-38.svg";
+import Button from "../../Button/Button";
+import { useHistory } from "react-router-dom";
 
 export default function CheckProgress() {
     const { t } = useTranslation();
