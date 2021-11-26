@@ -1,42 +1,42 @@
 @import "../../variables.module.scss";
 
 .lessonlistitem-main-container {
-    width: 125px;
-    padding: 15px;
-    user-select:none;
-    .lessonlistitem-content {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        cursor: pointer;
-        border-radius: 50%;
-        align-self: center;
-        align-items: center;
-        align-content: center;
-        p{
-            font-size: 15px;
-        }
+  width: 125px;
+  padding: 15px;
+  user-select: none;
+  .lessonlistitem-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    border-radius: 50%;
+    align-self: center;
+    align-items: center;
+    align-content: center;
+    p {
+      font-size: 15px;
     }
+  }
 
-    .lessonlistitem-content:hover {
-        color: rgb(86, 0, 199);
-        fill: rgb(86, 0, 199);
-        stroke: rgb(86, 0, 199);
-    }
-    .black {
-        color:#000;
-    }
+  .lessonlistitem-content:hover {
+    color: rgb(86, 0, 199);
+    fill: rgb(86, 0, 199);
+    stroke: rgb(86, 0, 199);
+  }
+  .black {
+    color: #000;
+  }
 }
 
 @media all and (max-width: $max-width-device) {
-    .lessonlistitem-main-container {
-        width: 100px;
-        padding: 15px;
+  .lessonlistitem-main-container {
+    width: 100px;
+    padding: 15px;
 
-        .lessonlistitem-content:hover {
-            color: rgb(86, 0, 199);
-            fill: rgb(86, 0, 199);
-            stroke: rgb(86, 0, 199);
-        }
+    .lessonlistitem-content:hover {
+      color: rgb(86, 0, 199);
+      fill: rgb(86, 0, 199);
+      stroke: rgb(86, 0, 199);
     }
+  }
 }

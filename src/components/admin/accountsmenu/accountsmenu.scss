@@ -1,62 +1,62 @@
 @import "../../../components/variables.module.scss";
 
 .accountsmenu-main-container {
-    width: 100%;
-    height: 100%;
-    background-color: $ul-content-background;
-    border-radius: 0 0 3px 3px;
-    .accountsmenu-content {
-        width: calc(100% - 50px);
-        height: calc(100% - 50px);
-        padding: 25px;
-        display:flex;
-        flex-direction: column;
-        .accountsmenu-search-criteria {
-            .form-search-input {
-                display: flex;
-                align-items: center;
-                padding: 15px 0px 15px 0px;
-                gap: 15px;
-                .form-search-container-input {
-                    display: flex;
-                    align-items: center;
-                    flex: 1;
-                }
-
-                :nth-child(1) {
-                    height: 37px;
-                }
-
-                .form-search-input-button {
-                    width: 100px;
-                }
-            }
-            .form-search-buttons {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 25px;
-                padding: 15px;
-            }
+  width: 100%;
+  height: 100%;
+  background-color: $ul-content-background;
+  border-radius: 0 0 3px 3px;
+  .accountsmenu-content {
+    width: calc(100% - 50px);
+    height: calc(100% - 50px);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    .accountsmenu-search-criteria {
+      .form-search-input {
+        display: flex;
+        align-items: center;
+        padding: 15px 0px 15px 0px;
+        gap: 15px;
+        .form-search-container-input {
+          display: flex;
+          align-items: center;
+          flex: 1;
         }
 
-        .accountsmenu-reports-list-container {
-            border: 1px solid rgb(173, 172, 172);
-            box-shadow: rgba(134, 133, 133, 0.178) 0px 4px 4px 4px inset;
-            border-radius: 3px;
-            overflow-y: auto;
-            flex-grow:1;
-            .accountsmenu-discussion-list {
-                display: flex;
-                flex-direction: column;
-                ul {
-                    list-style: none;
-                    padding: 20px;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 15px;
-                }
-            }
+        :nth-child(1) {
+          height: 37px;
         }
+
+        .form-search-input-button {
+          width: 100px;
+        }
+      }
+      .form-search-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        padding: 15px;
+      }
     }
+
+    .accountsmenu-reports-list-container {
+      border: 1px solid rgb(173, 172, 172);
+      box-shadow: rgba(134, 133, 133, 0.178) 0px 4px 4px 4px inset;
+      border-radius: 3px;
+      overflow-y: auto;
+      flex-grow: 1;
+      .accountsmenu-discussion-list {
+        display: flex;
+        flex-direction: column;
+        ul {
+          list-style: none;
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+        }
+      }
+    }
+  }
 }
