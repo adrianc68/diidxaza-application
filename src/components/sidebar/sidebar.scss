@@ -45,6 +45,7 @@
     li {
       list-style: none;
       width: 100%;
+
       .sidebarIcon {
         text-align: center;
         color: #fff;
@@ -61,6 +62,7 @@
         height: 52px;
         text-decoration: none;
         transition: transform 5s ease;
+
         span {
           font-size: 14px;
           font-weight: 400;
@@ -77,8 +79,10 @@
       display: flex;
       width: 100%;
       justify-content: center;
+
       li {
         list-style: none;
+
         .sidebar-link {
           display: flex;
           align-items: center;
@@ -103,8 +107,10 @@
 .sidebar.active {
   width: 60px;
   transition: all 0.3s ease-in;
+
   ul {
     height: inherit;
+
     .sidebar-button-section {
       display: none;
       justify-content: center;
@@ -120,6 +126,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
         span {
           display: none;
         }

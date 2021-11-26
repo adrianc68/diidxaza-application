@@ -19,6 +19,7 @@
     background-color: rgba(255, 0, 0, 0.301);
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
       rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
     .modal-content-container {
       display: flex;
       flex-direction: column;
@@ -26,6 +27,7 @@
       height: 100%;
       background-color: rgba(0, 0, 255, 0.233);
       border-radius: 3px;
+
       .modal-title-container {
         background: rgb(255, 255, 255);
         border-radius: 3px 3px 0px 0px;
@@ -37,11 +39,13 @@
         justify-content: center;
         align-items: center;
         border-bottom: 1px solid rgb(206, 206, 206);
+
         h2 {
           display: block;
           text-align: center;
         }
       }
+
       .modal-content {
         border-radius: 3px;
         height: 100%;
@@ -49,7 +53,4 @@
       }
     }
   }
-}
-
-@media all and (max-width: $max-width-device) {
 }

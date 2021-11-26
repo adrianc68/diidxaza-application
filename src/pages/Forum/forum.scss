@@ -3,6 +3,7 @@
 .forum-main-container {
   height: 100%;
   width: 100%;
+
   .forum-content-container {
     display: flex;
     gap: 20px;
@@ -39,18 +40,22 @@
         align-items: center;
         padding: 15px 15px 0px 15px;
         gap: 15px;
+
         .form-search-container-input {
           display: flex;
           align-items: center;
           flex: 1;
         }
+
         input {
           margin: 0px 0px 0px 10px;
         }
+
         div:nth-child(2) {
           height: 37px;
         }
       }
+
       .form-search-buttons {
         display: flex;
         justify-content: center;
@@ -67,16 +72,19 @@
       display: flex;
       flex-direction: column;
       overflow: auto;
+
       .forum-discussion-list {
         display: flex;
         flex-direction: column;
         height: 100%;
+
         .forum-create-button-panel {
           padding: 15px;
           display: flex;
           justify-content: flex-end;
           align-items: center;
           gap: 15px;
+
           span {
             flex: 1;
           }
@@ -95,6 +103,7 @@
           flex-direction: column;
           gap: 15px;
           background-color: $ul-content-background;
+
           .forum-discussion-list-no-records {
             height: 100%;
             width: 100%;
@@ -118,15 +127,18 @@
       rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
     border-radius: 3px;
     background-color: #fff;
+
     .not-found-discussion {
       flex-direction: row;
       align-content: center;
       align-items: center;
       align-self: center;
+
       h3 {
         padding-top: 35px;
         padding-bottom: 35px;
       }
+
       img {
         width: 100%;
         height: 40%;
@@ -139,6 +151,7 @@
   .forum-main-container {
     height: auto;
     width: 100%;
+
     .forum-content-container {
       display: flex;
       flex-direction: column;
@@ -150,13 +163,16 @@
       height: auto;
       display: flex;
       flex-direction: column;
+
       .forum-discussion-list-container {
         height: auto;
         overflow: auto;
+
         .forum-discussion-list {
           display: flex;
           flex-direction: column;
           height: auto;
+
           ul {
             overflow-y: auto;
             height: 80px;
@@ -171,11 +187,13 @@
       height: auto;
       width: 100%;
       overflow-y: auto;
+
       .not-found-discussion {
         flex-direction: row;
         align-content: center;
         align-items: center;
         align-self: center;
+
         img {
           width: 100%;
           height: 40%;

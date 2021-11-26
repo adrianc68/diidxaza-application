@@ -6,6 +6,7 @@
 
   @return unquote($value);
 }
+
 $shadows-small: multiple-box-shadow(300);
 $shadows-medium: multiple-box-shadow(200);
 $shadows-big: multiple-box-shadow(100);
@@ -17,6 +18,7 @@ $shadows-big: multiple-box-shadow(100);
   top: 0;
   left: 0;
   z-index: -1;
+
   .stars {
     width: 1px;
     height: 1px;
@@ -24,6 +26,7 @@ $shadows-big: multiple-box-shadow(100);
     box-shadow: $shadows-small;
     animation: animStar 35s linear infinite;
   }
+
   .stars2 {
     width: 2px;
     height: 2px;
@@ -31,6 +34,7 @@ $shadows-big: multiple-box-shadow(100);
     box-shadow: $shadows-medium;
     animation: animStar 35s linear infinite;
   }
+
   .stars3 {
     width: 3px;
     height: 3px;
@@ -43,6 +47,7 @@ $shadows-big: multiple-box-shadow(100);
     from {
       transform: translateY(0%);
     }
+
     to {
       transform: translateY(-1000px);
     }

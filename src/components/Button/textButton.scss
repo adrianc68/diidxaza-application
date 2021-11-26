@@ -6,6 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   .button-container {
     .icon-button {
       display: none;
@@ -38,7 +39,4 @@
 .text-button.active {
   border-bottom: 3px solid rgb(4, 134, 255);
   pointer-events: none;
-}
-
-@media all and (max-width: $max-width-device) {
 }

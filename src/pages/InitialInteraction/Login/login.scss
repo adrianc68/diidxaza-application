@@ -7,6 +7,7 @@
   align-items: center;
   background-color: #f3f3f3;
   background-image: url("../../../assets/images/bk-2.svg");
+
   .login-container {
     padding: 15px;
     height: auto;
@@ -19,12 +20,14 @@
       rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
     background-color: #f9f9f9;
     border-radius: 3px;
+
     .login-title-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 15px;
       width: 100%;
+
       h2 {
         font-weight: 600;
         color: #000;
@@ -48,18 +51,22 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
+
         label {
           display: flex;
           flex-direction: column;
           gap: 2px;
+
           .errorInput {
             max-width: 350px;
           }
         }
+
         .login-form-button-container {
           display: inline-flex;
           justify-content: center;
           width: 100%;
+
           .login-form-button {
             width: 95%;
           }
@@ -82,13 +89,16 @@
       display: flex;
       align-content: center;
       justify-content: center;
+
       ul {
         display: flex;
         list-style: none;
         gap: 13px;
         align-items: center;
+
         li {
           height: auto;
+
           .link {
             text-decoration: none;
             font-size: 13px;

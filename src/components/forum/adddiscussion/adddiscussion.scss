@@ -10,6 +10,7 @@
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+
   h1 {
     background-color: $title-background-black;
     color: #fff;
@@ -21,10 +22,12 @@
     padding: 25px;
     flex: 1;
     display: flex;
+
     .adddiscussion-main-content {
       flex: 1;
       display: flex;
       gap: 25px;
+
       .adddiscussion-img-content {
         height: 100%;
         width: 250px;
@@ -41,10 +44,12 @@
         flex-direction: column;
         flex: 1;
         gap: 5px;
+
         .adddiscussion-input-theme {
           display: flex;
           flex-direction: column;
           gap: 15px;
+
           ul {
             list-style: none;
             display: flex;
@@ -52,6 +57,7 @@
             gap: 25px;
             overflow-wrap: break-word;
             flex-wrap: wrap;
+
             li {
               .adddiscussion-theme {
                 display: inline-block;
@@ -64,15 +70,18 @@
                 padding: 10px;
                 box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
                   rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+
                 img {
                   width: 55px;
                   height: 55px;
                 }
+
                 span {
                   font-size: 0.7em;
                 }
               }
             }
+
             .li-select {
               background: rgb(242, 240, 253);
               cursor: pointer;
@@ -81,6 +90,7 @@
                 rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
                 rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
             }
+
             .li-not-select {
               background: rgb(255, 255, 255);
               cursor: pointer;
@@ -101,6 +111,7 @@
           display: flex;
           flex-direction: column;
           flex: 1;
+
           textarea {
             box-sizing: border-box;
             resize: vertical;
@@ -112,6 +123,7 @@
         .adddiscussion-button-panel {
           display: flex;
           gap: 15px;
+
           div {
             width: 50%;
           }
@@ -127,6 +139,7 @@
     height: 100%;
     overflow-y: auto;
   }
+
   .adddiscussion-img-content {
     display: none;
   }

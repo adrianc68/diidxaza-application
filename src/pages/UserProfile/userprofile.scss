@@ -20,10 +20,12 @@
     align-items: center;
     gap: 15px;
     overflow-y: auto;
+
     .userprofile-user-photo-container {
       display: flex;
       justify-content: center;
       padding-top: 15px;
+
       img {
         height: 200px;
         width: 200px;
@@ -38,6 +40,7 @@
       flex-direction: column;
       gap: 15px;
       overflow-wrap: break-word;
+
       .userprofile-basic-details {
         display: flex;
         width: 200px;
@@ -50,12 +53,14 @@
         div {
           display: flex;
           flex-direction: column;
+
           :nth-child(1) {
             font-size: 10px;
             color: #868686;
           }
         }
       }
+
       hr {
         width: 90%;
         height: 1px;
@@ -86,6 +91,7 @@
         flex-direction: column;
         width: 90%;
         word-wrap: break-word;
+
         p {
           font-size: 12px;
           color: #868686;
@@ -107,6 +113,7 @@
       gap: 15px;
       width: 150px;
       float: right;
+
       .userprofile-button-panel-content {
         display: flex;
         flex-direction: column;
@@ -121,6 +128,7 @@
       display: flex;
       flex-direction: column;
       gap: 8px;
+
       div {
         :first-child {
           font-weight: 600;
@@ -142,6 +150,7 @@
       flex-direction: row;
       justify-content: flex-start;
       align-items: stretch;
+
       .userprofile-forum-data-tab {
         padding: 8px;
         box-sizing: border-box;
@@ -151,6 +160,7 @@
         color: #000;
         font-size: 13px;
         transition: background-color 0.25s;
+
         &:hover {
           background-color: rgba(0, 0, 0, 0.25);
           transition: background-color 0.25s;

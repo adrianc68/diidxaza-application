@@ -10,18 +10,22 @@
   position: absolute;
   right: 5px;
   top: 5px;
+
   &:hover {
     background: #f2f2f2;
   }
+
   .button-container {
     display: flex;
     align-items: center;
     justify-content: center;
+
     .icon-button {
       font-size: 25px;
       color: #fff;
       margin-right: 10px;
     }
+
     span {
       font-size: 12px;
       font-weight: 700;

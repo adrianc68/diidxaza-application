@@ -5,8 +5,10 @@
   height: auto;
   background-color: #fff;
   border-radius: 3px;
+
   .lessonresults-indicator-container {
     overflow: hidden;
+
     .lessonresults-indicator {
       width: 0;
       height: 0;
@@ -24,11 +26,13 @@
     justify-content: center;
     gap: 25px;
     background: $title-background-black;
+
     div {
       display: flex;
       flex-direction: column;
       color: #fff;
       padding: 5px;
+
       :nth-child(1) {
         font-size: 0.5em;
         color: #868686;
@@ -50,6 +54,7 @@
     border-left: 1px solid #323232;
     border-right: 1px solid #323232;
     border-bottom: 1px solid #323232;
+
     .div-result {
       width: 50%;
       height: 35px;

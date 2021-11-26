@@ -12,10 +12,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   .button-container {
     display: flex;
     align-items: center;
     justify-content: center;
+
     .icon-button {
       font-size: 25px;
       color: #fff;
@@ -33,6 +35,7 @@
 @media all and (max-width: $max-width-device) {
   .dark-blue-button {
     padding: 5px;
+
     .button-container {
       .icon-button {
         font-size: 20px;

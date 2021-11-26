@@ -27,7 +27,7 @@ input,
   width: calc(100% - 2px);
   border: 1px solid #b9b9b9;
   border-radius: 3px;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
 .input-file-label {
@@ -40,6 +40,7 @@ input,
   padding: 3px;
   color: #fff;
   cursor: pointer;
+
   input {
     display: none;
   }
@@ -109,13 +110,6 @@ select {
   }
 }
 
-select {
-  height: 35px;
-  width: calc(100% - 2px);
-  border: 1px solid #b9b9b9;
-  border-radius: 3px;
-  background-color: #f7f7f7;
-}
 .semibold {
   font-weight: 600;
 }
@@ -151,6 +145,7 @@ select {
   padding-bottom: 10px;
   padding-top: 10px;
   gap: 5px;
+
   label {
     display: block;
     cursor: pointer;
@@ -177,6 +172,7 @@ select {
   display: flex;
   flex-direction: column;
   gap: 10px;
+
   div {
     align-items: center;
     display: flex;

@@ -4,12 +4,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   .underconstruction-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 15px;
+
     h1 {
       text-align: center;
     }

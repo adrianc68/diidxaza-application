@@ -6,8 +6,10 @@
   border-radius: 3px;
   position: relative;
   transform: translateX(-35%);
+
   .lesson-indicator-container {
     overflow: hidden;
+
     .lesson-indicator {
       width: 0;
       height: 0;
@@ -15,7 +17,6 @@
       border-width: 0 30px 30px 30px;
       border-color: transparent transparent $title-background-black transparent;
       transform: translateY(15px) translateX(150px);
-
       z-index: -1;
     }
   }
@@ -25,11 +26,13 @@
     justify-content: center;
     gap: 25px;
     background: $title-background-black;
+
     div {
       display: flex;
       flex-direction: column;
       color: #fff;
       padding: 5px;
+
       :nth-child(1) {
         font-size: 0.5em;
         color: #868686;

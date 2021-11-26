@@ -7,6 +7,7 @@
   flex-direction: column;
   background-image: url("../../../assets/images/bk-4.svg");
   background-repeat: repeat;
+
   .signup-then-login-container {
     color: #fff;
     display: flex;
@@ -25,7 +26,4 @@
     flex-direction: column;
     justify-content: center;
   }
-}
-
-@media all and (max-width: $max-width-device) {
 }

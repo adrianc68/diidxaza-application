@@ -6,14 +6,17 @@
   border-radius: 3px;
   background-color: #fff;
   width: 100%;
+
   .resultlesson-content-container {
     display: flex;
     flex-direction: column;
+
     .resultlesson-content {
       padding: 25px;
       display: flex;
       flex-direction: column;
       gap: 35px;
+
       .resultlesson-general-data-container {
         border-radius: 3px;
         display: flex;
@@ -22,13 +25,16 @@
         flex-direction: column;
         overflow: auto;
         height: 88vh;
+
         .resultlesson-general-data-greetings {
           display: flex;
           align-items: center;
+
           .resultlesson-general-data-greetings-information {
             display: flex;
             flex-direction: column;
             width: 50%;
+
             .resutlesson-gdgi-congratulation {
               display: flex;
               flex-direction: column;
@@ -36,11 +42,13 @@
               align-items: center;
               justify-content: center;
               height: 100%;
+
               div {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
               }
+
               span {
                 font-weight: 800;
                 font-size: 4.5em;
@@ -54,6 +62,7 @@
             justify-content: center;
             height: 100%;
             width: 50%;
+
             img {
               max-width: 100%;
               max-height: 100%;
@@ -63,20 +72,24 @@
 
         .resultlesson-general-data-list {
           padding: 15px;
+
           ul {
             list-style: none;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 25px;
+
             li {
               padding: 5px;
               box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
                 rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
               border-radius: 3px;
+
               .resultlesson-general-data-list-item {
                 font-size: 0.68em;
                 display: flex;
+
                 .resultlesson-general-data-li-img {
                   display: flex;
                   align-items: center;
@@ -88,9 +101,11 @@
                   padding: 3px;
                   justify-content: flex-start;
                   align-items: center;
+
                   :nth-child(1) {
                     color: #000000;
                   }
+
                   :nth-child(2) {
                     font-size: 2.6em;
                     font-weight: 400;
@@ -99,6 +114,7 @@
               }
             }
           }
+
           .resultlesson-gdli-icon {
             border-radius: 50%;
             background-color: rgb(228, 217, 217);
@@ -117,9 +133,11 @@
         border-radius: 3px;
         padding: 25px;
         gap: 35px;
+
         .questionresult-list-container {
           ul {
             list-style: none;
+
             li {
               .questionResult-list-item {
                 display: flex;
@@ -132,6 +150,7 @@
                 user-select: none;
                 pointer-events: none;
                 gap: 15px;
+
                 .questionsolved {
                   flex-grow: 1;
                   width: 100%;
@@ -144,9 +163,11 @@
                 ul {
                   padding-left: 2em;
                   flex: 1;
+
                   .valid-li {
                     list-style: url("../../../assets/images/valid.svg");
                   }
+
                   .invalid-li {
                     list-style: url("../../../assets/images/invalid.svg");
                   }
@@ -167,17 +188,22 @@
     border-radius: 3px;
     background-color: #fff;
     width: 100%;
+
     .resultlesson-content-container {
       display: flex;
       flex-direction: column;
+
       .resultlesson-content {
         .resultlesson-general-data-container {
           height: auto;
+
           .resultlesson-general-data-greetings {
             flex-direction: column;
+
             .resultlesson-general-data-greetings-information {
               flex-direction: column;
               width: 100%;
+
               .resutlesson-gdgi-congratulation {
                 gap: 35px;
               }
@@ -189,6 +215,7 @@
               justify-content: center;
               height: 100%;
               width: 50%;
+
               img {
                 max-width: 100%;
                 max-height: 100%;

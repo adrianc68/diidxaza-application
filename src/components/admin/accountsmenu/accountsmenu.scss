@@ -5,12 +5,14 @@
   height: 100%;
   background-color: $ul-content-background;
   border-radius: 0 0 3px 3px;
+
   .accountsmenu-content {
     width: calc(100% - 50px);
     height: calc(100% - 50px);
     padding: 25px;
     display: flex;
     flex-direction: column;
+
     .accountsmenu-search-criteria {
       .form-search-input {
         display: flex;
@@ -31,6 +33,7 @@
           width: 100px;
         }
       }
+
       .form-search-buttons {
         display: flex;
         justify-content: center;
@@ -46,9 +49,11 @@
       border-radius: 3px;
       overflow-y: auto;
       flex-grow: 1;
+
       .accountsmenu-discussion-list {
         display: flex;
         flex-direction: column;
+
         ul {
           list-style: none;
           padding: 20px;

@@ -1,6 +1,7 @@
 .multipleanswer-form {
   ul {
     list-style: none;
+
     li {
       .checkbox-container,
       .radiobutton-container {
@@ -10,6 +11,7 @@
         gap: 5px;
         margin-bottom: 15px;
         text-align: left;
+
         label {
           display: block;
           cursor: pointer;

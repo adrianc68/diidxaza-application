@@ -5,6 +5,7 @@
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   width: 80%;
   border-radius: 3px;
+
   .signup-input-container {
     display: grid;
     grid-template-areas:
@@ -34,14 +35,17 @@
   .signup-personal-information-container {
     grid-area: b;
     height: 100%;
+
     .signup-personal-information-inputs {
       display: flex;
       flex-direction: column;
       gap: 30px;
       padding: 20px;
+
       .signup-photo-input-container {
         display: flex;
         gap: 5px;
+
         .signup-photo-left-side {
           display: flex;
           justify-content: center;
@@ -94,6 +98,7 @@
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
       rgba(0, 0, 0, 0.23) 0px 6px 6px;
     width: 80%;
+
     .signup-input-container {
       display: grid;
       grid-template-areas:
@@ -116,14 +121,17 @@
     .signup-personal-information-container {
       grid-area: b;
       height: 100%;
+
       .signup-personal-information-inputs {
         display: flex;
         flex-direction: column;
         gap: 30px;
         padding: 20px;
+
         .signup-photo-input-container {
           display: flex;
           gap: 5px;
+
           .signup-photo-left-side {
             display: flex;
             justify-content: center;

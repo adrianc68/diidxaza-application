@@ -5,12 +5,14 @@
   height: 100%;
   background-color: $ul-content-background;
   border-radius: 0 0 3px 3px;
+
   .alert-confirmation-content-container {
     padding: 25px;
     display: flex;
     height: calc(100% - 60px);
     flex-direction: column;
     gap: 15px;
+
     .alert-confirmation-text {
       display: inline-flex;
       flex: 1;
@@ -18,9 +20,11 @@
       flex-direction: column;
       justify-content: stretch;
       align-items: center;
+
       h1 {
         text-align: center;
       }
+
       p {
         text-align: justify;
         padding-left: 50px;
@@ -33,6 +37,7 @@
       padding-left: 50px;
       padding-right: 50px;
       gap: 75px;
+
       div {
         padding: 5px;
       }
