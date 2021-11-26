@@ -14,8 +14,8 @@
     width: 40%;
     display: flex;
     flex-direction: column;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
-      rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0 1px 1px,
+      rgba(9, 30, 66, 0.13) 0 0 1px 1px;
     border-radius: 3px;
     background-color: #fff;
 
@@ -38,7 +38,7 @@
       .form-search-input {
         display: flex;
         align-items: center;
-        padding: 15px 15px 0px 15px;
+        padding: 15px 15px 0 15px;
         gap: 15px;
 
         .form-search-container-input {
@@ -48,7 +48,7 @@
         }
 
         input {
-          margin: 0px 0px 0px 10px;
+          margin: 0 0 0 10px;
         }
 
         div:nth-child(2) {
@@ -66,7 +66,7 @@
     }
 
     .forum-discussion-list-container {
-      border-radius: 0px 0px 3px 3px;
+      border-radius: 0 0 3px 3px;
       padding: 15px;
       height: 100%;
       display: flex;
@@ -92,10 +92,10 @@
 
         ul {
           border: 1px solid rgb(173, 172, 172);
-          box-shadow: rgba(134, 133, 133, 0.178) 0px 4px 4px 4px inset;
+          box-shadow: rgba(134, 133, 133, 0.178) 0 4px 4px 4px inset;
           border-radius: 3px;
           overflow-y: auto;
-          height: 0px;
+          height: 0;
           flex-grow: 1;
           list-style: none;
           padding: 20px;
@@ -123,8 +123,8 @@
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
-      rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0 1px 1px,
+      rgba(9, 30, 66, 0.13) 0 0 1px 1px;
     border-radius: 3px;
     background-color: #fff;
 

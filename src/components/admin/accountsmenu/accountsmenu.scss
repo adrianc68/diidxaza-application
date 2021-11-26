@@ -17,8 +17,9 @@
       .form-search-input {
         display: flex;
         align-items: center;
-        padding: 15px 0px 15px 0px;
+        padding: 15px 0 15px 0;
         gap: 15px;
+
         .form-search-container-input {
           display: flex;
           align-items: center;
@@ -45,7 +46,7 @@
 
     .accountsmenu-reports-list-container {
       border: 1px solid rgb(173, 172, 172);
-      box-shadow: rgba(134, 133, 133, 0.178) 0px 4px 4px 4px inset;
+      box-shadow: rgba(134, 133, 133, 0.178) 0 4px 4px 4px inset;
       border-radius: 3px;
       overflow-y: auto;
       flex-grow: 1;
