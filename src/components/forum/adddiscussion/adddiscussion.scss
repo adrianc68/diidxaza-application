@@ -62,17 +62,15 @@
 
             li {
               .adddiscussion-theme {
-                display: inline-block;
-                box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
                 border-radius: 3px;
                 width: calc(150px - 20px);
                 display: flex;
                 align-items: center;
                 flex-direction: column;
                 padding: 10px;
-                box-shadow: 
-                rgba(0, 0, 0, 0.02) 0 1px 3px 0,
-                rgba(27, 31, 35, 0.15) 0 0 0 1px;
+                box-shadow:
+                  rgba(0, 0, 0, 0.02) 0 1px 3px 0,
+                  rgba(27, 31, 35, 0.15) 0 0 0 1px;
 
                 img {
                   width: 55px;
@@ -89,7 +87,7 @@
               background: rgb(242, 240, 253);
               cursor: pointer;
               border-radius: 3px;
-              box-shadow: 
+              box-shadow:
               rgba(6, 24, 44, 0.4) 0 0 0 2px,
               rgba(6, 24, 44, 0.65) 0 4px 6px -1px,
               rgba(255, 255, 255, 0.08) 0 1px 0 inset;

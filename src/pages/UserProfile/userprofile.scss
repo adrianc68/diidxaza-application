@@ -10,8 +10,8 @@
   .userprofile-user-details-container {
     border-left: 5px solid rgb(36, 36, 36);
     box-shadow: 
-    rgba(9, 30, 66, 0.25) 0 1px 1px,
-    rgba(9, 30, 66, 0.13) 0 0 1px 1px;
+     rgba(9, 30, 66, 0.25) 0 1px 1px,
+     rgba(9, 30, 66, 0.13) 0 0 1px 1px;
     padding: 15px;
     border-radius: 3px;
     background-color: #fff;
@@ -76,8 +76,8 @@
     width: calc(100% - 285px);
     overflow-y: auto;
     box-shadow: 
-    rgba(9, 30, 66, 0.25) 0 1px 1px,
-    rgba(9, 30, 66, 0.13) 0 0 1px 1px;
+     rgba(9, 30, 66, 0.25) 0 1px 1px,
+     rgba(9, 30, 66, 0.13) 0 0 1px 1px;
     padding: 25px;
     border-radius: 3px;
     background-color: #fff;
@@ -188,12 +188,13 @@
 }
 
 .type-user-admin {
-  box-shadow: 
-  #00000040 0 0.06525em 0.0625em,
-  rgba(0, 0, 0, 0.25) 0 0.125em 0.5em,
-  rgba(255, 255, 255, 0.1) 0 0 0 1px inset;
+  box-shadow:
+    #00000040 0 0.06525em 0.0625em,
+    rgba(0, 0, 0, 0.25) 0 0.125em 0.5em,
+    rgba(255, 255, 255, 0.1) 0 0 0 1px inset;
   background: rgb(93, 0, 0);
-  background: linear-gradient(
+  background: 
+    linear-gradient(
     28deg,
     rgba(93, 0, 0, 1) 8%,
     rgba(255, 0, 0, 1) 100%
@@ -211,9 +212,11 @@
 
 .status-user-banned {
   background: 
-    linear-gradient(28deg,
-  rgb(218, 3, 3) 8%,
-  rgb(63, 0, 0) 100%);
+    linear-gradient
+    (28deg,
+    rgb(218, 3, 3) 8%,
+    rgb(63, 0, 0) 100%
+    );
   border-radius: 3px;
   color: #fff;
   display: block;
