@@ -1,8 +1,9 @@
 @import "../../../components/variables.module.scss";
 
 .resultlesson-main-container {
-  box-shadow: rgba(9, 30, 66, 0.25) 0 1px 1px,
-    rgba(9, 30, 66, 0.13) 0 0 1px 1px;
+  box-shadow: 
+  rgba(9, 30, 66, 0.25) 0 1px 1px,
+  rgba(9, 30, 66, 0.13) 0 0 1px 1px;
   border-radius: 3px;
   background-color: #fff;
   width: 100%;
@@ -82,8 +83,9 @@
 
             li {
               padding: 5px;
-              box-shadow: rgba(9, 30, 66, 0.25) 0 1px 1px,
-                rgba(9, 30, 66, 0.13) 0 0 1px 1px;
+              box-shadow: 
+              rgba(9, 30, 66, 0.25) 0 1px 1px,
+              rgba(9, 30, 66, 0.13) 0 0 1px 1px;
               border-radius: 3px;
 
               .resultlesson-general-data-list-item {
@@ -128,8 +130,9 @@
       .questionResult-main-container {
         display: flex;
         flex-direction: column;
-        box-shadow: rgba(9, 30, 66, 0.25) 0 1px 1px,
-          rgba(9, 30, 66, 0.13) 0 0 1px 1px;
+        box-shadow: 
+        rgba(9, 30, 66, 0.25) 0 1px 1px,
+        rgba(9, 30, 66, 0.13) 0 0 1px 1px;
         border-radius: 3px;
         padding: 25px;
         gap: 35px;
@@ -183,8 +186,9 @@
 
 @media all and (max-width: $max-width-device) {
   .resultlesson-main-container {
-    box-shadow: rgba(9, 30, 66, 0.25) 0 1px 1px,
-      rgba(9, 30, 66, 0.13) 0 0 1px 1px;
+    box-shadow: 
+    rgba(9, 30, 66, 0.25) 0 1px 1px,
+    rgba(9, 30, 66, 0.13) 0 0 1px 1px;
     border-radius: 3px;
     background-color: #fff;
     width: 100%;

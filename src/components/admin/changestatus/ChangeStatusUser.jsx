@@ -44,7 +44,7 @@ export default function ChangeStatusUser({ accountStatus, accountID }) {
                 }
                 <form className="changestatususer-button-panel" onSubmit={handleSubmit}>
                     <Button styleName="primary-button" text={t("ButtonCancel")} ></Button>
-                    <Button styleName="primary-button" text={accountStatus == 1 ? t("UserProfileButtonPanelBlockUser") : t("UserProfileButtonPanelUnblockUser")} type="submit"></Button>
+                    <Button styleName="primary-button" text={accountStatus === 1 ? t("UserProfileButtonPanelBlockUser") : t("UserProfileButtonPanelUnblockUser")} type="submit"></Button>
                 </form>
             </div>
         </div>

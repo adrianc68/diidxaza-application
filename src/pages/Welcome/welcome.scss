@@ -179,8 +179,9 @@
           .welcome-choose-listItem-container {
             display: flex;
             flex-direction: column;
-            box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px,
-              rgba(0, 0, 0, 0.23) 0 3px 6px;
+            box-shadow: 
+            rgba(0, 0, 0, 0.16) 0 3px 6px,
+            rgba(0, 0, 0, 0.23) 0 3px 6px;
             background-color: #fff;
             padding: 15px;
             width: 80%;
@@ -223,6 +224,7 @@
                   .valid-li {
                     list-style: url("../../assets/images/valid.svg");
                   }
+
                   .invalid-li {
                     list-style: url("../../assets/images/invalid.svg");
                   }

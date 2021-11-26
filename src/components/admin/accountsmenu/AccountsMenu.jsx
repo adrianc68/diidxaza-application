@@ -31,7 +31,7 @@ export default function AccountsMenu() {
                 setAccountsItems(response);
             }
         }, []);
-    }
+    };
 
     return (
         <div className="accountsmenu-main-container">
@@ -65,5 +65,5 @@ export default function AccountsMenu() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
