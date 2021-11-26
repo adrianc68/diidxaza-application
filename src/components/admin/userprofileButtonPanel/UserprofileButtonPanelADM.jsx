@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "../../Button/Button";
 import { useTranslation } from "react-i18next";
 import UserReports from "../userreports/UserReports";

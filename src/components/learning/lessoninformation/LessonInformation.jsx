@@ -44,5 +44,5 @@ export default function LessonInformation({ lesson, setVisible }) {
                 </div>
             </div>
         </div>
-    )
+    );
 }

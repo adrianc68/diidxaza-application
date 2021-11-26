@@ -2,7 +2,6 @@
 
 .dashboard-main-container {
   display: grid;
-  /* Error al usar variable para 240px --> $sidebar-width calc(100vw - 240px)*/
   grid-template-columns: auto 1fr;
   grid-template-rows: $topbar-height calc(100vh - #{$topbar-height});
   grid-template-areas:
