@@ -55,9 +55,9 @@ export default function UserProfile({ accountID }) {
                 status: response.status,
                 role: response.role,
                 name: response.name,
-            }
+            };
             console.log(response);
-            setAccount(account)
+            setAccount(account);
         });
     }
 

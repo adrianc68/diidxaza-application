@@ -36,7 +36,7 @@ export default function Learning() {
             }
         }).then((response) => {
             if (response.length > 0) {
-                setLessons(response)
+                setLessons(response);
                 helpHttp().get(UrlAPI + "lessonRecords/" + sessionStorage.getItem("id"), {
                     headers: {
                         Accept: "application/json",
@@ -45,7 +45,7 @@ export default function Learning() {
                     }
                 }).then((responseRecords) => {
                     if (responseRecords.length > 0) {
-                        setLessonRecords(responseRecords)
+                        setLessonRecords(responseRecords);
                     } else {
                         if (responseRecords.status === 419) {
                             setModalNotToken(false);
@@ -57,7 +57,7 @@ export default function Learning() {
                             }
                         }
                     }
-                })
+                });
             } else {
                 if (response.status === 419) {
                     setModalNotToken(false);
@@ -69,7 +69,7 @@ export default function Learning() {
                     }
                 }
             }
-        })
+        });
     }, []);
 
     function handleDisplayLessonInformation(e, lessonCurrent) {
@@ -120,7 +120,7 @@ export default function Learning() {
                     </div>
                 </div>
             </div>
-            {modalNotToken && <Modal handleModal={() => { setModalNotToken(false) }} sizeHeight="20" sizeWidth="35">
+            {modalNotToken && <Modal handleModal={() => { setModalNotToken(false); }} sizeHeight="20" sizeWidth="35">
                 <AlertMessage content={t("ErrorToken")} handleModal={() => { setModalNotToken(false); }}></AlertMessage>
             </Modal>}
             {modalToken && <Modal handleModal={() => { window.location.href = "login" }} sizeHeight="20" sizeWidth="35">

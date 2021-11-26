@@ -71,9 +71,9 @@ export default function InputInformation() {
     useEffect(() => {
         helpHttp().get(UrlAPI + "states").then((response) => {
             if (response.length > 0) {
-                setStates(response)
+                setStates(response);
             }
-        })
+        });
     }, []);
     const {
         handleChangeState,

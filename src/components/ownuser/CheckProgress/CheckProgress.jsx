@@ -127,7 +127,7 @@ export default function CheckProgress() {
                         <div className="checkprogress-graphic-image"></div>
                     </div>
                     <div className="checkprogress-button-panel">
-                        <Button styleName="primary-button" text={t("ButtonClose")} onClick={() => { history.goBack() }}></Button>
+                        <Button styleName="primary-button" text={t("ButtonClose")} onClick={() => { history.goBack(); }}></Button>
                     </div>
                 </div>
             </div>

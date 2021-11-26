@@ -9,9 +9,9 @@
 
   .userprofile-user-details-container {
     border-left: 5px solid rgb(36, 36, 36);
-    box-shadow: 
-     rgba(9, 30, 66, 0.25) 0 1px 1px,
-     rgba(9, 30, 66, 0.13) 0 0 1px 1px;
+    box-shadow:
+      rgba(9, 30, 66, 0.25) 0 1px 1px,
+      rgba(9, 30, 66, 0.13) 0 0 1px 1px;
     padding: 15px;
     border-radius: 3px;
     background-color: #fff;
@@ -75,9 +75,9 @@
   .userprofile-user-data-container {
     width: calc(100% - 285px);
     overflow-y: auto;
-    box-shadow: 
-     rgba(9, 30, 66, 0.25) 0 1px 1px,
-     rgba(9, 30, 66, 0.13) 0 0 1px 1px;
+    box-shadow:
+      rgba(9, 30, 66, 0.25) 0 1px 1px,
+      rgba(9, 30, 66, 0.13) 0 0 1px 1px;
     padding: 25px;
     border-radius: 3px;
     background-color: #fff;
@@ -212,8 +212,8 @@
 
 .status-user-banned {
   background: 
-    linear-gradient
-    (28deg,
+    linear-gradient(
+    28deg,
     rgb(218, 3, 3) 8%,
     rgb(63, 0, 0) 100%
     );

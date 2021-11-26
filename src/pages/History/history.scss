@@ -1,9 +1,9 @@
 @import "../../components/variables.module.scss";
 
 .history-main-container {
-  box-shadow: 
-  rgba(9, 30, 66, 0.25) 0 1px 1px,
-  rgba(9, 30, 66, 0.13) 0 0 1px 1px;
+  box-shadow:
+    rgba(9, 30, 66, 0.25) 0 1px 1px,
+    rgba(9, 30, 66, 0.13) 0 0 1px 1px;
   border-radius: 3px;
   background-color: #fff;
   color: #000;
@@ -25,7 +25,7 @@
     img {
       margin-right: 15px;
       width: 220px;
-      box-shadow: 
+      box-shadow:
       rgba(9, 30, 66, 0.25) 0 1px 1px,
       rgba(9, 30, 66, 0.13) 0 0 1px 1px;
       padding: 15px;
@@ -41,7 +41,7 @@
 
     img {
       width: 20%;
-      box-shadow: 
+      box-shadow:
       rgba(9, 30, 66, 0.25) 0 1px 1px,
       rgba(9, 30, 66, 0.13) 0 0 1px 1px;
       padding: 15px;
@@ -59,7 +59,7 @@
     img {
       float: right;
       width: 380px;
-      box-shadow: 
+      box-shadow:
       rgba(9, 30, 66, 0.25) 0 1px 1px,
       rgba(9, 30, 66, 0.13) 0 0 1px 1px;
       padding: 15px;
@@ -132,7 +132,7 @@
       img {
         float: right;
         width: 80%;
-        box-shadow: 
+        box-shadow:
          rgba(9, 30, 66, 0.25) 0 1px 1px,
          rgba(9, 30, 66, 0.13) 0 0 1px 1px;
         padding: 15px;

@@ -41,12 +41,12 @@ export default function AnswerSection({ lesson }) {
                     }
                 }).then((responseAnswers) => {
                     if (responseAnswers.length > 0) {
-                        setQuestions(response)
-                        setQuestionsChange(response)
-                        setQuestion(response[0])
-                        setAnswers(responseAnswers)
+                        setQuestions(response);
+                        setQuestionsChange(response);
+                        setQuestion(response[0]);
+                        setAnswers(responseAnswers);
                     } else {
-                        setClassName("not-found-questions")
+                        setClassName("not-found-questions");
                         if (responseAnswers.status === 419) {
                             setModalNotToken(false);
                             setModalToken(true);
@@ -57,7 +57,7 @@ export default function AnswerSection({ lesson }) {
                             }
                         }
                     }
-                })
+                });
             } else {
                 setClassName("not-found-questions")
                 if (response.status === 419) {

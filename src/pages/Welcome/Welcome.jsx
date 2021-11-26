@@ -22,7 +22,7 @@ export default function Welcome() {
     const history = useHistory();
 
     function scrollToChooseContainer() {
-        chooseContainerRef.current.scrollIntoView({ behavior: "smooth" })
+        chooseContainerRef.current.scrollIntoView({ behavior: "smooth" });
     }
 
     return (

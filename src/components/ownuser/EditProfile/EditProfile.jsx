@@ -95,18 +95,18 @@ export default function EditProfile({ setNameUser }) {
                     username: response.username,
                     idCity: response.idCity[0]._id,
                     idState: response.idCity[0].idState[0]
-                }
+                };
                 setForm(initialAccountForm);
                 helpHttp().get(UrlAPI + "states").then((response) => {
                     if (!response.status) {
                         setStates(response);
                     }
-                })
+                });
                 helpHttp().get(UrlAPI + "cities/" + response.idCity[0].idState[0]).then((response) => {
                     if (!response.status) {
                         setCities(response);
                     }
-                })
+                });
                 if (response.URL != undefined) {
                     setURLPhoto(response.URL);
                     fetch(UrlAPI + "resources", {
@@ -141,7 +141,7 @@ export default function EditProfile({ setNameUser }) {
                 }
                 setURLPhoto(null);
             }
-        })
+        });
     }, []);
 
 
@@ -280,8 +280,8 @@ export default function EditProfile({ setNameUser }) {
                     </div>
                 </div>
             </div>
-            {modalNotToken && <Modal handleModal={() => { setModalNotToken(false) }} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={t("ErrorToken")} handleModal={() => { setModalNotToken(false) }}></AlertMessage>
+            {modalNotToken && <Modal handleModal={() => { setModalNotToken(false); }} sizeHeight="20" sizeWidth="35">
+                <AlertMessage content={t("ErrorToken")} handleModal={() => { setModalNotToken(false); }}></AlertMessage>
             </Modal>}
             {modalToken && <Modal handleModal={() => { window.location.href = "login"; }} sizeHeight="20" sizeWidth="35">
                 <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = "login"; }}></AlertMessage>

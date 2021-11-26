@@ -31,7 +31,7 @@ export default function Dashboard() {
         };
         setComponent(initialValue);
         setStatusModal(true);
-    }
+    };
 
     return (
         <div className="dashboard-main-container">

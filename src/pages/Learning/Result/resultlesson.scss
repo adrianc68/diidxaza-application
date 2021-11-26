@@ -1,7 +1,7 @@
 @import "../../../components/variables.module.scss";
 
 .resultlesson-main-container {
-  box-shadow: 
+  box-shadow:
   rgba(9, 30, 66, 0.25) 0 1px 1px,
   rgba(9, 30, 66, 0.13) 0 0 1px 1px;
   border-radius: 3px;
@@ -83,7 +83,7 @@
 
             li {
               padding: 5px;
-              box-shadow: 
+              box-shadow:
               rgba(9, 30, 66, 0.25) 0 1px 1px,
               rgba(9, 30, 66, 0.13) 0 0 1px 1px;
               border-radius: 3px;
@@ -130,7 +130,7 @@
       .questionResult-main-container {
         display: flex;
         flex-direction: column;
-        box-shadow: 
+        box-shadow:
         rgba(9, 30, 66, 0.25) 0 1px 1px,
         rgba(9, 30, 66, 0.13) 0 0 1px 1px;
         border-radius: 3px;
@@ -186,9 +186,9 @@
 
 @media all and (max-width: $max-width-device) {
   .resultlesson-main-container {
-    box-shadow: 
-    rgba(9, 30, 66, 0.25) 0 1px 1px,
-    rgba(9, 30, 66, 0.13) 0 0 1px 1px;
+    box-shadow:
+      rgba(9, 30, 66, 0.25) 0 1px 1px,
+      rgba(9, 30, 66, 0.13) 0 0 1px 1px;
     border-radius: 3px;
     background-color: #fff;
     width: 100%;

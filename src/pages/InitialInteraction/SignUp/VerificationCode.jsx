@@ -12,7 +12,7 @@ const validationCode = (code) => {
         errors.code = "Error";
     }
     return errors;
-}
+};
 
 export default function VerificationCode() {
     const { t } = useTranslation();

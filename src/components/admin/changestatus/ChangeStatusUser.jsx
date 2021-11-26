@@ -25,7 +25,7 @@ export default function ChangeStatusUser({ accountStatus, accountID }) {
             console.log(response);
         })
 
-    }
+    };
 
     return (
         <div className="changestatususer-main-container">
