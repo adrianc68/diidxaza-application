@@ -10,7 +10,7 @@ import AlertMessage from "../../components/alert/AlertMessage";
 const totalPoints = (lessonRecords) => {
     let totalPointsRecord = 0;
     if (lessonRecords.length > 0) {
-        lessonRecords.map(element => (
+        lessonRecords.map((element) => (
             totalPointsRecord = totalPointsRecord + element.pointsObtained
         ));
     }
@@ -100,7 +100,7 @@ export default function Learning() {
                 <div className="learning-lesson-information">
                     <div className="learning-lessons-content">
                         <ul>
-                            {lessons.length > 0 && lessons.map(element => (
+                            {lessons.length > 0 && lessons.map((element) => (
                                 <li onClick={(e) => { handleDisplayLessonInformation(e, element); }} ref={itemRef}>
                                     <LessonListItem isRecordHistory={lessonRecords.find(history => history.idLesson === element._id)} lesson={element}></LessonListItem>
                                 </li>

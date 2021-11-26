@@ -4,7 +4,7 @@ export default function MultipleAnswer({ answers, handleChange }) {
     return (
         <form className="multipleanswer-form">
             <ul>
-                {answers.length > 0 && answers.map(element => (
+                {answers.length > 0 && answers.map((element) => (
                     <li>
                         <div className="radiobutton-container">
                             <input className="radiobutton" id={element._id} type="checkbox" value={element.answers} name="answers" onChange={handleChange} />

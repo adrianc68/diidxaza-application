@@ -4,7 +4,7 @@ export default function QuestionUniqueAnswerSolved({ question, answers, answersU
         <div className="questionsolved">
             <h3>{question.question}</h3>
             < ul >
-                {answers.length > 0 && answers.map(element => (
+                {answers.length > 0 && answers.map((element) => (
                     element.isValid === true && <li className="valid-li" disable="disabled">
                         <div className="radiobutton-container">
                             {element.answers === answersUser && <input type="radio" id={element._id} checked disabled="disabled" class="radiobutton" /> ||

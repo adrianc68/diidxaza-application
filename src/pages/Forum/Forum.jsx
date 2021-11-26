@@ -136,7 +136,7 @@ export default function Forum() {
                         </div>
                         <div className="forum-discussion-list">
                             <ul>
-                                {discussions.length > 0 && discussions.map(element => (
+                                {discussions.length > 0 && discussions.map((element) => (
                                     <li onClick={(e) => { handleClickDiscussion(e, element._id); }}>
                                         <DiscussionListItem discussion={element}></DiscussionListItem>
                                     </li>

@@ -60,7 +60,7 @@ export default function Discussion({ discussion, numberComments, comments, image
                     <div className="forum-discussion-comment-list">
                         <ul id="list-comments">
                             {comments.length > 0 && comments.map((element) => (
-                                <li><Comment imagesComments={imagesComments.find(imageElement => imageElement.id === element._id)} comment={element} handleClickDeleteComment={handleClickDeleteComment} idDiscussion={discussion._id} setModalToken={setModalToken} /></li>
+                                <li><Comment imagesComments={imagesComments.find((imageElement) => imageElement.id === element._id)} comment={element} handleClickDeleteComment={handleClickDeleteComment} idDiscussion={discussion._id} setModalToken={setModalToken} /></li>
                             ))}
                         </ul>
                     </div>
