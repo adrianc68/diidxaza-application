@@ -373,6 +373,7 @@ export const TRANSLATIONS_ES = {
     ResultLessonWeCanImproveMessage: "¡Aún podemos mejorar, $!",
 
     ResultLessonCompletedLesson: "Has completado con éxito la lección",
+    ResultLessonCompleted: "Has completado la lección",
     ResultLessonCompletedLessonPoints: "Con un puntaje de",
     ResultLessonTitleShowQuestions: "Visualización de lección",
     ResultLessonEasyQuestions: "Preguntas fáciles",

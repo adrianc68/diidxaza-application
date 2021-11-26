@@ -21,7 +21,6 @@ export default function DashboardRouter({setNameUser}) {
             <Route exact path="/email" render={() => <UnderConstruction></UnderConstruction>} />
             <Route exact path="/forum" render={() => <Forum></Forum>} />
             <Route exact path="/learning" render={() => <Learning></Learning>} />
-            <Route exact path="/news" render={() => <ResultLesson></ResultLesson>} />
             <Route exact path="/dictionary" render={() => <UnderConstruction></UnderConstruction>} />
             <Route exact path="/songs" render={() => <UnderConstruction></UnderConstruction>} />
             <Route exact path="/history" render={() => <History></History>} />
@@ -34,7 +33,8 @@ export default function DashboardRouter({setNameUser}) {
             <Route exact path="/discussion" render={() => <AddDiscussion></AddDiscussion>} />
             <Route exact path="/user-reports" render={() => <ReportsMenu></ReportsMenu>} />
             <Route exact path="/user-accounts" render={() => <AccountsMenu></AccountsMenu>} />
-            <Route exact path="/answers/:idLesson" render={(props) => <AnswerSection lessonID={props.location.state.idLesson}></AnswerSection>} />
+            <Route exact path="/answers/:idLesson" render={(props) => <AnswerSection lesson={props.location.state.lesson}></AnswerSection>} />
+            <Route exact path="/results/:lesson" render={(props) => <ResultLesson resultsQuestions={props.location.state.resultsQuestions} lesson={props.location.state.lesson} pointsObtained={props.location.state.pointsObtained}></ResultLesson>} />
         </Switch>
     )
 }

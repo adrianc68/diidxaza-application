@@ -13,7 +13,7 @@ import LessonResults from "../../../components/learning/lessonresults/LessonResu
 import Modal from "../../../components/modal/Modal";
 import AlertMessage from "../../../components/alert/AlertMessage";
 
-export default function AnswerSection({ lessonID }) {
+export default function AnswerSection({ lesson }) {
     const { t } = useTranslation();
     const [questions, setQuestions] = useState([]);
     const [question, setQuestion] = useState({});
@@ -25,7 +25,7 @@ export default function AnswerSection({ lessonID }) {
     const [modalToken, setModalToken] = useState(false);
 
     useEffect(() => {
-        helpHttp().get(UrlAPI + "questions/" + lessonID, {
+        helpHttp().get(UrlAPI + "questions/" + lesson._id, {
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
@@ -86,7 +86,7 @@ export default function AnswerSection({ lessonID }) {
 
     function placeLessonResults() {
         const sytleLesson = {top:"0px", left:"0px"};
-        var lessonResults = <LessonResults style={sytleLesson} pointsObtained={pointsObtained}></LessonResults>;
+        var lessonResults = <LessonResults style={sytleLesson} pointsObtained={pointsObtained} resultsQuestions={resultsQuestions} lesson={lesson}></LessonResults>;
         return lessonResults;
     }
 
@@ -147,7 +147,7 @@ export default function AnswerSection({ lessonID }) {
                     <Button styleName="primary-button" text={t("ButtonNext")} onClick={handleClickNext} />
                 </div>}
                 {questionsChange.length === 1 && <div>
-                    <Button styleName="primary-button" text={t("ButtonFinish")} onClick={(e) => { handleClick(e, lessonID) }}/>
+                    <Button styleName="primary-button" text={t("ButtonFinish")} onClick={(e) => { handleClick(e, lesson._id) }}/>
                 </div>}
             </div>}
             {modalNotToken && <Modal handleModal={() => { setModalNotToken(false) }} sizeHeight="20" sizeWidth="35">

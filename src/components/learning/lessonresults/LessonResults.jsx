@@ -3,7 +3,7 @@ import Button from "../../../components/Button/Button";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-export default function LessonResults({pointsObtained}) {
+export default function LessonResults({pointsObtained,resultsQuestions, lesson}) {
     const { t } = useTranslation();
 
     return (
@@ -33,7 +33,18 @@ export default function LessonResults({pointsObtained}) {
                     </Link>
                 </div>
                 <div className="div-result">
-                    <Button styleName="green-button" text={t("ButtonShowResults")} />
+                    <Link className="link" to={
+                            {
+                                pathname: "/results/" + lesson.name,
+                                state: {
+                                    lesson: lesson,
+                                    pointsObtained:pointsObtained,
+                                    resultsQuestions:resultsQuestions
+                                }
+                            }
+                        }>
+                        <Button styleName="green-button" text={t("ButtonShowResults")} />
+                    </Link>
                 </div>
             </div>
         </div>

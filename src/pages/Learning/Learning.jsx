@@ -14,7 +14,6 @@ const totalPoints = (lessonRecords) => {
             totalPointsRecord = totalPointsRecord+element.pointsObtained
         ))
     }
-    console.log(lessonRecords);
     return totalPointsRecord;
 };
 

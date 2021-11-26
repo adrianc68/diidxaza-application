@@ -33,9 +33,9 @@ export default function LessonInformation({ lesson, setVisible }) {
                 <div>
                     <Link className="link" to={
                         {
-                            pathname: "/answers/" + lesson._id,
+                            pathname: "/answers/" + lesson.name,
                             state: {
-                                idLesson: lesson._id,
+                                lesson: lesson,
                             }
                         }
                     }>

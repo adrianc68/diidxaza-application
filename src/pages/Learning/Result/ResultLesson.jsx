@@ -2,44 +2,35 @@ import "./resultlesson.scss"
 import { useTranslation } from "react-i18next";
 import QuestionUniqueAnswerSolved from "../../../components/learning/resultlesson/unique/QuestionUniqueAnswerSolved";
 import QuestionMultipleAnswerSolved from "../../../components/learning/resultlesson/multiple/QuestionMultipleAnswerSolved";
-import QuestionOpenAnswerSolved from "../../../components/learning/resultlesson/open/QuestionOpenAnswerSolved";
 import CongratulationsImage from "../../../assets/images/ide-44.svg"
 import DiidxazaLogo from "../../../components/logo/DiidxazaLogo";
 import { FiCheck, FiX, FiPlusSquare, FiDivide, FiPlus } from "react-icons/fi";
 
 
-export default function ResultLesson() {
+export default function ResultLesson({resultsQuestions, lesson, pointsObtained}) {
     const { t } = useTranslation();
 
     return (
         <div className="resultlesson-main-container">
             <div className="resultlesson-content-container">
-                {/* <div className="h1-title-black">
-                    <h1>Nombre de la lección</h1>
-                </div> */}
                 <div className="resultlesson-content">
                     <div className="resultlesson-general-data-container">
                         <div className="resultlesson-general-data-greetings">
                             <div className="resultlesson-general-data-greetings-information">
                                 <div className="resutlesson-gdgi-congratulation">
-                                    {/* Win  */}
-                                    {/* <h1>{t("ResultLessonWeCanImproveMessage").replace('$', sessionStorage.getItem("name") + " " + sessionStorage.getItem("lastname"))}</h1> */}
-                                    {/* Lose */}
-                                    <h1>{t("ResultLessonCongratulationsMessage").replace('$', sessionStorage.getItem("name") + " " + sessionStorage.getItem("lastname"))}</h1>
+                                    {lesson.pointsTotal === pointsObtained && <h1>{t("ResultLessonCongratulationsMessage").replace('$', sessionStorage.getItem("name") + " " + sessionStorage.getItem("lastname"))}</h1>}
+                                    {lesson.pointsTotal !== pointsObtained && <h2>{t("ResultLessonWeCanImproveMessage").replace('$', sessionStorage.getItem("name") + " " + sessionStorage.getItem("lastname"))}</h2>}
                                     <div className="resultlesson-gdgic-lesson">
-                                        <h4>{t("ResultLessonCompletedLesson")}</h4>
-                                        {/* Nombre de la lección */}
-                                        <h1>Estupefacientes</h1>
+                                        {lesson.pointsTotal === pointsObtained && <h4>{t("ResultLessonCompletedLesson")}</h4>}
+                                        {lesson.pointsTotal !== pointsObtained && <h4>{t("ResultLessonCompleted")}</h4>}
+                                        <h1>{lesson.name}</h1>
                                     </div>
                                     <h4>{t("ResultLessonCompletedLessonPoints")}</h4>
-                                    {/* Puntos obtenidos de la lección */}
-                                    <span>505 pts</span>
+                                    <span>{pointsObtained} pts</span>
                                 </div>
-
                             </div>
                             <div className="resultlesson-general-data-greetins-image">
                                 <img src={CongratulationsImage} alt={t("AlternativeMessageImageDecorative")} />
-                            
                             </div>
                         </div>
                         <div className="resultlesson-general-data-list">
@@ -52,7 +43,7 @@ export default function ResultLesson() {
                                         </div>
                                         <div className="resultlesson-general-data-text">
                                             <span>{t("ResultLessonTotalQuestions")}</span>
-                                            <span className="color-black">15</span>
+                                            <span className="color-black">{resultsQuestions.length}</span>
                                         </div>
                                     </div>
                                 </li>
@@ -63,7 +54,7 @@ export default function ResultLesson() {
                                         </div>
                                         <div className="resultlesson-general-data-text">
                                             <span>{t("ResultLessonCorrectQuestions")}</span>
-                                            <span className="color-green">13</span>
+                                            <span className="color-green">{(resultsQuestions.filter(element =>element.isCorrect===true)).length}</span>
                                         </div>
                                     </div>
                                 </li>
@@ -75,7 +66,7 @@ export default function ResultLesson() {
                                         </div>
                                         <div className="resultlesson-general-data-text">
                                             <span>{t("ResultLessonIncorrectQuestions")}</span>
-                                            <span className="color-red">2</span>
+                                            <span className="color-red">{(resultsQuestions.filter(element =>element.isCorrect===false)).length}</span>
                                         </div>
                                     </div>
                                 </li>
@@ -87,7 +78,7 @@ export default function ResultLesson() {
                                         </div>
                                         <div className="resultlesson-general-data-text">
                                             <span>{t("ResultLessonEasyQuestions")}</span>
-                                            <span className="color-blue">5</span>
+                                            <span className="color-blue">{(resultsQuestions.filter(element =>element.question.level === "easy")).length}</span>
                                         </div>
                                     </div>
                                 </li>
@@ -99,7 +90,7 @@ export default function ResultLesson() {
                                         </div>
                                         <div className="resultlesson-general-data-text">
                                             <span>{t("ResultLessonHardQuestions")}</span>
-                                            <span>10</span>
+                                            <span>{(resultsQuestions.filter(element =>element.question.level === "difficult")).length}</span>
                                         </div>
                                     </div>
                                 </li>
@@ -113,24 +104,20 @@ export default function ResultLesson() {
                     <div className="questionResult-main-container">
                         <div className="questionresult-list-container">
                             <ul>
-                                <li>
-                                    <div className="questionResult-list-item">
-                                        <QuestionUniqueAnswerSolved></QuestionUniqueAnswerSolved>
-                                        <span className="questionResult-points-span">50 pts de 100 pts.</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="questionResult-list-item">
-                                        <QuestionMultipleAnswerSolved></QuestionMultipleAnswerSolved>
-                                        <span className="questionResult-points-span">50 pts de 100 pts</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="questionResult-list-item">
-                                        <QuestionOpenAnswerSolved></QuestionOpenAnswerSolved>
-                                        <span className="questionResult-points-span">0 pts de 100 pts</span>
-                                    </div>
-                                </li>
+                                {resultsQuestions.length > 0 && resultsQuestions.map(element => (
+                                    element.question.typeQuestion === "only" && <li>
+                                        <div className="questionResult-list-item">
+                                            <QuestionUniqueAnswerSolved question={element.question} answers={element.answers} answersUser={element.answerAccount}></QuestionUniqueAnswerSolved>
+                                            <span className="questionResult-points-span">{element.pointsAnswer} pts de {element.question.score} pts</span>
+                                        </div>
+                                    </li> ||
+                                    element.question.typeQuestion === "multiple" && <li>
+                                        <div className="questionResult-list-item">
+                                            <QuestionMultipleAnswerSolved question={element.question} answers={element.answers} answersUser={element.answerAccount}></QuestionMultipleAnswerSolved>
+                                            <span className="questionResult-points-span">{element.pointsAnswer} pts de {element.question.score} pts</span>
+                                        </div>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                         <DiidxazaLogo styleClass="logo-black-link just-icon"></DiidxazaLogo>

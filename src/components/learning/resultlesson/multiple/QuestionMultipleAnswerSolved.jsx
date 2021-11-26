@@ -1,33 +1,26 @@
 
-export default function QuestionMultipleAnswerSolved() {
+export default function QuestionMultipleAnswerSolved({ question, answers, answersUser }) {
     return (
         <div className="questionsolved">
-            <h3>Como se dice ahora</h3>
+            <h3>{question.question}</h3>
             < ul >
-                <li className="valid-li">
-                    <div className="radiobutton-container">
-                        <input type="radio" id="1a" disabled="disabled" checked class="radiobutton" name="foo" />
-                        <label htmlFor="1a">Unica opción 1</label>
-                    </div>
-                </li>
-                <li className="invalid-li">
-                    <div className="radiobutton-container">
-                        <input type="radio" id="2b" disabled="disabled" class="radiobutton" name="foo" />
-                        <label htmlFor="2b" >Unica opción 2</label>
-                    </div>
-                </li>
-                <li className="invalid-li">
-                    <div className="radiobutton-container">
-                        <input type="radio" id="3b" disabled="disabled" class="radiobutton" name="foo" />
-                        <label htmlFor="3b" >Unica opción 3</label>
-                    </div>
-                </li>
-                <li className="invalid-li">
-                    <div className="radiobutton-container">
-                        <input type="radio" id="4a" disabled="disabled" class="radiobutton" name="foo" />
-                        <label htmlFor="4a" >Unica opción 4</label>
-                    </div>
-                </li>
+                {answers.length > 0 && answers.map(element => (
+                    element.isValid ===true && <li className="valid-li" disable="disabled">
+                        <div className="checkbox-container">
+                            {answersUser.find(elementUser =>elementUser.value === element.answers) != undefined && <input type="checkbox" id={element._id} checked disabled class="checkbox"/> ||
+                             answersUser.find(elementUser =>elementUser.value === element.answers) == undefined && <input type="checkbox" id={element._id} disabled class="checkbox"/>}
+                            <label htmlFor={element._id}>{element.answers}</label>
+                        </div>
+                    </li> ||
+
+                    element.isValid ===false && <li className="invalid-li">
+                        <div className="checkbox-container">
+                            {answersUser.find(elementUser =>elementUser.value === element.answers) != undefined && <input type="checkbox" id={element._id} checked disabled class="checkbox"/> ||
+                             answersUser.find(elementUser =>elementUser.value === element.answers) == undefined && <input type="checkbox" id={element._id} disabled class="checkbox"/>}
+                            <label htmlFor={element._id}>{element.answers}</label>
+                        </div>
+                    </li>
+                ))}
             </ul >
         </div>
     )

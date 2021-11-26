@@ -20,7 +20,12 @@ export default function Discussion({ discussion, numberComments, comments, image
                     <img src={imageAccount} className="welcome-information-image" alt={"AlternativeMessageImageDecorative"}></img>
                     <div className="forum-discussion-data">
                         <div className="forum-discussion-data-user">
-                        <span>{discussion.idAccount[0].name} {discussion.idAccount[0].lastname}</span>
+                            {
+                                sessionStorage.getItem("id") === discussion.idAccount[0]._id ?
+                                    <span>{t("UserProfileMe")}</span>
+                                    :
+                                    <span>{discussion.idAccount[0].name} {discussion.idAccount[0].lastname}</span>
+                            }
                         </div>
                         <div className="forum-discussion-data-discussion">
                             <div>
