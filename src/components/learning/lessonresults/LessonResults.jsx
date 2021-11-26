@@ -48,5 +48,5 @@ export default function LessonResults({pointsObtained,resultsQuestions, lesson})
                 </div>
             </div>
         </div>
-    )
+    );
 }

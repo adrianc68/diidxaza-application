@@ -23,10 +23,10 @@ export default function Modal({ title, children, handleModal, sizeWidth, sizeHei
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 Modal.propTypes = {
     title: PropTypes.string.isRequired,
     children: PropTypes.element.isRequired
-}
+};

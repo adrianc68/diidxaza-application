@@ -71,5 +71,5 @@ export default function Discussion({ discussion, numberComments, comments, image
                 <ReportUser account={discussion.idAccount[0]} statusModal={statusModal} setStatusModal={setStatusModal} setModalToken={setModalToken}></ReportUser>
             </Modal>}
         </div>
-    )
+    );
 }

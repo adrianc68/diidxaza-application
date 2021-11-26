@@ -23,5 +23,5 @@ export default function QuestionUniqueAnswerSolved({ question, answers, answersU
                 ))}
             </ul >
         </div>
-    )
+    );
 }

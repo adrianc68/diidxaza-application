@@ -60,5 +60,5 @@ export default function Comment({ comment, handleClickDeleteComment, idDiscussio
                     handlePrimary={(e) => { handleClickDeleteComment(e, comment._id, idDiscussion, setStatusModalDelete) }} />
             </Modal>}
         </div>
-    )
+    );
 }

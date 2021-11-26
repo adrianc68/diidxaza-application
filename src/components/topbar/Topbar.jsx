@@ -18,5 +18,5 @@ export default function Topbar({ children }) {
                 </ul>
             </div>
         </header>
-    )
+    );
 }

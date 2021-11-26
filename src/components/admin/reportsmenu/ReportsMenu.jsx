@@ -130,5 +130,5 @@ export default function ReportsMenu() {
                 </div>
             </div>
         </div>
-    )
+    );
 }

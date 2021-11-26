@@ -98,5 +98,5 @@ export default function Report({ report }) {
 
             </div>
         </div>
-    )
+    );
 }

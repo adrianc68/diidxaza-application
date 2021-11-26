@@ -136,5 +136,5 @@ export default function AddDiscussion() {
                 </Modal>}
             </div>
         </form>
-    )
+    );
 }

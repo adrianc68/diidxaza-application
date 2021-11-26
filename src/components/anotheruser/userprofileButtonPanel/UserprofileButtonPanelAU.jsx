@@ -14,5 +14,5 @@ export default function UserprofileButtonPanelAU( { accountID }) {
                 <Button styleName="primary-button" text={t("UserProfileButonPanelReportUser")} ></Button>
             </NavLink>
         </div>
-    )
+    );
 }

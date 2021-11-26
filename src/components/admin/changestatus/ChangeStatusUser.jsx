@@ -48,5 +48,5 @@ export default function ChangeStatusUser({ accountStatus, accountID }) {
                 </form>
             </div>
         </div>
-    )
+    );
 }

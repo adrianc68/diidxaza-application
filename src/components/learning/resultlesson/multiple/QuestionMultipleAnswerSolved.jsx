@@ -23,5 +23,5 @@ export default function QuestionMultipleAnswerSolved({ question, answers, answer
                 ))}
             </ul >
         </div>
-    )
+    );
 }

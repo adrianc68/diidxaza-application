@@ -287,5 +287,5 @@ export default function EditProfile({setNameUser}) {
                 <AlertMessage content={t("RefreshToken")} handleModal={()=>{window.location.href = "login";}}></AlertMessage>
             </Modal>}
         </form>
-    )
+    );
 }

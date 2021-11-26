@@ -14,5 +14,5 @@ export default function MultipleAnswer({ answers, handleChange }) {
                 ))}
             </ul>
         </form>
-    )
+    );
 }

@@ -7,5 +7,5 @@ export default function BackgroundStars() {
             <div className="stars2"></div>
             <div className="stars3"></div>
         </div>
-    )
+    );
 }

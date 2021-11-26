@@ -15,5 +15,5 @@ export default function DiidxazaLogo(props) {
                 <span className="logo-name">{t("LogoName")}</span>
             </Link>
         </div>
-    )
+    );
 }

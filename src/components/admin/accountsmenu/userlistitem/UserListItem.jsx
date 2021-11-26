@@ -34,5 +34,5 @@ export default function UserListItem({ account }) {
             </div>
 
         </div>
-    )
+    );
 }

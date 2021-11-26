@@ -63,5 +63,5 @@ export default function UserReports({ username }) {
             </div>
 
         </div>
-    )
+    );
 }

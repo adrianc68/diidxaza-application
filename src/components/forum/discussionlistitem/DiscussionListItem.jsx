@@ -27,5 +27,5 @@ export default function DiscussionListItem(props) {
                 </div>
             </div>
         </div>
-    )
+    );
 }

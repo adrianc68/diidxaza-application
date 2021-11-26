@@ -26,5 +26,5 @@ export default function UserprofileButtonPanelOWU({ handleModal, accountID }) {
             </NavLink>
 
         </div>
-    )
+    );
 }

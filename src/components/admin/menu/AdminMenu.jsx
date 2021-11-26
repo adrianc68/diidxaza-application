@@ -48,5 +48,5 @@ export default function AdminMenu({ handleModal }) {
                 </li>
             </ul>
         </nav >
-    )
+    );
 }

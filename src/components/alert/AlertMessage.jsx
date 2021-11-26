@@ -18,5 +18,5 @@ export default function AlertMessage({ content, handleModal }) {
                 </div>
             </div>
         </div>
-    )
+    );
 }

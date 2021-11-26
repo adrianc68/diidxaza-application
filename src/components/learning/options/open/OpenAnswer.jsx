@@ -11,5 +11,5 @@ export default function OpenAnswer() {
                 <input type="text" />
             </div>
         </form>
-    )
+    );
 }

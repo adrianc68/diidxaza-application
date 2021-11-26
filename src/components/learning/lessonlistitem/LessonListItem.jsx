@@ -12,5 +12,5 @@ export default function LessonListItem(props) {
                 <p>{props.lesson.name}</p>
             </div>
         </div>
-    )
+    );
 }

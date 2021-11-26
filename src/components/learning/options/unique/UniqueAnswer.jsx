@@ -14,5 +14,5 @@ export default function UniqueAnswer({answers, handleChange}) {
                 ))} 
             </ul>
         </form>
-    )
+    );
 }

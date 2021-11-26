@@ -28,5 +28,5 @@ export default function AddComment({commentLenght,loadingComment,icon,className,
             </div>
             <br/>
         </form>
-    )
+    );
 }

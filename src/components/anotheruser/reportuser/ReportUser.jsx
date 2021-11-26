@@ -89,5 +89,5 @@ export default function ReportUser({ setStatusModal, account, setModalToken }) {
                 </div>
             </div>
         </form>
-    )
+    );
 }
