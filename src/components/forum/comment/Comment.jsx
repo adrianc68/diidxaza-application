@@ -55,9 +55,9 @@ export default function Comment({ comment, handleClickDeleteComment, idDiscussio
             {statusModal && <Modal title={t("ReportUserTitle")} handleModal={() => setStatusModal(false)} sizeHeight="70" sizeWidth="80">
                 <ReportUser account={comment.idAccount[0]} statusModal={statusModal} setStatusModal={setStatusModal} setModalToken={setModalToken}></ReportUser>
             </Modal>}
-            {statusModalDelete && <Modal title={t("DeleteComment")} handleModal={() => { setStatusModalDelete(false) }} sizeHeight="20" sizeWidth="35">
+            {statusModalDelete && <Modal title={t("DeleteComment")} handleModal={() => { setStatusModalDelete(false); }} sizeHeight="20" sizeWidth="35">
                 <AlertConfirmation primaryButton={t("ButtonYes")} secondaryButton={t("ButtonNo")} content={t("MessageComment")} setStatusModal={setStatusModalDelete}
-                    handlePrimary={(e) => { handleClickDeleteComment(e, comment._id, idDiscussion, setStatusModalDelete) }} />
+                    handlePrimary={(e) => { handleClickDeleteComment(e, comment._id, idDiscussion, setStatusModalDelete); }} />
             </Modal>}
         </div>
     );

@@ -7,8 +7,8 @@ import { useVerificationForm } from "../../../hooks/useAccountForm";
 
 const validationCode = (code) => {
     let errors = {};
-    let regexCode =  /^[0-9]{6}$/;
-    if(!regexCode.test(code)){
+    let regexCode = /^[0-9]{6}$/;
+    if (!regexCode.test(code)) {
         errors.code = "Error";
     }
     return errors;
@@ -29,7 +29,7 @@ export default function VerificationCode() {
         handleSubmitVerification,
         icon
     } = useVerificationForm(validationCode);
-    
+
     return (
         <form onSubmit={handleSubmitVerification} className="signup-input-verification-container">
             <div className="signup-input-title-container">
@@ -44,7 +44,7 @@ export default function VerificationCode() {
                     <label>
                         <div className="signup-verification-code-input">
                             <p className="p-semibold">{t("SignUpVerificationCodeInput")}</p>
-                            <input name="code" type="text" onBlur={handleBlur} onChange={handleChange} value={code} required/>
+                            <input name="code" type="text" onBlur={handleBlur} onChange={handleChange} value={code} required />
                             <div className="system-message-container">
                                 {errors.code && <p className="errorInput">{t("ErrorCode")}</p>}
                                 {loading && <p className={className}>{icon}  {response}</p>}
@@ -58,5 +58,5 @@ export default function VerificationCode() {
                 </div>
             </div>
         </form>
-    )
+    );
 }

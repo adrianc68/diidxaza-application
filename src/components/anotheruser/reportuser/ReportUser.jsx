@@ -34,7 +34,7 @@ const validationsForm = (form) => {
         }
     }
     return errors;
-}
+};
 
 export default function ReportUser({ setStatusModal, account, setModalToken }) {
     const { t } = useTranslation();
@@ -51,7 +51,7 @@ export default function ReportUser({ setStatusModal, account, setModalToken }) {
     } = useReportForm(initialForm, validationsForm, account._id);
 
     return (
-        <form onSubmit={(e) => { handleSubmit(e, setStatusModal, setModalToken) }} className="reportuser-main-container">
+        <form onSubmit={(e) => { handleSubmit(e, setStatusModal, setModalToken); }} className="reportuser-main-container">
             <div className="reportuser-content-container">
                 <div className="reportuser-text-description">
                     <span>{t("ReportUserReported")} <b>{account.name} {account.lastname}</b></span>

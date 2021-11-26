@@ -40,7 +40,7 @@ export default function AdminMenu({ handleModal }) {
                         <span>{t("AdminMenuReports")}</span>
                     </div>
                 </li>
-                <li onClick={ () => handleModalAndMenu(<AccountsMenu></AccountsMenu>, t("AdminAccountMenu"))}>
+                <li onClick={() => handleModalAndMenu(<AccountsMenu></AccountsMenu>, t("AdminAccountMenu"))}>
                     <div className="adminmenubar-link">
                         <MdSupervisorAccount className="adminmenubarIcon" />
                         <span>{t("AdminMenuAccounts")}</span>

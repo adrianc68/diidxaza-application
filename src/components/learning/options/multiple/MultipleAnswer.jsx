@@ -7,7 +7,7 @@ export default function MultipleAnswer({ answers, handleChange }) {
                 {answers.length > 0 && answers.map(element => (
                     <li>
                         <div className="radiobutton-container">
-                            <input className="radiobutton" id={element._id} type="checkbox" value={element.answers} name="answers" onChange={handleChange}/>
+                            <input className="radiobutton" id={element._id} type="checkbox" value={element.answers} name="answers" onChange={handleChange} />
                             <label htmlFor={element._id}>{element.answers}</label>
                         </div>
                     </li>

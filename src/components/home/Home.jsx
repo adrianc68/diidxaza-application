@@ -15,7 +15,7 @@ export default function Home() {
                     <span>{t("HomeWelcomeCovidDescription")}</span>
                 </div>
                 <div className="home-img-banner">
-                    <span></span>            
+                    <span></span>
                 </div>
             </div>
 
@@ -31,7 +31,7 @@ export default function Home() {
             </div>
 
             <div className="home-features-container">
-                <h2>{ t("HomeWelcomeFeaturesTitle")}</h2>
+                <h2>{t("HomeWelcomeFeaturesTitle")}</h2>
                 <div className="home-features-content">
                     <div className="home-features-forum">
                         <h2>{t("SidebarForum")}</h2>

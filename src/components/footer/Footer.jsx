@@ -2,7 +2,7 @@ import "./footer.scss";
 import { useTranslation } from "react-i18next";
 import DiidxazaLogo from "../logo/DiidxazaLogo";
 import { Link } from "react-router-dom";
-import {BsFacebook, BsTwitter, BsYoutube, BsGithub} from "react-icons/bs";
+import { BsFacebook, BsTwitter, BsYoutube, BsGithub } from "react-icons/bs";
 
 export default function Footer() {
     const { t } = useTranslation();
@@ -17,7 +17,6 @@ export default function Footer() {
                 </div>
                 <div className="footer-links-container">
                     <div className="footer-links">
-
                     </div>
                 </div>
                 <div className="footer-bottom-container">
@@ -50,18 +49,18 @@ export default function Footer() {
                             <ul>
                                 <li>
                                     <Link className="link" to="/facebook">
-                                    <BsFacebook/>
+                                        <BsFacebook />
 
                                     </Link>
                                 </li>
                                 <li>
                                     <Link className="link" to="/twitter">
-                                        <BsTwitter/>
+                                        <BsTwitter />
                                     </Link>
                                 </li>
                                 <li>
                                     <Link className="link" to="/youtube">
-                                        <BsYoutube/>
+                                        <BsYoutube />
                                     </Link>
                                 </li>
                                 <li>

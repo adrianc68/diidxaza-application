@@ -33,7 +33,7 @@ export default function UserReports({ username }) {
                 setReports(response);
             }
         }, []);
-    }
+    };
 
     return (
         <div className="userreports-main-container">

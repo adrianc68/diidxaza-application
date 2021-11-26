@@ -47,11 +47,11 @@ export default function AnswerSection({ lesson }) {
                         setAnswers(responseAnswers)
                     } else {
                         setClassName("not-found-questions")
-                        if(responseAnswers.status === 419){
+                        if (responseAnswers.status === 419) {
                             setModalNotToken(false);
                             setModalToken(true);
-                        }else{
-                            if(responseAnswers.status === 401){
+                        } else {
+                            if (responseAnswers.status === 401) {
                                 setModalToken(false);
                                 setModalNotToken(true);
                             }
@@ -60,11 +60,11 @@ export default function AnswerSection({ lesson }) {
                 })
             } else {
                 setClassName("not-found-questions")
-                if(response.status === 419){
+                if (response.status === 419) {
                     setModalNotToken(false);
                     setModalToken(true);
-                }else{
-                    if(response.status === 401){
+                } else {
+                    if (response.status === 401) {
                         setModalToken(false);
                         setModalNotToken(true);
                     }
@@ -85,7 +85,7 @@ export default function AnswerSection({ lesson }) {
     } = useLessonForm(setQuestion, questionsChange, setQuestionsChange, setAnswers, question, answers, setVisible, setModalNotToken, setModalToken);
 
     function placeLessonResults() {
-        const sytleLesson = {top:"0px", left:"0px"};
+        const sytleLesson = { top: "0px", left: "0px" };
         var lessonResults = <LessonResults style={sytleLesson} pointsObtained={pointsObtained} resultsQuestions={resultsQuestions} lesson={lesson}></LessonResults>;
         return lessonResults;
     }
@@ -147,18 +147,18 @@ export default function AnswerSection({ lesson }) {
                     <Button styleName="primary-button" text={t("ButtonNext")} onClick={handleClickNext} />
                 </div>}
                 {questionsChange.length === 1 && <div>
-                    <Button styleName="primary-button" text={t("ButtonFinish")} onClick={(e) => { handleClick(e, lesson._id) }}/>
+                    <Button styleName="primary-button" text={t("ButtonFinish")} onClick={(e) => { handleClick(e, lesson._id); }} />
                 </div>}
             </div>}
-            {modalNotToken && <Modal handleModal={() => { setModalNotToken(false) }} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={t("ErrorToken")} handleModal={() => { setModalNotToken(false) }}></AlertMessage>
+            {modalNotToken && <Modal handleModal={() => { setModalNotToken(false); }} sizeHeight="20" sizeWidth="35">
+                <AlertMessage content={t("ErrorToken")} handleModal={() => { setModalNotToken(false); }}></AlertMessage>
             </Modal>}
-            {modalToken && <Modal handleModal={() => { window.location.href = "login" }} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = "login" }}></AlertMessage>
+            {modalToken && <Modal handleModal={() => { window.location.href = "login"; }} sizeHeight="20" sizeWidth="35">
+                <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = "login"; }}></AlertMessage>
             </Modal>}
         </form> || <div className={className}>
             <h3>{t("LearningNotQuestion")}</h3>
             <img src={ImageInformationAlt} alt=""></img>
         </div>
-    )
+    );
 }

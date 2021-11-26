@@ -9,7 +9,7 @@ import DashboardRouter from "../../routers/DashboardRouter";
 import history from "../History/History";
 import Modal from "../../components/modal/Modal";
 import { useTranslation } from "react-i18next";
-import { MdLogout} from "react-icons/md";
+import { MdLogout } from "react-icons/md";
 
 export default function Dashboard() {
     const { t } = useTranslation();
@@ -52,12 +52,12 @@ export default function Dashboard() {
                             </NavLink>
                         </div>
                         <div className="dashboard-logout-button-section">
-                                <div>
-                                    <Button styleName="icon-button background-red" text={t("SidebarSignOutButton")}>
-                                        <MdLogout className="icon"></MdLogout>
-                                    </Button>
-                                </div>
+                            <div>
+                                <Button styleName="icon-button background-red" text={t("SidebarSignOutButton")}>
+                                    <MdLogout className="icon"></MdLogout>
+                                </Button>
                             </div>
+                        </div>
                     </Topbar>
                 </div >
                 <div className="sidebar-dashboard-container">
@@ -74,5 +74,5 @@ export default function Dashboard() {
                 }
             </Router>
         </div >
-    )
+    );
 }

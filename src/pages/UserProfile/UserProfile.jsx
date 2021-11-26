@@ -9,7 +9,7 @@ import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
 import { useConvertionData } from "../../hooks/useConvertionData";
 // import { useRouteMatch,useHistory, useParams } from "react-router-dom";
 
-export default function UserProfile({accountID}) {
+export default function UserProfile({ accountID }) {
     const { t } = useTranslation();
     // let { url } = useRouteMatch();
     // let { path } = useHistory();
@@ -19,7 +19,7 @@ export default function UserProfile({accountID}) {
         age: null,
         birthdate: null,
         email: null,
-        username:null,
+        username: null,
         status: null,
         role: null,
         name: null,
@@ -32,7 +32,7 @@ export default function UserProfile({accountID}) {
     useEffect(() => {
         handleDiscussionsTab();
         fetchData();
-        
+
         /* DEBUG LOG <- FOR HISTORY ROUTER*/
         // console.log("URL" , url);
         // console.log("path", path);
@@ -162,7 +162,7 @@ export default function UserProfile({accountID}) {
                         <UserprofileButtonPanelADM handleModal={handleModal} accountStatus={account.status} accountID={accountID} username={account.username} />
                     </div>
                     <div className="userprofile-button-panel">
-                        <UserprofileButtonPanelOWU handleModal={handleModal}  accountID={accountID} />
+                        <UserprofileButtonPanelOWU handleModal={handleModal} accountID={accountID} />
                     </div>
                     <div className="userprofile-button-panel">
                         {/* <UserprofileButtonPanelAU /> */}
@@ -221,5 +221,5 @@ export default function UserProfile({accountID}) {
 
             </div>
         </div>
-    )
+    );
 }

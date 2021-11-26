@@ -2,12 +2,12 @@ import "./resultlesson.scss";
 import { useTranslation } from "react-i18next";
 import QuestionUniqueAnswerSolved from "../../../components/learning/resultlesson/unique/QuestionUniqueAnswerSolved";
 import QuestionMultipleAnswerSolved from "../../../components/learning/resultlesson/multiple/QuestionMultipleAnswerSolved";
-import CongratulationsImage from "../../../assets/images/ide-44.svg"
+import CongratulationsImage from "../../../assets/images/ide-44.svg";
 import DiidxazaLogo from "../../../components/logo/DiidxazaLogo";
 import { FiCheck, FiX, FiPlusSquare, FiDivide, FiPlus } from "react-icons/fi";
 
 
-export default function ResultLesson({resultsQuestions, lesson, pointsObtained}) {
+export default function ResultLesson({ resultsQuestions, lesson, pointsObtained }) {
     const { t } = useTranslation();
 
     return (
@@ -54,7 +54,7 @@ export default function ResultLesson({resultsQuestions, lesson, pointsObtained})
                                         </div>
                                         <div className="resultlesson-general-data-text">
                                             <span>{t("ResultLessonCorrectQuestions")}</span>
-                                            <span className="color-green">{(resultsQuestions.filter(element =>element.isCorrect===true)).length}</span>
+                                            <span className="color-green">{(resultsQuestions.filter(element => element.isCorrect === true)).length}</span>
                                         </div>
                                     </div>
                                 </li>
@@ -66,7 +66,7 @@ export default function ResultLesson({resultsQuestions, lesson, pointsObtained})
                                         </div>
                                         <div className="resultlesson-general-data-text">
                                             <span>{t("ResultLessonIncorrectQuestions")}</span>
-                                            <span className="color-red">{(resultsQuestions.filter(element =>element.isCorrect===false)).length}</span>
+                                            <span className="color-red">{(resultsQuestions.filter(element => element.isCorrect === false)).length}</span>
                                         </div>
                                     </div>
                                 </li>
@@ -78,7 +78,7 @@ export default function ResultLesson({resultsQuestions, lesson, pointsObtained})
                                         </div>
                                         <div className="resultlesson-general-data-text">
                                             <span>{t("ResultLessonEasyQuestions")}</span>
-                                            <span className="color-blue">{(resultsQuestions.filter(element =>element.question.level === "easy")).length}</span>
+                                            <span className="color-blue">{(resultsQuestions.filter(element => element.question.level === "easy")).length}</span>
                                         </div>
                                     </div>
                                 </li>
@@ -90,7 +90,7 @@ export default function ResultLesson({resultsQuestions, lesson, pointsObtained})
                                         </div>
                                         <div className="resultlesson-general-data-text">
                                             <span>{t("ResultLessonHardQuestions")}</span>
-                                            <span>{(resultsQuestions.filter(element =>element.question.level === "difficult")).length}</span>
+                                            <span>{(resultsQuestions.filter(element => element.question.level === "difficult")).length}</span>
                                         </div>
                                     </div>
                                 </li>
@@ -124,8 +124,6 @@ export default function ResultLesson({resultsQuestions, lesson, pointsObtained})
                     </div>
                 </div>
             </div>
-
-
         </div>
-    )
+    );
 }

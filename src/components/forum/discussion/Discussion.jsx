@@ -67,7 +67,7 @@ export default function Discussion({ discussion, numberComments, comments, image
                 </div>
             </div>
 
-            {statusModal && <Modal title={t("ReportUserTitle")} handleModal={() => { setStatusModal(false) }} sizeHeight="70" sizeWidth="80">
+            {statusModal && <Modal title={t("ReportUserTitle")} handleModal={() => { setStatusModal(false); }} sizeHeight="70" sizeWidth="80">
                 <ReportUser account={discussion.idAccount[0]} statusModal={statusModal} setStatusModal={setStatusModal} setModalToken={setModalToken}></ReportUser>
             </Modal>}
         </div>

@@ -70,7 +70,7 @@ export default function InputInformation() {
     const history = useHistory();
     useEffect(() => {
         helpHttp().get(UrlAPI + "states").then((response) => {
-            if (response.length>0) {
+            if (response.length > 0) {
                 setStates(response)
             }
         })
@@ -116,7 +116,7 @@ export default function InputInformation() {
                                 </div>
                             </div>
                             <div className="system-message-container">
-                                <br/>
+                                <br />
                                 {errorImage && <p className="errorInput">{t("ErrorImage")}</p>}
                             </div>
                         </label>
@@ -205,5 +205,5 @@ export default function InputInformation() {
                 <div className="signup-image-container"></div>
             </div>
         </form>
-    )
+    );
 }

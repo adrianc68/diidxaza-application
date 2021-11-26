@@ -11,8 +11,8 @@ export default function ChangeStatusUser({ accountStatus, accountID }) {
         console.log(parseInt(accountStatus));
         const userinformation = {
             _id: accountID,
-            status: (accountStatus === 1 ? accountStatus + 1 : accountStatus - 1) ,
-        }
+            status: (accountStatus === 1 ? accountStatus + 1 : accountStatus - 1),
+        };
 
         helpHttp().patch(UrlAPI + "accounts", {
             headers: {

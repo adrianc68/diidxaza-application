@@ -7,7 +7,7 @@ export default function OpenAnswer() {
     return (
         <form className="openanswer-form">
             <div className="openanswer-input">
-            <span>{t("AnswerSectionInputAnswer")}</span>
+                <span>{t("AnswerSectionInputAnswer")}</span>
                 <input type="text" />
             </div>
         </form>

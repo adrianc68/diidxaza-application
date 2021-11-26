@@ -15,7 +15,7 @@ export default function UserprofileButtonPanelADM({ handleModal, accountStatus, 
                     accountStatus === 1 ?
                         <Button styleName="primary-button" text={t("UserProfileButtonPanelBlockUser")} onClick={() => handleModal(<ChangeStatusUser accountStatus={accountStatus} accountID={accountID} />, "350px", "50vw", t("BlockUserTitle"))}></Button>
                         :
-                        <Button styleName="primary-button" text={t("UserProfileButtonPanelUnblockUser")} onClick={() => handleModal(<ChangeStatusUser accountStatus={accountStatus} accountID={accountID} />,"350px", "50vw", t("UnblockUserTitle"))} ></Button>
+                        <Button styleName="primary-button" text={t("UserProfileButtonPanelUnblockUser")} onClick={() => handleModal(<ChangeStatusUser accountStatus={accountStatus} accountID={accountID} />, "350px", "50vw", t("UnblockUserTitle"))} ></Button>
             }
         </div>
     );
