@@ -23,8 +23,7 @@ export default function ChangeStatusUser({ accountStatus, accountID }) {
             body: userinformation
         }).then((response) => {
             console.log(response);
-        })
-
+        });
     };
 
     return (

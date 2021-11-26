@@ -38,12 +38,12 @@ export default function Comment({ comment, handleClickDeleteComment, idDiscussio
                         <span>{convertDate(comment.dateCreation)}</span>
                     </div>
 
-                    {sessionStorage.getItem("id") == comment.idAccount[0]._id && <div className="forum-comment-button-panel">
+                    {sessionStorage.getItem("id") === comment.idAccount[0]._id && <div className="forum-comment-button-panel">
                         <div>
                             <Button styleName="dark-blue-button" onClick={() => setStatusModalDelete(true)}>{t("DeleteButton")}</Button>
                         </div>
                     </div>}
-                    {sessionStorage.getItem("id") != comment.idAccount[0]._id && <div className="forum-comment-button-panel">
+                    {sessionStorage.getItem("id") !== comment.idAccount[0]._id && <div className="forum-comment-button-panel">
                         <div>
                             <Button styleName="primary-button" onClick={() => setStatusModal(true)}>{t("ButtonReportUser")}</Button>
                         </div>

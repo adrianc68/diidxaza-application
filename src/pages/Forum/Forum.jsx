@@ -56,7 +56,7 @@ export default function Forum() {
             },
         }).then((response) => {
             if (response.length > 0) {
-                setDiscussions(response)
+                setDiscussions(response);
             } else {
                 setDiscussions([]);
             }

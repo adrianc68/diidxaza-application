@@ -34,7 +34,7 @@ export default function ReportsMenu() {
                 setReports(response);
             }
         }, []);
-    }
+    };
 
     const validateForm = (toValidate) => {
         let errors = {};

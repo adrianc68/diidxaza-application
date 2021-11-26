@@ -29,7 +29,7 @@ export const useLessonForm = (
     e.preventDefault();
     const { value, checked } = e.target;
     if (checked) {
-      setValueMultiple((valueMultiple) => [...valueMultiple, { value: value }]);
+      setValueMultiple((valueMultiple) => [...valueMultiple, { value }]);
     } else {
       setValueMultiple(
         valueMultiple.filter((elementValue) => elementValue.value !== value)
@@ -62,9 +62,9 @@ export const useLessonForm = (
         setResultsQuestions((resultsQuestions) => [
           ...resultsQuestions,
           {
-            question: question,
+            question,
             answerAccount: valueOnly,
-            answers: answers,
+            answers,
             isCorrect: isCorrectAnswer,
             pointsAnswer: pointsAnswer,
           },
@@ -169,9 +169,9 @@ export const useLessonForm = (
             Authorization: sessionStorage.getItem("token"),
           },
           body: {
-            pointsObtained: pointsObtained,
+            pointsObtained,
             idAccount: sessionStorage.getItem("id"),
-            idLesson: idLesson,
+            idLesson,
           },
         })
         .then((response) => {

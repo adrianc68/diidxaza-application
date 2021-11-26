@@ -116,7 +116,7 @@ export const useUpdateAccountForm = (
       const age = dateNow - dateBirth;
       setForm({
         ...form,
-        age: age,
+        age,
         [name]: value,
       });
     } else {
@@ -434,7 +434,7 @@ export const useAccountForm = (initialForm, validateForm) => {
       const age = dateNow - dateBirth;
       setForm({
         ...form,
-        age: age,
+        age,
         [name]: value,
       });
     } else {

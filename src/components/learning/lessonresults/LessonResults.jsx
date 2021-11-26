@@ -37,9 +37,9 @@ export default function LessonResults({ pointsObtained, resultsQuestions, lesson
                         {
                             pathname: "/results/" + lesson.name,
                             state: {
-                                lesson: lesson,
-                                pointsObtained: pointsObtained,
-                                resultsQuestions: resultsQuestions
+                                lesson,
+                                pointsObtained,
+                                resultsQuestions
                             }
                         }
                     }>

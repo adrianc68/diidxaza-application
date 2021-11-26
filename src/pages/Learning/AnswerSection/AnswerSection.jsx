@@ -59,7 +59,7 @@ export default function AnswerSection({ lesson }) {
                     }
                 });
             } else {
-                setClassName("not-found-questions")
+                setClassName("not-found-questions");
                 if (response.status === 419) {
                     setModalNotToken(false);
                     setModalToken(true);
@@ -70,7 +70,7 @@ export default function AnswerSection({ lesson }) {
                     }
                 }
             }
-        })
+        });
     }, []);
 
     const {

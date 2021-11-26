@@ -249,7 +249,7 @@ export const useForum = (
           setLoadingComment(false);
           setLoadingDiscussion(false);
           setFoundDiscussion(true);
-          if (responseDiscussion.idAccount[0].URL != undefined) {
+          if (responseDiscussion.idAccount[0].URL !== undefined) {
             const url = {
               URL: responseDiscussion.idAccount[0].URL,
             };
@@ -284,7 +284,7 @@ export const useForum = (
             .then(async (responseComments) => {
               if (responseComments.length > 0) {
                 await responseComments.map(async (imageComment) => {
-                  if (imageComment.idAccount[0].URL != undefined) {
+                  if (imageComment.idAccount[0].URL !== undefined) {
                     fetch(UrlAPI + "resources", {
                       method: "PATCH",
                       headers: {
@@ -401,7 +401,7 @@ export const useForum = (
                 },
               ],
             };
-            if (sessionStorage.getItem("URL") != undefined) {
+            if (sessionStorage.getItem("URL") !== undefined) {
               fetch(UrlAPI + "resources", {
                 method: "PATCH",
                 headers: {
@@ -486,7 +486,7 @@ export const useForum = (
         },
         body: {
           _id: id,
-          idDiscussion: idDiscussion,
+          idDiscussion,
         },
       })
       .then(async (response) => {
@@ -655,7 +655,7 @@ export const useDiscussionForm = (initialForm, validateForm) => {
     }
     setForm({
       ...form,
-      theme: theme,
+      theme,
     });
   };
 

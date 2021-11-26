@@ -107,7 +107,7 @@ export default function EditProfile({ setNameUser }) {
                         setCities(response);
                     }
                 });
-                if (response.URL != undefined) {
+                if (response.URL !== undefined) {
                     setURLPhoto(response.URL);
                     fetch(UrlAPI + "resources", {
                         method: "PATCH",

@@ -49,7 +49,7 @@ export default function Discussion({ discussion, numberComments, comments, image
                 </div>
                 <div className="forum-discussion-forum-button-panel-container">
                     <h2>{t("DiscussionNumberComment")}{numberComments})</h2>
-                    {sessionStorage.getItem("id") != discussion.idAccount[0]._id && <div>
+                    {sessionStorage.getItem("id") !== discussion.idAccount[0]._id && <div>
                         <Button styleName="primary-button" onClick={() => setStatusModal(true)}>{t("ButtonReportUser")}</Button>
                     </div>}
                 </div>

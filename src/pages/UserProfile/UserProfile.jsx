@@ -59,7 +59,7 @@ export default function UserProfile({ accountID }) {
             console.log(response);
             setAccount(account);
         });
-    }
+    };
 
     const handleDiscussionsTab = () => {
         const tabs = document.querySelectorAll(".userprofile-forum-data-tab");
