@@ -102,7 +102,7 @@ export default function Learning() {
                         <ul>
                             {lessons.length > 0 && lessons.map((element) => (
                                 <li onClick={(e) => { handleDisplayLessonInformation(e, element); }} ref={itemRef}>
-                                    <LessonListItem isRecordHistory={lessonRecords.find(history => history.idLesson === element._id)} lesson={element}></LessonListItem>
+                                    <LessonListItem isRecordHistory={lessonRecords.find((history) => history.idLesson === element._id)} lesson={element}></LessonListItem>
                                 </li>
                             ))}
                         </ul>

@@ -18,8 +18,8 @@ export default function ResultLesson({ resultsQuestions, lesson, pointsObtained 
                         <div className="resultlesson-general-data-greetings">
                             <div className="resultlesson-general-data-greetings-information">
                                 <div className="resutlesson-gdgi-congratulation">
-                                    {lesson.pointsTotal === pointsObtained && <h1>{t("ResultLessonCongratulationsMessage").replace('$', sessionStorage.getItem("name") + " " + sessionStorage.getItem("lastname"))}</h1>}
-                                    {lesson.pointsTotal !== pointsObtained && <h2>{t("ResultLessonWeCanImproveMessage").replace('$', sessionStorage.getItem("name") + " " + sessionStorage.getItem("lastname"))}</h2>}
+                                    {lesson.pointsTotal === pointsObtained && <h1>{t("ResultLessonCongratulationsMessage").replace("$", sessionStorage.getItem("name") + " " + sessionStorage.getItem("lastname"))}</h1>}
+                                    {lesson.pointsTotal !== pointsObtained && <h2>{t("ResultLessonWeCanImproveMessage").replace("$", sessionStorage.getItem("name") + " " + sessionStorage.getItem("lastname"))}</h2>}
                                     <div className="resultlesson-gdgic-lesson">
                                         {lesson.pointsTotal === pointsObtained && <h4>{t("ResultLessonCompletedLesson")}</h4>}
                                         {lesson.pointsTotal !== pointsObtained && <h4>{t("ResultLessonCompleted")}</h4>}

@@ -13,7 +13,9 @@ export const helpHttp = () => {
       : defaultHeader;
 
     options.body = JSON.stringify(options.body) || false;
-    if (!options.body) delete options.body;
+    if (!options.body) {
+      delete options.body;
+    }
 
     setTimeout(() => controller.abort(), 5000);
 

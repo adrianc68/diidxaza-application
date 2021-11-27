@@ -60,7 +60,7 @@ export default function UserProfile({ accountID }) {
                 tabs[i].classList.add("tabs--active");
             });
         }
-    }
+    };
 
     const [component, setComponent] = useState({
         sizeHeight: "",
@@ -78,7 +78,7 @@ export default function UserProfile({ accountID }) {
         };
         setComponent(initialValue);
         setStatusModal(true);
-    }
+    };
 
     useEffect(() => {
         handleDiscussionsTab();

@@ -3,7 +3,6 @@
   @for $i from 2 through $n {
     $value: "#{$value} , #{random(1000)}px #{random(1000)}px #000";
   }
-
   @return unquote($value);
 }
 

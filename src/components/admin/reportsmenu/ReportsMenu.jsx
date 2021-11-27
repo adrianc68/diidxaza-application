@@ -47,12 +47,12 @@ export default function ReportsMenu() {
     const handleChange = (e) => {
         const { value } = e.target;
         setReportInput(value);
-    }
+    };
 
     const handleBlur = (e) => {
         handleChange(e);
         setErrors(validateForm(reportInput));
-    }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -95,7 +95,7 @@ export default function ReportsMenu() {
         else {
             return;
         }
-    }
+    };
 
     return (
         <div className="reportsmenu-main-container">
