@@ -67,7 +67,6 @@ export default function ReportsMenu() {
                 }
             }).then((response) => {
                 if (!response.status) {
-                    console.log(response);
                     //     setLoading(false);
                     //     setDiscussions(response);
                     // } else {
