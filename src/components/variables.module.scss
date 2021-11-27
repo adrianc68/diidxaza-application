@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
 $max-width-device: 920px;
+$max-height-device: 620px;
 $title-background-black: rgb(25, 25, 26);
 $sidebar-width: 210px;
 $sidebar-height: 100%;
@@ -37,4 +38,5 @@ $ul-content-background: rgb(248, 248, 248);
   userprofile-border-style: $userprofile-border-style;
   title-background-black: $title-background-black;
   ul-content-background: $ul-content-background;
+  max-height-device:$max-height-device;
 }

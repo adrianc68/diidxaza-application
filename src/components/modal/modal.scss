@@ -2,30 +2,27 @@
 
 .modal-container-main {
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
   background: rgba(49, 49, 49, 0.5);
   backdrop-filter: blur(5px);
   font-size: 0.68em;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  overflow: scroll;
+  overflow: auto;
 
   .modal-container-content {
-    border-radius: 3px;
-    box-shadow:
-      rgba(0, 0, 0, 0.3) 0 19px 38px,
-      rgba(0, 0, 0, 0.22) 0 15px 12px;
-
     .modal-content-container {
+      box-shadow:
+        rgba(0, 0, 0, 0.3) 0 19px 38px,
+        rgba(0, 0, 0, 0.22) 0 15px 12px;
       display: flex;
       flex-direction: column;
       border-radius: 3px;
-      width: 100%;
-      height: 100%;
+
       .modal-title-container {
         background: rgb(255, 255, 255);
         border-radius: 3px 3px 0 0;
@@ -50,6 +47,14 @@
         display: flex;
         flex-grow: 1;
       }
+    }
+  }
+}
+
+@media all and (max-height: $max-height-device) {
+  .modal-container-main {
+    .modal-container-content {
+      height: 100%;
     }
   }
 }
