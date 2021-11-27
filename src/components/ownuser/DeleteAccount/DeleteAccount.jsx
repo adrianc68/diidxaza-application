@@ -20,5 +20,5 @@ export default function DeleteAccount() {
                 </div>
             </div>
         </div>
-    )
+    );
 }

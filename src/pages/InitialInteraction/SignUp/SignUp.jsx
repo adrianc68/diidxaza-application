@@ -8,7 +8,7 @@ import VerificationCode from "./VerificationCode";
 
 export default function SignUp() {
     const { t } = useTranslation();
-    
+
     return (
         <div className="signup-main-container">
             <Topbar>
@@ -23,9 +23,9 @@ export default function SignUp() {
             </Topbar>
             <div className="signup-form-container">
                 <InputInformation></InputInformation>
-                <br/>
+                <br />
                 <VerificationCode></VerificationCode>
             </div>
         </div>
-    )
+    );
 }

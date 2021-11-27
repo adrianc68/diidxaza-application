@@ -18,13 +18,12 @@ import { useHistory } from "react-router-dom";
 
 export default function Welcome() {
     const { t } = useTranslation();
-    const chooseContainerRef = useRef()
-    const history = useHistory()
+    const chooseContainerRef = useRef();
+    const history = useHistory();
 
     function scrollToChooseContainer() {
-        chooseContainerRef.current.scrollIntoView({ behavior: "smooth" })
+        chooseContainerRef.current.scrollIntoView({ behavior: "smooth" });
     }
-
 
     return (
         <div className="welcome-main-container">
@@ -139,7 +138,7 @@ export default function Welcome() {
                                     </div>
                                     <div className="welcome-choose-description-button-container">
                                         {/* <Link className="link" to="/signUp"> */}
-                                            <Button text={t("ButtonSignUp")} styleName="primary-button" onClick={() => history.push("/signUP")} />
+                                        <Button text={t("ButtonSignUp")} styleName="primary-button" onClick={() => history.push("/signUP")} />
                                         {/* </Link> */}
                                     </div>
                                 </div>
@@ -170,5 +169,5 @@ export default function Welcome() {
             </div>
             <Footer></Footer>
         </div >
-    )
+    );
 }

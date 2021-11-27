@@ -18,7 +18,7 @@ export default function Button(props) {
                 <span>{props.text}</span>
             </div>
         </button>
-    )
+    );
 }
 
 

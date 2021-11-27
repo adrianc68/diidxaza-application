@@ -8,7 +8,6 @@
   cursor: pointer;
   background-color: rgb(255, 255, 255);
   border: 1px solid #ccc;
-  border-radius: 3px;
 
   .forum-discussion-listItem-description {
     display: flex;
@@ -51,7 +50,6 @@
 
     .forum-listItem-data-content-date {
       display: flex;
-
       flex-direction: column;
       color: #000;
       font-size: 0.62em;

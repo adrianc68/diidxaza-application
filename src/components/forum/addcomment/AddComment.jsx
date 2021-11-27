@@ -1,8 +1,8 @@
 import "./addcomment.scss";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 import Button from "../../../components/Button/Button";
 
-export default function AddComment({commentLenght,loadingComment,icon,className,responseComment,handleChangeComment,handleSubmitComment,handleBlurComment,formComment,errorsComment,handleClickComment}) {
+export default function AddComment({ commentLenght, loadingComment, icon, className, responseComment, handleChangeComment, handleSubmitComment, handleBlurComment, formComment, errorsComment, handleClickComment }) {
     const { t } = useTranslation();
     return (
         <form onSubmit={handleSubmitComment} className="addcomment-main-container">
@@ -26,7 +26,7 @@ export default function AddComment({commentLenght,loadingComment,icon,className,
                     <Button type="submit" styleName="green-button">{t("ButtonSend")}</Button>
                 </div>
             </div>
-            <br/>
+            <br />
         </form>
-    )
+    );
 }

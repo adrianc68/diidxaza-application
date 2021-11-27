@@ -7,7 +7,6 @@ export default function AlertMessage({ content, handleModal }) {
     return (
         <div className="alert-main-container">
             <div className="alert-content-container">
-
                 <div className="alert-text">
                     <p>{content}</p>
                 </div>
@@ -18,5 +17,5 @@ export default function AlertMessage({ content, handleModal }) {
                 </div>
             </div>
         </div>
-    )
+    );
 }

@@ -7,38 +7,21 @@ import UserprofileButtonPanelOWU from "../../components/ownuser/userprofileButto
 import Modal from "../../components/modal/Modal";
 import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
 import { useConvertionData } from "../../hooks/useConvertionData";
-// import { useRouteMatch,useHistory, useParams } from "react-router-dom";
 
-export default function UserProfile({accountID}) {
+export default function UserProfile({ accountID }) {
     const { t } = useTranslation();
-    // let { url } = useRouteMatch();
-    // let { path } = useHistory();
-    // let slug = useParams();
+    const { convertDate } = useConvertionData();
+    const [statusModal, setStatusModal] = useState(false);
 
     const [account, setAccount] = useState({
         age: null,
         birthdate: null,
         email: null,
-        username:null,
+        username: null,
         status: null,
         role: null,
         name: null,
     });
-
-    const { convertDate } = useConvertionData();
-
-
-
-    useEffect(() => {
-        handleDiscussionsTab();
-        fetchData();
-        
-        /* DEBUG LOG <- FOR HISTORY ROUTER*/
-        // console.log("URL" , url);
-        // console.log("path", path);
-        // console.log("PARAMS" , slug);
-        // forceUpdate();
-    }, []);
 
     const fetchData = () => {
         helpHttp().get(UrlAPI + "accounts/" + accountID, {
@@ -55,11 +38,10 @@ export default function UserProfile({accountID}) {
                 status: response.status,
                 role: response.role,
                 name: response.name,
-            }
-            console.log(response);
-            setAccount(account)
+            };
+            setAccount(account);
         });
-    }
+    };
 
     const handleDiscussionsTab = () => {
         const tabs = document.querySelectorAll(".userprofile-forum-data-tab");
@@ -78,10 +60,8 @@ export default function UserProfile({accountID}) {
                 tabs[i].classList.add("tabs--active");
             });
         }
-    }
+    };
 
-
-    const [statusModal, setStatusModal] = useState(false);
     const [component, setComponent] = useState({
         sizeHeight: "",
         sizeWidth: "",
@@ -98,7 +78,12 @@ export default function UserProfile({accountID}) {
         };
         setComponent(initialValue);
         setStatusModal(true);
-    }
+    };
+
+    useEffect(() => {
+        handleDiscussionsTab();
+        fetchData();
+    }, []);
 
     return (
         <div className="userprofile-main-container">
@@ -162,7 +147,7 @@ export default function UserProfile({accountID}) {
                         <UserprofileButtonPanelADM handleModal={handleModal} accountStatus={account.status} accountID={accountID} username={account.username} />
                     </div>
                     <div className="userprofile-button-panel">
-                        <UserprofileButtonPanelOWU handleModal={handleModal}  accountID={accountID} />
+                        <UserprofileButtonPanelOWU handleModal={handleModal} accountID={accountID} />
                     </div>
                     <div className="userprofile-button-panel">
                         {/* <UserprofileButtonPanelAU /> */}
@@ -221,5 +206,5 @@ export default function UserProfile({accountID}) {
 
             </div>
         </div>
-    )
+    );
 }

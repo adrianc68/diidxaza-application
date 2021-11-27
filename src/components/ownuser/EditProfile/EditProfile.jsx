@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./editprofile.scss";
 import { useTranslation } from "react-i18next";
 import Button from "../../../components/Button/Button";
@@ -20,20 +20,20 @@ const validationsForm = (form) => {
     if (!regexUsername.test(form.username)) {
         errors.username = "Error";
     }
-    
-    if(form.lastname){
+
+    if (form.lastname) {
         if (!regexName.test(form.lastname.trim())) {
             errors.lastname = "Error";
         }
-    } else{
+    } else {
         errors.lastname = "Error";
     }
 
-    if(form.name){
+    if (form.name) {
         if (!regexName.test(form.name.trim())) {
             errors.name = "Error";
         }
-    } else{
+    } else {
         errors.name = "Error";
     }
 
@@ -64,7 +64,7 @@ const validationsForm = (form) => {
 };
 
 
-export default function EditProfile({setNameUser}) {
+export default function EditProfile({ setNameUser }) {
     const { t } = useTranslation();
 
     const [states, setStates] = useState([]);
@@ -77,7 +77,7 @@ export default function EditProfile({setNameUser}) {
     const [URLPhoto, setURLPhoto] = useState(null);
 
     useEffect(() => {
-        helpHttp().get(UrlAPI + "accounts/"+sessionStorage.getItem("id"),{
+        helpHttp().get(UrlAPI + "accounts/" + sessionStorage.getItem("id"), {
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
@@ -95,30 +95,30 @@ export default function EditProfile({setNameUser}) {
                     username: response.username,
                     idCity: response.idCity[0]._id,
                     idState: response.idCity[0].idState[0]
-                }
-                setForm(initialAccountForm)
+                };
+                setForm(initialAccountForm);
                 helpHttp().get(UrlAPI + "states").then((response) => {
                     if (!response.status) {
-                        setStates(response)
+                        setStates(response);
                     }
-                })
-                helpHttp().get(UrlAPI + "cities/"+response.idCity[0].idState[0]).then((response) => {
+                });
+                helpHttp().get(UrlAPI + "cities/" + response.idCity[0].idState[0]).then((response) => {
                     if (!response.status) {
-                        setCities(response)
+                        setCities(response);
                     }
-                })
-                if(response.URL != undefined){
+                });
+                if (response.URL !== undefined) {
                     setURLPhoto(response.URL);
-                    fetch(UrlAPI+"resources",{
+                    fetch(UrlAPI + "resources", {
                         method: "PATCH",
                         headers: {
                             "Content-Type": "application/json",
                             "Authorization": sessionStorage.getItem("token")
                         },
-                        body: JSON.stringify({URL:response.URL})
+                        body: JSON.stringify({ URL: response.URL })
                     }).then((responseResource) => {
                         if (responseResource.ok) {
-                            responseResource.blob().then(responseBlob => {
+                            responseResource.blob().then((responseBlob) => {
                                 var objectURL = URL.createObjectURL(responseBlob);
                                 setNameFile(objectURL);
                                 setInitialFile(objectURL);
@@ -128,20 +128,20 @@ export default function EditProfile({setNameUser}) {
                             setInitialFile(UserImageDefault);
                         }
                     });
-                } else{
+                } else {
                     setURLPhoto(null);
                 }
-            } else{
+            } else {
                 if (response.status === 419) {
                     setModalToken(true);
-                } else{
+                } else {
                     if (response.status === 401) {
                         setModalNotToken(true);
                     }
                 }
                 setURLPhoto(null);
             }
-        })
+        });
     }, []);
 
 
@@ -158,7 +158,7 @@ export default function EditProfile({setNameUser}) {
         handleChangeImage,
         icon,
         errorImage
-    } = useUpdateAccountForm(validationsForm,setForm,form,setCities,setModalNotToken,setModalToken,setNameFile,URLPhoto,initialfile,setNameUser,setInitialFile,namefile);
+    } = useUpdateAccountForm(validationsForm, setForm, form, setCities, setModalNotToken, setModalToken, setNameFile, URLPhoto, initialfile, setNameUser, setInitialFile, namefile);
 
     return (
         <form onSubmit={handleSubmit} className="editprofile-main-container">
@@ -175,7 +175,7 @@ export default function EditProfile({setNameUser}) {
                                 <div className="editprofile-photo-left-side">
                                     <img className="editprofile-user-photo" src={namefile} alt=""></img>
                                     <label className="input-file-label">
-                                        <input className="input-file" type="file" name="file" accept="image/png, image/jpeg, image/jpg" onChange={handleChangeImage}/>
+                                        <input className="input-file" type="file" name="file" accept="image/png, image/jpeg, image/jpg" onChange={handleChangeImage} />
                                         {t("SignUpFormInputFile")}
                                     </label>
                                 </div>
@@ -185,7 +185,7 @@ export default function EditProfile({setNameUser}) {
                                 </div>
                             </div>
                             <div className="system-message-container">
-                                <br/>
+                                <br />
                                 {errorImage && <p className="errorInput">{t("ErrorImage")}</p>}
                             </div>
                         </label>
@@ -215,7 +215,7 @@ export default function EditProfile({setNameUser}) {
                             <p className="p-semibold">{t("SignUpFormStateInput")}</p>
                             <select name="idState" onChange={handleChangeState} onBlur={handleBlur} value={form.idState} required>
                                 <option value="">{t("SignUpNotOption")}</option>
-                                {states.length > 0 && states.map(element => (
+                                {states.length > 0 && states.map((element) => (
                                     <option key={element._id} value={element._id}>{element.nameState}</option>
                                 ))}
                             </select>
@@ -227,7 +227,7 @@ export default function EditProfile({setNameUser}) {
                             <p className="p-semibold">{t("SignUpFormCityInput")}</p>
                             <select name="idCity" onBlur={handleBlur} onChange={handleChange} value={form.idCity} required>
                                 <option value="">{t("SignUpNotOption")}</option>
-                                {cities.length > 0 && cities.map(element => (
+                                {cities.length > 0 && cities.map((element) => (
                                     <option key={element._id} value={element._id}>{element.nameCity}</option>
                                 ))}
                             </select>
@@ -263,13 +263,13 @@ export default function EditProfile({setNameUser}) {
                         <div className="editprofile-button-panel">
                             <div>
                                 <Link className="link" to={
-                                {
-                                    pathname: "/profile/"+sessionStorage.getItem("username"),
-                                    state: {
-                                        id: sessionStorage.getItem("id"),
+                                    {
+                                        pathname: "/profile/" + sessionStorage.getItem("username"),
+                                        state: {
+                                            id: sessionStorage.getItem("id"),
+                                        }
                                     }
-                                }
-                            }>
+                                }>
                                     <Button styleName="orange-button" text={t("ButtonCancel")}></Button>
                                 </Link>
                             </div>
@@ -280,12 +280,12 @@ export default function EditProfile({setNameUser}) {
                     </div>
                 </div>
             </div>
-            {modalNotToken && <Modal handleModal={()=>{setModalNotToken(false)}} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={t("ErrorToken")} handleModal={()=>{setModalNotToken(false)}}></AlertMessage>
+            {modalNotToken && <Modal handleModal={() => { setModalNotToken(false); }} sizeHeight="20" sizeWidth="35">
+                <AlertMessage content={t("ErrorToken")} handleModal={() => { setModalNotToken(false); }}></AlertMessage>
             </Modal>}
-            {modalToken && <Modal handleModal={()=>{window.location.href = "login";}} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={t("RefreshToken")} handleModal={()=>{window.location.href = "login";}}></AlertMessage>
+            {modalToken && <Modal handleModal={() => { window.location.href = "login"; }} sizeHeight="20" sizeWidth="35">
+                <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = "login"; }}></AlertMessage>
             </Modal>}
         </form>
-    )
+    );
 }

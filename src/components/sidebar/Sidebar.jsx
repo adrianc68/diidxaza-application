@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./sidebar.scss";
-import { MdLogout, MdEmail, MdHome, MdMenu, MdBookmark, MdLiveTv, MdForum, MdMenuBook, MdLibraryMusic, MdLandscape, MdOutlineHelpOutline } from "react-icons/md";
+import { MdEmail, MdHome, MdMenu, MdBookmark, MdLiveTv, MdForum, MdMenuBook, MdLibraryMusic, MdLandscape, MdOutlineHelpOutline } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -19,7 +19,6 @@ export default function Sidebar() {
         setIsExpanded(true);
         localStorage.removeItem("sidebar-collapsed");
     }
-
 
     return (
         <nav className={isExpanded ? "sidebar" : "sidebar active"}>
@@ -88,8 +87,7 @@ export default function Sidebar() {
                         </NavLink>
                     </li>
                 </div>
-
             </ul>
         </nav>
-    )
+    );
 }

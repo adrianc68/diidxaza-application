@@ -10,11 +10,6 @@ export default function UserReports({ username }) {
     const [reports, setReports] = useState([]);
     const [errorFetchData, setErrorFetchData] = useState(false);
 
-    useEffect(() => {
-        fetchData();
-    }, []);
-
-
     const fetchData = () => {
         helpHttp().get(UrlAPI + "reports/usernameReported/" + username, {
             headers: {
@@ -23,7 +18,6 @@ export default function UserReports({ username }) {
             }
         }).then((response) => {
             if (response != null) {
-                console.log(response);
                 switch (response.status) {
                     case 404:
                     case 400:
@@ -33,7 +27,11 @@ export default function UserReports({ username }) {
                 setReports(response);
             }
         }, []);
-    }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     return (
         <div className="userreports-main-container">
@@ -63,5 +61,5 @@ export default function UserReports({ username }) {
             </div>
 
         </div>
-    )
+    );
 }

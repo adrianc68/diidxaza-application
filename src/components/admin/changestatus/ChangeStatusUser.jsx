@@ -8,11 +8,10 @@ export default function ChangeStatusUser({ accountStatus, accountID }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(parseInt(accountStatus));
         const userinformation = {
             _id: accountID,
-            status: (accountStatus === 1 ? accountStatus + 1 : accountStatus - 1) ,
-        }
+            status: (accountStatus === 1 ? accountStatus + 1 : accountStatus - 1),
+        };
 
         helpHttp().patch(UrlAPI + "accounts", {
             headers: {
@@ -22,10 +21,9 @@ export default function ChangeStatusUser({ accountStatus, accountID }) {
             },
             body: userinformation
         }).then((response) => {
-            console.log(response);
-        })
-
-    }
+            // console.log(response);
+        });
+    };
 
     return (
         <div className="changestatususer-main-container">
@@ -44,9 +42,9 @@ export default function ChangeStatusUser({ accountStatus, accountID }) {
                 }
                 <form className="changestatususer-button-panel" onSubmit={handleSubmit}>
                     <Button styleName="primary-button" text={t("ButtonCancel")} ></Button>
-                    <Button styleName="primary-button" text={accountStatus == 1 ? t("UserProfileButtonPanelBlockUser") : t("UserProfileButtonPanelUnblockUser")} type="submit"></Button>
+                    <Button styleName="primary-button" text={accountStatus === 1 ? t("UserProfileButtonPanelBlockUser") : t("UserProfileButtonPanelUnblockUser")} type="submit"></Button>
                 </form>
             </div>
         </div>
-    )
+    );
 }

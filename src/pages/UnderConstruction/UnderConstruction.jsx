@@ -12,5 +12,5 @@ export default function UnderConstruction() {
                 <h1>{t("UnderConstruction")}</h1>
             </div>
         </div>
-    )
+    );
 }

@@ -8,18 +8,21 @@
   flex-direction: column;
   transition: all 0.4s ease-in;
   overflow-x: auto;
+
   .sidebar-toggle-button-container {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 10px;
     padding-bottom: 25px;
+
     .sidebar-toggle-button {
       display: flex;
       align-items: center;
       justify-content: center;
       border: 0;
       background-color: transparent;
+
       .sidebarIconToggle {
         font-size: 30px;
         color: #fff;

@@ -12,10 +12,6 @@ export default function ReportsMenu() {
     const [errors, setErrors] = useState({});
     const [errorFetchData, setErrorFetchData] = useState(false);
 
-    useEffect(() => {
-        fetchData();
-    }, []);
-
     const fetchData = () => {
         helpHttp().get(UrlAPI + "reports", {
             headers: {
@@ -24,7 +20,6 @@ export default function ReportsMenu() {
             }
         }).then((response) => {
             if (response != null) {
-                console.log(response);
                 switch (response.status) {
                     case 404:
                     case 400:
@@ -34,7 +29,11 @@ export default function ReportsMenu() {
                 setReports(response);
             }
         }, []);
-    }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     const validateForm = (toValidate) => {
         let errors = {};
@@ -48,12 +47,12 @@ export default function ReportsMenu() {
     const handleChange = (e) => {
         const { value } = e.target;
         setReportInput(value);
-    }
+    };
 
     const handleBlur = (e) => {
         handleChange(e);
         setErrors(validateForm(reportInput));
-    }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -68,35 +67,34 @@ export default function ReportsMenu() {
                 }
             }).then((response) => {
                 if (!response.status) {
-                    console.log(response);
-                //     setLoading(false);
-                //     setDiscussions(response);
-                // } else {
-                //     setDiscussions([]);
-                //     if (response.status === 404) {
-                //         setLoading(true);
-                //     } else {
-                //         if (response.status === 401) {
-                //             setLoading(false);
-                //             setResponseModalForum(t("ErrorToken"));
-                //             setModalForum(true);
-                //         } else {
-                //             if (response.status === 419) {
-                //                 setLoading(false);
-                //                 setModalForum(false);
-                //                 setModalToken(true);
-                //             } else {
-                //                 setLoading(false);
-                //             }
-                //         }
-                //     }
+                    //     setLoading(false);
+                    //     setDiscussions(response);
+                    // } else {
+                    //     setDiscussions([]);
+                    //     if (response.status === 404) {
+                    //         setLoading(true);
+                    //     } else {
+                    //         if (response.status === 401) {
+                    //             setLoading(false);
+                    //             setResponseModalForum(t("ErrorToken"));
+                    //             setModalForum(true);
+                    //         } else {
+                    //             if (response.status === 419) {
+                    //                 setLoading(false);
+                    //                 setModalForum(false);
+                    //                 setModalToken(true);
+                    //             } else {
+                    //                 setLoading(false);
+                    //             }
+                    //         }
+                    //     }
                 }
             });
         }
         else {
             return;
         }
-    }
+    };
 
     return (
         <div className="reportsmenu-main-container">
@@ -130,5 +128,5 @@ export default function ReportsMenu() {
                 </div>
             </div>
         </div>
-    )
+    );
 }

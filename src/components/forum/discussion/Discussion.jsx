@@ -49,7 +49,7 @@ export default function Discussion({ discussion, numberComments, comments, image
                 </div>
                 <div className="forum-discussion-forum-button-panel-container">
                     <h2>{t("DiscussionNumberComment")}{numberComments})</h2>
-                    {sessionStorage.getItem("id") != discussion.idAccount[0]._id && <div>
+                    {sessionStorage.getItem("id") !== discussion.idAccount[0]._id && <div>
                         <Button styleName="primary-button" onClick={() => setStatusModal(true)}>{t("ButtonReportUser")}</Button>
                     </div>}
                 </div>
@@ -60,16 +60,16 @@ export default function Discussion({ discussion, numberComments, comments, image
                     <div className="forum-discussion-comment-list">
                         <ul id="list-comments">
                             {comments.length > 0 && comments.map((element) => (
-                                <li><Comment imagesComments={imagesComments.find(imageElement => imageElement.id === element._id)} comment={element} handleClickDeleteComment={handleClickDeleteComment} idDiscussion={discussion._id} setModalToken={setModalToken} /></li>
+                                <li><Comment imagesComments={imagesComments.find((imageElement) => imageElement.id === element._id)} comment={element} handleClickDeleteComment={handleClickDeleteComment} idDiscussion={discussion._id} setModalToken={setModalToken} /></li>
                             ))}
                         </ul>
                     </div>
                 </div>
             </div>
 
-            {statusModal && <Modal title={t("ReportUserTitle")} handleModal={() => { setStatusModal(false) }} sizeHeight="70" sizeWidth="80">
+            {statusModal && <Modal title={t("ReportUserTitle")} handleModal={() => { setStatusModal(false); }} sizeHeight="70" sizeWidth="80">
                 <ReportUser account={discussion.idAccount[0]} statusModal={statusModal} setStatusModal={setStatusModal} setModalToken={setModalToken}></ReportUser>
             </Modal>}
         </div>
-    )
+    );
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./comment.scss";
 import Button from "../../../components/Button/Button";
 import { useTranslation } from "react-i18next";
@@ -38,12 +38,12 @@ export default function Comment({ comment, handleClickDeleteComment, idDiscussio
                         <span>{convertDate(comment.dateCreation)}</span>
                     </div>
 
-                    {sessionStorage.getItem("id") == comment.idAccount[0]._id && <div className="forum-comment-button-panel">
+                    {sessionStorage.getItem("id") === comment.idAccount[0]._id && <div className="forum-comment-button-panel">
                         <div>
                             <Button styleName="dark-blue-button" onClick={() => setStatusModalDelete(true)}>{t("DeleteButton")}</Button>
                         </div>
                     </div>}
-                    {sessionStorage.getItem("id") != comment.idAccount[0]._id && <div className="forum-comment-button-panel">
+                    {sessionStorage.getItem("id") !== comment.idAccount[0]._id && <div className="forum-comment-button-panel">
                         <div>
                             <Button styleName="primary-button" onClick={() => setStatusModal(true)}>{t("ButtonReportUser")}</Button>
                         </div>
@@ -55,10 +55,10 @@ export default function Comment({ comment, handleClickDeleteComment, idDiscussio
             {statusModal && <Modal title={t("ReportUserTitle")} handleModal={() => setStatusModal(false)} sizeHeight="70" sizeWidth="80">
                 <ReportUser account={comment.idAccount[0]} statusModal={statusModal} setStatusModal={setStatusModal} setModalToken={setModalToken}></ReportUser>
             </Modal>}
-            {statusModalDelete && <Modal title={t("DeleteComment")} handleModal={() => { setStatusModalDelete(false) }} sizeHeight="20" sizeWidth="35">
+            {statusModalDelete && <Modal title={t("DeleteComment")} handleModal={() => { setStatusModalDelete(false); }} sizeHeight="20" sizeWidth="35">
                 <AlertConfirmation primaryButton={t("ButtonYes")} secondaryButton={t("ButtonNo")} content={t("MessageComment")} setStatusModal={setStatusModalDelete}
-                    handlePrimary={(e) => { handleClickDeleteComment(e, comment._id, idDiscussion, setStatusModalDelete) }} />
+                    handlePrimary={(e) => { handleClickDeleteComment(e, comment._id, idDiscussion, setStatusModalDelete); }} />
             </Modal>}
         </div>
-    )
+    );
 }

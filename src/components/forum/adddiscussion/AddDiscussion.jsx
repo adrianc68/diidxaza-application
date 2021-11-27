@@ -75,21 +75,21 @@ export default function AddDiscussion() {
                         <div className="adddiscussion-input-theme">
                             <span className="semibold">{t("AddDiscussionTheme")}</span>
                             <ul>
-                                <li className={classInfo} onClick={(e) => { handleClickTheme(e, "info") }}>
+                                <li className={classInfo} onClick={(e) => { handleClickTheme(e, "info"); }}>
                                     <div className="adddiscussion-theme">
                                         <img src={ImageInformationAlt1} alt={"AlternativeMessageImageDecorative"}></img>
                                         <h3>{t("AddDiscussionInfo")}</h3>
                                         <span>{t("AddDiscussionInfoDescription")}</span>
                                     </div>
                                 </li>
-                                <li className={classDoubt} onClick={(e) => { handleClickTheme(e, "duda") }}>
+                                <li className={classDoubt} onClick={(e) => { handleClickTheme(e, "duda"); }}>
                                     <div className="adddiscussion-theme">
                                         <img src={ImageInformationAlt2} alt={"AlternativeMessageImageDecorative"}></img>
                                         <h3>{t("AddDiscussionDoubt")}</h3>
                                         <span>{t("AddDiscussionDoubtDescription")}</span>
                                     </div>
                                 </li>
-                                <li className={classRule} onClick={(e) => { handleClickTheme(e, "regla") }}>
+                                <li className={classRule} onClick={(e) => { handleClickTheme(e, "regla"); }}>
                                     <div className="adddiscussion-theme">
                                         <img src={ImageInformationAlt3} alt={"AlternativeMessageImageDecorative"}></img>
                                         <h3>{t("AddDiscussionRule")}</h3>
@@ -128,13 +128,13 @@ export default function AddDiscussion() {
                         </div>
                     </div>
                 </div>
-                {modalNotToken && <Modal handleModal={() => { setModalNotToken(false) }} sizeHeight="100vh" sizeWidth="50vw">
-                    <AlertMessage content={t("ErrorToken")} handleModal={() => { setModalNotToken(false) }}></AlertMessage>
+                {modalNotToken && <Modal handleModal={() => { setModalNotToken(false); }} sizeHeight="100vh" sizeWidth="50vw">
+                    <AlertMessage content={t("ErrorToken")} handleModal={() => { setModalNotToken(false); }}></AlertMessage>
                 </Modal>}
                 {modalToken && <Modal handleModal={() => { window.location.href = "login"; }} sizeHeight="200" sizeWidth="350">
                     <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = "login"; }}></AlertMessage>
                 </Modal>}
             </div>
         </form>
-    )
+    );
 }

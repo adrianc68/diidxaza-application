@@ -70,10 +70,10 @@ export default function InputInformation() {
     const history = useHistory();
     useEffect(() => {
         helpHttp().get(UrlAPI + "states").then((response) => {
-            if (response.length>0) {
-                setStates(response)
+            if (response.length > 0) {
+                setStates(response);
             }
-        })
+        });
     }, []);
     const {
         handleChangeState,
@@ -116,7 +116,7 @@ export default function InputInformation() {
                                 </div>
                             </div>
                             <div className="system-message-container">
-                                <br/>
+                                <br />
                                 {errorImage && <p className="errorInput">{t("ErrorImage")}</p>}
                             </div>
                         </label>
@@ -146,7 +146,7 @@ export default function InputInformation() {
                             <p className="p-semibold">{t("SignUpFormStateInput")}</p>
                             <select name="idState" onChange={handleChangeState} onBlur={handleBlur} value={form.idState} required>
                                 <option value="">{t("SignUpNotOption")}</option>
-                                {states.length > 0 && states.map(element => (
+                                {states.length > 0 && states.map((element) => (
                                     <option key={element._id} value={element._id}>{element.nameState}</option>
                                 ))}
                             </select>
@@ -158,7 +158,7 @@ export default function InputInformation() {
                             <p className="p-semibold">{t("SignUpFormCityInput")}</p>
                             <select name="idCity" onBlur={handleBlur} onChange={handleChange} value={form.idCity} required>
                                 <option value="">{t("SignUpNotOption")}</option>
-                                {cities.length > 0 && cities.map(element => (
+                                {cities.length > 0 && cities.map((element) => (
                                     <option key={element._id} value={element._id}>{element.nameCity}</option>
                                 ))}
                             </select>
@@ -205,5 +205,5 @@ export default function InputInformation() {
                 <div className="signup-image-container"></div>
             </div>
         </form>
-    )
+    );
 }

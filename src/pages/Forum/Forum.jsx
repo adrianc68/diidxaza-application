@@ -47,22 +47,6 @@ export default function Forum() {
     const { t } = useTranslation();
     const [discussions, setDiscussions] = useState([]);
 
-    useEffect(() => {
-        setActiveClassFilterButtons();
-        helpHttp().get(UrlAPI + "discussions", {
-            headers: {
-                Accept: "application/json",
-                "Authorization": sessionStorage.getItem("token")
-            },
-        }).then((response) => {
-            if (response.length>0) {
-                setDiscussions(response)
-            } else {
-                setDiscussions([]);
-            }
-        })
-    }, []);
-
     const {
         title,
         loading,
@@ -103,6 +87,21 @@ export default function Forum() {
         removeActiveClassFilterButton,
     } = useForum(validationsForm, validationsFormComment, initialForm, setDiscussions);
 
+    useEffect(() => {
+        setActiveClassFilterButtons();
+        helpHttp().get(UrlAPI + "discussions", {
+            headers: {
+                Accept: "application/json",
+                "Authorization": sessionStorage.getItem("token")
+            },
+        }).then((response) => {
+            if (response.length > 0) {
+                setDiscussions(response);
+            } else {
+                setDiscussions([]);
+            }
+        });
+    }, []);
 
     return (
         <div className="forum-main-container">
@@ -136,8 +135,8 @@ export default function Forum() {
                         </div>
                         <div className="forum-discussion-list">
                             <ul>
-                                {discussions.length > 0 && discussions.map(element => (
-                                    <li onClick={(e) => { handleClickDiscussion(e, element._id) }}>
+                                {discussions.length > 0 && discussions.map((element) => (
+                                    <li onClick={(e) => { handleClickDiscussion(e, element._id); }}>
                                         <DiscussionListItem discussion={element}></DiscussionListItem>
                                     </li>
                                 ))}
@@ -162,19 +161,19 @@ export default function Forum() {
                 </div>
                 <div className="forum-discussion-content">
                     {
-                        foundDiscussion === false && loadingDiscussion === false ? 
-                        <div className="no-found-records">
-                        <span>{t("SelectDiscussion")}</span>
-                    </div>
-                        :
-                        foundDiscussion && <Discussion imagesComments={imagesComments} discussion={discussion} numberComments={numberComments} comments={comments} imageAccount={imageAccount} setModalToken={setModalToken} handleClickDeleteComment={handleClickDeleteComment} handleClickFollow={handleClickFollow}>
-                        <AddComment handleChangeComment={handleChangeComment} handleSubmitComment={handleSubmitComment} loadingComment={loadingComment}
-                            handleBlurComment={handleBlurComment} formComment={formComment} errorsComment={errorsComment} handleClickComment={handleClickComment}
-                            icon={icon} className={className} responseComment={responseComment} commentLenght={commentLenght} />
-                    </Discussion>
+                        foundDiscussion === false && loadingDiscussion === false ?
+                            <div className="no-found-records">
+                                <span>{t("SelectDiscussion")}</span>
+                            </div>
+                            :
+                            foundDiscussion && <Discussion imagesComments={imagesComments} discussion={discussion} numberComments={numberComments} comments={comments} imageAccount={imageAccount} setModalToken={setModalToken} handleClickDeleteComment={handleClickDeleteComment} handleClickFollow={handleClickFollow}>
+                                <AddComment handleChangeComment={handleChangeComment} handleSubmitComment={handleSubmitComment} loadingComment={loadingComment}
+                                    handleBlurComment={handleBlurComment} formComment={formComment} errorsComment={errorsComment} handleClickComment={handleClickComment}
+                                    icon={icon} className={className} responseComment={responseComment} commentLenght={commentLenght} />
+                            </Discussion>
                     }
-                   
-                    
+
+
                     {loadingDiscussion &&
                         <div className="not-found-discussion">
                             <h3>{response}</h3>
@@ -182,12 +181,12 @@ export default function Forum() {
                         </div>}
                 </div>
             </div>
-            {modalForum && <Modal handleModal={() => { setModalForum(false) }} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={responseModalForum} handleModal={() => { setModalForum(false) }}></AlertMessage>
+            {modalForum && <Modal handleModal={() => { setModalForum(false); }} sizeHeight="20" sizeWidth="35">
+                <AlertMessage content={responseModalForum} handleModal={() => { setModalForum(false); }}></AlertMessage>
             </Modal>}
-            {modalToken && <Modal handleModal={() => { window.location.href = "login" }} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = "login" }}></AlertMessage>
+            {modalToken && <Modal handleModal={() => { window.location.href = "login"; }} sizeHeight="20" sizeWidth="35">
+                <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = "login"; }}></AlertMessage>
             </Modal>}
         </div>
-    )
+    );
 }

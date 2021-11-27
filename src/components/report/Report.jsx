@@ -37,7 +37,7 @@ export default function Report({ report }) {
         } else {
             setHiddenContext(!isHideContext);
         }
-    }
+    };
 
     return (
         <div className="report-container">
@@ -98,5 +98,5 @@ export default function Report({ report }) {
 
             </div>
         </div>
-    )
+    );
 }

@@ -96,7 +96,6 @@ export default function CheckProgress() {
                                 </div>
                             </div>
                         </li>
-
                         <li>
                             <div className="checkprogress-progress-container">
                                 <div className="checkprogress-presentation-left-side-container">
@@ -121,7 +120,6 @@ export default function CheckProgress() {
 
                     </ul>
                 </div>
-
                 <div className="checkprogress-display-graphic-container">
                     <h1>{t("CheckProgressGraphic")}</h1>
                     <span>{t("CheckProgressGraphicDescription")}</span>
@@ -129,12 +127,10 @@ export default function CheckProgress() {
                         <div className="checkprogress-graphic-image"></div>
                     </div>
                     <div className="checkprogress-button-panel">
-                        <Button styleName="primary-button" text={t("ButtonClose")} onClick={() => {history.goBack()}}></Button>
+                        <Button styleName="primary-button" text={t("ButtonClose")} onClick={() => { history.goBack(); }}></Button>
                     </div>
                 </div>
-
             </div>
-
         </div>
-    )
+    );
 }
