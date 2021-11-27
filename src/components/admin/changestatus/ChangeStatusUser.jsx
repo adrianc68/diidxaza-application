@@ -8,7 +8,6 @@ export default function ChangeStatusUser({ accountStatus, accountID }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(parseInt(accountStatus));
         const userinformation = {
             _id: accountID,
             status: (accountStatus === 1 ? accountStatus + 1 : accountStatus - 1),
@@ -22,7 +21,7 @@ export default function ChangeStatusUser({ accountStatus, accountID }) {
             },
             body: userinformation
         }).then((response) => {
-            console.log(response);
+            // console.log(response);
         });
     };
 

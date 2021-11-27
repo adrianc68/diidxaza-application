@@ -47,22 +47,6 @@ export default function Forum() {
     const { t } = useTranslation();
     const [discussions, setDiscussions] = useState([]);
 
-    useEffect(() => {
-        setActiveClassFilterButtons();
-        helpHttp().get(UrlAPI + "discussions", {
-            headers: {
-                Accept: "application/json",
-                "Authorization": sessionStorage.getItem("token")
-            },
-        }).then((response) => {
-            if (response.length > 0) {
-                setDiscussions(response);
-            } else {
-                setDiscussions([]);
-            }
-        });
-    }, []);
-
     const {
         title,
         loading,
@@ -103,6 +87,21 @@ export default function Forum() {
         removeActiveClassFilterButton,
     } = useForum(validationsForm, validationsFormComment, initialForm, setDiscussions);
 
+    useEffect(() => {
+        setActiveClassFilterButtons();
+        helpHttp().get(UrlAPI + "discussions", {
+            headers: {
+                Accept: "application/json",
+                "Authorization": sessionStorage.getItem("token")
+            },
+        }).then((response) => {
+            if (response.length > 0) {
+                setDiscussions(response);
+            } else {
+                setDiscussions([]);
+            }
+        });
+    }, []);
 
     return (
         <div className="forum-main-container">

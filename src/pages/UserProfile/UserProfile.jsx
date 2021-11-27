@@ -7,13 +7,11 @@ import UserprofileButtonPanelOWU from "../../components/ownuser/userprofileButto
 import Modal from "../../components/modal/Modal";
 import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
 import { useConvertionData } from "../../hooks/useConvertionData";
-// import { useRouteMatch,useHistory, useParams } from "react-router-dom";
 
 export default function UserProfile({ accountID }) {
     const { t } = useTranslation();
-    // let { url } = useRouteMatch();
-    // let { path } = useHistory();
-    // let slug = useParams();
+    const { convertDate } = useConvertionData();
+    const [statusModal, setStatusModal] = useState(false);
 
     const [account, setAccount] = useState({
         age: null,
@@ -24,21 +22,6 @@ export default function UserProfile({ accountID }) {
         role: null,
         name: null,
     });
-
-    const { convertDate } = useConvertionData();
-
-
-
-    useEffect(() => {
-        handleDiscussionsTab();
-        fetchData();
-
-        /* DEBUG LOG <- FOR HISTORY ROUTER*/
-        // console.log("URL" , url);
-        // console.log("path", path);
-        // console.log("PARAMS" , slug);
-        // forceUpdate();
-    }, []);
 
     const fetchData = () => {
         helpHttp().get(UrlAPI + "accounts/" + accountID, {
@@ -56,7 +39,6 @@ export default function UserProfile({ accountID }) {
                 role: response.role,
                 name: response.name,
             };
-            console.log(response);
             setAccount(account);
         });
     };
@@ -80,8 +62,6 @@ export default function UserProfile({ accountID }) {
         }
     }
 
-
-    const [statusModal, setStatusModal] = useState(false);
     const [component, setComponent] = useState({
         sizeHeight: "",
         sizeWidth: "",
@@ -99,6 +79,11 @@ export default function UserProfile({ accountID }) {
         setComponent(initialValue);
         setStatusModal(true);
     }
+
+    useEffect(() => {
+        handleDiscussionsTab();
+        fetchData();
+    }, []);
 
     return (
         <div className="userprofile-main-container">

@@ -12,10 +12,6 @@ export default function ReportsMenu() {
     const [errors, setErrors] = useState({});
     const [errorFetchData, setErrorFetchData] = useState(false);
 
-    useEffect(() => {
-        fetchData();
-    }, []);
-
     const fetchData = () => {
         helpHttp().get(UrlAPI + "reports", {
             headers: {
@@ -24,7 +20,6 @@ export default function ReportsMenu() {
             }
         }).then((response) => {
             if (response != null) {
-                console.log(response);
                 switch (response.status) {
                     case 404:
                     case 400:
@@ -35,6 +30,10 @@ export default function ReportsMenu() {
             }
         }, []);
     };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     const validateForm = (toValidate) => {
         let errors = {};

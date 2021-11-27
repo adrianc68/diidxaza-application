@@ -66,7 +66,7 @@ export const useLessonForm = (
             answerAccount: valueOnly,
             answers,
             isCorrect: isCorrectAnswer,
-            pointsAnswer: pointsAnswer,
+            pointsAnswer,
           },
         ]);
       } else {
@@ -100,11 +100,11 @@ export const useLessonForm = (
         setResultsQuestions((resultsQuestions) => [
           ...resultsQuestions,
           {
-            question: question,
+            question,
             answerAccount: valueMultiple,
-            answers: answers,
+            answers,
             isCorrect: isCorrectAnswer,
-            pointsAnswer: pointsAnswer,
+            pointsAnswer,
           },
         ]);
       } else {

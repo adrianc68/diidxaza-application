@@ -10,10 +10,6 @@ export default function AccountsMenu() {
     const [accountsItems, setAccountsItems] = useState([]);
     const [errorFetchData, setErrorFetchData] = useState(false);
 
-    useEffect(() => {
-        fetchData();
-    }, []);
-
     const fetchData = () => {
         helpHttp().get(UrlAPI + "accounts", {
             headers: {
@@ -32,6 +28,10 @@ export default function AccountsMenu() {
             }
         }, []);
     };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     return (
         <div className="accountsmenu-main-container">

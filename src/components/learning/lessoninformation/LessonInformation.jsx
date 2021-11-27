@@ -35,7 +35,7 @@ export default function LessonInformation({ lesson, setVisible }) {
                         {
                             pathname: "/answers/" + lesson.name,
                             state: {
-                                lesson: lesson,
+                                lesson,
                             }
                         }
                     }>
