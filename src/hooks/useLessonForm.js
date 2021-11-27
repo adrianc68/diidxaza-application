@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { helpHttp, UrlAPI } from "../helpers/helpHttp";
 
 export const useLessonForm = (
@@ -10,7 +10,8 @@ export const useLessonForm = (
   answers,
   setVisible,
   setModalNotToken,
-  setModalToken
+  setModalToken,
+  lesson
 ) => {
   const [pointsObtained, setPointsObtained] = useState(0);
   const [valueOnly, setValueOnly] = useState(null);
@@ -18,6 +19,8 @@ export const useLessonForm = (
   const [loading, setLoading] = useState(false);
   const [loadingError, setLoadingError] = useState(false);
   const [resultsQuestions, setResultsQuestions] = useState([]);
+  const [idLesson, setIdLesson] = useState(lesson);
+  const [isFinishLesson, setIsFinishLesson] = useState(false);
 
   const handleChangeAnswerOnly = (e) => {
     e.stopPropagation();
@@ -44,7 +47,7 @@ export const useLessonForm = (
     }
   };
 
-  const validateQuestions = async () => {
+  const validateQuestions = async() => {
     let isValid = false;
     if (question.typeQuestion === "only") {
       const answerValid = answers.find((element) => element.isValid === true);
@@ -54,7 +57,7 @@ export const useLessonForm = (
         let isCorrectAnswer = false;
         if (valueOnly === answerValid.answers) {
           setPointsObtained(
-            (pointsObtained) => pointsObtained + question.score
+            (pointsObtained) => question.score+pointsObtained
           );
           isCorrectAnswer = true;
           pointsAnswer = question.score;
@@ -91,7 +94,7 @@ export const useLessonForm = (
           });
           if (countAnswer === answersValid.length) {
             setPointsObtained(
-              (pointsObtained) => pointsObtained + question.score
+              (pointsObtained) => question.score+pointsObtained
             );
             isCorrectAnswer = true;
             pointsAnswer = question.score;
@@ -113,10 +116,11 @@ export const useLessonForm = (
     }
     return isValid;
   };
-
-  const handleClickNext = (e) => {
+  
+  const handleClickNext = async(e) => {
     e.preventDefault();
-    if (validateQuestions()) {
+    const isValid = await validateQuestions();
+    if (isValid) {
       helpHttp()
         .get(UrlAPI + "answers/" + questionsChange[1]._id, {
           headers: {
@@ -125,7 +129,7 @@ export const useLessonForm = (
             Authorization: sessionStorage.getItem("token"),
           },
         })
-        .then((responseAnswers) => {
+        .then(async (responseAnswers) => {
           if (responseAnswers.length > 0) {
             setActiveClassFilterRadioButtons();
             setAnswers(responseAnswers);
@@ -133,7 +137,6 @@ export const useLessonForm = (
             setQuestionsChange(
               questionsChange.filter((element) => element._id !== question._id)
             );
-
             setValueOnly(null);
             setValueMultiple([]);
             setLoading(false);
@@ -156,45 +159,51 @@ export const useLessonForm = (
       setLoading(true);
     }
   };
-
-  const handleClick = async (e, idLesson) => {
+  
+  const handleClick = async (e) => {
     e.preventDefault();
-    const isValid = validateQuestions();
+    const isValid = await validateQuestions();
     if (isValid) {
-      helpHttp()
-        .post(UrlAPI + "lessonRecords", {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: sessionStorage.getItem("token"),
-          },
-          body: {
-            pointsObtained,
-            idAccount: sessionStorage.getItem("id"),
-            idLesson,
-          },
-        })
-        .then((response) => {
-          if (response._id) {
-            setVisible(true);
-          } else {
-            if (response.status === 419) {
-              setModalNotToken(false);
-              setModalToken(true);
-            } else {
-              if (response.status === 401) {
-                setModalToken(false);
-                setModalNotToken(true);
-              } else {
-                setLoadingError(true);
-              }
-            }
-          }
-        });
+      setIsFinishLesson(true);
     } else {
       setLoading(true);
     }
   };
+  useEffect(() => {
+    if(isFinishLesson){
+      helpHttp()
+      .post(UrlAPI + "lessonRecords", {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: sessionStorage.getItem("token"),
+        },
+        body: {
+          pointsObtained,
+          idAccount: sessionStorage.getItem("id"),
+          idLesson,
+        },
+      })
+      .then((response) => {
+        if (response._id) {
+          setVisible(true);
+          setIsFinishLesson(false);
+        } else {
+          if (response.status === 419) {
+            setModalNotToken(false);
+            setModalToken(true);
+          } else {
+            if (response.status === 401) {
+              setModalToken(false);
+                setModalNotToken(true);
+            } else {
+              setLoadingError(true);
+            }
+          }
+        }
+      });
+    }
+  },[isFinishLesson,idLesson,pointsObtained,setVisible,setModalNotToken,setModalNotToken,setLoadingError,helpHttp,UrlAPI,setIsFinishLesson]);
 
   return {
     handleClick,
