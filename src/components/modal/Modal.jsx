@@ -8,10 +8,11 @@ export default function Modal({ title, children, handleModal, sizeWidth, sizeHei
         width: sizeWidth,
         height: sizeHeight,
     };
+
     return (
-        <div className="modal-container-main" >
-            <div className="modal-container-content" style={style}>
-                <div className="modal-content-container">
+        <div className="modal-container-main">
+            <div className="modal-container-content">
+                <div className="modal-content-container" style={style}>
                     <div className="modal-title-container">
                         <h2>{title}</h2>
                         <Button styleName="modal-button"><AiFillCloseSquare size={30} onClick={handleModal} /></Button>
