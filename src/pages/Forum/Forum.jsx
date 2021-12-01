@@ -11,7 +11,7 @@ import Modal from "../../components/modal/Modal";
 import AlertMessage from "../../components/alert/AlertMessage";
 import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
 import ImageInformationAlt from "../../assets/images/ide-22.svg";
-import { BiSlider } from "react-icons/bi"
+import { BiSlider } from "react-icons/bi";
 
 const initialForm = {
     comment: "",

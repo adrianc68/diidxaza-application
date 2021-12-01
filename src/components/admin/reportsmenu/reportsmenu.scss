@@ -25,7 +25,7 @@
         display: flex;
         width: 100%;
         align-items: center;
-        gap:15px;
+        gap: 15px;
 
         .form-search-criteria-input {
           display: flex;
@@ -57,13 +57,12 @@
 
       .form-search-input-button {
         display: flex;
-        width:100px;
-        min-height:36px;
-        height:36px;
+        width: 100px;
+        min-height: 36px;
+        height: 36px;
         gap: 25px;
       }
     }
-
 
     .reportsmenu-reports-list-container {
       border: 1px solid rgb(173, 172, 172);
@@ -85,7 +84,6 @@
           flex-direction: column;
           gap: 15px;
           flex: 1;
-
         }
       }
     }

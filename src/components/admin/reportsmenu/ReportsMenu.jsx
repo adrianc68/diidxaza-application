@@ -4,7 +4,7 @@ import Button from "../../../components/Button/Button";
 import { useTranslation } from "react-i18next";
 import Report from "../../report/Report";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
-import { BiSlider } from "react-icons/bi"
+import { BiSlider } from "react-icons/bi";
 
 export default function ReportsMenu() {
     const { t } = useTranslation();
@@ -53,26 +53,7 @@ export default function ReportsMenu() {
                 }
                 buttons[i].children[0].classList.add("active");
             });
-        };
-    };
-
-    function changeDelay(value) {
-        if (timer) {
-            clearTimeout(timer);
-            setTimer(null);
         }
-        setTimer(setTimeout(() => {
-            validateInputForm(value);
-        }, 200)
-        );
-    }
-
-    const validateInputForm = (input) => {
-        var inputTrim = input.trim();
-        setErrorInformation(null);
-        checkUnknownCharacters(inputTrim);
-        checkLength(inputTrim);
-        setParameter(inputTrim);
     };
 
     const checkLength = (input) => {
@@ -93,6 +74,25 @@ export default function ReportsMenu() {
             setErrorInformation(information);
         }
     }
+
+    function changeDelay(value) {
+        if (timer) {
+            clearTimeout(timer);
+            setTimer(null);
+        }
+        setTimer(setTimeout(() => {
+            validateInputForm(value);
+        }, 200)
+        );
+    }
+
+    const validateInputForm = (input) => {
+        var inputTrim = input.trim();
+        setErrorInformation(null);
+        checkUnknownCharacters(inputTrim);
+        checkLength(inputTrim);
+        setParameter(inputTrim);
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -115,7 +115,7 @@ export default function ReportsMenu() {
                     <form className="form-search-container" onSubmit={handleSubmit}>
                         <div className="form-search-criteria-input">
                             <span>{t("AdminReportInputSearchCriteria")}</span>
-                            <input name="valueInput" type="text" onChange={(e) => { changeDelay(e.target.value) }} required></input>
+                            <input name="valueInput" type="text" onChange={(e) => { changeDelay(e.target.value); }} required></input>
                         </div>
                         <div className="form-search-input-button">
                             <Button styleName="primary-button" type="submit">{t("ButtonSearch")}</Button>
