@@ -197,3 +197,15 @@ select {
 .color-blue {
   color: rgb(27, 15, 185);
 }
+
+.filter-container {
+  display:flex;
+  align-items: center;
+  gap:0.5em;
+  color:#6e6c6c;
+  
+  .filter-icon {
+    width: 15px;
+    height: 15px;
+  }
+}

@@ -277,6 +277,22 @@ export const TRANSLATIONS_ES = {
 
     AdminAccountMenu: "Menú de usuarios",
 
+
+    Filters: "Filtros",
+    FiltersPredeterminated: "Filtros predeterminados",
+    FilterDateCreation: "Fecha de creación",
+    FilterUsername: "Nombre de usuario",
+    FilterRealName: "Nombre completo",
+    FilterAge: "Edad",
+    FilterName: "Nombre",
+    FilterBirthdate: "Fecha nacimiento",
+    FilterEmail: "Correo",
+    FilterLastName: "Apellido",
+    FilterReportByUsername: "Usuario que reportó",
+    FilterUsernameReported: "Usuario reportado",
+
+
+
     UserProfileControlPanel: "Panel de control",
     UserProfileYears: "años",
     UserProfileButtonPanelDeleteAccount: "Eliminar cuenta",
@@ -399,9 +415,16 @@ export const TRANSLATIONS_ES = {
     NotFoundDiscussions: "No se encontraron discusiones",
     Completed: "Completado",
 
+    ValidationErrorLength: "Debes tener al menos $min caracteres y no pasar los $max caracteres.",
+    ValidationErrorUnknownChars: "No debes utilizar caracteres extraños",
+
     MessageUpdateAccount: "La cuenta se actualizo exitosamente",
 
     ErrorToken: "Requiere token o No tiene permiso para realizar esta funcionalidad",
     RefreshToken: "Se agotado su tiempo en el sistema, por favor vuelva a iniciar sesión",
     AlternativeMessageImageDecorative: "Imagen decorativa",
+
+    ServerError404: "No se ha encontrado ningún resultado",
+    ServerError400: "Requieres iniciar sesión en tu cuenta para tener acceso a estas funcionalidades",
+    ServerErrorInternal: "Error interno en el servidor",
 };

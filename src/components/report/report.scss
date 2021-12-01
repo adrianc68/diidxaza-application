@@ -1,3 +1,5 @@
+@import "../../components/variables.module.scss";
+
 .report-container {
   background-color: rgb(255, 255, 255);
   border: 1px solid #ccc;
@@ -38,7 +40,7 @@
 
     .report-reported-by-container {
       border-radius: 3px 3px 0 0;
-      background-color: #cec1c1;
+      background-color: #ffffff;
       padding: 5px;
       display: inline-flex;
       gap: 10px;
@@ -64,11 +66,12 @@
     }
 
     .report-reported-by-container:hover {
-      background-color: rgb(171, 170, 172);
+      background-color: rgb(238, 237, 253);
     }
 
     .report-descripction-container {
       border-radius: 0 0 3px 3px;
+      background-color: $ul-content-background;
       padding: 10px;
       display: inline-flex;
       height: 100%;

@@ -22,7 +22,7 @@ export default function AdminMenu({ handleModal }) {
     }
 
     function handleModalAndMenu(component, title) {
-        handleModal(component, "550px", "80vw", title);
+        handleModal(component, "650px", "80vw", title);
         toggleAdminMenubar();
     }
 

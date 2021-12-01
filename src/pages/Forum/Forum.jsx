@@ -11,6 +11,7 @@ import Modal from "../../components/modal/Modal";
 import AlertMessage from "../../components/alert/AlertMessage";
 import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
 import ImageInformationAlt from "../../assets/images/ide-22.svg";
+import { BiSlider } from "react-icons/bi"
 
 const initialForm = {
     comment: "",
@@ -121,15 +122,20 @@ export default function Forum() {
                                     </div>
                                 </div>
                             </form>
+
                             <div className="form-search-buttons">
+                                <div className="filter-container">
+                                    <span>{t("FiltersPredeterminated")}</span>
+                                    <BiSlider className="filter-icon" />
+                                </div>
                                 <div className="forum-button-filter-button">
-                                    <Button styleName="text-button black-text" onClick={handleClickPopulars} text={t("ForumSearchMostPopular")}></Button>
+                                    <Button styleName="text-button gray-text" onClick={handleClickPopulars} text={t("ForumSearchMostPopular")}></Button>
                                 </div>
                                 <div className="forum-button-filter-button" >
-                                    <Button styleName="text-button black-text" onClick={handleClickNews} text={t("ForumSearchNewest")}></Button>
+                                    <Button styleName="text-button gray-text" onClick={handleClickNews} text={t("ForumSearchNewest")}></Button>
                                 </div>
                                 <div className="forum-button-filter-button">
-                                    <Button styleName="text-button black-text" onClick={handleClickFollowing} text={t("ForumSearchOutstanding")}></Button>
+                                    <Button styleName="text-button gray-text" onClick={handleClickFollowing} text={t("ForumSearchOutstanding")}></Button>
                                 </div>
                             </div>
                         </div>

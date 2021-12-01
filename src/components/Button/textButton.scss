@@ -14,7 +14,7 @@
 
     span {
       font-size: 12px;
-      font-weight: 700;
+      font-weight:600;
       vertical-align: middle;
       color: #fff;
       cursor: pointer;
@@ -25,6 +25,12 @@
 .text-button.black-text {
   span {
     color: #000;
+  }
+}
+
+.text-button.gray-text {
+  span {
+    color: rgb(100, 100, 107);
   }
 }
 

@@ -10,39 +10,60 @@
     width: calc(100% - 50px);
     height: calc(100% - 50px);
     padding: 25px;
+    gap: 15px;
     display: flex;
     flex-direction: column;
 
     .reportsmenu-search-criteria {
-      .form-search-input {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+
+      .form-search-container {
         display: flex;
+        width: 100%;
         align-items: center;
-        padding: 15px 0 15px 0;
-        gap: 10px;
+        gap:15px;
 
-        .form-search-container-input {
+        .form-search-criteria-input {
           display: flex;
+          width: 100%;
+          gap: 15px;
+          height: 32px;
+          padding: 15px 0 15px 0;
           align-items: center;
-          flex: 1;
-        }
 
-        :nth-child(1) {
-          height: 37px;
-        }
-
-        .form-search-input-button {
-          width: 100px;
+          span {
+            display: block;
+            min-width: 120px;
+            align-items: center;
+          }
         }
       }
 
-      .form-search-buttons {
+      .form-search-filters-buttons {
         display: flex;
-        justify-content: center;
+        gap: 15px;
+        width: 100%;
+        justify-content: flex-start;
         align-items: center;
+
+        .filter-container {
+          font-size: 1.2em;
+        }
+      }
+
+      .form-search-input-button {
+        display: flex;
+        width:100px;
+        min-height:36px;
+        height:36px;
         gap: 25px;
-        padding: 15px;
       }
     }
+
 
     .reportsmenu-reports-list-container {
       border: 1px solid rgb(173, 172, 172);
@@ -50,11 +71,12 @@
       border-radius: 3px;
       overflow-y: auto;
       flex-grow: 1;
+      display: flex;
 
       .reportsmenu-discussion-list {
         display: flex;
         flex-direction: column;
-        border-radius: 3px;
+        flex: 1;
 
         ul {
           list-style: none;
@@ -62,6 +84,8 @@
           display: flex;
           flex-direction: column;
           gap: 15px;
+          flex: 1;
+
         }
       }
     }
