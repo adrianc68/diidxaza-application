@@ -80,9 +80,9 @@ export default function AnswerSection({ lesson }) {
         handleChangeAnswerMultiple,
         loading,
         loadingError,
-        pointsObtained,
-        resultsQuestions
-    } = useLessonForm(setQuestion, questionsChange, setQuestionsChange, setAnswers, question, answers, setVisible, setModalNotToken, setModalToken);
+        resultsQuestions,
+        pointsObtained
+    } = useLessonForm(setQuestion, questionsChange, setQuestionsChange, setAnswers, question, answers, setVisible, setModalNotToken, setModalToken, lesson._id);
 
     function placeLessonResults() {
         const sytleLesson = { top: "0px", left: "0px" };
@@ -147,7 +147,7 @@ export default function AnswerSection({ lesson }) {
                     <Button styleName="primary-button" text={t("ButtonNext")} onClick={handleClickNext} />
                 </div>}
                 {questionsChange.length === 1 && <div>
-                    <Button styleName="primary-button" text={t("ButtonFinish")} onClick={(e) => { handleClick(e, lesson._id); }} />
+                    <Button styleName="primary-button" text={t("ButtonFinish")} onClick={handleClick} />
                 </div>}
             </div>}
             {modalNotToken && <Modal handleModal={() => { setModalNotToken(false); }} sizeHeight="20" sizeWidth="35">
