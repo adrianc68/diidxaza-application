@@ -158,7 +158,7 @@ export default function EditProfile({ setNameUser }) {
         handleChangeImage,
         icon,
         errorImage
-    } = useUpdateAccountForm(validationsForm, setForm, form, setCities, setModalNotToken, setModalToken, setNameFile, URLPhoto, initialfile, setNameUser, setInitialFile, namefile);
+    } = useUpdateAccountForm(validationsForm, setForm, form, setCities, setModalNotToken, setModalToken, setNameFile, URLPhoto, initialfile, setNameUser, setInitialFile, namefile, setURLPhoto);
 
     return (
         <form onSubmit={handleSubmit} className="editprofile-main-container">

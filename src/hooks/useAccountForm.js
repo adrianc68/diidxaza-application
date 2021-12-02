@@ -97,7 +97,8 @@ export const useUpdateAccountForm = (
   initialfile,
   setNameUser,
   setInitialFile,
-  namefile
+  namefile,
+  setURLPhoto
 ) => {
   const { t } = useTranslation();
   const [errors, setErrors] = useState({});
@@ -196,6 +197,7 @@ export const useUpdateAccountForm = (
             setClaseName("successfulMessage");
             setResponse(t("MessageUpdateAccount"));
             setLoading(true);
+            setTimeout(() => setLoading(false), 2000);
             if (urlFile != null) {
               if (URLPhoto != null) {
                 helpHttp()
@@ -222,6 +224,7 @@ export const useUpdateAccountForm = (
                         if (response.ok) {
                           response.json().then((responseJson) => {
                             sessionStorage.setItem("URL", responseJson.URL);
+                            setURLPhoto(responseJson.URL);
                             setInitialFile(namefile);
                           });
                         }
@@ -239,6 +242,7 @@ export const useUpdateAccountForm = (
                   if (response.ok) {
                     response.json().then((responseJson) => {
                       sessionStorage.setItem("URL", responseJson.URL);
+                      setURLPhoto(responseJson.URL);
                       setInitialFile(namefile);
                     });
                   }
