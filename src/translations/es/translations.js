@@ -95,7 +95,7 @@ export const TRANSLATIONS_ES = {
     LoginNewAccountThenRegisterSpan: "Crea una nueva cuenta",
 
     ErrorName: "Ingrese solo de 2 a 150 carácteres y solo letras",
-    ErrorDateBirth: "Ingrese una fecha de nacimiento válida. Un rango de 11 a 100 años",
+    ErrorDateBirth: "Ingrese una fecha de nacimiento válida. Un rango de 10 a 100 años",
     ErrorEmail: "El correo debe ser válido",
     ErrorUsername: "Ingrese solo de 3 a 20 carácteres. Solo letras y números",
     ErrorPassword: "Ingrese solo de 8 a 16 carácteres. Debe contener letras mayúsculas, minúsculas, números y un caracter especial @!%?#",

@@ -5,6 +5,7 @@ import QuestionMultipleAnswerSolved from "../../../components/learning/resultles
 import CongratulationsImage from "../../../assets/images/ide-44.svg";
 import DiidxazaLogo from "../../../components/logo/DiidxazaLogo";
 import { FiCheck, FiX, FiPlusSquare, FiDivide, FiPlus } from "react-icons/fi";
+import { NUMBER } from "../../../helpers/Number";
 
 
 export default function ResultLesson({ resultsQuestions, lesson, pointsObtained }) {
@@ -104,7 +105,7 @@ export default function ResultLesson({ resultsQuestions, lesson, pointsObtained 
                     <div className="questionResult-main-container">
                         <div className="questionresult-list-container">
                             <ul>
-                                {resultsQuestions.length > 0 && resultsQuestions.map((element) => (
+                                {resultsQuestions.length > NUMBER.ZERO && resultsQuestions.map((element) => (
                                     element.question.typeQuestion === "only" && <li>
                                         <div className="questionResult-list-item">
                                             <QuestionUniqueAnswerSolved question={element.question} answers={element.answers} answersUser={element.answerAccount}></QuestionUniqueAnswerSolved>

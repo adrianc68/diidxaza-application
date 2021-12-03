@@ -8,6 +8,8 @@ import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 import { useUpdateAccountForm } from "../../../hooks/useAccountForm";
 import UserImageDefault from "../../../assets/images/ide-29.svg";
 import { Link } from "react-router-dom";
+import { RESPONSE_STATUS } from "../../../helpers/Response";
+import { NUMBER } from "../../../helpers/Number";
 
 const validationsForm = (form) => {
     let errors = {};
@@ -44,7 +46,7 @@ const validationsForm = (form) => {
         const dateBirth = new Date(form.dateBirth).getFullYear();
         const dateNow = new Date().getFullYear();
         const year = dateNow - dateBirth;
-        if (year < 10 || year > 100) {
+        if (year < NUMBER.TEN || year > NUMBER.ONE_HUNDRED) {
             errors.dateBirth = "Error";
         }
     }
@@ -132,10 +134,10 @@ export default function EditProfile({ setNameUser }) {
                     setURLPhoto(null);
                 }
             } else {
-                if (response.status === 419) {
+                if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
                     setModalToken(true);
                 } else {
-                    if (response.status === 401) {
+                    if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
                         setModalNotToken(true);
                     }
                 }
@@ -158,7 +160,7 @@ export default function EditProfile({ setNameUser }) {
         handleChangeImage,
         icon,
         errorImage
-    } = useUpdateAccountForm(validationsForm, setForm, form, setCities, setModalNotToken, setModalToken, setNameFile, URLPhoto, initialfile, setNameUser, setInitialFile, namefile);
+    } = useUpdateAccountForm(validationsForm, setForm, form, setCities, setModalNotToken, setModalToken, setNameFile, URLPhoto, initialfile, setNameUser, setInitialFile, namefile, setURLPhoto);
 
     return (
         <form onSubmit={handleSubmit} className="editprofile-main-container">
@@ -215,7 +217,7 @@ export default function EditProfile({ setNameUser }) {
                             <p className="p-semibold">{t("SignUpFormStateInput")}</p>
                             <select name="idState" onChange={handleChangeState} onBlur={handleBlur} value={form.idState} required>
                                 <option value="">{t("SignUpNotOption")}</option>
-                                {states.length > 0 && states.map((element) => (
+                                {states.length > NUMBER.ZERO && states.map((element) => (
                                     <option key={element._id} value={element._id}>{element.nameState}</option>
                                 ))}
                             </select>
@@ -227,7 +229,7 @@ export default function EditProfile({ setNameUser }) {
                             <p className="p-semibold">{t("SignUpFormCityInput")}</p>
                             <select name="idCity" onBlur={handleBlur} onChange={handleChange} value={form.idCity} required>
                                 <option value="">{t("SignUpNotOption")}</option>
-                                {cities.length > 0 && cities.map((element) => (
+                                {cities.length > NUMBER.ZERO && cities.map((element) => (
                                     <option key={element._id} value={element._id}>{element.nameCity}</option>
                                 ))}
                             </select>

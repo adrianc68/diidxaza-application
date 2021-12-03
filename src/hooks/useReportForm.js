@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { helpHttp, UrlAPI } from "../helpers/helpHttp";
 import { BiError, BiBadgeCheck } from "react-icons/bi";
+import { NUMBER } from "../helpers/Number";
+import { RESPONSE_STATUS } from "../helpers/Response";
 
 export const useReportForm = (initialForm, validateForm, id) => {
   const { t } = useTranslation();
@@ -29,7 +31,7 @@ export const useReportForm = (initialForm, validateForm, id) => {
   const handleSubmit = (e, setStatusModal, setModalToken) => {
     e.preventDefault();
     setErrors(validateForm(form));
-    if (Object.keys(errors).length === 0) {
+    if (Object.keys(errors).length === NUMBER.ZERO) {
       helpHttp()
         .post(UrlAPI + "reports", {
           headers: {
@@ -48,12 +50,12 @@ export const useReportForm = (initialForm, validateForm, id) => {
             setLoading(true);
             setTimeout(() => setStatusModal(false), 1600);
           } else {
-            if (response.status === 419) {
+            if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
               setStatusModal(false);
               setModalToken(true);
             } else {
               setModalToken(false);
-              if (response.status === 400) {
+              if (response.status === RESPONSE_STATUS.BAD_REQUEST) {
                 setResponse(t("SignUpVerificationSendNot"));
               } else {
                 setResponse(t("ErrorMessage"));

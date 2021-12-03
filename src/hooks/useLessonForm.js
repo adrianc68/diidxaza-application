@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { helpHttp, UrlAPI } from "../helpers/helpHttp";
+import { NUMBER } from "../helpers/Number";
+import { RESPONSE_STATUS } from "../helpers/Response";
 
 export const useLessonForm = (
   setQuestion,
@@ -81,7 +83,7 @@ export const useLessonForm = (
       );
       let pointsAnswer = 0;
       let countAnswer = 0;
-      if (valueMultiple.length > 0) {
+      if (valueMultiple.length > NUMBER.ZERO) {
         isValid = true;
         let isCorrectAnswer = false;
         if (answersValid.length === valueMultiple.length) {
@@ -130,7 +132,7 @@ export const useLessonForm = (
           },
         })
         .then(async (responseAnswers) => {
-          if (responseAnswers.length > 0) {
+          if (responseAnswers.length > NUMBER.ZERO) {
             setActiveClassFilterRadioButtons();
             setAnswers(responseAnswers);
             setQuestion(questionsChange[1]);
@@ -142,11 +144,11 @@ export const useLessonForm = (
             setLoading(false);
             setLoadingError(false);
           } else {
-            if (responseAnswers.status === 419) {
+            if (responseAnswers.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
               setModalNotToken(false);
               setModalToken(true);
             } else {
-              if (responseAnswers.status === 401) {
+              if (responseAnswers.status === RESPONSE_STATUS.UNAUTHORIZED) {
                 setModalToken(false);
                 setModalNotToken(true);
               } else {
@@ -189,11 +191,11 @@ export const useLessonForm = (
           setVisible(true);
           setIsFinishLesson(false);
         } else {
-          if (response.status === 419) {
+          if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
             setModalNotToken(false);
             setModalToken(true);
           } else {
-            if (response.status === 401) {
+            if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
               setModalToken(false);
                 setModalNotToken(true);
             } else {

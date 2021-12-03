@@ -6,10 +6,12 @@ import LessonInformation from "../../components/learning/lessoninformation/Lesso
 import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
 import Modal from "../../components/modal/Modal";
 import AlertMessage from "../../components/alert/AlertMessage";
+import { NUMBER } from "../../helpers/Number";
+import { RESPONSE_STATUS } from "../../helpers/Response";
 
 const totalPoints = (lessonRecords) => {
     let totalPointsRecord = 0;
-    if (lessonRecords.length > 0) {
+    if (lessonRecords.length > NUMBER.ZERO) {
         lessonRecords.map((element) => (
             totalPointsRecord = totalPointsRecord + element.pointsObtained
         ));
@@ -35,7 +37,7 @@ export default function Learning() {
                 "Authorization": sessionStorage.getItem("token")
             }
         }).then((response) => {
-            if (response.length > 0) {
+            if (response.length > NUMBER.ZERO) {
                 setLessons(response);
                 helpHttp().get(UrlAPI + "lessonRecords/" + sessionStorage.getItem("id"), {
                     headers: {
@@ -44,14 +46,14 @@ export default function Learning() {
                         "Authorization": sessionStorage.getItem("token")
                     }
                 }).then((responseRecords) => {
-                    if (responseRecords.length > 0) {
+                    if (responseRecords.length > NUMBER.ZERO) {
                         setLessonRecords(responseRecords);
                     } else {
-                        if (responseRecords.status === 419) {
+                        if (responseRecords.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
                             setModalNotToken(false);
                             setModalToken(true);
                         } else {
-                            if (responseRecords.status === 401) {
+                            if (responseRecords.status === RESPONSE_STATUS.UNAUTHORIZED) {
                                 setModalToken(false);
                                 setModalNotToken(true);
                             }
@@ -59,11 +61,11 @@ export default function Learning() {
                     }
                 });
             } else {
-                if (response.status === 419) {
+                if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
                     setModalNotToken(false);
                     setModalToken(true);
                 } else {
-                    if (response.status === 401) {
+                    if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
                         setModalToken(false);
                         setModalNotToken(true);
                     }
@@ -100,7 +102,7 @@ export default function Learning() {
                 <div className="learning-lesson-information">
                     <div className="learning-lessons-content">
                         <ul>
-                            {lessons.length > 0 && lessons.map((element) => (
+                            {lessons.length > NUMBER.ZERO && lessons.map((element) => (
                                 <li onClick={(e) => { handleDisplayLessonInformation(e, element); }} ref={itemRef}>
                                     <LessonListItem isRecordHistory={lessonRecords.find((history) => history.idLesson === element._id)} lesson={element}></LessonListItem>
                                 </li>

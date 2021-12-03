@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { helpHttp, UrlAPI } from "../helpers/helpHttp";
 import { BiError, BiBadgeCheck } from "react-icons/bi";
 import UserImageDefault from "../assets/images/ide-29.svg";
+import { RESPONSE_STATUS } from "../helpers/Response";
+import { NUMBER } from "../helpers/Number";
 
 export const useLoginForm = (initialForm, validateForm) => {
   const { t } = useTranslation();
@@ -28,7 +30,7 @@ export const useLoginForm = (initialForm, validateForm) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validateForm(form));
-    if (Object.keys(errors).length === 0) {
+    if (Object.keys(errors).length === NUMBER.ZERO) {
       helpHttp()
         .post(UrlAPI + "login", {
           headers: {
@@ -53,13 +55,13 @@ export const useLoginForm = (initialForm, validateForm) => {
             window.location.href = "home";
           } else {
             setClaseName("errorMessage");
-            if (response.status === 404) {
+            if (response.status === RESPONSE_STATUS.NOT_FOUND) {
               setResponse(t("NotFoundLogin"));
             } else {
-              if (response.status === 400) {
+              if (response.status === RESPONSE_STATUS.BAD_REQUEST) {
                 setResponse(t("BadRequestLogin"));
               } else {
-                if (response.status === 403) {
+                if (response.status === RESPONSE_STATUS.FORBIDDEN) {
                   setResponse(t("ForbiddentLogin"));
                 } else {
                   setResponse(t("ErrorMessage"));
@@ -97,7 +99,8 @@ export const useUpdateAccountForm = (
   initialfile,
   setNameUser,
   setInitialFile,
-  namefile
+  namefile,
+  setURLPhoto
 ) => {
   const { t } = useTranslation();
   const [errors, setErrors] = useState({});
@@ -130,7 +133,7 @@ export const useUpdateAccountForm = (
   const handleChangeImage = (e) => {
     let file = e.target.files[0];
     if (file) {
-      if (file.size < 10000000) {
+      if (file.size < NUMBER.SIZE_IMAGE) {
         setErrorImage(false);
         const fileReader = new FileReader();
         fileReader.readAsDataURL(file);
@@ -158,7 +161,7 @@ export const useUpdateAccountForm = (
       helpHttp()
         .get(UrlAPI + "cities/" + value)
         .then((response) => {
-          if (response.length > 0) {
+          if (response.length > NUMBER.ZERO) {
             setCities(response);
           } else {
             setCities([]);
@@ -177,7 +180,7 @@ export const useUpdateAccountForm = (
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validateForm(form));
-    if (Object.keys(errors).length === 0 && !errorImage) {
+    if (Object.keys(errors).length === NUMBER.ZERO && !errorImage) {
       fetch(UrlAPI + "accounts", {
         method: "PUT",
         headers: {
@@ -196,6 +199,7 @@ export const useUpdateAccountForm = (
             setClaseName("successfulMessage");
             setResponse(t("MessageUpdateAccount"));
             setLoading(true);
+            setTimeout(() => setLoading(false), 2000);
             if (urlFile != null) {
               if (URLPhoto != null) {
                 helpHttp()
@@ -222,6 +226,7 @@ export const useUpdateAccountForm = (
                         if (response.ok) {
                           response.json().then((responseJson) => {
                             sessionStorage.setItem("URL", responseJson.URL);
+                            setURLPhoto(responseJson.URL);
                             setInitialFile(namefile);
                           });
                         }
@@ -239,6 +244,7 @@ export const useUpdateAccountForm = (
                   if (response.ok) {
                     response.json().then((responseJson) => {
                       sessionStorage.setItem("URL", responseJson.URL);
+                      setURLPhoto(responseJson.URL);
                       setInitialFile(namefile);
                     });
                   }
@@ -247,22 +253,22 @@ export const useUpdateAccountForm = (
             }
           });
         } else {
-          if (response.status === 419) {
+          if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
             setLoading(false);
             setModalNotToken(false);
             setModalToken(true);
           } else {
-            if (response.status === 401) {
+            if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
               setLoading(false);
               setModalToken(false);
               setModalNotToken(true);
             } else {
               setIcon(<BiError />);
               setClaseName("errorMessage");
-              if (response.status === 409) {
+              if (response.status === RESPONSE_STATUS.CONFLICT) {
                 setResponse(t("ErrorExistAccount"));
               } else {
-                if (response.status === 400) {
+                if (response.status === RESPONSE_STATUS.BAD_REQUEST) {
                   setResponse(t("BadRequestAccount"));
                 } else {
                   setResponse(t("ErrorMessage"));
@@ -315,7 +321,7 @@ export const useVerificationForm = (validateCode) => {
   const handleSubmitVerification = (e) => {
     e.preventDefault();
     setErrors(validateCode(code));
-    if (Object.keys(errors).length === 0) {
+    if (Object.keys(errors).length === NUMBER.ZERO) {
       if (sessionStorage.getItem("username")) {
         const confirmation = {
           username: sessionStorage.getItem("username"),
@@ -338,10 +344,10 @@ export const useVerificationForm = (validateCode) => {
               sessionStorage.clear();
               window.location.href = "login";
             } else {
-              if (response.status === 404) {
+              if (response.status === RESPONSE_STATUS.NOT_FOUND) {
                 setResponse(t("SignUpVerificationNotFound"));
               } else {
-                if (response.status === 400) {
+                if (response.status === RESPONSE_STATUS.BAD_REQUEST) {
                   setResponse(t("SignUpVerificationInvalidCode"));
                 } else {
                   setResponse(t("ErrorMessage"));
@@ -383,10 +389,10 @@ export const useVerificationForm = (validateCode) => {
           setResponse(t("SignUpVerificationSendSuccessful"));
           setLoading(true);
         } else {
-          if (response.status === 404) {
+          if (response.status === RESPONSE_STATUS.NOT_FOUND) {
             setResponse(t("SignUpVerificationSendNot"));
           } else {
-            if (response.status === 400) {
+            if (response.status === RESPONSE_STATUS.BAD_REQUEST) {
               setResponse(t("SignUpVerificationInvalidEmail"));
             } else {
               setResponse(t("ErrorMessage"));
@@ -448,7 +454,7 @@ export const useAccountForm = (initialForm, validateForm) => {
   const handleChangeImage = (e) => {
     let file = e.target.files[0];
     if (file) {
-      if (file.size < 10000000) {
+      if (file.size < NUMBER.SIZE_IMAGE) {
         setErrorImage(false);
         const fileReader = new FileReader();
         fileReader.readAsDataURL(file);
@@ -476,7 +482,7 @@ export const useAccountForm = (initialForm, validateForm) => {
       helpHttp()
         .get(UrlAPI + "cities/" + value)
         .then((response) => {
-          if (response.length > 0) {
+          if (response.length > NUMBER.ZERO) {
             setCities(response);
           } else {
             setCities([]);
@@ -493,7 +499,7 @@ export const useAccountForm = (initialForm, validateForm) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validateForm(form));
-    if (Object.keys(errors).length === 0 && !errorImage) {
+    if (Object.keys(errors).length === NUMBER.ZERO && !errorImage) {
       fetch(UrlAPI + "accounts", {
         method: "POST",
         headers: {
@@ -525,10 +531,10 @@ export const useAccountForm = (initialForm, validateForm) => {
         } else {
           setIcon(<BiError />);
           setClaseName("errorMessage");
-          if (response.status === 409) {
+          if (response.status === RESPONSE_STATUS.CONFLICT) {
             setResponse(t("ErrorExistAccount"));
           } else {
-            if (response.status === 400) {
+            if (response.status === RESPONSE_STATUS.BAD_REQUEST) {
               setResponse(t("BadRequestAccount"));
             } else {
               setResponse(t("ErrorMessage"));
