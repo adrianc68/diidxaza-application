@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { helpHttp, UrlAPI } from "../helpers/helpHttp";
 import { BiError, BiBadgeCheck } from "react-icons/bi";
 import ImageInformationAlt from "../assets/images/ide-02.svg";
+import { NUMBER } from "../helpers/Number";
+import { RESPONSE_STATUS } from "../helpers/Response";
 
 export const useForum = (
   validateForm,
@@ -50,7 +52,7 @@ export const useForum = (
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validateForm(title));
-    if (Object.keys(errors).length === 0) {
+    if (Object.keys(errors).length === NUMBER.ZERO) {
       setLoadingDiscussion(false);
       setFoundDiscussion(false);
       helpHttp()
@@ -61,20 +63,20 @@ export const useForum = (
           },
         })
         .then((response) => {
-          if (response.length > 0) {
+          if (response.length > NUMBER.ZERO) {
             setLoading(false);
             setDiscussions(response);
           } else {
             setDiscussions([]);
-            if (response.status === 404) {
+            if (response.status === RESPONSE_STATUS.NOT_FOUND) {
               setLoading(true);
             } else {
-              if (response.status === 401) {
+              if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
                 setLoading(false);
                 setResponseModalForum(t("ErrorToken"));
                 setModalForum(true);
               } else {
-                if (response.status === 419) {
+                if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
                   setLoading(false);
                   setModalForum(false);
                   setModalToken(true);
@@ -102,20 +104,20 @@ export const useForum = (
         },
       })
       .then((response) => {
-        if (response.length > 0) {
+        if (response.length > NUMBER.ZERO) {
           setLoading(false);
           setDiscussions(response);
         } else {
           setDiscussions([]);
-          if (response.status === 404) {
+          if (response.status === RESPONSE_STATUS.NOT_FOUND) {
             setLoading(true);
           } else {
-            if (response.status === 401) {
+            if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
               setLoading(false);
               setResponseModalForum(t("ErrorToken"));
               setModalForum(true);
             } else {
-              if (response.status === 419) {
+              if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
                 setLoading(false);
                 setModalForum(false);
                 setModalToken(true);
@@ -160,20 +162,20 @@ export const useForum = (
         },
       })
       .then((response) => {
-        if (response.length > 0) {
+        if (response.length > NUMBER.ZERO) {
           setLoading(false);
           setDiscussions(response);
         } else {
           setDiscussions([]);
-          if (response.status === 404) {
+          if (response.status === RESPONSE_STATUS.NOT_FOUND) {
             setLoading(true);
           } else {
-            if (response.status === 401) {
+            if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
               setLoading(false);
               setResponseModalForum(t("ErrorToken"));
               setModalForum(true);
             } else {
-              if (response.status === 419) {
+              if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
                 setLoading(false);
                 setModalForum(false);
                 setModalToken(true);
@@ -198,20 +200,20 @@ export const useForum = (
         },
       })
       .then((response) => {
-        if (response.length > 0) {
+        if (response.length > NUMBER.ZERO) {
           setLoading(false);
           setDiscussions(response);
         } else {
           setDiscussions([]);
-          if (response.status === 404) {
+          if (response.status === RESPONSE_STATUS.NOT_FOUND) {
             setLoading(true);
           } else {
-            if (response.status === 401) {
+            if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
               setLoading(false);
               setResponseModalForum(t("ErrorToken"));
               setModalForum(true);
             } else {
-              if (response.status === 419) {
+              if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
                 setLoading(false);
                 setModalForum(false);
                 setModalToken(true);
@@ -282,7 +284,7 @@ export const useForum = (
               },
             })
             .then(async (responseComments) => {
-              if (responseComments.length > 0) {
+              if (responseComments.length > NUMBER.ZERO) {
                 await responseComments.map(async (imageComment) => {
                   if (imageComment.idAccount[0].URL !== undefined) {
                     fetch(UrlAPI + "resources", {
@@ -325,7 +327,7 @@ export const useForum = (
                 });
                 setComments(responseComments);
               } else {
-                if (responseComments.status === 419) {
+                if (responseComments.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
                   setLoadingDiscussion(false);
                   setFoundDiscussion(false);
                   setModalForum(false);
@@ -338,19 +340,19 @@ export const useForum = (
             });
         } else {
           setNumberComments(0);
-          if (responseDiscussion.status === 401) {
+          if (responseDiscussion.status === RESPONSE_STATUS.UNAUTHORIZED) {
             setLoadingDiscussion(false);
             setFoundDiscussion(false);
             setResponseModalForum(t("ErrorToken"));
             setModalForum(true);
           } else {
-            if (responseDiscussion.status === 419) {
+            if (responseDiscussion.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
               setLoadingDiscussion(false);
               setFoundDiscussion(false);
               setModalForum(false);
               setModalToken(true);
             } else {
-              if (responseDiscussion.status === 404) {
+              if (responseDiscussion.status === RESPONSE_STATUS.NOT_FOUND) {
                 setResponse(t("NotFoundDiscussion"));
               } else {
                 setResponse(t("ErrorMessage"));
@@ -366,7 +368,7 @@ export const useForum = (
   const handleSubmitComment = (e) => {
     e.preventDefault();
     setErrorsComment(validateFormComment(formComment.comment));
-    if (Object.keys(errorsComment).length === 0) {
+    if (Object.keys(errorsComment).length === NUMBER.ZERO) {
       helpHttp()
         .post(UrlAPI + "comments", {
           headers: {
@@ -433,17 +435,17 @@ export const useForum = (
             }
             setComments((comments) => [...comments, newComment]);
           } else {
-            if (response.status === 401) {
+            if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
               setLoadingComment(false);
               setResponseModalForum(t("ErrorToken"));
               setModalForum(true);
             } else {
-              if (response.status === 419) {
+              if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
                 setLoadingComment(false);
                 setModalForum(false);
                 setModalToken(true);
               } else {
-                if (response.status === 400) {
+                if (response.status === RESPONSE_STATUS.BAD_REQUEST) {
                   setResponseComment(t("AddComentNotFound"));
                 } else {
                   setResponseComment(t("ErrorMessage"));
@@ -495,11 +497,11 @@ export const useForum = (
           setComments(comments.filter((item) => item._id !== id));
           setImagesComments(imagesComments.filter((item) => item.id !== id));
         } else {
-          if (response.status === 419) {
+          if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
             setModalForum(false);
             setModalToken(true);
           } else {
-            if (response.status === 401) {
+            if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
               setResponseModalForum(t("ErrorToken"));
             } else {
               setResponseModalForum(t("ErrorMessage"));
@@ -545,14 +547,14 @@ export const useForum = (
           setModalToken(false);
           setModalForum(true);
         } else {
-          if (response.status === 419) {
+          if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
             setModalForum(false);
             setModalToken(true);
           } else {
-            if (response.status === 401) {
+            if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
               setResponseModalForum(t("ErrorToken"));
             } else {
-              if (response.status === 400) {
+              if (response.status === RESPONSE_STATUS.BAD_REQUEST) {
                 setResponseModalForum(t("FollowNotSuccessful"));
               } else {
                 setResponseModalForum(t("ErrorMessage"));
@@ -662,7 +664,7 @@ export const useDiscussionForm = (initialForm, validateForm) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validateForm(form));
-    if (Object.keys(errors).length === 0) {
+    if (Object.keys(errors).length === NUMBER.ZERO) {
       let regexTheme = /(?:info|duda|regla)$/;
       if (regexTheme.test(form.theme)) {
         helpHttp()
@@ -681,19 +683,19 @@ export const useDiscussionForm = (initialForm, validateForm) => {
               setResponse(t("AddDiscussionSuccessful"));
               setLoading(true);
             } else {
-              if (response.status === 419) {
+              if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
                 setLoading(false);
                 setModalNotToken(false);
                 setModalToken(true);
               } else {
-                if (response.status === 401) {
+                if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
                   setLoading(false);
                   setModalToken(false);
                   setModalNotToken(true);
                 } else {
                   setIcon(<BiError />);
                   setClaseName("errorMessage");
-                  if (response.status === 400) {
+                  if (response.status === RESPONSE_STATUS.BAD_REQUEST) {
                     setResponse(t("SignUpVerificationSendNot"));
                   } else {
                     setResponse(t("ErrorMessage"));

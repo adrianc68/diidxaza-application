@@ -12,6 +12,8 @@ import { BiError } from "react-icons/bi";
 import LessonResults from "../../../components/learning/lessonresults/LessonResults";
 import Modal from "../../../components/modal/Modal";
 import AlertMessage from "../../../components/alert/AlertMessage";
+import { NUMBER } from "../../../helpers/Number";
+import { RESPONSE_STATUS } from "../../../helpers/Response";
 
 export default function AnswerSection({ lesson }) {
     const { t } = useTranslation();
@@ -32,7 +34,7 @@ export default function AnswerSection({ lesson }) {
                 "Authorization": sessionStorage.getItem("token")
             }
         }).then((response) => {
-            if (response.length > 0) {
+            if (response.length > NUMBER.ZERO) {
                 helpHttp().get(UrlAPI + "answers/" + response[0]._id, {
                     headers: {
                         Accept: "application/json",
@@ -40,18 +42,18 @@ export default function AnswerSection({ lesson }) {
                         "Authorization": sessionStorage.getItem("token")
                     }
                 }).then((responseAnswers) => {
-                    if (responseAnswers.length > 0) {
+                    if (responseAnswers.length > NUMBER.ZERO) {
                         setQuestions(response);
                         setQuestionsChange(response);
                         setQuestion(response[0]);
                         setAnswers(responseAnswers);
                     } else {
                         setClassName("not-found-questions");
-                        if (responseAnswers.status === 419) {
+                        if (responseAnswers.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
                             setModalNotToken(false);
                             setModalToken(true);
                         } else {
-                            if (responseAnswers.status === 401) {
+                            if (responseAnswers.status === RESPONSE_STATUS.UNAUTHORIZED) {
                                 setModalToken(false);
                                 setModalNotToken(true);
                             }
@@ -60,11 +62,11 @@ export default function AnswerSection({ lesson }) {
                 });
             } else {
                 setClassName("not-found-questions");
-                if (response.status === 419) {
+                if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
                     setModalNotToken(false);
                     setModalToken(true);
                 } else {
-                    if (response.status === 401) {
+                    if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
                         setModalToken(false);
                         setModalNotToken(true);
                     }
@@ -91,7 +93,7 @@ export default function AnswerSection({ lesson }) {
     }
 
     return (
-        questions.length > 0 && <form className="answersection-main-container">
+        questions.length > NUMBER.ZERO && <form className="answersection-main-container">
             <div className="answersection-question-information-container">
                 <div>
                     <span>{t("AnswerSectionQuesion")}</span>
@@ -143,10 +145,10 @@ export default function AnswerSection({ lesson }) {
                         <Button styleName="orange-button" text={t("ButtonExit")} />
                     </Link>
                 </div>
-                {questionsChange.length > 1 && <div>
+                {questionsChange.length > NUMBER.ONE && <div>
                     <Button styleName="primary-button" text={t("ButtonNext")} onClick={handleClickNext} />
                 </div>}
-                {questionsChange.length === 1 && <div>
+                {questionsChange.length === NUMBER.ONE && <div>
                     <Button styleName="primary-button" text={t("ButtonFinish")} onClick={handleClick} />
                 </div>}
             </div>}

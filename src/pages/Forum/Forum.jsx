@@ -12,6 +12,7 @@ import AlertMessage from "../../components/alert/AlertMessage";
 import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
 import ImageInformationAlt from "../../assets/images/ide-22.svg";
 import { BiSlider } from "react-icons/bi";
+import { NUMBER } from "../../helpers/Number";
 
 const initialForm = {
     comment: "",
@@ -22,7 +23,7 @@ const initialForm = {
 const validationsForm = (title) => {
     let errors = {};
     title = title.trim();
-    if (title.length === 0) {
+    if (title.length === NUMBER.ZERO) {
         errors.title = "Error";
     }
     return errors;
@@ -32,7 +33,7 @@ const validationsFormComment = (comment) => {
     let errors = {};
     comment = comment.trim();
     let regexComment = /^[\wÑñÁáÉéÍíÓóÚúÜü!?¡¿.,# ]{5,600}$/;
-    if (comment.length === 0) {
+    if (comment.length === NUMBER.ZERO) {
         errors.comment = "Error";
     }
     else {
@@ -96,7 +97,7 @@ export default function Forum() {
                 "Authorization": sessionStorage.getItem("token")
             },
         }).then((response) => {
-            if (response.length > 0) {
+            if (response.length > NUMBER.ZERO) {
                 setDiscussions(response);
             } else {
                 setDiscussions([]);
@@ -141,7 +142,7 @@ export default function Forum() {
                         </div>
                         <div className="forum-discussion-list">
                             <ul>
-                                {discussions.length > 0 && discussions.map((element) => (
+                                {discussions.length > NUMBER.ZERO && discussions.map((element) => (
                                     <li onClick={(e) => { handleClickDiscussion(e, element._id); }}>
                                         <DiscussionListItem discussion={element}></DiscussionListItem>
                                     </li>

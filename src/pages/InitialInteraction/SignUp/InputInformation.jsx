@@ -6,6 +6,7 @@ import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 import { useAccountForm } from "../../../hooks/useAccountForm";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { NUMBER } from "../../../helpers/Number";
 
 const initialForm = {
     lastname: "",
@@ -47,7 +48,7 @@ const validationsForm = (form) => {
         const dateBirth = new Date(form.dateBirth).getFullYear();
         const dateNow = new Date().getFullYear();
         const year = dateNow - dateBirth;
-        if (year < 10 || year > 100) {
+        if (year < NUMBER.TEN || year > NUMBER.ONE_HUNDRED) {
             errors.dateBirth = "Error";
         }
     }
@@ -70,7 +71,7 @@ export default function InputInformation() {
     const history = useHistory();
     useEffect(() => {
         helpHttp().get(UrlAPI + "states").then((response) => {
-            if (response.length > 0) {
+            if (response.length > NUMBER.ZERO) {
                 setStates(response);
             }
         });
@@ -146,7 +147,7 @@ export default function InputInformation() {
                             <p className="p-semibold">{t("SignUpFormStateInput")}</p>
                             <select name="idState" onChange={handleChangeState} onBlur={handleBlur} value={form.idState} required>
                                 <option value="">{t("SignUpNotOption")}</option>
-                                {states.length > 0 && states.map((element) => (
+                                {states.length > NUMBER.ZERO && states.map((element) => (
                                     <option key={element._id} value={element._id}>{element.nameState}</option>
                                 ))}
                             </select>
@@ -158,7 +159,7 @@ export default function InputInformation() {
                             <p className="p-semibold">{t("SignUpFormCityInput")}</p>
                             <select name="idCity" onBlur={handleBlur} onChange={handleChange} value={form.idCity} required>
                                 <option value="">{t("SignUpNotOption")}</option>
-                                {cities.length > 0 && cities.map((element) => (
+                                {cities.length > NUMBER.ZERO && cities.map((element) => (
                                     <option key={element._id} value={element._id}>{element.nameCity}</option>
                                 ))}
                             </select>
