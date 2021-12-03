@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useRouteMatch } from "react-router-dom";
 
-export default function UserprofileButtonPanelOWU({ handleModal, accountID }) {
+export default function UserprofileButtonPanelOWU({ handleViewProgress, accountID }) {
     const { t } = useTranslation();
     const { url } = useRouteMatch();
 
@@ -13,7 +13,6 @@ export default function UserprofileButtonPanelOWU({ handleModal, accountID }) {
             {
                 accountID === sessionStorage.getItem("id") ?
                     <>
-                        {/* <Button styleName="primary-button" text={t("UserProfileButtonPanelDeleteAccount")} onClick={() => handleModal(<DeleteAccount />, 70, 70, t("UserReportAdminPanelTitle"))} ></Button> */}
                         <NavLink className="link" to={`${url}/edit`}>
                             <Button styleName="primary-button" text={t("UserProfileButtonPanelEditProfile")} ></Button>
                         </NavLink>
@@ -21,10 +20,7 @@ export default function UserprofileButtonPanelOWU({ handleModal, accountID }) {
                     :
                     null
             }
-            <NavLink className="link" to={`${url}/progress`}>
-                <Button styleName="primary-button" text={t("UserProfileButtonPanelCheckProgress")} ></Button>
-            </NavLink>
-
+                <Button styleName="primary-button" text={t("UserProfileButtonPanelCheckProgress")} onClick={() => handleViewProgress()}></Button>
         </div>
     );
 }

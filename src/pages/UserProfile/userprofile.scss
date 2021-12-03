@@ -8,20 +8,29 @@
   gap: 15px;
 
   .userprofile-user-details-container {
-    border-left: 5px solid rgb(36, 36, 36);
-    box-shadow:
+    box-shadow: 
       rgba(9, 30, 66, 0.25) 0 1px 1px,
       rgba(9, 30, 66, 0.13) 0 0 1px 1px;
-    padding: 15px;
-    border-radius: 3px;
     background-color: #fff;
+    border-radius: 3px;
     display: flex;
     width: 235px;
+    flex: 1;
     flex-direction: column;
     align-items: center;
     gap: 15px;
     overflow-y: auto;
 
+    .userprofile-type-user-container {
+      width: 100%;
+      text-align: center;
+    }
+
+    .userprofile-account-status-information {
+      text-align: center;
+      width: 100%;
+    }
+    
     .userprofile-user-photo-container {
       display: flex;
       justify-content: center;
@@ -36,195 +45,196 @@
       }
     }
 
-    .userprofile-separator-container {
-      display: inline-flex;
-      flex-direction: column;
+    hr {
+      width: 80%;
+      height: 1px;
+      background-color: rgb(194, 194, 194);
+      border: 0;
+      margin: auto;
+    }
+
+    .userprofile-basic-details {
+      display: flex;
+      width: 200px;
+      height: auto;
       gap: 15px;
-      overflow-wrap: break-word;
+      flex-direction: column;
+      text-align: left;
+      color: rgb(0, 0, 0);
+      flex: 1;
 
-      .userprofile-basic-details {
+      div {
         display: flex;
-        width: 200px;
-        height: auto;
-        gap: 15px;
         flex-direction: column;
-        text-align: left;
-        color: rgb(0, 0, 0);
 
-        div {
+        :nth-child(1) {
+          font-size: 10px;
+          color: #868686;
+        }
+      }
+    }
+  }
+
+  .userprofile-data-content-contaniner {
+    width: calc(100% - 285px);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto;
+    border-radius: 3px;
+    padding: 1px;
+
+    .userprofile-user-data-container {
+      box-shadow: 
+        rgba(9, 30, 66, 0.25) 0 1px 1px,
+        rgba(9, 30, 66, 0.13) 0 0 1px 1px;
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 3px;
+
+      .userprofile-account-container {
+        display: flex;
+        align-items: flex-start;
+        height: 70px;
+
+        .userprofile-account-information {
           display: flex;
+          padding-bottom: 25px;
           flex-direction: column;
+          width: 90%;
+          word-wrap: break-word;
 
-          :nth-child(1) {
-            font-size: 10px;
+          p {
+            font-size: 12px;
             color: #868686;
           }
         }
       }
 
-      hr {
-        width: 90%;
-        height: 1px;
-        background-color: rgb(194, 194, 194);
-        border: 0;
-        margin: auto;
-      }
-    }
-  }
-
-  .userprofile-user-data-container {
-    width: calc(100% - 285px);
-    overflow-y: auto;
-    box-shadow:
-      rgba(9, 30, 66, 0.25) 0 1px 1px,
-      rgba(9, 30, 66, 0.13) 0 0 1px 1px;
-    padding: 25px;
-    border-radius: 3px;
-    background-color: #fff;
-
-    .userprofile-account-container {
-      display: flex;
-      align-items: flex-start;
-      height: 70px;
-
-      .userprofile-account-information {
+      .userprofile-button-panel-container {
+        padding: 20px;
         display: flex;
-        padding-bottom: 25px;
+        border: 1px solid rgb(202, 202, 202);
+        border-radius: 3px;
         flex-direction: column;
-        width: 90%;
-        word-wrap: break-word;
-
-        p {
-          font-size: 12px;
-          color: #868686;
-        }
-      }
-
-      .userprofile-account-status-information {
-        width: auto;
-      }
-    }
-
-    .userprofile-button-panel-container {
-      padding: 20px;
-      display: flex;
-      border: 1px solid rgb(202, 202, 202);
-      border-radius: 3px;
-      flex-direction: column;
-      text-align: center;
-      gap: 15px;
-      width: 150px;
-      float: right;
-
-      .userprofile-button-panel-content {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-      }
-    }
-
-    .userprofile-ranking-information-container {
-      padding-top: 10px;
-      padding-bottom: 10px;
-      padding-left: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-
-      div {
-        :first-child {
-          font-weight: 600;
-        }
-      }
-    }
-
-    .userprofile-forum-data-container {
-      border: 1px solid rgb(202, 202, 202);
-      border-radius: 3px;
-      width: 100%;
-      float: left;
-      margin-top: 15px;
-    }
-
-    .userprofile-forum-data-container--tabs {
-      list-style: none;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: stretch;
-
-      .userprofile-forum-data-tab {
-        padding: 8px;
-        box-sizing: border-box;
-        width: 100%;
         text-align: center;
-        cursor: pointer;
-        color: #000;
-        font-size: 13px;
-        transition: background-color 0.25s;
+        gap: 15px;
+        width: 150px;
+        float: right;
 
-        &:hover {
-          background-color: rgba(0, 0, 0, 0.25);
-          transition: background-color 0.25s;
+        .userprofile-button-panel-content {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
         }
       }
 
-      .tabs--active {
-        border-bottom: 3px solid rgb(4, 134, 255);
-        pointer-events: none;
+      .userprofile-ranking-information-container {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        div {
+          :first-child {
+            font-weight: 600;
+          }
+        }
+      }
+
+      .userprofile-forum-data-container {
+        border: 1px solid rgb(202, 202, 202);
+        border-radius: 3px;
+        width: 100%;
+        float: left;
+        margin-top: 15px;
+      }
+
+      .userprofile-forum-data-container--tabs {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: stretch;
+
+        .userprofile-forum-data-tab {
+          padding: 8px;
+          box-sizing: border-box;
+          width: 100%;
+          text-align: center;
+          cursor: pointer;
+          color: #000;
+          font-size: 13px;
+          transition: background-color 0.25s;
+
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.25);
+            transition: background-color 0.25s;
+          }
+        }
+
+        .tabs--active {
+          border-bottom: 3px solid rgb(4, 134, 255);
+          pointer-events: none;
+        }
+      }
+
+      .content {
+        display: none;
+        padding: 3em;
+        text-align: center;
+      }
+
+      .content--active {
+        display: block;
       }
     }
 
-    .content {
-      display: none;
-      padding: 3em;
-      text-align: center;
-    }
-
-    .content--active {
-      display: block;
+    .userprofile-progress-container {
+      box-shadow: 
+        rgba(9, 30, 66, 0.25) 0 1px 1px,
+        rgba(9, 30, 66, 0.13) 0 0 1px 1px;
+      padding: 25px;
+      background-color: #fff;
+      border-radius: 3px;
     }
   }
 }
 
 .type-user-admin {
-  box-shadow:
-    #00000040 0 0.06525em 0.0625em,
-    rgba(0, 0, 0, 0.25) 0 0.125em 0.5em,
-    rgba(255, 255, 255, 0.1) 0 0 0 1px inset;
-  background: rgb(93, 0, 0);
-  background:
-    linear-gradient(
-      28deg,
-      rgba(93, 0, 0, 1) 8%,
-      rgba(255, 0, 0, 1) 100%
-    );
-  color: #fff;
-  padding: 10px;
-  border-radius: 3px;
+  color: rgb(0, 0, 0);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-align: center;
+  padding:10px;
+  border-radius: 3px 3px 0 0;
 }
 
 .type-user-free {
-  color: rgb(116, 116, 116);
-  padding: 10px;
-  border-radius: 3px;
+  color: rgb(0, 0, 0);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-bottom: 1px solid #f0eded;
+  text-align: center;
+  padding:10px;
+  border-radius: 3px 3px 0 0;
 }
 
 .status-user-banned {
-  background:
-    linear-gradient(
-      28deg,
-      rgb(218, 3, 3) 8%,
-      rgb(63, 0, 0) 100%
-    );
-  border-radius: 3px;
-  color: #fff;
+  border-top: 1px solid #f0eded;
+  background-color: rgb(219, 15, 15);
+  border-radius: 0 0 3px 3px;
+  color:#fff;
+  font-weight: 600;
+  font-size: 0.8em;
   display: block;
-  padding: 6px;
+  padding: 10px;
 }
 
 .status-user-free {
-  color: rgb(143, 143, 143);
+  color: rgb(146, 143, 143);
   display: block;
   border-radius: 3px;
   padding: 6px;
