@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import Report from "../../report/Report";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 import { BiSlider } from "react-icons/bi";
+import { getMessageResponseStatus } from "../../../helpers/MessageResponse"
 
 export default function ReportsMenu() {
     const { t } = useTranslation();
@@ -17,6 +18,7 @@ export default function ReportsMenu() {
 
     const fetchData = () => {
         setReports([]);
+        setServerError(null);
         helpHttp().get(UrlAPI + "reports" + filter + parameter, {
             headers: {
                 Accept: "application/json",
@@ -24,25 +26,11 @@ export default function ReportsMenu() {
             }
         }).then((response) => {
             if (response != null) {
-                switch (response.status) {
-                    case 404:
-                        setServerError(t("ServerError404"));
-                        break;
-                    case 400:
-                        setServerError(t("ServerError400"));
-                        break;
-                    case 419:
-                        setServerError(t("ServerError419"));
-                        break;
-                    case 401:
-                        setServerError(t("ServerError401"));
-                        break;
-                    case 500:
-                        setServerError(t("ServerError500"));
-                        break;
-                    default:
-                        setReports(response);
+                if (response.length > 0) {
+                    setReports(response);
+                    return;
                 }
+                setServerError(getMessageResponseStatus(response));
             }
         }, []);
     };
@@ -80,13 +68,14 @@ export default function ReportsMenu() {
     }
 
     function changeDelay(value) {
+        var miliseconds = 200;
         if (timer) {
             clearTimeout(timer);
             setTimer(null);
         }
         setTimer(setTimeout(() => {
             validateInputForm(value);
-        }, 200)
+        }, miliseconds)
         );
     }
 
@@ -107,6 +96,7 @@ export default function ReportsMenu() {
 
     useEffect(() => {
         setReports([]);
+        setServerError(null);
         helpHttp().get(UrlAPI + "reports", {
             headers: {
                 Accept: "application/json",
@@ -114,25 +104,11 @@ export default function ReportsMenu() {
             }
         }).then((response) => {
             if (response != null) {
-                switch (response.status) {
-                    case 404:
-                        setServerError(t("ServerError404"));
-                        break;
-                    case 400:
-                        setServerError(t("ServerError400"));
-                        break;
-                    case 419:
-                        setServerError(t("ServerError419"));
-                        break;
-                    case 401:
-                        setServerError(t("ServerError401"));
-                        break;
-                    case 500:
-                        setServerError(t("ServerError500"));
-                        break;
-                    default:
-                        setReports(response);
+                if (response.length > 0) {
+                    setReports(response);
+                    return;
                 }
+                setServerError(getMessageResponseStatus(response));
             }
         }, []);
         setActiveClassFilterButtons();

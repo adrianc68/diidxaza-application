@@ -11,6 +11,8 @@ import { useTranslation } from "react-i18next";
 import { MdLogout } from "react-icons/md";
 import { useHistory } from "react-router";
 import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
+import LoadingScreen from "../../components/animation/loadingScreen/LoadingScreen";
+import { RESPONSE_STATUS } from "../../helpers/Response";
 
 export default function Dashboard() {
     const { t } = useTranslation();
@@ -50,39 +52,35 @@ export default function Dashboard() {
                 "Authorization": sessionStorage.getItem("token")
             }
         }).then((response) => {
-            if (response != null) {
-                setLogged(true);
 
-                // switch (response.status) {
-                //     case 404:
-                //     case 400:
-                //     case 419:
-                //     case 401:
-                //     case 500:
-                //         setLogged(false);
-                //         break;
-                //     default:
-                //         setLogged(true);
-                //         setLoading(true);
-                // }
+            if (response != null) {
+                if (response.length > 0) {
+                    // setReports(response);
+                    return;
+                }
+                // setServerError(getMessageResponseStatus(response));
+            }
+            
+            if (response != null) {
+                switch (response.status) {
+                    case RESPONSE_STATUS.NOT_FOUND:
+                    case RESPONSE_STATUS.BAD_REQUEST:
+                    case RESPONSE_STATUS.INSUFFICIENT_SPACE:
+                    case RESPONSE_STATUS.UNAUTHORIZED:
+                    case RESPONSE_STATUS.ERROR_INTERNAL_SERVER:
+                        setLogged(false);
+                        break;
+                    default:
+                        setLogged(true);
+                }
             }
         });
     };
 
-
-    const [loading, setLoading] = useState(false);
     const [isLogged, setLogged] = useState(true);
 
-
     useEffect(() => {
-        console.log("Validando...");
-        console.log(isLogged);
-        setLogged(true);
-        console.log("Validando...");
-        console.log(isLogged);
-
-        // fetchValidateToken();
-
+        fetchValidateToken();
     }, []);
 
     return (

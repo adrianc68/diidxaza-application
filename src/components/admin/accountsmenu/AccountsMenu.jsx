@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import UserListItem from "./userlistitem/UserListItem";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 import { BiSlider } from "react-icons/bi";
+import { getMessageResponseStatus } from "../../../helpers/MessageResponse"
 
 export default function AccountsMenu() {
     const { t } = useTranslation();
@@ -17,6 +18,7 @@ export default function AccountsMenu() {
 
     const fetchData = () => {
         setAccountsItems([]);
+        setServerError(null);
         helpHttp().get(UrlAPI + "accounts" + filter + parameter, {
             headers: {
                 Accept: "application/json",
@@ -24,25 +26,11 @@ export default function AccountsMenu() {
             }
         }).then((response) => {
             if (response != null) {
-                switch (response.status) {
-                    case 404:
-                        setServerError(t("ServerError404"));
-                        break;
-                    case 400:
-                        setServerError(t("ServerError400"));
-                        break;
-                    case 419:
-                        setServerError(t("ServerError419"));
-                        break;
-                    case 401:
-                        setServerError(t("ServerError401"));
-                        break;
-                    case 500:
-                        setServerError(t("ServerError500"));
-                        break;
-                    default:
-                        setAccountsItems(response);
+                if (response.length > 0) {
+                    setAccountsItems(response);
+                    return;
                 }
+                setServerError(getMessageResponseStatus(response));
             }
         }, []);
     };
@@ -61,7 +49,7 @@ export default function AccountsMenu() {
     };
 
     const checkLength = (input) => {
-        let minChars = 2;
+        let minChars = 1;
         let maxChars = 150;
         if (input.length > maxChars || input.length < minChars) {
             let information = t("ValidationErrorLength");
@@ -72,7 +60,7 @@ export default function AccountsMenu() {
     };
 
     const checkUnknownCharacters = (input) => {
-        let regexUnknownChars = /^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü/\-@. ]+$/;
+        let regexUnknownChars = /^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü@. ]+$/;
         if (!regexUnknownChars.test(input)) {
             let information = t("ValidationErrorUnknownChars");
             setErrorInformation(information);
@@ -81,6 +69,7 @@ export default function AccountsMenu() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        validateInputForm(parameter);
         if (errorInformation === null) {
             fetchData(filter, parameter);
         }
@@ -95,18 +84,20 @@ export default function AccountsMenu() {
     };
 
     function changeDelay(value) {
+        var miliseconds = 200;
         if (timer) {
             clearTimeout(timer);
             setTimer(null);
         }
         setTimer(setTimeout(() => {
             validateInputForm(value);
-        }, 200)
+        }, miliseconds)
         );
-    };
+    }
 
     useEffect(() => {
         setAccountsItems([]);
+        setServerError(null);
         helpHttp().get(UrlAPI + "accounts", {
             headers: {
                 Accept: "application/json",
@@ -114,25 +105,11 @@ export default function AccountsMenu() {
             }
         }).then((response) => {
             if (response != null) {
-                switch (response.status) {
-                    case 404:
-                        setServerError(t("ServerError404"));
-                        break;
-                    case 400:
-                        setServerError(t("ServerError400"));
-                        break;
-                    case 419:
-                        setServerError(t("ServerError419"));
-                        break;
-                    case 401:
-                        setServerError(t("ServerError401"));
-                        break;
-                    case 500:
-                        setServerError(t("ServerError500"));
-                        break;
-                    default:
-                        setAccountsItems(response);
+                if (response.length > 0) {
+                    setAccountsItems(response);
+                    return;
                 }
+                setServerError(getMessageResponseStatus(response));
             }
         }, []);
         setActiveClassFilterButtons();

@@ -4,6 +4,7 @@ import "./userreports.scss";
 import UserImageDefault from "../../../assets/images/ide-29.svg";
 import Report from "../../report/Report";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
+import { getMessageResponseStatus } from "../../../helpers/MessageResponse";
 
 export default function UserReports({ username }) {
     const { t } = useTranslation();
@@ -18,26 +19,11 @@ export default function UserReports({ username }) {
             }
         }).then((response) => {
             if (response != null) {
-                console.log("HELLO");
-                switch (response.status) {
-                    case 404:
-                        setServerError(t("ServerError404"));
-                        break;
-                    case 400:
-                        setServerError(t("ServerError400"));
-                        break;
-                    case 419:
-                        setServerError(t("ServerError419"));
-                        break;
-                    case 401:
-                        setServerError(t("ServerError401"));
-                        break;
-                    case 500:
-                        setServerError(t("ServerError500"));
-                        break;
-                    default:
-                        setReports(response);
+                if (response.length > 0) {
+                    setReports(response);
+                    return;
                 }
+                setServerError(getMessageResponseStatus(response));
             }
         }, []);
     }, [username, t]);
@@ -52,7 +38,6 @@ export default function UserReports({ username }) {
                     <p>{t("UserReportAdminPanelDescription")}</p>
                     <div className="userreports-list-container">
                         <ul>
-
                             {
                                 reports.length > 0 ?
                                     reports.map((element) =>
@@ -63,12 +48,10 @@ export default function UserReports({ username }) {
                                         <span className="semibold">{serverError}</span>
                                     </div>
                             }
-
                         </ul>
                     </div>
                 </div>
             </div>
-
         </div>
     );
 }

@@ -6,6 +6,7 @@ import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
 import { useHistory } from "react-router";
 import { useConvertionData } from "../../hooks/useConvertionData";
 import { BsFillCaretRightFill, BsFillCaretDownFill } from "react-icons/bs";
+import { getMessageResponseStatus } from "../../helpers/MessageResponse";
 
 export default function Report({ report }) {
     const { t } = useTranslation();
@@ -16,6 +17,7 @@ export default function Report({ report }) {
     const { convertDate } = useConvertionData();
 
     const fetchData = (idReported) => {
+        setServerError(null);
         if (context == null) {
             helpHttp().get(UrlAPI + "reports/" + idReported, {
                 headers: {
@@ -24,33 +26,16 @@ export default function Report({ report }) {
                 }
             }).then((response) => {
                 if (response != null) {
-                    console.log(response.status);
-                    switch (response.status) {
-                        case 404:
-                            setServerError(t("ServerError404"));
-                            break;
-                        case 400:
-                            setServerError(t("ServerError400"));
-                            break;
-                        case 419:
-                            setServerError(t("ServerError419"));
-                            break;
-                        case 401:
-                            setServerError(t("ServerError401"));
-                            break;
-                        case 500:
-                            setServerError(t("ServerError500"));
-                            break;
-                        default:
-                            setContext(response.context);
-                            setHiddenContext(!isHideContext);
-                            return;
+                    if (response.context !== null && response.context !== undefined) {
+                        setContext(response.context);
+                        setHiddenContext(!isHideContext);
+                        return;
                     }
+                    setServerError(getMessageResponseStatus(response));
                 }
             }, []);
-        } else {
-            setHiddenContext(!isHideContext);
         }
+        setHiddenContext(!isHideContext);
     };
 
     return (
@@ -99,22 +84,19 @@ export default function Report({ report }) {
                     </div>
                 </div>
                 {
-                    context !== null ?
-                        <div className={isHideContext ? "report-descripction-container hidden" : "report-descripction-container"}>
-                            {
-                                serverError !== null ?
-                                    <div>
-                                        <span className="color-red">{serverError}</span>
-                                    </div>
-                                    :
-                                    <div>
-                                        <span className="semibold">{t("UserReportContext")}</span>
-                                        <span>{context !== null ? context : null}</span>
-                                    </div>
-                            }
-                        </div>
-                        :
-                        null
+                    <div className={isHideContext ? "report-descripction-container hidden" : "report-descripction-container"}>
+                        {
+                            serverError !== null ?
+                                <div>
+                                    <span className="color-red">{serverError}</span>
+                                </div>
+                                :
+                                <div>
+                                    <span className="semibold">{t("UserReportContext")}</span>
+                                    <span>{context !== null ? context : null}</span>
+                                </div>
+                        }
+                    </div>
                 }
             </div>
         </div>
