@@ -40,14 +40,11 @@ export default function Login({ setToken }) {
   return (
     <>
       <div className="login-main-container">
-
-
         <div className="login-container">
           <div className="login-title-container">
             <DiidxazaLogo styleClass="logo-black-link" />
             <h2>{t("LoginLoginTitle")}</h2>
           </div>
-
           <div className="login-form-container">
             <form onSubmit={handleSubmit}>
               <label>
@@ -74,12 +71,9 @@ export default function Login({ setToken }) {
               </div>
             </form>
           </div>
-
           <div className="login-create-account-container">
             <span>{t("LoginNewAccountSpan")}  <Link className="link" to="/signUp">{t("LoginNewAccountThenRegisterSpan")}</Link></span>
-
           </div>
-
           <div className="login-terms-container">
             <ul>
               <li>
@@ -102,10 +96,5 @@ export default function Login({ setToken }) {
         </div>
       </div>
     </>
-
   );
 }
-
-/*Login.propTypes = {
-  setToken: PropTypes.func.isRequired
-}*/

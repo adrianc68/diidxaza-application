@@ -11,7 +11,7 @@ export default function AccountsMenu() {
     const [accountsItems, setAccountsItems] = useState([]);
     const [serverError, setServerError] = useState(null);
     const [parameter, setParameter] = useState("");
-    const [filter, setFilter] = useState("");
+    const [filter, setFilter] = useState("/name/");
     const [timer, setTimer] = useState(null);
     const [errorInformation, setErrorInformation] = useState(null);
 
@@ -29,12 +29,16 @@ export default function AccountsMenu() {
                         setServerError(t("ServerError404"));
                         break;
                     case 400:
-                    case 419:
                         setServerError(t("ServerError400"));
                         break;
+                    case 419:
+                        setServerError(t("ServerError419"));
+                        break;
                     case 401:
+                        setServerError(t("ServerError401"));
+                        break;
                     case 500:
-                        setServerError(t("ServerErrorInternal"));
+                        setServerError(t("ServerError500"));
                         break;
                     default:
                         setAccountsItems(response);
@@ -65,15 +69,15 @@ export default function AccountsMenu() {
             information = information.replace("$max", maxChars.toString());
             setErrorInformation(information);
         }
-    }
+    };
 
     const checkUnknownCharacters = (input) => {
-        let regexUnknownChars = /^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü\/\-@. ]+$/;
+        let regexUnknownChars = /^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü/\-@. ]+$/;
         if (!regexUnknownChars.test(input)) {
             let information = t("ValidationErrorUnknownChars");
             setErrorInformation(information);
         }
-    }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -99,13 +103,40 @@ export default function AccountsMenu() {
             validateInputForm(value);
         }, 200)
         );
-    }
+    };
 
     useEffect(() => {
-        fetchData(filter, parameter);
-        setFilter("/name/");
+        setAccountsItems([]);
+        helpHttp().get(UrlAPI + "accounts", {
+            headers: {
+                Accept: "application/json",
+                "Authorization": sessionStorage.getItem("token")
+            }
+        }).then((response) => {
+            if (response != null) {
+                switch (response.status) {
+                    case 404:
+                        setServerError(t("ServerError404"));
+                        break;
+                    case 400:
+                        setServerError(t("ServerError400"));
+                        break;
+                    case 419:
+                        setServerError(t("ServerError419"));
+                        break;
+                    case 401:
+                        setServerError(t("ServerError401"));
+                        break;
+                    case 500:
+                        setServerError(t("ServerError500"));
+                        break;
+                    default:
+                        setAccountsItems(response);
+                }
+            }
+        }, []);
         setActiveClassFilterButtons();
-    }, []);
+    }, [t]);
 
     return (
         <div className="accountsmenu-main-container">
@@ -151,7 +182,7 @@ export default function AccountsMenu() {
                             {
                                 accountsItems.length > 0 ?
                                     accountsItems.map((element) =>
-                                        <li><UserListItem account={element} /></li>
+                                        <li id={element._id}><UserListItem account={element} /></li>
                                     )
                                     :
                                     <div className="no-found-records">

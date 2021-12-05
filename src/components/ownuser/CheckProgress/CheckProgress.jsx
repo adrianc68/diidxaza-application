@@ -1,9 +1,8 @@
-import { React, useEffect, useState } from "react";
+import { React } from "react";
 import "./checkprogress.scss";
 import { useTranslation } from "react-i18next";
 import ImageInformationAlt from "../../../assets/images/ide-47.svg";
 import ImageInformationAlt2 from "../../../assets/images/ide-46.svg";
-import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 
 export default function CheckProgress({ totalPoints, totalLessons }) {
     const { t } = useTranslation();

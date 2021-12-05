@@ -425,6 +425,8 @@ export const TRANSLATIONS_ES = {
     AlternativeMessageImageDecorative: "Imagen decorativa",
 
     ServerError404: "No se ha encontrado ningún resultado",
-    ServerError400: "Requieres iniciar sesión en tu cuenta para tener acceso a estas funcionalidades",
-    ServerErrorInternal: "Error interno en el servidor",
+    ServerError419: "Requieres iniciar sesión en tu cuenta para tener acceso a estas funcionalidades",
+    ServerError400: "La petición al servidor es invalida",
+    ServerError401: "Error 401",
+    ServerError500: "Error interno en el servidor",
 };

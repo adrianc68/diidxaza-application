@@ -8,30 +8,39 @@ import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 export default function UserReports({ username }) {
     const { t } = useTranslation();
     const [reports, setReports] = useState([]);
-    const [errorFetchData, setErrorFetchData] = useState(false);
+    const [serverError, setServerError] = useState(null);
 
-    const fetchData = () => {
-        helpHttp().get(UrlAPI + "reports/usernameReported/" + username, {
+    useEffect(() => {
+        helpHttp().get(UrlAPI + "reports/usernameReported/adrianc68", {
             headers: {
                 Accept: "application/json",
                 "Authorization": sessionStorage.getItem("token")
             }
         }).then((response) => {
             if (response != null) {
+                console.log("HELLO");
                 switch (response.status) {
                     case 404:
+                        setServerError(t("ServerError404"));
+                        break;
                     case 400:
-                        setErrorFetchData(true);
-                        return;
+                        setServerError(t("ServerError400"));
+                        break;
+                    case 419:
+                        setServerError(t("ServerError419"));
+                        break;
+                    case 401:
+                        setServerError(t("ServerError401"));
+                        break;
+                    case 500:
+                        setServerError(t("ServerError500"));
+                        break;
+                    default:
+                        setReports(response);
                 }
-                setReports(response);
             }
         }, []);
-    };
-
-    useEffect(() => {
-        fetchData();
-    }, []);
+    }, [username, t]);
 
     return (
         <div className="userreports-main-container">
@@ -47,11 +56,11 @@ export default function UserReports({ username }) {
                             {
                                 reports.length > 0 ?
                                     reports.map((element) =>
-                                        <li><Report report={element} /></li>
+                                        <li id={element._id}><Report report={element} /></li>
                                     )
                                     :
                                     <div className="no-found-records">
-                                        <span>{t("NotFoundRecords")}</span>
+                                        <span className="semibold">{serverError}</span>
                                     </div>
                             }
 

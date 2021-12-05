@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./report.scss";
 import { useTranslation } from "react-i18next";
 import Button from "../Button/Button";
@@ -12,7 +12,7 @@ export default function Report({ report }) {
     const [context, setContext] = useState(null);
     const [isHideContext, setHiddenContext] = useState(true);
     const history = useHistory();
-    const [errorFetchData, setErrorFetchData] = useState(false);
+    const [serverError, setServerError] = useState(null);
     const { convertDate } = useConvertionData();
 
     const fetchData = (idReported) => {
@@ -24,15 +24,29 @@ export default function Report({ report }) {
                 }
             }).then((response) => {
                 if (response != null) {
+                    console.log(response.status);
                     switch (response.status) {
                         case 404:
+                            setServerError(t("ServerError404"));
+                            break;
                         case 400:
-                            setErrorFetchData(true);
+                            setServerError(t("ServerError400"));
+                            break;
+                        case 419:
+                            setServerError(t("ServerError419"));
+                            break;
+                        case 401:
+                            setServerError(t("ServerError401"));
+                            break;
+                        case 500:
+                            setServerError(t("ServerError500"));
+                            break;
+                        default:
+                            setContext(response.context);
+                            setHiddenContext(!isHideContext);
                             return;
                     }
-                    setContext(response.context);
                 }
-                setHiddenContext(!isHideContext);
             }, []);
         } else {
             setHiddenContext(!isHideContext);
@@ -87,15 +101,21 @@ export default function Report({ report }) {
                 {
                     context !== null ?
                         <div className={isHideContext ? "report-descripction-container hidden" : "report-descripction-container"}>
-                            <div>
-                                <span className="semibold">{t("UserReportContext")}</span>
-                                <span>{context !== null ? context : null}</span>
-                            </div>
+                            {
+                                serverError !== null ?
+                                    <div>
+                                        <span className="color-red">{serverError}</span>
+                                    </div>
+                                    :
+                                    <div>
+                                        <span className="semibold">{t("UserReportContext")}</span>
+                                        <span>{context !== null ? context : null}</span>
+                                    </div>
+                            }
                         </div>
                         :
                         null
                 }
-
             </div>
         </div>
     );

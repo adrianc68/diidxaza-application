@@ -183,28 +183,6 @@ export default function UserProfile({ accountID }) {
                             <UserprofileButtonPanelOWU handleModal={handleModal} accountID={accountID} handleViewProgress={handleViewProgress} />
                         </div>
                     </div>
-                    <div className="userprofile-ranking-information-container">
-                        {/* <div>
-                        <span>{t("UserProfileTopRanking")}</span>
-                        <span>{t("UserProfilePosition")}</span>
-                        <span>1</span>
-                    </div>
-                    <div>
-                        <span>{t("UserProfilePointsWon")}</span>
-                        <span>15003453</span>
-                        <span>{t("UserProfileUnitPoints")}</span>
-                    </div>
-                    <div>
-                        <span>{t("UserProfileTotalDiscussionsCreated")}</span>
-                        <span>13</span>
-                        <span>{t("UserProfileCreated")}</span>
-                    </div>
-                    <div>
-                        <span>{t("UserProfileTotalDiscussionesCommented")}</span>
-                        <span>135</span>
-                        <span>{t("UserProfileCommented")}</span>
-                    </div> */}
-                    </div>
                     <div className="userprofile-forum-data-container">
                         <ul className="userprofile-forum-data-container--tabs">
                             <li className="userprofile-forum-data-tab tabs--active">{t("UserProfileDiscussionsCreated")}</li>
@@ -220,7 +198,6 @@ export default function UserProfile({ accountID }) {
                             </div>
                         </div>
                     </div>
-
                     {
                         statusModal && <Modal handleModal={() => setStatusModal(false)} sizeHeight={component.sizeHeight} sizeWidth={component.sizeWidth} title={component.title}>
                             {component.object}
@@ -234,8 +211,6 @@ export default function UserProfile({ accountID }) {
                     </div>
                 }
             </div>
-
-
         </div>
     );
 }

@@ -90,7 +90,6 @@ export default function Forum() {
     } = useForum(validationsForm, validationsFormComment, initialForm, setDiscussions);
 
     useEffect(() => {
-        setActiveClassFilterButtons();
         helpHttp().get(UrlAPI + "discussions", {
             headers: {
                 Accept: "application/json",
@@ -103,6 +102,7 @@ export default function Forum() {
                 setDiscussions([]);
             }
         });
+        setActiveClassFilterButtons();
     }, []);
 
     return (
