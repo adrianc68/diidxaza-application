@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import UserListItem from "./userlistitem/UserListItem";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 import { BiSlider } from "react-icons/bi";
-import { getMessageResponseStatus } from "../../../helpers/MessageResponse"
+import { getMessageResponseStatus } from "../../../helpers/MessageResponse";
 
 export default function AccountsMenu() {
     const { t } = useTranslation();
@@ -16,6 +16,33 @@ export default function AccountsMenu() {
     const [timer, setTimer] = useState(null);
     const [errorInformation, setErrorInformation] = useState(null);
 
+    const checkLength = (input) => {
+        let minChars = 1;
+        let maxChars = 150;
+        if (input.length > maxChars || input.length < minChars) {
+            let information = t("ValidationErrorLength");
+            information = information.replace("$min", minChars.toString());
+            information = information.replace("$max", maxChars.toString());
+            setErrorInformation(information);
+        }
+    };
+
+    const checkUnknownCharacters = (input) => {
+        let regexUnknownChars = /^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü@. ]+$/;
+        if (!regexUnknownChars.test(input)) {
+            let information = t("ValidationErrorUnknownChars");
+            setErrorInformation(information);
+        }
+    };
+
+    const validateInputForm = (input) => {
+        var inputTrim = input.trim();
+        setErrorInformation(null);
+        checkUnknownCharacters(inputTrim);
+        checkLength(inputTrim);
+        setParameter(inputTrim);
+    };
+    
     const fetchData = () => {
         setAccountsItems([]);
         setServerError(null);
@@ -48,39 +75,12 @@ export default function AccountsMenu() {
         }
     };
 
-    const checkLength = (input) => {
-        let minChars = 1;
-        let maxChars = 150;
-        if (input.length > maxChars || input.length < minChars) {
-            let information = t("ValidationErrorLength");
-            information = information.replace("$min", minChars.toString());
-            information = information.replace("$max", maxChars.toString());
-            setErrorInformation(information);
-        }
-    };
-
-    const checkUnknownCharacters = (input) => {
-        let regexUnknownChars = /^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü@. ]+$/;
-        if (!regexUnknownChars.test(input)) {
-            let information = t("ValidationErrorUnknownChars");
-            setErrorInformation(information);
-        }
-    };
-
     const handleSubmit = (e) => {
         e.preventDefault();
         validateInputForm(parameter);
         if (errorInformation === null) {
             fetchData(filter, parameter);
         }
-    };
-
-    const validateInputForm = (input) => {
-        var inputTrim = input.trim();
-        setErrorInformation(null);
-        checkUnknownCharacters(inputTrim);
-        checkLength(inputTrim);
-        setParameter(inputTrim);
     };
 
     function changeDelay(value) {

@@ -9,6 +9,8 @@ import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
 import { useConvertionData } from "../../hooks/useConvertionData";
 import CheckProgress from "../../components/ownuser/CheckProgress/CheckProgress";
 import { getMessageResponseStatus } from "../../helpers/MessageResponse";
+import { AccountStatus } from "../../helpers/AccountStatus";
+import { UserType } from "../../helpers/UserType";
 
 export default function UserProfile({ accountProps }) {
     const { t } = useTranslation();
@@ -20,7 +22,7 @@ export default function UserProfile({ accountProps }) {
     const [serverError, setServerError] = useState(null);
     const [accountID, setAccountID] = useState(null);
     const [errorServerProgressData, setServerErrorProgressData] = useState(null);
-
+    const [imageAccount, setImageAccount] = useState(UserImageDefault);
     const [account, setAccount] = useState({
         age: null,
         birthdate: null,
@@ -29,7 +31,31 @@ export default function UserProfile({ accountProps }) {
         status: null,
         role: null,
         name: null,
+        image: null,
     });
+
+    const getImageUser = (urlProp) => {
+        if (urlProp !== undefined) {
+            const url = {
+                URL: urlProp,
+            };
+            fetch(UrlAPI + "resources", {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: sessionStorage.getItem("token"),
+                },
+                body: JSON.stringify(url),
+            }).then((response) => {
+                if (response.ok) {
+                    response.blob().then((response) => {
+                        var objectURL = URL.createObjectURL(response);
+                        setImageAccount(objectURL);
+                    });
+                }
+            });
+        }
+    }
 
     const fetchData = () => {
         var accountID = accountProps.id;
@@ -42,6 +68,7 @@ export default function UserProfile({ accountProps }) {
         }).then((response) => {
             if (response != null) {
                 if (response.age != null) {
+                    // getImageUser(response.URL);
                     const account = {
                         age: response.age,
                         birthdate: response.dateBirth,
@@ -50,6 +77,8 @@ export default function UserProfile({ accountProps }) {
                         status: response.status,
                         role: response.role,
                         name: response.name,
+                        _id: response._id,
+                        image: imageAccount,
                     };
                     setAccount(account);
                     return;
@@ -78,7 +107,6 @@ export default function UserProfile({ accountProps }) {
                     "Authorization": sessionStorage.getItem("token")
                 }
             }).then((response) => {
-                console.log(response);
                 if (response != null) {
                     if (response.length >= 0) {
                         setTotalLessons(response.length);
@@ -91,7 +119,6 @@ export default function UserProfile({ accountProps }) {
             });
         }
         setShowProgress(!showProgress);
-
     };
 
     const [component, setComponent] = useState({
@@ -116,16 +143,24 @@ export default function UserProfile({ accountProps }) {
         setStatusModal(true);
     };
 
+    const isNullData = (value) => {
+        var isNull = false;
+        if (value === null || value === undefined) {
+            isNull = true;
+        }
+        return isNull;
+    }
+
     const checkProfileID = () => {
         var canLookProfile = false;
         var myAccountID = sessionStorage.getItem("id");
         var myRole = sessionStorage.getItem("role");
-        if (accountProps === null || accountProps === undefined) {
+        if (isNullData(accountProps)) {
             setServerError(t("ErrorIDProps"));
             return canLookProfile;
         }
         if (myAccountID === accountProps.id) {
-            canLookProfile = true
+            canLookProfile = true;
         } else if (myRole === "manager") {
             canLookProfile = true;
         } else {
@@ -143,14 +178,14 @@ export default function UserProfile({ accountProps }) {
     return (
         serverError !== null ?
             <div className="userprofile-server-error-contaniner">
-                    <span>{serverError}</span>
+                <span>{serverError}</span>
             </div>
             :
             <div className="userprofile-main-container">
                 <div className="userprofile-user-details-container">
                     <div className="userprofile-type-user-container">
                         {
-                            account.role === "manager" ?
+                            account.role === UserType.MANAGER ?
                                 <div className="type-user-admin">
                                     <span>{t("TypeUserAdmin")}</span>
                                 </div>
@@ -162,7 +197,7 @@ export default function UserProfile({ accountProps }) {
                         }
                     </div>
                     <div className="userprofile-user-photo-container">
-                        <img src={UserImageDefault} alt={t("WelcomeInformationAlt")}></img>
+                        <img src={imageAccount} alt={t("WelcomeInformationAlt")}></img>
                     </div>
                     <hr />
                     <div className="userprofile-basic-details">
@@ -183,7 +218,7 @@ export default function UserProfile({ accountProps }) {
                     </div>
                     <div className="userprofile-account-status-information">
                         {
-                            account.status === 1 ?
+                            account.status === AccountStatus.UNBLOCKED ?
                                 <span className="status-user-free">{t("UserProfileUserFree")}</span>
                                 :
                                 <span className="status-user-banned">{t("UserProfileUserBanned")}</span>
@@ -202,7 +237,7 @@ export default function UserProfile({ accountProps }) {
                         <div className="userprofile-button-panel-container">
                             <p>{t("UserProfileControlPanel")}</p>
                             <div className="userprofile-button-panel">
-                                <UserprofileButtonPanelADM handleModal={handleModal} accountStatus={account.status} accountID={accountID} username={account.username} />
+                                <UserprofileButtonPanelADM handleModal={handleModal} setStatusModal={setStatusModal} account={account} />
                             </div>
                             <div className="userprofile-button-panel">
                                 <UserprofileButtonPanelOWU handleModal={handleModal} accountID={accountID} handleViewProgress={handleViewProgress} showProgress={showProgress} />

@@ -18,6 +18,7 @@ export default function Dashboard() {
     const { t } = useTranslation();
     const history = useHistory();
     const [statusModal, setStatusModal] = useState(false);
+    const [isLogged, setLogged] = useState(true);
     const [nameUser, setNameUser] = useState(sessionStorage.getItem("name") + " " + sessionStorage.getItem("lastname"));
     const [component, setComponent] = useState({
         sizeHeight: "",
@@ -51,16 +52,7 @@ export default function Dashboard() {
                 Accept: "application/json",
                 "Authorization": sessionStorage.getItem("token")
             }
-        }).then((response) => {
-
-            if (response != null) {
-                if (response.length > 0) {
-                    // setReports(response);
-                    return;
-                }
-                // setServerError(getMessageResponseStatus(response));
-            }
-            
+        }).then((response) => {            
             if (response != null) {
                 switch (response.status) {
                     case RESPONSE_STATUS.NOT_FOUND:
@@ -76,8 +68,6 @@ export default function Dashboard() {
             }
         });
     };
-
-    const [isLogged, setLogged] = useState(true);
 
     useEffect(() => {
         fetchValidateToken();

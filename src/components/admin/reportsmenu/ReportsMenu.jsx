@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import Report from "../../report/Report";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 import { BiSlider } from "react-icons/bi";
-import { getMessageResponseStatus } from "../../../helpers/MessageResponse"
+import { getMessageResponseStatus } from "../../../helpers/MessageResponse";
 
 export default function ReportsMenu() {
     const { t } = useTranslation();

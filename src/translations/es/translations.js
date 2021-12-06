@@ -329,7 +329,7 @@ export const TRANSLATIONS_ES = {
 
     UserID: "Identificación",
     UserReportAdminPanelTitle: "Reportes",
-    UserReportAdminPanelDescription:"A continuación se mostrarán todos los reportes realizados a este usuario por otros usuarios. Los reportes están ordenados del mas actual al menos actual.",
+    UserReportAdminPanelDescription:"A continuación se mostrarán todos los reportes realizados a este usuario por otros usuarios.",
     UserReportReason: "Razón: ",
     UserReportDate: "Fecha de creación: ",
     UserReportReportedBy: "Reportado por: ",
@@ -428,6 +428,7 @@ export const TRANSLATIONS_ES = {
     ErrorAnotherProfileWithoutRoleManager: "No tienes permisos para ver perfiles de otros usuarios.",
     ErrorIDProps: "No has obtenido un identificador del perfil de usuario correctamente. Utiliza la navegación dentro del sistema para poder ver el perfil.",
 
+    ChangeStatusSelftAccountBlock: "No puedes bloquear tu misma cuenta.",
 
     ServerError404: "No se ha encontrado ningún resultado",
     ServerError419: "Insuficiente espacio.",

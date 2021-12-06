@@ -21,13 +21,14 @@ export default function UserListItem({ account }) {
                 </div>
                 <div className="userlistitem-button-panel">
 
-                    <NavLink className="link" to={{
-                        pathname: "/profile/" + account.username,
-                        state: {
-                            id: account._id,
+                    <NavLink className="link" to=
+                        {{
+                            pathname: "/profile/" + account.username,
+                            state: {
+                                id: account._id,
+                            }
                         }
-                    }
-                    }>
+                        }>
                         <Button styleName="text-button blue-text" text={t("ButtonReportSeeUsersDetails")}></Button>
                     </NavLink>
                 </div>
