@@ -110,6 +110,7 @@ export const TRANSLATIONS_ES = {
     ErrorComment: "Ingrese solo letras y caracteres !?¡¿.,#. Solo de 5 a 600 caracteres",
     ErrorContext: "Ingrese solo letras y caracteres !?¡¿.,#. Solo de 5 a 500 caracteres",
     ErrorTitle: "Ingrese solo letras y caracteres !?¡¿.,#. Solo de 4 a 200 caracteres",
+    ErrorTitleForum: "Ingrese solo letras y caracteres !?¡¿.,#. Solo de 2 a 200 caracteres",
     ErrorTheme: "Seleccione un tema por favor",
     ErrorReason: "Seleccione un motivo por favor",
 
@@ -171,6 +172,7 @@ export const TRANSLATIONS_ES = {
     SignUpVerificationSendSuccessful: "El código de confirmación se reenvio exitosamente",
     SignUpVerificationInvalidEmail: "No se encontro ningun correo",
 
+    ExistDiscussion: "Existe una discusión con el mismo título",
     EditProfileTitle:"Editar perfil",
     EditProfileDescription:"Para editar el perfil debes llenar los campos correspondientes. te recomendamos no utilizar carácteres extraños.",
 
@@ -263,7 +265,7 @@ export const TRANSLATIONS_ES = {
     ForumSearchCriteriaTitle: "Criterio de búsqueda",
     ForumSearchCriteriaInput: "Buscar por título: ",
     ForumSearchMostPopular: "Mas populares",
-    ForumSearchOutstanding: "Siguendo",
+    ForumSearchOutstanding: "Siguiendo",
     ForumSearchNewest: "Mas nuevos",
     ForumListDiscussion: "Lista de discusiones",
     ForumWantToCreateNewDiscussion: "¿Deseas crear una nueva discusión?",

@@ -23,8 +23,14 @@ const initialForm = {
 const validationsForm = (title) => {
     let errors = {};
     title = title.trim();
+    let regexTitle = /^[\wÑñÁáÉéÍíÓóÚúÜü!?¡¿.,# ]{2,200}$/;
     if (title.length === NUMBER.ZERO) {
         errors.title = "Error";
+    }
+    else{
+        if (!regexTitle.test(title)) {
+            errors.title = "Error";
+        }
     }
     return errors;
 };
@@ -51,6 +57,7 @@ export default function Forum() {
 
     const {
         title,
+        errors,
         loading,
         handleChange,
         handleSubmit,
@@ -121,6 +128,9 @@ export default function Forum() {
                                     <div>
                                         <Button styleName="primary-button" onClick={removeActiveClassFilterButton} type="submit">{t("ButtonSearch")}</Button>
                                     </div>
+                                </div>
+                                <div className="system-message-container">
+                                    {errors.title && <p className="errorInput">{t("ErrorTitleForum")}</p>}
                                 </div>
                             </form>
 
