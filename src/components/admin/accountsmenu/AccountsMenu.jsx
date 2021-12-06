@@ -15,6 +15,8 @@ export default function AccountsMenu() {
     const [filter, setFilter] = useState("/name/");
     const [timer, setTimer] = useState(null);
     const [errorInformation, setErrorInformation] = useState(null);
+    const [regex, setRegex] = useState(/^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü ]+$/);
+    const [filterInfo, setFilterInfo] = useState(t("FilterInformationNumbersLetters"));
 
     const checkLength = (input) => {
         let minChars = 1;
@@ -28,9 +30,9 @@ export default function AccountsMenu() {
     };
 
     const checkUnknownCharacters = (input) => {
-        let regexUnknownChars = /^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü@. ]+$/;
+        let regexUnknownChars = regex;
         if (!regexUnknownChars.test(input)) {
-            let information = t("ValidationErrorUnknownChars");
+            let information = t("ValidationInvalidTestRegex");
             setErrorInformation(information);
         }
     };
@@ -42,7 +44,7 @@ export default function AccountsMenu() {
         checkLength(inputTrim);
         setParameter(inputTrim);
     };
-    
+
     const fetchData = () => {
         setAccountsItems([]);
         setServerError(null);
@@ -115,6 +117,34 @@ export default function AccountsMenu() {
         setActiveClassFilterButtons();
     }, [t]);
 
+    const handleButtonFilterName = () => {
+        setFilter("/name/");
+        setFilterInfo(t("FilterInformationNumbersLetters"));
+        setRegex(/^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü ]+$/);
+    };
+
+    const handleButtonFilterLastname = () => {
+        setFilter("/lastname/");
+        setFilterInfo(t("FilterInformationNumbersLetters"));
+        setRegex(/^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü ]+$/);
+    };
+
+    const handleButtonFilterAge = () => {
+        setFilter("/age/");
+        setFilterInfo(t("FilterInformationNumbers"));
+        setRegex(/^[0-9]{1,3}$/);
+    };
+
+    const handleButtonFilterEmail = () => {
+        setFilter("/email/");
+        setFilterInfo(t("FilterInformationEmail"));
+    };
+
+    const handleButtonFilterUsername = () => {
+        setFilter("/username/");
+        setFilterInfo(t("FilterInformationNumbersLetters"));
+    };
+
     return (
         <div className="accountsmenu-main-container">
             <div className="accountsmenu-content">
@@ -129,6 +159,9 @@ export default function AccountsMenu() {
                         </div>
                     </form>
                     {
+                        <span className="color-gray">{filterInfo}</span>
+                    }
+                    {
                         <span className="errorInput">{errorInformation}</span>
                     }
                     <div className="form-search-filters-buttons">
@@ -137,19 +170,19 @@ export default function AccountsMenu() {
                             <BiSlider className="filter-icon" />
                         </div>
                         <div className="accountsmenu-button-filter-button" >
-                            <Button styleName="text-button gray-text active" onClick={() => { setFilter("/name/"); }} text={t("FilterName")}></Button>
+                            <Button styleName="text-button gray-text active" onClick={() => { handleButtonFilterName(); }} text={t("FilterName")}></Button>
                         </div>
                         <div className="accountsmenu-button-filter-button">
-                            <Button styleName="text-button gray-text" onClick={() => { setFilter("/lastname/"); }} text={t("FilterLastName")}></Button>
+                            <Button styleName="text-button gray-text" onClick={() => { handleButtonFilterLastname(); }} text={t("FilterLastName")}></Button>
                         </div>
                         <div className="accountsmenu-button-filter-button" >
-                            <Button styleName="text-button gray-text" onClick={() => { setFilter("/age/"); }} text={t("FilterAge")}></Button>
+                            <Button styleName="text-button gray-text" onClick={() => { handleButtonFilterAge(); }} text={t("FilterAge")}></Button>
                         </div>
                         <div className="accountsmenu-button-filter-button" >
-                            <Button styleName="text-button gray-text" onClick={() => { setFilter("/email/"); }} text={t("FilterEmail")}></Button>
+                            <Button styleName="text-button gray-text" onClick={() => { handleButtonFilterEmail(); }} text={t("FilterEmail")}></Button>
                         </div>
                         <div className="accountsmenu-button-filter-button" >
-                            <Button styleName="text-button gray-text" onClick={() => { setFilter("/username/"); }} text={t("FilterUsername")}></Button>
+                            <Button styleName="text-button gray-text" onClick={() => { handleButtonFilterUsername(); }} text={t("FilterUsername")}></Button>
                         </div>
                     </div>
                 </div>
