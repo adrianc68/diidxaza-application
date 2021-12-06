@@ -4,34 +4,29 @@ import "./userreports.scss";
 import UserImageDefault from "../../../assets/images/ide-29.svg";
 import Report from "../../report/Report";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
+import { getMessageResponseStatus } from "../../../helpers/MessageResponse";
 
 export default function UserReports({ username }) {
     const { t } = useTranslation();
     const [reports, setReports] = useState([]);
-    const [errorFetchData, setErrorFetchData] = useState(false);
+    const [serverError, setServerError] = useState(null);
 
-    const fetchData = () => {
-        helpHttp().get(UrlAPI + "reports/usernameReported/" + username, {
+    useEffect(() => {
+        helpHttp().get(UrlAPI + "reports/usernameReported/adrianc68", {
             headers: {
                 Accept: "application/json",
                 "Authorization": sessionStorage.getItem("token")
             }
         }).then((response) => {
             if (response != null) {
-                switch (response.status) {
-                    case 404:
-                    case 400:
-                        setErrorFetchData(true);
-                        return;
+                if (response.length > 0) {
+                    setReports(response);
+                    return;
                 }
-                setReports(response);
+                setServerError(getMessageResponseStatus(response));
             }
         }, []);
-    };
-
-    useEffect(() => {
-        fetchData();
-    }, []);
+    }, [username, t]);
 
     return (
         <div className="userreports-main-container">
@@ -43,23 +38,20 @@ export default function UserReports({ username }) {
                     <p>{t("UserReportAdminPanelDescription")}</p>
                     <div className="userreports-list-container">
                         <ul>
-
                             {
                                 reports.length > 0 ?
                                     reports.map((element) =>
-                                        <li><Report report={element} /></li>
+                                        <li id={element._id}><Report report={element} /></li>
                                     )
                                     :
                                     <div className="no-found-records">
-                                        <span>{t("NotFoundRecords")}</span>
+                                        <span className="semibold">{serverError}</span>
                                     </div>
                             }
-
                         </ul>
                     </div>
                 </div>
             </div>
-
         </div>
     );
 }

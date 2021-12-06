@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./report.scss";
 import { useTranslation } from "react-i18next";
 import Button from "../Button/Button";
@@ -6,16 +6,18 @@ import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
 import { useHistory } from "react-router";
 import { useConvertionData } from "../../hooks/useConvertionData";
 import { BsFillCaretRightFill, BsFillCaretDownFill } from "react-icons/bs";
+import { getMessageResponseStatus } from "../../helpers/MessageResponse";
 
 export default function Report({ report }) {
     const { t } = useTranslation();
     const [context, setContext] = useState(null);
     const [isHideContext, setHiddenContext] = useState(true);
     const history = useHistory();
-    const [errorFetchData, setErrorFetchData] = useState(false);
+    const [serverError, setServerError] = useState(null);
     const { convertDate } = useConvertionData();
 
     const fetchData = (idReported) => {
+        setServerError(null);
         if (context == null) {
             helpHttp().get(UrlAPI + "reports/" + idReported, {
                 headers: {
@@ -24,19 +26,16 @@ export default function Report({ report }) {
                 }
             }).then((response) => {
                 if (response != null) {
-                    switch (response.status) {
-                        case 404:
-                        case 400:
-                            setErrorFetchData(true);
-                            return;
+                    if (response.context !== null && response.context !== undefined) {
+                        setContext(response.context);
+                        setHiddenContext(!isHideContext);
+                        return;
                     }
-                    setContext(response.context);
+                    setServerError(getMessageResponseStatus(response));
                 }
-                setHiddenContext(!isHideContext);
             }, []);
-        } else {
-            setHiddenContext(!isHideContext);
         }
+        setHiddenContext(!isHideContext);
     };
 
     return (
@@ -85,17 +84,20 @@ export default function Report({ report }) {
                     </div>
                 </div>
                 {
-                    context !== null ?
-                        <div className={isHideContext ? "report-descripction-container hidden" : "report-descripction-container"}>
-                            <div>
-                                <span className="semibold">{t("UserReportContext")}</span>
-                                <span>{context !== null ? context : null}</span>
-                            </div>
-                        </div>
-                        :
-                        null
+                    <div className={isHideContext ? "report-descripction-container hidden" : "report-descripction-container"}>
+                        {
+                            serverError !== null ?
+                                <div>
+                                    <span className="color-red">{serverError}</span>
+                                </div>
+                                :
+                                <div>
+                                    <span className="semibold">{t("UserReportContext")}</span>
+                                    <span>{context !== null ? context : null}</span>
+                                </div>
+                        }
+                    </div>
                 }
-
             </div>
         </div>
     );

@@ -298,7 +298,8 @@ export const TRANSLATIONS_ES = {
     UserProfileControlPanel: "Panel de control",
     UserProfileYears: "años",
     UserProfileButtonPanelDeleteAccount: "Eliminar cuenta",
-    UserProfileButtonPanelCheckProgress: "Revisar progreso",
+    UserProfileButtonPanelCheckProgress: "Ver progreso",
+    UserProfileButtonPanelHideProgress: "Ocultar progreso",
     UserProfileButtonPanelEditProfile: "Editar perfil",
     UserProfileButtonPanelSendMessage: "Enviar mensaje",
     UserProfileButtonPanelBlockUser: "Bloquear usuario",
@@ -422,11 +423,21 @@ export const TRANSLATIONS_ES = {
 
     MessageUpdateAccount: "La cuenta se actualizo exitosamente",
 
-    ErrorToken: "Requiere token o No tiene permiso para realizar esta funcionalidad",
+    ErrorToken: "No estás autorizado para realizar esta funcionalidad",
     RefreshToken: "Se agotado su tiempo en el sistema, por favor vuelva a iniciar sesión",
     AlternativeMessageImageDecorative: "Imagen decorativa",
 
+    ErrorAnotherProfileWithoutRoleManager: "No tienes permisos para ver perfiles de otros usuarios.",
+    ErrorIDProps: "No has obtenido un identificador del perfil de usuario correctamente. Utiliza la navegación dentro del sistema para poder ver el perfil.",
+
+
     ServerError404: "No se ha encontrado ningún resultado",
-    ServerError400: "Requieres iniciar sesión en tu cuenta para tener acceso a estas funcionalidades",
-    ServerErrorInternal: "Error interno en el servidor",
+    ServerError419: "Insuficiente espacio.",
+    ServerError401: "Requieres iniciar sesión o no tienes acceso a esta funcionalidad",
+    ServerError400: "La solicitud enviada no es válida",
+    ServerError403: "No estás autorizado para realizar esta funcionalidad",
+    ServerError409: "Existe un conflicto con el estado actual del servidor",
+    ServerError500: "Error interno en el servidor",
+    ServerDefaultError: "Error $, contacta a un administrador.",
+    ServerConnectionRefused: "No se ha podido establecer una conexión con el servidor.",
 };

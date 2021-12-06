@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useRouteMatch } from "react-router-dom";
 
-export default function UserprofileButtonPanelOWU({ handleViewProgress, accountID }) {
+export default function UserprofileButtonPanelOWU({ handleViewProgress, accountID, showProgress }) {
     const { t } = useTranslation();
     const { url } = useRouteMatch();
 
@@ -20,7 +20,7 @@ export default function UserprofileButtonPanelOWU({ handleViewProgress, accountI
                     :
                     null
             }
-                <Button styleName="primary-button" text={t("UserProfileButtonPanelCheckProgress")} onClick={() => handleViewProgress()}></Button>
+                <Button styleName="primary-button" text={ !showProgress ? t("UserProfileButtonPanelCheckProgress") : t("UserProfileButtonPanelHideProgress")} onClick={() => handleViewProgress()}></Button>
         </div>
     );
 }

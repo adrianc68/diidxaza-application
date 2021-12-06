@@ -17,3 +17,5 @@ i18n
  });
  
 i18n.changeLanguage("es");
+
+export default i18n;

@@ -50,6 +50,21 @@ const validationsFormComment = (comment) => {
     return errors;
 };
 
+const validationsFormTitle = (title) => {
+    let errors = {};
+    title = title.trim();
+    let regexTitle = /^[\a-zA-Z0-9wÑñÁáÉéÍíÓóÚúÜü!?¡¿.,# ]{5,600}$/;
+    if (title.length === NUMBER.ZERO) {
+        errors.title = "Error";
+    }
+    else {
+        if (!regexTitle.test(title)) {
+            errors.comment = "Error";
+        }
+    }
+    return errors;
+};
+
 
 export default function Forum() {
     const { t } = useTranslation();
@@ -97,7 +112,6 @@ export default function Forum() {
     } = useForum(validationsForm, validationsFormComment, initialForm, setDiscussions);
 
     useEffect(() => {
-        setActiveClassFilterButtons();
         helpHttp().get(UrlAPI + "discussions", {
             headers: {
                 Accept: "application/json",
@@ -110,6 +124,7 @@ export default function Forum() {
                 setDiscussions([]);
             }
         });
+        setActiveClassFilterButtons();
     }, []);
 
     return (

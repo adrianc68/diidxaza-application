@@ -46,7 +46,7 @@ export default function DashboardRouter({ setNameUser }) {
         exact
         path="/profile/:id"
         render={(props) => (
-          <UserProfile accountID={props.location.state.id}></UserProfile>
+          <UserProfile accountProps={props.location.state}></UserProfile>
         )}
       />
       <Route

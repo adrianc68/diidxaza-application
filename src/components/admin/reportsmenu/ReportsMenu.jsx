@@ -5,18 +5,20 @@ import { useTranslation } from "react-i18next";
 import Report from "../../report/Report";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 import { BiSlider } from "react-icons/bi";
+import { getMessageResponseStatus } from "../../../helpers/MessageResponse"
 
 export default function ReportsMenu() {
     const { t } = useTranslation();
     const [reports, setReports] = useState([]);
     const [serverError, setServerError] = useState(null);
     const [parameter, setParameter] = useState("");
-    const [filter, setFilter] = useState("");
+    const [filter, setFilter] = useState("/usernameAccount/");
     const [timer, setTimer] = useState(null);
     const [errorInformation, setErrorInformation] = useState(null);
 
     const fetchData = () => {
         setReports([]);
+        setServerError(null);
         helpHttp().get(UrlAPI + "reports" + filter + parameter, {
             headers: {
                 Accept: "application/json",
@@ -24,21 +26,11 @@ export default function ReportsMenu() {
             }
         }).then((response) => {
             if (response != null) {
-                switch (response.status) {
-                    case 404:
-                        setServerError(t("ServerError404"));
-                        break;
-                    case 400:
-                    case 419:
-                        setServerError(t("ServerError400"));
-                        break;
-                    case 401:
-                    case 500:
-                        setServerError(t("ServerErrorInternal"));
-                        break;
-                    default:
-                        setReports(response);
+                if (response.length > 0) {
+                    setReports(response);
+                    return;
                 }
+                setServerError(getMessageResponseStatus(response));
             }
         }, []);
     };
@@ -68,7 +60,7 @@ export default function ReportsMenu() {
     }
 
     const checkUnknownCharacters = (input) => {
-        let regexUnknownChars = /^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü\/\-@. ]+$/;
+        let regexUnknownChars = /^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü\-@. ]+$/;
         if (!regexUnknownChars.test(input)) {
             let information = t("ValidationErrorUnknownChars");
             setErrorInformation(information);
@@ -76,13 +68,14 @@ export default function ReportsMenu() {
     }
 
     function changeDelay(value) {
+        var miliseconds = 200;
         if (timer) {
             clearTimeout(timer);
             setTimer(null);
         }
         setTimer(setTimeout(() => {
             validateInputForm(value);
-        }, 200)
+        }, miliseconds)
         );
     }
 
@@ -101,12 +94,25 @@ export default function ReportsMenu() {
         }
     };
 
-
     useEffect(() => {
-        fetchData(filter, parameter);
-        setFilter("/usernameAccount/");
+        setReports([]);
+        setServerError(null);
+        helpHttp().get(UrlAPI + "reports", {
+            headers: {
+                Accept: "application/json",
+                "Authorization": sessionStorage.getItem("token")
+            }
+        }).then((response) => {
+            if (response != null) {
+                if (response.length > 0) {
+                    setReports(response);
+                    return;
+                }
+                setServerError(getMessageResponseStatus(response));
+            }
+        }, []);
         setActiveClassFilterButtons();
-    }, []);
+    }, [t]);
 
     return (
         <div className="reportsmenu-main-container">
@@ -144,7 +150,7 @@ export default function ReportsMenu() {
                             {
                                 reports.length > 0 ?
                                     reports.map((element) =>
-                                        <li><Report report={element} /></li>
+                                        <li id={element._id}><Report report={element} /></li>
                                     )
                                     :
                                     <div className="no-found-records">

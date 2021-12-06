@@ -5,18 +5,20 @@ import { useTranslation } from "react-i18next";
 import UserListItem from "./userlistitem/UserListItem";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 import { BiSlider } from "react-icons/bi";
+import { getMessageResponseStatus } from "../../../helpers/MessageResponse"
 
 export default function AccountsMenu() {
     const { t } = useTranslation();
     const [accountsItems, setAccountsItems] = useState([]);
     const [serverError, setServerError] = useState(null);
     const [parameter, setParameter] = useState("");
-    const [filter, setFilter] = useState("");
+    const [filter, setFilter] = useState("/name/");
     const [timer, setTimer] = useState(null);
     const [errorInformation, setErrorInformation] = useState(null);
 
     const fetchData = () => {
         setAccountsItems([]);
+        setServerError(null);
         helpHttp().get(UrlAPI + "accounts" + filter + parameter, {
             headers: {
                 Accept: "application/json",
@@ -24,21 +26,11 @@ export default function AccountsMenu() {
             }
         }).then((response) => {
             if (response != null) {
-                switch (response.status) {
-                    case 404:
-                        setServerError(t("ServerError404"));
-                        break;
-                    case 400:
-                    case 419:
-                        setServerError(t("ServerError400"));
-                        break;
-                    case 401:
-                    case 500:
-                        setServerError(t("ServerErrorInternal"));
-                        break;
-                    default:
-                        setAccountsItems(response);
+                if (response.length > 0) {
+                    setAccountsItems(response);
+                    return;
                 }
+                setServerError(getMessageResponseStatus(response));
             }
         }, []);
     };
@@ -57,7 +49,7 @@ export default function AccountsMenu() {
     };
 
     const checkLength = (input) => {
-        let minChars = 2;
+        let minChars = 1;
         let maxChars = 150;
         if (input.length > maxChars || input.length < minChars) {
             let information = t("ValidationErrorLength");
@@ -65,18 +57,19 @@ export default function AccountsMenu() {
             information = information.replace("$max", maxChars.toString());
             setErrorInformation(information);
         }
-    }
+    };
 
     const checkUnknownCharacters = (input) => {
-        let regexUnknownChars = /^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü\/\-@. ]+$/;
+        let regexUnknownChars = /^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü@. ]+$/;
         if (!regexUnknownChars.test(input)) {
             let information = t("ValidationErrorUnknownChars");
             setErrorInformation(information);
         }
-    }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        validateInputForm(parameter);
         if (errorInformation === null) {
             fetchData(filter, parameter);
         }
@@ -91,21 +84,36 @@ export default function AccountsMenu() {
     };
 
     function changeDelay(value) {
+        var miliseconds = 200;
         if (timer) {
             clearTimeout(timer);
             setTimer(null);
         }
         setTimer(setTimeout(() => {
             validateInputForm(value);
-        }, 200)
+        }, miliseconds)
         );
     }
 
     useEffect(() => {
-        fetchData(filter, parameter);
-        setFilter("/name/");
+        setAccountsItems([]);
+        setServerError(null);
+        helpHttp().get(UrlAPI + "accounts", {
+            headers: {
+                Accept: "application/json",
+                "Authorization": sessionStorage.getItem("token")
+            }
+        }).then((response) => {
+            if (response != null) {
+                if (response.length > 0) {
+                    setAccountsItems(response);
+                    return;
+                }
+                setServerError(getMessageResponseStatus(response));
+            }
+        }, []);
         setActiveClassFilterButtons();
-    }, []);
+    }, [t]);
 
     return (
         <div className="accountsmenu-main-container">
@@ -151,7 +159,7 @@ export default function AccountsMenu() {
                             {
                                 accountsItems.length > 0 ?
                                     accountsItems.map((element) =>
-                                        <li><UserListItem account={element} /></li>
+                                        <li id={element._id}><UserListItem account={element} /></li>
                                     )
                                     :
                                     <div className="no-found-records">

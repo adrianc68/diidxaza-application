@@ -90,8 +90,6 @@ export default function Learning() {
         return lessonInformation;
     }
 
-
-
     return (
         <div className="learning-main-container">
             <div className="learning-content-contain">
