@@ -42,7 +42,7 @@ export default function Dashboard() {
         localStorage.clear();
         sessionStorage.clear();
         history.push({
-            pathname: "login"
+            pathname: "/login"
         });
     };
 
