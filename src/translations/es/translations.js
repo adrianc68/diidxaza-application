@@ -293,7 +293,10 @@ export const TRANSLATIONS_ES = {
     FilterReportByUsername: "Usuario que reportó",
     FilterUsernameReported: "Usuario reportado",
 
-
+    FilterInformationNumbersLetters: "Debes utilizar letras (a-z) o números (0-9) y o algunos caracteres especiales",
+    FilterInformationNumbers: "Debes utilizar únicamente números (0-9)",
+    FilterInformationEmail: "Debes utilizar el formato de correo electrónico p.e. xxx@xxx.xxx",
+    FilterInformationBirthdate: "Debes utilizar el formato yyyy/mm/dd",
 
     UserProfileControlPanel: "Panel de control",
     UserProfileYears: "años",
@@ -331,7 +334,7 @@ export const TRANSLATIONS_ES = {
 
     UserID: "Identificación",
     UserReportAdminPanelTitle: "Reportes",
-    UserReportAdminPanelDescription:"A continuación se mostrarán todos los reportes realizados a este usuario por otros usuarios. Los reportes están ordenados del mas actual al menos actual.",
+    UserReportAdminPanelDescription:"A continuación se mostrarán todos los reportes realizados a este usuario por otros usuarios.",
     UserReportReason: "Razón: ",
     UserReportDate: "Fecha de creación: ",
     UserReportReportedBy: "Reportado por: ",
@@ -418,8 +421,9 @@ export const TRANSLATIONS_ES = {
     NotFoundDiscussions: "No se encontraron discusiones",
     Completed: "Completado",
 
-    ValidationErrorLength: "Debes tener al menos $min caracteres y no pasar los $max caracteres.",
+    ValidationErrorLength: "Debes tener al menos $min caracter(es) y no pasar los $max caracteres.",
     ValidationErrorUnknownChars: "No debes utilizar caracteres extraños",
+    ValidationInvalidTestRegex: "No cumples con el formato adecuado",
 
     MessageUpdateAccount: "La cuenta se actualizo exitosamente",
 
@@ -430,6 +434,7 @@ export const TRANSLATIONS_ES = {
     ErrorAnotherProfileWithoutRoleManager: "No tienes permisos para ver perfiles de otros usuarios.",
     ErrorIDProps: "No has obtenido un identificador del perfil de usuario correctamente. Utiliza la navegación dentro del sistema para poder ver el perfil.",
 
+    ChangeStatusSelftAccountBlock: "No puedes bloquear tu misma cuenta.",
 
     ServerError404: "No se ha encontrado ningún resultado",
     ServerError419: "Insuficiente espacio.",

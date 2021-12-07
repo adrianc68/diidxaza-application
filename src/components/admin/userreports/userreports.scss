@@ -20,7 +20,13 @@
       gap: 15px;
 
       .userreports-image-background {
-        border: 1px solid #c5a7a7;
+        border: 1px solid #000;
+        background:
+          radial-gradient(
+            circle,
+            rgb(133, 8, 8) 0%,
+            rgb(0, 0, 0) 78%
+        );
         display: flex;
         justify-content: center;
         align-items: flex-end;

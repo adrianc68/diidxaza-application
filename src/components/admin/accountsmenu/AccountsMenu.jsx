@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import UserListItem from "./userlistitem/UserListItem";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 import { BiSlider } from "react-icons/bi";
-import { getMessageResponseStatus } from "../../../helpers/MessageResponse"
+import { getMessageResponseStatus } from "../../../helpers/MessageResponse";
 
 export default function AccountsMenu() {
     const { t } = useTranslation();
@@ -15,6 +15,35 @@ export default function AccountsMenu() {
     const [filter, setFilter] = useState("/name/");
     const [timer, setTimer] = useState(null);
     const [errorInformation, setErrorInformation] = useState(null);
+    const [regex, setRegex] = useState(/^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü ]+$/);
+    const [filterInfo, setFilterInfo] = useState(t("FilterInformationNumbersLetters"));
+
+    const checkLength = (input) => {
+        let minChars = 1;
+        let maxChars = 150;
+        if (input.length > maxChars || input.length < minChars) {
+            let information = t("ValidationErrorLength");
+            information = information.replace("$min", minChars.toString());
+            information = information.replace("$max", maxChars.toString());
+            setErrorInformation(information);
+        }
+    };
+
+    const checkUnknownCharacters = (input) => {
+        let regexUnknownChars = regex;
+        if (!regexUnknownChars.test(input)) {
+            let information = t("ValidationInvalidTestRegex");
+            setErrorInformation(information);
+        }
+    };
+
+    const validateInputForm = (input) => {
+        var inputTrim = input.trim();
+        setErrorInformation(null);
+        checkUnknownCharacters(inputTrim);
+        checkLength(inputTrim);
+        setParameter(inputTrim);
+    };
 
     const fetchData = () => {
         setAccountsItems([]);
@@ -48,39 +77,12 @@ export default function AccountsMenu() {
         }
     };
 
-    const checkLength = (input) => {
-        let minChars = 1;
-        let maxChars = 150;
-        if (input.length > maxChars || input.length < minChars) {
-            let information = t("ValidationErrorLength");
-            information = information.replace("$min", minChars.toString());
-            information = information.replace("$max", maxChars.toString());
-            setErrorInformation(information);
-        }
-    };
-
-    const checkUnknownCharacters = (input) => {
-        let regexUnknownChars = /^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü@. ]+$/;
-        if (!regexUnknownChars.test(input)) {
-            let information = t("ValidationErrorUnknownChars");
-            setErrorInformation(information);
-        }
-    };
-
     const handleSubmit = (e) => {
         e.preventDefault();
         validateInputForm(parameter);
         if (errorInformation === null) {
             fetchData(filter, parameter);
         }
-    };
-
-    const validateInputForm = (input) => {
-        var inputTrim = input.trim();
-        setErrorInformation(null);
-        checkUnknownCharacters(inputTrim);
-        checkLength(inputTrim);
-        setParameter(inputTrim);
     };
 
     function changeDelay(value) {
@@ -115,6 +117,34 @@ export default function AccountsMenu() {
         setActiveClassFilterButtons();
     }, [t]);
 
+    const handleButtonFilterName = () => {
+        setFilter("/name/");
+        setFilterInfo(t("FilterInformationNumbersLetters"));
+        setRegex(/^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü ]+$/);
+    };
+
+    const handleButtonFilterLastname = () => {
+        setFilter("/lastname/");
+        setFilterInfo(t("FilterInformationNumbersLetters"));
+        setRegex(/^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü ]+$/);
+    };
+
+    const handleButtonFilterAge = () => {
+        setFilter("/age/");
+        setFilterInfo(t("FilterInformationNumbers"));
+        setRegex(/^[0-9]{1,3}$/);
+    };
+
+    const handleButtonFilterEmail = () => {
+        setFilter("/email/");
+        setFilterInfo(t("FilterInformationEmail"));
+    };
+
+    const handleButtonFilterUsername = () => {
+        setFilter("/username/");
+        setFilterInfo(t("FilterInformationNumbersLetters"));
+    };
+
     return (
         <div className="accountsmenu-main-container">
             <div className="accountsmenu-content">
@@ -129,6 +159,9 @@ export default function AccountsMenu() {
                         </div>
                     </form>
                     {
+                        <span className="color-gray">{filterInfo}</span>
+                    }
+                    {
                         <span className="errorInput">{errorInformation}</span>
                     }
                     <div className="form-search-filters-buttons">
@@ -137,19 +170,19 @@ export default function AccountsMenu() {
                             <BiSlider className="filter-icon" />
                         </div>
                         <div className="accountsmenu-button-filter-button" >
-                            <Button styleName="text-button gray-text active" onClick={() => { setFilter("/name/"); }} text={t("FilterName")}></Button>
+                            <Button styleName="text-button gray-text active" onClick={() => { handleButtonFilterName(); }} text={t("FilterName")}></Button>
                         </div>
                         <div className="accountsmenu-button-filter-button">
-                            <Button styleName="text-button gray-text" onClick={() => { setFilter("/lastname/"); }} text={t("FilterLastName")}></Button>
+                            <Button styleName="text-button gray-text" onClick={() => { handleButtonFilterLastname(); }} text={t("FilterLastName")}></Button>
                         </div>
                         <div className="accountsmenu-button-filter-button" >
-                            <Button styleName="text-button gray-text" onClick={() => { setFilter("/age/"); }} text={t("FilterAge")}></Button>
+                            <Button styleName="text-button gray-text" onClick={() => { handleButtonFilterAge(); }} text={t("FilterAge")}></Button>
                         </div>
                         <div className="accountsmenu-button-filter-button" >
-                            <Button styleName="text-button gray-text" onClick={() => { setFilter("/email/"); }} text={t("FilterEmail")}></Button>
+                            <Button styleName="text-button gray-text" onClick={() => { handleButtonFilterEmail(); }} text={t("FilterEmail")}></Button>
                         </div>
                         <div className="accountsmenu-button-filter-button" >
-                            <Button styleName="text-button gray-text" onClick={() => { setFilter("/username/"); }} text={t("FilterUsername")}></Button>
+                            <Button styleName="text-button gray-text" onClick={() => { handleButtonFilterUsername(); }} text={t("FilterUsername")}></Button>
                         </div>
                     </div>
                 </div>

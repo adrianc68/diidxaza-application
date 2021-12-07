@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import "./userreports.scss";
-import UserImageDefault from "../../../assets/images/ide-29.svg";
 import Report from "../../report/Report";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 import { getMessageResponseStatus } from "../../../helpers/MessageResponse";
 
-export default function UserReports({ username }) {
+export default function UserReports({ username, image }) {
     const { t } = useTranslation();
     const [reports, setReports] = useState([]);
     const [serverError, setServerError] = useState(null);
 
     useEffect(() => {
-        helpHttp().get(UrlAPI + "reports/usernameReported/adrianc68", {
+        helpHttp().get(UrlAPI + "reports/usernameReported/" + username, {
             headers: {
                 Accept: "application/json",
                 "Authorization": sessionStorage.getItem("token")
@@ -33,7 +32,7 @@ export default function UserReports({ username }) {
             <div className="userreports-content-container">
                 <div className="userreports-data-container">
                     <div className="userreports-image-background">
-                        <img src={UserImageDefault} alt="AlternativeMessageImageDecorative"></img>
+                        <img src={image} alt="AlternativeMessageImageDecorative"></img>
                     </div>
                     <p>{t("UserReportAdminPanelDescription")}</p>
                     <div className="userreports-list-container">

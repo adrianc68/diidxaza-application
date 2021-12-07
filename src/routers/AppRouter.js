@@ -28,7 +28,6 @@ export default function AppRouter() {
         <Route exact path="/profile/:id" component={Dashboard} />
         <Route exact path="/profile/:id/edit" component={Dashboard} />
         <Route exact path="/loading" component={LoadingScreen} />
-
         <Route path="*" component={PageNotFound} />
       </Switch>
     </Router>
