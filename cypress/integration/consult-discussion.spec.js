@@ -3,8 +3,8 @@ describe("Consult Discussion", () => {
         cy.visit("http://127.0.0.1:3000/login");
         cy.get('[name="username"]').type("Miros");
         cy.get('[name="password"]').type("Mmol78963#");
-        cy.get('.login-create-account-container').click();
-        cy.get('Button').click();
+        cy.get('.secondary-button').click();
+        cy.get('.secondary-button').click();
         cy.get('.sidebar-dashboard-container').get('a[href="/forum"]').click();
     });
 
@@ -16,17 +16,16 @@ describe("Consult Discussion", () => {
     });
 
     it("Discussions Successful Title", () => {
-        cy.visit("http://127.0.0.1:3000/forum");
-        cy.get('[name="title"]').type("¿Qu");
+        cy.get('[name="title"]').clear().type("¿Qu");
         cy.get('.form-search-criteria').click();
         cy.get('.form-search-criteria').get('form').submit();
+        cy.wait(1000);
         cy.get('.forum-discussion-list').contains("¿Qué opinan de las cuentos?");
         cy.get('.forum-discussion-list').contains("¿Qué opinan de las canciones?");
     })
 
     it("Discussions Error title", () => {
-        cy.visit("http://127.0.0.1:3000/forum");
-        cy.get('[name="title"]').type("         ");
+        cy.get('[name="title"]').clear().type("         ");
         cy.get('.form-search-criteria').click();
         cy.get('.form-search-criteria').get('form').submit();
         cy.get('.errorInput').contains("Ingrese solo letras y caracteres !?¡¿.,#. Solo de 2 a 200 caracteres");
@@ -54,21 +53,19 @@ describe("Consult Discussion", () => {
         cy.get('.forum-discussion-list').contains("¿Qué opinan de las canciones?");
     });
 
-    it("Not Found Discussions News", () => {
-        cy.visit("http://127.0.0.1:3000/forum");
-        cy.contains('Mas nuevos').click();
-        cy.get('.forum-discussion-list').contains("¿Qué opinan de las cuentos?");
-        cy.get('.forum-discussion-list').contains("¿Qué opinan de las canciones?");
-    });
-
     it("Discussions News", () => {
         cy.visit("http://127.0.0.1:3000/forum");
+        cy.contains('Mas nuevos').click();
+        cy.get('.forum-discussion-list').contains("¿Qué opinan de las lecciones?");
+    });
+
+    it("Not Found Discussions News", () => {
+        cy.visit("http://127.0.0.1:3000/forum");
         cy.intercept('GET', '/discussions/filters/news', {
-            fixture:'discussions.json'
+            status:404
         });
         cy.contains('Mas nuevos').click();
-        cy.get('.forum-discussion-list').contains("¿Qué opinan de las cuentos?");
-        cy.get('.forum-discussion-list').contains("¿Qué opinan de las canciones?");
+        cy.get('.forum-discussion-list').contains("No se encontraron discusiones");
     });
 
     it("Discussions Following", () => {
@@ -92,10 +89,7 @@ describe("Consult Discussion", () => {
 
     it("Error Server Discussion", () => {
         cy.intercept('GET', '/discussions/61ad19e31a1532db106c36bd', {
-            status: 500,
-            body: {
-                messageErrorServer: 'Error en el servidor',
-            },
+            status: 500
         });
         cy.contains('¿Qué opinan de las cuentos?').click();
         cy.get('.not-found-discussion').contains("Error en el servidor. Intenta más tarde");
@@ -116,7 +110,7 @@ describe("Consult Discussion", () => {
             status: 401
         });
         cy.contains('¿Qué opinan de las cuentos?').click();
-        cy.get('.alert-main-container').contains("Requiere token o No tiene permiso para realizar esta funcionalidad");
+        cy.get('.alert-main-container').contains("No estás autorizado para realizar esta funcionalidad");
         cy.contains('Aceptar').click();
     });
 
@@ -125,7 +119,7 @@ describe("Consult Discussion", () => {
             status: 401
         });
         cy.contains('Mas populares').click();
-        cy.get('.alert-main-container').contains("Requiere token o No tiene permiso para realizar esta funcionalidad");
+        cy.get('.alert-main-container').contains("No estás autorizado para realizar esta funcionalidad");
         cy.contains('Aceptar').click();
     });
 
@@ -134,7 +128,7 @@ describe("Consult Discussion", () => {
             status: 401
         });
         cy.contains('Mas nuevos').click();
-        cy.get('.alert-main-container').contains("Requiere token o No tiene permiso para realizar esta funcionalidad");
+        cy.get('.alert-main-container').contains("No estás autorizado para realizar esta funcionalidad");
         cy.contains('Aceptar').click();
     });
 
@@ -143,7 +137,7 @@ describe("Consult Discussion", () => {
             status: 401
         });
         cy.contains('Siguiendo').click();
-        cy.get('.alert-main-container').contains("Requiere token o No tiene permiso para realizar esta funcionalidad");
+        cy.get('.alert-main-container').contains("No estás autorizado para realizar esta funcionalidad");
         cy.contains('Aceptar').click();
     });
 

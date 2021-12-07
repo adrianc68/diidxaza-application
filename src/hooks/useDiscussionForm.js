@@ -473,6 +473,7 @@ export const useForum = (
       ...formComment,
       comment: "",
     });
+    setCommentLenght(0);
     setErrorsComment({});
   };
 
