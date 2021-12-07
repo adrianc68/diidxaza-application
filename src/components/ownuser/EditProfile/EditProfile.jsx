@@ -285,8 +285,8 @@ export default function EditProfile({ setNameUser }) {
             {modalNotToken && <Modal handleModal={() => { setModalNotToken(false); }} sizeHeight="20" sizeWidth="35">
                 <AlertMessage content={t("ErrorToken")} handleModal={() => { setModalNotToken(false); }}></AlertMessage>
             </Modal>}
-            {modalToken && <Modal handleModal={() => { window.location.href = "login"; }} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = "login"; }}></AlertMessage>
+            {modalToken && <Modal handleModal={() => { window.location.href = "http://127.0.0.1:3000/login"; }} sizeHeight="20" sizeWidth="35">
+                <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = "http://127.0.0.1:3000/login"; }}></AlertMessage>
             </Modal>}
         </form>
     );

@@ -96,6 +96,7 @@ export const useForum = (
     e.preventDefault();
     setLoadingDiscussion(false);
     setFoundDiscussion(false);
+    setErrors({});
     helpHttp()
       .get(UrlAPI + "discussions/filters/news", {
         headers: {
@@ -154,6 +155,7 @@ export const useForum = (
     e.preventDefault();
     setLoadingDiscussion(false);
     setFoundDiscussion(false);
+    setErrors({});
     helpHttp()
       .get(UrlAPI + "discussions/filters/populars", {
         headers: {
@@ -192,6 +194,7 @@ export const useForum = (
     e.preventDefault();
     setLoadingDiscussion(false);
     setFoundDiscussion(false);
+    setErrors({});
     helpHttp()
       .get(UrlAPI + "discussions/tracing/" + sessionStorage.getItem("id"), {
         headers: {
@@ -231,6 +234,7 @@ export const useForum = (
     await setImagesComments([]);
     await setLoadingDiscussion(false);
     await setFoundDiscussion(false);
+    setErrors({});
     helpHttp()
       .get(UrlAPI + "discussions/" + id, {
         headers: {
@@ -367,6 +371,7 @@ export const useForum = (
 
   const handleSubmitComment = (e) => {
     e.preventDefault();
+    setErrors({});
     setErrorsComment(validateFormComment(formComment.comment));
     if (Object.keys(errorsComment).length === NUMBER.ZERO) {
       helpHttp()
@@ -468,6 +473,7 @@ export const useForum = (
       ...formComment,
       comment: "",
     });
+    setCommentLenght(0);
     setErrorsComment({});
   };
 
@@ -698,7 +704,11 @@ export const useDiscussionForm = (initialForm, validateForm) => {
                   if (response.status === RESPONSE_STATUS.BAD_REQUEST) {
                     setResponse(t("SignUpVerificationSendNot"));
                   } else {
-                    setResponse(t("ErrorMessage"));
+                    if (response.status === RESPONSE_STATUS.CONFLICT) {
+                      setResponse(t("ExistDiscussion"));
+                    } else {
+                      setResponse(t("ErrorMessage"));
+                    }
                   }
                   setLoading(true);
                 }
