@@ -18,10 +18,10 @@ import { Context } from "../../helpers/Context";
 export default function Dashboard() {
     const { t } = useTranslation();
     const history = useHistory();
-    const {isLogged, setLogged} = useContext(Context);
+    const { isLogged, setLogged } = useContext(Context);
     const [statusModal, setStatusModal] = useState(false);
     const [nameUser, setNameUser] = useState(sessionStorage.getItem("name") + " " + sessionStorage.getItem("lastname"));
-    
+    const [loadedData, setLoadedData] = useState(false);
     const [component, setComponent] = useState({
         sizeHeight: "",
         sizeWidth: "",
@@ -55,18 +55,21 @@ export default function Dashboard() {
                 Accept: "application/json",
                 "Authorization": sessionStorage.getItem("token")
             }
-        }).then((response) => {            
+        }).then((response) => {
             if (response != null) {
                 switch (response.status) {
                     case RESPONSE_STATUS.NOT_FOUND:
-                    case RESPONSE_STATUS.BAD_REQUEST:
                     case RESPONSE_STATUS.INSUFFICIENT_SPACE:
                     case RESPONSE_STATUS.UNAUTHORIZED:
+                    case RESPONSE_STATUS.BAD_REQUEST:
+                    case RESPONSE_STATUS.FORBIDDEN:
+                    case RESPONSE_STATUS.CONFLICT:
                     case RESPONSE_STATUS.ERROR_INTERNAL_SERVER:
                         setLogged(false);
                         break;
                     default:
                         setLogged(true);
+                        setLoadedData(true);
                 }
             }
         });
@@ -78,7 +81,8 @@ export default function Dashboard() {
 
     return (
         isLogged ?
-            <div className="dashboard-main-container" >
+            loadedData &&
+            < div className="dashboard-main-container" >
                 <Router history={history}>
                     <div className="topbar-dashboard-container">
                         <Topbar>
@@ -116,7 +120,7 @@ export default function Dashboard() {
                         </Modal>
                     }
                 </Router>
-            </div>
+            </div >
             :
             <Redirect exact to={"/login"} />
     );

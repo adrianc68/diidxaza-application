@@ -3,11 +3,10 @@ import React from "react";
 import "./components/style.scss";
 
 function App(props) {
-
   return (
-      <div>
-        <AppRouter />
-      </div>
+    <div>
+      <AppRouter />
+    </div>
   );
 }
 
