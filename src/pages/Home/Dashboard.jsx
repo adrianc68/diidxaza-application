@@ -13,12 +13,12 @@ import { useHistory } from "react-router";
 import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
 import { RESPONSE_STATUS } from "../../helpers/Response";
 import { useContext } from "react";
-import { AuthenticationContext } from "../../App";
+import { Context } from "../../helpers/Context";
 
 export default function Dashboard() {
     const { t } = useTranslation();
     const history = useHistory();
-    const {isLogged, setLogged} = useContext(AuthenticationContext);
+    const {isLogged, setLogged} = useContext(Context);
     const [statusModal, setStatusModal] = useState(false);
     const [nameUser, setNameUser] = useState(sessionStorage.getItem("name") + " " + sessionStorage.getItem("lastname"));
     
@@ -57,7 +57,6 @@ export default function Dashboard() {
             }
         }).then((response) => {            
             if (response != null) {
-                console.log(response.status);
                 switch (response.status) {
                     case RESPONSE_STATUS.NOT_FOUND:
                     case RESPONSE_STATUS.BAD_REQUEST:
@@ -70,7 +69,6 @@ export default function Dashboard() {
                         setLogged(true);
                 }
             }
-            console.log(isLogged);
         });
     };
 

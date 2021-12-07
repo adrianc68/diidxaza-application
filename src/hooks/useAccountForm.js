@@ -7,12 +7,12 @@ import { RESPONSE_STATUS } from "../helpers/Response";
 import { NUMBER } from "../helpers/Number";
 import { useHistory } from "react-router-dom";
 import { useContext } from "react";
-import { AuthenticationContext } from "../App";
+import { Context } from "../helpers/Context";
 
 export const useLoginForm = (initialForm, validateForm) => {
   const { t } = useTranslation();
   const history = useHistory();
-  const {isLogged, setLogged} = useContext(AuthenticationContext);
+  const {isLogged, setLogged} = useContext(Context);
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -57,6 +57,7 @@ export const useLoginForm = (initialForm, validateForm) => {
             sessionStorage.setItem("username", response.account.username);
             sessionStorage.setItem("URL", response.account.URL);
             sessionStorage.setItem("dateBirth", response.account.dateBirth);
+            console.log(isLogged);
             setLogged(true);
             history.push("/home");
           } else {
