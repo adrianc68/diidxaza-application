@@ -11,15 +11,17 @@ import { useTranslation } from "react-i18next";
 import { MdLogout } from "react-icons/md";
 import { useHistory } from "react-router";
 import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
-import LoadingScreen from "../../components/animation/loadingScreen/LoadingScreen";
 import { RESPONSE_STATUS } from "../../helpers/Response";
+import { useContext } from "react";
+import { AuthenticationContext } from "../../App";
 
 export default function Dashboard() {
     const { t } = useTranslation();
     const history = useHistory();
+    const {isLogged, setLogged} = useContext(AuthenticationContext);
     const [statusModal, setStatusModal] = useState(false);
-    const [isLogged, setLogged] = useState(true);
     const [nameUser, setNameUser] = useState(sessionStorage.getItem("name") + " " + sessionStorage.getItem("lastname"));
+    
     const [component, setComponent] = useState({
         sizeHeight: "",
         sizeWidth: "",
@@ -41,6 +43,7 @@ export default function Dashboard() {
     const handleLogout = () => {
         localStorage.clear();
         sessionStorage.clear();
+        setLogged(false);
         history.push({
             pathname: "/login"
         });
@@ -54,6 +57,7 @@ export default function Dashboard() {
             }
         }).then((response) => {            
             if (response != null) {
+                console.log(response.status);
                 switch (response.status) {
                     case RESPONSE_STATUS.NOT_FOUND:
                     case RESPONSE_STATUS.BAD_REQUEST:
@@ -66,6 +70,7 @@ export default function Dashboard() {
                         setLogged(true);
                 }
             }
+            console.log(isLogged);
         });
     };
 

@@ -5,9 +5,14 @@ import { BiError, BiBadgeCheck } from "react-icons/bi";
 import UserImageDefault from "../assets/images/ide-29.svg";
 import { RESPONSE_STATUS } from "../helpers/Response";
 import { NUMBER } from "../helpers/Number";
+import { useHistory } from "react-router-dom";
+import { useContext } from "react";
+import { AuthenticationContext } from "../App";
 
 export const useLoginForm = (initialForm, validateForm) => {
   const { t } = useTranslation();
+  const history = useHistory();
+  const {isLogged, setLogged} = useContext(AuthenticationContext);
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -52,7 +57,8 @@ export const useLoginForm = (initialForm, validateForm) => {
             sessionStorage.setItem("username", response.account.username);
             sessionStorage.setItem("URL", response.account.URL);
             sessionStorage.setItem("dateBirth", response.account.dateBirth);
-            window.location.href = "home";
+            setLogged(true);
+            history.push("/home");
           } else {
             setClaseName("errorMessage");
             if (response.status === RESPONSE_STATUS.NOT_FOUND) {

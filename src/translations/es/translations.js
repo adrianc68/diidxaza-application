@@ -294,7 +294,7 @@ export const TRANSLATIONS_ES = {
     FilterInformationNumbersLetters: "Debes utilizar letras (a-z) o números (0-9) y o algunos caracteres especiales",
     FilterInformationNumbers: "Debes utilizar únicamente números (0-9)",
     FilterInformationEmail: "Debes utilizar el formato de correo electrónico p.e. xxx@xxx.xxx",
-    FilterBirthdate: "Debes utilizar el formato yyyy/mm/dd",
+    FilterInformationBirthdate: "Debes utilizar el formato yyyy/mm/dd",
 
     UserProfileControlPanel: "Panel de control",
     UserProfileYears: "años",
