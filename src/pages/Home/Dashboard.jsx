@@ -1,44 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Topbar from "../../components/topbar/Topbar";
 import "./dashboard.scss";
 import Button from "../../components/Button/Button";
-import { BrowserRouter as Router, NavLink, Redirect } from "react-router-dom";
+import { Router, Redirect } from "react-router-dom";
 import AdminMenu from "../../components/admin/menu/AdminMenu";
 import DashboardRouter from "../../routers/DashboardRouter";
-import Modal from "../../components/modal/Modal";
 import { useTranslation } from "react-i18next";
 import { MdLogout } from "react-icons/md";
 import { useHistory } from "react-router";
 import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
 import { RESPONSE_STATUS } from "../../helpers/Response";
-import { useContext } from "react";
 import { Context } from "../../helpers/Context";
+import ModalContextProvider from "../../helpers/ModalContext";
 
 export default function Dashboard() {
     const { t } = useTranslation();
     const history = useHistory();
     const { isLogged, setLogged } = useContext(Context);
-    const [statusModal, setStatusModal] = useState(false);
     const [nameUser, setNameUser] = useState(sessionStorage.getItem("name") + " " + sessionStorage.getItem("lastname"));
-    const [loadedData, setLoadedData] = useState(false);
-    const [component, setComponent] = useState({
-        sizeHeight: "",
-        sizeWidth: "",
-        title: "",
-        component: <></>,
-    });
-
-    const handleModal = (ComponentTagA, sizeHeightA, sizeWidthA, titleA) => {
-        const initialValue = {
-            sizeHeight: sizeHeightA,
-            sizeWidth: sizeWidthA,
-            title: titleA,
-            object: ComponentTagA,
-        };
-        setComponent(initialValue);
-        setStatusModal(true);
-    };
+    const [isLoadedData, setLoadedData] = useState(false);
 
     const handleLogout = () => {
         localStorage.clear();
@@ -80,48 +61,46 @@ export default function Dashboard() {
     }, []);
 
     return (
-        isLogged ?
-            loadedData &&
-            < div className="dashboard-main-container" >
-                <Router history={history}>
-                    <div className="topbar-dashboard-container">
-                        <Topbar>
-                            <div className="dashboard-userprofile">
-                                <NavLink className="link" to={
-                                    {
-                                        pathname: "/profile/" + sessionStorage.getItem("username"),
-                                        state: {
-                                            id: sessionStorage.getItem("id"),
-                                        }
-                                    }
-                                }>
-                                    <Button styleName="text-button" text={nameUser}></Button>
-                                </NavLink>
+        <ModalContextProvider >
+            {
+                isLogged ?
+                    isLoadedData &&
+                    < div className="dashboard-main-container" >
+                        <Router history={history}>
+                            <div className="topbar-dashboard-container">
+                                <Topbar>
+                                    <div className="dashboard-userprofile">
+
+                                        <Button styleName="text-button" text={nameUser} onClick={() => history.push(
+                                            {
+                                                pathname: "/profile/" + sessionStorage.getItem("username"),
+                                                state: {
+                                                    id: sessionStorage.getItem("id"),
+                                                }
+                                            }
+                                        )}></Button>
+                                    </div>
+                                    <div className="dashboard-logout-button-section">
+                                        <div>
+                                            <Button styleName="icon-button background-red" text={t("SidebarSignOutButton")} onClick={handleLogout}>
+                                                <MdLogout className="icon"></MdLogout>
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </Topbar>
+                            </div >
+                            <div className="sidebar-dashboard-container">
+                                <Sidebar />
                             </div>
-                            <div className="dashboard-logout-button-section">
-                                <div>
-                                    <Button styleName="icon-button background-red" text={t("SidebarSignOutButton")} onClick={handleLogout}>
-                                        <MdLogout className="icon"></MdLogout>
-                                    </Button>
-                                </div>
+                            <div className="userprofile-dashboard-container">
+                                <DashboardRouter setNameUser={setNameUser}></DashboardRouter>
                             </div>
-                        </Topbar>
+                            {sessionStorage.getItem("role") === "manager" ? <AdminMenu /> : null}
+                        </Router>
                     </div >
-                    <div className="sidebar-dashboard-container">
-                        <Sidebar />
-                    </div>
-                    <div className="userprofile-dashboard-container">
-                        <DashboardRouter setNameUser={setNameUser} />
-                    </div>
-                    {sessionStorage.getItem("role") === "manager" ? <AdminMenu handleModal={handleModal} /> : null}
-                    {
-                        statusModal && <Modal handleModal={() => setStatusModal(false)} sizeHeight={component.sizeHeight} sizeWidth={component.sizeWidth} title={component.title}>
-                            {component.object}
-                        </Modal>
-                    }
-                </Router>
-            </div >
-            :
-            <Redirect exact to={"/login"} />
+                    :
+                    <Redirect exact to={"/login"} />
+            }
+        </ModalContextProvider >
     );
 }

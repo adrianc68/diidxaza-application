@@ -1,10 +1,25 @@
 import "./userlistitem.scss";
 import Button from "../../../Button/Button";
 import { useTranslation } from "react-i18next";
-import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router";
+import { ModalContext } from "../../../../helpers/ModalContext";
+import { useContext } from "react";
 
 export default function UserListItem({ account }) {
     const { t } = useTranslation();
+    const history = useHistory();
+    const { setStatusModal } = useContext(ModalContext);
+
+    const handleModal = () => {
+        setStatusModal(false);
+        history.push({
+            pathname: "/profile/" + account.username,
+            state: {
+                id: account._id,
+            }
+        })
+    };
+
     return (
         <div className="userlistitem-main-container">
             <div className="userlistitem-content">
@@ -20,17 +35,7 @@ export default function UserListItem({ account }) {
                     </div>
                 </div>
                 <div className="userlistitem-button-panel">
-
-                    <NavLink className="link" to=
-                        {{
-                            pathname: "/profile/" + account.username,
-                            state: {
-                                id: account._id,
-                            }
-                        }
-                        }>
-                        <Button styleName="text-button blue-text" text={t("ButtonReportSeeUsersDetails")}></Button>
-                    </NavLink>
+                    <Button styleName="text-button blue-text" text={t("ButtonReportSeeUsersDetails")} onClick={handleModal}></Button>
                 </div>
             </div>
 

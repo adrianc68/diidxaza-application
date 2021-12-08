@@ -115,6 +115,7 @@ export default function AccountsMenu() {
             }
         }, []);
         setActiveClassFilterButtons();
+
     }, [t]);
 
     const handleButtonFilterName = () => {
@@ -132,17 +133,19 @@ export default function AccountsMenu() {
     const handleButtonFilterAge = () => {
         setFilter("/age/");
         setFilterInfo(t("FilterInformationNumbers"));
-        setRegex(/^[0-9]{1,3}$/);
+        setRegex(/^[0-9]{1,2}$/);
     };
 
     const handleButtonFilterEmail = () => {
         setFilter("/email/");
         setFilterInfo(t("FilterInformationEmail"));
+        setRegex(/\b[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,6}\b/);
     };
 
     const handleButtonFilterUsername = () => {
         setFilter("/username/");
         setFilterInfo(t("FilterInformationNumbersLetters"));
+        setRegex(/^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü ]+$/);
     };
 
     return (

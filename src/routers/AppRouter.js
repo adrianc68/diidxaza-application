@@ -6,7 +6,6 @@ import React from "react";
 import { Router, Switch, Route } from "react-router-dom";
 import Dashboard from "../pages/Home/Dashboard";
 import history from "./History";
-import LoadingScreen from "../components/animation/loadingScreen/LoadingScreen";
 
 export default function AppRouter() {
   return (
@@ -27,7 +26,6 @@ export default function AppRouter() {
         <Route exact path="/help" component={Dashboard} />
         <Route exact path="/profile/:id" component={Dashboard} />
         <Route exact path="/profile/:id/edit" component={Dashboard} />
-        <Route exact path="/loading" component={LoadingScreen} />
         <Route path="*" component={PageNotFound} />
       </Switch>
     </Router>

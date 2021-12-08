@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./report.scss";
 import { useTranslation } from "react-i18next";
 import Button from "../Button/Button";
@@ -7,6 +7,7 @@ import { useHistory } from "react-router";
 import { useConvertionData } from "../../hooks/useConvertionData";
 import { BsFillCaretRightFill, BsFillCaretDownFill } from "react-icons/bs";
 import { getMessageResponseStatus } from "../../helpers/MessageResponse";
+import { ModalContext } from "../../helpers/ModalContext";
 
 export default function Report({ report }) {
     const { t } = useTranslation();
@@ -15,6 +16,17 @@ export default function Report({ report }) {
     const history = useHistory();
     const [serverError, setServerError] = useState(null);
     const { convertDate } = useConvertionData();
+    const { setStatusModal } = useContext(ModalContext);
+
+    const handleModal = () => {
+        setStatusModal(false);
+        history.push({
+            pathname: "/profile/" + report.accountReported[0].username,
+            state: {
+                id: report.accountReported[0]._id
+            }
+        })
+    };
 
     const fetchData = (idReported) => {
         setServerError(null);
@@ -45,14 +57,11 @@ export default function Report({ report }) {
                 <span>{report.dateCreation}</span>
                 <span>{convertDate(report.dateCreation)}</span>
                 {
-                    report.accountReported[0]._id === sessionStorage.getItem("id") ? null :
+                    report.accountReported[0]._id === sessionStorage.getItem("id") ?
+                        null
+                        :
                         <div className="report-numeration-container-panel-button">
-                            <Button styleName="text-button blue-text" text={t("ButtonReportSeeUsersDetails")} onClick={() => history.push({
-                                pathname: "/profile/" + report.accountReported[0].username,
-                                state: {
-                                    id: report.accountReported[0]._id
-                                }
-                            })}></Button>
+                            <Button styleName="text-button blue-text" text={t("ButtonReportSeeUsersDetails")} onClick={handleModal}></Button>
                             <Button styleName="text-button blue-text" text={t("ButtonBlockUser")}></Button>
                         </div>
                 }

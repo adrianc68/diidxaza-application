@@ -11,6 +11,7 @@ const Provider = ({ children }) => {
         }
         return false;
     });
+    
     const value = {
         isLogged,
         setLogged: (value) => {

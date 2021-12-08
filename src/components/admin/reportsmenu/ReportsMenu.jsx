@@ -15,6 +15,7 @@ export default function ReportsMenu() {
     const [filter, setFilter] = useState("/usernameAccount/");
     const [timer, setTimer] = useState(null);
     const [errorInformation, setErrorInformation] = useState(null);
+    const [filterInfo, setFilterInfo] = useState(t("FilterInformationNumbersLetters"));
 
     const fetchData = () => {
         setReports([]);
@@ -127,6 +128,9 @@ export default function ReportsMenu() {
                             <Button styleName="primary-button" type="submit">{t("ButtonSearch")}</Button>
                         </div>
                     </form>
+                    {
+                        <span className="color-gray">{filterInfo}</span>
+                    }
                     {
                         <span className="errorInput">{errorInformation}</span>
                     }

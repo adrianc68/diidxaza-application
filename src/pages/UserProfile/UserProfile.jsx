@@ -4,18 +4,19 @@ import { useTranslation } from "react-i18next";
 import UserImageDefault from "../../assets/images/ide-29.svg";
 import UserprofileButtonPanelADM from "../../components/admin/userprofileButtonPanel/UserprofileButtonPanelADM";
 import UserprofileButtonPanelOWU from "../../components/ownuser/userprofileButtonPanel/UserprofileButtonPanelOWU";
-import Modal from "../../components/modal/Modal";
 import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
 import { useConvertionData } from "../../hooks/useConvertionData";
 import CheckProgress from "../../components/ownuser/CheckProgress/CheckProgress";
 import { getMessageResponseStatus } from "../../helpers/MessageResponse";
 import { AccountStatus } from "../../helpers/AccountStatus";
 import { UserType } from "../../helpers/UserType";
+import LoadingScreen from "../../components/animation/loadingScreen/LoadingScreen";
+import { useHistory } from "react-router";
 
 export default function UserProfile({ accountProps }) {
     const { t } = useTranslation();
     const { convertDate } = useConvertionData();
-    const [statusModal, setStatusModal] = useState(false);
+    const history = useHistory();
     const [showProgress, setShowProgress] = useState(false);
     const [totalPoints, setTotalPoints] = useState(null);
     const [totalLessons, setTotalLessons] = useState(null);
@@ -23,6 +24,7 @@ export default function UserProfile({ accountProps }) {
     const [accountID, setAccountID] = useState(null);
     const [errorServerProgressData, setServerErrorProgressData] = useState(null);
     const [imageAccount, setImageAccount] = useState(UserImageDefault);
+    const [isDataLoadead, setLoadedData] = useState(false);
     const [account, setAccount] = useState({
         age: null,
         birthdate: null,
@@ -81,6 +83,7 @@ export default function UserProfile({ accountProps }) {
                         image: imageAccount,
                     };
                     setAccount(account);
+                    setLoadedData(true);
                     return;
                 }
                 setServerError(getMessageResponseStatus(response));
@@ -121,26 +124,8 @@ export default function UserProfile({ accountProps }) {
         setShowProgress(!showProgress);
     };
 
-    const [component, setComponent] = useState({
-        sizeHeight: "",
-        sizeWidth: "",
-        title: "",
-        component: <></>,
-    });
-
     const handleViewProgress = () => {
         fetchProgressData();
-    };
-
-    const handleModal = (ComponentTagA, sizeHeightA, sizeWidthA, titleA) => {
-        const initialValue = {
-            sizeHeight: sizeHeightA,
-            sizeWidth: sizeWidthA,
-            title: titleA,
-            object: ComponentTagA,
-        };
-        setComponent(initialValue);
-        setStatusModal(true);
     };
 
     const isNullData = (value) => {
@@ -149,7 +134,7 @@ export default function UserProfile({ accountProps }) {
             isNull = true;
         }
         return isNull;
-    }
+    };
 
     const checkProfileID = () => {
         var canLookProfile = false;
@@ -167,13 +152,25 @@ export default function UserProfile({ accountProps }) {
             setServerError(t("ErrorAnotherProfileWithoutRoleManager"));
         }
         return canLookProfile;
-    }
+    };
 
     useEffect(() => {
         if (checkProfileID()) {
             fetchData();
         }
-    }, []);
+        
+        return () => {
+            setLoadedData(false);
+            setShowProgress(false);
+            setTotalLessons(null);
+            setTotalPoints(null);
+            setServerError(null);
+            setServerErrorProgressData(null);
+            setAccountID(null);
+            setAccount(null);
+        }
+
+    }, [history.location.pathname]);
 
     return (
         serverError !== null ?
@@ -181,88 +178,86 @@ export default function UserProfile({ accountProps }) {
                 <span>{serverError}</span>
             </div>
             :
-            <div className="userprofile-main-container">
-                <div className="userprofile-user-details-container">
-                    <div className="userprofile-type-user-container">
-                        {
-                            account.role === UserType.MANAGER ?
-                                <div className="type-user-admin">
-                                    <span>{t("TypeUserAdmin")}</span>
-                                </div>
-                                :
-                                <div className="type-user-free">
-                                    <span>{t("TypeUserFree")}</span>
+            isDataLoadead ?
+                < div className="userprofile-main-container" >
+                    <div className="userprofile-user-details-container">
+                        <div className="userprofile-type-user-container">
+                            {
+                                account.role === UserType.MANAGER ?
+                                    <div className="type-user-admin">
+                                        <span>{t("TypeUserAdmin")}</span>
+                                    </div>
+                                    :
+                                    <div className="type-user-free">
+                                        <span>{t("TypeUserFree")}</span>
+                                    </div>
+
+                            }
+                        </div>
+                        <div className="userprofile-user-photo-container">
+                            <img src={imageAccount} alt={t("WelcomeInformationAlt")}></img>
+                        </div>
+                        <hr />
+                        <div className="userprofile-basic-details">
+                            <div>
+                                <span>{t("UserProfileName")}</span>
+                                <span>{account.name}</span>
+                            </div>
+                            <div>
+                                <span>{t("UserProfileAge")}</span>
+                                <span>{account.age}<span /><span>{" " + t("UserProfileYears")}</span></span>
+                            </div>
+                            <div>
+                                <span>{t("UserProfileBirthdate")}</span>
+                                <span>
+                                    {convertDate(account.birthdate)}
+                                </span>
+                            </div>
+                        </div>
+                        <div className="userprofile-account-status-information">
+                            {
+                                account.status === AccountStatus.UNBLOCKED ?
+                                    <span className="status-user-free">{t("UserProfileUserFree")}</span>
+                                    :
+                                    <span className="status-user-banned">{t("UserProfileUserBanned")}</span>
+                            }
+                        </div>
+                    </div>
+                    <div className="userprofile-data-content-contaniner">
+                        <div className="userprofile-user-data-container">
+                            <div className="userprofile-account-container">
+                                <div className="userprofile-account-information">
+                                    <h2>{account.username}</h2>
+                                    <p>{account.email}</p>
                                 </div>
 
-                        }
-                    </div>
-                    <div className="userprofile-user-photo-container">
-                        <img src={imageAccount} alt={t("WelcomeInformationAlt")}></img>
-                    </div>
-                    <hr />
-                    <div className="userprofile-basic-details">
-                        <div>
-                            <span>{t("UserProfileName")}</span>
-                            <span>{account.name}</span>
-                        </div>
-                        <div>
-                            <span>{t("UserProfileAge")}</span>
-                            <span>{account.age}<span /><span>{" " + t("UserProfileYears")}</span></span>
-                        </div>
-                        <div>
-                            <span>{t("UserProfileBirthdate")}</span>
-                            <span>
-                                {convertDate(account.birthdate)}
-                            </span>
-                        </div>
-                    </div>
-                    <div className="userprofile-account-status-information">
-                        {
-                            account.status === AccountStatus.UNBLOCKED ?
-                                <span className="status-user-free">{t("UserProfileUserFree")}</span>
-                                :
-                                <span className="status-user-banned">{t("UserProfileUserBanned")}</span>
-                        }
-                    </div>
-                </div>
-                <div className="userprofile-data-content-contaniner">
-                    <div className="userprofile-user-data-container">
-                        <div className="userprofile-account-container">
-                            <div className="userprofile-account-information">
-                                <h2>{account.username}</h2>
-                                <p>{account.email}</p>
                             </div>
-
-                        </div>
-                        <div className="userprofile-button-panel-container">
-                            <p>{t("UserProfileControlPanel")}</p>
-                            <div className="userprofile-button-panel">
-                                <UserprofileButtonPanelADM handleModal={handleModal} setStatusModal={setStatusModal} account={account} />
-                            </div>
-                            <div className="userprofile-button-panel">
-                                <UserprofileButtonPanelOWU handleModal={handleModal} accountID={accountID} handleViewProgress={handleViewProgress} showProgress={showProgress} />
+                            <div className="userprofile-button-panel-container">
+                                <p>{t("UserProfileControlPanel")}</p>
+                                <div className="userprofile-button-panel">
+                                    <UserprofileButtonPanelADM account={account} />
+                                </div>
+                                <div className="userprofile-button-panel">
+                                    <UserprofileButtonPanelOWU accountID={accountID} handleViewProgress={handleViewProgress} showProgress={showProgress} />
+                                </div>
                             </div>
                         </div>
                         {
-                            statusModal && <Modal handleModal={() => setStatusModal(false)} sizeHeight={component.sizeHeight} sizeWidth={component.sizeWidth} title={component.title}>
-                                {component.object}
-                            </Modal>
+                            showProgress ?
+                                errorServerProgressData === null ?
+                                    <div className="userprofile-progress-container">
+                                        <CheckProgress totalLessons={totalLessons} totalPoints={totalPoints}></CheckProgress>
+                                    </div>
+                                    :
+                                    <div className="userprofile-progress-container">
+                                        <span>{errorServerProgressData}</span>
+                                    </div>
+                                :
+                                null
                         }
                     </div>
-                    {
-                        showProgress ?
-                            errorServerProgressData === null ?
-                                <div className="userprofile-progress-container">
-                                    <CheckProgress totalLessons={totalLessons} totalPoints={totalPoints}></CheckProgress>
-                                </div>
-                                :
-                                <div className="userprofile-progress-container">
-                                    <span>{errorServerProgressData}</span>
-                                </div>
-                            :
-                            null
-                    }
-                </div>
-            </div>
+                </div >
+                :
+                <LoadingScreen></LoadingScreen>
     );
 }
