@@ -58,7 +58,7 @@ export const useLoginForm = (initialForm, validateForm) => {
             sessionStorage.setItem("URL", response.account.URL);
             sessionStorage.setItem("dateBirth", response.account.dateBirth);
             setLogged(true);
-            history.push("/home");
+            history.push("/");
           } else {
             setClaseName("errorMessage");
             if (response.status === RESPONSE_STATUS.NOT_FOUND) {

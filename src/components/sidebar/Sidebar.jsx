@@ -30,7 +30,7 @@ export default function Sidebar() {
 
             <ul>
                 <li>
-                    <NavLink className="sidebar-link" activeClassName="activeItem" to="/home">
+                    <NavLink className="sidebar-link" activeClassName="activeItem" exact to="/">
                         <MdHome className="sidebarIcon" />
                         <span>{t("SidebarHome")}</span>
                     </NavLink>

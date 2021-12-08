@@ -17,7 +17,7 @@ import ResultLesson from "../pages/Learning/Result/ResultLesson";
 export default function DashboardRouter({ setNameUser }) {
   return (
     <Switch>
-      <Route exact path="/home" render={() => <Home></Home>} />
+      <Route exact path="/" render={() => <Home></Home>} />
       <Route
         exact
         path="/email"

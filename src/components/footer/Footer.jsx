@@ -23,7 +23,7 @@ export default function Footer() {
                     <div className="footer-bottom-container-documents">
                         <ul>
                             <li>
-                                <Link className="link" to="/home">
+                                <Link className="link" to="/">
                                     <span>@ 2021 Diidxaza App</span>
                                 </Link>
                             </li>
