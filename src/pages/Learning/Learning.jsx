@@ -1,13 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import "./learning.scss";
 import { useTranslation } from "react-i18next";
 import LessonListItem from "../../components/learning/lessonlistitem/LessonListItem";
 import LessonInformation from "../../components/learning/lessoninformation/LessonInformation";
 import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
-import Modal from "../../components/modal/Modal";
 import AlertMessage from "../../components/alert/AlertMessage";
 import { NUMBER } from "../../helpers/Number";
 import { RESPONSE_STATUS } from "../../helpers/Response";
+import { ModalContext } from "../../helpers/ModalContext";
 
 const totalPoints = (lessonRecords) => {
     let totalPointsRecord = 0;
@@ -26,8 +26,24 @@ export default function Learning() {
     const [lessons, setLessons] = useState([]);
     const [lesson, setLesson] = useState({});
     const [lessonRecords, setLessonRecords] = useState([]);
-    const [modalNotToken, setModalNotToken] = useState(false);
-    const [modalToken, setModalToken] = useState(false);
+
+    const { setStatusModal, setComponent } = useContext(ModalContext);
+
+    const handleModal = (ComponentTagA, sizeHeightA, sizeWidthA, handleModalFunction,  titleA) => {
+        const initialValue = {
+        sizeHeight: sizeHeightA,
+        sizeWidth: sizeWidthA,
+        title: titleA,
+        object: ComponentTagA,
+        handleModal: handleModalFunction,
+        };
+        setComponent(initialValue);
+        setStatusModal(true);
+    };
+    
+    const handleModalLearning =  (content, handleModal, title) => {
+        handleModal(<AlertMessage content={content} handleModal={handleModal}></AlertMessage>,"180px","450px",handleModal,title);
+    } 
 
     useEffect(() => {
         helpHttp().get(UrlAPI + "lessons", {
@@ -50,24 +66,20 @@ export default function Learning() {
                         setLessonRecords(responseRecords);
                     } else {
                         if (responseRecords.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
-                            setModalNotToken(false);
-                            setModalToken(true);
+                            handleModalLearning(t("RefreshToken"),() => { window.location.href = "login";});
                         } else {
                             if (responseRecords.status === RESPONSE_STATUS.UNAUTHORIZED) {
-                                setModalToken(false);
-                                setModalNotToken(true);
+                                handleModalLearning(t("ErrorToken"),() => { setStatusModal(false); });
                             }
                         }
                     }
                 });
             } else {
                 if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
-                    setModalNotToken(false);
-                    setModalToken(true);
+                    handleModalLearning(t("RefreshToken"),() => { window.location.href = "login";});
                 } else {
                     if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
-                        setModalToken(false);
-                        setModalNotToken(true);
+                        handleModalLearning(t("ErrorToken"),() => { setStatusModal(false); });
                     }
                 }
             }
@@ -120,12 +132,6 @@ export default function Learning() {
                     </div>
                 </div>
             </div>
-            {modalNotToken && <Modal handleModal={() => { setModalNotToken(false); }} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={t("ErrorToken")} handleModal={() => { setModalNotToken(false); }}></AlertMessage>
-            </Modal>}
-            {modalToken && <Modal handleModal={() => { window.location.href = "login"; }} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = "login"; }}></AlertMessage>
-            </Modal>}
         </div>
     );
 }

@@ -13,13 +13,7 @@ export default function PageNotFound() {
     return (
         <>
             <div className="pagenotfound-main-container">
-                <Topbar>
-
-                    {/*  IF USER HAS LOGGED IN THEN USE USER COMPONENT ELSE USE
-                        LOGIN/SIGNUP BUTTONS
-                */}
-
-                </Topbar>
+                <Topbar/>
                 <div className="pagenotfound-img-container">
                     <img className="pagenotfound-image" src={NotFound} alt={t("altPageNotFoundImage")}></img>
                 </div>

@@ -5,8 +5,6 @@ import ImageInformationAlt3 from "../../../assets/images/ide-25.svg";
 import Button from "../../../components/Button/Button";
 import { useTranslation } from "react-i18next";
 import { useDiscussionForm } from "../../../hooks/useDiscussionForm";
-import Modal from "../../modal/Modal";
-import AlertMessage from "../../alert/AlertMessage";
 import { Link } from "react-router-dom";
 
 const initialForm = {
@@ -58,10 +56,7 @@ export default function AddDiscussion() {
         classInfo,
         classDoubt,
         classRule,
-        icon,
-        modalNotToken,
-        modalToken,
-        setModalNotToken
+        icon
     } = useDiscussionForm(initialForm, validationsForm);
 
     return (
@@ -128,12 +123,6 @@ export default function AddDiscussion() {
                         </div>
                     </div>
                 </div>
-                {modalNotToken && <Modal handleModal={() => { setModalNotToken(false); }} sizeHeight="20" sizeWidth="35">
-                    <AlertMessage content={t("ErrorToken")} handleModal={() => { setModalNotToken(false); }}></AlertMessage>
-                </Modal>}
-                {modalToken && <Modal handleModal={() => { window.location.href = "login"; }} sizeHeight="20" sizeWidth="35">
-                    <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = "login"; }}></AlertMessage>
-                </Modal>}
             </div>
         </form>
     );

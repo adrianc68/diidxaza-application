@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { helpHttp, UrlAPI } from "../helpers/helpHttp";
 import { BiError, BiBadgeCheck } from "react-icons/bi";
 import { NUMBER } from "../helpers/Number";
 import { RESPONSE_STATUS } from "../helpers/Response";
+import { ModalContext } from "../helpers/ModalContext";
+import AlertMessage from "../components/alert/AlertMessage";
+
 
 export const useReportForm = (initialForm, validateForm, id) => {
   const { t } = useTranslation();
@@ -13,6 +16,24 @@ export const useReportForm = (initialForm, validateForm, id) => {
   const [response, setResponse] = useState(null);
   const [className, setClaseName] = useState("errorDelete");
   const [icon, setIcon] = useState(<BiError />);
+
+  const { setStatusModal, setComponent } = useContext(ModalContext);
+
+  const handleModal = (ComponentTagA, sizeHeightA, sizeWidthA, handleModalFunction,  titleA) => {
+    const initialValue = {
+    sizeHeight: sizeHeightA,
+    sizeWidth: sizeWidthA,
+    title: titleA,
+    object: ComponentTagA,
+    handleModal: handleModalFunction,
+    };
+    setComponent(initialValue);
+    setStatusModal(true);
+  };
+
+  const handleModalForum =  (content, handleModalFunction, title) => {
+    handleModal(<AlertMessage content={content} handleModal={handleModalFunction}></AlertMessage>,"180px","450px",handleModalFunction,title);
+  } 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,7 +49,7 @@ export const useReportForm = (initialForm, validateForm, id) => {
     setErrors(validateForm(form));
   };
 
-  const handleSubmit = (e, setStatusModal, setModalToken) => {
+  const handleSubmit = (e, setStatusModal) => {
     e.preventDefault();
     setErrors(validateForm(form));
     if (Object.keys(errors).length === NUMBER.ZERO) {
@@ -43,7 +64,6 @@ export const useReportForm = (initialForm, validateForm, id) => {
         })
         .then((response) => {
           if (response._id) {
-            setModalToken(false);
             setIcon(<BiBadgeCheck />);
             setClaseName("successfulMessage");
             setResponse(t("ReportUserSuccessful"));
@@ -52,9 +72,8 @@ export const useReportForm = (initialForm, validateForm, id) => {
           } else {
             if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
               setStatusModal(false);
-              setModalToken(true);
+              handleModalForum(t("RefreshToken"),() => { window.location.href = "login";});
             } else {
-              setModalToken(false);
               if (response.status === RESPONSE_STATUS.BAD_REQUEST) {
                 setResponse(t("SignUpVerificationSendNot"));
               } else {

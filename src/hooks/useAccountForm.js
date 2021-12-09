@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { helpHttp, UrlAPI } from "../helpers/helpHttp";
 import { BiError, BiBadgeCheck } from "react-icons/bi";
@@ -6,8 +6,9 @@ import UserImageDefault from "../assets/images/ide-29.svg";
 import { RESPONSE_STATUS } from "../helpers/Response";
 import { NUMBER } from "../helpers/Number";
 import { useHistory } from "react-router-dom";
-import { useContext } from "react";
 import { Context } from "../helpers/Context";
+import { ModalContext } from "../helpers/ModalContext";
+import AlertMessage from "../components/alert/AlertMessage";
 
 export const useLoginForm = (initialForm, validateForm) => {
   const { t } = useTranslation();
@@ -56,7 +57,6 @@ export const useLoginForm = (initialForm, validateForm) => {
             sessionStorage.setItem("status", response.account.status);
             sessionStorage.setItem("username", response.account.username);
             sessionStorage.setItem("URL", response.account.URL);
-            sessionStorage.setItem("dateBirth", response.account.dateBirth);
             setLogged(true);
             history.push("/");
           } else {
@@ -98,8 +98,6 @@ export const useUpdateAccountForm = (
   setForm,
   form,
   setCities,
-  setModalNotToken,
-  setModalToken,
   setNameFile,
   URLPhoto,
   initialfile,
@@ -116,6 +114,25 @@ export const useUpdateAccountForm = (
   const [className, setClaseName] = useState("errorDelete");
   const [icon, setIcon] = useState(<BiError />);
   const [urlFile, setUrlFile] = useState(null);
+
+  const { setStatusModal, setComponent } = useContext(ModalContext);
+
+  const handleModal = (ComponentTagA, sizeHeightA, sizeWidthA, handleModalFunction,  titleA) => {
+    const initialValue = {
+    sizeHeight: sizeHeightA,
+    sizeWidth: sizeWidthA,
+    title: titleA,
+    object: ComponentTagA,
+    handleModal: handleModalFunction,
+    };
+    setComponent(initialValue);
+    setStatusModal(true);
+  };
+
+  const handleModalForum =  (content, handleModalFunction, title) => {
+    handleModal(<AlertMessage content={content} handleModal={handleModalFunction}></AlertMessage>,"180px","450px",handleModalFunction,title);
+  } 
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -187,87 +204,83 @@ export const useUpdateAccountForm = (
     e.preventDefault();
     setErrors(validateForm(form));
     if (Object.keys(errors).length === NUMBER.ZERO && !errorImage) {
-      fetch(UrlAPI + "accounts", {
-        method: "PUT",
+      helpHttp()
+      .put(UrlAPI + "accounts", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
           Authorization: sessionStorage.getItem("token"),
         },
-        body: JSON.stringify(form),
+        body: form
       }).then((response) => {
-        if (response.ok) {
-          response.json().then((responseJson) => {
-            sessionStorage.setItem("name", form.name);
-            sessionStorage.setItem("lastname", form.lastname);
-            setNameUser(form.name + " " + form.lastname);
-            setIcon(<BiBadgeCheck />);
-            setClaseName("successfulMessage");
-            setResponse(t("MessageUpdateAccount"));
-            setLoading(true);
-            setTimeout(() => setLoading(false), 2000);
-            if (urlFile != null) {
-              if (URLPhoto != null) {
-                helpHttp()
-                  .del(UrlAPI + "resources", {
-                    headers: {
-                      Accept: "application/json",
-                      "Content-Type": "application/json",
-                      Authorization: sessionStorage.getItem("token"),
-                    },
-                    body: { URL: URLPhoto },
-                  })
-                  .then((response) => {
-                    if (response.messageHappened) {
-                      var formData = new FormData();
-                      formData.append(
-                        "idAccount",
-                        sessionStorage.getItem("id")
-                      );
-                      formData.append("file", urlFile);
-                      fetch(UrlAPI + "resources/account", {
-                        method: "POST",
-                        body: formData,
-                      }).then((response) => {
-                        if (response.ok) {
-                          response.json().then((responseJson) => {
-                            sessionStorage.setItem("URL", responseJson.URL);
-                            setURLPhoto(responseJson.URL);
-                            setInitialFile(namefile);
-                          });
-                        }
-                      });
-                    }
-                  });
-              } else {
-                var formData = new FormData();
-                formData.append("idAccount", sessionStorage.getItem("id"));
-                formData.append("file", urlFile);
-                fetch(UrlAPI + "resources/account", {
-                  method: "POST",
-                  body: formData,
-                }).then((response) => {
-                  if (response.ok) {
-                    response.json().then((responseJson) => {
-                      sessionStorage.setItem("URL", responseJson.URL);
-                      setURLPhoto(responseJson.URL);
-                      setInitialFile(namefile);
+        if (response.messageHappened) {
+          sessionStorage.setItem("name", form.name);
+          sessionStorage.setItem("lastname", form.lastname);
+          setNameUser(form.name + " " + form.lastname);
+          setIcon(<BiBadgeCheck />);
+          setClaseName("successfulMessage");
+          setResponse(t("MessageUpdateAccount"));
+          setLoading(true);
+          setTimeout(() => setLoading(false), 2000);
+          if (urlFile != null) {
+            if (URLPhoto != null) {
+              helpHttp()
+                .del(UrlAPI + "resources", {
+                  headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: sessionStorage.getItem("token"),
+                  },
+                  body: { URL: URLPhoto }
+                })
+                .then((response) => {
+                  if (response.messageHappened) {
+                    var formData = new FormData();
+                    formData.append(
+                      "idAccount",
+                      sessionStorage.getItem("id")
+                    );
+                    formData.append("file", urlFile);
+                    fetch(UrlAPI + "resources/account", {
+                      method: "POST",
+                      body: formData,
+                    }).then((response) => {
+                      if (response.ok) {
+                        response.json().then((responseJson) => {
+                          sessionStorage.setItem("URL", responseJson.URL);
+                          setURLPhoto(responseJson.URL);
+                          setInitialFile(namefile);
+                        });
+                      }
                     });
                   }
                 });
-              }
+            } else {
+              var formData = new FormData();
+              formData.append("idAccount", sessionStorage.getItem("id"));
+              formData.append("file", urlFile);
+              fetch(UrlAPI + "resources/account", {
+                method: "POST",
+                body: formData,
+              }).then((response) => {
+                if (response.ok) {
+                  response.json().then((responseJson) => {
+                    sessionStorage.setItem("URL", responseJson.URL);
+                    setURLPhoto(responseJson.URL);
+                    setInitialFile(namefile);
+                  });
+                }
+              });
             }
-          });
+          }
         } else {
           if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
             setLoading(false);
-            setModalNotToken(false);
-            setModalToken(true);
+            handleModalForum(t("RefreshToken"),() => { window.location.href = "../login";});
           } else {
             if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
               setLoading(false);
-              setModalToken(false);
-              setModalNotToken(true);
+              handleModalForum(t("ErrorToken"),() => { setStatusModal(false); });
             } else {
               setIcon(<BiError />);
               setClaseName("errorMessage");
@@ -281,6 +294,7 @@ export const useUpdateAccountForm = (
                 }
               }
               setLoading(true);
+              setTimeout(() => setLoading(false), 3000);
             }
           }
         }

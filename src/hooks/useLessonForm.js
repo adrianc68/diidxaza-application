@@ -1,7 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useTranslation } from "react-i18next";
 import { helpHttp, UrlAPI } from "../helpers/helpHttp";
 import { NUMBER } from "../helpers/Number";
 import { RESPONSE_STATUS } from "../helpers/Response";
+import AlertMessage from "../components/alert/AlertMessage";
+import { ModalContext } from "../helpers/ModalContext";
 
 export const useLessonForm = (
   setQuestion,
@@ -11,8 +14,6 @@ export const useLessonForm = (
   question,
   answers,
   setVisible,
-  setModalNotToken,
-  setModalToken,
   lesson
 ) => {
   const [pointsObtained, setPointsObtained] = useState(0);
@@ -23,6 +24,24 @@ export const useLessonForm = (
   const [resultsQuestions, setResultsQuestions] = useState([]);
   const [idLesson, setIdLesson] = useState(lesson);
   const [isFinishLesson, setIsFinishLesson] = useState(false);
+  const { t } = useTranslation();
+  const { setStatusModal, setComponent } = useContext(ModalContext);
+
+  const handleModal = (ComponentTagA, sizeHeightA, sizeWidthA, handleModalFunction,  titleA) => {
+    const initialValue = {
+    sizeHeight: sizeHeightA,
+    sizeWidth: sizeWidthA,
+    title: titleA,
+    object: ComponentTagA,
+    handleModal: handleModalFunction,
+    };
+    setComponent(initialValue);
+    setStatusModal(true);
+  };
+
+  const handleModalForum =  (content, handleModalFunction, title) => {
+    handleModal(<AlertMessage content={content} handleModal={handleModalFunction}></AlertMessage>,"180px","450px",handleModalFunction,title);
+  } 
 
   const handleChangeAnswerOnly = (e) => {
     e.stopPropagation();
@@ -145,12 +164,10 @@ export const useLessonForm = (
             setLoadingError(false);
           } else {
             if (responseAnswers.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
-              setModalNotToken(false);
-              setModalToken(true);
+              handleModalForum(t("RefreshToken"),() => { window.location.href = "login";});
             } else {
               if (responseAnswers.status === RESPONSE_STATUS.UNAUTHORIZED) {
-                setModalToken(false);
-                setModalNotToken(true);
+                handleModalForum(t("ErrorToken"),() => { setStatusModal(false); });
               } else {
                 setLoadingError(true);
               }
@@ -192,12 +209,10 @@ export const useLessonForm = (
           setIsFinishLesson(false);
         } else {
           if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
-            setModalNotToken(false);
-            setModalToken(true);
+            handleModalForum(t("RefreshToken"),() => { window.location.href = "login";});
           } else {
             if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
-              setModalToken(false);
-                setModalNotToken(true);
+              handleModalForum(t("ErrorToken"),() => { setStatusModal(false); });
             } else {
               setLoadingError(true);
             }
@@ -205,7 +220,7 @@ export const useLessonForm = (
         }
       });
     }
-  },[isFinishLesson,idLesson,pointsObtained,setVisible,setModalNotToken,setModalNotToken,setLoadingError,helpHttp,UrlAPI,setIsFinishLesson]);
+  },[isFinishLesson,idLesson,pointsObtained,setVisible,handleModalForum,setLoadingError,helpHttp,UrlAPI,setIsFinishLesson]);
 
   return {
     handleClick,
