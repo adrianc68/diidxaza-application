@@ -39,9 +39,7 @@ describe("Add Discussion", () => {
         cy.contains('info').click();
         cy.get('[name="title"]').clear().type("¿Qué opinan de las lecciones?");
         cy.get('[name="comment"]').clear().type("Las lecciones son un poco fáciles");
-        cy.wait(1500);
         cy.get('.adddiscussion-main-content').click();
-        cy.wait(2000);
         cy.get('.adddiscussion-main-container').get('form').submit();
         cy.get('.successfulMessage').contains("La discusión se registro exitosamente");
     });

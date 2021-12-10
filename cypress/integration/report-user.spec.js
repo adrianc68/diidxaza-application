@@ -47,7 +47,6 @@ describe("Report User", () => {
     it("Report User Successful", () => {
         cy.wait(2000);
         cy.contains('Reportar usuario').click();
-        cy.wait(2000);
         cy.get(':nth-child(2) > label').click();
         cy.get(':nth-child(2) > label').click();
         cy.get('[name="context"]').type("No me gusta la forma en que escribe los comentarios");

@@ -41,6 +41,7 @@ export const useReportForm = (initialForm, validateForm, id) => {
       ...form,
       [name]: value,
       accountReported: id,
+      idAccount: sessionStorage.getItem("id"),
     });
   };
 
@@ -53,6 +54,11 @@ export const useReportForm = (initialForm, validateForm, id) => {
     e.preventDefault();
     setErrors(validateForm(form));
     if (Object.keys(errors).length === NUMBER.ZERO) {
+      setForm({
+        ...form,
+        idAccount: sessionStorage.getItem("id"),
+        accountReported: id,
+      });
       helpHttp()
         .post(UrlAPI + "reports", {
           headers: {

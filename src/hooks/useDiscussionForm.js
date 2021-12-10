@@ -658,7 +658,7 @@ export const useDiscussionForm = (initialForm, validateForm) => {
     }
     setForm({
       ...form,
-      theme,
+      theme:theme,
     });
   };
 
@@ -668,6 +668,10 @@ export const useDiscussionForm = (initialForm, validateForm) => {
     if (Object.keys(errors).length === NUMBER.ZERO) {
       let regexTheme = /(?:info|duda|regla)$/;
       if (regexTheme.test(form.theme)) {
+        setForm({
+          ...form,
+          idAccount: sessionStorage.getItem("id"),
+        });
         helpHttp()
           .post(UrlAPI + "discussions", {
             headers: {
