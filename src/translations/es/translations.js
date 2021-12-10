@@ -442,7 +442,7 @@ export const TRANSLATIONS_ES = {
     ServerError400: "La solicitud enviada no es válida",
     ServerError403: "No estás autorizado para realizar esta funcionalidad",
     ServerError409: "Existe un conflicto con el estado actual del servidor",
-    ServerError500: "Error interno en el servidor",
+    ServerError500: "Error en el servidor. Intenta más tarde",
     ServerDefaultError: "Error $, contacta a un administrador.",
     ServerConnectionRefused: "No se ha podido establecer una conexión con el servidor.",
 };
