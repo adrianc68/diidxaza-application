@@ -1,4 +1,4 @@
-import i18n from "../translations/i18n";
+import i18n from "../translations/I18n";
 import { RESPONSE_STATUS } from "./Response";
 
 const checkStateResponseHTTP = (status) => {

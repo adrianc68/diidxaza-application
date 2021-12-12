@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./forum.scss";
-import Button from "../../components/Button/Button";
+import Button from "../../components/button/Button";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import Discussion from "../../components/forum/discussion/Discussion";

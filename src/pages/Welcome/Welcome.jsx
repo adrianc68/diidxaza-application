@@ -3,7 +3,7 @@ import "./welcome.scss";
 import Footer from "../../components/footer/Footer";
 import { useTranslation } from "react-i18next";
 import Topbar from "../../components/topbar/Topbar";
-import Button from "../../components/Button/Button";
+import Button from "../../components/button/Button";
 import SubtitlesVideo from "../../assets/vtt/Subtitles.vtt";
 import WelcomeImage from "../../assets/images/ide-22.svg";
 import ImageBenefit01 from "../../assets/images/ide-11.svg";

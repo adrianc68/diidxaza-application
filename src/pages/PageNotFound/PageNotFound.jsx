@@ -2,11 +2,11 @@ import React from "react";
 import NotFound from "../../assets/images/ide-07.svg";
 import { IoMdHome } from "react-icons/io";
 import { useTranslation } from "react-i18next";
-import "../../translations/i18n";
+import "../../translations/I18n";
 import { Link } from "react-router-dom";
 import "./pageNotFound.scss";
 import Topbar from "../../components/topbar/Topbar";
-import Button from "../../components/Button/Button";
+import Button from "../../components/button/Button";
 
 export default function PageNotFound() {
     const { t } = useTranslation();

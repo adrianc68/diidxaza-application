@@ -3,8 +3,8 @@ import "./adminMenu.scss";
 import { useTranslation } from "react-i18next";
 import { MdOutlineBugReport, MdSupervisorAccount } from "react-icons/md";
 import { FaGripLinesVertical } from "react-icons/fa";
-import ReportsMenu from "../reportsmenu/ReportsMenu";
-import AccountsMenu from "../accountsmenu/AccountsMenu";
+import ReportsMenu from "../reportsMenu/ReportsMenu";
+import AccountsMenu from "../accountsMenu/AccountsMenu";
 import { ModalContext } from "../../../helpers/ModalContext";
 
 export default function AdminMenu() {

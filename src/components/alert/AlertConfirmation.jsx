@@ -1,5 +1,5 @@
 import "./alertConfirmation.scss";
-import Button from "../Button/Button";
+import Button from "../button/Button";
 
 export default function AlertConfirmation({ primaryButton, secondaryButton, content, handlePrimary, setStatusModal }) {
 

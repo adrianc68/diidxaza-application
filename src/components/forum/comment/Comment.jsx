@@ -1,8 +1,8 @@
 import React, {useContext } from "react";
 import "./comment.scss";
-import Button from "../../../components/Button/Button";
+import Button from "../../button/Button";
 import { useTranslation } from "react-i18next";
-import ReportUser from "../../anotheruser/reportuser/ReportUser";
+import ReportUser from "../../anotherUser/reportUser/ReportUser";
 import AlertConfirmation from "../../alert/AlertConfirmation";
 import { useConvertionData } from "../../../hooks/useConvertionData";
 import { ModalContext } from "../../../helpers/ModalContext";
