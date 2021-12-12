@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
-import "./answersection.scss";
+import "./answerSection.scss";
 import Button from "../../../components/Button/Button";
 import { useTranslation } from "react-i18next";
 import MultipleAnswer from "../../../components/learning/options/multiple/MultipleAnswer";
 import UniqueAnswer from "../../../components/learning/options/unique/UniqueAnswer";
-import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
+import { helpHttp, UrlAPI } from "../../../helpers/HelpHttp";
 import ImageInformationAlt from "../../../assets/images/ide-22.svg";
 import { useLessonForm } from "../../../hooks/useLessonForm";
 import { Link } from "react-router-dom";

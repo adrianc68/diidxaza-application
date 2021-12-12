@@ -1,4 +1,4 @@
-import "./adddiscussion.scss";
+import "./addDiscussion.scss";
 import ImageInformationAlt1 from "../../../assets/images/ide-13.svg";
 import ImageInformationAlt2 from "../../../assets/images/ide-23.svg";
 import ImageInformationAlt3 from "../../../assets/images/ide-25.svg";

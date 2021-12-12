@@ -3,7 +3,7 @@ import "./learning.scss";
 import { useTranslation } from "react-i18next";
 import LessonListItem from "../../components/learning/lessonlistitem/LessonListItem";
 import LessonInformation from "../../components/learning/lessoninformation/LessonInformation";
-import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
+import { helpHttp, UrlAPI } from "../../helpers/HelpHttp";
 import AlertMessage from "../../components/alert/AlertMessage";
 import { NUMBER } from "../../helpers/Number";
 import { RESPONSE_STATUS } from "../../helpers/Response";

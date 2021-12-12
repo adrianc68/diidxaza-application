@@ -1,8 +1,8 @@
 import { useState } from "react";
-import "./changestatususer.scss";
+import "./changeStatusUser.scss";
 import Button from "../../Button/Button";
 import { useTranslation } from "react-i18next";
-import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
+import { helpHttp, UrlAPI } from "../../../helpers/HelpHttp";
 import { AccountStatus } from "../../../helpers/AccountStatus";
 import { getMessageResponseStatus } from "../../../helpers/MessageResponse";
 

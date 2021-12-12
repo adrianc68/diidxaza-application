@@ -1,4 +1,4 @@
-import "./reportuser.scss";
+import "./reportUser.scss";
 import Button from "../../Button/Button";
 import { useTranslation } from "react-i18next";
 import { useReportForm } from "../../../hooks/useReportForm";

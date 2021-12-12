@@ -1,10 +1,10 @@
 import { React, useEffect, useState } from "react";
-import "./userprofile.scss";
+import "./userProfile.scss";
 import { useTranslation } from "react-i18next";
 import UserImageDefault from "../../assets/images/ide-29.svg";
 import UserprofileButtonPanelADM from "../../components/admin/userprofileButtonPanel/UserprofileButtonPanelADM";
 import UserprofileButtonPanelOWU from "../../components/ownuser/userprofileButtonPanel/UserprofileButtonPanelOWU";
-import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
+import { helpHttp, UrlAPI } from "../../helpers/HelpHttp";
 import { useConvertionData } from "../../hooks/useConvertionData";
 import CheckProgress from "../../components/ownuser/CheckProgress/CheckProgress";
 import { getMessageResponseStatus } from "../../helpers/MessageResponse";

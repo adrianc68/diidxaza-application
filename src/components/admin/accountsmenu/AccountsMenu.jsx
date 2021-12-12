@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "./accountsmenu.scss";
+import "./accountsMenu.scss";
 import Button from "../../../components/Button/Button";
 import { useTranslation } from "react-i18next";
 import UserListItem from "./userlistitem/UserListItem";
-import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
+import { helpHttp, UrlAPI } from "../../../helpers/HelpHttp";
 import { BiSlider } from "react-icons/bi";
 import { getMessageResponseStatus } from "../../../helpers/MessageResponse";
 

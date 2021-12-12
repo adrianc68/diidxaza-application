@@ -1,4 +1,4 @@
-import "./multipleanswer.scss";
+import "./multipleAnswer.scss";
 
 export default function MultipleAnswer({ answers, handleChange }) {
     return (

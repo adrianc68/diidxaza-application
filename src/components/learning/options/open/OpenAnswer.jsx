@@ -1,4 +1,4 @@
-import "./openanswer.scss";
+import "./openAnswer.scss";
 import { useTranslation } from "react-i18next";
 
 export default function OpenAnswer() {

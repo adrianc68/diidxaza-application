@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import "./reportsmenu.scss";
+import "./reportsMenu.scss";
 import Button from "../../../components/Button/Button";
 import { useTranslation } from "react-i18next";
 import Report from "../../report/Report";
-import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
+import { helpHttp, UrlAPI } from "../../../helpers/HelpHttp";
 import { BiSlider } from "react-icons/bi";
 import { getMessageResponseStatus } from "../../../helpers/MessageResponse";
 

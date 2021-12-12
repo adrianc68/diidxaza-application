@@ -7,7 +7,7 @@ import Discussion from "../../components/forum/discussion/Discussion";
 import DiscussionListItem from "../../components/forum/discussionlistitem/DiscussionListItem";
 import { useForum } from "../../hooks/useDiscussionForm";
 import AddComment from "../../components/forum/addcomment/AddComment";
-import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
+import { helpHttp, UrlAPI } from "../../helpers/HelpHttp";
 import ImageInformationAlt from "../../assets/images/ide-22.svg";
 import { BiSlider } from "react-icons/bi";
 import { NUMBER } from "../../helpers/Number";

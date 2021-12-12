@@ -1,4 +1,4 @@
-import "./signup.scss";
+import "./signUp.scss";
 import Topbar from "../../../components/topbar/Topbar";
 import { useTranslation } from "react-i18next";
 import Button from "../../../components/Button/Button";

@@ -1,5 +1,5 @@
 import { React } from "react";
-import "./checkprogress.scss";
+import "./checkProgress.scss";
 import { useTranslation } from "react-i18next";
 import ImageInformationAlt from "../../../assets/images/ide-47.svg";
 import ImageInformationAlt2 from "../../../assets/images/ide-46.svg";
