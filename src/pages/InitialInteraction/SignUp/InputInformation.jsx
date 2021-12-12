@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./InputInformation.scss";
+import "./inputInformation.scss";
 import { useTranslation } from "react-i18next";
 import Button from "../../../components/Button/Button";
 import { helpHttp, UrlAPI } from "../../../helpers/HelpHttp";
