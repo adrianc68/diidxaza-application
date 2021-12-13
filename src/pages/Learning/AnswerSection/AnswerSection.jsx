@@ -67,7 +67,7 @@ export default function AnswerSection({ lesson }) {
                     } else {
                         setClassName("not-found-questions");
                         if (responseAnswers.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
-                            handleModalAnswer(t("RefreshToken"),() => { window.location.href = "login";});
+                            handleModalAnswer(t("RefreshToken"),() => { window.location.href = "../login";});
                         } else {
                             if (responseAnswers.status === RESPONSE_STATUS.UNAUTHORIZED) {
                                 handleModalAnswer(t("ErrorToken"),() => { setStatusModal(false); });
@@ -78,7 +78,7 @@ export default function AnswerSection({ lesson }) {
             } else {
                 setClassName("not-found-questions");
                 if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
-                    handleModalAnswer(t("RefreshToken"),() => { window.location.href = "login";});
+                    handleModalAnswer(t("RefreshToken"),() => { window.location.href = "../login";});
                 } else {
                     if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
                         handleModalAnswer(t("ErrorToken"),() => { setStatusModal(false); });

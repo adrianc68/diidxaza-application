@@ -190,4 +190,4 @@ describe("Consult Discussion", () => {
         cy.contains('Siguiendo').click();
         cy.get('.forum-discussion-list').contains("No se encontraron discusiones");
     });
-})
+});

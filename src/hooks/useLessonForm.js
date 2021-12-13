@@ -164,7 +164,7 @@ export const useLessonForm = (
             setLoadingError(false);
           } else {
             if (responseAnswers.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
-              handleModalForum(t("RefreshToken"),() => { window.location.href = "login";});
+              handleModalForum(t("RefreshToken"),() => { window.location.href = "../login";});
             } else {
               if (responseAnswers.status === RESPONSE_STATUS.UNAUTHORIZED) {
                 handleModalForum(t("ErrorToken"),() => { setStatusModal(false); });
@@ -184,12 +184,14 @@ export const useLessonForm = (
     const isValid = await validateQuestions();
     if (isValid) {
       setIsFinishLesson(true);
+      setIsFinishLesson(false);
     } else {
       setLoading(true);
     }
   };
   useEffect(() => {
     if(isFinishLesson){
+      console.log("HOLA")
       helpHttp()
       .post(UrlAPI + "lessonRecords", {
         headers: {
@@ -209,7 +211,7 @@ export const useLessonForm = (
           setIsFinishLesson(false);
         } else {
           if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
-            handleModalForum(t("RefreshToken"),() => { window.location.href = "login";});
+            handleModalForum(t("RefreshToken"),() => { window.location.href = "../login";});
           } else {
             if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
               handleModalForum(t("ErrorToken"),() => { setStatusModal(false); });
