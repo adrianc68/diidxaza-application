@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./editProfile.scss";
 import { useTranslation } from "react-i18next";
-import Button from "../../button/Button";
+import Button from "../../Button/Button";
 import AlertMessage from "../../alert/AlertMessage";
 import { helpHttp, UrlAPI } from "../../../helpers/HelpHttp";
 import { useUpdateAccountForm } from "../../../hooks/useAccountForm";

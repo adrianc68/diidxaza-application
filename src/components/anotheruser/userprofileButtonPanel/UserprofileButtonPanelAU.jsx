@@ -1,4 +1,4 @@
-import Button from "../../button/Button";
+import Button from "../../Button/Button";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 

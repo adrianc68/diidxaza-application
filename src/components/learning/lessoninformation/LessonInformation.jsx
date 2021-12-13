@@ -1,5 +1,5 @@
 import "./lessonInformation.scss";
-import Button from "../../button/Button";
+import Button from "../../Button/Button";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 

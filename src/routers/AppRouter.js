@@ -1,10 +1,10 @@
-import Login from "../pages/initialInteraction/login/Login";
-import Welcome from "../pages/welcome/Welcome";
-import PageNotFound from "../pages/pageNotFound/PageNotFound";
-import SignUp from "../pages/initialInteraction/signUp/SignUp";
+import Login from "../pages/InitialInteraction/Login/Login";
+import Welcome from "../pages/Welcome/Welcome";
+import PageNotFound from "../pages/PageNotFound/PageNotFound";
+import SignUp from "../pages/InitialInteraction/SignUp/SignUp";
 import React from "react";
 import { Router, Switch, Route, Redirect } from "react-router-dom";
-import Dashboard from "../pages/home/Dashboard";
+import Dashboard from "../pages/Home/Dashboard";
 import history from "./History";
 import { useContext } from "react";
 import { Context } from "../helpers/Context";

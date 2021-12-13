@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./inputInformation.scss";
 import { useTranslation } from "react-i18next";
-import Button from "../../../components/button/Button";
+import Button from "../../../components/Button/Button";
 import { helpHttp, UrlAPI } from "../../../helpers/HelpHttp";
 import { useAccountForm } from "../../../hooks/useAccountForm";
 import { useHistory } from "react-router-dom";

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Topbar from "../../components/topbar/Topbar";
 import "./dashboard.scss";
-import Button from "../../components/button/Button";
+import Button from "../../components/Button/Button";
 import { Router, Redirect } from "react-router-dom";
 import AdminMenu from "../../components/admin/menu/AdminMenu";
 import DashboardRouter from "../../routers/DashboardRouter";

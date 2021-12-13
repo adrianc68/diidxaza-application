@@ -6,7 +6,7 @@ import "../../translations/I18n";
 import { Link } from "react-router-dom";
 import "./pageNotFound.scss";
 import Topbar from "../../components/topbar/Topbar";
-import Button from "../../components/button/Button";
+import Button from "../../components/Button/Button";
 
 export default function PageNotFound() {
     const { t } = useTranslation();

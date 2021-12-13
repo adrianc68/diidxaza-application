@@ -1,6 +1,6 @@
 import "./verificationCode.scss";
 import { useTranslation } from "react-i18next";
-import Button from "../../../components/button/Button";
+import Button from "../../../components/Button/Button";
 import ImageDelivery from "../../../assets/images/ide-34.svg";
 import "./signUp.scss";
 import { useVerificationForm } from "../../../hooks/useAccountForm";

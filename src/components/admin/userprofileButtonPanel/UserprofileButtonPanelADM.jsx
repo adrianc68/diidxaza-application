@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import Button from "../../button/Button";
+import Button from "../../Button/Button";
 import { useTranslation } from "react-i18next";
-import UserReports from "../userReports/UserReports";
-import ChangeStatusUser from "../changeStatus/ChangeStatusUser";
+import UserReports from "../userreports/UserReports";
+import ChangeStatusUser from "../changestatus/ChangeStatusUser";
 import { UserType } from "../../../helpers/UserType";
 import { AccountStatus } from "../../../helpers/AccountStatus";
 import { ModalContext } from "../../../helpers/ModalContext";

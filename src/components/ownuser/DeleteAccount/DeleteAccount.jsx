@@ -1,5 +1,5 @@
 import "./deleteAccount.scss";
-import Button from "../../button/Button";
+import Button from "../../Button/Button";
 import { useTranslation } from "react-i18next";
 import ImageInformationAlt from "../../../assets/images/ide-36.svg";
 

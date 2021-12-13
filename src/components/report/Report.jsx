@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import "./report.scss";
 import { useTranslation } from "react-i18next";
-import Button from "../button/Button";
+import Button from "../Button/Button";
 import { helpHttp, UrlAPI } from "../../helpers/HelpHttp";
 import { useHistory } from "react-router";
 import { useConvertionData } from "../../hooks/useConvertionData";

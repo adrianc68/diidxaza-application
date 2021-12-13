@@ -1,6 +1,6 @@
 import "./addComment.scss";
 import { useTranslation } from "react-i18next";
-import Button from "../../button/Button";
+import Button from "../../Button/Button";
 
 export default function AddComment({ commentLenght, loadingComment, icon, className, responseComment, handleChangeComment, handleSubmitComment, handleBlurComment, formComment, errorsComment, handleClickComment }) {
     const { t } = useTranslation();

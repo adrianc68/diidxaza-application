@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import "./answerSection.scss";
-import Button from "../../../components/button/Button";
+import Button from "../../../components/Button/Button";
 import { useTranslation } from "react-i18next";
 import MultipleAnswer from "../../../components/learning/options/multiple/MultipleAnswer";
 import UniqueAnswer from "../../../components/learning/options/unique/UniqueAnswer";
@@ -9,7 +9,7 @@ import ImageInformationAlt from "../../../assets/images/ide-22.svg";
 import { useLessonForm } from "../../../hooks/useLessonForm";
 import { Link } from "react-router-dom";
 import { BiError } from "react-icons/bi";
-import LessonResults from "../../../components/learning/lessonResults/LessonResults";
+import LessonResults from "../../../components/learning/lessonresults/LessonResults";
 import AlertMessage from "../../../components/alert/AlertMessage";
 import { NUMBER } from "../../../helpers/Number";
 import { RESPONSE_STATUS } from "../../../helpers/Response";

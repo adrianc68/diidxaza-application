@@ -1,5 +1,5 @@
 import "./alertMessage.scss";
-import Button from "../button/Button";
+import Button from "../Button/Button";
 import { useTranslation } from "react-i18next";
 
 export default function AlertMessage({ content, handleModal }) {

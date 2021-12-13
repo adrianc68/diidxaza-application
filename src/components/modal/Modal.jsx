@@ -1,5 +1,5 @@
 import "./modal.scss";
-import Button from "../button/Button";
+import Button from "../Button/Button";
 import PropTypes from "prop-types";
 import { AiFillCloseSquare } from "react-icons/ai";
 

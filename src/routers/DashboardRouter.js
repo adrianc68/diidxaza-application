@@ -1,18 +1,18 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Home from "../components/home/Home";
-import UnderConstruction from "../pages/underConstruction/UnderConstruction";
-import Forum from "../pages/forum/Forum";
-import Learning from "../pages/learning/Learning";
-import History from "../pages/history/History";
-import UserProfile from "../pages/userProfile/UserProfile";
-import CheckProgress from "../components/ownUser/CheckProgress/CheckProgress";
-import EditProfile from "../components/ownUser/EditProfile/EditProfile";
-import ReportsMenu from "../components/admin/reportsMenu/ReportsMenu";
-import AccountsMenu from "../components/admin/accountsMenu/AccountsMenu";
+import UnderConstruction from "../pages/UnderConstruction/UnderConstruction";
+import Forum from "../pages/Forum/Forum";
+import Learning from "../pages/Learning/Learning";
+import History from "../pages/History/History";
+import UserProfile from "../pages/UserProfile/UserProfile";
+import CheckProgress from "../components/ownuser/CheckProgress/CheckProgress";
+import EditProfile from "../components/ownuser/EditProfile/EditProfile";
+import ReportsMenu from "../components/admin/reportsmenu/ReportsMenu";
+import AccountsMenu from "../components/admin/accountsmenu/AccountsMenu";
 import AddDiscussion from "../components/forum/adddiscussion/AddDiscussion";
-import AnswerSection from "../pages/learning/answerSection/AnswerSection";
-import ResultLesson from "../pages/learning/result/ResultLesson";
+import AnswerSection from "../pages/Learning/answerSection/AnswerSection";
+import ResultLesson from "../pages/Learning/result/ResultLesson";
 
 export default function DashboardRouter({ setNameUser }) {
   return (
