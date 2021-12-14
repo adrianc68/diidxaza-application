@@ -1,0 +1,166 @@
+@import "../../components/variables.module.scss";
+
+.email-main-container {
+  box-shadow: rgba(9, 30, 66, 0.25) 0 1px 1px, rgba(9, 30, 66, 0.13) 0 0 1px 1px;
+  border-radius: 3px;
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
+  color: rgb(94, 90, 90);
+
+  .email-content-container {
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+
+    .email-search-container {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+
+      .email-create-button-panel {
+        padding: 15px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .form-search-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .form-search-input-container {
+          display: flex;
+          flex: 1;
+          gap: 15px;
+
+          .form-search-input {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            gap: 15px;
+          }
+
+          .form-search-button {
+            width: 90px;
+          }
+        }
+      }
+    }
+
+    .email-content {
+      display: flex;
+      flex-grow: 1;
+      overflow: auto;
+
+      .email-left-side-container {
+        width: 16%;
+        height: 100%;
+
+        .email-sidebar {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          transition: all 0.4s ease-in;
+          overflow-x: auto;
+
+          ul {
+            height: inherit;
+
+            li {
+              list-style: none;
+              width: 100%;
+              cursor: pointer;
+              border-radius: 3px;
+
+              .email-sidebar-icon {
+                text-align: center;
+                color: rgb(71, 70, 70);
+                text-decoration: none;
+                font-size: 20px;
+                padding-left: 10%;
+              }
+
+              .email-sidebar-link {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 15px;
+                height: 52px;
+                text-decoration: none;
+                transition: transform 5s ease;
+
+                span {
+                  font-size: 0.78em;
+                  font-weight: 400;
+                  color: rgb(94, 90, 90);
+                }
+              }
+
+              .email-sidebar-link.active {
+                background-color: #eaeaee;
+              }
+            }
+
+            li:hover {
+              background: #eaeaee;
+            }
+          }
+        }
+
+        .email-create-button-panel {
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+        }
+      }
+
+      .email-right-side-container {
+        padding: 5px;
+        padding-right: 15px;
+        padding-left: 10px;
+        flex: 1;
+        height: calc(100% - 10px);
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+
+        .email-rs-navigation {
+          border-bottom: 1px solid #c7c6c6;
+          padding: 5px;
+          height: 40px;
+          display: flex;
+          justify-content: space-between;
+
+          .email-rs-button-container {
+            width: 55px;
+            border-radius: 3px;
+
+            .icon {
+              font-size: 20px;
+              color: rgb(87, 85, 85);
+            }
+          }
+
+          .email-rs-button-container:hover {
+            background-color: rgb(239, 241, 243);
+          }
+        }
+
+        .email-rs-content-items {
+          flex-grow: 1;
+          height: calc(100% - 30px);
+          padding-left: 5px;
+          padding-right: 5px;
+          padding-top: 15px;
+          overflow: auto;
+        }
+      }
+    }
+  }
+}

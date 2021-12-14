@@ -8,6 +8,7 @@ import Dashboard from "../pages/Home/Dashboard";
 import history from "./History";
 import { useContext } from "react";
 import { Context } from "../helpers/Context";
+import EmailInbox from "../components/email/emailInbox/EmailInbox";
 
 export default function AppRouter() {
   const { isLogged } = useContext(Context);
@@ -31,6 +32,11 @@ export default function AppRouter() {
           <Route exact path="/help" component={Dashboard} />
           <Route exact path="/profile/:id" component={Dashboard} />
           <Route exact path="/profile/:id/edit" component={Dashboard} />
+          <Route exact path="/email/inbox/" component={Dashboard}/>
+          <Route exact path="/email/inbox/:id" component={Dashboard} />
+          <Route exact path="/email/sent/" component={Dashboard} />
+          <Route exact path="/email/sent/:id" component={Dashboard} />
+          <Route exact path="/email/create/" component={Dashboard}/>
           <Route path="*" component={PageNotFound} />
         </Switch>
       ) : (
@@ -49,6 +55,11 @@ export default function AppRouter() {
           <Route exact path="/help" component={Dashboard} />
           <Route exact path="/profile/:id" component={Dashboard} />
           <Route exact path="/profile/:id/edit" component={Dashboard} />
+          <Route exact path="/email/inbox/" component={Dashboard}/>
+          <Route exact path="/email/inbox/:id" component={Dashboard} />
+          <Route exact path="/email/sent/" component={Dashboard} />
+          <Route exact path="/email/sent/:id" component={Dashboard} />
+          <Route exact path="/email/create/" component={Dashboard}/>
           <Route path="*" component={PageNotFound} />
         </Switch>
       )}

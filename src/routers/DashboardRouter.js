@@ -13,17 +13,24 @@ import AccountsMenu from "../components/admin/accountsmenu/AccountsMenu";
 import AddDiscussion from "../components/forum/adddiscussion/AddDiscussion";
 import AnswerSection from "../pages/Learning/AnswerSection/AnswerSection";
 import ResultLesson from "../pages/Learning/Result/ResultLesson";
+import Email from "../pages/Email/Email";
 
 export default function DashboardRouter({ setNameUser }) {
   return (
     <Switch>
+      <Route exact path="/email/inbox/" render={() => <Email></Email>} />
+      <Route exact path="/email/inbox/:id" render={() => <Email></Email>} />
+      <Route exact path="/email/sent/" render={() => <Email></Email>} />
+      <Route exact path="/email/sent/:id" render={() => <Email></Email>} />
+      <Route exact path="/email/create/" render={() => <Email></Email>} />
       <Route exact path="/" render={() => <Home></Home>} />
+      <Route exact path="/email" render={() => <Email></Email>} />
+      <Route exact path="/forum" render={() => <Forum></Forum>} />
       <Route
         exact
-        path="/email"
+        path="/news"
         render={() => <UnderConstruction></UnderConstruction>}
       />
-      <Route exact path="/forum" render={() => <Forum></Forum>} />
       <Route exact path="/learning" render={() => <Learning></Learning>} />
       <Route
         exact

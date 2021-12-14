@@ -445,4 +445,24 @@ export const TRANSLATIONS_ES = {
     ServerError500: "Error interno en el servidor",
     ServerDefaultError: "Error $, contacta a un administrador.",
     ServerConnectionRefused: "No se ha podido establecer una conexión con el servidor.",
+
+
+
+
+
+    EmailSearchCriteriaInput: "Buscar: ",
+    EmailTo: "Enviados",
+    EmailFrom: "Recibidos",
+    EmailGetAll: "Bandeja de entrada",
+    EmailSendEmail: "Enviar correo",
+    EmailCreateEmail: "¿Deseas enviar un correo?",
+    FromEmail: "De: ",
+    ToEmail: "Para: ",
+    SubjectEmail: "Asunto: ",
+    ContentEmail: "Mensaje: ",
+    TimeAgoAgo: "Hace ",
+    TimeAgoAgoDay: "día(s)",
+    EmailSendMessageTo: "Para: ",
+    EmailSendMessageTitle: "Asunto: ",
+    EmailSendMessageContent: "Mensaje: ",
 };

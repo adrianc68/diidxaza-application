@@ -3,11 +3,11 @@ import "./loadingscreen.scss";
 export default function LoadingScreen() {
     return (
         <div className="loading-main-container">
-            <div class="container-animation">
-                <div class="part one"></div>
-                <div class="part two"></div>
-                <div class="part three"></div>
-                <div class="part four"></div>
+            <div className="container-animation">
+                <div className="part one"></div>
+                <div className="part two"></div>
+                <div className="part three"></div>
+                <div className="part four"></div>
             </div>
         </div>
     );
