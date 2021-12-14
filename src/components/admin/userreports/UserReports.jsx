@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import "./userReports.scss";
 import Report from "../../report/Report";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
-import { getMessageResponseStatus } from "../../../helpers/MessageResponse";
+import { getMessageResponseStatus } from "../../../helpers/messageResponse";
 
 export default function UserReports({ username, image }) {
     const { t } = useTranslation();

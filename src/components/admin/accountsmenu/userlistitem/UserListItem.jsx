@@ -28,7 +28,6 @@ export default function UserListItem({ account }) {
                         <span>{t("UserListItemName")}</span>
                         <span>{account.name + " " + account.lastname}</span>
                     </div>
-
                     <div>
                         <span>{t("UserListItemUsername")}</span>
                         <span>{account.username}</span>

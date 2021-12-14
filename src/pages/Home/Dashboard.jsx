@@ -9,7 +9,7 @@ import DashboardRouter from "../../routers/DashboardRouter";
 import { useTranslation } from "react-i18next";
 import { MdLogout } from "react-icons/md";
 import { useHistory } from "react-router";
-import { helpHttp, UrlAPI } from "../../helpers/HelpHttp";
+import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
 import { RESPONSE_STATUS } from "../../helpers/Response";
 import { Context } from "../../helpers/Context";
 import ModalContextProvider from "../../helpers/ModalContext";

@@ -4,7 +4,7 @@ import Button from "../../Button/Button";
 import { useTranslation } from "react-i18next";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 import { AccountStatus } from "../../../helpers/AccountStatus";
-import { getMessageResponseStatus } from "../../../helpers/MessageResponse";
+import { getMessageResponseStatus } from "../../../helpers/messageResponse";
 
 export default function ChangeStatusUser({ account, setStatusModal }) {
     const { t } = useTranslation();

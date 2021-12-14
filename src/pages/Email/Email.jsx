@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { MdInbox, MdSend, MdUpdate } from "react-icons/md";
-import { GoArrowLeft } from "react-icons/go"
+import { GoArrowLeft } from "react-icons/go";
 import Button from "../../components/Button/Button";
 import "./email.scss";
 import { BrowserRouter as Router, NavLink, Link } from "react-router-dom";
@@ -27,7 +27,7 @@ export default function Email() {
     const clearActiveClass = () => {
         setActiveClassSentInbox(false);
         setActiveClassInbox(false);
-    }
+    };
 
     return (
         <div className="email-main-container">
@@ -38,10 +38,20 @@ export default function Email() {
                             <div className="form-search-input-container">
                                 <div className="form-search-input">
                                     <span>{t("EmailSearchCriteriaInput")}</span>
-                                    <input name="title" type="text" disabled required></input>
+                                    <input
+                                        name="title"
+                                        type="text"
+                                        disabled
+                                        required
+                                    ></input>
                                 </div>
                                 <div className="form-search-button">
-                                    <Button styleName="primary-button" type="submit">{t("ButtonSearch")}</Button>
+                                    <Button
+                                        styleName="primary-button"
+                                        type="submit"
+                                    >
+                                        {t("ButtonSearch")}
+                                    </Button>
                                 </div>
                             </div>
                         </form>
@@ -51,22 +61,51 @@ export default function Email() {
                         <div className="email-left-side-container">
                             <nav className="email-sidebar">
                                 <ul>
-                                    <li onClick={() => handleInboxActiveClass()}>
-                                        <NavLink className={isActiveClassInbox ? "email-sidebar-link active" : "email-sidebar-link"} exact to="/email/inbox/">
+                                    <li
+                                        onClick={() => handleInboxActiveClass()}
+                                    >
+                                        <NavLink
+                                            className={
+                                                isActiveClassInbox
+                                                    ? "email-sidebar-link active"
+                                                    : "email-sidebar-link"
+                                            }
+                                            exact
+                                            to="/email/inbox/"
+                                        >
                                             <MdInbox className="email-sidebar-icon" />
                                             <span>{t("EmailGetAll")}</span>
                                         </NavLink>
                                     </li>
-                                    <li onClick={() => handleSentInboxActiveClass()}>
-                                        <NavLink className={isActiveClassSentInbox ? "email-sidebar-link active" : "email-sidebar-link"} exact to="/email/sent/">
+                                    <li
+                                        onClick={() =>
+                                            handleSentInboxActiveClass()
+                                        }
+                                    >
+                                        <NavLink
+                                            className={
+                                                isActiveClassSentInbox
+                                                    ? "email-sidebar-link active"
+                                                    : "email-sidebar-link"
+                                            }
+                                            exact
+                                            to="/email/sent/"
+                                        >
                                             <MdSend className="email-sidebar-icon" />
                                             <span>{t("EmailTo")}</span>
                                         </NavLink>
                                     </li>
                                 </ul>
                                 <div className="email-create-button-panel">
-                                    <NavLink className="link" exact to="/email/create/" onClick={() => clearActiveClass()}>
-                                        <Button styleName="primary-button">{t("EmailSendEmail")}</Button>
+                                    <NavLink
+                                        className="link"
+                                        exact
+                                        to="/email/create/"
+                                        onClick={() => clearActiveClass()}
+                                    >
+                                        <Button styleName="primary-button">
+                                            {t("EmailSendEmail")}
+                                        </Button>
                                     </NavLink>
                                 </div>
                             </nav>
@@ -74,8 +113,11 @@ export default function Email() {
                         <div className="email-right-side-container">
                             <div className="email-rs-navigation">
                                 <div className="email-rs-button-container">
-                                    <Button styleName="icon-button border fullsize" onClick={() => history.goBack()}>
-                                        <GoArrowLeft className="icon color-black" ></GoArrowLeft>
+                                    <Button
+                                        styleName="icon-button border fullsize"
+                                        onClick={() => history.goBack()}
+                                    >
+                                        <GoArrowLeft className="icon color-black"></GoArrowLeft>
                                     </Button>
                                 </div>
 
@@ -86,13 +128,12 @@ export default function Email() {
                                 </div>
                             </div>
                             <div className="email-rs-content-items">
-                                <EmailRouter>
-                                </EmailRouter>
+                                <EmailRouter></EmailRouter>
                             </div>
                         </div>
                     </div>
                 </div>
             </Router>
         </div>
-    )
+    );
 }
