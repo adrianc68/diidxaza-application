@@ -33,6 +33,7 @@ describe("Consult Discussion", () => {
 
     it("Discussions Empty title", () => {
         cy.visit("http://127.0.0.1:3000/forum");
+        cy.get('.sidebar-dashboard-container').get('a[href="/forum"]').click();
         cy.get('.form-search-criteria').click();
         cy.get('.form-search-criteria').get('form').submit();
         cy.get('.errorInput').contains("Ingrese solo letras y caracteres !?¡¿.,#. Solo de 2 a 200 caracteres");
@@ -45,6 +46,7 @@ describe("Consult Discussion", () => {
 
     it("Discussions More popular", () => {
         cy.visit("http://127.0.0.1:3000/forum");
+        cy.get('.sidebar-dashboard-container').get('a[href="/forum"]').click();
         cy.intercept('GET', '/discussions/tracing/61abf2596d30937d186177ef', {
             fixture:'discussions.json'
         });
@@ -55,12 +57,14 @@ describe("Consult Discussion", () => {
 
     it("Discussions News", () => {
         cy.visit("http://127.0.0.1:3000/forum");
+        cy.get('.sidebar-dashboard-container').get('a[href="/forum"]').click();
         cy.contains('Mas nuevos').click();
         cy.get('.forum-discussion-list').contains("¿Qué opinan de las lecciones?");
     });
 
     it("Not Found Discussions News", () => {
         cy.visit("http://127.0.0.1:3000/forum");
+        cy.get('.sidebar-dashboard-container').get('a[href="/forum"]').click();
         cy.intercept('GET', '/discussions/filters/news', {
             status:404
         });
@@ -70,6 +74,7 @@ describe("Consult Discussion", () => {
 
     it("Discussions Following", () => {
         cy.visit("http://127.0.0.1:3000/forum");
+        cy.get('.sidebar-dashboard-container').get('a[href="/forum"]').click();
         cy.contains('Siguiendo').click();
         cy.get('.forum-discussion-list').contains("¿Qué opinan de las cuentos?");
     });
@@ -102,10 +107,12 @@ describe("Consult Discussion", () => {
         cy.contains('¿Qué opinan de las cuentos?').click();
         cy.get('.alert-main-container').contains("Se agotado su tiempo en el sistema, por favor vuelva a iniciar sesión");
         cy.contains('Aceptar').click();
+        cy.contains("Iniciar sesión");
     });
 
     it("Not Token Discussion", () => {
         cy.visit("http://127.0.0.1:3000/forum");
+        cy.get('.sidebar-dashboard-container').get('a[href="/forum"]').click();
         cy.intercept('GET', '/discussions/61ad19e31a1532db106c36bd', {
             status: 401
         });
@@ -149,10 +156,12 @@ describe("Consult Discussion", () => {
         cy.contains('Mas populares').click();
         cy.get('.alert-main-container').contains("Se agotado su tiempo en el sistema, por favor vuelva a iniciar sesión");
         cy.contains('Aceptar').click();
+        cy.contains("Iniciar sesión");
     });
 
     it("Finish Time Token Discussions News", () => {
         cy.visit("http://127.0.0.1:3000/forum");
+        cy.get('.sidebar-dashboard-container').get('a[href="/forum"]').click();
         cy.intercept('GET', '/discussions/filters/news', {
             status: 419
         });
@@ -163,6 +172,7 @@ describe("Consult Discussion", () => {
 
     it("Finish Time Token Discussions Following", () => {
         cy.visit("http://127.0.0.1:3000/forum");
+        cy.get('.sidebar-dashboard-container').get('a[href="/forum"]').click();
         cy.intercept('GET', '/discussions/tracing/61abf2596d30937d186177ef', {
             status: 419
         });
@@ -173,10 +183,11 @@ describe("Consult Discussion", () => {
 
     it("Not Found Discussions Following", () => {
         cy.visit("http://127.0.0.1:3000/forum");
+        cy.get('.sidebar-dashboard-container').get('a[href="/forum"]').click();
         cy.intercept('GET', '/discussions/tracing/61abf2596d30937d186177ef', {
             status: 404
         });
         cy.contains('Siguiendo').click();
         cy.get('.forum-discussion-list').contains("No se encontraron discusiones");
     });
-})
+});

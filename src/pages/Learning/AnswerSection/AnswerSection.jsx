@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import "./answersection.scss";
+import React, { useEffect, useState, useContext } from "react";
+import "./answerSection.scss";
 import Button from "../../../components/Button/Button";
 import { useTranslation } from "react-i18next";
 import MultipleAnswer from "../../../components/learning/options/multiple/MultipleAnswer";
@@ -10,10 +10,10 @@ import { useLessonForm } from "../../../hooks/useLessonForm";
 import { Link } from "react-router-dom";
 import { BiError } from "react-icons/bi";
 import LessonResults from "../../../components/learning/lessonresults/LessonResults";
-import Modal from "../../../components/modal/Modal";
 import AlertMessage from "../../../components/alert/AlertMessage";
 import { NUMBER } from "../../../helpers/Number";
 import { RESPONSE_STATUS } from "../../../helpers/Response";
+import { ModalContext } from "../../../helpers/ModalContext";
 
 export default function AnswerSection({ lesson }) {
     const { t } = useTranslation();
@@ -23,8 +23,25 @@ export default function AnswerSection({ lesson }) {
     const [answers, setAnswers] = useState([]);
     const [className, setClassName] = useState("errorDelete");
     const [isVisible, setVisible] = useState(false);
-    const [modalNotToken, setModalNotToken] = useState(false);
-    const [modalToken, setModalToken] = useState(false);
+
+    const { setStatusModal, setComponent } = useContext(ModalContext);
+
+    const handleModal = (ComponentTagA, sizeHeightA, sizeWidthA, handleModalFunction,  titleA) => {
+        const initialValue = {
+        sizeHeight: sizeHeightA,
+        sizeWidth: sizeWidthA,
+        title: titleA,
+        object: ComponentTagA,
+        handleModal: handleModalFunction,
+        };
+        setComponent(initialValue);
+        setStatusModal(true);
+    };
+    
+    const handleModalAnswer =  (content, handleModalFunction, title) => {
+        handleModal(<AlertMessage content={content} handleModal={handleModalFunction}></AlertMessage>,"180px","450px",handleModalFunction,title);
+    } 
+
 
     useEffect(() => {
         helpHttp().get(UrlAPI + "questions/" + lesson._id, {
@@ -50,12 +67,10 @@ export default function AnswerSection({ lesson }) {
                     } else {
                         setClassName("not-found-questions");
                         if (responseAnswers.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
-                            setModalNotToken(false);
-                            setModalToken(true);
+                            handleModalAnswer(t("RefreshToken"),() => { window.location.href = "../login";});
                         } else {
                             if (responseAnswers.status === RESPONSE_STATUS.UNAUTHORIZED) {
-                                setModalToken(false);
-                                setModalNotToken(true);
+                                handleModalAnswer(t("ErrorToken"),() => { setStatusModal(false); });
                             }
                         }
                     }
@@ -63,12 +78,10 @@ export default function AnswerSection({ lesson }) {
             } else {
                 setClassName("not-found-questions");
                 if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
-                    setModalNotToken(false);
-                    setModalToken(true);
+                    handleModalAnswer(t("RefreshToken"),() => { window.location.href = "../login";});
                 } else {
                     if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
-                        setModalToken(false);
-                        setModalNotToken(true);
+                        handleModalAnswer(t("ErrorToken"),() => { setStatusModal(false); });
                     }
                 }
             }
@@ -84,7 +97,7 @@ export default function AnswerSection({ lesson }) {
         loadingError,
         resultsQuestions,
         pointsObtained
-    } = useLessonForm(setQuestion, questionsChange, setQuestionsChange, setAnswers, question, answers, setVisible, setModalNotToken, setModalToken, lesson._id);
+    } = useLessonForm(setQuestion, questionsChange, setQuestionsChange, setAnswers, question, answers, setVisible, lesson._id);
 
     function placeLessonResults() {
         const sytleLesson = { top: "0px", left: "0px" };
@@ -152,12 +165,6 @@ export default function AnswerSection({ lesson }) {
                     <Button styleName="primary-button" text={t("ButtonFinish")} onClick={handleClick} />
                 </div>}
             </div>}
-            {modalNotToken && <Modal handleModal={() => { setModalNotToken(false); }} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={t("ErrorToken")} handleModal={() => { setModalNotToken(false); }}></AlertMessage>
-            </Modal>}
-            {modalToken && <Modal handleModal={() => { window.location.href = "login"; }} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = "login"; }}></AlertMessage>
-            </Modal>}
         </form> || <div className={className}>
             <h3>{t("LearningNotQuestion")}</h3>
             <img src={ImageInformationAlt} alt=""></img>

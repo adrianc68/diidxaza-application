@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import "./userreports.scss";
+import "./userReports.scss";
 import Report from "../../report/Report";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 import { getMessageResponseStatus } from "../../../helpers/MessageResponse";

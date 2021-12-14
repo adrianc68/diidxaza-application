@@ -1,4 +1,4 @@
-import "./AlertMessage.scss";
+import "./alertMessage.scss";
 import Button from "../Button/Button";
 import { useTranslation } from "react-i18next";
 

@@ -18,9 +18,8 @@ describe("Add Discussion", () => {
     });
 
     it("Add Discussion Empty Data", () => {
-        cy.visit("http://127.0.0.1:3000/discussion");
-        cy.get('[name="title"]').type("      ");
-        cy.get('[name="comment"]').type("       ");
+        cy.get('[name="title"]').clear().type("      ");
+        cy.get('[name="comment"]').clear().type("       ");
         cy.get('.userprofile-dashboard-container').click();
         cy.get('.adddiscussion-main-container').get('form').submit();
         cy.get('.errorInput').contains("Ingrese solo letras y caracteres !?¡¿.,#. Solo de 5 a 600 caracteres");
@@ -28,29 +27,27 @@ describe("Add Discussion", () => {
     });
 
     it("Add Discussion Exists", () => {
-        cy.visit("http://127.0.0.1:3000/discussion");
+        cy.contains("Crear discusión").click();
         cy.contains('info').click();
-        cy.get('[name="title"]').type("¿Qué opinan de las cuentos?");
-        cy.get('[name="comment"]').type("Que opinan de los cuentos");
+        cy.get('[name="title"]').clear().type("¿Qué opinan de las cuentos?");
+        cy.get('[name="comment"]').clear().type("Que opinan de los cuentos");
         cy.get('.adddiscussion-main-content').click();
         cy.get('.adddiscussion-main-container').get('form').submit();
     });
 
     it("Add Discussion Successful", () => {
-        cy.visit("http://127.0.0.1:3000/discussion");
         cy.contains('info').click();
-        cy.get('[name="title"]').type("¿Qué opinan de las lecciones?");
-        cy.get('[name="comment"]').type("Las lecciones son un poco fáciles");
+        cy.get('[name="title"]').clear().type("¿Qué opinan de las lecciones?");
+        cy.get('[name="comment"]').clear().type("Las lecciones son un poco fáciles");
         cy.get('.adddiscussion-main-content').click();
         cy.get('.adddiscussion-main-container').get('form').submit();
         cy.get('.successfulMessage').contains("La discusión se registro exitosamente");
     });
 
     it("Error Server Add Discussions", () => {
-        cy.visit("http://127.0.0.1:3000/discussion");
         cy.contains('info').click();
-        cy.get('[name="title"]').type("¿Qué opinan de las cuentos?");
-        cy.get('[name="comment"]').type("Qué opinan de los cuentos");
+        cy.get('[name="title"]').clear().type("¿Qué opinan de las cuentos?");
+        cy.get('[name="comment"]').clear().type("Qué opinan de los cuentos");
         cy.get('.adddiscussion-main-content').click();
         cy.intercept('POST', '/discussions', {
             status: 500
@@ -60,10 +57,9 @@ describe("Add Discussion", () => {
     });
 
     it("Not Token Add Discussions", () => {
-        cy.visit("http://127.0.0.1:3000/discussion");
         cy.contains('info').click();
-        cy.get('[name="title"]').type("¿Qué opinan de las cuentos?");
-        cy.get('[name="comment"]').type("Que opinan de los cuentos");
+        cy.get('[name="title"]').clear().type("¿Qué opinan de las cuentos?");
+        cy.get('[name="comment"]').clear().type("Que opinan de los cuentos");
         cy.get('.adddiscussion-main-content').click();
         cy.intercept('POST', '/discussions', {
             status: 401
@@ -75,10 +71,9 @@ describe("Add Discussion", () => {
 
 
     it("Finish Time Add Discussions", () => {
-        cy.visit("http://127.0.0.1:3000/discussion");
         cy.contains('info').click();
-        cy.get('[name="title"]').type("¿Qué opinan de las cuentos?");
-        cy.get('[name="comment"]').type("Que opinan de los cuentos");
+        cy.get('[name="title"]').clear().type("¿Qué opinan de las cuentos?");
+        cy.get('[name="comment"]').clear().type("Que opinan de los cuentos");
         cy.get('.adddiscussion-main-content').click();
         cy.intercept('POST', '/discussions', {
             status: 419

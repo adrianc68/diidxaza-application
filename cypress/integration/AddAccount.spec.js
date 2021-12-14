@@ -77,6 +77,7 @@ describe("Add Account", () => {
     });
 
     it("Add Account Successful", () => {
+        cy.wait(3000);
         const filepath = 'photo.png'
         cy.get('[name="file"]').attachFile(filepath);
         cy.get('[name="name"]').clear().type("Miroslava");
@@ -94,6 +95,7 @@ describe("Add Account", () => {
 
     it("Send Code Successful", () => {
         cy.visit("http://127.0.0.1:3000/signUP");
+        cy.wait(3000);
         cy.contains('Reenviar código').click();
         cy.get(".successfulMessage").contains("El código de confirmación se reenvio exitosamente");
     });
@@ -118,6 +120,7 @@ describe("Add Account", () => {
 
     it("Verification Account Error Data", () => {
         cy.visit("http://127.0.0.1:3000/signUP");
+        cy.wait(3000);
         cy.get('[name="code"]').clear().type("#$$%%%%");
         cy.get('.signup-input-verification-container').click();
         cy.get(".errorInput").contains("Ingrese solo número de 6 dígitos");
@@ -125,6 +128,7 @@ describe("Add Account", () => {
 
     it("Verification Account Blanks", () => {
         cy.visit("http://127.0.0.1:3000/signUP");
+        cy.wait(3000);
         cy.get('[name="code"]').clear().type("        ");
         cy.get('.signup-input-verification-container').click();
         cy.get(".errorInput").contains("Ingrese solo número de 6 dígitos");

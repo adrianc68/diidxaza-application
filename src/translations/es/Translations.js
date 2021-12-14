@@ -437,12 +437,12 @@ export const TRANSLATIONS_ES = {
     ChangeStatusSelftAccountBlock: "No puedes bloquear tu misma cuenta.",
 
     ServerError404: "No se ha encontrado ningún resultado",
-    ServerError419: "Insuficiente espacio.",
+    ServerError419: "Se agotado su tiempo en el sistema, por favor vuelva a iniciar sesión",
     ServerError401: "Requieres iniciar sesión o no tienes acceso a esta funcionalidad",
     ServerError400: "La solicitud enviada no es válida",
     ServerError403: "No estás autorizado para realizar esta funcionalidad",
     ServerError409: "Existe un conflicto con el estado actual del servidor",
-    ServerError500: "Error interno en el servidor",
+    ServerError500: "Error en el servidor. Intenta más tarde",
     ServerDefaultError: "Error $, contacta a un administrador.",
     ServerConnectionRefused: "No se ha podido establecer una conexión con el servidor.",
 

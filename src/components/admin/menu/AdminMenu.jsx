@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import "./adminmenu.scss";
+import "./adminMenu.scss";
 import { useTranslation } from "react-i18next";
 import { MdOutlineBugReport, MdSupervisorAccount } from "react-icons/md";
 import { FaGripLinesVertical } from "react-icons/fa";

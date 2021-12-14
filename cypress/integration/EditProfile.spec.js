@@ -7,7 +7,7 @@ describe("Edit Profile", () => {
         cy.get('[name="password"]').type("Mmol78963#");
         cy.get('.secondary-button').click();
         cy.get('.secondary-button').click();
-        cy.get('.sidebar-dashboard-container').get('a[href="/profile/Miros"]').click();
+        cy.get('.text-button').click();
         cy.get('.adminmenubarIconToggle').click();
         cy.contains('Editar perfil').click();
     });
@@ -99,12 +99,15 @@ describe("Edit Profile", () => {
     });
 
     it("Error Server Edit Profile", () => {
-        cy.reload();
-        cy.wait(3000);
         cy.get('input[name="name"]').clear().type("Martha");
         cy.get('input[name="lastname"]').clear().type("Ortiz");
+        cy.get('[name="dateBirth"]').clear().type("2000-05-07");
+        cy.get('[name="idState"]').select("Veracruz");
+        cy.get('[name="idCity"]').select("Xalapa");
+        cy.get('[name="username"]').clear().type("Miros");
+        cy.get('[name="email"]').clear().type("martha_15_7@outlook.com");
         cy.get('.userprofile-dashboard-container').click();
-        cy.intercept('PUT', 'accounts', {
+        cy.intercept('PUT', '/accounts', {
             status: 500
         });
         cy.get('.editprofile-main-container').submit();
@@ -114,9 +117,8 @@ describe("Edit Profile", () => {
     it("Not Token Edit Profile", () => {
         cy.get('input[name="name"]').clear().type("Martha");
         cy.get('input[name="lastname"]').clear().type("Ortiz");
-        cy.get('[name="dateBirth"]').clear().type("2000-05-07");
         cy.get('.userprofile-dashboard-container').click();
-        cy.intercept('PUT', 'accounts', {
+        cy.intercept('PUT', '/accounts', {
             status: 401
         });
         cy.get('.editprofile-main-container').submit();
@@ -129,7 +131,7 @@ describe("Edit Profile", () => {
         cy.get('input[name="lastname"]').clear().type("Ortiz");
         cy.get('[name="dateBirth"]').clear().type("2000-05-07");
         cy.get('.userprofile-dashboard-container').click();
-        cy.intercept('PUT', 'accounts', {
+        cy.intercept('PUT', '/accounts', {
             status: 419
         });
         cy.get('.editprofile-main-container').submit();

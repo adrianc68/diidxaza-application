@@ -45,16 +45,20 @@ describe("Report User", () => {
     });
 
     it("Report User Successful", () => {
+        cy.wait(2000);
         cy.contains('Reportar usuario').click();
         cy.get(':nth-child(2) > label').click();
+        cy.get(':nth-child(2) > label').click();
         cy.get('[name="context"]').type("No me gusta la forma en que escribe los comentarios");
-        cy.get(".reportuser-button-panel").click();
+        cy.get(".modal-title-container").click();
         cy.get(".reportuser-main-container").submit();
         cy.get(".successfulMessage").contains("El reporte se registro exitosamente");
     });
 
     it("Error Server Report User", () => {
+        cy.wait(2000);
         cy.contains('Reportar usuario').click();
+        cy.wait(1000);
         cy.get(':nth-child(2) > label').click();
         cy.get('[name="context"]').type("No me gusta la forma en que escribe los comentarios");
         cy.get(".reportuser-button-panel").click();
@@ -77,6 +81,7 @@ describe("Report User", () => {
         cy.get(".reportuser-main-container").submit();
         cy.get('.errorMessage').contains("No se encontro la cuenta");
         cy.get(".reportuser-button-panel").contains("Cancelar").click({force: true});
+
     });
 
     it("Finish Time Report User", () => {

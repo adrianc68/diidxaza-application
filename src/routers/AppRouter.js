@@ -51,6 +51,8 @@ export default function AppRouter() {
           <Route exact path="/forum" component={Dashboard} />
           <Route exact path="/dictionary" component={Dashboard} />
           <Route exact path="/songs" component={Dashboard} />
+          <Route exact path="/answers/:idLesson" component={Dashboard} />
+          <Route exact path="/results/:lesson" component={Dashboard} />
           <Route exact path="/history" component={Dashboard} />
           <Route exact path="/help" component={Dashboard} />
           <Route exact path="/profile/:id" component={Dashboard} />

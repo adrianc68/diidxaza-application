@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./changestatususer.scss";
+import "./changeStatusUser.scss";
 import Button from "../../Button/Button";
 import { useTranslation } from "react-i18next";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";

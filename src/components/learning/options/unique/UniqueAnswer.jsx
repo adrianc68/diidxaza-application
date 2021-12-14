@@ -1,4 +1,4 @@
-import "./uniqueanswer.scss";
+import "./uniqueAnswer.scss";
 
 export default function UniqueAnswer({ answers, handleChange }) {
     return (

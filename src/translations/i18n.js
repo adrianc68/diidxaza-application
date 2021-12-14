@@ -1,7 +1,7 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import { TRANSLATIONS_ES } from "./es/translations";
-import { TRANSLATIONS_ZAP } from "./zap/translations";
+import { TRANSLATIONS_ES } from "./es/Translations";
+import { TRANSLATIONS_ZAP } from "./zap/Translations";
 
 i18n
  .use(initReactI18next)

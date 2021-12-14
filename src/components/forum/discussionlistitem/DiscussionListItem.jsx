@@ -1,4 +1,4 @@
-import "./discussionlistitem.scss";
+import "./discussionListItem.scss";
 import { useTranslation } from "react-i18next";
 import { AiOutlineComment } from "react-icons/ai";
 import { useConvertionData } from "../../../hooks/useConvertionData";

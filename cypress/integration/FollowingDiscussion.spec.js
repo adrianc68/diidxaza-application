@@ -23,7 +23,7 @@ describe("Following Discussion", () => {
     });
 
     it("Error Server Following Discussion", () => {
-        cy.intercept('PATCH', 'discussions', {
+        cy.intercept('PATCH', '/discussions', {
             status: 500
         });
         cy.get(':nth-child(3) > .dark-blue-button').click();
@@ -32,7 +32,7 @@ describe("Following Discussion", () => {
     });
 
     it("Not Token Following Discussion", () => {
-        cy.intercept('PATCH', 'discussions', {
+        cy.intercept('PATCH', '/discussions', {
             status: 401
         });
         cy.get(':nth-child(3) > .dark-blue-button').click();
@@ -41,7 +41,7 @@ describe("Following Discussion", () => {
     });
 
     it("Finish Time Following Discussion", () => {
-        cy.intercept('PATCH', 'discussions', {
+        cy.intercept('PATCH', '/discussions', {
             status: 419
         });
         cy.get(':nth-child(3) > .dark-blue-button').click();

@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
-import "./editprofile.scss";
+import React, { useState, useEffect, useContext } from "react";
+import "./editProfile.scss";
 import { useTranslation } from "react-i18next";
-import Button from "../../../components/Button/Button";
-import Modal from "../../modal/Modal";
+import Button from "../../Button/Button";
 import AlertMessage from "../../alert/AlertMessage";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 import { useUpdateAccountForm } from "../../../hooks/useAccountForm";
@@ -10,6 +9,7 @@ import UserImageDefault from "../../../assets/images/ide-29.svg";
 import { Link } from "react-router-dom";
 import { RESPONSE_STATUS } from "../../../helpers/Response";
 import { NUMBER } from "../../../helpers/Number";
+import { ModalContext } from "../../../helpers/ModalContext";
 
 const validationsForm = (form) => {
     let errors = {};
@@ -72,11 +72,27 @@ export default function EditProfile({ setNameUser }) {
     const [states, setStates] = useState([]);
     const [cities, setCities] = useState([]);
     const [form, setForm] = useState([]);
-    const [modalNotToken, setModalNotToken] = useState(false);
-    const [modalToken, setModalToken] = useState(false);
     const [initialfile, setInitialFile] = useState(UserImageDefault);
     const [namefile, setNameFile] = useState(UserImageDefault);
     const [URLPhoto, setURLPhoto] = useState(null);
+
+    const { setStatusModal, setComponent } = useContext(ModalContext);
+
+    const handleModal = (ComponentTagA, sizeHeightA, sizeWidthA, handleModalFunction,  titleA) => {
+        const initialValue = {
+        sizeHeight: sizeHeightA,
+        sizeWidth: sizeWidthA,
+        title: titleA,
+        object: ComponentTagA,
+        handleModal: handleModalFunction,
+        };
+        setComponent(initialValue);
+        setStatusModal(true);
+    };
+    
+    const handleModalEditProfile =  (content, handleModalFunction, title) => {
+        handleModal(<AlertMessage content={content} handleModal={handleModalFunction}></AlertMessage>,"180px","450px",handleModalFunction,title);
+    } 
 
     useEffect(() => {
         helpHttp().get(UrlAPI + "accounts/" + sessionStorage.getItem("id"), {
@@ -135,10 +151,10 @@ export default function EditProfile({ setNameUser }) {
                 }
             } else {
                 if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
-                    setModalToken(true);
+                    handleModalEditProfile(t("RefreshToken"),() => { window.location.href = "login";});
                 } else {
                     if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
-                        setModalNotToken(true);
+                        handleModalEditProfile(t("ErrorToken"),() => { setStatusModal(false); });
                     }
                 }
                 setURLPhoto(null);
@@ -160,7 +176,7 @@ export default function EditProfile({ setNameUser }) {
         handleChangeImage,
         icon,
         errorImage
-    } = useUpdateAccountForm(validationsForm, setForm, form, setCities, setModalNotToken, setModalToken, setNameFile, URLPhoto, initialfile, setNameUser, setInitialFile, namefile, setURLPhoto);
+    } = useUpdateAccountForm(validationsForm, setForm, form, setCities, setNameFile, URLPhoto, initialfile, setNameUser, setInitialFile, namefile, setURLPhoto);
 
     return (
         <form onSubmit={handleSubmit} className="editprofile-main-container">
@@ -282,12 +298,6 @@ export default function EditProfile({ setNameUser }) {
                     </div>
                 </div>
             </div>
-            {modalNotToken && <Modal handleModal={() => { setModalNotToken(false); }} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={t("ErrorToken")} handleModal={() => { setModalNotToken(false); }}></AlertMessage>
-            </Modal>}
-            {modalToken && <Modal handleModal={() => { window.location.href = "http://127.0.0.1:3000/login"; }} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = "http://127.0.0.1:3000/login"; }}></AlertMessage>
-            </Modal>}
         </form>
     );
 }

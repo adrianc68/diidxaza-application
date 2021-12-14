@@ -11,9 +11,9 @@ import EditProfile from "../components/ownuser/EditProfile/EditProfile";
 import ReportsMenu from "../components/admin/reportsmenu/ReportsMenu";
 import AccountsMenu from "../components/admin/accountsmenu/AccountsMenu";
 import AddDiscussion from "../components/forum/adddiscussion/AddDiscussion";
+import Email from "../pages/Email/Email";
 import AnswerSection from "../pages/Learning/AnswerSection/AnswerSection";
 import ResultLesson from "../pages/Learning/Result/ResultLesson";
-import Email from "../pages/Email/Email";
 
 export default function DashboardRouter({ setNameUser }) {
   return (

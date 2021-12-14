@@ -52,6 +52,7 @@ describe("Delete Comment", () => {
 
     it("Delete Comment Successful", () => {
         cy.visit("http://127.0.0.1:3000/forum");
+        cy.get('.sidebar-dashboard-container').get('a[href="/forum"]').click();
         cy.contains("¿Qué opinan de las cuentos?").click();
         cy.get(':nth-child(3) > .forum-comment').contains("Eliminar").click();
         cy.get('.alert-confirmation-content-container').contains("Si").click({force: true});

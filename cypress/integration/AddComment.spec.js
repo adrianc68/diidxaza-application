@@ -17,7 +17,8 @@ describe("Add Comment", () => {
     });
 
     it("Add Comment Error", () => {
-        cy.visit("http://127.0.0.1:3000/forum");
+        cy.reload();
+        cy.get('.sidebar-dashboard-container').get('a[href="/forum"]').click();
         cy.contains("¿Qué opinan de las cuentos?").click();
         cy.get('[name="comment"]').type("$$$$$&&&////(/&&&");
         cy.contains('Comentarios').click();
@@ -33,6 +34,7 @@ describe("Add Comment", () => {
 
     it("Add Comment Successful", () => {
         cy.visit("http://127.0.0.1:3000/forum");
+        cy.get('.sidebar-dashboard-container').get('a[href="/forum"]').click();
         cy.contains("¿Qué opinan de las cuentos?").click();
         cy.get('[name="comment"]').type("No me gustan los cuentos");
         cy.contains('Comentarios').click();
@@ -42,6 +44,7 @@ describe("Add Comment", () => {
 
     it("Not Token Add Comment", () => {
         cy.visit("http://127.0.0.1:3000/forum");
+        cy.get('.sidebar-dashboard-container').get('a[href="/forum"]').click();
         cy.contains("¿Qué opinan de las cuentos?").click();
         cy.get('[name="comment"]').type("No me gustan los cuentos");
         cy.contains('Comentarios').click();
@@ -55,6 +58,7 @@ describe("Add Comment", () => {
 
     it("Finish Time Add Comment", () => {
         cy.visit("http://127.0.0.1:3000/forum");
+        cy.get('.sidebar-dashboard-container').get('a[href="/forum"]').click();
         cy.contains("¿Qué opinan de las cuentos?").click();
         cy.get('[name="comment"]').type("No me gustan los cuentos");
         cy.contains('Comentarios').click();
@@ -68,6 +72,7 @@ describe("Add Comment", () => {
 
     it("Error Server Add Comment", () => {
         cy.visit("http://127.0.0.1:3000/forum");
+        cy.get('.sidebar-dashboard-container').get('a[href="/forum"]').click();
         cy.contains("¿Qué opinan de las cuentos?").click();
         cy.get('[name="comment"]').type("No me gustan los cuentos");
         cy.contains('Comentarios').click();

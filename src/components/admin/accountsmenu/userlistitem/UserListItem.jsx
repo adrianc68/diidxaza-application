@@ -1,4 +1,4 @@
-import "./userlistitem.scss";
+import "./userListItem.scss";
 import Button from "../../../Button/Button";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router";

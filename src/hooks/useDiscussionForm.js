@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { helpHttp, UrlAPI } from "../helpers/helpHttp";
 import { BiError, BiBadgeCheck } from "react-icons/bi";
 import ImageInformationAlt from "../assets/images/ide-02.svg";
 import { NUMBER } from "../helpers/Number";
 import { RESPONSE_STATUS } from "../helpers/Response";
+import { ModalContext } from "../helpers/ModalContext";
+import AlertMessage from "../components/alert/AlertMessage";
 
 export const useForum = (
   validateForm,
@@ -34,10 +36,25 @@ export const useForum = (
   const [icon, setIcon] = useState(<BiError />);
   const [commentLenght, setCommentLenght] = useState(0);
   const [numberComments, setNumberComments] = useState(0);
-  const [responseModalForum, setResponseModalForum] = useState("");
-  const [modalForum, setModalForum] = useState(false);
-  const [modalToken, setModalToken] = useState(false);
   const [imagesComments, setImagesComments] = useState([]);
+  
+  const { setStatusModal, setComponent } = useContext(ModalContext);
+
+  const handleModal = (ComponentTagA, sizeHeightA, sizeWidthA, handleModalFunction,  titleA) => {
+    const initialValue = {
+    sizeHeight: sizeHeightA,
+    sizeWidth: sizeWidthA,
+    title: titleA,
+    object: ComponentTagA,
+    handleModal: handleModalFunction,
+    };
+    setComponent(initialValue);
+    setStatusModal(true);
+  };
+
+  const handleModalForum =  (content, handleModalFunction, title) => {
+    handleModal(<AlertMessage content={content} handleModal={handleModalFunction}></AlertMessage>,"180px","450px",handleModalFunction,title);
+  } 
 
   const handleChange = (e) => {
     const { value } = e.target;
@@ -71,17 +88,12 @@ export const useForum = (
             if (response.status === RESPONSE_STATUS.NOT_FOUND) {
               setLoading(true);
             } else {
+              setLoading(false);
               if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
-                setLoading(false);
-                setResponseModalForum(t("ErrorToken"));
-                setModalForum(true);
+                handleModalForum(t("ErrorToken"),() => { setStatusModal(false); });
               } else {
                 if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
-                  setLoading(false);
-                  setModalForum(false);
-                  setModalToken(true);
-                } else {
-                  setLoading(false);
+                  handleModalForum(t("RefreshToken"),() => { window.location.href = "login";});
                 }
               }
             }
@@ -113,18 +125,13 @@ export const useForum = (
           if (response.status === RESPONSE_STATUS.NOT_FOUND) {
             setLoading(true);
           } else {
+            setLoading(false);
             if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
-              setLoading(false);
-              setResponseModalForum(t("ErrorToken"));
-              setModalForum(true);
+              handleModalForum(t("ErrorToken"),() => { setStatusModal(false); });
             } else {
               if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
-                setLoading(false);
-                setModalForum(false);
-                setModalToken(true);
-              } else {
-                setLoading(false);
-              }
+                handleModalForum(t("RefreshToken"),() => { window.location.href = "login";});
+              } 
             }
           }
         }
@@ -172,18 +179,13 @@ export const useForum = (
           if (response.status === RESPONSE_STATUS.NOT_FOUND) {
             setLoading(true);
           } else {
+            setLoading(false);
             if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
-              setLoading(false);
-              setResponseModalForum(t("ErrorToken"));
-              setModalForum(true);
+              handleModalForum(t("ErrorToken"),() => { setStatusModal(false); });
             } else {
               if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
-                setLoading(false);
-                setModalForum(false);
-                setModalToken(true);
-              } else {
-                setLoading(false);
-              }
+                handleModalForum(t("RefreshToken"),() => { window.location.href = "login";});
+              } 
             }
           }
         }
@@ -211,17 +213,12 @@ export const useForum = (
           if (response.status === RESPONSE_STATUS.NOT_FOUND) {
             setLoading(true);
           } else {
+            setLoading(false);
             if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
-              setLoading(false);
-              setResponseModalForum(t("ErrorToken"));
-              setModalForum(true);
+              handleModalForum(t("ErrorToken"),() => { setStatusModal(false); });
             } else {
               if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
-                setLoading(false);
-                setModalForum(false);
-                setModalToken(true);
-              } else {
-                setLoading(false);
+                handleModalForum(t("RefreshToken"),() => { window.location.href = "login";});
               }
             }
           }
@@ -334,8 +331,7 @@ export const useForum = (
                 if (responseComments.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
                   setLoadingDiscussion(false);
                   setFoundDiscussion(false);
-                  setModalForum(false);
-                  setModalToken(true);
+                  handleModalForum(t("RefreshToken"),() => { window.location.href = "login";});
                 } else {
                   setComments([]);
                 }
@@ -347,14 +343,12 @@ export const useForum = (
           if (responseDiscussion.status === RESPONSE_STATUS.UNAUTHORIZED) {
             setLoadingDiscussion(false);
             setFoundDiscussion(false);
-            setResponseModalForum(t("ErrorToken"));
-            setModalForum(true);
+            handleModalForum(t("ErrorToken"),() => { setStatusModal(false); });
           } else {
             if (responseDiscussion.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
               setLoadingDiscussion(false);
               setFoundDiscussion(false);
-              setModalForum(false);
-              setModalToken(true);
+              handleModalForum(t("RefreshToken"),() => { window.location.href = "login";});
             } else {
               if (responseDiscussion.status === RESPONSE_STATUS.NOT_FOUND) {
                 setResponse(t("NotFoundDiscussion"));
@@ -442,13 +436,11 @@ export const useForum = (
           } else {
             if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
               setLoadingComment(false);
-              setResponseModalForum(t("ErrorToken"));
-              setModalForum(true);
+              handleModalForum(t("ErrorToken"),() => { setStatusModal(false); });
             } else {
               if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
                 setLoadingComment(false);
-                setModalForum(false);
-                setModalToken(true);
+                handleModalForum(t("RefreshToken"),() => { window.location.href = "login";});
               } else {
                 if (response.status === RESPONSE_STATUS.BAD_REQUEST) {
                   setResponseComment(t("AddComentNotFound"));
@@ -504,15 +496,13 @@ export const useForum = (
           setImagesComments(imagesComments.filter((item) => item.id !== id));
         } else {
           if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
-            setModalForum(false);
-            setModalToken(true);
+            handleModalForum(t("RefreshToken"),() => { window.location.href = "login";});
           } else {
             if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
-              setResponseModalForum(t("ErrorToken"));
+              handleModalForum(t("ErrorToken"),() => { setStatusModal(false); });
             } else {
-              setResponseModalForum(t("ErrorMessage"));
+              handleModalForum(t("ErrorMessage"),() => { setStatusModal(false); });
             }
-            setModalForum(true);
           }
         }
       });
@@ -549,25 +539,20 @@ export const useForum = (
       })
       .then((response) => {
         if (response.messageHappened) {
-          setResponseModalForum(t("FollowSuccessful"));
-          setModalToken(false);
-          setModalForum(true);
+          handleModalForum(t("FollowSuccessful"),() => { setStatusModal(false); });
         } else {
           if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
-            setModalForum(false);
-            setModalToken(true);
+            handleModalForum(t("RefreshToken"),() => { window.location.href = "login";});
           } else {
             if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
-              setResponseModalForum(t("ErrorToken"));
+              handleModalForum(t("ErrorToken"),() => { setStatusModal(false); });
             } else {
               if (response.status === RESPONSE_STATUS.BAD_REQUEST) {
-                setResponseModalForum(t("FollowNotSuccessful"));
+                handleModalForum(t("FollowNotSuccessful"),() => { setStatusModal(false); });
               } else {
-                setResponseModalForum(t("ErrorMessage"));
+                handleModalForum(t("ErrorMessage"),() => { setStatusModal(false); });
               }
             }
-            setModalToken(false);
-            setModalForum(true);
           }
         }
       });
@@ -603,12 +588,7 @@ export const useForum = (
     commentLenght,
     numberComments,
     handleClickFollow,
-    responseModalForum,
-    modalForum,
-    setModalForum,
     handleClickDeleteComment,
-    modalToken,
-    setModalToken,
     imagesComments,
     setActiveClassFilterButtons,
     removeActiveClassFilterButton,
@@ -628,8 +608,23 @@ export const useDiscussionForm = (initialForm, validateForm) => {
   const [classDoubt, setClaseDoubt] = useState("li-not-select");
   const [classRule, setClaseRule] = useState("li-not-select");
 
-  const [modalNotToken, setModalNotToken] = useState(false);
-  const [modalToken, setModalToken] = useState(false);
+  const { setStatusModal, setComponent } = useContext(ModalContext);
+
+  const handleModal = (ComponentTagA, sizeHeightA, sizeWidthA, handleModalFunction,  titleA) => {
+    const initialValue = {
+    sizeHeight: sizeHeightA,
+    sizeWidth: sizeWidthA,
+    title: titleA,
+    object: ComponentTagA,
+    handleModal: handleModalFunction,
+    };
+    setComponent(initialValue);
+    setStatusModal(true);
+  };
+
+  const handleModalForum =  (content, handleModalFunction, title) => {
+    handleModal(<AlertMessage content={content} handleModal={handleModalFunction}></AlertMessage>,"180px","450px",handleModalFunction,title);
+  } 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -663,7 +658,7 @@ export const useDiscussionForm = (initialForm, validateForm) => {
     }
     setForm({
       ...form,
-      theme,
+      theme:theme,
     });
   };
 
@@ -673,6 +668,10 @@ export const useDiscussionForm = (initialForm, validateForm) => {
     if (Object.keys(errors).length === NUMBER.ZERO) {
       let regexTheme = /(?:info|duda|regla)$/;
       if (regexTheme.test(form.theme)) {
+        setForm({
+          ...form,
+          idAccount: sessionStorage.getItem("id"),
+        });
         helpHttp()
           .post(UrlAPI + "discussions", {
             headers: {
@@ -680,7 +679,7 @@ export const useDiscussionForm = (initialForm, validateForm) => {
               "Content-Type": "application/json",
               Authorization: sessionStorage.getItem("token"),
             },
-            body: form,
+            body: form
           })
           .then((response) => {
             if (response._id) {
@@ -691,13 +690,11 @@ export const useDiscussionForm = (initialForm, validateForm) => {
             } else {
               if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
                 setLoading(false);
-                setModalNotToken(false);
-                setModalToken(true);
+                handleModalForum(t("RefreshToken"),() => { window.location.href = "login";});
               } else {
                 if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
                   setLoading(false);
-                  setModalToken(false);
-                  setModalNotToken(true);
+                  handleModalForum(t("ErrorToken"),() => { setStatusModal(false); });
                 } else {
                   setIcon(<BiError />);
                   setClaseName("errorMessage");
@@ -738,9 +735,6 @@ export const useDiscussionForm = (initialForm, validateForm) => {
     handleClickTheme,
     classInfo,
     classDoubt,
-    classRule,
-    modalNotToken,
-    modalToken,
-    setModalNotToken,
+    classRule
   };
 };
