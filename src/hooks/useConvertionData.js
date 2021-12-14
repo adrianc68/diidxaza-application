@@ -17,21 +17,21 @@ export const useConvertionData = () => {
         const MILISECONDS_IN_HOUR = MILISECONDS_IN_MINUTE * 60;
         const MILISECONDS_IN_DAY = MILISECONDS_IN_HOUR * 24;
         const MILISECONDS_IN_MONTH = MILISECONDS_IN_DAY * 30;
+        const BYNARY_BASE = 10;
 
-        var milisecondsNow = Date.now();
-        var milisecondsDifference = milisecondsNow - milisecondsParameter;
-
+        let milisecondsNow = Date.now();
+        let milisecondsDifference = milisecondsNow - milisecondsParameter;
         switch (true) {
             case milisecondsDifference < MILISECONDS_IN_MINUTE:
-                return parseInt(milisecondsDifference / MILISECONDS_IN_SECOND) + " s.";
+                return parseInt(milisecondsDifference / MILISECONDS_IN_SECOND, BYNARY_BASE) + " s.";
             case milisecondsDifference < MILISECONDS_IN_HOUR:
-                return parseInt(milisecondsDifference / MILISECONDS_IN_MINUTE) + " min.";
+                return parseInt(milisecondsDifference / MILISECONDS_IN_MINUTE, BYNARY_BASE) + " min.";
             case milisecondsDifference < MILISECONDS_IN_DAY:
-                return parseInt(milisecondsDifference / MILISECONDS_IN_HOUR) + " hr.";
+                return parseInt(milisecondsDifference / MILISECONDS_IN_HOUR, BYNARY_BASE) + " hr.";
             case milisecondsDifference < MILISECONDS_IN_MONTH:
-                return parseInt(milisecondsDifference / MILISECONDS_IN_DAY) + " $day";
+                return parseInt(milisecondsDifference / MILISECONDS_IN_DAY, BYNARY_BASE) + " $day";
             default:
-                var dateString = new Date(milisecondsParameter).toLocaleDateString("es-ES");
+                let dateString = new Date(milisecondsParameter).toLocaleDateString("es-ES");
                 return dateString;
         }
     };

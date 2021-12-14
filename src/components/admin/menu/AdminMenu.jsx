@@ -23,11 +23,6 @@ export default function AdminMenu() {
         localStorage.removeItem("adminmenubar-collapsed");
     }
 
-    function handleModalAndMenu(component, title) {
-        handleModal(component, "650px", "80vw", title);
-        toggleAdminMenubar();
-    }
-
     const handleModal = (ComponentTagA, sizeHeightA, sizeWidthA, titleA) => {
         const initialValue = {
             sizeHeight: sizeHeightA,
@@ -41,6 +36,11 @@ export default function AdminMenu() {
         setComponent(initialValue);
         setStatusModal(true);
     };
+
+    function handleModalAndMenu(component, title) {
+        handleModal(component, "650px", "80vw", title);
+        toggleAdminMenubar();
+    }
 
     return (
         <nav className={isExpanded ? "adminmenubar" : "adminmenubar active"}>

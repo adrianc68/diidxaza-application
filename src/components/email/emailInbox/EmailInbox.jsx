@@ -36,9 +36,9 @@ export default function EmailInbox({ typeInbox }) {
     };
 
     const fetchInboxEmailData = (email) => {
-        var email_encoded = encodeURIComponent(email);
+        let emailEncoded = encodeURIComponent(email);
         helpHttp()
-            .get(UrlEmailApi + "emails/" + typeInbox + "/" + email_encoded, {
+            .get(UrlEmailApi + "emails/" + typeInbox + "/" + emailEncoded, {
                 headers: {
                     Accept: "application/json",
                 },

@@ -10,9 +10,9 @@ export default function EmailContent() {
     const [email, setEmail] = useState(null);
 
     const fetchContentEmailByID = (idParameter) => {
-        var id_encoded = encodeURIComponent(idParameter);
+        let idEncoded = encodeURIComponent(idParameter);
         helpHttp()
-            .get(UrlEmailApi + "emails/content/" + id_encoded, {
+            .get(UrlEmailApi + "emails/content/" + idEncoded, {
                 headers: {
                     Accept: "application/json",
                 },

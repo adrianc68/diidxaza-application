@@ -70,6 +70,14 @@ export default function ReportsMenu() {
         }
     };
 
+    const validateInputForm = (input) => {
+        var inputTrim = input.trim();
+        setErrorInformation(null);
+        checkUnknownCharacters(inputTrim);
+        checkLength(inputTrim);
+        setParameter(inputTrim);
+    };
+
     function changeDelay(value) {
         var miliseconds = 200;
         if (timer) {
@@ -82,14 +90,6 @@ export default function ReportsMenu() {
             }, miliseconds)
         );
     }
-
-    const validateInputForm = (input) => {
-        var inputTrim = input.trim();
-        setErrorInformation(null);
-        checkUnknownCharacters(inputTrim);
-        checkLength(inputTrim);
-        setParameter(inputTrim);
-    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
