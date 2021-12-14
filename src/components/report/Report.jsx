@@ -6,8 +6,8 @@ import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
 import { useHistory } from "react-router";
 import { useConvertionData } from "../../hooks/useConvertionData";
 import { BsFillCaretRightFill, BsFillCaretDownFill } from "react-icons/bs";
-import { getMessageResponseStatus } from "../../helpers/MessageResponse";
 import { ModalContext } from "../../helpers/ModalContext";
+import { getMessageResponseStatus } from "../../helpers/messageResponse";
 
 export default function Report({ report }) {
     const { t } = useTranslation();

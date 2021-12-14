@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { helpHttp, UrlAPI, UrlEmailApi } from "../../../helpers/helpHttp";
-import { getMessageResponseStatus } from "../../../helpers/MessageResponse";
+import { getMessageResponseStatus } from "../../../helpers/messageResponse";
 import EmailListItem from "../emailListItem/EmailListItem"
 import "./emailinbox.scss"
 import { useHistory } from "react-router";

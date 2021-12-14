@@ -4,10 +4,10 @@ import { useTranslation } from "react-i18next";
 import UserImageDefault from "../../assets/images/ide-29.svg";
 import UserprofileButtonPanelADM from "../../components/admin/userprofileButtonPanel/UserprofileButtonPanelADM";
 import UserprofileButtonPanelOWU from "../../components/ownuser/userprofileButtonPanel/UserprofileButtonPanelOWU";
-import { helpHttp, UrlAPI } from "../../helpers/HelpHttp";
+import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
 import { useConvertionData } from "../../hooks/useConvertionData";
 import CheckProgress from "../../components/ownuser/CheckProgress/CheckProgress";
-import { getMessageResponseStatus } from "../../helpers/MessageResponse";
+import { getMessageResponseStatus } from "../../helpers/messageResponse";
 import { AccountStatus } from "../../helpers/AccountStatus";
 import { UserType } from "../../helpers/UserType";
 import LoadingScreen from "../../components/animation/loadingScreen/LoadingScreen";
@@ -70,7 +70,6 @@ export default function UserProfile({ accountProps }) {
         }).then((response) => {
             if (response != null) {
                 if (response.age != null) {
-                    // getImageUser(response.URL);
                     const account = {
                         age: response.age,
                         birthdate: response.dateBirth,

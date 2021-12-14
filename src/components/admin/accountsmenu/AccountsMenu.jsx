@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import UserListItem from "./userlistitem/UserListItem";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 import { BiSlider } from "react-icons/bi";
-import { getMessageResponseStatus } from "../../../helpers/MessageResponse";
+import { getMessageResponseStatus } from "../../../helpers/messageResponse";
 
 export default function AccountsMenu() {
     const { t } = useTranslation();

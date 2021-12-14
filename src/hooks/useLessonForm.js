@@ -191,7 +191,6 @@ export const useLessonForm = (
   };
   useEffect(() => {
     if(isFinishLesson){
-      console.log("HOLA")
       helpHttp()
       .post(UrlAPI + "lessonRecords", {
         headers: {

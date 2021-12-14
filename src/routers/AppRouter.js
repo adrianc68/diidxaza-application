@@ -8,7 +8,6 @@ import Dashboard from "../pages/Home/Dashboard";
 import history from "./History";
 import { useContext } from "react";
 import { Context } from "../helpers/Context";
-import EmailInbox from "../components/email/emailInbox/EmailInbox";
 
 export default function AppRouter() {
   const { isLogged } = useContext(Context);
