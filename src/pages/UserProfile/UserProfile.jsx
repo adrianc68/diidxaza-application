@@ -57,68 +57,69 @@ export default function UserProfile({ accountProps }) {
                 }
             });
         }
-    }
+    };
 
     const fetchData = () => {
         var accountID = accountProps.id;
         setAccountID(accountID);
-        helpHttp().get(UrlAPI + "accounts/" + accountID, {
-            headers: {
-                Accept: "application/json",
-                "Authorization": sessionStorage.getItem("token")
-            }
-        }).then((response) => {
-            if (response != null) {
-                if (response.age != null) {
-                    const account = {
-                        age: response.age,
-                        birthdate: response.dateBirth,
-                        email: response.email,
-                        username: response.username,
-                        status: response.status,
-                        role: response.role,
-                        name: response.name,
-                        _id: response._id,
-                        image: imageAccount,
-                    };
-                    setAccount(account);
-                    setLoadedData(true);
-                    return;
+        helpHttp()
+            .get(UrlAPI + "accounts/" + accountID, {
+                headers: {
+                    Accept: "application/json",
+                    Authorization: sessionStorage.getItem("token"),
+                },
+            })
+            .then((response) => {
+                if (response != null) {
+                    if (response.age != null) {
+                        const account = {
+                            age: response.age,
+                            birthdate: response.dateBirth,
+                            email: response.email,
+                            username: response.username,
+                            status: response.status,
+                            role: response.role,
+                            name: response.name,
+                            _id: response._id,
+                            image: imageAccount,
+                        };
+                        setAccount(account);
+                        setLoadedData(true);
+                        return;
+                    }
+                    setServerError(getMessageResponseStatus(response));
                 }
-                setServerError(getMessageResponseStatus(response));
-            }
-        });
-
+            });
     };
 
     const getAndSetTotalPointsFromResponse = (lessonRecords) => {
         let totalPointsRecord = 0;
         if (lessonRecords.length > 0) {
-            lessonRecords.map((element) => (
-                totalPointsRecord = totalPointsRecord + element.pointsObtained
-            ));
+            lessonRecords.map((element) => (totalPointsRecord = totalPointsRecord + element.pointsObtained));
         }
         setTotalPoints(totalPointsRecord);
     };
 
     const fetchProgressData = () => {
         if (totalLessons == null && totalPoints == null) {
-            helpHttp().get(UrlAPI + "lessonRecords/" + accountID, {
-                headers: {
-                    Accept: "application/json",
-                    "Authorization": sessionStorage.getItem("token")
-                }
-            }).then((response) => {
-                if (response != null) {
-                    if (response.length >= 0) {
-                        setTotalLessons(response.length);
-                        getAndSetTotalPointsFromResponse(response);
-                        setShowProgress(!showProgress);
-                        return;
+            helpHttp()
+                .get(UrlAPI + "lessonRecords/" + accountID, {
+                    headers: {
+                        Accept: "application/json",
+                        Authorization: sessionStorage.getItem("token"),
+                    },
+                })
+                .then((response) => {
+                    if (response != null) {
+                        if (response.length >= 0) {
+                            setTotalLessons(response.length);
+                            getAndSetTotalPointsFromResponse(response);
+                            setShowProgress(!showProgress);
+                            return;
+                        }
+                        setServerErrorProgressData(getMessageResponseStatus(response));
                     }
-                    setServerErrorProgressData(getMessageResponseStatus(response));
-                }
-            });
+                });
         }
         setShowProgress(!showProgress);
     };
@@ -157,7 +158,7 @@ export default function UserProfile({ accountProps }) {
         if (checkProfileID()) {
             fetchData();
         }
-        
+
         return () => {
             setLoadedData(false);
             setShowProgress(false);
@@ -167,96 +168,85 @@ export default function UserProfile({ accountProps }) {
             setServerErrorProgressData(null);
             setAccountID(null);
             setAccount(null);
-        }
-
+        };
     }, [history.location.pathname]);
 
-    return (
-        serverError !== null ?
-            <div className="userprofile-server-error-contaniner">
-                <span>{serverError}</span>
+    return serverError !== null ? (
+        <div className="userprofile-server-error-contaniner">
+            <span>{serverError}</span>
+        </div>
+    ) : isDataLoadead ? (
+        <div className="userprofile-main-container">
+            <div className="userprofile-user-details-container">
+                <div className="userprofile-type-user-container">
+                    {account.role === UserType.MANAGER ? (
+                        <div className="type-user-admin">
+                            <span>{t("TypeUserAdmin")}</span>
+                        </div>
+                    ) : (
+                        <div className="type-user-free">
+                            <span>{t("TypeUserFree")}</span>
+                        </div>
+                    )}
+                </div>
+                <div className="userprofile-user-photo-container">
+                    <img src={imageAccount} alt={t("WelcomeInformationAlt")}></img>
+                </div>
+                <hr />
+                <div className="userprofile-basic-details">
+                    <div>
+                        <span>{t("UserProfileName")}</span>
+                        <span>{account.name}</span>
+                    </div>
+                    <div>
+                        <span>{t("UserProfileAge")}</span>
+                        <span>
+                            {account.age}
+                            <span />
+                            <span>{" " + t("UserProfileYears")}</span>
+                        </span>
+                    </div>
+                    <div>
+                        <span>{t("UserProfileBirthdate")}</span>
+                        <span>{convertDate(account.birthdate)}</span>
+                    </div>
+                </div>
+                <div className="userprofile-account-status-information">
+                    {account.status === AccountStatus.UNBLOCKED ? <span className="status-user-free">{t("UserProfileUserFree")}</span> : <span className="status-user-banned">{t("UserProfileUserBanned")}</span>}
+                </div>
             </div>
-            :
-            isDataLoadead ?
-                < div className="userprofile-main-container" >
-                    <div className="userprofile-user-details-container">
-                        <div className="userprofile-type-user-container">
-                            {
-                                account.role === UserType.MANAGER ?
-                                    <div className="type-user-admin">
-                                        <span>{t("TypeUserAdmin")}</span>
-                                    </div>
-                                    :
-                                    <div className="type-user-free">
-                                        <span>{t("TypeUserFree")}</span>
-                                    </div>
-
-                            }
-                        </div>
-                        <div className="userprofile-user-photo-container">
-                            <img src={imageAccount} alt={t("WelcomeInformationAlt")}></img>
-                        </div>
-                        <hr />
-                        <div className="userprofile-basic-details">
-                            <div>
-                                <span>{t("UserProfileName")}</span>
-                                <span>{account.name}</span>
-                            </div>
-                            <div>
-                                <span>{t("UserProfileAge")}</span>
-                                <span>{account.age}<span /><span>{" " + t("UserProfileYears")}</span></span>
-                            </div>
-                            <div>
-                                <span>{t("UserProfileBirthdate")}</span>
-                                <span>
-                                    {convertDate(account.birthdate)}
-                                </span>
-                            </div>
-                        </div>
-                        <div className="userprofile-account-status-information">
-                            {
-                                account.status === AccountStatus.UNBLOCKED ?
-                                    <span className="status-user-free">{t("UserProfileUserFree")}</span>
-                                    :
-                                    <span className="status-user-banned">{t("UserProfileUserBanned")}</span>
-                            }
+            <div className="userprofile-data-content-contaniner">
+                <div className="userprofile-user-data-container">
+                    <div className="userprofile-account-container">
+                        <div className="userprofile-account-information">
+                            <h2>{account.username}</h2>
+                            <p>{account.email}</p>
                         </div>
                     </div>
-                    <div className="userprofile-data-content-contaniner">
-                        <div className="userprofile-user-data-container">
-                            <div className="userprofile-account-container">
-                                <div className="userprofile-account-information">
-                                    <h2>{account.username}</h2>
-                                    <p>{account.email}</p>
-                                </div>
-
-                            </div>
-                            <div className="userprofile-button-panel-container">
-                                <p>{t("UserProfileControlPanel")}</p>
-                                <div className="userprofile-button-panel">
-                                    <UserprofileButtonPanelADM account={account} />
-                                </div>
-                                <div className="userprofile-button-panel">
-                                    <UserprofileButtonPanelOWU accountID={accountID} handleViewProgress={handleViewProgress} showProgress={showProgress} />
-                                </div>
-                            </div>
+                    <div className="userprofile-button-panel-container">
+                        <p>{t("UserProfileControlPanel")}</p>
+                        <div className="userprofile-button-panel">
+                            <UserprofileButtonPanelADM account={account} />
                         </div>
-                        {
-                            showProgress ?
-                                errorServerProgressData === null ?
-                                    <div className="userprofile-progress-container">
-                                        <CheckProgress totalLessons={totalLessons} totalPoints={totalPoints}></CheckProgress>
-                                    </div>
-                                    :
-                                    <div className="userprofile-progress-container">
-                                        <span>{errorServerProgressData}</span>
-                                    </div>
-                                :
-                                null
-                        }
+                        <div className="userprofile-button-panel">
+                            <UserprofileButtonPanelOWU accountID={accountID} handleViewProgress={handleViewProgress} showProgress={showProgress} />
+                        </div>
                     </div>
-                </div >
-                :
-                <LoadingScreen></LoadingScreen>
+                </div>
+                {showProgress ? (
+                    errorServerProgressData === null ? (
+                        <div className="userprofile-progress-container">
+                            <CheckProgress totalLessons={totalLessons} totalPoints={totalPoints}></CheckProgress>
+                        </div>
+                    ) : (
+                        <div className="userprofile-progress-container">
+                            <span>{errorServerProgressData}</span>
+                        </div>
+                    )
+                ) : null}
+            </div>
+        </div>
+    ) : (
+        <LoadingScreen></LoadingScreen>
     );
 }

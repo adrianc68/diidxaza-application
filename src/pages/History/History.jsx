@@ -47,7 +47,6 @@ export default function History() {
                             <span>{t("HistoryFeatures05Description")}</span>
                         </li>
                     </ul>
-
                 </div>
 
                 <div className="history-costumes-content">
@@ -72,4 +71,3 @@ export default function History() {
         </div>
     );
 }
-

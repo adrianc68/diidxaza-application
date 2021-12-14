@@ -2,7 +2,6 @@ import "./alertConfirmation.scss";
 import Button from "../Button/Button";
 
 export default function AlertConfirmation({ primaryButton, secondaryButton, content, handlePrimary, setStatusModal }) {
-
     return (
         <div className="alert-confirmation-main-container">
             <div className="alert-confirmation-content-container">

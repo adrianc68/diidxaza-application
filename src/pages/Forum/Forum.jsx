@@ -15,7 +15,7 @@ import { NUMBER } from "../../helpers/Number";
 const initialForm = {
     comment: "",
     idAccount: sessionStorage.getItem("id"),
-    idDiscussion: ""
+    idDiscussion: "",
 };
 
 const validationsForm = (title) => {
@@ -24,8 +24,7 @@ const validationsForm = (title) => {
     let regexTitle = /^[\wÑñÁáÉéÍíÓóÚúÜü!?¡¿.,# ]{2,200}$/;
     if (title.length === NUMBER.ZERO) {
         errors.title = "Error";
-    }
-    else{
+    } else {
         if (!regexTitle.test(title)) {
             errors.title = "Error";
         }
@@ -39,8 +38,7 @@ const validationsFormComment = (comment) => {
     let regexComment = /^[\wÑñÁáÉéÍíÓóÚúÜü!?¡¿.,# ]{5,600}$/;
     if (comment.length === NUMBER.ZERO) {
         errors.comment = "Error";
-    }
-    else {
+    } else {
         if (!regexComment.test(comment)) {
             errors.comment = "Error";
         }
@@ -48,11 +46,10 @@ const validationsFormComment = (comment) => {
     return errors;
 };
 
-
 export default function Forum() {
     const { t } = useTranslation();
     const [discussions, setDiscussions] = useState([]);
-    
+
     const {
         title,
         errors,
@@ -90,18 +87,20 @@ export default function Forum() {
     } = useForum(validationsForm, validationsFormComment, initialForm, setDiscussions);
 
     useEffect(() => {
-        helpHttp().get(UrlAPI + "discussions", {
-            headers: {
-                Accept: "application/json",
-                "Authorization": sessionStorage.getItem("token")
-            },
-        }).then((response) => {
-            if (response.length > NUMBER.ZERO) {
-                setDiscussions(response);
-            } else {
-                setDiscussions([]);
-            }
-        });
+        helpHttp()
+            .get(UrlAPI + "discussions", {
+                headers: {
+                    Accept: "application/json",
+                    Authorization: sessionStorage.getItem("token"),
+                },
+            })
+            .then((response) => {
+                if (response.length > NUMBER.ZERO) {
+                    setDiscussions(response);
+                } else {
+                    setDiscussions([]);
+                }
+            });
         setActiveClassFilterButtons();
     }, []);
 
@@ -119,12 +118,12 @@ export default function Forum() {
                                         <input name="title" type="text" onChange={handleChange} onBlur={handleBlur} value={title} required></input>
                                     </div>
                                     <div>
-                                        <Button styleName="primary-button" onClick={removeActiveClassFilterButton} type="submit">{t("ButtonSearch")}</Button>
+                                        <Button styleName="primary-button" onClick={removeActiveClassFilterButton} type="submit">
+                                            {t("ButtonSearch")}
+                                        </Button>
                                     </div>
                                 </div>
-                                <div className="system-message-container">
-                                    {errors.title && <p className="errorInput">{t("ErrorTitleForum")}</p>}
-                                </div>
+                                <div className="system-message-container">{errors.title && <p className="errorInput">{t("ErrorTitleForum")}</p>}</div>
                             </form>
 
                             <div className="form-search-buttons">
@@ -135,7 +134,7 @@ export default function Forum() {
                                 <div className="forum-button-filter-button">
                                     <Button styleName="text-button gray-text" onClick={handleClickPopulars} text={t("ForumSearchMostPopular")}></Button>
                                 </div>
-                                <div className="forum-button-filter-button" >
+                                <div className="forum-button-filter-button">
                                     <Button styleName="text-button gray-text" onClick={handleClickNews} text={t("ForumSearchNewest")}></Button>
                                 </div>
                                 <div className="forum-button-filter-button">
@@ -145,16 +144,21 @@ export default function Forum() {
                         </div>
                         <div className="forum-discussion-list">
                             <ul>
-                                {discussions.length > NUMBER.ZERO && discussions.map((element) => (
-                                    <li onClick={(e) => { handleClickDiscussion(e, element._id); }}>
-                                        <DiscussionListItem discussion={element}></DiscussionListItem>
-                                    </li>
-                                ))}
-                                {loading &&
+                                {discussions.length > NUMBER.ZERO &&
+                                    discussions.map((element) => (
+                                        <li
+                                            onClick={(e) => {
+                                                handleClickDiscussion(e, element._id);
+                                            }}
+                                        >
+                                            <DiscussionListItem discussion={element}></DiscussionListItem>
+                                        </li>
+                                    ))}
+                                {loading && (
                                     <div className="no-found-records p-semibold">
                                         <span>{t("NotFoundDiscussions")}</span>
                                     </div>
-                                }
+                                )}
                             </ul>
                             <div className="forum-create-button-panel">
                                 <span>{t("ForumWantToCreateNewDiscussion")}</span>
@@ -163,31 +167,49 @@ export default function Forum() {
                                         <Button styleName="primary-button">{t("ButtonCreateDiscussion")}</Button>
                                     </Link>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div className="forum-discussion-content">
-                    {
-                        foundDiscussion === false && loadingDiscussion === false ?
-                            <div className="no-found-records">
-                                <span>{t("SelectDiscussion")}</span>
-                            </div>
-                            :
-                            foundDiscussion && <Discussion imagesComments={imagesComments} discussion={discussion} numberComments={numberComments} comments={comments} imageAccount={imageAccount} handleClickDeleteComment={handleClickDeleteComment} handleClickFollow={handleClickFollow}>
-                                <AddComment handleChangeComment={handleChangeComment} handleSubmitComment={handleSubmitComment} loadingComment={loadingComment}
-                                    handleBlurComment={handleBlurComment} formComment={formComment} errorsComment={errorsComment} handleClickComment={handleClickComment}
-                                    icon={icon} className={className} responseComment={responseComment} commentLenght={commentLenght} />
+                    {foundDiscussion === false && loadingDiscussion === false ? (
+                        <div className="no-found-records">
+                            <span>{t("SelectDiscussion")}</span>
+                        </div>
+                    ) : (
+                        foundDiscussion && (
+                            <Discussion
+                                imagesComments={imagesComments}
+                                discussion={discussion}
+                                numberComments={numberComments}
+                                comments={comments}
+                                imageAccount={imageAccount}
+                                handleClickDeleteComment={handleClickDeleteComment}
+                                handleClickFollow={handleClickFollow}
+                            >
+                                <AddComment
+                                    handleChangeComment={handleChangeComment}
+                                    handleSubmitComment={handleSubmitComment}
+                                    loadingComment={loadingComment}
+                                    handleBlurComment={handleBlurComment}
+                                    formComment={formComment}
+                                    errorsComment={errorsComment}
+                                    handleClickComment={handleClickComment}
+                                    icon={icon}
+                                    className={className}
+                                    responseComment={responseComment}
+                                    commentLenght={commentLenght}
+                                />
                             </Discussion>
-                    }
+                        )
+                    )}
 
-                    {loadingDiscussion &&
+                    {loadingDiscussion && (
                         <div className="not-found-discussion">
                             <h3>{response}</h3>
                             <img src={ImageInformationAlt} alt=""></img>
-                        </div>}
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

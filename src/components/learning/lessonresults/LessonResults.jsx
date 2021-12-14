@@ -22,9 +22,7 @@ export default function LessonResults({ pointsObtained, resultsQuestions, lesson
                 </div>
             </div>
             <div className="lessonresults-description-content">
-                <span>
-                    {t("LearningLessonResultsDescription")}
-                </span>
+                <span>{t("LearningLessonResultsDescription")}</span>
             </div>
             <div className="lessonresults-button-panel">
                 <div className="div-result">
@@ -33,16 +31,17 @@ export default function LessonResults({ pointsObtained, resultsQuestions, lesson
                     </Link>
                 </div>
                 <div className="div-result">
-                    <Link className="link" to={
-                        {
+                    <Link
+                        className="link"
+                        to={{
                             pathname: "/results/" + lesson.name,
                             state: {
                                 lesson,
                                 pointsObtained,
-                                resultsQuestions
-                            }
-                        }
-                    }>
+                                resultsQuestions,
+                            },
+                        }}
+                    >
                         <Button styleName="green-button" text={t("ButtonShowResults")} />
                     </Link>
                 </div>

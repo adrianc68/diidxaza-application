@@ -8,7 +8,7 @@ export default function UserprofileButtonPanelAU() {
     return (
         <div className="userprofile-button-panel-content">
             <NavLink className="link" to="/checkprogress">
-                <Button styleName="primary-button" text={t("UserProfileButonPanelReportUser")} ></Button>
+                <Button styleName="primary-button" text={t("UserProfileButonPanelReportUser")}></Button>
             </NavLink>
         </div>
     );

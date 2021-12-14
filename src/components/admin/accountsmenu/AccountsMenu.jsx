@@ -48,20 +48,22 @@ export default function AccountsMenu() {
     const fetchData = () => {
         setAccountsItems([]);
         setServerError(null);
-        helpHttp().get(UrlAPI + "accounts" + filter + parameter, {
-            headers: {
-                Accept: "application/json",
-                "Authorization": sessionStorage.getItem("token")
-            }
-        }).then((response) => {
-            if (response != null) {
-                if (response.length > 0) {
-                    setAccountsItems(response);
-                    return;
+        helpHttp()
+            .get(UrlAPI + "accounts" + filter + parameter, {
+                headers: {
+                    Accept: "application/json",
+                    Authorization: sessionStorage.getItem("token"),
+                },
+            })
+            .then((response) => {
+                if (response != null) {
+                    if (response.length > 0) {
+                        setAccountsItems(response);
+                        return;
+                    }
+                    setServerError(getMessageResponseStatus(response));
                 }
-                setServerError(getMessageResponseStatus(response));
-            }
-        }, []);
+            }, []);
     };
 
     const setActiveClassFilterButtons = () => {
@@ -91,31 +93,33 @@ export default function AccountsMenu() {
             clearTimeout(timer);
             setTimer(null);
         }
-        setTimer(setTimeout(() => {
-            validateInputForm(value);
-        }, miliseconds)
+        setTimer(
+            setTimeout(() => {
+                validateInputForm(value);
+            }, miliseconds)
         );
     }
 
     useEffect(() => {
         setAccountsItems([]);
         setServerError(null);
-        helpHttp().get(UrlAPI + "accounts", {
-            headers: {
-                Accept: "application/json",
-                "Authorization": sessionStorage.getItem("token")
-            }
-        }).then((response) => {
-            if (response != null) {
-                if (response.length > 0) {
-                    setAccountsItems(response);
-                    return;
+        helpHttp()
+            .get(UrlAPI + "accounts", {
+                headers: {
+                    Accept: "application/json",
+                    Authorization: sessionStorage.getItem("token"),
+                },
+            })
+            .then((response) => {
+                if (response != null) {
+                    if (response.length > 0) {
+                        setAccountsItems(response);
+                        return;
+                    }
+                    setServerError(getMessageResponseStatus(response));
                 }
-                setServerError(getMessageResponseStatus(response));
-            }
-        }, []);
+            }, []);
         setActiveClassFilterButtons();
-
     }, [t]);
 
     const handleButtonFilterName = () => {
@@ -155,53 +159,89 @@ export default function AccountsMenu() {
                     <form className="form-search-container" onSubmit={handleSubmit}>
                         <div className="form-search-criteria-input">
                             <span>{t("AdminReportInputSearchCriteria")}</span>
-                            <input name="valueInput" type="text" onChange={(e) => { changeDelay(e.target.value); }} required></input>
+                            <input
+                                name="valueInput"
+                                type="text"
+                                onChange={(e) => {
+                                    changeDelay(e.target.value);
+                                }}
+                                required
+                            ></input>
                         </div>
                         <div className="form-search-input-button">
-                            <Button styleName="primary-button" type="submit">{t("ButtonSearch")}</Button>
+                            <Button styleName="primary-button" type="submit">
+                                {t("ButtonSearch")}
+                            </Button>
                         </div>
                     </form>
-                    {
-                        <span className="color-gray">{filterInfo}</span>
-                    }
-                    {
-                        <span className="errorInput">{errorInformation}</span>
-                    }
+                    {<span className="color-gray">{filterInfo}</span>}
+                    {<span className="errorInput">{errorInformation}</span>}
                     <div className="form-search-filters-buttons">
                         <div className="filter-container">
                             <span>{t("Filters")}</span>
                             <BiSlider className="filter-icon" />
                         </div>
-                        <div className="accountsmenu-button-filter-button" >
-                            <Button styleName="text-button gray-text active" onClick={() => { handleButtonFilterName(); }} text={t("FilterName")}></Button>
+                        <div className="accountsmenu-button-filter-button">
+                            <Button
+                                styleName="text-button gray-text active"
+                                onClick={() => {
+                                    handleButtonFilterName();
+                                }}
+                                text={t("FilterName")}
+                            ></Button>
                         </div>
                         <div className="accountsmenu-button-filter-button">
-                            <Button styleName="text-button gray-text" onClick={() => { handleButtonFilterLastname(); }} text={t("FilterLastName")}></Button>
+                            <Button
+                                styleName="text-button gray-text"
+                                onClick={() => {
+                                    handleButtonFilterLastname();
+                                }}
+                                text={t("FilterLastName")}
+                            ></Button>
                         </div>
-                        <div className="accountsmenu-button-filter-button" >
-                            <Button styleName="text-button gray-text" onClick={() => { handleButtonFilterAge(); }} text={t("FilterAge")}></Button>
+                        <div className="accountsmenu-button-filter-button">
+                            <Button
+                                styleName="text-button gray-text"
+                                onClick={() => {
+                                    handleButtonFilterAge();
+                                }}
+                                text={t("FilterAge")}
+                            ></Button>
                         </div>
-                        <div className="accountsmenu-button-filter-button" >
-                            <Button styleName="text-button gray-text" onClick={() => { handleButtonFilterEmail(); }} text={t("FilterEmail")}></Button>
+                        <div className="accountsmenu-button-filter-button">
+                            <Button
+                                styleName="text-button gray-text"
+                                onClick={() => {
+                                    handleButtonFilterEmail();
+                                }}
+                                text={t("FilterEmail")}
+                            ></Button>
                         </div>
-                        <div className="accountsmenu-button-filter-button" >
-                            <Button styleName="text-button gray-text" onClick={() => { handleButtonFilterUsername(); }} text={t("FilterUsername")}></Button>
+                        <div className="accountsmenu-button-filter-button">
+                            <Button
+                                styleName="text-button gray-text"
+                                onClick={() => {
+                                    handleButtonFilterUsername();
+                                }}
+                                text={t("FilterUsername")}
+                            ></Button>
                         </div>
                     </div>
                 </div>
                 <div className="accountsmenu-reports-list-container">
                     <div className="accountsmenu-discussion-list">
                         <ul>
-                            {
-                                accountsItems.length > 0 ?
-                                    accountsItems.map((element) =>
-                                        <li id={element._id}><UserListItem account={element} /></li>
-                                    )
-                                    :
-                                    <div className="no-found-records">
-                                        <span className="semibold">{serverError}</span>
-                                    </div>
-                            }
+                            {accountsItems.length > 0 ? (
+                                accountsItems.map((element) => (
+                                    <li id={element._id}>
+                                        <UserListItem account={element} />
+                                    </li>
+                                ))
+                            ) : (
+                                <div className="no-found-records">
+                                    <span className="semibold">{serverError}</span>
+                                </div>
+                            )}
                         </ul>
                     </div>
                 </div>

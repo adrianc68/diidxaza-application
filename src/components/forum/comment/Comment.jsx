@@ -1,4 +1,4 @@
-import React, {useContext } from "react";
+import React, { useContext } from "react";
 import "./comment.scss";
 import Button from "../../Button/Button";
 import { useTranslation } from "react-i18next";
@@ -11,26 +11,40 @@ export default function Comment({ comment, handleClickDeleteComment, idDiscussio
     const { t } = useTranslation();
     const { convertDate } = useConvertionData();
     const { setStatusModal, setComponent } = useContext(ModalContext);
-    
+
     const handleModal = (ComponentTagA, sizeHeightA, sizeWidthA, titleA) => {
         const initialValue = {
             sizeHeight: sizeHeightA,
             sizeWidth: sizeWidthA,
             title: titleA,
             object: ComponentTagA,
-            handleModal: () => { setStatusModal(false)},
+            handleModal: () => {
+                setStatusModal(false);
+            },
         };
         setComponent(initialValue);
         setStatusModal(true);
     };
 
     function handleModalReport() {
-        handleModal(<ReportUser account={comment.idAccount[0]} setStatusModal={setStatusModal}/>, "70", "80", t("ReportUserTitle"));
+        handleModal(<ReportUser account={comment.idAccount[0]} setStatusModal={setStatusModal} />, "70", "80", t("ReportUserTitle"));
     }
 
     function handleModalDelete() {
-        handleModal(<AlertConfirmation primaryButton={t("ButtonYes")} secondaryButton={t("ButtonNo")} content={t("MessageComment")} setStatusModal={setStatusModal}
-        handlePrimary={(e) => { handleClickDeleteComment(e, comment._id, idDiscussion, setStatusModal); }}/>, "70", "80", t("DeleteComment"));
+        handleModal(
+            <AlertConfirmation
+                primaryButton={t("ButtonYes")}
+                secondaryButton={t("ButtonNo")}
+                content={t("MessageComment")}
+                setStatusModal={setStatusModal}
+                handlePrimary={(e) => {
+                    handleClickDeleteComment(e, comment._id, idDiscussion, setStatusModal);
+                }}
+            />,
+            "70",
+            "80",
+            t("DeleteComment")
+        );
     }
 
     return (
@@ -39,13 +53,13 @@ export default function Comment({ comment, handleClickDeleteComment, idDiscussio
             <div className="forum-comment-user-container">
                 <div className="forum-comment-user-data">
                     <div>
-                        {
-                            sessionStorage.getItem("id") === comment.idAccount[0]._id ?
-                                <span>{t("UserProfileMe")}</span>
-                                :
-                                <span>{comment.idAccount[0].name} {comment.idAccount[0].lastname}</span>
-
-                        }
+                        {sessionStorage.getItem("id") === comment.idAccount[0]._id ? (
+                            <span>{t("UserProfileMe")}</span>
+                        ) : (
+                            <span>
+                                {comment.idAccount[0].name} {comment.idAccount[0].lastname}
+                            </span>
+                        )}
                     </div>
                 </div>
                 <div className="forum-comment-content">
@@ -54,23 +68,29 @@ export default function Comment({ comment, handleClickDeleteComment, idDiscussio
 
                 <div className="forum-bottom-content">
                     <div className="forum-bottom-date-comment">
-                        <span >{t("DiscussionlistitemDate")}</span>
+                        <span>{t("DiscussionlistitemDate")}</span>
                         <span>{convertDate(comment.dateCreation)}</span>
                     </div>
 
-                    {sessionStorage.getItem("id") === comment.idAccount[0]._id && <div className="forum-comment-button-panel">
-                        <div>
-                            <Button styleName="dark-blue-button" onClick={() => handleModalDelete()}>{t("DeleteButton")}</Button>
+                    {sessionStorage.getItem("id") === comment.idAccount[0]._id && (
+                        <div className="forum-comment-button-panel">
+                            <div>
+                                <Button styleName="dark-blue-button" onClick={() => handleModalDelete()}>
+                                    {t("DeleteButton")}
+                                </Button>
+                            </div>
                         </div>
-                    </div>}
-                    {sessionStorage.getItem("id") !== comment.idAccount[0]._id && <div className="forum-comment-button-panel">
-                        <div>
-                            <Button styleName="primary-button" onClick={() => handleModalReport()}>{t("ButtonReportUser")}</Button>
+                    )}
+                    {sessionStorage.getItem("id") !== comment.idAccount[0]._id && (
+                        <div className="forum-comment-button-panel">
+                            <div>
+                                <Button styleName="primary-button" onClick={() => handleModalReport()}>
+                                    {t("ButtonReportUser")}
+                                </Button>
+                            </div>
                         </div>
-                    </div>}
-
+                    )}
                 </div>
-
             </div>
         </div>
     );

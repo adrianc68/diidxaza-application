@@ -15,11 +15,11 @@ export default function Modal({ title, children, handleModal, sizeWidth, sizeHei
                 <div className="modal-content-container" style={style}>
                     <div className="modal-title-container">
                         <h2>{title}</h2>
-                        <Button styleName="modal-button"><AiFillCloseSquare size={30} onClick={handleModal} /></Button>
+                        <Button styleName="modal-button">
+                            <AiFillCloseSquare size={30} onClick={handleModal} />
+                        </Button>
                     </div>
-                    <div className="modal-content">
-                        {children}
-                    </div>
+                    <div className="modal-content">{children}</div>
                 </div>
             </div>
         </div>
@@ -28,5 +28,5 @@ export default function Modal({ title, children, handleModal, sizeWidth, sizeHei
 
 Modal.propTypes = {
     title: PropTypes.string.isRequired,
-    children: PropTypes.element.isRequired
+    children: PropTypes.element.isRequired,
 };

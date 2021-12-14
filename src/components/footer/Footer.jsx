@@ -16,8 +16,7 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className="footer-links-container">
-                    <div className="footer-links">
-                    </div>
+                    <div className="footer-links"></div>
                 </div>
                 <div className="footer-bottom-container">
                     <div className="footer-bottom-container-documents">
@@ -50,7 +49,6 @@ export default function Footer() {
                                 <li>
                                     <Link className="link" to="/facebook">
                                         <BsFacebook />
-
                                     </Link>
                                 </li>
                                 <li>
@@ -74,6 +72,5 @@ export default function Footer() {
                 </div>
             </div>
         </>
-
     );
 }

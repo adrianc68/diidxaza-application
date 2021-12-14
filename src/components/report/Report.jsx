@@ -23,29 +23,31 @@ export default function Report({ report }) {
         history.push({
             pathname: "/profile/" + report.accountReported[0].username,
             state: {
-                id: report.accountReported[0]._id
-            }
-        })
+                id: report.accountReported[0]._id,
+            },
+        });
     };
 
     const fetchData = (idReported) => {
         setServerError(null);
         if (context == null) {
-            helpHttp().get(UrlAPI + "reports/" + idReported, {
-                headers: {
-                    Accept: "application/json",
-                    "Authorization": sessionStorage.getItem("token")
-                }
-            }).then((response) => {
-                if (response != null) {
-                    if (response.context !== null && response.context !== undefined) {
-                        setContext(response.context);
-                        setHiddenContext(!isHideContext);
-                        return;
+            helpHttp()
+                .get(UrlAPI + "reports/" + idReported, {
+                    headers: {
+                        Accept: "application/json",
+                        Authorization: sessionStorage.getItem("token"),
+                    },
+                })
+                .then((response) => {
+                    if (response != null) {
+                        if (response.context !== null && response.context !== undefined) {
+                            setContext(response.context);
+                            setHiddenContext(!isHideContext);
+                            return;
+                        }
+                        setServerError(getMessageResponseStatus(response));
                     }
-                    setServerError(getMessageResponseStatus(response));
-                }
-            }, []);
+                }, []);
         }
         setHiddenContext(!isHideContext);
     };
@@ -56,15 +58,12 @@ export default function Report({ report }) {
                 <span className="black-text">{t("UserReportDate")}</span>
                 <span>{report.dateCreation}</span>
                 <span>{convertDate(report.dateCreation)}</span>
-                {
-                    report.accountReported[0]._id === sessionStorage.getItem("id") ?
-                        null
-                        :
-                        <div className="report-numeration-container-panel-button">
-                            <Button styleName="text-button blue-text" text={t("ButtonReportSeeUsersDetails")} onClick={handleModal}></Button>
-                            <Button styleName="text-button blue-text" text={t("ButtonBlockUser")}></Button>
-                        </div>
-                }
+                {report.accountReported[0]._id === sessionStorage.getItem("id") ? null : (
+                    <div className="report-numeration-container-panel-button">
+                        <Button styleName="text-button blue-text" text={t("ButtonReportSeeUsersDetails")} onClick={handleModal}></Button>
+                        <Button styleName="text-button blue-text" text={t("ButtonBlockUser")}></Button>
+                    </div>
+                )}
             </div>
             <div className="report-data-container">
                 <div className="report-reported-by-container" onClick={() => fetchData(report._id)}>
@@ -82,29 +81,20 @@ export default function Report({ report }) {
                         <span className="semibold">{t("UserReportReason")}</span>
                         <span>{report.reason}</span>
                     </div>
-                    <div className="report-reported-by-icon">
-                        {
-                            isHideContext ?
-                                <BsFillCaretRightFill></BsFillCaretRightFill>
-                                :
-                                <BsFillCaretDownFill></BsFillCaretDownFill>
-
-                        }
-                    </div>
+                    <div className="report-reported-by-icon">{isHideContext ? <BsFillCaretRightFill></BsFillCaretRightFill> : <BsFillCaretDownFill></BsFillCaretDownFill>}</div>
                 </div>
                 {
                     <div className={isHideContext ? "report-descripction-container hidden" : "report-descripction-container"}>
-                        {
-                            serverError !== null ?
-                                <div>
-                                    <span className="color-red">{serverError}</span>
-                                </div>
-                                :
-                                <div>
-                                    <span className="semibold">{t("UserReportContext")}</span>
-                                    <span>{context !== null ? context : null}</span>
-                                </div>
-                        }
+                        {serverError !== null ? (
+                            <div>
+                                <span className="color-red">{serverError}</span>
+                            </div>
+                        ) : (
+                            <div>
+                                <span className="semibold">{t("UserReportContext")}</span>
+                                <span>{context !== null ? context : null}</span>
+                            </div>
+                        )}
                     </div>
                 }
             </div>

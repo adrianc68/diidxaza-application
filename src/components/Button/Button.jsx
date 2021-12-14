@@ -10,7 +10,6 @@ import "./orangeButton.scss";
 import "./resizableButton.scss";
 
 export default function Button(props) {
-
     return (
         <button className={props.styleName} onClick={props.onClick}>
             <div className="button-container">
@@ -20,5 +19,3 @@ export default function Button(props) {
         </button>
     );
 }
-
-

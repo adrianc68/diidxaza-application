@@ -23,29 +23,15 @@ export const useConvertionData = () => {
 
         switch (true) {
             case milisecondsDifference < MILISECONDS_IN_MINUTE:
-                return (
-                    parseInt(milisecondsDifference / MILISECONDS_IN_SECOND) +
-                    " s."
-                );
+                return parseInt(milisecondsDifference / MILISECONDS_IN_SECOND) + " s.";
             case milisecondsDifference < MILISECONDS_IN_HOUR:
-                return (
-                    parseInt(milisecondsDifference / MILISECONDS_IN_MINUTE) +
-                    " min."
-                );
+                return parseInt(milisecondsDifference / MILISECONDS_IN_MINUTE) + " min.";
             case milisecondsDifference < MILISECONDS_IN_DAY:
-                return (
-                    parseInt(milisecondsDifference / MILISECONDS_IN_HOUR) +
-                    " hr."
-                );
+                return parseInt(milisecondsDifference / MILISECONDS_IN_HOUR) + " hr.";
             case milisecondsDifference < MILISECONDS_IN_MONTH:
-                return (
-                    parseInt(milisecondsDifference / MILISECONDS_IN_DAY) +
-                    " $day"
-                );
+                return parseInt(milisecondsDifference / MILISECONDS_IN_DAY) + " $day";
             default:
-                var dateString = new Date(
-                    milisecondsParameter
-                ).toLocaleDateString("es-ES");
+                var dateString = new Date(milisecondsParameter).toLocaleDateString("es-ES");
                 return dateString;
         }
     };

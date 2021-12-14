@@ -7,7 +7,7 @@ const initialForm = {
     reason: "",
     context: "",
     idAccount: sessionStorage.getItem("id"),
-    accountReported: ""
+    accountReported: "",
 };
 
 const validationsForm = (form) => {
@@ -18,8 +18,7 @@ const validationsForm = (form) => {
     let regexReason = /^[\wÑñÁáÉéÍíÓóÚúÜü!?¡¿.,# ]{5,200}$/;
     if (context.length === 0) {
         errors.context = "Error";
-    }
-    else {
+    } else {
         if (!regexContext.test(context)) {
             errors.context = "Error";
         }
@@ -27,8 +26,7 @@ const validationsForm = (form) => {
 
     if (reason.length === 0) {
         errors.reason = "Error";
-    }
-    else {
+    } else {
         if (!regexReason.test(reason)) {
             errors.reason = "Error";
         }
@@ -38,23 +36,23 @@ const validationsForm = (form) => {
 
 export default function ReportUser({ setStatusModal, account }) {
     const { t } = useTranslation();
-    const {
-        form,
-        errors,
-        loading,
-        response,
-        className,
-        handleChange,
-        handleBlur,
-        icon,
-        handleSubmit
-    } = useReportForm(initialForm, validationsForm, account._id);
+    const { form, errors, loading, response, className, handleChange, handleBlur, icon, handleSubmit } = useReportForm(initialForm, validationsForm, account._id);
 
     return (
-        <form onSubmit={(e) => { handleSubmit(e, setStatusModal); }} className="reportuser-main-container">
+        <form
+            onSubmit={(e) => {
+                handleSubmit(e, setStatusModal);
+            }}
+            className="reportuser-main-container"
+        >
             <div className="reportuser-content-container">
                 <div className="reportuser-text-description">
-                    <span>{t("ReportUserReported")} <b>{account.name} {account.lastname}</b></span>
+                    <span>
+                        {t("ReportUserReported")}{" "}
+                        <b>
+                            {account.name} {account.lastname}
+                        </b>
+                    </span>
                     <div className="reportuser-options-container">
                         <span>{t("ReportUserDescription")}</span>
                         <div className="radiobutton-container">
@@ -70,22 +68,22 @@ export default function ReportUser({ setStatusModal, account }) {
                             <input className="radiobutton" type="radio" id="3a" value={t("ReportUserReasonThree")} name="reason" onChange={handleChange} onBlur={handleBlur} />
                             <label htmlFor="3a">{t("ReportUserReasonThree")}</label>
                         </div>
-                        <div className="system-message-container">
-                            {errors.reason && <p className="errorInput">{t("ErrorReason")}</p>}
-                        </div>
+                        <div className="system-message-container">{errors.reason && <p className="errorInput">{t("ErrorReason")}</p>}</div>
                     </div>
                     <span>{t("ReportUserInputContext")}</span>
                     <textarea name="context" className="input" type="text>" onBlur={handleBlur} onChange={handleChange} value={form.context} required></textarea>
-                    <div className="system-message-container">
-                        {errors.context && <p className="errorInput">{t("ErrorContext")}</p>}
-                    </div>
+                    <div className="system-message-container">{errors.context && <p className="errorInput">{t("ErrorContext")}</p>}</div>
                 </div>
                 <div className="system-message-container">
-                    {loading && <p className={className}>{icon}  {response}</p>}
+                    {loading && (
+                        <p className={className}>
+                            {icon} {response}
+                        </p>
+                    )}
                 </div>
                 <div className="reportuser-button-panel">
                     <Button styleName="orange-button" text={t("ButtonCancel")} onClick={() => setStatusModal(false)}></Button>
-                    <Button type="submit" styleName="green-button" text={t("ButtonReport")} ></Button>
+                    <Button type="submit" styleName="green-button" text={t("ButtonReport")}></Button>
                 </div>
             </div>
         </form>

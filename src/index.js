@@ -3,8 +3,8 @@ import App from "./App";
 import ContextProvider from "./helpers/Context";
 
 ReactDOM.render(
-  <ContextProvider>
-    <App />
-  </ContextProvider>,
-  document.getElementById("root")
+    <ContextProvider>
+        <App />
+    </ContextProvider>,
+    document.getElementById("root")
 );

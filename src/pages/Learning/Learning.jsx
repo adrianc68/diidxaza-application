@@ -12,9 +12,7 @@ import { ModalContext } from "../../helpers/ModalContext";
 const totalPoints = (lessonRecords) => {
     let totalPointsRecord = 0;
     if (lessonRecords.length > NUMBER.ZERO) {
-        lessonRecords.map((element) => (
-            totalPointsRecord = totalPointsRecord + element.pointsObtained
-        ));
+        lessonRecords.map((element) => (totalPointsRecord = totalPointsRecord + element.pointsObtained));
     }
     return totalPointsRecord;
 };
@@ -29,61 +27,73 @@ export default function Learning() {
 
     const { setStatusModal, setComponent } = useContext(ModalContext);
 
-    const handleModal = (ComponentTagA, sizeHeightA, sizeWidthA, handleModalFunction,  titleA) => {
+    const handleModal = (ComponentTagA, sizeHeightA, sizeWidthA, handleModalFunction, titleA) => {
         const initialValue = {
-        sizeHeight: sizeHeightA,
-        sizeWidth: sizeWidthA,
-        title: titleA,
-        object: ComponentTagA,
-        handleModal: handleModalFunction,
+            sizeHeight: sizeHeightA,
+            sizeWidth: sizeWidthA,
+            title: titleA,
+            object: ComponentTagA,
+            handleModal: handleModalFunction,
         };
         setComponent(initialValue);
         setStatusModal(true);
     };
-    
-    const handleModalLearning =  (content, handleModal, title) => {
-        handleModal(<AlertMessage content={content} handleModal={handleModal}></AlertMessage>,"180px","450px",handleModal,title);
-    } 
+
+    const handleModalLearning = (content, handleModal, title) => {
+        handleModal(<AlertMessage content={content} handleModal={handleModal}></AlertMessage>, "180px", "450px", handleModal, title);
+    };
 
     useEffect(() => {
-        helpHttp().get(UrlAPI + "lessons", {
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-                "Authorization": sessionStorage.getItem("token")
-            }
-        }).then((response) => {
-            if (response.length > NUMBER.ZERO) {
-                setLessons(response);
-                helpHttp().get(UrlAPI + "lessonRecords/" + sessionStorage.getItem("id"), {
-                    headers: {
-                        Accept: "application/json",
-                        "Content-Type": "application/json",
-                        "Authorization": sessionStorage.getItem("token")
-                    }
-                }).then((responseRecords) => {
-                    if (responseRecords.length > NUMBER.ZERO) {
-                        setLessonRecords(responseRecords);
-                    } else {
-                        if (responseRecords.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
-                            handleModalLearning(t("RefreshToken"),() => { window.location.href = "login";});
-                        } else {
-                            if (responseRecords.status === RESPONSE_STATUS.UNAUTHORIZED) {
-                                handleModalLearning(t("ErrorToken"),() => { setStatusModal(false); });
+        helpHttp()
+            .get(UrlAPI + "lessons", {
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: sessionStorage.getItem("token"),
+                },
+            })
+            .then((response) => {
+                if (response.length > NUMBER.ZERO) {
+                    setLessons(response);
+                    helpHttp()
+                        .get(UrlAPI + "lessonRecords/" + sessionStorage.getItem("id"), {
+                            headers: {
+                                Accept: "application/json",
+                                "Content-Type": "application/json",
+                                Authorization: sessionStorage.getItem("token"),
+                            },
+                        })
+                        .then((responseRecords) => {
+                            if (responseRecords.length > NUMBER.ZERO) {
+                                setLessonRecords(responseRecords);
+                            } else {
+                                if (responseRecords.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
+                                    handleModalLearning(t("RefreshToken"), () => {
+                                        window.location.href = "login";
+                                    });
+                                } else {
+                                    if (responseRecords.status === RESPONSE_STATUS.UNAUTHORIZED) {
+                                        handleModalLearning(t("ErrorToken"), () => {
+                                            setStatusModal(false);
+                                        });
+                                    }
+                                }
                             }
+                        });
+                } else {
+                    if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
+                        handleModalLearning(t("RefreshToken"), () => {
+                            window.location.href = "login";
+                        });
+                    } else {
+                        if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
+                            handleModalLearning(t("ErrorToken"), () => {
+                                setStatusModal(false);
+                            });
                         }
                     }
-                });
-            } else {
-                if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
-                    handleModalLearning(t("RefreshToken"),() => { window.location.href = "login";});
-                } else {
-                    if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
-                        handleModalLearning(t("ErrorToken"),() => { setStatusModal(false); });
-                    }
                 }
-            }
-        });
+            });
     }, []);
 
     function handleDisplayLessonInformation(e, lessonCurrent) {
@@ -112,11 +122,17 @@ export default function Learning() {
                 <div className="learning-lesson-information">
                     <div className="learning-lessons-content">
                         <ul>
-                            {lessons.length > NUMBER.ZERO && lessons.map((element) => (
-                                <li onClick={(e) => { handleDisplayLessonInformation(e, element); }} ref={itemRef}>
-                                    <LessonListItem isRecordHistory={lessonRecords.find((history) => history.idLesson === element._id)} lesson={element}></LessonListItem>
-                                </li>
-                            ))}
+                            {lessons.length > NUMBER.ZERO &&
+                                lessons.map((element) => (
+                                    <li
+                                        onClick={(e) => {
+                                            handleDisplayLessonInformation(e, element);
+                                        }}
+                                        ref={itemRef}
+                                    >
+                                        <LessonListItem isRecordHistory={lessonRecords.find((history) => history.idLesson === element._id)} lesson={element}></LessonListItem>
+                                    </li>
+                                ))}
                         </ul>
                         {isVisible ? placeLessonInformation() : null}
                     </div>

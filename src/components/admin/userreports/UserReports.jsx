@@ -11,20 +11,22 @@ export default function UserReports({ username, image }) {
     const [serverError, setServerError] = useState(null);
 
     useEffect(() => {
-        helpHttp().get(UrlAPI + "reports/usernameReported/" + username, {
-            headers: {
-                Accept: "application/json",
-                "Authorization": sessionStorage.getItem("token")
-            }
-        }).then((response) => {
-            if (response != null) {
-                if (response.length > 0) {
-                    setReports(response);
-                    return;
+        helpHttp()
+            .get(UrlAPI + "reports/usernameReported/" + username, {
+                headers: {
+                    Accept: "application/json",
+                    Authorization: sessionStorage.getItem("token"),
+                },
+            })
+            .then((response) => {
+                if (response != null) {
+                    if (response.length > 0) {
+                        setReports(response);
+                        return;
+                    }
+                    setServerError(getMessageResponseStatus(response));
                 }
-                setServerError(getMessageResponseStatus(response));
-            }
-        }, []);
+            }, []);
     }, [username, t]);
 
     return (
@@ -37,16 +39,17 @@ export default function UserReports({ username, image }) {
                     <p>{t("UserReportAdminPanelDescription")}</p>
                     <div className="userreports-list-container">
                         <ul>
-                            {
-                                reports.length > 0 ?
-                                    reports.map((element) =>
-                                        <li id={element._id}><Report report={element} /></li>
-                                    )
-                                    :
-                                    <div className="no-found-records">
-                                        <span className="semibold">{serverError}</span>
-                                    </div>
-                            }
+                            {reports.length > 0 ? (
+                                reports.map((element) => (
+                                    <li id={element._id}>
+                                        <Report report={element} />
+                                    </li>
+                                ))
+                            ) : (
+                                <div className="no-found-records">
+                                    <span className="semibold">{serverError}</span>
+                                </div>
+                            )}
                         </ul>
                     </div>
                 </div>

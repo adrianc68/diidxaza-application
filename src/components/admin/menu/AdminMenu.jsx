@@ -34,7 +34,9 @@ export default function AdminMenu() {
             sizeWidth: sizeWidthA,
             title: titleA,
             object: ComponentTagA,
-            handleModal: () => { setStatusModal(false)},
+            handleModal: () => {
+                setStatusModal(false);
+            },
         };
         setComponent(initialValue);
         setStatusModal(true);
@@ -61,6 +63,6 @@ export default function AdminMenu() {
                     </div>
                 </li>
             </ul>
-        </nav >
+        </nav>
     );
 }

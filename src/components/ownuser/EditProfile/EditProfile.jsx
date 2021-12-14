@@ -41,8 +41,7 @@ const validationsForm = (form) => {
 
     if (!regexDateBirth.test(form.dateBirth)) {
         errors.dateBirth = "Error";
-    }
-    else {
+    } else {
         const dateBirth = new Date(form.dateBirth).getFullYear();
         const dateNow = new Date().getFullYear();
         const year = dateNow - dateBirth;
@@ -65,7 +64,6 @@ const validationsForm = (form) => {
     return errors;
 };
 
-
 export default function EditProfile({ setNameUser }) {
     const { t } = useTranslation();
 
@@ -78,105 +76,113 @@ export default function EditProfile({ setNameUser }) {
 
     const { setStatusModal, setComponent } = useContext(ModalContext);
 
-    const handleModal = (ComponentTagA, sizeHeightA, sizeWidthA, handleModalFunction,  titleA) => {
+    const handleModal = (ComponentTagA, sizeHeightA, sizeWidthA, handleModalFunction, titleA) => {
         const initialValue = {
-        sizeHeight: sizeHeightA,
-        sizeWidth: sizeWidthA,
-        title: titleA,
-        object: ComponentTagA,
-        handleModal: handleModalFunction,
+            sizeHeight: sizeHeightA,
+            sizeWidth: sizeWidthA,
+            title: titleA,
+            object: ComponentTagA,
+            handleModal: handleModalFunction,
         };
         setComponent(initialValue);
         setStatusModal(true);
     };
-    
-    const handleModalEditProfile =  (content, handleModalFunction, title) => {
-        handleModal(<AlertMessage content={content} handleModal={handleModalFunction}></AlertMessage>,"180px","450px",handleModalFunction,title);
-    } 
+
+    const handleModalEditProfile = (content, handleModalFunction, title) => {
+        handleModal(<AlertMessage content={content} handleModal={handleModalFunction}></AlertMessage>, "180px", "450px", handleModalFunction, title);
+    };
 
     useEffect(() => {
-        helpHttp().get(UrlAPI + "accounts/" + sessionStorage.getItem("id"), {
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-                "Authorization": sessionStorage.getItem("token")
-            }
-        }).then((response) => {
-            if (response._id) {
-                const initialAccountForm = {
-                    _id: sessionStorage.getItem("id"),
-                    lastname: response.lastname,
-                    name: response.name,
-                    age: response.age,
-                    dateBirth: response.dateBirth,
-                    email: response.email,
-                    username: response.username,
-                    idCity: response.idCity[0]._id,
-                    idState: response.idCity[0].idState[0]
-                };
-                setForm(initialAccountForm);
-                helpHttp().get(UrlAPI + "states").then((response) => {
-                    if (!response.status) {
-                        setStates(response);
+        helpHttp()
+            .get(UrlAPI + "accounts/" + sessionStorage.getItem("id"), {
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: sessionStorage.getItem("token"),
+                },
+            })
+            .then((response) => {
+                if (response._id) {
+                    const initialAccountForm = {
+                        _id: sessionStorage.getItem("id"),
+                        lastname: response.lastname,
+                        name: response.name,
+                        age: response.age,
+                        dateBirth: response.dateBirth,
+                        email: response.email,
+                        username: response.username,
+                        idCity: response.idCity[0]._id,
+                        idState: response.idCity[0].idState[0],
+                    };
+                    setForm(initialAccountForm);
+                    helpHttp()
+                        .get(UrlAPI + "states")
+                        .then((response) => {
+                            if (!response.status) {
+                                setStates(response);
+                            }
+                        });
+                    helpHttp()
+                        .get(UrlAPI + "cities/" + response.idCity[0].idState[0])
+                        .then((response) => {
+                            if (!response.status) {
+                                setCities(response);
+                            }
+                        });
+                    if (response.URL !== undefined) {
+                        setURLPhoto(response.URL);
+                        fetch(UrlAPI + "resources", {
+                            method: "PATCH",
+                            headers: {
+                                "Content-Type": "application/json",
+                                Authorization: sessionStorage.getItem("token"),
+                            },
+                            body: JSON.stringify({ URL: response.URL }),
+                        }).then((responseResource) => {
+                            if (responseResource.ok) {
+                                responseResource.blob().then((responseBlob) => {
+                                    var objectURL = URL.createObjectURL(responseBlob);
+                                    setNameFile(objectURL);
+                                    setInitialFile(objectURL);
+                                });
+                            } else {
+                                setNameFile(UserImageDefault);
+                                setInitialFile(UserImageDefault);
+                            }
+                        });
+                    } else {
+                        setURLPhoto(null);
                     }
-                });
-                helpHttp().get(UrlAPI + "cities/" + response.idCity[0].idState[0]).then((response) => {
-                    if (!response.status) {
-                        setCities(response);
-                    }
-                });
-                if (response.URL !== undefined) {
-                    setURLPhoto(response.URL);
-                    fetch(UrlAPI + "resources", {
-                        method: "PATCH",
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Authorization": sessionStorage.getItem("token")
-                        },
-                        body: JSON.stringify({ URL: response.URL })
-                    }).then((responseResource) => {
-                        if (responseResource.ok) {
-                            responseResource.blob().then((responseBlob) => {
-                                var objectURL = URL.createObjectURL(responseBlob);
-                                setNameFile(objectURL);
-                                setInitialFile(objectURL);
-                            });
-                        } else {
-                            setNameFile(UserImageDefault);
-                            setInitialFile(UserImageDefault);
-                        }
-                    });
                 } else {
+                    if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
+                        handleModalEditProfile(t("RefreshToken"), () => {
+                            window.location.href = "login";
+                        });
+                    } else {
+                        if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
+                            handleModalEditProfile(t("ErrorToken"), () => {
+                                setStatusModal(false);
+                            });
+                        }
+                    }
                     setURLPhoto(null);
                 }
-            } else {
-                if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
-                    handleModalEditProfile(t("RefreshToken"),() => { window.location.href = "login";});
-                } else {
-                    if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
-                        handleModalEditProfile(t("ErrorToken"),() => { setStatusModal(false); });
-                    }
-                }
-                setURLPhoto(null);
-            }
-        });
+            });
     }, []);
 
-
-
-    const {
-        handleChangeState,
-        errors,
-        loading,
-        response,
-        className,
-        handleChange,
-        handleBlur,
-        handleSubmit,
-        handleChangeImage,
-        icon,
-        errorImage
-    } = useUpdateAccountForm(validationsForm, setForm, form, setCities, setNameFile, URLPhoto, initialfile, setNameUser, setInitialFile, namefile, setURLPhoto);
+    const { handleChangeState, errors, loading, response, className, handleChange, handleBlur, handleSubmit, handleChangeImage, icon, errorImage } = useUpdateAccountForm(
+        validationsForm,
+        setForm,
+        form,
+        setCities,
+        setNameFile,
+        URLPhoto,
+        initialfile,
+        setNameUser,
+        setInitialFile,
+        namefile,
+        setURLPhoto
+    );
 
     return (
         <form onSubmit={handleSubmit} className="editprofile-main-container">
@@ -210,84 +216,78 @@ export default function EditProfile({ setNameUser }) {
                         <label>
                             <p className="p-semibold">{t("SignUpFormNameLabelInput")}</p>
                             <input name="name" type="text" onBlur={handleBlur} onChange={handleChange} value={form.name} required />
-                            <div className="system-message-container">
-                                {errors.name && <p className="errorInput">{t("ErrorName")}</p>}
-                            </div>
+                            <div className="system-message-container">{errors.name && <p className="errorInput">{t("ErrorName")}</p>}</div>
                         </label>
                         <label>
                             <p className="p-semibold">{t("SignUpFormLastnameInput")}</p>
                             <input name="lastname" type="text" onBlur={handleBlur} onChange={handleChange} value={form.lastname} required />
-                            <div className="system-message-container">
-                                {errors.lastname && <p className="errorInput">{t("ErrorName")}</p>}
-                            </div>
+                            <div className="system-message-container">{errors.lastname && <p className="errorInput">{t("ErrorName")}</p>}</div>
                         </label>
                         <label>
                             <p className="p-semibold">{t("SignUpFormBirthdateInput")}</p>
                             <p>{t("SignUpFormBirthDateDescription")}</p>
                             <input name="dateBirth" type="date" onBlur={handleBlur} onChange={handleChange} value={form.dateBirth} required />
-                            <div className="system-message-container">
-                                {errors.dateBirth && <p className="errorInput">{t("ErrorDateBirth")}</p>}
-                            </div>
+                            <div className="system-message-container">{errors.dateBirth && <p className="errorInput">{t("ErrorDateBirth")}</p>}</div>
                         </label>
                         <label>
                             <p className="p-semibold">{t("SignUpFormStateInput")}</p>
                             <select name="idState" onChange={handleChangeState} onBlur={handleBlur} value={form.idState} required>
                                 <option value="">{t("SignUpNotOption")}</option>
-                                {states.length > NUMBER.ZERO && states.map((element) => (
-                                    <option key={element._id} value={element._id}>{element.nameState}</option>
-                                ))}
+                                {states.length > NUMBER.ZERO &&
+                                    states.map((element) => (
+                                        <option key={element._id} value={element._id}>
+                                            {element.nameState}
+                                        </option>
+                                    ))}
                             </select>
-                            <div className="system-message-container">
-                                {errors.idState && <p className="errorInput">{t("ErrorRequired")}</p>}
-                            </div>
+                            <div className="system-message-container">{errors.idState && <p className="errorInput">{t("ErrorRequired")}</p>}</div>
                         </label>
                         <label>
                             <p className="p-semibold">{t("SignUpFormCityInput")}</p>
                             <select name="idCity" onBlur={handleBlur} onChange={handleChange} value={form.idCity} required>
                                 <option value="">{t("SignUpNotOption")}</option>
-                                {cities.length > NUMBER.ZERO && cities.map((element) => (
-                                    <option key={element._id} value={element._id}>{element.nameCity}</option>
-                                ))}
+                                {cities.length > NUMBER.ZERO &&
+                                    cities.map((element) => (
+                                        <option key={element._id} value={element._id}>
+                                            {element.nameCity}
+                                        </option>
+                                    ))}
                             </select>
-                            <div className="system-message-container">
-                                {errors.idCity && <p className="errorInput">{t("ErrorRequired")}</p>}
-                            </div>
+                            <div className="system-message-container">{errors.idCity && <p className="errorInput">{t("ErrorRequired")}</p>}</div>
                         </label>
-
-
                     </div>
                     <h2>{t("SignUpAccountInformation")}</h2>
                     <div className="editprofile-account-information-inputs">
-
                         <label>
                             <p className="p-semibold">{t("SignUpFormUsernameInput")}</p>
                             <p>{t("SignUpFormUsernameDescription")}</p>
                             <input name="username" type="text" onBlur={handleBlur} onChange={handleChange} value={form.username} required />
-                            <div className="system-message-container">
-                                {errors.username && <p className="errorInput">{t("ErrorUsername")}</p>}
-                            </div>
+                            <div className="system-message-container">{errors.username && <p className="errorInput">{t("ErrorUsername")}</p>}</div>
                         </label>
                         <label>
                             <p className="p-semibold">{t("SignUpFormEmailInput")}</p>
                             <p>{t("SignUpFormEmailDescription")}</p>
                             <input name="email" type="text" onBlur={handleBlur} onChange={handleChange} value={form.email} required />
-                            <div className="system-message-container">
-                                {errors.email && <p className="errorInput">{t("ErrorEmail")}</p>}
-                            </div>
+                            <div className="system-message-container">{errors.email && <p className="errorInput">{t("ErrorEmail")}</p>}</div>
                         </label>
                         <div className="system-message-container">
-                            {loading && <p className={className}>{icon}  {response}</p>}
+                            {loading && (
+                                <p className={className}>
+                                    {icon} {response}
+                                </p>
+                            )}
                         </div>
                         <div className="editprofile-button-panel">
                             <div>
-                                <Link className="link" to={
-                                    {
+                                <Link
+                                    className="link"
+                                    to={{
                                         pathname: "/profile/" + sessionStorage.getItem("username"),
                                         state: {
                                             id: sessionStorage.getItem("id"),
-                                        }
-                                    }
-                                }>
+                                        },
+                                    }}
+                                >
                                     <Button styleName="orange-button" text={t("ButtonCancel")}></Button>
                                 </Link>
                             </div>

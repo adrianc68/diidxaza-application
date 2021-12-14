@@ -13,26 +13,25 @@ export default function SignUp() {
     const { t } = useTranslation();
     const { isLogged } = useContext(Context);
 
-    return (
-        !isLogged ?
-            <div className="signup-main-container">
-                <Topbar>
-                    <div className="signup-then-login-container">
-                        <span>{t("SignUpAlreadyHaveAccount")}</span>
-                        <div className="signup-already-buton-container">
-                            <Link className="link" to="/login">
-                                <Button styleName="primary-button" text={t("SignUpAlreadyHaveAccountButton")}></Button>
-                            </Link>
-                        </div>
+    return !isLogged ? (
+        <div className="signup-main-container">
+            <Topbar>
+                <div className="signup-then-login-container">
+                    <span>{t("SignUpAlreadyHaveAccount")}</span>
+                    <div className="signup-already-buton-container">
+                        <Link className="link" to="/login">
+                            <Button styleName="primary-button" text={t("SignUpAlreadyHaveAccountButton")}></Button>
+                        </Link>
                     </div>
-                </Topbar>
-                <div className="signup-form-container">
-                    <InputInformation></InputInformation>
-                    <br />
-                    <VerificationCode></VerificationCode>
                 </div>
+            </Topbar>
+            <div className="signup-form-container">
+                <InputInformation></InputInformation>
+                <br />
+                <VerificationCode></VerificationCode>
             </div>
-            :
-            <Redirect exact to={"/"} />
+        </div>
+    ) : (
+        <Redirect exact to={"/"} />
     );
 }

@@ -7,7 +7,6 @@ import DiidxazaLogo from "../../../components/logo/DiidxazaLogo";
 import { FiCheck, FiX, FiPlusSquare, FiDivide, FiPlus } from "react-icons/fi";
 import { NUMBER } from "../../../helpers/Number";
 
-
 export default function ResultLesson({ resultsQuestions, lesson, pointsObtained }) {
     const { t } = useTranslation();
 
@@ -55,7 +54,7 @@ export default function ResultLesson({ resultsQuestions, lesson, pointsObtained 
                                         </div>
                                         <div className="resultlesson-general-data-text">
                                             <span>{t("ResultLessonCorrectQuestions")}</span>
-                                            <span className="color-green">{(resultsQuestions.filter((element) => element.isCorrect === true)).length}</span>
+                                            <span className="color-green">{resultsQuestions.filter((element) => element.isCorrect === true).length}</span>
                                         </div>
                                     </div>
                                 </li>
@@ -67,7 +66,7 @@ export default function ResultLesson({ resultsQuestions, lesson, pointsObtained 
                                         </div>
                                         <div className="resultlesson-general-data-text">
                                             <span>{t("ResultLessonIncorrectQuestions")}</span>
-                                            <span className="color-red">{(resultsQuestions.filter((element) => element.isCorrect === false)).length}</span>
+                                            <span className="color-red">{resultsQuestions.filter((element) => element.isCorrect === false).length}</span>
                                         </div>
                                     </div>
                                 </li>
@@ -79,7 +78,7 @@ export default function ResultLesson({ resultsQuestions, lesson, pointsObtained 
                                         </div>
                                         <div className="resultlesson-general-data-text">
                                             <span>{t("ResultLessonEasyQuestions")}</span>
-                                            <span className="color-blue">{(resultsQuestions.filter((element) => element.question.level === "easy")).length}</span>
+                                            <span className="color-blue">{resultsQuestions.filter((element) => element.question.level === "easy").length}</span>
                                         </div>
                                     </div>
                                 </li>
@@ -91,13 +90,12 @@ export default function ResultLesson({ resultsQuestions, lesson, pointsObtained 
                                         </div>
                                         <div className="resultlesson-general-data-text">
                                             <span>{t("ResultLessonHardQuestions")}</span>
-                                            <span>{(resultsQuestions.filter((element) => element.question.level === "difficult")).length}</span>
+                                            <span>{resultsQuestions.filter((element) => element.question.level === "difficult").length}</span>
                                         </div>
                                     </div>
                                 </li>
                             </ul>
                         </div>
-
                     </div>
 
                     <h2>{t("ResultLessonTitleShowQuestions")}</h2>
@@ -105,20 +103,30 @@ export default function ResultLesson({ resultsQuestions, lesson, pointsObtained 
                     <div className="questionResult-main-container">
                         <div className="questionresult-list-container">
                             <ul>
-                                {resultsQuestions.length > NUMBER.ZERO && resultsQuestions.map((element) => (
-                                    element.question.typeQuestion === "only" && <li>
-                                        <div className="questionResult-list-item">
-                                            <QuestionUniqueAnswerSolved question={element.question} answers={element.answers} answersUser={element.answerAccount}></QuestionUniqueAnswerSolved>
-                                            <span className="questionResult-points-span">{element.pointsAnswer} pts de {element.question.score} pts</span>
-                                        </div>
-                                    </li> ||
-                                    element.question.typeQuestion === "multiple" && <li>
-                                        <div className="questionResult-list-item">
-                                            <QuestionMultipleAnswerSolved question={element.question} answers={element.answers} answersUser={element.answerAccount}></QuestionMultipleAnswerSolved>
-                                            <span className="questionResult-points-span">{element.pointsAnswer} pts de {element.question.score} pts</span>
-                                        </div>
-                                    </li>
-                                ))}
+                                {resultsQuestions.length > NUMBER.ZERO &&
+                                    resultsQuestions.map(
+                                        (element) =>
+                                            (element.question.typeQuestion === "only" && (
+                                                <li>
+                                                    <div className="questionResult-list-item">
+                                                        <QuestionUniqueAnswerSolved question={element.question} answers={element.answers} answersUser={element.answerAccount}></QuestionUniqueAnswerSolved>
+                                                        <span className="questionResult-points-span">
+                                                            {element.pointsAnswer} pts de {element.question.score} pts
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            )) ||
+                                            (element.question.typeQuestion === "multiple" && (
+                                                <li>
+                                                    <div className="questionResult-list-item">
+                                                        <QuestionMultipleAnswerSolved question={element.question} answers={element.answers} answersUser={element.answerAccount}></QuestionMultipleAnswerSolved>
+                                                        <span className="questionResult-points-span">
+                                                            {element.pointsAnswer} pts de {element.question.score} pts
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            ))
+                                    )}
                             </ul>
                         </div>
                         <DiidxazaLogo styleClass="logo-black-link just-icon"></DiidxazaLogo>

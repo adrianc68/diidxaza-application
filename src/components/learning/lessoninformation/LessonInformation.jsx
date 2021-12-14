@@ -22,23 +22,28 @@ export default function LessonInformation({ lesson, setVisible }) {
                 </div>
             </div>
             <div className="lesson-description-content">
-                <span>
-                    {lesson.description}
-                </span>
+                <span>{lesson.description}</span>
             </div>
             <div className="lesson-button-panel">
                 <div>
-                    <Button styleName="orange-button" text={t("ButtonCancel")} onClick={(e) => { setVisible(false); }} />
+                    <Button
+                        styleName="orange-button"
+                        text={t("ButtonCancel")}
+                        onClick={(e) => {
+                            setVisible(false);
+                        }}
+                    />
                 </div>
                 <div>
-                    <Link className="link" to={
-                        {
+                    <Link
+                        className="link"
+                        to={{
                             pathname: "/answers/" + lesson.name,
                             state: {
                                 lesson,
-                            }
-                        }
-                    }>
+                            },
+                        }}
+                    >
                         <Button styleName="primary-button" text={t("ButtonStartLesson")} />
                     </Link>
                 </div>

@@ -13,7 +13,7 @@ export default function PageNotFound() {
     return (
         <>
             <div className="pagenotfound-main-container">
-                <Topbar/>
+                <Topbar />
                 <div className="pagenotfound-img-container">
                     <img className="pagenotfound-image" src={NotFound} alt={t("altPageNotFoundImage")}></img>
                 </div>
@@ -26,7 +26,6 @@ export default function PageNotFound() {
                         </Button>
                     </Link>
                 </div>
-
             </div>
         </>
     );

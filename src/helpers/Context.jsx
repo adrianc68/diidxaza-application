@@ -1,4 +1,4 @@
-import React, { createContext, useState  } from "react";
+import React, { createContext, useState } from "react";
 
 export const Context = createContext();
 
@@ -11,20 +11,16 @@ const Provider = ({ children }) => {
         }
         return false;
     });
-    
+
     const value = {
         isLogged,
         setLogged: (value) => {
             setLogged(value);
             localStorage.setItem("isLogged", value);
-        }
-    }
+        },
+    };
 
-    return (
-        <Context.Provider value={value}>
-            {children}
-        </Context.Provider>
-    )
-}
+    return <Context.Provider value={value}>{children}</Context.Provider>;
+};
 
 export default Provider;

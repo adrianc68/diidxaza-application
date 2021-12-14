@@ -11,19 +11,27 @@ export default function AddComment({ commentLenght, loadingComment, icon, classN
             </div>
             <div className="addcommen-button-control">
                 <div className="addcomment-count-characters">
+                    <div className="system-message-container">{errorsComment.comment && <p className="errorInput">{t("ErrorComment")}</p>}</div>
+                    <span>
+                        {commentLenght} {t("AddCommentCharacters")}
+                    </span>
                     <div className="system-message-container">
-                        {errorsComment.comment && <p className="errorInput">{t("ErrorComment")}</p>}
-                    </div>
-                    <span>{commentLenght} {t("AddCommentCharacters")}</span>
-                    <div className="system-message-container">
-                        {loadingComment && <p className={className}>{icon}  {responseComment}</p>}
+                        {loadingComment && (
+                            <p className={className}>
+                                {icon} {responseComment}
+                            </p>
+                        )}
                     </div>
                 </div>
                 <div>
-                    <Button styleName="orange-button" onClick={handleClickComment}>{t("ButtonCancel")}</Button>
+                    <Button styleName="orange-button" onClick={handleClickComment}>
+                        {t("ButtonCancel")}
+                    </Button>
                 </div>
                 <div>
-                    <Button type="submit" styleName="green-button">{t("ButtonSend")}</Button>
+                    <Button type="submit" styleName="green-button">
+                        {t("ButtonSend")}
+                    </Button>
                 </div>
             </div>
             <br />

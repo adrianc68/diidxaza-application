@@ -16,8 +16,8 @@ export default function UserListItem({ account }) {
             pathname: "/profile/" + account.username,
             state: {
                 id: account._id,
-            }
-        })
+            },
+        });
     };
 
     return (
@@ -37,7 +37,6 @@ export default function UserListItem({ account }) {
                     <Button styleName="text-button blue-text" text={t("ButtonReportSeeUsersDetails")} onClick={handleModal}></Button>
                 </div>
             </div>
-
         </div>
     );
 }

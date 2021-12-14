@@ -5,7 +5,6 @@ import { helpHttp, UrlAPI, UrlEmailApi } from "../../../helpers/helpHttp";
 import Button from "../../Button/Button";
 import { MdSend } from "react-icons/md";
 
-
 export default function SendEmail() {
     const { t } = useTranslation();
     const [serverInformation, setServerInformation] = useState(null);
@@ -38,8 +37,8 @@ export default function SendEmail() {
     const validateEmailInputForm = (input) => {
         var lengthAllowed = {
             min: 2,
-            max: 150
-        }
+            max: 150,
+        };
         setErrorEmailInformation(null);
         if (input === null) {
             setErrorEmailInformation(t("ValidationErrorLength").replace("$min", lengthAllowed.min).replace("$max", lengthAllowed.max));
@@ -54,8 +53,8 @@ export default function SendEmail() {
     const validateTitleInputForm = (input) => {
         var lengthAllowed = {
             min: 2,
-            max: 150
-        }
+            max: 150,
+        };
         setErrorTitleInformation(null);
         if (input === null) {
             setErrorTitleInformation(t("ValidationErrorLength").replace("$min", lengthAllowed.min).replace("$max", lengthAllowed.max));
@@ -70,8 +69,8 @@ export default function SendEmail() {
     const validateContentInputForm = (input) => {
         var lengthAllowed = {
             min: 3,
-            max: 550
-        }
+            max: 550,
+        };
         setErrorContentInformation(null);
         if (input === null) {
             setErrorContentInformation(t("ValidationErrorLength").replace("$min", lengthAllowed.min).replace("$max", lengthAllowed.max));
@@ -110,10 +109,10 @@ export default function SendEmail() {
                 },
                 body: JSON.stringify(form),
             }).then((response, err) => {
-                if(response != null) {
+                if (response != null) {
                     setServerInformation("Enviado");
                 }
-            })
+            });
         }
     };
 
@@ -123,9 +122,10 @@ export default function SendEmail() {
             clearTimeout(timer);
             setTimer(null);
         }
-        setTimer(setTimeout(() => {
-            refreshCallBack(e.target.value);
-        }, miliseconds)
+        setTimer(
+            setTimeout(() => {
+                refreshCallBack(e.target.value);
+            }, miliseconds)
         );
     }
 
@@ -136,44 +136,58 @@ export default function SendEmail() {
                     <Button styleName="icon-button border fullsize" type="submit">
                         <MdSend className="icon color-black"></MdSend>
                     </Button>
-                    {
-                        serverInformation &&
-                        <span>Enviado</span>
-                    }
+                    {serverInformation && <span>Enviado</span>}
                 </div>
             </div>
             <div className="email-sm-body-to-container">
                 <span>{t("EmailSendMessageTo")}</span>
-                <input name="to" type="text" onChange={(e) => { changeDelay(e, validateEmailInputForm); }} ></input>
-                {
-                    errorEmailInformation &&
+                <input
+                    name="to"
+                    type="text"
+                    onChange={(e) => {
+                        changeDelay(e, validateEmailInputForm);
+                    }}
+                ></input>
+                {errorEmailInformation && (
                     <div className="sendEmail-error-information">
                         <span className="color-red">{errorEmailInformation}</span>
                         <span className="color-gray">{t("FilterInformationEmail")}</span>
-                    </div>}
+                    </div>
+                )}
             </div>
             <div className="email-sm-body-title-container">
                 <span>{t("EmailSendMessageTitle")} </span>
-                <input name="subject" type="text" onChange={(e) => { changeDelay(e, validateTitleInputForm); }} ></input>
-                {
-                    errorTitleInformation &&
+                <input
+                    name="subject"
+                    type="text"
+                    onChange={(e) => {
+                        changeDelay(e, validateTitleInputForm);
+                    }}
+                ></input>
+                {errorTitleInformation && (
                     <div className="sendEmail-error-information">
                         <span className="color-red">{errorTitleInformation}</span>
                         <span className="color-gray">{t("FilterInformationNumbersLetters")}</span>
                     </div>
-                }
+                )}
             </div>
             <div className="email-sm-body-message-container">
                 <span>{t("EmailSendMessageContent")} </span>
-                <textarea name="message" className="textarea-email input" type="text>" onChange={(e) => { changeDelay(e, validateContentInputForm); }} ></textarea>
-                {
-                    errorContentInformation &&
+                <textarea
+                    name="message"
+                    className="textarea-email input"
+                    type="text>"
+                    onChange={(e) => {
+                        changeDelay(e, validateContentInputForm);
+                    }}
+                ></textarea>
+                {errorContentInformation && (
                     <div className="sendEmail-error-information">
                         <span className="color-red">{errorContentInformation}</span>
                         <span className="color-gray">{t("FilterInformationNumbersLetters")}</span>
                     </div>
-                }
+                )}
             </div>
         </form>
-    )
+    );
 }

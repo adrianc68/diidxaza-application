@@ -26,34 +26,36 @@ export default function Dashboard() {
         sessionStorage.clear();
         setLogged(false);
         history.push({
-            pathname: "/login"
+            pathname: "/login",
         });
     };
 
     const fetchValidateToken = () => {
-        helpHttp().get(UrlAPI + "accounts/" + sessionStorage.getItem("id"), {
-            headers: {
-                Accept: "application/json",
-                "Authorization": sessionStorage.getItem("token")
-            }
-        }).then((response) => {
-            if (response != null) {
-                switch (response.status) {
-                    case RESPONSE_STATUS.NOT_FOUND:
-                    case RESPONSE_STATUS.INSUFFICIENT_SPACE:
-                    case RESPONSE_STATUS.UNAUTHORIZED:
-                    case RESPONSE_STATUS.BAD_REQUEST:
-                    case RESPONSE_STATUS.FORBIDDEN:
-                    case RESPONSE_STATUS.CONFLICT:
-                    case RESPONSE_STATUS.ERROR_INTERNAL_SERVER:
-                        setLogged(false);
-                        break;
-                    default:
-                        setLogged(true);
-                        setLoadedData(true);
+        helpHttp()
+            .get(UrlAPI + "accounts/" + sessionStorage.getItem("id"), {
+                headers: {
+                    Accept: "application/json",
+                    Authorization: sessionStorage.getItem("token"),
+                },
+            })
+            .then((response) => {
+                if (response != null) {
+                    switch (response.status) {
+                        case RESPONSE_STATUS.NOT_FOUND:
+                        case RESPONSE_STATUS.INSUFFICIENT_SPACE:
+                        case RESPONSE_STATUS.UNAUTHORIZED:
+                        case RESPONSE_STATUS.BAD_REQUEST:
+                        case RESPONSE_STATUS.FORBIDDEN:
+                        case RESPONSE_STATUS.CONFLICT:
+                        case RESPONSE_STATUS.ERROR_INTERNAL_SERVER:
+                            setLogged(false);
+                            break;
+                        default:
+                            setLogged(true);
+                            setLoadedData(true);
+                    }
                 }
-            }
-        });
+            });
     };
 
     useEffect(() => {
@@ -61,24 +63,26 @@ export default function Dashboard() {
     }, []);
 
     return (
-        <ModalContextProvider >
-            {
-                isLogged ?
-                    isLoadedData &&
-                    < div className="dashboard-main-container" >
+        <ModalContextProvider>
+            {isLogged ? (
+                isLoadedData && (
+                    <div className="dashboard-main-container">
                         <Router history={history}>
                             <div className="topbar-dashboard-container">
                                 <Topbar>
                                     <div className="dashboard-userprofile">
-
-                                        <Button styleName="text-button" text={nameUser} onClick={() => history.push(
-                                            {
-                                                pathname: "/profile/" + sessionStorage.getItem("username"),
-                                                state: {
-                                                    id: sessionStorage.getItem("id"),
-                                                }
+                                        <Button
+                                            styleName="text-button"
+                                            text={nameUser}
+                                            onClick={() =>
+                                                history.push({
+                                                    pathname: "/profile/" + sessionStorage.getItem("username"),
+                                                    state: {
+                                                        id: sessionStorage.getItem("id"),
+                                                    },
+                                                })
                                             }
-                                        )}></Button>
+                                        ></Button>
                                     </div>
                                     <div className="dashboard-logout-button-section">
                                         <div>
@@ -88,7 +92,7 @@ export default function Dashboard() {
                                         </div>
                                     </div>
                                 </Topbar>
-                            </div >
+                            </div>
                             <div className="sidebar-dashboard-container">
                                 <Sidebar />
                             </div>
@@ -97,10 +101,11 @@ export default function Dashboard() {
                             </div>
                             {sessionStorage.getItem("role") === "manager" ? <AdminMenu /> : null}
                         </Router>
-                    </div >
-                    :
-                    <Redirect exact to={"/login"} />
-            }
-        </ModalContextProvider >
+                    </div>
+                )
+            ) : (
+                <Redirect exact to={"/login"} />
+            )}
+        </ModalContextProvider>
     );
 }

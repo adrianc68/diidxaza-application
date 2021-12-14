@@ -17,7 +17,9 @@ export default function UserprofileButtonPanelADM({ account }) {
             sizeWidth: sizeWidthA,
             title: titleA,
             object: ComponentTagA,
-            handleModal: () => { setStatusModal(false) },
+            handleModal: () => {
+                setStatusModal(false);
+            },
         };
         setComponent(initialValue);
         setStatusModal(true);
@@ -31,28 +33,21 @@ export default function UserprofileButtonPanelADM({ account }) {
     const handleModalBlockStatusUser = () => {
         var jsx = <ChangeStatusUser account={account} setStatusModal={setStatusModal} />;
         handleModal(jsx, "350px", "50vw", t("BlockUserTitle"));
-    }
+    };
 
     const handleModalUnblockStatusUser = () => {
         var jsx = <ChangeStatusUser account={account} setStatusModal={setStatusModal} />;
-        handleModal(jsx, "350px", "50vw", t("UnblockUserTitle"))
-    }
+        handleModal(jsx, "350px", "50vw", t("UnblockUserTitle"));
+    };
 
     return (
         <div className="userprofile-button-panel-content">
-            {
-                sessionStorage.getItem("role") === UserType.MANAGER &&
-                <Button styleName="primary-button" text={t("UserProfileButtonPanelLookReports")} onClick={handleModalUserReports}></Button>
-            }
-            {
-                sessionStorage.getItem("id") === account._id ?
-                    null
-                    :
-                    account.status === AccountStatus.UNBLOCKED ?
-                        <Button styleName="primary-button" text={t("UserProfileButtonPanelBlockUser")} onClick={handleModalBlockStatusUser}></Button>
-                        :
-                        <Button styleName="primary-button" text={t("UserProfileButtonPanelUnblockUser")} onClick={handleModalUnblockStatusUser}></Button>
-            }
+            {sessionStorage.getItem("role") === UserType.MANAGER && <Button styleName="primary-button" text={t("UserProfileButtonPanelLookReports")} onClick={handleModalUserReports}></Button>}
+            {sessionStorage.getItem("id") === account._id ? null : account.status === AccountStatus.UNBLOCKED ? (
+                <Button styleName="primary-button" text={t("UserProfileButtonPanelBlockUser")} onClick={handleModalBlockStatusUser}></Button>
+            ) : (
+                <Button styleName="primary-button" text={t("UserProfileButtonPanelUnblockUser")} onClick={handleModalUnblockStatusUser}></Button>
+            )}
         </div>
     );
 }

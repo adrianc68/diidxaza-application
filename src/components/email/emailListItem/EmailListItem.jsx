@@ -10,18 +10,17 @@ export default function EmailListItem({ email, typeInbox }) {
     return (
         <li className="emailListItem-main-container" id={email.messageID}>
             <div className="emailli-content-container">
-                {
-                    typeInbox !== "to" ?
-                        <div className="emailli-emails-data">
-                            <span className="semibold">{t("ToEmail")}</span>
-                            <span>{email.to}</span>
-                        </div>
-                        :
-                        <div className="emailli-emails-data">
-                            <span className="semibold">{t("FromEmail")}</span>
-                            <span>{email.from}</span>
-                        </div>
-                }
+                {typeInbox !== "to" ? (
+                    <div className="emailli-emails-data">
+                        <span className="semibold">{t("ToEmail")}</span>
+                        <span>{email.to}</span>
+                    </div>
+                ) : (
+                    <div className="emailli-emails-data">
+                        <span className="semibold">{t("FromEmail")}</span>
+                        <span>{email.from}</span>
+                    </div>
+                )}
                 <div className="emailli-subject-data">
                     <span>{email.subject}</span>
                 </div>
@@ -33,5 +32,5 @@ export default function EmailListItem({ email, typeInbox }) {
                 </div>
             </div>
         </li>
-    )
+    );
 }

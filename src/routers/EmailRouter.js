@@ -5,13 +5,13 @@ import EmailContent from "../components/email/emailListItem/emailcontent/EmailCo
 import SendEmail from "../components/email/sendemail/SendEmail";
 
 export default function EmailRouter() {
-  return (
-    <Switch>
-        <Route exact path="/email/inbox/" render={() => <EmailInbox typeInbox="to"></EmailInbox>}/>
-        <Route exact path="/email/inbox/:id" render={() => <EmailContent></EmailContent>} />
-        <Route exact path="/email/sent/" render={() =>  <EmailInbox typeInbox="from"></EmailInbox>} />
-        <Route exact path="/email/sent/:id" render={() => <EmailContent></EmailContent>} />
-        <Route exact path="/email/create/" render={() =>  <SendEmail></SendEmail>} />
-    </Switch>
-  );
+    return (
+        <Switch>
+            <Route exact path="/email/inbox/" render={() => <EmailInbox typeInbox="to"></EmailInbox>} />
+            <Route exact path="/email/inbox/:id" render={() => <EmailContent></EmailContent>} />
+            <Route exact path="/email/sent/" render={() => <EmailInbox typeInbox="from"></EmailInbox>} />
+            <Route exact path="/email/sent/:id" render={() => <EmailContent></EmailContent>} />
+            <Route exact path="/email/create/" render={() => <SendEmail></SendEmail>} />
+        </Switch>
+    );
 }

@@ -14,7 +14,9 @@ export default function DiscussionListItem(props) {
                     <span>{discussion.theme}</span>
                 </div>
                 <div className="forum-listItem-open-status">
-                    <span><AiOutlineComment /> {discussion.numberComments}</span>
+                    <span>
+                        <AiOutlineComment /> {discussion.numberComments}
+                    </span>
                 </div>
             </div>
             <div className="forum-listItem-data-content">
