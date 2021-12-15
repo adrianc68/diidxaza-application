@@ -5,6 +5,7 @@
   height: 100%;
   background-color: $ul-content-background;
   border-radius: 0 0 3px 3px;
+  overflow: auto;
 
   .accountsmenu-content {
     width: calc(100% - 50px);
@@ -45,6 +46,7 @@
 
       .form-search-filters-buttons {
         display: flex;
+        flex-wrap: wrap;
         gap: 15px;
         width: 100%;
         justify-content: flex-start;
@@ -88,4 +90,9 @@
       }
     }
   }
+}
+
+@media all and (max-width: $max-width-device) {
+
+
 }

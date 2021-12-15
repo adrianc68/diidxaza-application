@@ -6,7 +6,7 @@ import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 import { AccountStatus } from "../../../helpers/AccountStatus";
 import { getMessageResponseStatus } from "../../../helpers/messageResponse";
 
-export default function ChangeStatusUser({ account, setStatusModal }) {
+export default function ChangeStatusUser({ account, setStatusModal, handleChangeStatusUser }) {
     const { t } = useTranslation();
     const [serverError, setServerError] = useState(null);
 
@@ -37,7 +37,7 @@ export default function ChangeStatusUser({ account, setStatusModal }) {
                 .then((response) => {
                     if (response != null) {
                         if (response.messageHappened) {
-                            setStatusModal(false);
+                            handleChangeStatusUser();
                             return;
                         }
                         setServerError(getMessageResponseStatus(response));

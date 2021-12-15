@@ -17,12 +17,12 @@ export default function SendEmail() {
     const [contentParameter, setContentParameter] = useState(null);
 
     const checkLength = (value, lengthAllowed, setMessageCallBack) => {
-        let minChars = lengthAllowed.min;
-        let maxChars = lengthAllowed.max;
-        if (value.length > maxChars || value.length < minChars) {
+        const MIN_CHARS = lengthAllowed.min;
+        const MAX_CHARS = lengthAllowed.max;
+        if (value.length > MIN_CHARS || value.length < MIN_CHARS) {
             let information = t("ValidationErrorLength");
-            information = information.replace("$min", minChars.toString());
-            information = information.replace("$max", maxChars.toString());
+            information = information.replace("$min", MIN_CHARS.toString());
+            information = information.replace("$max", MAX_CHARS.toString());
             setMessageCallBack(information);
         }
     };
@@ -35,50 +35,50 @@ export default function SendEmail() {
     };
 
     const validateEmailInputForm = (input) => {
-        let lengthAllowed = {
+        const LENGTH_ALLOWED = {
             min: 2,
             max: 150,
         };
         setErrorEmailInformation(null);
         if (input === null) {
-            setErrorEmailInformation(t("ValidationErrorLength").replace("$min", lengthAllowed.min).replace("$max", lengthAllowed.max));
+            setErrorEmailInformation(t("ValidationErrorLength").replace("$min", LENGTH_ALLOWED.min).replace("$max", LENGTH_ALLOWED.max));
             return;
         }
         let inputTrim = input.trim();
         checkUnknownCharacters(inputTrim, /\b[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,6}\b/, setErrorEmailInformation);
-        checkLength(inputTrim, lengthAllowed, setErrorEmailInformation);
+        checkLength(inputTrim, LENGTH_ALLOWED, setErrorEmailInformation);
         setEmailParameter(inputTrim);
     };
 
     const validateTitleInputForm = (input) => {
-        let lengthAllowed = {
+        let LENGTH_ALLOWED = {
             min: 2,
             max: 150,
         };
         setErrorTitleInformation(null);
         if (input === null) {
-            setErrorTitleInformation(t("ValidationErrorLength").replace("$min", lengthAllowed.min).replace("$max", lengthAllowed.max));
+            setErrorTitleInformation(t("ValidationErrorLength").replace("$min", LENGTH_ALLOWED.min).replace("$max", LENGTH_ALLOWED.max));
             return;
         }
         let inputTrim = input.trim();
         checkUnknownCharacters(inputTrim, /^[a-zA-Z0-9¿?() ]+$/, setErrorTitleInformation);
-        checkLength(inputTrim, lengthAllowed, setErrorTitleInformation);
+        checkLength(inputTrim, LENGTH_ALLOWED, setErrorTitleInformation);
         setTitleParameter(inputTrim);
     };
 
     const validateContentInputForm = (input) => {
-        let lengthAllowed = {
+        let LENGTH_ALLOWED = {
             min: 3,
             max: 550,
         };
         setErrorContentInformation(null);
         if (input === null) {
-            setErrorContentInformation(t("ValidationErrorLength").replace("$min", lengthAllowed.min).replace("$max", lengthAllowed.max));
+            setErrorContentInformation(t("ValidationErrorLength").replace("$min", LENGTH_ALLOWED.min).replace("$max", LENGTH_ALLOWED.max));
             return;
         }
         let inputTrim = input.trim();
         checkUnknownCharacters(inputTrim, /(.*)/, setErrorContentInformation);
-        checkLength(inputTrim, lengthAllowed, setErrorContentInformation);
+        checkLength(inputTrim, LENGTH_ALLOWED, setErrorContentInformation);
         setContentParameter(inputTrim);
     };
 

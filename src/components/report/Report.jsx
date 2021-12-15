@@ -61,7 +61,6 @@ export default function Report({ report }) {
                 {report.accountReported[0]._id === sessionStorage.getItem("id") ? null : (
                     <div className="report-numeration-container-panel-button">
                         <Button styleName="text-button blue-text" text={t("ButtonReportSeeUsersDetails")} onClick={handleModal}></Button>
-                        <Button styleName="text-button blue-text" text={t("ButtonBlockUser")}></Button>
                     </div>
                 )}
             </div>

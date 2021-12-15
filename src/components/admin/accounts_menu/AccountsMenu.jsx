@@ -10,21 +10,24 @@ import { getMessageResponseStatus } from "../../../helpers/messageResponse";
 export default function AccountsMenu() {
     const { t } = useTranslation();
     const [accountsItems, setAccountsItems] = useState([]);
-    const [serverError, setServerError] = useState(null);
-    const [parameter, setParameter] = useState("");
+    const [serverError, setServerError] = useState("");
+    const [parameter, setParameter] = useState(null);
     const [filter, setFilter] = useState("/name/");
     const [timer, setTimer] = useState(null);
-    const [errorInformation, setErrorInformation] = useState(null);
+    const [errorInformation, setErrorInformation] = useState("");
     const [regex, setRegex] = useState(/^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü ]+$/);
+    const [lengthAllowed, setLengthAllowed] = useState({
+        minChars: 1,
+        maxChars: 150,
+    });
     const [filterInfo, setFilterInfo] = useState(t("FilterInformationNumbersLetters"));
 
     const checkLength = (input) => {
-        let minChars = 1;
-        let maxChars = 150;
-        if (input.length > maxChars || input.length < minChars) {
+        let inputInformation = input.trim();
+        if (inputInformation.length > lengthAllowed.maxChars || inputInformation.length < lengthAllowed.minChars) {
             let information = t("ValidationErrorLength");
-            information = information.replace("$min", minChars.toString());
-            information = information.replace("$max", maxChars.toString());
+            information = information.replace("$min", lengthAllowed.minChars.toString());
+            information = information.replace("$max", lengthAllowed.maxChars.toString());
             setErrorInformation(information);
         }
     };
@@ -36,13 +39,115 @@ export default function AccountsMenu() {
             setErrorInformation(information);
         }
     };
-
+    
     const validateInputForm = (input) => {
-        let inputTrim = input.trim();
         setErrorInformation(null);
+        if (input === null) {
+            setErrorInformation(t("ValidationInvalidTestRegex"));
+            return;
+        }
+        let inputTrim = input.trim();
         checkUnknownCharacters(inputTrim);
         checkLength(inputTrim);
         setParameter(inputTrim);
+    };
+
+    const isThereErrorsInForm = () => {
+        let isThereError = true;
+        validateInputForm(parameter);
+        if ( errorInformation === null ) {
+            isThereError = false;
+        }
+        return isThereError;
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        validateInputForm(parameter);
+        if (!isThereErrorsInForm()) {
+            fetchData(filter, parameter);
+        }
+    };
+
+    const setActiveClassFilterButtons = () => {
+        let buttons = document.querySelectorAll(".accountsmenu-button-filter-button");
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].children[0].addEventListener("click", (e) => {
+                e.preventDefault();
+                for (let j = 0; j < buttons.length; j++) {
+                    buttons[j].children[0].classList.remove("active");
+                }
+                buttons[i].children[0].classList.add("active");
+            });
+        }
+    };
+
+    function changeDelay(value) {
+        const MILISECONDS = 200;
+        if (timer) {
+            clearTimeout(timer);
+            setTimer(null);
+        }
+        setTimer(
+            setTimeout(() => {
+                validateInputForm(value);
+            }, MILISECONDS)
+        );
+    }
+
+    const handleButtonFilterName = () => {
+        setErrorInformation(null);
+        setFilter("/name/");
+        setFilterInfo(t("FilterInformationNumbersLetters"));
+        setRegex(/^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü ]+$/);
+        setLengthAllowed({
+            minChars:1,
+            maxChars:150,
+        });
+    };
+
+    const handleButtonFilterLastname = () => {
+        setErrorInformation(null);
+        setFilter("/lastname/");
+        setFilterInfo(t("FilterInformationNumbersLetters"));
+        setRegex(/^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü ]+$/);
+        setLengthAllowed({
+            minChars:1,
+            maxChars:150,
+        });
+    };
+
+    const handleButtonFilterAge = () => {
+        setErrorInformation(null);
+        setFilter("/age/");
+        setFilterInfo(t("FilterInformationNumbers"));
+        setRegex(/^[0-9]{1,2}$/);
+        setLengthAllowed({
+            minChars:1,
+            maxChars:3,
+        });
+    };
+
+    const handleButtonFilterEmail = () => {
+        setErrorInformation(null);
+        setFilter("/email/");
+        setFilterInfo(t("FilterInformationEmail"));
+        setRegex(/\b[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,6}\b/);
+        setLengthAllowed({
+            minChars:1,
+            maxChars:150,
+        });
+    };
+
+    const handleButtonFilterUsername = () => {
+        setErrorInformation(null);
+        setFilter("/username/");
+        setFilterInfo(t("FilterInformationNumbersLetters"));
+        setRegex(/^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü ]+$/);
+        setLengthAllowed({
+            minChars:1,
+            maxChars:150,
+        });
     };
 
     const fetchData = () => {
@@ -66,40 +171,6 @@ export default function AccountsMenu() {
             }, []);
     };
 
-    const setActiveClassFilterButtons = () => {
-        let buttons = document.querySelectorAll(".accountsmenu-button-filter-button");
-        for (let i = 0; i < buttons.length; i++) {
-            buttons[i].children[0].addEventListener("click", (e) => {
-                e.preventDefault();
-                for (let j = 0; j < buttons.length; j++) {
-                    buttons[j].children[0].classList.remove("active");
-                }
-                buttons[i].children[0].classList.add("active");
-            });
-        }
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        validateInputForm(parameter);
-        if (errorInformation === null) {
-            fetchData(filter, parameter);
-        }
-    };
-
-    function changeDelay(value) {
-        const MILISECONDS = 200;
-        if (timer) {
-            clearTimeout(timer);
-            setTimer(null);
-        }
-        setTimer(
-            setTimeout(() => {
-                validateInputForm(value);
-            }, MILISECONDS)
-        );
-    }
-
     useEffect(() => {
         setAccountsItems([]);
         setServerError(null);
@@ -120,37 +191,7 @@ export default function AccountsMenu() {
                 }
             }, []);
         setActiveClassFilterButtons();
-    }, [t]);
-
-    const handleButtonFilterName = () => {
-        setFilter("/name/");
-        setFilterInfo(t("FilterInformationNumbersLetters"));
-        setRegex(/^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü ]+$/);
-    };
-
-    const handleButtonFilterLastname = () => {
-        setFilter("/lastname/");
-        setFilterInfo(t("FilterInformationNumbersLetters"));
-        setRegex(/^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü ]+$/);
-    };
-
-    const handleButtonFilterAge = () => {
-        setFilter("/age/");
-        setFilterInfo(t("FilterInformationNumbers"));
-        setRegex(/^[0-9]{1,2}$/);
-    };
-
-    const handleButtonFilterEmail = () => {
-        setFilter("/email/");
-        setFilterInfo(t("FilterInformationEmail"));
-        setRegex(/\b[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,6}\b/);
-    };
-
-    const handleButtonFilterUsername = () => {
-        setFilter("/username/");
-        setFilterInfo(t("FilterInformationNumbersLetters"));
-        setRegex(/^[a-zA-Z0-9ÑñÁáÉéÍíÓóÚúÜü ]+$/);
-    };
+    }, []);
 
     return (
         <section className="accountsmenu-main-container">

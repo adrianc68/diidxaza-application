@@ -11,10 +11,10 @@ export default function ReportsMenu() {
     const { t } = useTranslation();
     const [reports, setReports] = useState([]);
     const [serverError, setServerError] = useState(null);
-    const [parameter, setParameter] = useState("");
+    const [parameter, setParameter] = useState(null);
     const [filter, setFilter] = useState("/usernameAccount/");
     const [timer, setTimer] = useState(null);
-    const [errorInformation, setErrorInformation] = useState(null);
+    const [errorInformation, setErrorInformation] = useState("");
     const [filterInfo] = useState(t("FilterInformationNumbersLetters"));
 
     const fetchData = () => {
@@ -52,12 +52,12 @@ export default function ReportsMenu() {
     };
 
     const checkLength = (input) => {
-        let minChars = 2;
-        let maxChars = 150;
-        if (input.length > maxChars || input.length < minChars) {
+        const MIN_CHARS = 3;
+        const MAX_CHARS = 150;
+        if (input.length > MAX_CHARS || input.length < MIN_CHARS) {
             let information = t("ValidationErrorLength");
-            information = information.replace("$min", minChars.toString());
-            information = information.replace("$max", maxChars.toString());
+            information = information.replace("$min", MIN_CHARS.toString());
+            information = information.replace("$max", MAX_CHARS.toString());
             setErrorInformation(information);
         }
     };
@@ -71,11 +71,24 @@ export default function ReportsMenu() {
     };
 
     const validateInputForm = (input) => {
-        let inputTrim = input.trim();
         setErrorInformation(null);
+        if (input === null) {
+            setErrorInformation(t("ValidationInvalidTestRegex"));
+            return;
+        }
+        let inputTrim = input.trim();
         checkUnknownCharacters(inputTrim);
         checkLength(inputTrim);
         setParameter(inputTrim);
+    };
+
+    const isThereErrorsInForm = () => {
+        let isThereError = true;
+        validateInputForm(parameter);
+        if ( errorInformation === null ) {
+            isThereError = false;
+        }
+        return isThereError;
     };
 
     function changeDelay(value) {
@@ -93,8 +106,9 @@ export default function ReportsMenu() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (errorInformation === null) {
-            fetchData(filter, parameter);
+        validateInputForm(parameter);
+        if (!isThereErrorsInForm()) {
+            fetchData();
         }
     };
 
