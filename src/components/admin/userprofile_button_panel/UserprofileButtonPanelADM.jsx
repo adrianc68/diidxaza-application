@@ -7,7 +7,6 @@ import { UserType } from "../../../helpers/UserType";
 import { AccountStatus } from "../../../helpers/AccountStatus";
 import { ModalContext } from "../../../hooks/ModalContext";
 import { useHistory } from "react-router";
-import { useLocation } from "react-router-dom"
 
 export default function UserprofileButtonPanelADM({ account }) {
     const { t } = useTranslation();

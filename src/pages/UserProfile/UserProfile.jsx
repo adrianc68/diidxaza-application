@@ -23,7 +23,8 @@ export default function UserProfile({ accountProps }) {
     const [serverError, setServerError] = useState(null);
     const [accountID, setAccountID] = useState(null);
     const [errorServerProgressData, setServerErrorProgressData] = useState(null);
-    const [imageAccount, setImageAccount] = useState(UserImageDefault);
+    const [initialfile, setInitialFile] = useState(UserImageDefault);
+
     const [isDataLoadead, setLoadedData] = useState(false);
     const [account, setAccount] = useState({
         age: null,
@@ -52,7 +53,7 @@ export default function UserProfile({ accountProps }) {
                 if (response.ok) {
                     response.blob().then((response) => {
                         let objectURL = URL.createObjectURL(response);
-                        setImageAccount(objectURL);
+                        setInitialFile(objectURL);
                     });
                 }
             });
@@ -72,6 +73,7 @@ export default function UserProfile({ accountProps }) {
             .then((response) => {
                 if (response != null) {
                     if (response.age != null) {
+                        getImageUser();
                         const account = {
                             age: response.age,
                             birthdate: response.dateBirth,
@@ -81,7 +83,7 @@ export default function UserProfile({ accountProps }) {
                             role: response.role,
                             name: response.name,
                             _id: response._id,
-                            image: imageAccount,
+                            image: initialfile,
                         };
                         setAccount(account);
                         setLoadedData(true);
@@ -191,7 +193,7 @@ export default function UserProfile({ accountProps }) {
                     )}
                 </div>
                 <div className="userprofile-user-photo-container">
-                    <img src={imageAccount} alt={t("WelcomeInformationAlt")}></img>
+                    <img src={initialfile} alt={t("WelcomeInformationAlt")}></img>
                 </div>
                 <hr />
                 <div className="userprofile-basic-details">
