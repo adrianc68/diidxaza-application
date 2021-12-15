@@ -66,42 +66,47 @@ export default function Dashboard() {
         <ModalContextProvider>
             {isLogged ? (
                 isLoadedData && (
-                    <div className="dashboard-main-container">
+                    <>
                         <Router history={history}>
-                            <div className="topbar-dashboard-container">
-                                <Topbar>
-                                    <div className="dashboard-userprofile">
-                                        <Button
-                                            styleName="text-button"
-                                            text={nameUser}
-                                            onClick={() =>
-                                                history.push({
-                                                    pathname: "/profile/" + sessionStorage.getItem("username"),
-                                                    state: {
-                                                        id: sessionStorage.getItem("id"),
-                                                    },
-                                                })
-                                            }
-                                        ></Button>
-                                    </div>
-                                    <div className="dashboard-logout-button-section">
-                                        <div>
-                                            <Button styleName="icon-button background-red" text={t("SidebarSignOutButton")} onClick={handleLogout}>
-                                                <MdLogout className="icon"></MdLogout>
-                                            </Button>
+                            <div className="dashboard-main-container">
+                                <div className="topbar-dashboard-container">
+                                    <Topbar>
+                                        <div className="dashboard-userprofile">
+                                            <Button
+                                                styleName="text-button"
+                                                text={nameUser}
+                                                onClick={() =>
+                                                    history.push({
+                                                        pathname: "/profile/" + sessionStorage.getItem("username"),
+                                                        state: {
+                                                            id: sessionStorage.getItem("id"),
+                                                        },
+                                                    })
+                                                }
+                                            ></Button>
                                         </div>
+                                        <div className="dashboard-logout-button-section">
+                                            <div>
+                                                <Button styleName="icon-button background-red" text={t("SidebarSignOutButton")} onClick={handleLogout}>
+                                                    <MdLogout className="icon"></MdLogout>
+                                                </Button>
+                                            </div>
+                                        </div>
+                                    </Topbar>
+                                </div>
+                                <main className="main-content-container">
+                                    <div className="sidebar-dashboard-container">
+                                        <Sidebar />
                                     </div>
-                                </Topbar>
+
+                                    <div className="userprofile-dashboard-container">
+                                        <DashboardRouter setNameUser={setNameUser}></DashboardRouter>
+                                    </div>
+                                    {sessionStorage.getItem("role") === "manager" ? <AdminMenu /> : null}
+                                </main>
                             </div>
-                            <div className="sidebar-dashboard-container">
-                                <Sidebar />
-                            </div>
-                            <main className="userprofile-dashboard-container">
-                                <DashboardRouter setNameUser={setNameUser}></DashboardRouter>
-                            </main>
-                            {sessionStorage.getItem("role") === "manager" ? <AdminMenu /> : null}
                         </Router>
-                    </div>
+                    </>
                 )
             ) : (
                 <Redirect exact to={"/login"} />

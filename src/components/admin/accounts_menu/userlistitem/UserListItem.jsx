@@ -25,11 +25,11 @@ export default function UserListItem({ account }) {
             <div className="userlistitem-content">
                 <div className="userlistitem-data-content">
                     <div>
-                        <span>{t("UserListItemName")}</span>
+                        <span className="color-gray">{t("UserListItemName")}</span>
                         <span>{account.name + " " + account.lastname}</span>
                     </div>
                     <div>
-                        <span>{t("UserListItemUsername")}</span>
+                        <span className="color-gray">{t("UserListItemUsername")}</span>
                         <span>{account.username}</span>
                     </div>
                 </div>

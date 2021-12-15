@@ -467,6 +467,8 @@ export const TRANSLATIONS_ES = {
     EmailSendMessageTitle: "Asunto: ",
     EmailSendMessageContent: "Mensaje: ",
 
+    errorTitle:"¡Oops! Parece que algo salió mal...",
+
     ariaLabelFacebook: "Visita nuestro facebook",
     ariaLabelTwitter: "Visita nuestro twitter",
     ariaLabelYoutube: "Vista nuestro canal en youtube",
@@ -478,6 +480,8 @@ export const TRANSLATIONS_ES = {
     ariaLabelBackButton: "Retroceder",
     ariaLabelRefreshButton: "Refrescar",
     ariaLabelSendEmail: "Enviar correo",
+    ariaLabelAdminMenu: "Menú de administrador",
+    ariaLabelModal: "Ventana modal",
     
 
 };

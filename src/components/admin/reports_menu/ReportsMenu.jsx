@@ -121,13 +121,14 @@ export default function ReportsMenu() {
     }, [t]);
 
     return (
-        <div className="reportsmenu-main-container">
+        <section className="reportsmenu-main-container">
             <div className="reportsmenu-content">
-                <div className="reportsmenu-search-criteria">
+                <section className="reportsmenu-search-criteria">
                     <form className="form-search-container" onSubmit={handleSubmit}>
                         <div className="form-search-criteria-input">
-                            <span>{t("AdminReportInputSearchCriteria")}</span>
+                            <label htmlFor="valueInput">{t("AdminReportInputSearchCriteria")}</label>
                             <input
+                                id="valueInput"
                                 name="valueInput"
                                 type="text"
                                 onChange={(e) => {
@@ -168,7 +169,7 @@ export default function ReportsMenu() {
                             ></Button>
                         </div>
                     </div>
-                </div>
+                </section>
                 <div className="reportsmenu-reports-list-container">
                     <div className="reportsmenu-discussion-list">
                         <ul>
@@ -187,6 +188,6 @@ export default function ReportsMenu() {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }

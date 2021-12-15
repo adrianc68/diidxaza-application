@@ -1,24 +1,33 @@
 @import "../../components/variables.module.scss";
 
 .dashboard-main-container {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: $topbar-height calc(100vh - #{$topbar-height});
-  grid-template-areas:
-    "topbar topbar"
-    "sidebar main";
+    display: grid;
+    grid-template-columns: 100vw;
+    grid-template-rows: $topbar-height calc(100vh - #{$topbar-height});
+    grid-template-areas:
+        "topbar"
+        "main";
 
-  .sidebar-dashboard-container {
-    grid-area: sidebar;
-  }
+    .topbar-dashboard-container {
+        grid-area: topbar;
+    }
 
-  .topbar-dashboard-container {
-    grid-area: topbar;
-  }
+    .main-content-container {
+        grid-area: main;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: 100%;
+        grid-template-areas: "sidebar content";
 
-  .userprofile-dashboard-container {
-    grid-area: main;
-    overflow: auto;
-    padding: 25px;
-  }
+        .sidebar-dashboard-container {
+            grid-area: sidebar;
+            overflow:auto;
+        }
+
+        .userprofile-dashboard-container {
+            grid-area: content;
+            overflow: auto;
+            padding: 25px;
+        }
+    }
 }

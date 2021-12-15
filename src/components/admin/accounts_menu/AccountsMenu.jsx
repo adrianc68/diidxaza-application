@@ -153,13 +153,14 @@ export default function AccountsMenu() {
     };
 
     return (
-        <div className="accountsmenu-main-container">
+        <section className="accountsmenu-main-container">
             <div className="accountsmenu-content">
                 <div className="accountsmenu-search-criteria">
                     <form className="form-search-container" onSubmit={handleSubmit}>
                         <div className="form-search-criteria-input">
-                            <span>{t("AdminReportInputSearchCriteria")}</span>
+                            <label htmlFor="valueInput">{t("AdminReportInputSearchCriteria")}</label>
                             <input
+                                id="valueInput"
                                 name="valueInput"
                                 type="text"
                                 onChange={(e) => {
@@ -246,6 +247,6 @@ export default function AccountsMenu() {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }

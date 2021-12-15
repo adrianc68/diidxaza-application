@@ -20,7 +20,7 @@ export default function CheckProgress({ totalPoints, totalLessons }) {
                                             <img src={ImageInformationAlt} alt={"AlternativeMessageImageDecorative"}></img>
                                         </div>
                                         <div className="checkprogress-side-text">
-                                            <span className="semibold">{t("LearningPointsWon")}</span>
+                                            <label htmlFor="totalPoints" className="semibold">{t("LearningPointsWon")}</label>
                                             <span>{t("CheckProgressTotalDiscussionsCommentedDescription")}</span>
                                         </div>
                                         <div className="checkprogress-user-value">
@@ -28,7 +28,7 @@ export default function CheckProgress({ totalPoints, totalLessons }) {
                                         </div>
                                     </div>
                                     <div className="checkprogress-presentaiton-down-side-container">
-                                        <progress className="progress-bar" max="1000000" value={totalPoints}></progress>
+                                        <progress id="totalPoints" className="progress-bar" max="1000" value={totalPoints}></progress>
                                     </div>
                                 </div>
                             </div>
@@ -41,7 +41,7 @@ export default function CheckProgress({ totalPoints, totalLessons }) {
                                             <img src={ImageInformationAlt2} alt={"AlternativeMessageImageDecorative"}></img>
                                         </div>
                                         <div className="checkprogress-side-text">
-                                            <span className="semibold">{t("LearningLessonCompleted")}</span>
+                                            <label htmlFor="totalLessons" className="semibold">{t("LearningLessonCompleted")}</label>
                                             <span>{t("CheckProgressTotalDiscussionsCreatedDescription")}</span>
                                         </div>
                                         <div className="checkprogress-user-value">
@@ -49,7 +49,7 @@ export default function CheckProgress({ totalPoints, totalLessons }) {
                                         </div>
                                     </div>
                                     <div className="checkprogress-presentaiton-down-side-container">
-                                        <progress className="progress-bar" max="20" value={totalLessons}></progress>
+                                        <progress id="totalLessons" className="progress-bar" max="20" value={totalLessons}></progress>
                                     </div>
                                 </div>
                             </div>

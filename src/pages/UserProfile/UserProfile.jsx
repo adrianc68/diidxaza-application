@@ -173,10 +173,11 @@ export default function UserProfile({ accountProps }) {
 
     return serverError !== null ? (
         <div className="userprofile-server-error-contaniner">
+            <h2>{t("errorTitle")}</h2>
             <span>{serverError}</span>
         </div>
     ) : isDataLoadead ? (
-        <div className="userprofile-main-container">
+        <section className="userprofile-main-container">
             <div className="userprofile-user-details-container">
                 <div className="userprofile-type-user-container">
                     {account.role === UserType.MANAGER ? (
@@ -195,11 +196,11 @@ export default function UserProfile({ accountProps }) {
                 <hr />
                 <div className="userprofile-basic-details">
                     <div>
-                        <span>{t("UserProfileName")}</span>
+                        <span className="color-gray">{t("UserProfileName")}</span>
                         <span>{account.name}</span>
                     </div>
                     <div>
-                        <span>{t("UserProfileAge")}</span>
+                        <span className="color-gray">{t("UserProfileAge")}</span>
                         <span>
                             {account.age}
                             <span />
@@ -207,7 +208,7 @@ export default function UserProfile({ accountProps }) {
                         </span>
                     </div>
                     <div>
-                        <span>{t("UserProfileBirthdate")}</span>
+                        <span className="color-gray">{t("UserProfileBirthdate")}</span>
                         <span>{convertDate(account.birthdate)}</span>
                     </div>
                 </div>
@@ -220,7 +221,7 @@ export default function UserProfile({ accountProps }) {
                     <div className="userprofile-account-container">
                         <div className="userprofile-account-information">
                             <h2>{account.username}</h2>
-                            <p>{account.email}</p>
+                            <span className="color-gray">{account.email}</span>
                         </div>
                     </div>
                     <div className="userprofile-button-panel-container">
@@ -245,7 +246,7 @@ export default function UserProfile({ accountProps }) {
                     )
                 ) : null}
             </div>
-        </div>
+        </section>
     ) : (
         <LoadingScreen></LoadingScreen>
     );
