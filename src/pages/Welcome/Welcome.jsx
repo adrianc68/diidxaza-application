@@ -30,142 +30,141 @@ export default function Welcome() {
     }
 
     return !isLogged ? (
-        <div className="welcome-main-container">
+        <>
             <Topbar>
                 <div>
-                    <Button text={t("ButtonLogin")} styleName="primary-button" onClick={() => history.push("/login")}>
+                    <Button text={t("ButtonLogin")} styleName="button" onClick={() => history.push("/login")}>
                         <MdLogin className="icon-button" />
                     </Button>
                 </div>
                 <div>
-                    <Button text={t("ButtonSignUp")} styleName="secondary-button" onClick={scrollToChooseContainer}>
+                    <Button text={t("ButtonSignUp")} styleName="button background-green" onClick={scrollToChooseContainer}>
                         <MdLogout className="icon-button" />
                     </Button>
                 </div>
             </Topbar>
-
-            <div className="welcome-main-information-container">
-                <div className="welcome-main-information-text">
-                    <h1>{t("WelcomeHeader")}</h1>
-                    <h2>{t("WelcomeSubtitle")}</h2>
-                    <p>{t("WelcomeIntroduction")}</p>
-                    <div>
-                        <Button text={t("ButtonStartNow")} styleName="primary-button" onClick={scrollToChooseContainer}></Button>
+            <main className="welcome-main-container">
+                <section className="welcome-main-information-container">
+                    <article className="welcome-main-information-text">
+                        <h1>{t("WelcomeHeader")}</h1>
+                        <h2>{t("WelcomeSubtitle")}</h2>
+                        <p>{t("WelcomeIntroduction")}</p>
+                        <div>
+                            <Button text={t("ButtonStartNow")} styleName="button" onClick={scrollToChooseContainer}></Button>
+                        </div>
+                    </article>
+                    <div className="welcome-main-information-image">
+                        <img src={WelcomeImage} className="welcome-information-image" alt={t("AlternativeMessageImageDecorative")}></img>
                     </div>
-                </div>
-                <div className="welcome-main-information-image">
-                    <img src={WelcomeImage} className="welcome-information-image" alt={t("AlternativeMessageImageDecorative")}></img>
-                </div>
-            </div>
+                </section>
 
-            <div className="welcome-problems-information-container">
-                <video src={VideoBenefit01} autoPlay loop>
-                    <track src={SubtitlesVideo} kind="subtitles" label="eS"></track>
-                </video>
-                <div className="welcome-problems-information">
-                    <h1>{t("WelcomeProblemsInformationTitle")}</h1>
-                    <p>{t("WelcomeProblemasInformationDescription")}</p>
-                </div>
-            </div>
-
-            <div className="welcome-benefits-information-container">
-                <div className="welcome-benefits-description-container">
-                    <h1>{t("WelcomeBenefitsTitle")}</h1>
-                    <span>{t("WelcomeBenefitsDescription")}</span>
-                </div>
-                <div className="welcome-benefits-list-container">
-                    <ul>
-                        <li>
-                            <div className="welcome-benefits-listItem-container">
-                                <img src={ImageBenefit01} alt={t("AlternativeMessageImageDecorative")}></img>
-                                <h3>{t("WelcomeBenefitsFirstOneTitle")}</h3>
-                                <span>{t("WelcomeBenefitsFirstOne")}</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div className="welcome-benefits-listItem-container">
-                                <img src={ImageBenefit02} alt={t("AlternativeMessageImageDecorative")}></img>
-                                <h3>{t("WelcomeBenefitsSecondOneTitle")}</h3>
-                                <span> {t("WelcomeBenefitsSecondOne")}</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div className="welcome-benefits-listItem-container">
-                                <img src={ImageBenefit03} alt={t("AlternativeMessageImageDecorative")}></img>
-                                <h3>{t("WelcomeBenefitsThirdOneTitle")}</h3>
-                                <span>{t("WelcomeBenefitsThirdOne")}</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div className="welcome-benefits-listItem-container">
-                                <img src={ImageBenefit04} alt={t("AlternativeMessageImageDecorative")}></img>
-                                <h3>{t("WelcomeBenefitsFourOneTitle")}</h3>
-                                <span>{t("WelcomeBenefitsFourOne")}</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div ref={chooseContainerRef} className="welcome-choose-account-type-container">
-                <div className="welcome-choose-title">
-                    <h1>{t("WelcomeChooseAccountTitle")}</h1>
-                    <div className="welcome-choose-description">
-                        <p>{t("WelcomeChooseAccountTitleDescription")}</p>
+                <section className="welcome-problems-information-container">
+                    <video src={VideoBenefit01} autoPlay loop>
+                        <track src={SubtitlesVideo} kind="subtitles" label="eS"></track>
+                    </video>
+                    <div className="welcome-problems-information">
+                        <h1>{t("WelcomeProblemsInformationTitle")}</h1>
+                        <p>{t("WelcomeProblemasInformationDescription")}</p>
                     </div>
-                </div>
-                <div className="welcome-choose-list-container">
-                    <ul className="welcome-choose-account-type-ul">
-                        <li className="welcome-choose-account-type-li">
-                            <div className="welcome-choose-listItem-container">
-                                <div className="welcome-choose-image-container">
-                                    <img src={AccountTypeImage} alt={t("AlternativeMessageImageDecorative")}></img>
-                                </div>
-                                <div className="welcome-choose-description-container">
-                                    <div className="welcome-choose-description-text-container">
-                                        <h2>{t("WelcomeAccountTypeFree")}</h2>
-                                        <span>{t("WelcomeAccountTypeFreeDescription")}</span>
-                                        <ul>
-                                            <li className="valid-li">{t("WelcomeAccountTypeFreeBenefit01")}</li>
-                                            <li className="valid-li">{t("WelcomeAccountTypeFreeBenefit02")}</li>
-                                            <li className="valid-li">{t("WelcomeAccountTypeFreeBenefit03")}</li>
-                                            <li className="valid-li">{t("WelcomeAccountTypeFreeBenefit04")}</li>
-                                            <li className="valid-li">{t("WelcomeAccountTypeFreeBenefit05")}</li>
-                                        </ul>
-                                    </div>
-                                    <div className="welcome-choose-description-button-container">
-                                        {/* <Link className="link" to="/signUp"> */}
-                                        <Button text={t("ButtonSignUp")} styleName="primary-button" onClick={() => history.push("/signUP")} />
-                                        {/* </Link> */}
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                </section>
 
-                        <li className="welcome-choose-account-type-li">
-                            <div className="welcome-choose-listItem-container">
-                                <div className="welcome-choose-image-container">
-                                    <img src={AccountTypePremiumImage} alt={t("AlternativeMessageImageDecorative")}></img>
+                <section className="welcome-benefits-information-container">
+                    <div className="welcome-benefits-description-container">
+                        <h1>{t("WelcomeBenefitsTitle")}</h1>
+                        <span>{t("WelcomeBenefitsDescription")}</span>
+                    </div>
+                    <div className="welcome-benefits-list-container">
+                        <ul>
+                            <li>
+                                <div className="welcome-benefits-listItem-container">
+                                    <img src={ImageBenefit01} alt={t("AlternativeMessageImageDecorative")}></img>
+                                    <span className="semibold">{t("WelcomeBenefitsFirstOneTitle")}</span>
+                                    <p>{t("WelcomeBenefitsFirstOne")}</p>
                                 </div>
-                                <div className="welcome-choose-description-container">
-                                    <div className="welcome-choose-description-text-container">
-                                        <h2>{t("WelcomeAccountTypePremium")}</h2>
-                                        <span>{t("WelcomeAccountTypePremiumDescription")}</span>
-                                        <ul>
-                                            <li className="invalid-li">{t("WelcomeAccountTypePremiumBenefit01")}</li>
-                                        </ul>
+                            </li>
+                            <li>
+                                <div className="welcome-benefits-listItem-container">
+                                    <img src={ImageBenefit02} alt={t("AlternativeMessageImageDecorative")}></img>
+                                    <span className="semibold">{t("WelcomeBenefitsSecondOneTitle")}</span>
+                                    <p> {t("WelcomeBenefitsSecondOne")}</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="welcome-benefits-listItem-container">
+                                    <img src={ImageBenefit03} alt={t("AlternativeMessageImageDecorative")}></img>
+                                    <span className="semibold">{t("WelcomeBenefitsThirdOneTitle")}</span>
+                                    <p>{t("WelcomeBenefitsThirdOne")}</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="welcome-benefits-listItem-container">
+                                    <img src={ImageBenefit04} alt={t("AlternativeMessageImageDecorative")}></img>
+                                    <span className="semibold">{t("WelcomeBenefitsFourOneTitle")}</span>
+                                    <p>{t("WelcomeBenefitsFourOne")}</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section ref={chooseContainerRef} className="welcome-choose-account-type-container">
+                    <div className="welcome-choose-title">
+                        <h1>{t("WelcomeChooseAccountTitle")}</h1>
+                        <div className="welcome-choose-description">
+                            <p>{t("WelcomeChooseAccountTitleDescription")}</p>
+                        </div>
+                    </div>
+                    <div className="welcome-choose-list-container">
+                        <ul className="welcome-choose-account-type-ul">
+                            <li className="welcome-choose-account-type-li">
+                                <div className="welcome-choose-listItem-container">
+                                    <div className="welcome-choose-image-container">
+                                        <img src={AccountTypeImage} alt={t("AlternativeMessageImageDecorative")}></img>
                                     </div>
-                                    <div className="welcome-choose-description-button-container">
-                                        <span>{t("WelcomeAccountTypeNoAvailable")}</span>
+                                    <div className="welcome-choose-description-container">
+                                        <div className="welcome-choose-description-text-container">
+                                            <h2>{t("WelcomeAccountTypeFree")}</h2>
+                                            <span>{t("WelcomeAccountTypeFreeDescription")}</span>
+                                            <ul>
+                                                <li className="valid-li">{t("WelcomeAccountTypeFreeBenefit01")}</li>
+                                                <li className="valid-li">{t("WelcomeAccountTypeFreeBenefit02")}</li>
+                                                <li className="valid-li">{t("WelcomeAccountTypeFreeBenefit03")}</li>
+                                                <li className="valid-li">{t("WelcomeAccountTypeFreeBenefit04")}</li>
+                                                <li className="valid-li">{t("WelcomeAccountTypeFreeBenefit05")}</li>
+                                            </ul>
+                                        </div>
+                                        <div className="welcome-choose-description-button-container">
+                                            <Button text={t("ButtonSignUp")} styleName="primary-button" onClick={() => history.push("/signUP")} />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                            </li>
+
+                            <li className="welcome-choose-account-type-li">
+                                <div className="welcome-choose-listItem-container">
+                                    <div className="welcome-choose-image-container">
+                                        <img src={AccountTypePremiumImage} alt={t("AlternativeMessageImageDecorative")}></img>
+                                    </div>
+                                    <div className="welcome-choose-description-container">
+                                        <div className="welcome-choose-description-text-container">
+                                            <h2>{t("WelcomeAccountTypePremium")}</h2>
+                                            <span>{t("WelcomeAccountTypePremiumDescription")}</span>
+                                            <ul>
+                                                <li className="invalid-li">{t("WelcomeAccountTypePremiumBenefit01")}</li>
+                                            </ul>
+                                        </div>
+                                        <div className="welcome-choose-description-button-container">
+                                            <span>{t("WelcomeAccountTypeNoAvailable")}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
             <Footer></Footer>
-        </div>
+        </>
     ) : (
         <Redirect exact to={"/"} />
     );

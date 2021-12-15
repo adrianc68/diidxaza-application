@@ -1,13 +1,13 @@
 @import "../../components/variables.module.scss";
 
-.primary-button {
-  padding: 5px;
-  background-color: rgb(72, 104, 209);
-  border-radius: 3px;
-  border-color: transparent;
-  color: #fff;
+.button {
   height: 100%;
   width: 100%;
+  padding: 5px;
+  border-radius: 3px;
+  background-color: rgb(72, 104, 209);
+  border-color: transparent;
+  color: #fff;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -19,25 +19,28 @@
     justify-content: center;
 
     .icon-button {
-      font-size: 22px;
+      font-size: 20px;
       color: #fff;
       margin-right: 10px;
     }
 
     span {
-      font-size: 12px;
+      font-size: 0.8em;
       font-weight: 600;
       vertical-align: middle;
     }
   }
 }
 
-.primary-button.red {
-  background-color: rgb(150, 6, 6);
+.button.no-background {
+    background-color: transparent;
 }
 
-.primary-button.collapse-text {
-  span {
-    display: none;
-  }
+.button.border {
+    border: 1px solid #fff;
 }
+  
+.button.background-green {
+    background-color: rgb(2, 131, 2);
+  }
+  

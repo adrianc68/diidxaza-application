@@ -465,4 +465,9 @@ export const TRANSLATIONS_ES = {
     EmailSendMessageTo: "Para: ",
     EmailSendMessageTitle: "Asunto: ",
     EmailSendMessageContent: "Mensaje: ",
+
+    ariaLabelFacebook: "Visita nuestro facebook",
+    ariaLabelTwitter: "Visita nuestro twitter",
+    ariaLabelYoutube: "Vista nuestro canal en youtube",
+    ariaLabelGithub: "Visita nuestro repositorio de github",
 };

@@ -9,7 +9,7 @@ export default function Footer() {
 
     return (
         <>
-            <div className="footer-main-container">
+            <footer className="footer-main-container">
                 <div className="footer-bottom-logo-container">
                     <div className="footer-logo-container">
                         <DiidxazaLogo styleClass="logo-black-link"></DiidxazaLogo>
@@ -47,22 +47,22 @@ export default function Footer() {
                         <div className="footer-bottom-social-networks">
                             <ul>
                                 <li>
-                                    <Link className="link" to="/facebook">
+                                    <Link className="link" to="/facebook" aria-label={t("ariaLabelFacebook")}>
                                         <BsFacebook />
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link className="link" to="/twitter">
+                                    <Link className="link" to="/twitter" aria-label={t("ariaLabelTwitter")}>
                                         <BsTwitter />
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link className="link" to="/youtube">
+                                    <Link className="link" to="/youtube" aria-label={t("ariaLabelYoutube")}>
                                         <BsYoutube />
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link className="link" to="/github.com">
+                                    <Link className="link" to="/github.com" aria-label={t("ariaLabelGithub")}>
                                         <BsGithub />
                                     </Link>
                                 </li>
@@ -70,7 +70,7 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </footer>
         </>
     );
 }
