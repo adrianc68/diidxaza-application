@@ -39,7 +39,7 @@ export default function ReportsMenu() {
     };
 
     const setActiveClassFilterButtons = () => {
-        var buttons = document.querySelectorAll(".reportsmenu-button-filter-button");
+        let buttons = document.querySelectorAll(".reportsmenu-button-filter-button");
         for (let i = 0; i < buttons.length; i++) {
             buttons[i].children[0].addEventListener("click", (e) => {
                 e.preventDefault();
@@ -71,7 +71,7 @@ export default function ReportsMenu() {
     };
 
     const validateInputForm = (input) => {
-        var inputTrim = input.trim();
+        let inputTrim = input.trim();
         setErrorInformation(null);
         checkUnknownCharacters(inputTrim);
         checkLength(inputTrim);
@@ -79,7 +79,7 @@ export default function ReportsMenu() {
     };
 
     function changeDelay(value) {
-        var miliseconds = 200;
+        const MILISECONDS = 200;
         if (timer) {
             clearTimeout(timer);
             setTimer(null);
@@ -87,7 +87,7 @@ export default function ReportsMenu() {
         setTimer(
             setTimeout(() => {
                 validateInputForm(value);
-            }, miliseconds)
+            }, MILISECONDS)
         );
     }
 

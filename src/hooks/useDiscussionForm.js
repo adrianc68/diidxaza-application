@@ -142,7 +142,7 @@ export const useForum = (validateForm, validateFormComment, initialForm, setDisc
     };
 
     const setActiveClassFilterButtons = () => {
-        var buttons = document.querySelectorAll(".forum-button-filter-button");
+        let buttons = document.querySelectorAll(".forum-button-filter-button");
         for (let i = 0; i < buttons.length; i++) {
             buttons[i].children[0].addEventListener("click", (e) => {
                 e.preventDefault();
@@ -155,7 +155,7 @@ export const useForum = (validateForm, validateFormComment, initialForm, setDisc
     };
 
     const removeActiveClassFilterButton = () => {
-        var buttons = document.querySelectorAll(".forum-button-filter-button");
+        let buttons = document.querySelectorAll(".forum-button-filter-button");
         for (let i = 0; i < buttons.length; i++) {
             buttons[i].children[0].classList.remove("active");
         }
@@ -277,7 +277,7 @@ export const useForum = (validateForm, validateFormComment, initialForm, setDisc
                         }).then((responseResource) => {
                             if (responseResource.ok) {
                                 responseResource.blob().then((responseBlob) => {
-                                    var objectURL = URL.createObjectURL(responseBlob);
+                                    let objectURL = URL.createObjectURL(responseBlob);
                                     setImageAccount(objectURL);
                                 });
                             } else {
@@ -311,7 +311,7 @@ export const useForum = (validateForm, validateFormComment, initialForm, setDisc
                                         }).then((response) => {
                                             if (response.ok) {
                                                 response.blob().then((responseBlob) => {
-                                                    var objectURL = URL.createObjectURL(responseBlob);
+                                                    let objectURL = URL.createObjectURL(responseBlob);
                                                     setImagesComments((imagesComments) => [...imagesComments, { id: imageComment._id, imageComment: objectURL }]);
                                                 });
                                             } else {
@@ -427,7 +427,7 @@ export const useForum = (validateForm, validateFormComment, initialForm, setDisc
                             }).then((response) => {
                                 if (response.ok) {
                                     response.blob().then((responseBlob) => {
-                                        var objectURL = URL.createObjectURL(responseBlob);
+                                        let objectURL = URL.createObjectURL(responseBlob);
                                         setImagesComments((imagesComments) => [...imagesComments, { id: newComment._id, imageComment: objectURL }]);
                                     });
                                 } else {

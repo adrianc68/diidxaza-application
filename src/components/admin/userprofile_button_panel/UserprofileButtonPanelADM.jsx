@@ -26,17 +26,17 @@ export default function UserprofileButtonPanelADM({ account }) {
     };
 
     const handleModalUserReports = () => {
-        var jsx = <UserReports username={account.username} image={account.image} />;
+        let jsx = <UserReports username={account.username} image={account.image} />;
         handleModal(jsx, "700px", "80vw", t("UserReportAdminPanelTitle"));
     };
 
     const handleModalBlockStatusUser = () => {
-        var jsx = <ChangeStatusUser account={account} setStatusModal={setStatusModal} />;
+        let jsx = <ChangeStatusUser account={account} setStatusModal={setStatusModal} />;
         handleModal(jsx, "350px", "50vw", t("BlockUserTitle"));
     };
 
     const handleModalUnblockStatusUser = () => {
-        var jsx = <ChangeStatusUser account={account} setStatusModal={setStatusModal} />;
+        let jsx = <ChangeStatusUser account={account} setStatusModal={setStatusModal} />;
         handleModal(jsx, "350px", "50vw", t("UnblockUserTitle"));
     };
 

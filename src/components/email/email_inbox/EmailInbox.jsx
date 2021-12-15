@@ -56,7 +56,7 @@ export default function EmailInbox({ typeInbox }) {
     };
 
     const handleURL = () => {
-        var url = null;
+        let url = null;
         if (typeInbox === "to") {
             url = "inbox";
         } else if (typeInbox === "from") {

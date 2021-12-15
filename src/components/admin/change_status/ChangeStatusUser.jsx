@@ -11,7 +11,7 @@ export default function ChangeStatusUser({ account, setStatusModal }) {
     const [serverError, setServerError] = useState(null);
 
     const checkAccountID = () => {
-        var isSelfAccount = false;
+        let isSelfAccount = false;
         if (sessionStorage.getItem("id") === account._id) {
             isSelfAccount = true;
         }

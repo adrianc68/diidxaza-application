@@ -112,7 +112,7 @@ export default function AnswerSection({ lesson }) {
 
     function placeLessonResults() {
         const sytleLesson = { top: "0px", left: "0px" };
-        var lessonResults = <LessonResults style={sytleLesson} pointsObtained={pointsObtained} resultsQuestions={resultsQuestions} lesson={lesson}></LessonResults>;
+        let lessonResults = <LessonResults style={sytleLesson} pointsObtained={pointsObtained} resultsQuestions={resultsQuestions} lesson={lesson}></LessonResults>;
         return lessonResults;
     }
 

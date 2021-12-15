@@ -51,7 +51,7 @@ export default function UserProfile({ accountProps }) {
             }).then((response) => {
                 if (response.ok) {
                     response.blob().then((response) => {
-                        var objectURL = URL.createObjectURL(response);
+                        let objectURL = URL.createObjectURL(response);
                         setImageAccount(objectURL);
                     });
                 }
@@ -60,7 +60,7 @@ export default function UserProfile({ accountProps }) {
     };
 
     const fetchData = () => {
-        var accountID = accountProps.id;
+        let accountID = accountProps.id;
         setAccountID(accountID);
         helpHttp()
             .get(UrlAPI + "accounts/" + accountID, {
@@ -129,7 +129,7 @@ export default function UserProfile({ accountProps }) {
     };
 
     const isNullData = (value) => {
-        var isNull = false;
+        let isNull = false;
         if (value === null || value === undefined) {
             isNull = true;
         }
@@ -137,9 +137,9 @@ export default function UserProfile({ accountProps }) {
     };
 
     const checkProfileID = () => {
-        var canLookProfile = false;
-        var myAccountID = sessionStorage.getItem("id");
-        var myRole = sessionStorage.getItem("role");
+        let canLookProfile = false;
+        let myAccountID = sessionStorage.getItem("id");
+        let myRole = sessionStorage.getItem("role");
         if (isNullData(accountProps)) {
             setServerError(t("ErrorIDProps"));
             return canLookProfile;

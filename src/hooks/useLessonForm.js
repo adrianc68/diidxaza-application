@@ -51,7 +51,7 @@ export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, 
     };
 
     const setActiveClassFilterRadioButtons = () => {
-        var radioButtons = document.querySelectorAll(".radiobutton");
+        let radioButtons = document.querySelectorAll(".radiobutton");
         for (let i = 0; i < radioButtons.length; i++) {
             radioButtons[i].checked = false;
         }

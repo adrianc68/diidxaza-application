@@ -108,7 +108,7 @@ export default function Learning() {
 
     function placeLessonInformation() {
         const sytleLesson = { top: "0px", left: "0px" };
-        var lessonInformation = <LessonInformation style={sytleLesson} lesson={lesson} setVisible={setVisible}></LessonInformation>;
+        let lessonInformation = <LessonInformation style={sytleLesson} lesson={lesson} setVisible={setVisible}></LessonInformation>;
         return lessonInformation;
     }
 

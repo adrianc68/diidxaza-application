@@ -223,7 +223,7 @@ export const useUpdateAccountForm = (validateForm, setForm, form, setCities, set
                                     })
                                     .then((response) => {
                                         if (response.messageHappened) {
-                                            var formData = new FormData();
+                                            let formData = new FormData();
                                             formData.append("idAccount", sessionStorage.getItem("id"));
                                             formData.append("file", urlFile);
                                             fetch(UrlAPI + "resources/account", {
@@ -241,7 +241,7 @@ export const useUpdateAccountForm = (validateForm, setForm, form, setCities, set
                                         }
                                     });
                             } else {
-                                var formData = new FormData();
+                                let formData = new FormData();
                                 formData.append("idAccount", sessionStorage.getItem("id"));
                                 formData.append("file", urlFile);
                                 fetch(UrlAPI + "resources/account", {
@@ -528,7 +528,7 @@ export const useAccountForm = (initialForm, validateForm) => {
                         setResponse(t("MessageCreateAccount"));
                         setLoading(true);
                         if (urlFile != null) {
-                            var formData = new FormData();
+                            let formData = new FormData();
                             formData.append("idAccount", idAccount);
                             formData.append("file", urlFile);
                             fetch(UrlAPI + "resources/account", {

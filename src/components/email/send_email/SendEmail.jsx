@@ -35,7 +35,7 @@ export default function SendEmail() {
     };
 
     const validateEmailInputForm = (input) => {
-        var lengthAllowed = {
+        let lengthAllowed = {
             min: 2,
             max: 150,
         };
@@ -44,14 +44,14 @@ export default function SendEmail() {
             setErrorEmailInformation(t("ValidationErrorLength").replace("$min", lengthAllowed.min).replace("$max", lengthAllowed.max));
             return;
         }
-        var inputTrim = input.trim();
+        let inputTrim = input.trim();
         checkUnknownCharacters(inputTrim, /\b[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,6}\b/, setErrorEmailInformation);
         checkLength(inputTrim, lengthAllowed, setErrorEmailInformation);
         setEmailParameter(inputTrim);
     };
 
     const validateTitleInputForm = (input) => {
-        var lengthAllowed = {
+        let lengthAllowed = {
             min: 2,
             max: 150,
         };
@@ -60,14 +60,14 @@ export default function SendEmail() {
             setErrorTitleInformation(t("ValidationErrorLength").replace("$min", lengthAllowed.min).replace("$max", lengthAllowed.max));
             return;
         }
-        var inputTrim = input.trim();
+        let inputTrim = input.trim();
         checkUnknownCharacters(inputTrim, /^[a-zA-Z0-9¿?() ]+$/, setErrorTitleInformation);
         checkLength(inputTrim, lengthAllowed, setErrorTitleInformation);
         setTitleParameter(inputTrim);
     };
 
     const validateContentInputForm = (input) => {
-        var lengthAllowed = {
+        let lengthAllowed = {
             min: 3,
             max: 550,
         };
@@ -76,14 +76,14 @@ export default function SendEmail() {
             setErrorContentInformation(t("ValidationErrorLength").replace("$min", lengthAllowed.min).replace("$max", lengthAllowed.max));
             return;
         }
-        var inputTrim = input.trim();
+        let inputTrim = input.trim();
         checkUnknownCharacters(inputTrim, /(.*)/, setErrorContentInformation);
         checkLength(inputTrim, lengthAllowed, setErrorContentInformation);
         setContentParameter(inputTrim);
     };
 
     const isThereErrorsInForm = () => {
-        var isThereError = true;
+        let isThereError = true;
         validateEmailInputForm(emailParameter);
         validateTitleInputForm(titleParameter);
         validateContentInputForm(contentParameter);
@@ -96,7 +96,7 @@ export default function SendEmail() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!isThereErrorsInForm()) {
-            var form = new Object();
+            let form = new Object();
             form.to = emailParameter.toString();
             form.from = sessionStorage.getItem("email").toString();
             form.message = contentParameter.toString();
@@ -117,7 +117,7 @@ export default function SendEmail() {
     };
 
     function changeDelay(e, refreshCallBack) {
-        var miliseconds = 200;
+        let miliseconds = 200;
         if (timer) {
             clearTimeout(timer);
             setTimer(null);

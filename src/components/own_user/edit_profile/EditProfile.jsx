@@ -141,7 +141,7 @@ export default function EditProfile({ setNameUser }) {
                         }).then((responseResource) => {
                             if (responseResource.ok) {
                                 responseResource.blob().then((responseBlob) => {
-                                    var objectURL = URL.createObjectURL(responseBlob);
+                                    let objectURL = URL.createObjectURL(responseBlob);
                                     setNameFile(objectURL);
                                     setInitialFile(objectURL);
                                 });
