@@ -382,6 +382,11 @@ export const useForum = (validateForm, validateFormComment, initialForm, setDisc
         setErrors({});
         setErrorsComment(validateFormComment(formComment.comment));
         if (Object.keys(errorsComment).length === NUMBER.ZERO) {
+            setFormComment({
+                ...formComment,
+                idDiscussion: discussion._id,
+                idAccount: sessionStorage.getItem("id")
+            });
             helpHttp()
                 .post(UrlAPI + "comments", {
                     headers: {
@@ -473,6 +478,8 @@ export const useForum = (validateForm, validateFormComment, initialForm, setDisc
         setFormComment({
             ...formComment,
             comment: "",
+            idDiscussion: discussion._id,
+            idAccount: sessionStorage.getItem("id")
         });
         setCommentLenght(0);
         setErrorsComment({});
@@ -525,6 +532,7 @@ export const useForum = (validateForm, validateFormComment, initialForm, setDisc
             ...formComment,
             comment: value,
             idDiscussion: discussion._id,
+            idAccount: sessionStorage.getItem("id")
         });
     };
 
@@ -651,6 +659,7 @@ export const useDiscussionForm = (initialForm, validateForm) => {
         setForm({
             ...form,
             [name]: value,
+            idAccount: sessionStorage.getItem("id")
         });
     };
 
@@ -679,6 +688,7 @@ export const useDiscussionForm = (initialForm, validateForm) => {
         setForm({
             ...form,
             theme: theme,
+            idAccount: sessionStorage.getItem("id")
         });
     };
 
