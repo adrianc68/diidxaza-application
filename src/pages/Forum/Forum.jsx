@@ -1,28 +1,33 @@
 import React, { useState, useEffect } from "react";
 import "./forum.scss";
-import Button from "../../components/Button/Button";
+import Button from "../../components/button_application/Button";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import Discussion from "../../components/forum/discussion/Discussion";
 import DiscussionListItem from "../../components/forum/discussionlistitem/DiscussionListItem";
 import { useForum } from "../../hooks/useDiscussionForm";
 import AddComment from "../../components/forum/addcomment/AddComment";
-import Modal from "../../components/modal/Modal";
-import AlertMessage from "../../components/alert/AlertMessage";
 import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
 import ImageInformationAlt from "../../assets/images/ide-22.svg";
+import { BiSlider } from "react-icons/bi";
+import { NUMBER } from "../../helpers/Number";
 
 const initialForm = {
     comment: "",
     idAccount: sessionStorage.getItem("id"),
-    idDiscussion: ""
+    idDiscussion: "",
 };
 
 const validationsForm = (title) => {
     let errors = {};
     title = title.trim();
-    if (title.length === 0) {
+    let regexTitle = /^[\wÑñÁáÉéÍíÓóÚúÜü!?¡¿.,# ]{2,200}$/;
+    if (title.length === NUMBER.ZERO) {
         errors.title = "Error";
+    } else {
+        if (!regexTitle.test(title)) {
+            errors.title = "Error";
+        }
     }
     return errors;
 };
@@ -31,10 +36,9 @@ const validationsFormComment = (comment) => {
     let errors = {};
     comment = comment.trim();
     let regexComment = /^[\wÑñÁáÉéÍíÓóÚúÜü!?¡¿.,# ]{5,600}$/;
-    if (comment.length === 0) {
+    if (comment.length === NUMBER.ZERO) {
         errors.comment = "Error";
-    }
-    else {
+    } else {
         if (!regexComment.test(comment)) {
             errors.comment = "Error";
         }
@@ -42,13 +46,13 @@ const validationsFormComment = (comment) => {
     return errors;
 };
 
-
 export default function Forum() {
     const { t } = useTranslation();
     const [discussions, setDiscussions] = useState([]);
 
     const {
         title,
+        errors,
         loading,
         handleChange,
         handleSubmit,
@@ -75,12 +79,7 @@ export default function Forum() {
         responseComment,
         commentLenght,
         numberComments,
-        responseModalForum,
-        modalForum,
-        setModalForum,
         handleClickDeleteComment,
-        modalToken,
-        setModalToken,
         handleClickFollow,
         imagesComments,
         setActiveClassFilterButtons,
@@ -88,19 +87,21 @@ export default function Forum() {
     } = useForum(validationsForm, validationsFormComment, initialForm, setDiscussions);
 
     useEffect(() => {
+        helpHttp()
+            .get(UrlAPI + "discussions", {
+                headers: {
+                    Accept: "application/json",
+                    Authorization: sessionStorage.getItem("token"),
+                },
+            })
+            .then((response) => {
+                if (response.length > NUMBER.ZERO) {
+                    setDiscussions(response);
+                } else {
+                    setDiscussions([]);
+                }
+            });
         setActiveClassFilterButtons();
-        helpHttp().get(UrlAPI + "discussions", {
-            headers: {
-                Accept: "application/json",
-                "Authorization": sessionStorage.getItem("token")
-            },
-        }).then((response) => {
-            if (response.length > 0) {
-                setDiscussions(response);
-            } else {
-                setDiscussions([]);
-            }
-        });
     }, []);
 
     return (
@@ -113,80 +114,104 @@ export default function Forum() {
                             <form onSubmit={handleSubmit}>
                                 <div className="form-search-input">
                                     <div className="form-search-container-input">
-                                        <span>{t("ForumSearchCriteriaInput")}</span>
-                                        <input name="title" type="text" onChange={handleChange} onBlur={handleBlur} value={title} required></input>
+                                        <label htmlFor="title">{t("ForumSearchCriteriaInput")}</label>
+                                        <input id="title" name="title" type="text" onChange={handleChange} onBlur={handleBlur} value={title} required></input>
                                     </div>
                                     <div>
-                                        <Button styleName="primary-button" onClick={removeActiveClassFilterButton} type="submit">{t("ButtonSearch")}</Button>
+                                        <Button styleName="button" onClick={removeActiveClassFilterButton} type="submit">
+                                            {t("ButtonSearch")}
+                                        </Button>
                                     </div>
                                 </div>
+                                <div className="system-message-container">{errors.title && <p className="errorInput">{t("ErrorTitleForum")}</p>}</div>
                             </form>
+
                             <div className="form-search-buttons">
-                                <div className="forum-button-filter-button">
-                                    <Button styleName="text-button black-text" onClick={handleClickPopulars} text={t("ForumSearchMostPopular")}></Button>
-                                </div>
-                                <div className="forum-button-filter-button" >
-                                    <Button styleName="text-button black-text" onClick={handleClickNews} text={t("ForumSearchNewest")}></Button>
+                                <div className="filter-container">
+                                    <span>{t("FiltersPredeterminated")}</span>
+                                    <BiSlider className="filter-icon" />
                                 </div>
                                 <div className="forum-button-filter-button">
-                                    <Button styleName="text-button black-text" onClick={handleClickFollowing} text={t("ForumSearchOutstanding")}></Button>
+                                    <Button styleName="text-button gray-text" onClick={handleClickPopulars} text={t("ForumSearchMostPopular")}></Button>
+                                </div>
+                                <div className="forum-button-filter-button">
+                                    <Button styleName="text-button gray-text" onClick={handleClickNews} text={t("ForumSearchNewest")}></Button>
+                                </div>
+                                <div className="forum-button-filter-button">
+                                    <Button styleName="text-button gray-text" onClick={handleClickFollowing} text={t("ForumSearchOutstanding")}></Button>
                                 </div>
                             </div>
                         </div>
                         <div className="forum-discussion-list">
                             <ul>
-                                {discussions.length > 0 && discussions.map((element) => (
-                                    <li onClick={(e) => { handleClickDiscussion(e, element._id); }}>
-                                        <DiscussionListItem discussion={element}></DiscussionListItem>
-                                    </li>
-                                ))}
-                                {loading &&
+                                {discussions.length > NUMBER.ZERO &&
+                                    discussions.map((element) => (
+                                        <li
+                                            onClick={(e) => {
+                                                handleClickDiscussion(e, element._id);
+                                            }}
+                                        >
+                                            <DiscussionListItem discussion={element}></DiscussionListItem>
+                                        </li>
+                                    ))}
+                                {loading && (
                                     <div className="no-found-records p-semibold">
                                         <span>{t("NotFoundDiscussions")}</span>
                                     </div>
-                                }
+                                )}
                             </ul>
                             <div className="forum-create-button-panel">
                                 <span>{t("ForumWantToCreateNewDiscussion")}</span>
                                 <div>
                                     <Link className="link" to="/discussion">
-                                        <Button styleName="primary-button">{t("ButtonCreateDiscussion")}</Button>
+                                        <Button styleName="button">{t("ButtonCreateDiscussion")}</Button>
                                     </Link>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div className="forum-discussion-content">
-                    {
-                        foundDiscussion === false && loadingDiscussion === false ?
-                            <div className="no-found-records">
-                                <span>{t("SelectDiscussion")}</span>
-                            </div>
-                            :
-                            foundDiscussion && <Discussion imagesComments={imagesComments} discussion={discussion} numberComments={numberComments} comments={comments} imageAccount={imageAccount} setModalToken={setModalToken} handleClickDeleteComment={handleClickDeleteComment} handleClickFollow={handleClickFollow}>
-                                <AddComment handleChangeComment={handleChangeComment} handleSubmitComment={handleSubmitComment} loadingComment={loadingComment}
-                                    handleBlurComment={handleBlurComment} formComment={formComment} errorsComment={errorsComment} handleClickComment={handleClickComment}
-                                    icon={icon} className={className} responseComment={responseComment} commentLenght={commentLenght} />
+                    {foundDiscussion === false && loadingDiscussion === false ? (
+                        <div className="no-found-records">
+                            <span>{t("SelectDiscussion")}</span>
+                        </div>
+                    ) : (
+                        foundDiscussion && (
+                            <Discussion
+                                imagesComments={imagesComments}
+                                discussion={discussion}
+                                numberComments={numberComments}
+                                comments={comments}
+                                imageAccount={imageAccount}
+                                handleClickDeleteComment={handleClickDeleteComment}
+                                handleClickFollow={handleClickFollow}
+                            >
+                                <AddComment
+                                    handleChangeComment={handleChangeComment}
+                                    handleSubmitComment={handleSubmitComment}
+                                    loadingComment={loadingComment}
+                                    handleBlurComment={handleBlurComment}
+                                    formComment={formComment}
+                                    errorsComment={errorsComment}
+                                    handleClickComment={handleClickComment}
+                                    icon={icon}
+                                    className={className}
+                                    responseComment={responseComment}
+                                    commentLenght={commentLenght}
+                                />
                             </Discussion>
-                    }
+                        )
+                    )}
 
-
-                    {loadingDiscussion &&
+                    {loadingDiscussion && (
                         <div className="not-found-discussion">
                             <h3>{response}</h3>
                             <img src={ImageInformationAlt} alt=""></img>
-                        </div>}
+                        </div>
+                    )}
                 </div>
             </div>
-            {modalForum && <Modal handleModal={() => { setModalForum(false); }} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={responseModalForum} handleModal={() => { setModalForum(false); }}></AlertMessage>
-            </Modal>}
-            {modalToken && <Modal handleModal={() => { window.location.href = "login"; }} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = "login"; }}></AlertMessage>
-            </Modal>}
         </div>
     );
 }

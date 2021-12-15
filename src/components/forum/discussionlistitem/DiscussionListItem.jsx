@@ -1,4 +1,4 @@
-import "./discussionlistitem.scss";
+import "./discussionListItem.scss";
 import { useTranslation } from "react-i18next";
 import { AiOutlineComment } from "react-icons/ai";
 import { useConvertionData } from "../../../hooks/useConvertionData";
@@ -14,7 +14,9 @@ export default function DiscussionListItem(props) {
                     <span>{discussion.theme}</span>
                 </div>
                 <div className="forum-listItem-open-status">
-                    <span><AiOutlineComment /> {discussion.numberComments}</span>
+                    <span>
+                        <AiOutlineComment /> {discussion.numberComments}
+                    </span>
                 </div>
             </div>
             <div className="forum-listItem-data-content">
@@ -22,7 +24,7 @@ export default function DiscussionListItem(props) {
                     <span className="semibold">{discussion.title}</span>
                 </div>
                 <div className="forum-listItem-data-content-date">
-                    <span>{t("DiscussionlistitemDate")}</span>
+                    <span className="color-gray">{t("DiscussionlistitemDate")}</span>
                     <span>{convertDate(discussion.dateCreation)}</span>
                 </div>
             </div>

@@ -2,25 +2,32 @@
 
 .dashboard-main-container {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 100vw;
   grid-template-rows: $topbar-height calc(100vh - #{$topbar-height});
   grid-template-areas:
-    "topbar topbar"
-    "sidebar main";
-
-  .sidebar-dashboard-container {
-    grid-area: sidebar;
-    // position:fixed;
-  }
+    "topbar"
+    "main";
 
   .topbar-dashboard-container {
     grid-area: topbar;
-    // position:fixed;
   }
 
-  .userprofile-dashboard-container {
+  .main-content-container {
     grid-area: main;
-    overflow: auto;
-    padding: 25px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 100%;
+    grid-template-areas: "sidebar content";
+
+    .sidebar-dashboard-container {
+      grid-area: sidebar;
+      overflow: auto;
+    }
+
+    .userprofile-dashboard-container {
+      grid-area: content;
+      overflow: auto;
+      padding: 25px;
+    }
   }
 }

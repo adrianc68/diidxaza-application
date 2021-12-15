@@ -1,18 +1,18 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import "./learning.scss";
 import { useTranslation } from "react-i18next";
-import LessonListItem from "../../components/learning/lessonlistitem/LessonListItem";
-import LessonInformation from "../../components/learning/lessoninformation/LessonInformation";
+import LessonListItem from "../../components/learning/lesson_list_item/LessonListItem";
+import LessonInformation from "../../components/learning/lesson_information/LessonInformation";
 import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
-import Modal from "../../components/modal/Modal";
 import AlertMessage from "../../components/alert/AlertMessage";
+import { NUMBER } from "../../helpers/Number";
+import { RESPONSE_STATUS } from "../../helpers/Response";
+import { ModalContext } from "../../hooks/ModalContext";
 
 const totalPoints = (lessonRecords) => {
     let totalPointsRecord = 0;
-    if (lessonRecords.length > 0) {
-        lessonRecords.map((element) => (
-            totalPointsRecord = totalPointsRecord + element.pointsObtained
-        ));
+    if (lessonRecords.length > NUMBER.ZERO) {
+        lessonRecords.map((element) => (totalPointsRecord = totalPointsRecord + element.pointsObtained));
     }
     return totalPointsRecord;
 };
@@ -24,52 +24,76 @@ export default function Learning() {
     const [lessons, setLessons] = useState([]);
     const [lesson, setLesson] = useState({});
     const [lessonRecords, setLessonRecords] = useState([]);
-    const [modalNotToken, setModalNotToken] = useState(false);
-    const [modalToken, setModalToken] = useState(false);
+
+    const { setStatusModal, setComponent } = useContext(ModalContext);
+
+    const handleModal = (ComponentTagA, sizeHeightA, sizeWidthA, handleModalFunction, titleA) => {
+        const initialValue = {
+            sizeHeight: sizeHeightA,
+            sizeWidth: sizeWidthA,
+            title: titleA,
+            object: ComponentTagA,
+            handleModal: handleModalFunction,
+        };
+        setComponent(initialValue);
+        setStatusModal(true);
+    };
+
+    const handleModalLearning = (content, handleModal, title) => {
+        handleModal(<AlertMessage content={content} handleModal={handleModal}></AlertMessage>, "180px", "450px", handleModal, title);
+    };
 
     useEffect(() => {
-        helpHttp().get(UrlAPI + "lessons", {
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-                "Authorization": sessionStorage.getItem("token")
-            }
-        }).then((response) => {
-            if (response.length > 0) {
-                setLessons(response);
-                helpHttp().get(UrlAPI + "lessonRecords/" + sessionStorage.getItem("id"), {
-                    headers: {
-                        Accept: "application/json",
-                        "Content-Type": "application/json",
-                        "Authorization": sessionStorage.getItem("token")
-                    }
-                }).then((responseRecords) => {
-                    if (responseRecords.length > 0) {
-                        setLessonRecords(responseRecords);
-                    } else {
-                        if (responseRecords.status === 419) {
-                            setModalNotToken(false);
-                            setModalToken(true);
-                        } else {
-                            if (responseRecords.status === 401) {
-                                setModalToken(false);
-                                setModalNotToken(true);
+        helpHttp()
+            .get(UrlAPI + "lessons", {
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: sessionStorage.getItem("token"),
+                },
+            })
+            .then((response) => {
+                if (response.length > NUMBER.ZERO) {
+                    setLessons(response);
+                    helpHttp()
+                        .get(UrlAPI + "lessonRecords/" + sessionStorage.getItem("id"), {
+                            headers: {
+                                Accept: "application/json",
+                                "Content-Type": "application/json",
+                                Authorization: sessionStorage.getItem("token"),
+                            },
+                        })
+                        .then((responseRecords) => {
+                            if (responseRecords.length > NUMBER.ZERO) {
+                                setLessonRecords(responseRecords);
+                            } else {
+                                if (responseRecords.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
+                                    handleModalLearning(t("RefreshToken"), () => {
+                                        window.location.href = "login";
+                                    });
+                                } else {
+                                    if (responseRecords.status === RESPONSE_STATUS.UNAUTHORIZED) {
+                                        handleModalLearning(t("ErrorToken"), () => {
+                                            setStatusModal(false);
+                                        });
+                                    }
+                                }
                             }
+                        });
+                } else {
+                    if (response.status === RESPONSE_STATUS.INSUFFICIENT_SPACE) {
+                        handleModalLearning(t("RefreshToken"), () => {
+                            window.location.href = "login";
+                        });
+                    } else {
+                        if (response.status === RESPONSE_STATUS.UNAUTHORIZED) {
+                            handleModalLearning(t("ErrorToken"), () => {
+                                setStatusModal(false);
+                            });
                         }
                     }
-                });
-            } else {
-                if (response.status === 419) {
-                    setModalNotToken(false);
-                    setModalToken(true);
-                } else {
-                    if (response.status === 401) {
-                        setModalToken(false);
-                        setModalNotToken(true);
-                    }
                 }
-            }
-        });
+            });
     }, []);
 
     function handleDisplayLessonInformation(e, lessonCurrent) {
@@ -84,11 +108,9 @@ export default function Learning() {
 
     function placeLessonInformation() {
         const sytleLesson = { top: "0px", left: "0px" };
-        var lessonInformation = <LessonInformation style={sytleLesson} lesson={lesson} setVisible={setVisible}></LessonInformation>;
+        let lessonInformation = <LessonInformation style={sytleLesson} lesson={lesson} setVisible={setVisible}></LessonInformation>;
         return lessonInformation;
     }
-
-
 
     return (
         <div className="learning-main-container">
@@ -100,32 +122,32 @@ export default function Learning() {
                 <div className="learning-lesson-information">
                     <div className="learning-lessons-content">
                         <ul>
-                            {lessons.length > 0 && lessons.map((element) => (
-                                <li onClick={(e) => { handleDisplayLessonInformation(e, element); }} ref={itemRef}>
-                                    <LessonListItem isRecordHistory={lessonRecords.find((history) => history.idLesson === element._id)} lesson={element}></LessonListItem>
-                                </li>
-                            ))}
+                            {lessons.length > NUMBER.ZERO &&
+                                lessons.map((element) => (
+                                    <li
+                                        onClick={(e) => {
+                                            handleDisplayLessonInformation(e, element);
+                                        }}
+                                        ref={itemRef}
+                                    >
+                                        <LessonListItem isRecordHistory={lessonRecords.find((history) => history.idLesson === element._id)} lesson={element}></LessonListItem>
+                                    </li>
+                                ))}
                         </ul>
                         {isVisible ? placeLessonInformation() : null}
                     </div>
                     <div className="learning-lesson-user-information">
                         <div>
-                            <span>{t("LearningPointsWon")}</span>
+                            <span className="color-gray">{t("LearningPointsWon")}</span>
                             <span>{totalPoints(lessonRecords)}</span>
                         </div>
                         <div>
-                            <span>{t("LearningLessonCompleted")}</span>
+                            <span className="color-gray">{t("LearningLessonCompleted")}</span>
                             <span>{lessonRecords.length}</span>
                         </div>
                     </div>
                 </div>
             </div>
-            {modalNotToken && <Modal handleModal={() => { setModalNotToken(false); }} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={t("ErrorToken")} handleModal={() => { setModalNotToken(false); }}></AlertMessage>
-            </Modal>}
-            {modalToken && <Modal handleModal={() => { window.location.href = "login"; }} sizeHeight="20" sizeWidth="35">
-                <AlertMessage content={t("RefreshToken")} handleModal={() => { window.location.href = "login"; }}></AlertMessage>
-            </Modal>}
         </div>
     );
 }

@@ -1,0 +1,45 @@
+.emailListItem-main-container {
+  min-height: 35px;
+  width: calc(100% - 10px);
+  list-style: none;
+  padding: 5px;
+  border-bottom: 1px solid #c7c6c6;
+  color: #696969;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .emailli-content-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.76em;
+    gap: 15px;
+
+    .emailli-emails-data {
+      width: 30%;
+      display: flex;
+      gap: 3px;
+
+      :nth-child(2) {
+        word-break: break-word;
+      }
+    }
+
+    .emailli-subject-data {
+      width: 50%;
+      word-break: break-word;
+    }
+
+    .emailli-timeago-data {
+      width: 10%;
+      word-break: break-word;
+    }
+
+    .emailli-size-data {
+      width: 10%;
+      word-break: break-word;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import "./underconstruction.scss";
+import "./underConstruction.scss";
 import ImageAlt from "../../assets/images/ide-43.svg";
 import { useTranslation } from "react-i18next";
 

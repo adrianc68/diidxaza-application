@@ -55,7 +55,7 @@ p {
 }
 
 .errorInput {
-  color: red;
+  color: rgb(199, 5, 5);
   font-size: 1em;
 }
 
@@ -183,11 +183,15 @@ select {
 }
 
 .color-red {
-  color: rgb(255, 0, 0);
+  color: rgb(199, 5, 5);
 }
 
 .color-green {
   color: rgb(0, 212, 0);
+}
+
+.color-darker-green {
+  color: rgb(1, 160, 1);
 }
 
 .color-black {
@@ -196,4 +200,26 @@ select {
 
 .color-blue {
   color: rgb(27, 15, 185);
+}
+
+.color-gray {
+  color: #5e5b5b;
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  color: #6e6c6c;
+
+  .filter-icon {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+.item-disabled {
+  opacity: 0.7;
+  user-select: none;
+  pointer-events: none;
 }

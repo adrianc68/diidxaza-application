@@ -1,31 +1,37 @@
-import "./signup.scss";
+import "./signUp.scss";
 import Topbar from "../../../components/topbar/Topbar";
 import { useTranslation } from "react-i18next";
-import Button from "../../../components/Button/Button";
-import { Link } from "react-router-dom";
+import Button from "../../../components/button_application/Button";
 import InputInformation from "./InputInformation";
 import VerificationCode from "./VerificationCode";
+import { Context } from "../../../hooks/Context";
+import { useContext } from "react";
+import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export default function SignUp() {
     const { t } = useTranslation();
+    const { isLogged } = useContext(Context);
+    const history = useHistory();
 
-    return (
-        <div className="signup-main-container">
+    return !isLogged ? (
+        <>
             <Topbar>
                 <div className="signup-then-login-container">
-                    <span>{t("SignUpAlreadyHaveAccount")}</span>
                     <div className="signup-already-buton-container">
-                        <Link className="link" to="/login">
-                            <Button styleName="primary-button" text={t("SignUpAlreadyHaveAccountButton")}></Button>
-                        </Link>
+                        <Button styleName="button" text={t("SignUpAlreadyHaveAccountButton")} onClick={() => history.push("/login")}></Button>
                     </div>
                 </div>
             </Topbar>
-            <div className="signup-form-container">
-                <InputInformation></InputInformation>
-                <br />
-                <VerificationCode></VerificationCode>
-            </div>
-        </div>
+            <main className="signup-main-container">
+                <div className="signup-form-container">
+                    <InputInformation></InputInformation>
+                    <br />
+                    <VerificationCode></VerificationCode>
+                </div>
+            </main>
+        </>
+    ) : (
+        <Redirect exact to={"/"} />
     );
 }

@@ -1,0 +1,48 @@
+@import "../../components/variables.module.scss";
+
+.text-button {
+  background-color: transparent;
+  border-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .button-container {
+    .icon-button {
+      display: none;
+    }
+
+    span {
+      font-size: 1em;
+      font-weight: 600;
+      vertical-align: middle;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+}
+
+.text-button.black-text {
+  span {
+    color: #000;
+  }
+}
+
+.text-button.gray-text {
+  span {
+    color: rgb(100, 100, 107);
+  }
+}
+
+.text-button.blue-text {
+  span {
+    font-weight: 600;
+    color: rgb(24, 52, 175);
+    text-decoration: underline;
+  }
+}
+
+.text-button.active {
+  border-bottom: 3px solid rgb(4, 134, 255);
+  pointer-events: none;
+}

@@ -11,10 +11,7 @@ export default function Topbar({ children }) {
             </div>
             <div className="nav-links-container">
                 <ul>
-                    <li>
-                        {children}
-                    </li>
-
+                    <li>{children}</li>
                 </ul>
             </div>
         </header>

@@ -7,10 +7,12 @@
   align-items: center;
   background-color: #f3f3f3;
   background-image: url("../../../assets/images/bk-2.svg");
+  overflow: auto;
 
   .login-container {
-    padding: 15px;
-    height: auto;
+    padding: 20px;
+    height: 500px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;

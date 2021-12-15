@@ -1,5 +1,5 @@
-import "./AlertMessage.scss";
-import Button from "../Button/Button";
+import "./alertMessage.scss";
+import Button from "../button_application/Button";
 import { useTranslation } from "react-i18next";
 
 export default function AlertMessage({ content, handleModal }) {
@@ -12,7 +12,7 @@ export default function AlertMessage({ content, handleModal }) {
                 </div>
                 <div className="alert-button-panel">
                     <div>
-                        <Button styleName="primary-button dark-blue" text={t("ButtonAccept")} onClick={handleModal}></Button>
+                        <Button styleName="button background-dark-blue" text={t("ButtonAccept")} onClick={handleModal}></Button>
                     </div>
                 </div>
             </div>
