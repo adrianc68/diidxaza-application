@@ -48,17 +48,17 @@ export default function Discussion({ discussion, numberComments, comments, image
                         </div>
                         <div className="forum-discussion-data-discussion">
                             <div>
-                                <span>{t("DiscussionlistitemDate")}</span>
-                                <span>{convertDate(discussion.dateCreation)}</span>
+                                <span className="color-gray">{t("DiscussionlistitemDate")}</span>
+                                <span >{convertDate(discussion.dateCreation)}</span>
                             </div>
                             <div>
-                                <span>{t("DiscussionTheme")}</span>
+                                <span className="color-gray">{t("DiscussionTheme")}</span>
                                 <span>{discussion.theme}</span>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <Button styleName="dark-blue-button" onClick={handleClickFollow}>
+                        <Button styleName="button background-dark-blue" onClick={handleClickFollow}>
                             {t("ButtonFollow")}
                         </Button>
                     </div>

@@ -7,14 +7,14 @@ export default function AddComment({ commentLenght, loadingComment, icon, classN
     return (
         <form onSubmit={handleSubmitComment} className="addcomment-main-container">
             <div className="addcomment-input-container">
-                <textarea name="comment" className="input" type="text" onChange={handleChangeComment} onBlur={handleBlurComment} value={formComment.comment} required></textarea>
+                <textarea id="comment" name="comment" className="input" type="text" onChange={handleChangeComment} onBlur={handleBlurComment} value={formComment.comment} required></textarea>
             </div>
             <div className="addcommen-button-control">
                 <div className="addcomment-count-characters">
                     <div className="system-message-container">{errorsComment.comment && <p className="errorInput">{t("ErrorComment")}</p>}</div>
-                    <span>
+                    <label htmlFor="comment">
                         {commentLenght} {t("AddCommentCharacters")}
-                    </span>
+                    </label>
                     <div className="system-message-container">
                         {loadingComment && (
                             <p className={className}>
@@ -29,7 +29,7 @@ export default function AddComment({ commentLenght, loadingComment, icon, classN
                     </Button>
                 </div>
                 <div>
-                    <Button type="submit" styleName="green-button">
+                    <Button type="submit" styleName="button background-green">
                         {t("ButtonSend")}
                     </Button>
                 </div>

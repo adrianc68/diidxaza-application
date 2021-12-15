@@ -114,8 +114,8 @@ export default function Forum() {
                             <form onSubmit={handleSubmit}>
                                 <div className="form-search-input">
                                     <div className="form-search-container-input">
-                                        <span>{t("ForumSearchCriteriaInput")}</span>
-                                        <input name="title" type="text" onChange={handleChange} onBlur={handleBlur} value={title} required></input>
+                                        <label htmlFor="title">{t("ForumSearchCriteriaInput")}</label>
+                                        <input id="title" name="title" type="text" onChange={handleChange} onBlur={handleBlur} value={title} required></input>
                                     </div>
                                     <div>
                                         <Button styleName="button" onClick={removeActiveClassFilterButton} type="submit">

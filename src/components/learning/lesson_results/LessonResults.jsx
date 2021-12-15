@@ -42,7 +42,7 @@ export default function LessonResults({ pointsObtained, resultsQuestions, lesson
                             },
                         }}
                     >
-                        <Button styleName="green-button" text={t("ButtonShowResults")} />
+                        <Button styleName="button background-dark-blue" text={t("ButtonShowResults")} />
                     </Link>
                 </div>
             </div>

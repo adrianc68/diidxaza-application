@@ -68,14 +68,14 @@ export default function Comment({ comment, handleClickDeleteComment, idDiscussio
 
                 <div className="forum-bottom-content">
                     <div className="forum-bottom-date-comment">
-                        <span>{t("DiscussionlistitemDate")}</span>
-                        <span>{convertDate(comment.dateCreation)}</span>
+                        <span className="color-gray">{t("DiscussionlistitemDate")}</span>
+                        <span className="color-gray">{convertDate(comment.dateCreation)}</span>
                     </div>
 
                     {sessionStorage.getItem("id") === comment.idAccount[0]._id && (
                         <div className="forum-comment-button-panel">
                             <div>
-                                <Button styleName="dark-blue-button" onClick={() => handleModalDelete()}>
+                                <Button styleName="button background-dark-blue" onClick={() => handleModalDelete()}>
                                     {t("DeleteButton")}
                                 </Button>
                             </div>

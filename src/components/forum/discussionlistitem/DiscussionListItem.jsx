@@ -24,7 +24,7 @@ export default function DiscussionListItem(props) {
                     <span className="semibold">{discussion.title}</span>
                 </div>
                 <div className="forum-listItem-data-content-date">
-                    <span>{t("DiscussionlistitemDate")}</span>
+                    <span className="color-gray">{t("DiscussionlistitemDate")}</span>
                     <span>{convertDate(discussion.dateCreation)}</span>
                 </div>
             </div>

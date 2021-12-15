@@ -17,7 +17,7 @@ describe("Following Discussion", () => {
                 messageHappened: 'La discusión se sigue exitosamente',
             }
         });
-        cy.get(':nth-child(3) > .dark-blue-button').click();
+        cy.get(':nth-child(3) > .button background-dark-blue').click();
         cy.get('.alert-content-container').contains("La discusión se sigue exitosamente");
         cy.get('.alert-content-container').contains("Aceptar").click();
     });
@@ -26,7 +26,7 @@ describe("Following Discussion", () => {
         cy.intercept('PATCH', '/discussions', {
             status: 500
         });
-        cy.get(':nth-child(3) > .dark-blue-button').click();
+        cy.get(':nth-child(3) > .button background-dark-blue').click();
         cy.get('.alert-content-container').contains("Error en el servidor. Intenta más tarde");
         cy.get('.alert-content-container').contains("Aceptar").click();
     });
@@ -35,7 +35,7 @@ describe("Following Discussion", () => {
         cy.intercept('PATCH', '/discussions', {
             status: 401
         });
-        cy.get(':nth-child(3) > .dark-blue-button').click();
+        cy.get(':nth-child(3) > .button background-dark-blue').click();
         cy.get('.alert-main-container').contains("No estás autorizado para realizar esta funcionalidad");
         cy.get('.alert-content-container').contains("Aceptar").click();
     });
@@ -44,7 +44,7 @@ describe("Following Discussion", () => {
         cy.intercept('PATCH', '/discussions', {
             status: 419
         });
-        cy.get(':nth-child(3) > .dark-blue-button').click();
+        cy.get(':nth-child(3) > .button background-dark-blue').click();
         cy.get('.alert-main-container').contains("Se agotado su tiempo en el sistema, por favor vuelva a iniciar sesión");
         cy.get('.alert-content-container').contains("Aceptar").click();
     });
