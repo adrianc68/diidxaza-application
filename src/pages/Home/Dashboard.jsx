@@ -96,9 +96,9 @@ export default function Dashboard() {
                             <div className="sidebar-dashboard-container">
                                 <Sidebar />
                             </div>
-                            <div className="userprofile-dashboard-container">
+                            <main className="userprofile-dashboard-container">
                                 <DashboardRouter setNameUser={setNameUser}></DashboardRouter>
-                            </div>
+                            </main>
                             {sessionStorage.getItem("role") === "manager" ? <AdminMenu /> : null}
                         </Router>
                     </div>

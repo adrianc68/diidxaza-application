@@ -133,15 +133,16 @@ export default function SendEmail() {
         <form className="email-send-main-container" onSubmit={handleSubmit} autocomplete="off">
             <div className="email-rs-container">
                 <div className="email-rs-button-container">
-                    <Button styleName="icon-button border fullsize" type="submit">
+                    <Button styleName="icon-button border fullsize" type="submit" ariaLabel={t("ariaLabelSendEmail")}>
                         <MdSend className="icon color-black"></MdSend>
                     </Button>
                     {serverInformation && <span>Enviado</span>}
                 </div>
             </div>
             <div className="email-sm-body-to-container">
-                <span>{t("EmailSendMessageTo")}</span>
+                <label htmlFor="to">{t("EmailSendMessageTo")}</label>
                 <input
+                    id="to"
                     name="to"
                     type="text"
                     onChange={(e) => {
@@ -156,8 +157,9 @@ export default function SendEmail() {
                 )}
             </div>
             <div className="email-sm-body-title-container">
-                <span>{t("EmailSendMessageTitle")} </span>
+                <label htmlFor="subject">{t("EmailSendMessageTitle")} </label>
                 <input
+                    id="subject"
                     name="subject"
                     type="text"
                     onChange={(e) => {
@@ -172,8 +174,9 @@ export default function SendEmail() {
                 )}
             </div>
             <div className="email-sm-body-message-container">
-                <span>{t("EmailSendMessageContent")} </span>
+                <label htmlFor="message">{t("EmailSendMessageContent")} </label>
                 <textarea
+                    id="message"
                     name="message"
                     className="textarea-email input"
                     type="text>"

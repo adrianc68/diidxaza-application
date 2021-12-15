@@ -449,7 +449,7 @@ export const TRANSLATIONS_ES = {
 
 
 
-
+    EmailTitle: "Correos",
     EmailSearchCriteriaInput: "Buscar: ",
     EmailTo: "Enviados",
     EmailFrom: "Recibidos",
@@ -470,4 +470,11 @@ export const TRANSLATIONS_ES = {
     ariaLabelTwitter: "Visita nuestro twitter",
     ariaLabelYoutube: "Vista nuestro canal en youtube",
     ariaLabelGithub: "Visita nuestro repositorio de github",
+
+    ariaLabelButtonMenuShow: "Desplegar menú",
+    ariaLabelButtonMenuHide : "Ocultar menú",
+
+    ariaLabelBackButton: "Retroceder",
+    ariaLabelRefreshButton: "Refrescar",
+    ariaLabelSendEmail: "Enviar correo",
 };

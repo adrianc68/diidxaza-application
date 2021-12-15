@@ -21,13 +21,13 @@ export default function Sidebar() {
     }
 
     return (
-        <nav className={isExpanded ? "sidebar" : "sidebar active"}>
+        <sidebar className={isExpanded ? "sidebar" : "sidebar active"}>
             <div className="sidebar-toggle-button-container">
-                <button className="sidebar-toggle-button" onClick={toggleSidebar}>
+                <button className="sidebar-toggle-button" onClick={toggleSidebar} aria-label={ isExpanded ? t("ariaLabelButtonMenuHide") : t("ariaLabelButtonMenuShow")}>
                     <MdMenu className="sidebarIconToggle" />
                 </button>
             </div>
-
+            
             <ul>
                 <li>
                     <NavLink className="sidebar-link" activeClassName="activeItem" exact to="/">
@@ -88,6 +88,6 @@ export default function Sidebar() {
                     </li>
                 </div>
             </ul>
-        </nav>
+        </sidebar>
     );
 }

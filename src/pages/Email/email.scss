@@ -4,9 +4,10 @@
   box-shadow: rgba(9, 30, 66, 0.25) 0 1px 1px, rgba(9, 30, 66, 0.13) 0 0 1px 1px;
   border-radius: 3px;
   background-color: #fff;
-  height: 100%;
-  width: 100%;
+  height: calc(100% - 20px);
+  width: calc(100% - 20px);
   color: rgb(94, 90, 90);
+  padding:10px;
 
   .email-content-container {
     width: calc(100% - 10px);

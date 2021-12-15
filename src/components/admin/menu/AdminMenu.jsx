@@ -45,7 +45,7 @@ export default function AdminMenu() {
     return (
         <nav className={isExpanded ? "adminmenubar" : "adminmenubar active"}>
             <div className="adminmenubar-toggle-button-container">
-                <button className="adminmenubar-toggle-button" onClick={toggleAdminMenubar}>
+                <button className="adminmenubar-toggle-button" onClick={toggleAdminMenubar} aria-label={ isExpanded ? t("ariaLabelButtonMenuHide") : t("ariaLabelButtonMenuShow")}>
                     <FaGripLinesVertical className="adminmenubarIconToggle" />
                 </button>
             </div>

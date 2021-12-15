@@ -33,12 +33,13 @@ export default function Email() {
         <div className="email-main-container">
             <Router>
                 <div className="email-content-container">
+                    <h1>{t("EmailTitle")}</h1>
                     <div className="email-search-container">
                         <form className="form-search-container item-disabled">
                             <div className="form-search-input-container">
                                 <div className="form-search-input">
-                                    <span>{t("EmailSearchCriteriaInput")}</span>
-                                    <input name="title" type="text" disabled required></input>
+                                    <label htmlFor="title">{t("EmailSearchCriteriaInput")}</label>
+                                    <input id="title" name="title" type="text" disabled required></input>
                                 </div>
                                 <div className="form-search-button">
                                     <Button styleName="primary-button" type="submit">
@@ -50,8 +51,8 @@ export default function Email() {
                     </div>
 
                     <div className="email-content">
-                        <div className="email-left-side-container">
-                            <nav className="email-sidebar">
+                        <sidebar className="email-left-side-container">
+                            <div className="email-sidebar">
                                 <ul>
                                     <li onClick={() => handleInboxActiveClass()}>
                                         <NavLink className={isActiveClassInbox ? "email-sidebar-link active" : "email-sidebar-link"} exact to="/email/inbox/">
@@ -71,18 +72,18 @@ export default function Email() {
                                         <Button styleName="primary-button">{t("EmailSendEmail")}</Button>
                                     </NavLink>
                                 </div>
-                            </nav>
-                        </div>
+                            </div>
+                        </sidebar>
                         <div className="email-right-side-container">
                             <div className="email-rs-navigation">
                                 <div className="email-rs-button-container">
-                                    <Button styleName="icon-button border fullsize" onClick={() => history.goBack()}>
+                                    <Button styleName="icon-button border fullsize" onClick={() => history.goBack()} ariaLabel={t("ariaLabelBackButton")}>
                                         <GoArrowLeft className="icon color-black"></GoArrowLeft>
                                     </Button>
                                 </div>
 
                                 <div className="email-rs-button-container">
-                                    <Button styleName="icon-button border fullsize">
+                                    <Button styleName="icon-button border fullsize" ariaLabel={t("ariaLabelRefreshButton")}>
                                         <MdUpdate className="icon color-black"></MdUpdate>
                                     </Button>
                                 </div>
