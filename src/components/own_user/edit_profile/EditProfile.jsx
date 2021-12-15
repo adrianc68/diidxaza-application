@@ -288,11 +288,11 @@ export default function EditProfile({ setNameUser }) {
                                         },
                                     }}
                                 >
-                                    <Button styleName="orange-button" text={t("ButtonCancel")}></Button>
+                                    <Button styleName="button background-orange" text={t("ButtonCancel")}></Button>
                                 </Link>
                             </div>
                             <div>
-                                <Button type="submit" styleName="primary-button" text={t("ButtonEditProfile")}></Button>
+                                <Button type="submit" styleName="button" text={t("ButtonEditProfile")}></Button>
                             </div>
                         </div>
                     </div>

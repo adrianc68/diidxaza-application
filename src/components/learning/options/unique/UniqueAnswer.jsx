@@ -1,8 +1,12 @@
+import { useTranslation } from "react-i18next";
 import "./uniqueAnswer.scss";
 
 export default function UniqueAnswer({ answers, handleChange }) {
+    const { t } = useTranslation();
+
     return (
-        <form className="uniqueanswer-form">
+        <fieldset className="uniqueanswer-form">
+            <legend className="color-gray">{t("LearningOptionsAvailable")}</legend>
             <ul>
                 {answers.length > 0 &&
                     answers.map((element) => (
@@ -14,6 +18,6 @@ export default function UniqueAnswer({ answers, handleChange }) {
                         </li>
                     ))}
             </ul>
-        </form>
+        </fieldset>
     );
 }

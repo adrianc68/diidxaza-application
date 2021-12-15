@@ -27,7 +27,7 @@ export default function LessonInformation({ lesson, setVisible }) {
             <div className="lesson-button-panel">
                 <div>
                     <Button
-                        styleName="orange-button"
+                        styleName="button background-orange"
                         text={t("ButtonCancel")}
                         onClick={(e) => {
                             setVisible(false);
@@ -44,7 +44,7 @@ export default function LessonInformation({ lesson, setVisible }) {
                             },
                         }}
                     >
-                        <Button styleName="primary-button" text={t("ButtonStartLesson")} />
+                        <Button styleName="button" text={t("ButtonStartLesson")} />
                     </Link>
                 </div>
             </div>

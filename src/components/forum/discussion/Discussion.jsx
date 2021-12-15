@@ -74,7 +74,7 @@ export default function Discussion({ discussion, numberComments, comments, image
                     </h2>
                     {sessionStorage.getItem("id") !== discussion.idAccount[0]._id && (
                         <div>
-                            <Button styleName="primary-button" onClick={() => handleModalReport()}>
+                            <Button styleName="button" onClick={() => handleModalReport()}>
                                 {t("ButtonReportUser")}
                             </Button>
                         </div>

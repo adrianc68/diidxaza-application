@@ -171,17 +171,17 @@ export default function AnswerSection({ lesson }) {
                     <div className="answersection-button-panel">
                         <div>
                             <Link className="link" to="/learning">
-                                <Button styleName="orange-button" text={t("ButtonExit")} />
+                                <Button styleName="button background-orange" text={t("ButtonExit")} />
                             </Link>
                         </div>
                         {questionsChange.length > NUMBER.ONE && (
                             <div>
-                                <Button styleName="primary-button" text={t("ButtonNext")} onClick={handleClickNext} />
+                                <Button styleName="button" text={t("ButtonNext")} onClick={handleClickNext} />
                             </div>
                         )}
                         {questionsChange.length === NUMBER.ONE && (
                             <div>
-                                <Button styleName="primary-button" text={t("ButtonFinish")} onClick={handleClick} />
+                                <Button styleName="button" text={t("ButtonFinish")} onClick={handleClick} />
                             </div>
                         )}
                     </div>

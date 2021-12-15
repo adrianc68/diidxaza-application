@@ -3,8 +3,8 @@ describe("Following Discussion", () => {
         cy.visit("http://127.0.0.1:3000/login");
         cy.get('[name="username"]').type("Miros");
         cy.get('[name="password"]').type("Mmol78963#");
-        cy.get('.secondary-button').click();
-        cy.get('.secondary-button').click();
+        cy.get('.button background-orange').click();
+        cy.get('.button background-orange').click();
         cy.get('.sidebar-dashboard-container').get('a[href="/forum"]').click();
         cy.contains("¿Qué opinan de las cuentos?").click();
     });

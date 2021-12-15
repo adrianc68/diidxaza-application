@@ -118,7 +118,7 @@ export default function Forum() {
                                         <input name="title" type="text" onChange={handleChange} onBlur={handleBlur} value={title} required></input>
                                     </div>
                                     <div>
-                                        <Button styleName="primary-button" onClick={removeActiveClassFilterButton} type="submit">
+                                        <Button styleName="button" onClick={removeActiveClassFilterButton} type="submit">
                                             {t("ButtonSearch")}
                                         </Button>
                                     </div>
@@ -164,7 +164,7 @@ export default function Forum() {
                                 <span>{t("ForumWantToCreateNewDiscussion")}</span>
                                 <div>
                                     <Link className="link" to="/discussion">
-                                        <Button styleName="primary-button">{t("ButtonCreateDiscussion")}</Button>
+                                        <Button styleName="button">{t("ButtonCreateDiscussion")}</Button>
                                     </Link>
                                 </div>
                             </div>

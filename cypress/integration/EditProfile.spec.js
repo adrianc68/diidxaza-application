@@ -5,8 +5,8 @@ describe("Edit Profile", () => {
         cy.visit("http://127.0.0.1:3000/login");
         cy.get('[name="username"]').type("Miros");
         cy.get('[name="password"]').type("Mmol78963#");
-        cy.get('.secondary-button').click();
-        cy.get('.secondary-button').click();
+        cy.get('.button background-orange').click();
+        cy.get('.button background-orange').click();
         cy.get('.text-button').click();
         cy.get('.adminmenubarIconToggle').click();
         cy.contains('Editar perfil').click();

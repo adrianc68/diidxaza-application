@@ -69,13 +69,13 @@ export default function ChangeStatusUser({ account, setStatusModal }) {
                 )}
                 <form className="changestatususer-button-panel" onSubmit={handleSubmit}>
                     <Button
-                        styleName="primary-button"
+                        styleName="button"
                         text={t("ButtonCancel")}
                         onClick={() => {
                             setStatusModal(false);
                         }}
                     ></Button>
-                    <Button styleName="primary-button" text={account.status === AccountStatus.UNBLOCKED ? t("UserProfileButtonPanelBlockUser") : t("UserProfileButtonPanelUnblockUser")} type="submit"></Button>
+                    <Button styleName="button" text={account.status === AccountStatus.UNBLOCKED ? t("UserProfileButtonPanelBlockUser") : t("UserProfileButtonPanelUnblockUser")} type="submit"></Button>
                 </form>
             </div>
         </div>

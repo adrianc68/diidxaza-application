@@ -24,7 +24,7 @@ export default function AddComment({ commentLenght, loadingComment, icon, classN
                     </div>
                 </div>
                 <div>
-                    <Button styleName="orange-button" onClick={handleClickComment}>
+                    <Button styleName="button background-orange" onClick={handleClickComment}>
                         {t("ButtonCancel")}
                     </Button>
                 </div>

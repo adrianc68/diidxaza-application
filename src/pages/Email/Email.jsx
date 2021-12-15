@@ -42,7 +42,7 @@ export default function Email() {
                                     <input id="title" name="title" type="text" disabled required></input>
                                 </div>
                                 <div className="form-search-button">
-                                    <Button styleName="primary-button" type="submit">
+                                    <Button styleName="button" type="submit">
                                         {t("ButtonSearch")}
                                     </Button>
                                 </div>
@@ -69,7 +69,7 @@ export default function Email() {
                                 </ul>
                                 <div className="email-create-button-panel">
                                     <NavLink className="link" exact to="/email/create/" onClick={() => clearActiveClass()}>
-                                        <Button styleName="primary-button">{t("EmailSendEmail")}</Button>
+                                        <Button styleName="button">{t("EmailSendEmail")}</Button>
                                     </NavLink>
                                 </div>
                             </div>

@@ -379,6 +379,7 @@ export const TRANSLATIONS_ES = {
     LearningLessonPointsToWin:"Puntos a ganar",
     LearningLessonStatus: "Estado",
     LearningLessonResultsDescription: "¡Felicidades! has terminado esta lección. Si quieres ver los resultados puedes presionar el botón Ver resultados.",
+    LearningOptionsAvailable: "Opciones disponibles",
     AnswerSectionQuesion: "Pregunta: ",
     AnswerSectionLevel: "Dificultad: ",
     AnswerSectionQuestionType: "Tipo de pregunta: ",
@@ -477,4 +478,6 @@ export const TRANSLATIONS_ES = {
     ariaLabelBackButton: "Retroceder",
     ariaLabelRefreshButton: "Refrescar",
     ariaLabelSendEmail: "Enviar correo",
+    
+
 };

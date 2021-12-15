@@ -13,10 +13,10 @@ export default function UserprofileButtonPanelOWU({ handleViewProgress, accountI
         <div className="userprofile-button-panel-content">
             {accountID === sessionStorage.getItem("id") ? (
                 <>
-                    <Button styleName="primary-button" text={t("UserProfileButtonPanelEditProfile")} onClick={() => history.push(url + "/edit")}></Button>
+                    <Button styleName="button" text={t("UserProfileButtonPanelEditProfile")} onClick={() => history.push(url + "/edit")}></Button>
                 </>
             ) : null}
-            <Button styleName="primary-button" text={!showProgress ? t("UserProfileButtonPanelCheckProgress") : t("UserProfileButtonPanelHideProgress")} onClick={() => handleViewProgress()}></Button>
+            <Button styleName="button" text={!showProgress ? t("UserProfileButtonPanelCheckProgress") : t("UserProfileButtonPanelHideProgress")} onClick={() => handleViewProgress()}></Button>
         </div>
     );
 }

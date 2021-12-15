@@ -6,8 +6,8 @@ describe("Login", () => {
     it("Login Successful", () => {
         cy.get('[name="username"]').type("Miros");
         cy.get('[name="password"]').type("Mmol78963#");
-        cy.get('.secondary-button').click();
-        cy.get('.secondary-button').click();
+        cy.get('.button background-orange').click();
+        cy.get('.button background-orange').click();
         cy.wait(1000);
         cy.get(".userprofile-dashboard-container").contains("¡Bienvenido de nuevo, Martha!");
     });

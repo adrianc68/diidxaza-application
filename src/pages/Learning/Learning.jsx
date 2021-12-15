@@ -138,11 +138,11 @@ export default function Learning() {
                     </div>
                     <div className="learning-lesson-user-information">
                         <div>
-                            <span>{t("LearningPointsWon")}</span>
+                            <span className="color-gray">{t("LearningPointsWon")}</span>
                             <span>{totalPoints(lessonRecords)}</span>
                         </div>
                         <div>
-                            <span>{t("LearningLessonCompleted")}</span>
+                            <span className="color-gray">{t("LearningLessonCompleted")}</span>
                             <span>{lessonRecords.length}</span>
                         </div>
                     </div>

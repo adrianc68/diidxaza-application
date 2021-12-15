@@ -27,7 +27,7 @@ export default function LessonResults({ pointsObtained, resultsQuestions, lesson
             <div className="lessonresults-button-panel">
                 <div className="div-result">
                     <Link className="link" to="/learning">
-                        <Button styleName="primary-button" text={t("ButtonClose")} />
+                        <Button styleName="button" text={t("ButtonClose")} />
                     </Link>
                 </div>
                 <div className="div-result">

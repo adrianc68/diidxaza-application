@@ -1,7 +1,11 @@
+import { useTranslation } from "react-i18next";
+
 export default function QuestionUniqueAnswerSolved({ question, answers, answersUser }) {
+    const { t } = useTranslation();
+
     return (
-        <div className="questionsolved">
-            <h3>{question.question}</h3>
+        <fieldset className="questionsolved">
+            <legend className="color-gray">{question.question}</legend>
             <ul>
                 {answers.length > 0 &&
                     answers.map(
@@ -26,6 +30,6 @@ export default function QuestionUniqueAnswerSolved({ question, answers, answersU
                             ))
                     )}
             </ul>
-        </div>
+        </fieldset>
     );
 }

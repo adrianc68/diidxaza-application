@@ -112,11 +112,11 @@ export default function AddDiscussion() {
                         <div className="adddiscussion-button-panel">
                             <div>
                                 <Link className="link" to="/forum">
-                                    <Button styleName="orange-button" text={t("ButtonCancel")}></Button>
+                                    <Button styleName="button background-orange" text={t("ButtonCancel")}></Button>
                                 </Link>
                             </div>
                             <div>
-                                <Button type="submit" styleName="primary-button" text={t("ButtonCreateDiscussion")}></Button>
+                                <Button type="submit" styleName="button" text={t("ButtonCreateDiscussion")}></Button>
                             </div>
                         </div>
                     </div>

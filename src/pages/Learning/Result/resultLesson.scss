@@ -39,7 +39,7 @@
             .resutlesson-gdgi-congratulation {
               display: flex;
               flex-direction: column;
-              gap: 55px;
+              gap: 45px;
               align-items: center;
               justify-content: center;
               height: 100%;
@@ -52,7 +52,7 @@
 
               span {
                 font-weight: 800;
-                font-size: 4.5em;
+                font-size: 2.5em;
               }
             }
           }
@@ -156,6 +156,7 @@
 
                 .questionsolved {
                   flex-grow: 1;
+                  border:transparent;
                   width: 100%;
                 }
 

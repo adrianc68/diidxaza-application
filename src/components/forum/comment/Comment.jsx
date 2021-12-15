@@ -84,7 +84,7 @@ export default function Comment({ comment, handleClickDeleteComment, idDiscussio
                     {sessionStorage.getItem("id") !== comment.idAccount[0]._id && (
                         <div className="forum-comment-button-panel">
                             <div>
-                                <Button styleName="primary-button" onClick={() => handleModalReport()}>
+                                <Button styleName="button" onClick={() => handleModalReport()}>
                                     {t("ButtonReportUser")}
                                 </Button>
                             </div>

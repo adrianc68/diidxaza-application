@@ -21,11 +21,11 @@ export default function ResultLesson({ resultsQuestions, lesson, pointsObtained 
                                     {lesson.pointsTotal === pointsObtained && <h1>{t("ResultLessonCongratulationsMessage").replace("$", sessionStorage.getItem("name") + " " + sessionStorage.getItem("lastname"))}</h1>}
                                     {lesson.pointsTotal !== pointsObtained && <h2>{t("ResultLessonWeCanImproveMessage").replace("$", sessionStorage.getItem("name") + " " + sessionStorage.getItem("lastname"))}</h2>}
                                     <div className="resultlesson-gdgic-lesson">
-                                        {lesson.pointsTotal === pointsObtained && <h4>{t("ResultLessonCompletedLesson")}</h4>}
-                                        {lesson.pointsTotal !== pointsObtained && <h4>{t("ResultLessonCompleted")}</h4>}
-                                        <h1>{lesson.name}</h1>
+                                        {lesson.pointsTotal === pointsObtained && <h3>{t("ResultLessonCompletedLesson")}</h3>}
+                                        {lesson.pointsTotal !== pointsObtained && <h3>{t("ResultLessonCompleted")}</h3>}
+                                        <span className="">{lesson.name}</span>
                                     </div>
-                                    <h4>{t("ResultLessonCompletedLessonPoints")}</h4>
+                                    <h3>{t("ResultLessonCompletedLessonPoints")}</h3>
                                     <span>{pointsObtained} pts</span>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@ export default function ResultLesson({ resultsQuestions, lesson, pointsObtained 
                                         </div>
                                         <div className="resultlesson-general-data-text">
                                             <span>{t("ResultLessonCorrectQuestions")}</span>
-                                            <span className="color-green">{resultsQuestions.filter((element) => element.isCorrect === true).length}</span>
+                                            <span className="color-darker-green">{resultsQuestions.filter((element) => element.isCorrect === true).length}</span>
                                         </div>
                                     </div>
                                 </li>

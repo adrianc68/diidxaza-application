@@ -82,7 +82,7 @@ export default function ReportUser({ setStatusModal, account }) {
                     )}
                 </div>
                 <div className="reportuser-button-panel">
-                    <Button styleName="orange-button" text={t("ButtonCancel")} onClick={() => setStatusModal(false)}></Button>
+                    <Button styleName="button background-orange" text={t("ButtonCancel")} onClick={() => setStatusModal(false)}></Button>
                     <Button type="submit" styleName="green-button" text={t("ButtonReport")}></Button>
                 </div>
             </div>

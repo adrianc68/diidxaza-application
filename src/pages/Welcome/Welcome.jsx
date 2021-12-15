@@ -134,7 +134,7 @@ export default function Welcome() {
                                             </ul>
                                         </div>
                                         <div className="welcome-choose-description-button-container">
-                                            <Button text={t("ButtonSignUp")} styleName="primary-button" onClick={() => history.push("/signUP")} />
+                                            <Button text={t("ButtonSignUp")} styleName="button" onClick={() => history.push("/signUP")} />
                                         </div>
                                     </div>
                                 </div>

@@ -15,8 +15,8 @@ export default function DeleteAccount() {
                     <p>{t("DeleteAccountDescription")}</p>
                 </div>
                 <div className="deleteaccount-button-panel">
-                    <Button styleName="primary-button" text={t("ButtonCancel")}></Button>
-                    <Button styleName="primary-button" text={t("ButtonDeleteAccount")}></Button>
+                    <Button styleName="button" text={t("ButtonCancel")}></Button>
+                    <Button styleName="button" text={t("ButtonDeleteAccount")}></Button>
                 </div>
             </div>
         </div>

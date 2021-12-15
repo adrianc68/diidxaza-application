@@ -19,7 +19,7 @@ export default function SignUp() {
             <Topbar>
                 <div className="signup-then-login-container">
                     <div className="signup-already-buton-container">
-                        <Button styleName="primary-button" text={t("SignUpAlreadyHaveAccountButton")} onClick={() => history.push("/login")}></Button>
+                        <Button styleName="button" text={t("SignUpAlreadyHaveAccountButton")} onClick={() => history.push("/login")}></Button>
                     </div>
                 </div>
             </Topbar>

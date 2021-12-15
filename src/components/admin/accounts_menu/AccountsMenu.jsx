@@ -169,7 +169,7 @@ export default function AccountsMenu() {
                             ></input>
                         </div>
                         <div className="form-search-input-button">
-                            <Button styleName="primary-button" type="submit">
+                            <Button styleName="button" type="submit">
                                 {t("ButtonSearch")}
                             </Button>
                         </div>

@@ -12,7 +12,7 @@ export default function AlertMessage({ content, handleModal }) {
                 </div>
                 <div className="alert-button-panel">
                     <div>
-                        <Button styleName="primary-button dark-blue" text={t("ButtonAccept")} onClick={handleModal}></Button>
+                        <Button styleName="button background-dark-blue" text={t("ButtonAccept")} onClick={handleModal}></Button>
                     </div>
                 </div>
             </div>

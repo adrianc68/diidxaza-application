@@ -1,6 +1,6 @@
 @import "../../components/variables.module.scss";
 
-.primary-button {
+.button {
   padding: 5px;
   background-color: rgb(72, 104, 209);
   border-radius: 3px;
@@ -32,11 +32,11 @@
   }
 }
 
-.primary-button.red {
+.button.red {
   background-color: rgb(150, 6, 6);
 }
 
-.primary-button.collapse-text {
+.button.collapse-text {
   span {
     display: none;
   }

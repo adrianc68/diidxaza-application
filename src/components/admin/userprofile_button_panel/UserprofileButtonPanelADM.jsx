@@ -42,11 +42,11 @@ export default function UserprofileButtonPanelADM({ account }) {
 
     return (
         <div className="userprofile-button-panel-content">
-            {sessionStorage.getItem("role") === UserType.MANAGER && <Button styleName="primary-button" text={t("UserProfileButtonPanelLookReports")} onClick={handleModalUserReports}></Button>}
+            {sessionStorage.getItem("role") === UserType.MANAGER && <Button styleName="button" text={t("UserProfileButtonPanelLookReports")} onClick={handleModalUserReports}></Button>}
             {sessionStorage.getItem("id") === account._id ? null : account.status === AccountStatus.UNBLOCKED ? (
-                <Button styleName="primary-button" text={t("UserProfileButtonPanelBlockUser")} onClick={handleModalBlockStatusUser}></Button>
+                <Button styleName="button" text={t("UserProfileButtonPanelBlockUser")} onClick={handleModalBlockStatusUser}></Button>
             ) : (
-                <Button styleName="primary-button" text={t("UserProfileButtonPanelUnblockUser")} onClick={handleModalUnblockStatusUser}></Button>
+                <Button styleName="button" text={t("UserProfileButtonPanelUnblockUser")} onClick={handleModalUnblockStatusUser}></Button>
             )}
         </div>
     );
