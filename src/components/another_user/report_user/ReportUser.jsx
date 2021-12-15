@@ -53,8 +53,8 @@ export default function ReportUser({ setStatusModal, account }) {
                             {account.name} {account.lastname}
                         </b>
                     </span>
-                    <div className="reportuser-options-container">
-                        <span>{t("ReportUserDescription")}</span>
+                    <fieldset className="reportuser-options-container">
+                        <legend>{t("ReportUserDescription")}</legend>
                         <div className="radiobutton-container">
                             <input className="radiobutton" id="1a" type="radio" value={t("ReportUserReasonOne")} name="reason" onChange={handleChange} onBlur={handleBlur} />
                             <label htmlFor="1a">{t("ReportUserReasonOne")}</label>
@@ -69,9 +69,9 @@ export default function ReportUser({ setStatusModal, account }) {
                             <label htmlFor="3a">{t("ReportUserReasonThree")}</label>
                         </div>
                         <div className="system-message-container">{errors.reason && <p className="errorInput">{t("ErrorReason")}</p>}</div>
-                    </div>
-                    <span>{t("ReportUserInputContext")}</span>
-                    <textarea name="context" className="input" type="text>" onBlur={handleBlur} onChange={handleChange} value={form.context} required></textarea>
+                    </fieldset>
+                    <label htmlFor="context">{t("ReportUserInputContext")}</label>
+                    <textarea id="context" name="context" className="input" type="text>" onBlur={handleBlur} onChange={handleChange} value={form.context} required></textarea>
                     <div className="system-message-container">{errors.context && <p className="errorInput">{t("ErrorContext")}</p>}</div>
                 </div>
                 <div className="system-message-container">

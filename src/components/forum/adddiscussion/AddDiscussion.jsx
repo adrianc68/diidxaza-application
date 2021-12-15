@@ -61,7 +61,7 @@ export default function AddDiscussion() {
                                 >
                                     <div className="adddiscussion-theme">
                                         <img src={ImageInformationAlt1} alt={"AlternativeMessageImageDecorative"}></img>
-                                        <h3>{t("AddDiscussionInfo")}</h3>
+                                        <span className="semibold">{t("AddDiscussionInfo")}</span>
                                         <span>{t("AddDiscussionInfoDescription")}</span>
                                     </div>
                                 </li>
@@ -73,7 +73,7 @@ export default function AddDiscussion() {
                                 >
                                     <div className="adddiscussion-theme">
                                         <img src={ImageInformationAlt2} alt={"AlternativeMessageImageDecorative"}></img>
-                                        <h3>{t("AddDiscussionDoubt")}</h3>
+                                        <span className="semibold">{t("AddDiscussionDoubt")}</span>
                                         <span>{t("AddDiscussionDoubtDescription")}</span>
                                     </div>
                                 </li>
@@ -85,7 +85,7 @@ export default function AddDiscussion() {
                                 >
                                     <div className="adddiscussion-theme">
                                         <img src={ImageInformationAlt3} alt={"AlternativeMessageImageDecorative"}></img>
-                                        <h3>{t("AddDiscussionRule")}</h3>
+                                        <span className="semibold">{t("AddDiscussionRule")}</span>
                                         <span>{t("AddDiscussionRuleDescription")}</span>
                                     </div>
                                 </li>
