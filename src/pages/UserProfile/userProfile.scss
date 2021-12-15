@@ -8,7 +8,7 @@
   gap: 15px;
 
   .userprofile-user-details-container {
-    box-shadow:
+    box-shadow: 
       rgba(9, 30, 66, 0.25) 0 1px 1px,
       rgba(9, 30, 66, 0.13) 0 0 1px 1px;
     background-color: #fff;
@@ -68,7 +68,7 @@
         flex-direction: column;
 
         :nth-child(1) {
-          font-size: 0.80em;
+          font-size: 0.8em;
         }
       }
     }
@@ -84,7 +84,8 @@
     padding: 1px;
 
     .userprofile-user-data-container {
-      box-shadow: rgba(9, 30, 66, 0.25) 0 1px 1px,
+      box-shadow: 
+        rgba(9, 30, 66, 0.25) 0 1px 1px,
         rgba(9, 30, 66, 0.13) 0 0 1px 1px;
       background-color: #fff;
       padding: 25px;
@@ -190,7 +191,8 @@
     }
 
     .userprofile-progress-container {
-      box-shadow: rgba(9, 30, 66, 0.25) 0 1px 1px,
+      box-shadow: 
+        rgba(9, 30, 66, 0.25) 0 1px 1px, 
         rgba(9, 30, 66, 0.13) 0 0 1px 1px;
       padding: 25px;
       background-color: #fff;
@@ -200,7 +202,9 @@
 }
 
 .userprofile-server-error-contaniner {
-  box-shadow: rgba(9, 30, 66, 0.25) 0 1px 1px, rgba(9, 30, 66, 0.13) 0 0 1px 1px;
+  box-shadow: 
+    rgba(9, 30, 66, 0.25) 0 1px 1px, 
+    rgba(9, 30, 66, 0.13) 0 0 1px 1px;
   background-color: #fff;
   border-radius: 3px;
   padding: 15px;
@@ -245,166 +249,168 @@
 
 @media all and (max-width: $max-width-device) {
   .userprofile-main-container {
-  display: flex;
-  height:auto;
-  flex-direction: column;
-
-  .userprofile-user-details-container {
-    width: 100%;
-    overflow: auto;
-    height:auto;
-
-    .userprofile-user-photo-container {
-      display: flex;
-      justify-content: center;
-      padding-top: 5px;
-
-      img {
-        height: 125px;
-        width: 125px;
-        border-radius: 50%;
-      }
-    }
-
-    .userprofile-basic-details {
-      gap: 10px;
-      display:flex;
-      align-items: center;
-
-      div {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-
-        :nth-child(1) {
-          font-size: 0.80em;
-        }
-      }
-    }
-  }
-
-  .userprofile-data-content-contaniner {
-    width: 100%;
     display: flex;
+    height: auto;
     flex-direction: column;
-    gap: 15px;
-    overflow-y: auto;
-    border-radius: 3px;
-    padding: 1px;
 
-    .userprofile-user-data-container {
-      box-shadow: rgba(9, 30, 66, 0.25) 0 1px 1px,
-        rgba(9, 30, 66, 0.13) 0 0 1px 1px;
-      background-color: #fff;
-      padding: 25px;
-      border-radius: 3px;
+    .userprofile-user-details-container {
+      width: 100%;
+      overflow: auto;
+      height: auto;
 
-      .userprofile-account-container {
+      .userprofile-user-photo-container {
         display: flex;
-        align-items: flex-start;
-        height: 70px;
+        justify-content: center;
+        padding-top: 5px;
 
-        .userprofile-account-information {
-          display: flex;
-          padding-bottom: 25px;
-          flex-direction: column;
-          width: 90%;
-          word-wrap: break-word;
-
-          span {
-            font-size: 12px;
-          }
+        img {
+          height: 125px;
+          width: 125px;
+          border-radius: 50%;
         }
       }
 
-      .userprofile-button-panel-container {
-        padding: 20px;
+      .userprofile-basic-details {
+        gap: 10px;
         display: flex;
-        border: 1px solid rgb(202, 202, 202);
-        border-radius: 3px;
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
-        width: 150px;
-        float: right;
-
-        .userprofile-button-panel-content {
-          display: flex;
-          flex-direction: column;
-          gap: 15px;
-        }
-      }
-
-      .userprofile-ranking-information-container {
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
+        align-items: center;
 
         div {
-          :first-child {
-            font-weight: 600;
-          }
-        }
-      }
-
-      .userprofile-forum-data-container {
-        border: 1px solid rgb(202, 202, 202);
-        border-radius: 3px;
-        width: 100%;
-        float: left;
-        margin-top: 15px;
-      }
-
-      .userprofile-forum-data-container--tabs {
-        list-style: none;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: stretch;
-
-        .userprofile-forum-data-tab {
-          padding: 8px;
-          box-sizing: border-box;
-          width: 100%;
+          display: flex;
+          flex-direction: column;
           text-align: center;
-          cursor: pointer;
-          color: #000;
-          font-size: 13px;
-          transition: background-color 0.25s;
 
-          &:hover {
-            background-color: rgba(0, 0, 0, 0.25);
-            transition: background-color 0.25s;
+          :nth-child(1) {
+            font-size: 0.8em;
           }
         }
-
-        .tabs--active {
-          border-bottom: 3px solid rgb(4, 134, 255);
-          pointer-events: none;
-        }
-      }
-
-      .content {
-        display: none;
-        padding: 3em;
-        text-align: center;
-      }
-
-      .content--active {
-        display: block;
       }
     }
 
-    .userprofile-progress-container {
-      box-shadow: rgba(9, 30, 66, 0.25) 0 1px 1px,
-        rgba(9, 30, 66, 0.13) 0 0 1px 1px;
-      padding: 25px;
-      background-color: #fff;
+    .userprofile-data-content-contaniner {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      overflow-y: auto;
       border-radius: 3px;
+      padding: 1px;
+
+      .userprofile-user-data-container {
+        box-shadow: 
+          rgba(9, 30, 66, 0.25) 0 1px 1px, 
+          rgba(9, 30, 66, 0.13) 0 0 1px 1px;
+        background-color: #fff;
+        padding: 25px;
+        border-radius: 3px;
+
+        .userprofile-account-container {
+          display: flex;
+          align-items: flex-start;
+          height: 70px;
+
+          .userprofile-account-information {
+            display: flex;
+            padding-bottom: 25px;
+            flex-direction: column;
+            width: 90%;
+            word-wrap: break-word;
+
+            span {
+              font-size: 12px;
+            }
+          }
+        }
+
+        .userprofile-button-panel-container {
+          padding: 20px;
+          display: flex;
+          border: 1px solid rgb(202, 202, 202);
+          border-radius: 3px;
+          flex-direction: column;
+          text-align: center;
+          gap: 15px;
+          width: 150px;
+          float: right;
+
+          .userprofile-button-panel-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+          }
+        }
+
+        .userprofile-ranking-information-container {
+          padding-top: 10px;
+          padding-bottom: 10px;
+          padding-left: 20px;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          div {
+            :first-child {
+              font-weight: 600;
+            }
+          }
+        }
+
+        .userprofile-forum-data-container {
+          border: 1px solid rgb(202, 202, 202);
+          border-radius: 3px;
+          width: 100%;
+          float: left;
+          margin-top: 15px;
+        }
+
+        .userprofile-forum-data-container--tabs {
+          list-style: none;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: stretch;
+
+          .userprofile-forum-data-tab {
+            padding: 8px;
+            box-sizing: border-box;
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+            color: #000;
+            font-size: 13px;
+            transition: background-color 0.25s;
+
+            &:hover {
+              background-color: rgba(0, 0, 0, 0.25);
+              transition: background-color 0.25s;
+            }
+          }
+
+          .tabs--active {
+            border-bottom: 3px solid rgb(4, 134, 255);
+            pointer-events: none;
+          }
+        }
+
+        .content {
+          display: none;
+          padding: 3em;
+          text-align: center;
+        }
+
+        .content--active {
+          display: block;
+        }
+      }
+
+      .userprofile-progress-container {
+        box-shadow: 
+          rgba(9, 30, 66, 0.25) 0 1px 1px,
+          rgba(9, 30, 66, 0.13) 0 0 1px 1px;
+        padding: 25px;
+        background-color: #fff;
+        border-radius: 3px;
+      }
     }
   }
-}
 }

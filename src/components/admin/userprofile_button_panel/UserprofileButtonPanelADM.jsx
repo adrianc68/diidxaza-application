@@ -31,7 +31,7 @@ export default function UserprofileButtonPanelADM({ account }) {
         history.push("/home");
         history.goBack();
         setStatusModal(false);
-    }
+    };
 
     const handleModalUserReports = () => {
         let jsx = <UserReports username={account.username} image={account.image} />;
