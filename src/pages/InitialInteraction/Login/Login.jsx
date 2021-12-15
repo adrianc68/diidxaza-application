@@ -34,11 +34,11 @@ export default function Login() {
 
     return !isLogged ? (
         <>
-            <div className="login-main-container">
+            <main className="login-main-container">
                 <div className="login-container">
                     <div className="login-title-container">
                         <DiidxazaLogo styleClass="logo-black-link" />
-                        <h2>{t("LoginLoginTitle")}</h2>
+                        <h1>{t("LoginLoginTitle")}</h1>
                     </div>
                     <div className="login-form-container">
                         <form onSubmit={handleSubmit}>
@@ -61,7 +61,7 @@ export default function Login() {
                             </div>
                             <div className="login-form-button-container">
                                 <div className="login-form-button">
-                                    <Button type="submit" styleName="secondary-button" text={t("LoginLoginButton")}></Button>
+                                    <Button type="submit" styleName="button background-light-green" text={t("LoginLoginButton")}></Button>
                                 </div>
                             </div>
                         </form>
@@ -78,23 +78,23 @@ export default function Login() {
                         <ul>
                             <li>
                                 <Link className="link" to="/not-found">
-                                    <span>Terms</span>
+                                    <span>{t("FooterTerms")}</span>
                                 </Link>
                             </li>
                             <li>
                                 <Link className="link" to="/not-found">
-                                    <span>Privacy</span>
+                                    <span>{t("FooterPrivacy")}</span>
                                 </Link>
                             </li>
                             <li>
                                 <Link className="link" to="/not-found">
-                                    <span>Site Map</span>
+                                    <span>{t("FooterSiteMap")}</span>
                                 </Link>
                             </li>
                         </ul>
                     </div>
                 </div>
-            </div>
+            </main>
         </>
     ) : (
         <Redirect exact to={"/"} />
