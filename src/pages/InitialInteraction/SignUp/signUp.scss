@@ -1,0 +1,29 @@
+@import "../../../components/variables.module.scss";
+
+.signup-main-container {
+  width: 100%;
+  height: calc(auto - #{$topbar-height});
+  display: flex;
+  flex-direction: column;
+  background-image: url("../../../assets/images/bk-4.svg");
+  background-repeat: repeat;
+
+  .signup-then-login-container {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    width: auto;
+    gap: 15px;
+    font-size: 12px;
+  }
+
+  .signup-form-container {
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

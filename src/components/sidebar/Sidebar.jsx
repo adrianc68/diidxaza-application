@@ -1,108 +1,94 @@
-import React from 'react'
-import './sidebar.css'
-
-import {Group, Bookmark, HelpOutline, LibraryMusic, MenuBook, Forum, Email, LiveTv, Home, EcoOutlined, Landscape, KeyboardArrowLeft } from "@material-ui/icons"
-
-import { Link } from 'react-router-dom';
-
+import React, { useState } from "react";
+import "./sidebar.scss";
+import { MdEmail, MdHome, MdMenu, MdBookmark, MdLiveTv, MdForum, MdMenuBook, MdLibraryMusic, MdLandscape, MdOutlineHelpOutline } from "react-icons/md";
+import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import "../../translations/i18n";
-
 
 export default function Sidebar() {
     const { t } = useTranslation();
+    const sidebarCollapsed = localStorage.getItem("sidebar-collapsed");
+    const [isExpanded, setIsExpanded] = useState(sidebarCollapsed ? false : true);
+
+    function toggleSidebar(e) {
+        e.preventDefault();
+        if (isExpanded) {
+            setIsExpanded(false);
+            localStorage.setItem("sidebar-collapsed", true);
+            return;
+        }
+        setIsExpanded(true);
+        localStorage.removeItem("sidebar-collapsed");
+    }
 
     return (
-        <>
-            <div className="sidebar">
-                <div className="logo-details">
-                    <div className="center">
-                        <Group className="sidebarIcon" />
-                        <span className="logo_name">Diidxaza App</span>
-                    </div>
-                </div>
-
-                <div className="toggle-button-container">
-                    <button className="toggle-button">
-                        <KeyboardArrowLeft className="sidebarIconToggle"/>
-                    </button>
-                </div>
-
-
-                <ul className="nav-links">
-                    <li className="sidebarListItem">
-                        <Link className="linkto" to="/Home">
-                            <Home className="sidebarIcon" />
-                            <span className="sidebarListItemText">{t("SidebarMiPerfil")}</span>
-                        </Link>
-                    </li>
-                    <li className="sidebarListItem">
-                        <Link className="linkto" to="Not-Found">
-                            <Email className="sidebarIcon" />
-                            <span className="sidebarListItemText">{t("SidebarCorreo")}</span>
-                        </Link>
-                    </li>
-                    
-                    <div className="button-section">
-                      
-                        <button className="sidebarButton">
-                            <EcoOutlined className="sidebarIcon"/>
-                            {t("SidebarSignOutButton")}
-                            </button>
-                    </div>
-
-                    <hr className="sidebarHr"></hr>
-
-
-                    <li className="sidebarListItem">
-                        <Link className="linkto" to="/Learning">
-                            <Bookmark className="sidebarIcon" />
-                            <span className="sidebarListItemText">{t("SidebarLearning")}</span>
-                        </Link>
-                    </li>
-                    <li className="sidebarListItem">
-                        <Link className="linkto" to="/News">
-                            <LiveTv className="sidebarIcon" />
-                            <span className="sidebarListItemText">{t("SidebarNews")}</span>
-                        </Link>
-                    </li>
-                    <li className="sidebarListItem">
-                        <Link className="linkto" to="/Forum">
-                            <Forum className="sidebarIcon" />
-                            <span className="sidebarListItemText">{t("SidebarForum")}</span>
-                        </Link>
-                    </li>
-                    <li className="sidebarListItem">
-                        <Link className="linkto" to="/Dictionary">
-                            <MenuBook className="sidebarIcon" />
-                            <span className="sidebarListItemText">{t("SidebarDictionary")}</span>
-                        </Link>
-                    </li>
-                    <li className="sidebarListItem">
-                        <Link className="linkto" to="/Songs">
-                            <LibraryMusic className="sidebarIcon" />
-                            <span className="sidebarListItemText">{t("SidebarSongs")}</span>
-                        </Link>
-                    </li>
-                    <li className="sidebarListItem">
-                        <Link className="linkto" to="/History">
-                            <Landscape className="sidebarIcon" />
-                            <span className="sidebarListItemText">{t("SidebarHistory")}</span>
-                        </Link>
-                    </li>
-                </ul>
-
-                <div className="help-details">
-                    <ul className="nav-help">
-                        <li className="sidebarListItem">
-                            <Link className="linkto" to="/Help">
-                                <HelpOutline className="sidebarIcon" />
-                                <span className="sidebarListItemText">{t("SidebarHelp")}</span>
-                            </Link>
-                        </li>
-                    </ul>
-                </div>
+        <sidebar className={isExpanded ? "sidebar" : "sidebar active"}>
+            <div className="sidebar-toggle-button-container">
+                <button className="sidebar-toggle-button" onClick={toggleSidebar} aria-label={isExpanded ? t("ariaLabelButtonMenuHide") : t("ariaLabelButtonMenuShow")}>
+                    <MdMenu className="sidebarIconToggle" />
+                </button>
             </div>
-        </>
-    )
+            <nav>
+                <ul>
+                    <li>
+                        <NavLink className="sidebar-link" activeClassName="activeItem" exact to="/">
+                            <MdHome className="sidebarIcon" />
+                            <span>{t("SidebarHome")}</span>
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink className="sidebar-link" activeClassName="activeItem" to="/email">
+                            <MdEmail className="sidebarIcon" />
+                            <span>{t("SidebarCorreo")}</span>
+                        </NavLink>
+                    </li>
+                    <hr className="sidebarHr"></hr>
+                    <li>
+                        <NavLink className="sidebar-link" activeClassName="activeItem" to="/learning">
+                            <MdBookmark className="sidebarIcon" />
+                            <span>{t("SidebarLearning")}</span>
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink className="sidebar-link" activeClassName="activeItem" to="/news">
+                            <MdLiveTv className="sidebarIcon" />
+                            <span>{t("SidebarNews")}</span>
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink className="sidebar-link" activeClassName="activeItem" to="/forum">
+                            <MdForum className="sidebarIcon" />
+                            <span>{t("SidebarForum")}</span>
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink className="sidebar-link" activeClassName="activeItem" to="/dictionary">
+                            <MdMenuBook className="sidebarIcon" />
+                            <span>{t("SidebarDictionary")}</span>
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink className="sidebar-link" activeClassName="activeItem" to="/songs">
+                            <MdLibraryMusic className="sidebarIcon" />
+                            <span>{t("SidebarSongs")}</span>
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink className="sidebar-link" activeClassName="activeItem" to="/history">
+                            <MdLandscape className="sidebarIcon" />
+                            <span>{t("SidebarHistory")}</span>
+                        </NavLink>
+                    </li>
+
+                    <div className="sidebar-help-details">
+                        <li>
+                            <NavLink className="sidebar-link" activeClassName="activeItem" to="/help">
+                                <MdOutlineHelpOutline className="sidebarIcon" />
+                                <span className="sidebarListItemText">{t("SidebarHelp")}</span>
+                            </NavLink>
+                        </li>
+                    </div>
+                </ul>
+            </nav>
+        </sidebar>
+    );
 }

@@ -1,0 +1,135 @@
+@import "../../components/variables.module.scss";
+
+.footer-main-container {
+  background-color: $footer-background-color;
+  height: $footer-height;
+  width: $footer-width;
+  display: grid;
+  grid-template-columns: 30vw auto;
+  grid-template-rows: 85% 15%;
+  grid-template-areas:
+    "a b"
+    "c c";
+
+  .footer-bottom-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: a;
+
+    .footer-logo-container {
+      height: auto;
+      width: auto;
+    }
+  }
+
+  .footer-links-container {
+    grid-area: b;
+  }
+
+  .footer-bottom-container {
+    grid-area: c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $footer-bottom-background-color;
+
+    .footer-bottom-container-documents {
+      width: 57vw;
+      padding-left: 3vw;
+
+      ul {
+        display: flex;
+        list-style: none;
+        gap: 13px;
+        align-items: center;
+
+        li {
+          height: auto;
+
+          .link {
+            text-decoration: none;
+            text-align: center;
+            font-size: 11px;
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    .footer-bottom-container-social-networks {
+      width: 37vw;
+      display: flex;
+      justify-content: flex-end;
+
+      .footer-bottom-social-networks {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-right: 1vw;
+
+        ul {
+          display: flex;
+          list-style: none;
+          gap: 5px;
+
+          li {
+            height: auto;
+            margin-left: 5px;
+
+            .link {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #fff;
+            }
+
+            .link:first-child {
+              color: #fff;
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media all and (max-width: $max-width-device) {
+    .footer-bottom-container {
+      grid-area: c;
+
+      .footer-bottom-container-documents {
+        width: 57vw;
+        padding-left: 0;
+
+        ul {
+          li {
+            height: auto;
+            display: flex;
+            align-items: center;
+
+            .link {
+              font-size: 1.5vw;
+            }
+          }
+        }
+      }
+
+      .footer-bottom-container-social-networks {
+        width: 37vw;
+        display: inline-flex;
+        justify-content: flex-end;
+
+        .footer-bottom-social-networks {
+          display: flex;
+
+          ul {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+          }
+        }
+      }
+    }
+  }
+}

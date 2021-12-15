@@ -1,0 +1,36 @@
+@import "../../components/variables.module.scss";
+
+.pagenotfound-main-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 65px);
+
+  .pagenotfound-img-container {
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .pagenotfound-image {
+      height: 90%;
+      width: 100%;
+    }
+  }
+
+  .pagenotfound-text-container {
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      font-size: 7vmin;
+    }
+
+    h2 {
+      font-size: 3vmin;
+      padding-bottom: 15px;
+    }
+  }
+}

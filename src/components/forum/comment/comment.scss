@@ -1,0 +1,64 @@
+@import "../../../components/variables.module.scss";
+
+.forum-comment {
+  padding: 20px;
+  width: calc(100% - 40px);
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  border-bottom: 1px solid rgb(212, 212, 212);
+
+  .forum-comment-user-container {
+    display: inline-flex;
+    flex-direction: column;
+    flex: 1;
+    word-wrap: break-word;
+
+    .forum-comment-user-data {
+      :nth-child(2) {
+        font-size: 0.7em;
+        color: #7a7878;
+      }
+    }
+
+    span {
+      text-overflow: ellipsis;
+      display: block;
+    }
+
+    .forum-comment-content {
+      display: flex;
+      align-items: center;
+      border-left: 1px solid rgb(218, 218, 218);
+      margin-left: 5px;
+      padding-left: 15px;
+    }
+
+    .forum-bottom-content {
+      display: flex;
+      align-items: center;
+      padding-top: 15px;
+
+      .forum-bottom-date-comment {
+        display: flex;
+        gap: 2px;
+        font-size: 0.7em;
+        color: #7a7878;
+      }
+
+      .forum-comment-button-panel {
+        display: flex;
+        justify-content: flex-end;
+        flex: 1;
+      }
+    }
+  }
+
+  img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background: $userprofile-background-gradient;
+    border: $userprofile-border-style;
+  }
+}

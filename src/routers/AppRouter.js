@@ -1,54 +1,69 @@
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-// import Welcome from '../pages/Welcome/Welcome';
-// import PageNotFound from '../pages/PageNotFound/PageNotFound';
-import Home from '../pages/Home/Home'
-import SignUp from '../pages/SignUp/SignUp'
-import Welcome from '../pages/Welcome/Welcome'
-import PageNotFound from '../pages/PageNotFound/PageNotFound'
-
-import { Provider } from 'react-redux';
-
-
-import Sidebar from '../components/sidebar/Sidebar'
+import Login from "../pages/InitialInteraction/Login/Login";
+import Welcome from "../pages/Welcome/Welcome";
+import PageNotFound from "../pages/PageNotFound/PageNotFound";
+import SignUp from "../pages/InitialInteraction/SignUp/SignUp";
+import React from "react";
+import { Router, Switch, Route } from "react-router-dom";
+import Dashboard from "../pages/Home/Dashboard";
+import history from "./History";
+import { useContext } from "react";
+import { Context } from "../hooks/Context";
 
 export default function AppRouter() {
+    const { isLogged } = useContext(Context);
+
     return (
-        <Router>
-            <Switch>
-                <Route exact path="/Home" component={Home} />
-                <Route exact path="/SignUp" component={SignUp} />
-                <Route exact path="/(:filter)" component={Welcome} />
-                <Route component={PageNotFound} />
-            </Switch>
-
-            <Sidebar/>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="/Home">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/SignUp">Sign up</Link>
-                    </li>
-                    <li>
-                        <Link to="/Welcome">Welcome</Link>
-                    </li>
-                
-
-                </ul>
-            </nav>
+        <Router history={history}>
+            {!isLogged ? (
+                <Switch>
+                    <Route exact path="/" component={Welcome} />
+                    <Route exact path="/signup" component={SignUp} />
+                    <Route exact path="/login" component={Login} />
+                    <Route exact path="/home" component={Dashboard} />
+                    <Route exact path="/email" component={Dashboard} />
+                    <Route exact path="/discussion" component={Dashboard} />
+                    <Route exact path="/learning" component={Dashboard} />
+                    <Route exact path="/news" component={Dashboard} />
+                    <Route exact path="/forum" component={Dashboard} />
+                    <Route exact path="/dictionary" component={Dashboard} />
+                    <Route exact path="/songs" component={Dashboard} />
+                    <Route exact path="/history" component={Dashboard} />
+                    <Route exact path="/help" component={Dashboard} />
+                    <Route exact path="/profile/:id" component={Dashboard} />
+                    <Route exact path="/profile/:id/edit" component={Dashboard} />
+                    <Route exact path="/email/inbox/" component={Dashboard} />
+                    <Route exact path="/email/inbox/:id" component={Dashboard} />
+                    <Route exact path="/email/sent/" component={Dashboard} />
+                    <Route exact path="/email/sent/:id" component={Dashboard} />
+                    <Route exact path="/email/create/" component={Dashboard} />
+                    <Route path="*" component={PageNotFound} />
+                </Switch>
+            ) : (
+                <Switch>
+                    <Route exact path="/signup" component={SignUp} />
+                    <Route exact path="/login" component={Login} />
+                    <Route exact path="/" component={Dashboard} />
+                    <Route exact path="/email" component={Dashboard} />
+                    <Route exact path="/discussion" component={Dashboard} />
+                    <Route exact path="/learning" component={Dashboard} />
+                    <Route exact path="/news" component={Dashboard} />
+                    <Route exact path="/forum" component={Dashboard} />
+                    <Route exact path="/dictionary" component={Dashboard} />
+                    <Route exact path="/songs" component={Dashboard} />
+                    <Route exact path="/answers/:idLesson" component={Dashboard} />
+                    <Route exact path="/results/:lesson" component={Dashboard} />
+                    <Route exact path="/history" component={Dashboard} />
+                    <Route exact path="/help" component={Dashboard} />
+                    <Route exact path="/profile/:id" component={Dashboard} />
+                    <Route exact path="/profile/:id/edit" component={Dashboard} />
+                    <Route exact path="/email/inbox/" component={Dashboard} />
+                    <Route exact path="/email/inbox/:id" component={Dashboard} />
+                    <Route exact path="/email/sent/" component={Dashboard} />
+                    <Route exact path="/email/sent/:id" component={Dashboard} />
+                    <Route exact path="/email/create/" component={Dashboard} />
+                    <Route path="*" component={PageNotFound} />
+                </Switch>
+            )}
         </Router>
-
-
-        // <Router>
-        //         <Switch>
-        //             <Route exact path="/Home" component={Home} />
-        //             <Route exact path="/SignUp" component={SignUp} />
-        //             <Route exact path="/(:filter)" component={Welcome} />
-        //             <Route component={PageNotFound} />
-        //         </Switch>
-
-
-        // </Router>
     );
 }

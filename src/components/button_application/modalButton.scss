@@ -1,0 +1,35 @@
+@import "../../components/variables.module.scss";
+
+.modal-button {
+  border: none;
+  background: White;
+  cursor: pointer;
+  transition: 0.3s ease all;
+  border-radius: 5px;
+  color: rgb(160, 20, 20);
+  position: absolute;
+  right: 5px;
+  top: 5px;
+
+  &:hover {
+    background: #acacac;
+  }
+
+  .button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .icon-button {
+      font-size: 25px;
+      color: #fff;
+      margin-right: 10px;
+    }
+
+    span {
+      font-size: 12px;
+      font-weight: 700;
+      vertical-align: middle;
+    }
+  }
+}

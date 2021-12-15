@@ -1,0 +1,43 @@
+@import "../../components/variables.module.scss";
+
+.button {
+  padding: 5px;
+  background-color: rgb(72, 104, 209);
+  border-radius: 3px;
+  border-color: transparent;
+  color: #fff;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .icon-button {
+      font-size: 22px;
+      color: #fff;
+      margin-right: 10px;
+    }
+
+    span {
+      font-size: 12px;
+      font-weight: 600;
+      vertical-align: middle;
+    }
+  }
+}
+
+.button.red {
+  background-color: rgb(150, 6, 6);
+}
+
+.button.collapse-text {
+  span {
+    display: none;
+  }
+}

@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+$max-width-device: 920px;
+$max-height-device: 700px;
+$title-background-black: rgb(25, 25, 26);
+$sidebar-width: 210px;
+$sidebar-height: 100%;
+$sidebar-background-color: #363f64;
+$topbar-height: 65px;
+$topbar-width: 100%;
+$topbar-logo-background-color: $title-background-black;
+$topbar-background-color: $topbar-logo-background-color;
+$footer-height: 60vh;
+$footer-width: 100vw;
+$footer-background-color: #fff;
+$footer-bottom-background-color: #030d2d;
+$top-title-container-background-color: $title-background-black;
+$userprofile-background-gradient: radial-gradient(
+  circle,
+  rgba(255, 255, 255, 1) 41%,
+  rgba(210, 210, 210, 19) 89%
+);
+$userprofile-border-style: 1px solid rgb(116, 114, 114);
+$ul-content-background: rgb(248, 248, 248);
+
+:export {
+  sidebar-width: $sidebar-width;
+  sidebar-height: $sidebar-height;
+  sidebar-background-color: $sidebar-background-color;
+  topbar-logo-background-color: $topbar-logo-background-color;
+  topbar-height: $topbar-height;
+  topbar-width: $topbar-width;
+  topbar-background-color: $topbar-background-color;
+  footer-background-color: $footer-background-color;
+  footer-bottom-background-color: $footer-bottom-background-color;
+  top-title-container-background-color: $top-title-container-background-color;
+  userprofile-background-gradient: $userprofile-background-gradient;
+  userprofile-border-style: $userprofile-border-style;
+  title-background-black: $title-background-black;
+  ul-content-background: $ul-content-background;
+  max-height-device:$max-height-device;
+}

@@ -1,0 +1,160 @@
+@import "../../components/variables.module.scss";
+
+.history-main-container {
+  box-shadow:
+    rgba(9, 30, 66, 0.25) 0 1px 1px,
+    rgba(9, 30, 66, 0.13) 0 0 1px 1px;
+  border-radius: 3px;
+  background-color: #fff;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .history-content-container {
+    padding: 15px;
+  }
+
+  .history-background-content {
+    padding: 15px;
+
+    span {
+      display: block;
+    }
+
+    img {
+      margin-right: 15px;
+      width: 220px;
+      box-shadow:
+        rgba(9, 30, 66, 0.25) 0 1px 1px,
+        rgba(9, 30, 66, 0.13) 0 0 1px 1px;
+      padding: 15px;
+      float: left;
+    }
+  }
+
+  .history-ubication-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px;
+
+    img {
+      width: 20%;
+      box-shadow:
+        rgba(9, 30, 66, 0.25) 0 1px 1px,
+        rgba(9, 30, 66, 0.13) 0 0 1px 1px;
+      padding: 15px;
+    }
+  }
+
+  .history-features-content {
+    gap: 15px;
+    padding: 15px;
+
+    ul {
+      padding-left: 60px;
+    }
+
+    img {
+      float: right;
+      width: 380px;
+      box-shadow:
+        rgba(9, 30, 66, 0.25) 0 1px 1px,
+        rgba(9, 30, 66, 0.13) 0 0 1px 1px;
+      padding: 15px;
+    }
+  }
+
+  .history-costumes-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px;
+
+    ul {
+      padding-left: 60px;
+    }
+  }
+
+  .history-span-bleeding {
+    display: block;
+    padding-left: 15px;
+  }
+}
+
+@media all and (max-width: $max-width-device) {
+  .history-main-container {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    word-wrap: break-word;
+
+    .history-content-container {
+      padding: 15px;
+    }
+
+    .history-ubication-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .history-background-content {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+
+      span {
+        display: block;
+      }
+
+      img {
+        margin-right: 0;
+        width: 80%;
+      }
+    }
+
+    .history-features-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      padding: 15px;
+
+      ul {
+        padding-left: 45px;
+      }
+
+      img {
+        float: right;
+        width: 80%;
+        box-shadow:
+          rgba(9, 30, 66, 0.25) 0 1px 1px,
+          rgba(9, 30, 66, 0.13) 0 0 1px 1px;
+        padding: 15px;
+      }
+    }
+
+    .history-costumes-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      gap: 15px;
+
+      ul {
+        padding-left: 45px;
+      }
+    }
+
+    .history-span-bleeding {
+      display: block;
+      padding-left: 15px;
+    }
+  }
+}
