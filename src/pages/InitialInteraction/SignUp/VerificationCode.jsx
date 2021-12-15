@@ -44,8 +44,8 @@ export default function VerificationCode() {
                             </div>
                         </div>
                         <div className="signup-verification-code-buttons">
-                            <Button type="button" styleName="primary-button" text={t("SignUpVerificationSendCodeButton")} onClick={handleClickSendCode}></Button>
-                            <Button type="submit" styleName="green-button" text={t("SignUpVerificationVerifyButton")}></Button>
+                            <Button type="button" styleName="button" text={t("SignUpVerificationSendCodeButton")} onClick={handleClickSendCode}></Button>
+                            <Button type="submit" styleName="button background-green" text={t("SignUpVerificationVerifyButton")}></Button>
                         </div>
                     </label>
                 </div>

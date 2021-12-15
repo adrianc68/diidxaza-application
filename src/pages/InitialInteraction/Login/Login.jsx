@@ -27,7 +27,7 @@ const validationsForm = (form) => {
     return errors;
 };
 
-export default function Login({ setToken }) {
+export default function Login() {
     const { t } = useTranslation();
     const { isLogged } = useContext(Context);
     const { form, errors, loading, response, className, handleChange, handleBlur, handleSubmit } = useLoginForm(initialForm, validationsForm);
@@ -69,7 +69,7 @@ export default function Login({ setToken }) {
                     <div className="login-create-account-container">
                         <span>
                             {t("LoginNewAccountSpan")}{" "}
-                            <Link className="link" to="/signUp">
+                            <Link className="link" to="/signup">
                                 {t("LoginNewAccountThenRegisterSpan")}
                             </Link>
                         </span>

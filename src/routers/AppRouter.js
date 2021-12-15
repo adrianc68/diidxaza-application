@@ -17,7 +17,7 @@ export default function AppRouter() {
             {!isLogged ? (
                 <Switch>
                     <Route exact path="/" component={Welcome} />
-                    <Route exact path="/signUp" component={SignUp} />
+                    <Route exact path="/signup" component={SignUp} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/home" component={Dashboard} />
                     <Route exact path="/email" component={Dashboard} />
@@ -40,7 +40,7 @@ export default function AppRouter() {
                 </Switch>
             ) : (
                 <Switch>
-                    <Route exact path="/signUp" component={SignUp} />
+                    <Route exact path="/signup" component={SignUp} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/" component={Dashboard} />
                     <Route exact path="/email" component={Dashboard} />

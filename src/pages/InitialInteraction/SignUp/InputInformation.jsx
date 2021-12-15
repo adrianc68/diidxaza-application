@@ -176,9 +176,9 @@ export default function InputInformation() {
                                 </p>
                             )}
                         </div>
-                        <Button type="submit" styleName="green-button" text={t("SignUpFormSignUpButton")}></Button>
+                        <Button type="submit" styleName="button background-green" text={t("SignUpFormSignUpButton")}></Button>
                         <Link className="link" to="/">
-                            <Button styleName="orange-button" text={t("SignUpFormCancelButton")} onClick={() => history.push("/")}></Button>
+                            <Button styleName="button background-orange" text={t("SignUpFormCancelButton")} onClick={() => history.push("/")}></Button>
                         </Link>
                     </div>
                 </div>
