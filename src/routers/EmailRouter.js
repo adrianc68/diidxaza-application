@@ -1,8 +1,8 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import EmailInbox from "../components/email/emailInbox/EmailInbox";
-import EmailContent from "../components/email/emailListItem/emailcontent/EmailContent";
-import SendEmail from "../components/email/sendemail/SendEmail";
+import EmailInbox from "../components/email/email_inbox/EmailInbox";
+import EmailContent from "../components/email/email_list_item/emailcontent/EmailContent";
+import SendEmail from "../components/email/send_email/SendEmail";
 
 export default function EmailRouter() {
     return (

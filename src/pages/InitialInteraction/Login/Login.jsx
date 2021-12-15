@@ -2,10 +2,10 @@ import "./login.scss";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import DiidxazaLogo from "../../../components/logo/DiidxazaLogo";
-import Button from "../../../components/Button/Button";
+import Button from "../../../components/button_application/Button";
 import { useLoginForm } from "../../../hooks/useAccountForm";
 import { BiError } from "react-icons/bi";
-import { Context } from "../../../helpers/Context";
+import { Context } from "../../../hooks/Context";
 import { useContext } from "react";
 import { Redirect } from "react-router-dom";
 

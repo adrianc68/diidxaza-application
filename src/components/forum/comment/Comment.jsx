@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import "./comment.scss";
-import Button from "../../Button/Button";
+import Button from "../../button_application/Button";
 import { useTranslation } from "react-i18next";
-import ReportUser from "../../anotheruser/reportuser/ReportUser";
+import ReportUser from "../../another_user/report_user/ReportUser";
 import AlertConfirmation from "../../alert/AlertConfirmation";
 import { useConvertionData } from "../../../hooks/useConvertionData";
-import { ModalContext } from "../../../helpers/ModalContext";
+import { ModalContext } from "../../../hooks/ModalContext";
 
 export default function Comment({ comment, handleClickDeleteComment, idDiscussion, imagesComments }) {
     const { t } = useTranslation();

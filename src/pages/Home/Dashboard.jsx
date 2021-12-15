@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Topbar from "../../components/topbar/Topbar";
 import "./dashboard.scss";
-import Button from "../../components/Button/Button";
+import Button from "../../components/button_application/Button";
 import { Router, Redirect } from "react-router-dom";
 import AdminMenu from "../../components/admin/menu/AdminMenu";
 import DashboardRouter from "../../routers/DashboardRouter";
@@ -11,8 +11,8 @@ import { MdLogout } from "react-icons/md";
 import { useHistory } from "react-router";
 import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
 import { RESPONSE_STATUS } from "../../helpers/Response";
-import { Context } from "../../helpers/Context";
-import ModalContextProvider from "../../helpers/ModalContext";
+import { Context } from "../../hooks/Context";
+import ModalContextProvider from "../../hooks/ModalContext";
 
 export default function Dashboard() {
     const { t } = useTranslation();

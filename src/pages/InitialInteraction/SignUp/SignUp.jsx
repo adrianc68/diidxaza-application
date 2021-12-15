@@ -1,11 +1,11 @@
 import "./signUp.scss";
 import Topbar from "../../../components/topbar/Topbar";
 import { useTranslation } from "react-i18next";
-import Button from "../../../components/Button/Button";
+import Button from "../../../components/button_application/Button";
 import { Link } from "react-router-dom";
 import InputInformation from "./InputInformation";
 import VerificationCode from "./VerificationCode";
-import { Context } from "../../../helpers/Context";
+import { Context } from "../../../hooks/Context";
 import { useContext } from "react";
 import { Redirect } from "react-router-dom";
 

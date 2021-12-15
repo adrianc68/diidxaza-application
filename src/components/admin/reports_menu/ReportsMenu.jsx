@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./reportsMenu.scss";
-import Button from "../../Button/Button";
+import Button from "../../button_application/Button";
 import { useTranslation } from "react-i18next";
 import Report from "../../report/Report";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";

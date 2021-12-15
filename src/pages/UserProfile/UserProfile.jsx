@@ -2,15 +2,15 @@ import { React, useEffect, useState } from "react";
 import "./userProfile.scss";
 import { useTranslation } from "react-i18next";
 import UserImageDefault from "../../assets/images/ide-29.svg";
-import UserprofileButtonPanelADM from "../../components/admin/userprofileButtonPanel/UserprofileButtonPanelADM";
-import UserprofileButtonPanelOWU from "../../components/ownuser/userprofileButtonPanel/UserprofileButtonPanelOWU";
+import UserprofileButtonPanelADM from "../../components/admin/userprofile_button_panel/UserprofileButtonPanelADM";
+import UserprofileButtonPanelOWU from "../../components/own_user/user_profile_button_panel/UserprofileButtonPanelOWU";
 import { helpHttp, UrlAPI } from "../../helpers/helpHttp";
 import { useConvertionData } from "../../hooks/useConvertionData";
-import CheckProgress from "../../components/ownuser/CheckProgress/CheckProgress";
+import CheckProgress from "../../components/own_user/check_progress/CheckProgress";
 import { getMessageResponseStatus } from "../../helpers/messageResponse";
 import { AccountStatus } from "../../helpers/AccountStatus";
 import { UserType } from "../../helpers/UserType";
-import LoadingScreen from "../../components/animation/loadingScreen/LoadingScreen";
+import LoadingScreen from "../../components/animation/loading_screen/LoadingScreen";
 import { useHistory } from "react-router";
 
 export default function UserProfile({ accountProps }) {

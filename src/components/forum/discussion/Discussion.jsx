@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import "./discussion.scss";
 import Comment from "../comment/Comment";
 import { useTranslation } from "react-i18next";
-import Button from "../../Button/Button";
-import ReportUser from "../../anotheruser/reportuser/ReportUser";
+import Button from "../../button_application/Button";
+import ReportUser from "../../another_user/report_user/ReportUser";
 import { useConvertionData } from "../../../hooks/useConvertionData";
-import { ModalContext } from "../../../helpers/ModalContext";
+import { ModalContext } from "../../../hooks/ModalContext";
 
 export default function Discussion({ discussion, numberComments, comments, imageAccount, children, handleClickDeleteComment, handleClickFollow, imagesComments }) {
     const { t } = useTranslation();

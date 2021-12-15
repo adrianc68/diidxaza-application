@@ -3,7 +3,7 @@ import "./welcome.scss";
 import Footer from "../../components/footer/Footer";
 import { useTranslation } from "react-i18next";
 import Topbar from "../../components/topbar/Topbar";
-import Button from "../../components/Button/Button";
+import Button from "../../components/button_application/Button";
 import SubtitlesVideo from "../../assets/vtt/Subtitles.vtt";
 import WelcomeImage from "../../assets/images/ide-22.svg";
 import ImageBenefit01 from "../../assets/images/ide-11.svg";
@@ -16,7 +16,7 @@ import AccountTypePremiumImage from "../../assets/images/ide-18.svg";
 import { MdLogin, MdLogout } from "react-icons/md";
 import { useHistory } from "react-router-dom";
 import { useContext } from "react";
-import { Context } from "../../helpers/Context";
+import { Context } from "../../hooks/Context";
 import { Redirect } from "react-router-dom";
 
 export default function Welcome() {

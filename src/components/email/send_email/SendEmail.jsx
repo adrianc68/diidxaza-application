@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./sendemail.scss";
 import { useTranslation } from "react-i18next";
 import { helpHttp, UrlAPI, UrlEmailApi } from "../../../helpers/helpHttp";
-import Button from "../../Button/Button";
+import Button from "../../button_application/Button";
 import { MdSend } from "react-icons/md";
 
 export default function SendEmail() {

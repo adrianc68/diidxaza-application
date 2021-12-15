@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 import App from "./App";
-import ContextProvider from "./helpers/Context";
+import ContextProvider from "./hooks/Context";
 
 ReactDOM.render(
     <ContextProvider>

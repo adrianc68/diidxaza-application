@@ -4,7 +4,7 @@ import { helpHttp, UrlAPI } from "../helpers/helpHttp";
 import { NUMBER } from "../helpers/Number";
 import { RESPONSE_STATUS } from "../helpers/Response";
 import AlertMessage from "../components/alert/AlertMessage";
-import { ModalContext } from "../helpers/ModalContext";
+import { ModalContext } from "./ModalContext";
 
 export const useLessonForm = (setQuestion, questionsChange, setQuestionsChange, setAnswers, question, answers, setVisible, lesson) => {
     const [pointsObtained, setPointsObtained] = useState(0);

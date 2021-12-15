@@ -1,9 +1,9 @@
 import "./userListItem.scss";
-import Button from "../../../Button/Button";
+import Button from "../../../button_application/Button";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router";
-import { ModalContext } from "../../../../helpers/ModalContext";
 import { useContext } from "react";
+import { ModalContext } from "../../../../hooks/ModalContext";
 
 export default function UserListItem({ account }) {
     const { t } = useTranslation();

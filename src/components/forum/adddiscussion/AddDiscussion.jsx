@@ -2,7 +2,7 @@ import "./addDiscussion.scss";
 import ImageInformationAlt1 from "../../../assets/images/ide-13.svg";
 import ImageInformationAlt2 from "../../../assets/images/ide-23.svg";
 import ImageInformationAlt3 from "../../../assets/images/ide-25.svg";
-import Button from "../../Button/Button";
+import Button from "../../button_application/Button";
 import { useTranslation } from "react-i18next";
 import { useDiscussionForm } from "../../../hooks/useDiscussionForm";
 import { Link } from "react-router-dom";

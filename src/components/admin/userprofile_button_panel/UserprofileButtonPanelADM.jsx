@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import Button from "../../Button/Button";
+import Button from "../../button_application/Button";
 import { useTranslation } from "react-i18next";
-import UserReports from "../userreports/UserReports";
-import ChangeStatusUser from "../changestatus/ChangeStatusUser";
+import UserReports from "../user_reports/UserReports";
+import ChangeStatusUser from "../change_status/ChangeStatusUser";
 import { UserType } from "../../../helpers/UserType";
 import { AccountStatus } from "../../../helpers/AccountStatus";
-import { ModalContext } from "../../../helpers/ModalContext";
+import { ModalContext } from "../../../hooks/ModalContext";
 
 export default function UserprofileButtonPanelADM({ account }) {
     const { t } = useTranslation();

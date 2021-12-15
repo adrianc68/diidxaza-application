@@ -4,7 +4,7 @@ import { helpHttp, UrlAPI } from "../helpers/helpHttp";
 import { BiError, BiBadgeCheck } from "react-icons/bi";
 import { NUMBER } from "../helpers/Number";
 import { RESPONSE_STATUS } from "../helpers/Response";
-import { ModalContext } from "../helpers/ModalContext";
+import { ModalContext } from "./ModalContext";
 import AlertMessage from "../components/alert/AlertMessage";
 
 export const useReportForm = (initialForm, validateForm, id) => {

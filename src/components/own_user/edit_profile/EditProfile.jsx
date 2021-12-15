@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./editProfile.scss";
 import { useTranslation } from "react-i18next";
-import Button from "../../Button/Button";
+import Button from "../../button_application/Button";
 import AlertMessage from "../../alert/AlertMessage";
 import { helpHttp, UrlAPI } from "../../../helpers/helpHttp";
 import { useUpdateAccountForm } from "../../../hooks/useAccountForm";
@@ -9,7 +9,7 @@ import UserImageDefault from "../../../assets/images/ide-29.svg";
 import { Link } from "react-router-dom";
 import { RESPONSE_STATUS } from "../../../helpers/Response";
 import { NUMBER } from "../../../helpers/Number";
-import { ModalContext } from "../../../helpers/ModalContext";
+import { ModalContext } from "../../../hooks/ModalContext";
 
 const validationsForm = (form) => {
     let errors = {};

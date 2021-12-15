@@ -5,7 +5,7 @@ import { BiError, BiBadgeCheck } from "react-icons/bi";
 import ImageInformationAlt from "../assets/images/ide-02.svg";
 import { NUMBER } from "../helpers/Number";
 import { RESPONSE_STATUS } from "../helpers/Response";
-import { ModalContext } from "../helpers/ModalContext";
+import { ModalContext } from "./ModalContext";
 import AlertMessage from "../components/alert/AlertMessage";
 
 export const useForum = (validateForm, validateFormComment, initialForm, setDiscussions) => {

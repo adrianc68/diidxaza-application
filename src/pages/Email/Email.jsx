@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { MdInbox, MdSend, MdUpdate } from "react-icons/md";
 import { GoArrowLeft } from "react-icons/go";
-import Button from "../../components/Button/Button";
+import Button from "../../components/button_application/Button";
 import "./email.scss";
 import { BrowserRouter as Router, NavLink, Link } from "react-router-dom";
 import EmailRouter from "../../routers/EmailRouter";

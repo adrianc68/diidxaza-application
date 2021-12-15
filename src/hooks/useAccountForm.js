@@ -6,8 +6,8 @@ import UserImageDefault from "../assets/images/ide-29.svg";
 import { RESPONSE_STATUS } from "../helpers/Response";
 import { NUMBER } from "../helpers/Number";
 import { useHistory } from "react-router-dom";
-import { Context } from "../helpers/Context";
-import { ModalContext } from "../helpers/ModalContext";
+import { Context } from "./Context";
+import { ModalContext } from "./ModalContext";
 import AlertMessage from "../components/alert/AlertMessage";
 
 export const useLoginForm = (initialForm, validateForm) => {

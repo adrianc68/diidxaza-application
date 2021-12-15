@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { helpHttp, UrlAPI, UrlEmailApi } from "../../../helpers/helpHttp";
 import { getMessageResponseStatus } from "../../../helpers/messageResponse";
-import EmailListItem from "../emailListItem/EmailListItem";
+import EmailListItem from "../email_list_item/EmailListItem";
 import "./emailinbox.scss";
 import { useHistory } from "react-router";
-import LoadingScreen from "../../animation/loadingScreen/LoadingScreen";
+import LoadingScreen from "../../animation/loading_screen/LoadingScreen";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
