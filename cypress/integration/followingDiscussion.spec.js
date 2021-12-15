@@ -3,8 +3,8 @@ describe("Following Discussion", () => {
         cy.visit("http://127.0.0.1:3000/login");
         cy.get('[name="username"]').type("Miros");
         cy.get('[name="password"]').type("Mmol78963#");
-        cy.get('.button background-orange').click();
-        cy.get('.button background-orange').click();
+        cy.get('.button').click();
+        cy.get('.button').click();
         cy.get('.sidebar-dashboard-container').get('a[href="/forum"]').click();
         cy.contains("¿Qué opinan de las cuentos?").click();
     });
@@ -17,7 +17,7 @@ describe("Following Discussion", () => {
                 messageHappened: 'La discusión se sigue exitosamente',
             }
         });
-        cy.get(':nth-child(3) > .button background-dark-blue').click();
+        cy.get('.forum-discussion-user-data-container > :nth-child(3) > .button').click();
         cy.get('.alert-content-container').contains("La discusión se sigue exitosamente");
         cy.get('.alert-content-container').contains("Aceptar").click();
     });
@@ -26,7 +26,7 @@ describe("Following Discussion", () => {
         cy.intercept('PATCH', '/discussions', {
             status: 500
         });
-        cy.get(':nth-child(3) > .button background-dark-blue').click();
+        cy.get('.forum-discussion-user-data-container > :nth-child(3) > .button').click();
         cy.get('.alert-content-container').contains("Error en el servidor. Intenta más tarde");
         cy.get('.alert-content-container').contains("Aceptar").click();
     });
@@ -35,7 +35,7 @@ describe("Following Discussion", () => {
         cy.intercept('PATCH', '/discussions', {
             status: 401
         });
-        cy.get(':nth-child(3) > .button background-dark-blue').click();
+        cy.get('.forum-discussion-user-data-container > :nth-child(3) > .button').click();
         cy.get('.alert-main-container').contains("No estás autorizado para realizar esta funcionalidad");
         cy.get('.alert-content-container').contains("Aceptar").click();
     });
@@ -44,7 +44,7 @@ describe("Following Discussion", () => {
         cy.intercept('PATCH', '/discussions', {
             status: 419
         });
-        cy.get(':nth-child(3) > .button background-dark-blue').click();
+        cy.get('.forum-discussion-user-data-container > :nth-child(3) > .button').click();
         cy.get('.alert-main-container').contains("Se agotado su tiempo en el sistema, por favor vuelva a iniciar sesión");
         cy.get('.alert-content-container').contains("Aceptar").click();
     });
