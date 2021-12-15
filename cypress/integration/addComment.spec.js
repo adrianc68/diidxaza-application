@@ -3,8 +3,8 @@ describe("Add Comment", () => {
         cy.visit("http://127.0.0.1:3000/login");
         cy.get('[name="username"]').type("Miros");
         cy.get('[name="password"]').type("Mmol78963#");
-        cy.get('.button background-orange').click();
-        cy.get('.button background-orange').click();
+        cy.get('.button').click();
+        cy.get('.button').click();
         cy.get('.sidebar-dashboard-container').get('a[href="/forum"]').click();
         cy.contains("¿Qué opinan de las cuentos?").click();
     });
@@ -28,7 +28,7 @@ describe("Add Comment", () => {
 
     it("Add Comment Cancel", () => {
         cy.get('.adminmenubarIconToggle').click();
-        cy.get(".button background-orange").click();
+        cy.get(".addcommen-button-control > :nth-child(2) > .button").click();
         cy.get('.addcomment-count-characters').contains("0 Caracteres");
     });
 
